@@ -413,13 +413,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6448700c5b82646a5cfa3ed15d1c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 1
-  Speed: 5
-  MaxSpeed: 10
-  jumpForce: 9
+  ValueMovement:
+    Acceleration: 1
+    Speed: 5
+    MaxSpeed: 10
+  ValueJump:
+    jumpForce: 5
+    fallMultiplier: 2
+    lowJumpMultiplier: 2
   TimeDoublePlatform: 2
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
 --- !u!212 &809275353
 SpriteRenderer:
   m_ObjectHideFlags: 0
