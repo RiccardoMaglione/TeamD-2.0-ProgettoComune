@@ -30,6 +30,8 @@ public class ReturnPlayer : MonoBehaviour
 
     public void DestroyPlayer()
     {
+        CancelInvoke("DestroyPlayer");
         Destroy(LastDetect);
+        CanDestroy = false;
     }
 }

@@ -10,6 +10,7 @@ namespace SwordGame
     {
         public float RadiusArea = 1;
         public GameObject PromptCommand;
+        public static GameObject StaticPromptCommand;
         public GameObject PlayerDetect;
         public CircleCollider2D CC2D;
         public bool isPlayer = false;
@@ -59,6 +60,7 @@ namespace SwordGame
 
                     ReturnPlayer.LastDetect = PlayerDetect;
                     ReturnPlayer.CanDestroy = true;
+                    PromptCommand.SetActive(false);
                     
                 }
             }
