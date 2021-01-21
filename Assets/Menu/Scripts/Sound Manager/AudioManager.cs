@@ -12,11 +12,11 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="name"> Name of the song</param>
     /// <param name="volume"> Volume of the song </param>
-    public void Play(string name, float volume)
+    public void Play(string name, float musicVolume, float masterVolume)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
-        s.source.volume = volume;
+        s.source.volume = musicVolume - (1 - masterVolume);
     }
 
     /// <summary>
@@ -34,10 +34,10 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="name"> Name of the song </param>
     /// <param name="slider"> Slider that change the volume </param>
-    public void ChangeVolume(string name, Slider slider)
+    public void ChangeVolume(string name, float musicVolume, float masterVolume)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.volume = slider.value;
+        s.source.volume = musicVolume - (1 - masterVolume);
     }
 
 
@@ -60,6 +60,6 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
 
-        Play("temp", PlayerPrefs.GetFloat("MusicVolume"));
+        Play("temp", PlayerPrefs.GetFloat("MusicVolume"), PlayerPrefs.GetFloat("MasterVolume"));
     }
 }

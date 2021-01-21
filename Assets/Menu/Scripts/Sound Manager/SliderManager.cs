@@ -3,14 +3,21 @@ using UnityEngine.UI;
 
 public class SliderManager : MonoBehaviour
 {
+    public float master = 1f;
+    [SerializeField] Slider masterSlider;
+    
     public float music = 1f;
-    public Slider musicSlider;
-    //public Text Musicperc = null;
+    [SerializeField] Slider musicSlider;
 
     public float sfx = 1f;
-    public Slider sfxSlider;
-    //public Text SFXperc = null; 
-    
+    [SerializeField] Slider sfxSlider;
+
+    public void ChangeMaster()
+    {
+        master = masterSlider.value;
+        PlayerPrefs.SetFloat("MasterVolume", master);
+    }
+
     public void ChangeMusic()
     {
         music = musicSlider.value;
@@ -38,6 +45,9 @@ public class SliderManager : MonoBehaviour
 
     private void Awake()
     {
+        master = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        masterSlider.value = master;
+
         music = PlayerPrefs.GetFloat("MusicVolume", 1f);
         musicSlider.value = music;
 
@@ -47,8 +57,10 @@ public class SliderManager : MonoBehaviour
 
     void Update()
     {
+        ChangeMaster();
         ChangeMusic();
         ChangeSfx();
-        AudioManager.instance.ChangeVolume("temp", musicSlider);
+        
+        AudioManager.instance.ChangeVolume("temp", PlayerPrefs.GetFloat("MusicVolume"), PlayerPrefs.GetFloat("MasterVolume"));
     }
 }
