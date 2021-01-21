@@ -90,7 +90,14 @@ namespace SwordGame
             {
                 PlayerDetect = collision.gameObject;
                 if (PromptCommand != null)
-                    PromptCommand.SetActive(true);
+                {
+                    PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
+                    foreach (PossessionV2 go in AllPossession)
+                    {
+                        go.PromptCommand.SetActive(false);
+                    }
+                }
+                PromptCommand.SetActive(true);
                 isPlayer = true;
 
 
