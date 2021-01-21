@@ -41,6 +41,8 @@ namespace SwordGame
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
+                    ReturnPlayer.CanDestroy = false;
+                    ReturnPlayer.timerDestroy = 0;
                     if (LastPlayer != null)
                     {
                         LastPlayer.GetComponent<PlayerController>().enabled = false;
@@ -58,16 +60,21 @@ namespace SwordGame
                     PlayerDetect.GetComponent<PossessionV2>().enabled = true;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().enabled = false;                    //Nemico in cui nel trigger c'è il player
 
+
                     ReturnPlayer.LastDetect = PlayerDetect;
                     ReturnPlayer.CanDestroy = true;
                     PromptCommand.SetActive(false);
-                    
+
+                    PlayerDetect.GetComponent<PlayerController>().enabled = false;
+                    PlayerDetect.GetComponent<PossessionV2>().enabled = true;
+
+                    gameObject.SetActive(false);
+                    gameObject.SetActive(true);
                 }
             }
             
 
         }
-
 
         private void OnDrawGizmos()
         {

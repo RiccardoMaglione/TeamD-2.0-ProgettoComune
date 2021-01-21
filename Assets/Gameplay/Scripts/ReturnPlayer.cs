@@ -7,6 +7,9 @@ public class ReturnPlayer : MonoBehaviour
 
     public static GameObject LastDetect;
     public static bool CanDestroy = false;
+    public static float timerDestroy;
+    public float timerDestroyInspector;
+    public float timerLimit = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,22 +19,23 @@ public class ReturnPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timerDestroyInspector = timerDestroy;
         if(CanDestroy == true)
         {
-            Invoke("DestroyPlayer", 5);
+            timerDestroy += Time.deltaTime;
+            if(timerDestroy >= timerLimit)
+            {
+                Destroy(LastDetect);
+                timerDestroy = timerLimit;
+                CanDestroy = false;
+            }
         }
         if (LastDetect != null && LastDetect.tag == "Player")
         {
+            timerDestroy = 0;
             CanDestroy = false;
-            CancelInvoke("DestroyPlayer");
+            print("DSAD");
         }
-        print(CanDestroy);
     }
 
-    public void DestroyPlayer()
-    {
-        CancelInvoke("DestroyPlayer");
-        Destroy(LastDetect);
-        CanDestroy = false;
-    }
 }
