@@ -1,12 +1,11 @@
-﻿using UnityEngine;
-using System;
-using UnityEngine.UI;
+﻿using System;
+using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public static AudioManager instance;
-    
+
     /// <summary>
     /// Start the selected song
     /// </summary>
@@ -16,7 +15,7 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
-        s.source.volume = originalVolume - (1 - masterVolume);
+        s.source.volume = originalVolume * masterVolume;
     }
 
     /// <summary>
@@ -37,7 +36,7 @@ public class AudioManager : MonoBehaviour
     public void ChangeVolume(string name, float originalVolume, float masterVolume)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.volume = originalVolume - (1 - masterVolume);
+        s.source.volume = originalVolume * masterVolume;
     }
 
 
@@ -50,7 +49,7 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-            
+
         DontDestroyOnLoad(gameObject);
         foreach (Sound s in sounds)
         {
@@ -60,6 +59,6 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
 
-        Play("temp", PlayerPrefs.GetFloat("MusicVolume"), PlayerPrefs.GetFloat("MasterVolume"));
+        Play("MainMenuMusic", PlayerPrefs.GetFloat("MusicVolume"), PlayerPrefs.GetFloat("MasterVolume"));
     }
 }

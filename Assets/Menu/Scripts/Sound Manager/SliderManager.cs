@@ -5,7 +5,7 @@ public class SliderManager : MonoBehaviour
 {
     public float master = 1f;
     [SerializeField] Slider masterSlider;
-    
+
     public float music = 1f;
     [SerializeField] Slider musicSlider;
 
@@ -29,7 +29,7 @@ public class SliderManager : MonoBehaviour
         sfx = sfxSlider.value;
         PlayerPrefs.SetFloat("SfxVolume", sfx);
     }
-    
+
     //public void MusicText()
     //{
     //    music = 100 * music;
@@ -60,7 +60,7 @@ public class SliderManager : MonoBehaviour
         ChangeMaster();
         ChangeMusic();
         ChangeSfx();
-        
-        AudioManager.instance.ChangeVolume("temp", PlayerPrefs.GetFloat("MusicVolume"), PlayerPrefs.GetFloat("MasterVolume"));
+
+        AudioManager.instance.ChangeVolume("MainMenuMusic", PlayerPrefs.GetFloat("MusicVolume"), PlayerPrefs.GetFloat("MasterVolume"));
     }
 }
