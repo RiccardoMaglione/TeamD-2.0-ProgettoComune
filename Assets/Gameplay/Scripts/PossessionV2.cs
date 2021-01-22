@@ -8,22 +8,30 @@ namespace SwordGame
 {
     public class PossessionV2 : MonoBehaviour
     {
+        #region Variables
+        [Tooltip("")]
         public float RadiusArea = 1;
+        [Tooltip("")]
         public GameObject PromptCommand;
         public static GameObject StaticPromptCommand;
+        [Tooltip("")]
         public GameObject PlayerDetect;
+        [Tooltip("")]
         public CircleCollider2D CC2D;
+        [Tooltip("")]
         public bool isPlayer = false;
 
 
         public static List<GameObject> PlayerDetectArray = new List<GameObject>();
+        [Tooltip("")]
         public List<GameObject> PlayerDetectArrayInspector;
 
         public static int count = 0;
 
         public static GameObject LastPlayer;
+        [Tooltip("")]
         public float TimeDestroyLastPlayer = 5f;
-
+        #endregion
         void Start()
         {
             if (PromptCommand != null)
@@ -32,12 +40,14 @@ namespace SwordGame
             CC2D.radius = RadiusArea;
         }
 
-        // Update is called once per frame
         void Update()
         {
+            #region Update ViewOnly Inspector
             PlayerDetectArrayInspector = PlayerDetectArray;
             CC2D.radius = RadiusArea;
-            if(isPlayer == true)
+            #endregion
+            #region Action of Possession
+            if (isPlayer == true)
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
@@ -72,10 +82,10 @@ namespace SwordGame
                     gameObject.SetActive(true);
                 }
             }
-            
+            #endregion
 
         }
-
+        #region Gizmo Draw
         private void OnDrawGizmos()
         {
             Color C = Color.blue;
@@ -83,7 +93,8 @@ namespace SwordGame
             Gizmos.color = C;
             Gizmos.DrawSphere(transform.position, RadiusArea);
         }
-
+        #endregion
+        #region Trigger Zone
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.GetComponent<PlayerController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
@@ -125,6 +136,7 @@ namespace SwordGame
                 isPlayer = false;
             }
         }
+        #endregion
     }
 }
 

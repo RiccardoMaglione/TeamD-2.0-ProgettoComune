@@ -43,8 +43,15 @@ namespace SwordGame
         
         Rigidbody2D rb;
         GameObject TempPlatform;
-        #endregion
 
+        bool CanDashLeft = false;
+        bool CanDashRight = false;
+        [Tooltip("Value of start of timer for dash")]
+        public float TimerDash = 0;
+        [Tooltip("Value for limit timer of dash")]
+        public float LimitTimerDash = 5;
+        #endregion
+        
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -57,9 +64,10 @@ namespace SwordGame
             PlayerMovement();
             PlayerJump();
             ResetPlatform();
+            Dash();
         }
 
-        #region Player - Move and Jump
+        #region Player - Move and Jump and Dash
         public void PlayerMovement()
         {
             if (Input.GetKeyDown(KeyCode.A))
@@ -121,6 +129,48 @@ namespace SwordGame
                 }
             }
         }
+        public void Dash()          //Se il timerdash è maggiore del limit, dasha solo quando schiaccio e non perpetua
+        {
+            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false)
+            {
+                CanDashLeft = true;
+            }
+            if(CanDashLeft == true)
+            {
+                rb.velocity = new Vector2(-ValueMovement.Speed * 5, rb.velocity.y);
+                TimerDash += Time.deltaTime;
+                if(TimerDash >= LimitTimerDash)
+                {
+                    CanDashLeft = false;
+                    TimerDash = 0;
+                    //StartCoroutine(CooldownDash());
+                }
+            }
+
+            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false)
+            {
+                CanDashRight = true;
+            }
+            if (CanDashRight == true)
+            {
+                rb.velocity = new Vector2(ValueMovement.Speed * 5, rb.velocity.y);
+                TimerDash += Time.deltaTime;
+                if (TimerDash >= LimitTimerDash)
+                {
+                    CanDashRight = false;
+                    TimerDash = 0;
+                    //StartCoroutine(CooldownDash());
+                }
+            }
+        }
+
+        //public IEnumerator CooldownDash()
+        //{
+        //    yield return new WaitForSeconds(TimerCooldownDash);
+        //    CanDashLeft = false;
+        //    CanDashRight = false;
+        //    TimerDash = 0;
+        //}
         #endregion
 
         #region Collision
