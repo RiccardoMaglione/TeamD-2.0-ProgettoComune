@@ -35,7 +35,6 @@ namespace SwordGame
                 CanDestroy = false;
             }
         }
-
     }
 }
 
