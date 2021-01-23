@@ -136,11 +136,14 @@ namespace SwordGame
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
                     foreach (PossessionV2 go in AllPossession)
                     {
-                        go.gameObject.SetActive(false);
-                        go.gameObject.SetActive(true);
+                        if(go.gameObject != go.GetComponent<PlayerController>().enabled)
+                        {
+                            go.gameObject.SetActive(false);
+                            go.gameObject.SetActive(true);
+                        }
                     }
+                    PromptCommand.SetActive(false);
                 }
-                PromptCommand.SetActive(false);
                 isPlayer = false;
             }
         }
