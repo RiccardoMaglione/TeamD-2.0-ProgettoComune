@@ -36,6 +36,9 @@ namespace SwordGame
 
         public PhysicsMaterial2D MaterialNoFriction;
         public PhysicsMaterial2D MaterialYesFriction;
+
+        public Color PlayerColor;
+        public Color EnemyColor;
         #endregion
         void Start()
         {
@@ -74,7 +77,10 @@ namespace SwordGame
                     
                     PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<Rigidbody2D>().sharedMaterial = MaterialYesFriction;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<Rigidbody2D>().sharedMaterial = MaterialNoFriction;                    //Nemico in cui nel trigger c'è il player
-                    
+
+                    PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().color = EnemyColor;                                                       //Attuale Player
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().color = PlayerColor;                    //Nemico in cui nel trigger c'è il player
+
                     PlayerDetect.GetComponent<PossessionV2>().enabled = true;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().enabled = false;                    //Nemico in cui nel trigger c'è il player
 

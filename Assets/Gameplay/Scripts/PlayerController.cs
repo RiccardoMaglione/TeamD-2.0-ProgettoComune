@@ -50,6 +50,8 @@ namespace SwordGame
         public float TimerDash = 0;
         [Tooltip("Value for limit timer of dash")]
         public float LimitTimerDash = 5;
+
+        public SpriteRenderer TempSprite;
         #endregion
         
         void Start()
@@ -73,21 +75,29 @@ namespace SwordGame
             if (Input.GetKeyDown(KeyCode.A))
             {
                 ValueMovement.Speed = tempSpeed;
+                if(TempSprite != null)
+                    TempSprite.flipX = true;
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
                 ValueMovement.Speed = tempSpeed;
+                if (TempSprite != null)
+                    TempSprite.flipX = false;
             }
 
             if (Input.GetKey(KeyCode.A))
             {
                 CalculateSpeed();
                 rb.velocity = new Vector2(-ValueMovement.Speed, rb.velocity.y);
+                if (TempSprite != null)
+                    TempSprite.flipX = true;
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 CalculateSpeed();
                 rb.velocity = new Vector2(ValueMovement.Speed, rb.velocity.y);
+                if (TempSprite != null)
+                    TempSprite.flipX = false;
             }
             else
             {
@@ -134,6 +144,8 @@ namespace SwordGame
             if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false)
             {
                 CanDashLeft = true;
+                if (TempSprite != null)
+                    TempSprite.flipX = true;
             }
             if(CanDashLeft == true)
             {
@@ -150,6 +162,8 @@ namespace SwordGame
             if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false)
             {
                 CanDashRight = true;
+                if (TempSprite != null)
+                    TempSprite.flipX = false;
             }
             if (CanDashRight == true)
             {
