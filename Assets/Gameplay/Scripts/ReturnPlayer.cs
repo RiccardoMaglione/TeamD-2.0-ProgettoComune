@@ -14,7 +14,7 @@ namespace SwordGame
         public float timerLimit = 5;
         public static float timerDestroy;
         public static bool CanDestroy = false;
-
+        public static GameObject PlayerNow;
         public static List<GameObject> LastDetectList = new List<GameObject>();
         public List<GameObject> LastDetectListInspector = new List<GameObject>();
         #endregion
@@ -29,7 +29,13 @@ namespace SwordGame
                 timerDestroy += Time.deltaTime;
                 if(timerDestroy >= timerLimit)
                 {
-                    Destroy(LastDetectList[LastDetectList.Count-1]);
+                    for (int i = 0; i < LastDetectList.Count; i++)
+                    {
+                        if(LastDetectList[i] != PlayerNow)
+                        {
+                            Destroy(LastDetectList[i]);
+                        }
+                    }
                     timerDestroy = timerLimit;
                     CanDestroy = false;
                 }
