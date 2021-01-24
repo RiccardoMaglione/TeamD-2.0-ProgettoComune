@@ -81,6 +81,11 @@ namespace SwordGame
                     PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().color = EnemyColor;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().color = PlayerColor;                    //Nemico in cui nel trigger c'è il player
 
+                    PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;                                                       //Attuale Player
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;                    //Nemico in cui nel trigger c'è il player
+                    PlayerDetect.GetComponent<PossessionV2>().PromptCommand.layer = 9;                                                       //Attuale 
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().PromptCommand.layer = 8;                    //Nemico in cui nel trigger c'è il player
+
                     PlayerDetect.GetComponent<PossessionV2>().enabled = true;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().enabled = false;                    //Nemico in cui nel trigger c'è il player
 
