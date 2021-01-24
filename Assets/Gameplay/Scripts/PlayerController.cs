@@ -52,8 +52,10 @@ namespace SwordGame
         public float LimitTimerDash = 5;
 
         public SpriteRenderer TempSprite;
+
+        public float TimerCooldownDash;
         #endregion
-        
+
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -147,15 +149,15 @@ namespace SwordGame
                 if (TempSprite != null)
                     TempSprite.flipX = true;
             }
-            if(CanDashLeft == true)
+            if(CanDashLeft == true && TimerDash <= LimitTimerDash)
             {
                 rb.velocity = new Vector2(-ValueMovement.Speed * 5, rb.velocity.y);
                 TimerDash += Time.deltaTime;
                 if(TimerDash >= LimitTimerDash)
                 {
-                    CanDashLeft = false;
-                    TimerDash = 0;
-                    //StartCoroutine(CooldownDash());
+                    //CanDashLeft = false;
+                    //TimerDash = 0;
+                    StartCoroutine(CooldownDash());
                 }
             }
 
@@ -165,26 +167,26 @@ namespace SwordGame
                 if (TempSprite != null)
                     TempSprite.flipX = false;
             }
-            if (CanDashRight == true)
+            if (CanDashRight == true && TimerDash <= LimitTimerDash)
             {
                 rb.velocity = new Vector2(ValueMovement.Speed * 5, rb.velocity.y);
                 TimerDash += Time.deltaTime;
                 if (TimerDash >= LimitTimerDash)
                 {
-                    CanDashRight = false;
-                    TimerDash = 0;
-                    //StartCoroutine(CooldownDash());
+                    //CanDashRight = false;
+                    //TimerDash = 0;
+                    StartCoroutine(CooldownDash());
                 }
             }
         }
 
-        //public IEnumerator CooldownDash()
-        //{
-        //    yield return new WaitForSeconds(TimerCooldownDash);
-        //    CanDashLeft = false;
-        //    CanDashRight = false;
-        //    TimerDash = 0;
-        //}
+        public IEnumerator CooldownDash()
+        {
+            yield return new WaitForSeconds(TimerCooldownDash);
+            CanDashLeft = false;
+            CanDashRight = false;
+            TimerDash = 0;
+        }
         #endregion
 
         #region Collision
