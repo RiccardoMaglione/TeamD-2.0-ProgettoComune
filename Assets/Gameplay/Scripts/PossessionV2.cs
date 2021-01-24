@@ -59,6 +59,7 @@ namespace SwordGame
             {
                 if (Input.GetKeyDown(KeyCode.P))
                 {
+                    
                     ReturnPlayer.CanDestroy = false;
                     ReturnPlayer.timerDestroy = 0;
                     if (LastPlayer != null)
@@ -95,6 +96,8 @@ namespace SwordGame
 
                     ReturnPlayer.PlayerNow = PlayerDetectArray[PlayerDetectArray.Count - 1];
                     ReturnPlayer.LastDetectList.Add(PlayerDetect);
+                    ReturnPlayer.TimerDestroyList.Add(0);
+                    ReturnPlayer.CanDestroyList.Add(true);
                     ReturnPlayer.CanDestroy = true;
                     PromptCommand.SetActive(false);
 

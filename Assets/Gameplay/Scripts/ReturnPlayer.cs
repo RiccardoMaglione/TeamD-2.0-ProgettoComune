@@ -13,6 +13,13 @@ namespace SwordGame
         [Tooltip("It's a limit for the timer for destroy the last player")]
         public float timerLimit = 5;
         public static float timerDestroy;
+
+        public static List<float> TimerDestroyList = new List<float>();
+        public List<float> TimerDestroyListInspector = new List<float>();
+
+        public static List<bool> CanDestroyList = new List<bool>();
+        public List<bool> CanDestroyInspector = new List<bool>();
+
         public static bool CanDestroy = false;
         public static GameObject PlayerNow;
         public static List<GameObject> LastDetectList = new List<GameObject>();
@@ -24,26 +31,31 @@ namespace SwordGame
             LastDetectListInspector = LastDetectList;
             timerDestroyInspector = timerDestroy;
 
-            if(CanDestroy == true)
+            TimerDestroyListInspector = TimerDestroyList;
+            CanDestroyInspector = CanDestroyList;
+
+            for (int i = 0; i < LastDetectList.Count; i++)
             {
-                timerDestroy += Time.deltaTime;
-                if(timerDestroy >= timerLimit)
+                if(CanDestroyList[i] == true)
                 {
-                    for (int i = 0; i < LastDetectList.Count; i++)
+                    TimerDestroyList[i] += Time.deltaTime;
+                    if(TimerDestroyList[i] >= timerLimit)
                     {
-                        if(LastDetectList[i] != PlayerNow)
-                        {
-                            Destroy(LastDetectList[i]);
-                        }
+                            if(LastDetectList[i] != PlayerNow)
+                            {
+                                Destroy(LastDetectList[i]);
+                            }
+                        TimerDestroyList[i] = timerLimit;
+                        CanDestroyList[i] = false;
                     }
-                    timerDestroy = timerLimit;
-                    CanDestroy = false;
                 }
             }
             if (LastDetectList.Count - 1 > 0 && LastDetectList[LastDetectList.Count - 1] != null && LastDetectList[LastDetectList.Count - 1].tag == "Player")
             {
-                timerDestroy = 0;
-                CanDestroy = false;
+                //timerDestroy = 0;
+                //CanDestroy = false;
+                TimerDestroyList[TimerDestroyList.Count - 1] = 0;
+                CanDestroyList[CanDestroyList.Count - 1] = false;
             }
         }
     }
