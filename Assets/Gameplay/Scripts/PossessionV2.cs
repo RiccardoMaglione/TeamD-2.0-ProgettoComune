@@ -84,8 +84,7 @@ namespace SwordGame
                     PlayerDetect.GetComponent<PossessionV2>().enabled = true;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().enabled = false;                    //Nemico in cui nel trigger c'è il player
 
-
-                    ReturnPlayer.LastDetect = PlayerDetect;
+                    ReturnPlayer.LastDetectList.Add(PlayerDetect);
                     ReturnPlayer.CanDestroy = true;
                     PromptCommand.SetActive(false);
 

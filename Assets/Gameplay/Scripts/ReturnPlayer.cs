@@ -14,22 +14,27 @@ namespace SwordGame
         public float timerLimit = 5;
         public static float timerDestroy;
         public static bool CanDestroy = false;
-        public static GameObject LastDetect;
+
+        public static List<GameObject> LastDetectList = new List<GameObject>();
+        public List<GameObject> LastDetectListInspector = new List<GameObject>();
         #endregion
         void Update()
         {
+            
+            LastDetectListInspector = LastDetectList;
             timerDestroyInspector = timerDestroy;
+
             if(CanDestroy == true)
             {
                 timerDestroy += Time.deltaTime;
                 if(timerDestroy >= timerLimit)
                 {
-                    Destroy(LastDetect);
+                    Destroy(LastDetectList[LastDetectList.Count-1]);
                     timerDestroy = timerLimit;
                     CanDestroy = false;
                 }
             }
-            if (LastDetect != null && LastDetect.tag == "Player")
+            if (LastDetectList.Count - 1 > 0 && LastDetectList[LastDetectList.Count - 1] != null && LastDetectList[LastDetectList.Count - 1].tag == "Player")
             {
                 timerDestroy = 0;
                 CanDestroy = false;
