@@ -5,7 +5,11 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject startingScreen;
     public GameObject settings;
-   
+
+    public void GoToGameplay()
+    {
+        SceneManager.LoadScene("Gameplay");
+    }
 
     public void GoToStartingScreen()
     {
