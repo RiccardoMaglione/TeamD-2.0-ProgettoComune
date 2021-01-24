@@ -188,7 +188,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00064156577, y: 0.053954452}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -199,7 +199,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.13433713, y: 0.026995987}
   m_EdgeRadius: 0
 --- !u!212 &168022938
 SpriteRenderer:
@@ -368,17 +368,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ValueMovement:
-    Acceleration: 1
-    Speed: 5
-    MaxSpeed: 10
+    Acceleration: 3
+    Speed: 4
+    MaxSpeed: 5.5
   ValueJump:
-    jumpForce: 10
-    fallMultiplier: 2
-    lowJumpMultiplier: 2
-  TimeDoublePlatform: 2
+    jumpForce: 8
+    fallMultiplier: 2.5
+    lowJumpMultiplier: 1.8
+  TimeDoublePlatform: 0.5
   TimerDash: 0
-  LimitTimerDash: 5
+  LimitTimerDash: 0.16
   TempSprite: {fileID: 248621480}
+  TimerCooldownDash: 0.5
 --- !u!50 &248621478
 Rigidbody2D:
   serializedVersion: 4
@@ -505,7 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657fb864419858f43bdb80d43a07813e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RadiusArea: 5
+  RadiusArea: 2.3
   PromptCommand: {fileID: 1994434590}
   PlayerDetect: {fileID: 0}
   CC2D: {fileID: 0}
@@ -543,7 +544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264023950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.63, y: -0.84, z: 0}
+  m_LocalPosition: {x: 3.63, y: -1.18, z: 0}
   m_LocalScale: {x: 20, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 1406159388}
@@ -581,7 +582,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00064156204, y: 0.057718746}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -592,7 +593,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.1317708, y: 0.016957924}
   m_EdgeRadius: 0
 --- !u!212 &264023954
 SpriteRenderer:
@@ -679,17 +680,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ValueMovement:
-    Acceleration: 1
-    Speed: 5
-    MaxSpeed: 10
+    Acceleration: 3
+    Speed: 4
+    MaxSpeed: 5.5
   ValueJump:
-    jumpForce: 10
-    fallMultiplier: 2
-    lowJumpMultiplier: 2
+    jumpForce: 8
+    fallMultiplier: 2.5
+    lowJumpMultiplier: 1.8
   TimeDoublePlatform: 0.5
   TimerDash: 0
-  LimitTimerDash: 5
+  LimitTimerDash: 0.16
   TempSprite: {fileID: 809275353}
+  TimerCooldownDash: 0.5
 --- !u!212 &809275353
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -793,7 +795,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.063302174}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -804,7 +806,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.16, y: 0.28660434}
   m_EdgeRadius: 0
 --- !u!114 &809275357
 MonoBehaviour:
@@ -818,7 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657fb864419858f43bdb80d43a07813e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RadiusArea: 5
+  RadiusArea: 2.3
   PromptCommand: {fileID: 179635118}
   PlayerDetect: {fileID: 0}
   CC2D: {fileID: 0}
@@ -1545,7 +1547,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00032078847, y: 0.055422395}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -1556,7 +1558,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.1324124, y: 0.024907917}
   m_EdgeRadius: 0
 --- !u!212 &1837524580
 SpriteRenderer:
@@ -1804,6 +1806,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerDestroyInspector: 0
   timerLimit: 5
+  TimerDestroyListInspector: []
+  CanDestroyInspector: 
   LastDetectListInspector: []
 --- !u!4 &2041770061
 Transform:
@@ -1836,7 +1840,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2055707052
 Transform:
   m_ObjectHideFlags: 0
@@ -2044,17 +2048,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ValueMovement:
-    Acceleration: 1
-    Speed: 5
-    MaxSpeed: 10
+    Acceleration: 3
+    Speed: 4
+    MaxSpeed: 5.5
   ValueJump:
-    jumpForce: 10
-    fallMultiplier: 2
-    lowJumpMultiplier: 2
-  TimeDoublePlatform: 2
+    jumpForce: 8
+    fallMultiplier: 2.5
+    lowJumpMultiplier: 1.8
+  TimeDoublePlatform: 0.5
   TimerDash: 0
-  LimitTimerDash: 5
+  LimitTimerDash: 0.16
   TempSprite: {fileID: 2092240402}
+  TimerCooldownDash: 0.5
 --- !u!50 &2092240400
 Rigidbody2D:
   serializedVersion: 4
@@ -2161,7 +2166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092240398}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.15, y: 3.68, z: -1.859302}
+  m_LocalPosition: {x: -1.15, y: -3.12, z: -1.859302}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1111878207}
@@ -2181,7 +2186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657fb864419858f43bdb80d43a07813e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RadiusArea: 5
+  RadiusArea: 2.3
   PromptCommand: {fileID: 2076879799}
   PlayerDetect: {fileID: 0}
   CC2D: {fileID: 0}
