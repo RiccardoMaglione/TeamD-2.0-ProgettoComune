@@ -38,6 +38,7 @@ namespace SwordGame
         bool Grounded = true;
         float waitTime;
         float tempSpeed;
+        public static float StaticSpeed;
         [Tooltip("It's a time of change rotation offset of platform")]
         public float TimeDoublePlatform;
         
@@ -65,6 +66,7 @@ namespace SwordGame
 
         void Update()
         {
+            StaticSpeed = ValueMovement.Speed;
             PlayerMovement();
             PlayerJump();
             ResetPlatform();

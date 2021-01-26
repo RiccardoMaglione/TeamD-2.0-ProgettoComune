@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using SwordGame;
 public class PlayerInput : MonoBehaviour
 {
     //velocita del giocatore
