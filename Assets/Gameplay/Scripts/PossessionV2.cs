@@ -59,9 +59,9 @@ namespace SwordGame
             #region Action of Possession
             if (isPlayer == true)
             {
-                if (Input.GetKeyDown(KeyCode.P))
+                if (Input.GetKeyDown(KeyCode.P) && PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyManager>().isStun == true)
                 {
-                    
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyManager>().isPossessed = true;
                     ReturnPlayer.CanDestroy = false;
                     ReturnPlayer.timerDestroy = 0;
                     if (LastPlayer != null)
@@ -72,9 +72,35 @@ namespace SwordGame
                     }
 
 
-                    PlayerDetect.gameObject.tag = "Untagged";
+                    PlayerDetect.gameObject.tag = "Enemy";
                     PlayerDetectArray[PlayerDetectArray.Count-1].gameObject.tag = "Player";
-                    
+
+                    PlayerDetect.GetComponent<EnemyManager>().enabled = true;
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyManager>().enabled = false;
+
+                    PlayerDetect.GetComponent<PlayerInput>().enabled = false;
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].AddComponent<PlayerInput>().enabled = true;
+
+                    foreach (AttackSystem item in PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponentsInChildren<AttackSystem> (true))
+                    {
+                        if (item.name == "LightAttackCollider")
+                        {
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().lightAttackCollider = item.gameObject;
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardLightlAttack = KeyCode.U;
+                        }
+                        if (item.name == "HeavyAttackCollider")
+                        {
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().heavyAttackCollider = item.gameObject;
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardHeavyAttack = KeyCode.I;
+
+                        }
+                        if (item.name == "SpecialAttackCollider")
+                        {
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().specialAttackCollider = item.gameObject;
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardSpecialAttack = KeyCode.Y;
+                        }
+                    }
+
                     PlayerDetect.GetComponent<PlayerController>().enabled = false;                                                  //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().enabled = true;                //Nemico in cui nel trigger c'è il player
                     

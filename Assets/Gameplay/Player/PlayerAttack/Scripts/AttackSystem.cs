@@ -6,11 +6,39 @@ public class AttackSystem : MonoBehaviour
     [Tooltip("Velocità attacco")]
     [SerializeField] float attackTimer;
     
-    PlayerInput playerInput;   
+    PlayerInput playerInput;
+
+    [SerializeField] int LightDamage;
+    [SerializeField] int HeavyDamage;
+    [SerializeField] int SpecialDamage;
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("HIT" + collision.name);
+        if(collision.gameObject.tag == "Enemy")
+        {
+            if(playerInput.isLightAttack == true)
+            {
+                playerInput.isLightAttack = false;
+                collision.GetComponent<EnemyManager>().Life -= LightDamage;
+                print("Light");
+            }
+            if (playerInput.isHeavyAttack == true)
+            {
+                playerInput.isHeavyAttack = false;
+                collision.GetComponent<EnemyManager>().Life -= HeavyDamage;
+                print("Heavy");
+            }
+            if (playerInput.isSpecialAttack == true)
+            {
+                playerInput.isSpecialAttack = false;
+                collision.GetComponent<EnemyManager>().Life -= SpecialDamage;
+                print("Special");
+            }
+        }
+        
     }
 
     IEnumerator Attack()

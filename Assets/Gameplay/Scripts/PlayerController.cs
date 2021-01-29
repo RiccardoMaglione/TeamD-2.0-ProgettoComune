@@ -60,6 +60,8 @@ namespace SwordGame
 
         public GameObject DashColliderBabushka;
         public int DashDamageFatKnight;
+
+        public static bool isBoriousDash = false;
         #endregion
 
         void Start()
@@ -84,29 +86,31 @@ namespace SwordGame
             if (Input.GetKeyDown(KeyCode.A))
             {
                 ValueMovement.Speed = tempSpeed;
-                if(TempSprite != null)
-                    TempSprite.flipX = true;
+                //if(TempSprite != null)
+                //    TempSprite.flipX = true;
+                transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
                 ValueMovement.Speed = tempSpeed;
-                if (TempSprite != null)
-                    TempSprite.flipX = false;
+                //if (TempSprite != null)
+                //    TempSprite.flipX = false;
+                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
             }
 
             if (Input.GetKey(KeyCode.A))
             {
                 CalculateSpeed();
                 rb.velocity = new Vector2(-ValueMovement.Speed, rb.velocity.y);
-                if (TempSprite != null)
-                    TempSprite.flipX = true;
+                //if (TempSprite != null)
+                //  TempSprite.flipX = true;
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 CalculateSpeed();
                 rb.velocity = new Vector2(ValueMovement.Speed, rb.velocity.y);
-                if (TempSprite != null)
-                    TempSprite.flipX = false;
+                //if (TempSprite != null)
+                //  TempSprite.flipX = false;
             }
             else
             {
@@ -171,8 +175,9 @@ namespace SwordGame
             if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false)
             {
                 CanDashRight = true;
-                if (TempSprite != null)
-                    TempSprite.flipX = false;
+                //if (TempSprite != null)
+                //    TempSprite.flipX = false;
+                EffectDash();
             }
             if (CanDashRight == true && TimerDash <= LimitTimerDash)
             {
@@ -196,6 +201,7 @@ namespace SwordGame
             PM.Invulnerability = false;
             DashColliderBabushka.SetActive(false);
             gameObject.layer = 8;
+            isBoriousDash = false;
 
             TimerDash = 0;
         }
@@ -209,7 +215,7 @@ namespace SwordGame
                     
                     break;
                 case TypePlayer.BoriousKnight:
-
+                    isBoriousDash = true;
                     break;
                 case TypePlayer.Babushka:
                     DashColliderBabushka.SetActive(true);

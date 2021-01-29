@@ -9,35 +9,52 @@ public class PlayerInput : MonoBehaviour
     //velocita originale del giocatore
     //float originalSpeed;
 
-    [SerializeField] GameObject lightAttackCollider;
-    [SerializeField] GameObject heavyAttackCollider;
-    [SerializeField] GameObject specialAttackCollider;
+    [SerializeField] public GameObject lightAttackCollider;
+    [SerializeField] public GameObject heavyAttackCollider;
+    [SerializeField] public GameObject specialAttackCollider;
     
     [Header("KEYBOARD INPUTS")]
-    [SerializeField] KeyCode KeyboardLightlAttack;
-    [SerializeField] KeyCode KeyboardHeavyAttack;
-    [SerializeField] KeyCode KeyboardSpecialAttack;
+    [SerializeField] public KeyCode KeyboardLightlAttack;
+    [SerializeField] public KeyCode KeyboardHeavyAttack;
+    [SerializeField] public KeyCode KeyboardSpecialAttack;
 
     [HideInInspector] public bool isAttack = false;
 
     Rigidbody rb;
- 
+
+
+    public bool isLightAttack;
+    public bool isHeavyAttack;
+    public bool isSpecialAttack;
+
     void LightAttack()
     {
-        lightAttackCollider.SetActive(true);
+        if(lightAttackCollider != null)
+            lightAttackCollider.SetActive(true);
         isAttack = true;
+        isLightAttack = true;
+        isHeavyAttack = false;
+        isSpecialAttack = false;
     }
 
     void HeavyAttack()
     {
-        heavyAttackCollider.SetActive(true);
+        if (heavyAttackCollider != null)
+            heavyAttackCollider.SetActive(true);
         isAttack = true;
+        isLightAttack = false;
+        isHeavyAttack = true;
+        isSpecialAttack = false;
     }
 
     void SpecialAttack()
     {
-        specialAttackCollider.SetActive(true);
+        if (specialAttackCollider != null)
+            specialAttackCollider.SetActive(true);
         isAttack = true;
+        isLightAttack = false;
+        isHeavyAttack = false;
+        isSpecialAttack = true;
     }
 
 

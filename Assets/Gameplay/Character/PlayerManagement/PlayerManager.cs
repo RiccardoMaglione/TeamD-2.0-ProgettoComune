@@ -42,14 +42,26 @@ namespace SwordGame
                 if (collision.tag == "LightAttack")
                 {
                     currentHealth -= collision.GetComponent<EnemyManager>().LightDamage;
+                    if(PlayerController.isBoriousDash == true)
+                    {
+                        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().LightDamage;
+                    }
                 }
                 if (collision.tag == "HeavyAttack")
                 {
                     currentHealth -= collision.GetComponent<EnemyManager>().HeavyDamage;
+                    if (PlayerController.isBoriousDash == true)
+                    {
+                        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().HeavyDamage;
+                    }
                 }
                 if (collision.tag == "SpecialAttack")
                 {
                     currentHealth -= collision.GetComponent<EnemyManager>().SpecialDamage;
+                    if (PlayerController.isBoriousDash == true)
+                    {
+                        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().SpecialDamage;
+                    }
                 }
             }
             #endregion
