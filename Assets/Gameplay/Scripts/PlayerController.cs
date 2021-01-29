@@ -157,8 +157,8 @@ namespace SwordGame
             if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false)
             {
                 CanDashLeft = true;
-                if (TempSprite != null)
-                    TempSprite.flipX = true;
+                //if (TempSprite != null)
+                //    TempSprite.flipX = true;
             }
             if(CanDashLeft == true && TimerDash <= LimitTimerDash)
             {

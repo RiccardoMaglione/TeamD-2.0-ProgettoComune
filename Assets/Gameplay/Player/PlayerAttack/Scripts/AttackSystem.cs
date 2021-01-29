@@ -12,8 +12,6 @@ public class AttackSystem : MonoBehaviour
     [SerializeField] int HeavyDamage;
     [SerializeField] int SpecialDamage;
 
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("HIT" + collision.name);
@@ -23,18 +21,21 @@ public class AttackSystem : MonoBehaviour
             {
                 playerInput.isLightAttack = false;
                 collision.GetComponent<EnemyManager>().Life -= LightDamage;
+                collision.GetComponent<EnemyManager>().CountHit++;
                 print("Light");
             }
             if (playerInput.isHeavyAttack == true)
             {
                 playerInput.isHeavyAttack = false;
                 collision.GetComponent<EnemyManager>().Life -= HeavyDamage;
+                collision.GetComponent<EnemyManager>().CountHit++;
                 print("Heavy");
             }
             if (playerInput.isSpecialAttack == true)
             {
                 playerInput.isSpecialAttack = false;
                 collision.GetComponent<EnemyManager>().Life -= SpecialDamage;
+                collision.GetComponent<EnemyManager>().CountHit++;
                 print("Special");
             }
         }

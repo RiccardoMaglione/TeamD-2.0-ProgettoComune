@@ -81,7 +81,7 @@ namespace SwordGame
                     PlayerDetect.GetComponent<PlayerInput>().enabled = false;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].AddComponent<PlayerInput>().enabled = true;
 
-                    foreach (AttackSystem item in PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponentsInChildren<AttackSystem> (true))
+                    foreach (AttackSystem item in PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponentsInChildren<AttackSystem>(true))
                     {
                         if (item.name == "LightAttackCollider")
                         {

@@ -27,7 +27,6 @@ namespace SwordGame
         #endregion
         void Update()
         {
-            
             LastDetectListInspector = LastDetectList;
             timerDestroyInspector = timerDestroy;
 
