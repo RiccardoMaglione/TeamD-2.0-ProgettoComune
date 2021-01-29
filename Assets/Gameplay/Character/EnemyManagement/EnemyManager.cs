@@ -52,11 +52,21 @@ public class EnemyManager : MonoBehaviour
     public int random;
     public bool CanAttack = true;
 
+    [HideInInspector]public float TempTimerLight;
+    [HideInInspector]public float TempTimerHeavy;
+    [HideInInspector]public float Temp2TimerLight;
+    [HideInInspector]public float Temp2TimerHeavy;
+    public bool isActiveLight;
+    public bool isActiveHeavy;
+
+
     void Update()
     {
         Stunned();
         Routine();
         Attack();
+        AttivatiLeggero();
+        AttivatiPesante();
     }
 
     #region Method - IA - Enemy Behaviour
@@ -170,7 +180,22 @@ public class EnemyManager : MonoBehaviour
                     print("Enemy Light Attack");
                     if (LightAttackCollider != null)
                     {
+                        isActiveLight = true;
                         StartCoroutine(LightTimerAttack());
+                        //TempTimerLight += Time.deltaTime;
+                        //if (TempTimerLight >= LightTimerAnimation)
+                        //{
+                        //    LightAttackCollider.SetActive(true);
+                        //    Temp2TimerLight += Time.deltaTime;
+                        //    if (Temp2TimerLight >= LightTimerAttackActivate)
+                        //    {
+                        //        LightAttackCollider.SetActive(false);
+                        //        LightTimerEnemyAttack = 0;
+                        //        TempTimerLight = 0;
+                        //        Temp2TimerLight = 0;
+                        //        CanAttack = true;
+                        //    }
+                        //}
                     }
                 }
             }
@@ -179,34 +204,75 @@ public class EnemyManager : MonoBehaviour
                 HeavyTimerEnemyAttack += Time.deltaTime;
                 if (HeavyTimerEnemyAttack >= HeavyMaxTimerEnemyAttack)
                 {
-                    print("Enemy Heavy Attack");
+                    print("Enemy Heavy Attack"+HeavyTimerEnemyAttack);
                     if (LightAttackCollider != null)
                     {
+                        isActiveHeavy = true;
                         StartCoroutine(HeavyTimerAttack());
+                        //TempTimerHeavy += Time.deltaTime;
+                        //if (TempTimerHeavy >= HeavyTimerAnimation)
+                        //{
+                        //    HeavyAttackCollider.SetActive(true);
+                        //    Temp2TimerHeavy += Time.deltaTime;
+                        //    if (Temp2TimerHeavy >= HeavyTimerAttackActivate)
+                        //    {
+                        //        HeavyAttackCollider.SetActive(false);
+                        //        TempTimerHeavy = 0;
+                        //        Temp2TimerHeavy = 0;
+                        //        HeavyTimerEnemyAttack = 0;
+                        //        CanAttack = true;
+                        //    }
+                        //}
+
                     }
                 }
             }
         }
     }
 
+    public void AttivatiLeggero()
+    {
+        if(isActiveLight == true)
+        {
+            StartCoroutine(LightTimerAttack());
+        }
+    }
+    public void AttivatiPesante()
+    {
+        if(isActiveHeavy == true)
+        {
+            StartCoroutine(HeavyTimerAttack());
+        }
+    }
     public IEnumerator LightTimerAttack()
     {
-        yield return new WaitForSeconds(LightTimerAnimation);
-        LightAttackCollider.SetActive(true);
-        yield return new WaitForSeconds(LightTimerAttackActivate);
-        LightAttackCollider.SetActive(false);
-        LightTimerEnemyAttack = 0;
-        CanAttack = true;
-        print("Ciao1");
+
+        //while (isActiveLight)
+        //{
+            yield return new WaitForSeconds(LightTimerAnimation);
+            LightAttackCollider.SetActive(true);
+            yield return new WaitForSeconds(LightTimerAttackActivate);
+            LightAttackCollider.SetActive(false);
+            LightTimerEnemyAttack = 0;
+            CanAttack = true;
+            print("Ciao1");
+            isActiveLight = false;
+        //}
+
     }
     public IEnumerator HeavyTimerAttack()
     {
-        yield return new WaitForSeconds(HeavyTimerAnimation);
-        HeavyAttackCollider.SetActive(true);
-        yield return new WaitForSeconds(HeavyTimerAttackActivate);
-        HeavyAttackCollider.SetActive(false);
-        HeavyTimerEnemyAttack = 0;
-        CanAttack = true;
+        //while (isActiveHeavy)
+        //{
+            yield return new WaitForSeconds(HeavyTimerAnimation);
+            HeavyAttackCollider.SetActive(true);
+            yield return new WaitForSeconds(HeavyTimerAttackActivate);
+            HeavyAttackCollider.SetActive(false);
+            HeavyTimerEnemyAttack = 0;
+            CanAttack = true;
+            isActiveHeavy = false;
+        print("Ciao2");
+        //}
     }
     #endregion
 

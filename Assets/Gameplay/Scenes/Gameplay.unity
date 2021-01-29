@@ -986,6 +986,12 @@ MonoBehaviour:
   CanMove: 1
   random: 0
   CanAttack: 1
+  TempTimerLight: 0
+  TempTimerHeavy: 0
+  Temp2TimerLight: 0
+  Temp2TimerHeavy: 0
+  isActiveLight: 0
+  isActiveHeavy: 0
 --- !u!114 &248621484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2371,9 +2377,9 @@ MonoBehaviour:
   isHeavyAttack: 0
   isSpecialAttack: 0
   LightTimerActivation: 0
-  LightMaxTimerActivation: 0
+  LightMaxTimerActivation: 0.3
   HeavyTimerActivation: 0
-  HeavyMaxTimerActivation: 0
+  HeavyMaxTimerActivation: 1.4
   SpecialTimerActivation: 0
   SpecialMaxTimerActivation: 0
   LightActivation: 0
@@ -2381,9 +2387,9 @@ MonoBehaviour:
   SpecialActivation: 0
   CooldownAttack: 0
   LightTimerCooldown: 0
-  LightMaxTimerCooldown: 0
+  LightMaxTimerCooldown: 0.2
   HeavyTimerCooldown: 0
-  HeavyMaxTimerCooldown: 0
+  HeavyMaxTimerCooldown: 1
   SpecialTimerCooldown: 0
   SpecialMaxTimerCooldown: 0
 --- !u!114 &809275359
@@ -2452,6 +2458,12 @@ MonoBehaviour:
   CanMove: 1
   random: 0
   CanAttack: 1
+  TempTimerLight: 0
+  TempTimerHeavy: 0
+  Temp2TimerLight: 0
+  Temp2TimerHeavy: 0
+  isActiveLight: 0
+  isActiveHeavy: 0
 --- !u!1 &900513789
 GameObject:
   m_ObjectHideFlags: 0
@@ -5838,7 +5850,7 @@ MonoBehaviour:
   Speed: 2
   PlayerEnemy: {fileID: 0}
   CanVisible: 0
-  PercentuageAttack: 55
+  PercentuageAttack: 0
   LightTimerEnemyAttack: 0
   HeavyTimerEnemyAttack: 0
   LightMaxTimerEnemyAttack: 0.3
@@ -5852,6 +5864,12 @@ MonoBehaviour:
   CanMove: 1
   random: 0
   CanAttack: 1
+  TempTimerLight: 0
+  TempTimerHeavy: 0
+  Temp2TimerLight: 0
+  Temp2TimerHeavy: 0
+  isActiveLight: 0
+  isActiveHeavy: 0
 --- !u!114 &2092240406
 MonoBehaviour:
   m_ObjectHideFlags: 0
