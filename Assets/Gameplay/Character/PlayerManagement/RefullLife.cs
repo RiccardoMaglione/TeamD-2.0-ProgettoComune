@@ -16,6 +16,10 @@ namespace SwordGame
                     print("Non refullare" + ReturnPlayer.LastDetectList[i].name);
                     CanRefull = true;
                 }
+                else
+                {
+                    ReturnPlayer.LastDetectList[i].GetComponent<PlayerManager>().currentHealth = ReturnPlayer.LastDetectList[i].GetComponent<PlayerManager>().maxHealth;
+                }
             }
         }
     }

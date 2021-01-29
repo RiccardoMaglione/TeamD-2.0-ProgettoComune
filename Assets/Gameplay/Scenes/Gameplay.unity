@@ -685,6 +685,7 @@ GameObject:
   - component: {fileID: 248621477}
   - component: {fileID: 248621482}
   - component: {fileID: 248621483}
+  - component: {fileID: 248621484}
   m_Layer: 9
   m_Name: Enemy2
   m_TagString: Enemy
@@ -834,6 +835,8 @@ Transform:
   - {fileID: 1514666340}
   - {fileID: 1897740803}
   - {fileID: 1666061507}
+  - {fileID: 1504583116}
+  - {fileID: 370748825}
   m_Father: {fileID: 1421947235}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -885,8 +888,38 @@ MonoBehaviour:
   WaypointEnemy: []
   WaypointIndex: 0
   Speed: 0
-  Player: {fileID: 0}
   CanVisible: 0
+  PercentuageAttack: 0
+  TimerEnemyAttack: 0
+  MaxTimerEnemyAttack: 1
+  LightAttackCollider: {fileID: 1504583115}
+  HeavyAttackCollider: {fileID: 370748824}
+  TimerAttackActivate: 0.1
+  TimerAnimation: 0
+  CanMove: 1
+--- !u!114 &248621484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248621476}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060458ace2c68d349a93c125624c0bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeCharacter: 0
+  hB: {fileID: 307283232}
+  maxHealth: 100
+  currentHealth: 100
+  EnergyBar: {fileID: 932723239}
+  MaxEnergy: 100
+  CurrentEnergy: 0
+  Invulnerability: 0
+  LightEnergyAmount: 5
+  HeavyEnergyAmount: 10
+  SpecialEnergyAmount: 15
 --- !u!1 &264023950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1078,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &280582154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 280582156}
+  - component: {fileID: 280582155}
+  m_Layer: 0
+  m_Name: EnemyHeavyAttackCollider
+  m_TagString: HeavyAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!61 &280582155
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280582154}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.22115524, y: 0.03707993}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.38288423, y: 0.41731572}
+  m_EdgeRadius: 0
+--- !u!4 &280582156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280582154}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 809275354}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &282828129
 GameObject:
@@ -1300,6 +1390,120 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliderBar: {fileID: 307283231}
+--- !u!1 &370748824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 370748825}
+  - component: {fileID: 370748826}
+  m_Layer: 0
+  m_Name: EnemyHeavyAttackCollider
+  m_TagString: HeavyAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &370748825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370748824}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 248621481}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &370748826
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370748824}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.22115524, y: 0.03707993}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.38288423, y: 0.41731572}
+  m_EdgeRadius: 0
+--- !u!1 &467281527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 467281528}
+  - component: {fileID: 467281529}
+  m_Layer: 0
+  m_Name: EnemyLightAttackCollider
+  m_TagString: LightAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &467281528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467281527}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2092240403}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &467281529
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467281527}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.24781191, y: -0.0014563277}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3553484, y: 0.06293522}
+  m_EdgeRadius: 0
 --- !u!1 &515560073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,7 +1921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &783517404
 Transform:
   m_ObjectHideFlags: 0
@@ -1895,6 +2099,8 @@ Transform:
   - {fileID: 783517404}
   - {fileID: 1417802645}
   - {fileID: 1123410726}
+  - {fileID: 1907358073}
+  - {fileID: 280582156}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1990,6 +2196,22 @@ MonoBehaviour:
   isLightAttack: 0
   isHeavyAttack: 0
   isSpecialAttack: 0
+  LightTimerActivation: 0
+  LightMaxTimerActivation: 0
+  HeavyTimerActivation: 0
+  HeavyMaxTimerActivation: 0
+  SpecialTimerActivation: 0
+  SpecialMaxTimerActivation: 0
+  LightActivation: 0
+  HeavyActivation: 0
+  SpecialActivation: 0
+  CooldownAttack: 0
+  LightTimerCooldown: 0
+  LightMaxTimerCooldown: 0
+  HeavyTimerCooldown: 0
+  HeavyMaxTimerCooldown: 0
+  SpecialTimerCooldown: 0
+  SpecialMaxTimerCooldown: 0
 --- !u!114 &809275359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2008,8 +2230,11 @@ MonoBehaviour:
   currentHealth: 100
   EnergyBar: {fileID: 932723239}
   MaxEnergy: 100
-  CurrentEnergy: 100
+  CurrentEnergy: 0
   Invulnerability: 0
+  LightEnergyAmount: 5
+  HeavyEnergyAmount: 10
+  SpecialEnergyAmount: 15
 --- !u!114 &809275360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2022,21 +2247,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 50
-  LightDamage: 0
-  HeavyDamage: 0
-  SpecialDamage: 0
+  Life: 5
+  LightDamage: 3
+  HeavyDamage: 4
+  SpecialDamage: 5
   isStun: 0
   timerStun: 0
   DurationStun: 5
   isPossessed: 0
   CountHit: 0
-  MaxCountHit: 0
-  WaypointEnemy: []
+  MaxCountHit: 3
+  WaypointEnemy:
+  - {fileID: 1416235887}
+  - {fileID: 269968712}
   WaypointIndex: 0
-  Speed: 0
-  Player: {fileID: 0}
+  Speed: 5
   CanVisible: 0
+  PercentuageAttack: 0
+  TimerEnemyAttack: 0
+  MaxTimerEnemyAttack: 3
+  LightAttackCollider: {fileID: 1907358071}
+  HeavyAttackCollider: {fileID: 280582154}
+  TimerAttackActivate: 0
+  TimerAnimation: 1
+  CanMove: 1
 --- !u!1 &900513789
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,7 +3288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1417802645
 Transform:
   m_ObjectHideFlags: 0
@@ -3143,6 +3377,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1504583115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1504583116}
+  - component: {fileID: 1504583117}
+  m_Layer: 0
+  m_Name: EnemyLightAttackCollider
+  m_TagString: LightAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1504583116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504583115}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 248621481}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1504583117
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504583115}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.24781191, y: -0.0014563277}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3553484, y: 0.06293522}
+  m_EdgeRadius: 0
 --- !u!1 &1509997080
 GameObject:
   m_ObjectHideFlags: 0
@@ -3525,6 +3816,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1577358880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1577358881}
+  - component: {fileID: 1577358882}
+  m_Layer: 0
+  m_Name: EnemyHeavyAttackCollider
+  m_TagString: HeavyAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1577358881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577358880}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2092240403}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1577358882
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577358880}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.22115524, y: 0.03707993}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.38288423, y: 0.41731572}
+  m_EdgeRadius: 0
 --- !u!1 &1644852454
 GameObject:
   m_ObjectHideFlags: 0
@@ -4251,6 +4599,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.38288423, y: 0.41731572}
   m_EdgeRadius: 0
+--- !u!1 &1907358071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1907358073}
+  - component: {fileID: 1907358072}
+  m_Layer: 0
+  m_Name: EnemyLightAttackCollider
+  m_TagString: LightAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!61 &1907358072
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907358071}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.24781191, y: -0.0014563277}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3553484, y: 0.06293522}
+  m_EdgeRadius: 0
+--- !u!4 &1907358073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907358071}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 809275354}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1924719834
 GameObject:
   m_ObjectHideFlags: 0
@@ -4711,6 +5116,7 @@ GameObject:
   - component: {fileID: 2092240399}
   - component: {fileID: 2092240404}
   - component: {fileID: 2092240405}
+  - component: {fileID: 2092240406}
   m_Layer: 9
   m_Name: Enemy1
   m_TagString: Enemy
@@ -4860,6 +5266,8 @@ Transform:
   - {fileID: 1555461361}
   - {fileID: 1808926644}
   - {fileID: 667593490}
+  - {fileID: 467281528}
+  - {fileID: 1577358881}
   m_Father: {fileID: 1421947235}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4916,8 +5324,38 @@ MonoBehaviour:
   - {fileID: 269968712}
   WaypointIndex: 0
   Speed: 2
-  Player: {fileID: 809275351}
   CanVisible: 0
+  PercentuageAttack: 0
+  TimerEnemyAttack: 0
+  MaxTimerEnemyAttack: 1
+  LightAttackCollider: {fileID: 467281527}
+  HeavyAttackCollider: {fileID: 1577358880}
+  TimerAttackActivate: 0.5
+  TimerAnimation: 0
+  CanMove: 1
+--- !u!114 &2092240406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092240398}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060458ace2c68d349a93c125624c0bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeCharacter: 0
+  hB: {fileID: 307283232}
+  maxHealth: 100
+  currentHealth: 100
+  EnergyBar: {fileID: 932723239}
+  MaxEnergy: 100
+  CurrentEnergy: 0
+  Invulnerability: 0
+  LightEnergyAmount: 5
+  HeavyEnergyAmount: 10
+  SpecialEnergyAmount: 15
 --- !u!1 &2136307419
 GameObject:
   m_ObjectHideFlags: 0

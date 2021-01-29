@@ -18,7 +18,11 @@ namespace SwordGame
         public static int MaxEnergyStatic;
         public int CurrentEnergy;
 
-        [HideInInspector] public bool Invulnerability = false;
+        public bool Invulnerability = false;
+
+        public int LightEnergyAmount;
+        public int HeavyEnergyAmount;
+        public int SpecialEnergyAmount;
 
         private void Start()
         {
@@ -28,12 +32,22 @@ namespace SwordGame
         public void Initialize()
         {
             //CurrentEnegy = PlayerPrefs.GetInt("EnergyValue", 0);
-            EnergyBar.fillAmount = (float)CurrentEnergy / 100;;
+            EnergyBar.fillAmount = (float)CurrentEnergy / 100;
             //MaxEnergyStatic = MaxEnergy;
 
             hB.SetHealth(currentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
         }
-
+        private void Update()
+        {
+            print("Current life" + currentHealth);
+            hB.sliderBar.value = currentHealth;
+            EnergyBar.fillAmount = (float)CurrentEnergy / 100;
+            if(currentHealth <= 0)
+            {
+                Destroy(this.gameObject);
+                print("Hai Perso");
+            }
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             #region PlayerLife
@@ -41,28 +55,30 @@ namespace SwordGame
             {
                 if (collision.tag == "LightAttack")
                 {
-                    currentHealth -= collision.GetComponent<EnemyManager>().LightDamage;
+                    currentHealth -= collision.GetComponentInParent<EnemyManager>().LightDamage;
+                    print("Colpito Light");
                     if(PlayerController.isBoriousDash == true)
                     {
-                        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().LightDamage;
+                        collision.GetComponentInParent<EnemyManager>().Life -= collision.GetComponentInParent<EnemyManager>().LightDamage;
                     }
                 }
                 if (collision.tag == "HeavyAttack")
                 {
-                    currentHealth -= collision.GetComponent<EnemyManager>().HeavyDamage;
+                    currentHealth -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
+                    print("Colpito Heavy");
                     if (PlayerController.isBoriousDash == true)
                     {
-                        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().HeavyDamage;
+                        collision.GetComponentInParent<EnemyManager>().Life -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
                     }
                 }
-                if (collision.tag == "SpecialAttack")
-                {
-                    currentHealth -= collision.GetComponent<EnemyManager>().SpecialDamage;
-                    if (PlayerController.isBoriousDash == true)
-                    {
-                        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().SpecialDamage;
-                    }
-                }
+                //if (collision.tag == "SpecialAttack")                     //I nemici non hanno l'attacco speciale
+                //{
+                //    currentHealth -= collision.GetComponent<EnemyManager>().SpecialDamage;
+                //    if (PlayerController.isBoriousDash == true)
+                //    {
+                //        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().SpecialDamage;
+                //    }
+                //}
             }
             #endregion
         }

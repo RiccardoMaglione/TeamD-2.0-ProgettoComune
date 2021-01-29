@@ -66,6 +66,7 @@ namespace SwordGame
 
         void Start()
         {
+            PM = GetComponent<PlayerManager>();
             rb = GetComponent<Rigidbody2D>();
             waitTime = TimeDoublePlatform;
             tempSpeed = ValueMovement.Speed;
@@ -199,7 +200,8 @@ namespace SwordGame
             CanDashRight = false;
 
             PM.Invulnerability = false;
-            DashColliderBabushka.SetActive(false);
+            if(DashColliderBabushka != null)
+                DashColliderBabushka.SetActive(false);
             gameObject.layer = 8;
             isBoriousDash = false;
 
@@ -212,7 +214,6 @@ namespace SwordGame
             {
                 case TypePlayer.FatKnight:
                     gameObject.layer = 0;
-                    
                     break;
                 case TypePlayer.BoriousKnight:
                     isBoriousDash = true;

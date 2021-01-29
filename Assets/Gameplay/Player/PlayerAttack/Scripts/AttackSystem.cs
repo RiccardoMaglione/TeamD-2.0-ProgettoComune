@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using SwordGame;
 public class AttackSystem : MonoBehaviour
 {
-    [Tooltip("Velocità attacco")]
+    [Tooltip("Velocità Attacco - Tempo in cui il collider di attacco è attivo")]
     [SerializeField] float attackTimer;
-    
+
     PlayerInput playerInput;
 
     [SerializeField] int LightDamage;
@@ -23,6 +23,8 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponent<EnemyManager>().Life -= LightDamage;
                 collision.GetComponent<EnemyManager>().CountHit++;
                 print("Light");
+                GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().LightEnergyAmount;
+                print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
             }
             if (playerInput.isHeavyAttack == true)
             {
@@ -30,6 +32,8 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponent<EnemyManager>().Life -= HeavyDamage;
                 collision.GetComponent<EnemyManager>().CountHit++;
                 print("Heavy");
+                GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().HeavyEnergyAmount;
+                print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
             }
             if (playerInput.isSpecialAttack == true)
             {
@@ -37,6 +41,8 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponent<EnemyManager>().Life -= SpecialDamage;
                 collision.GetComponent<EnemyManager>().CountHit++;
                 print("Special");
+                GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().SpecialEnergyAmount;
+                print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
             }
         }
         
@@ -45,8 +51,9 @@ public class AttackSystem : MonoBehaviour
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(attackTimer);
-        playerInput.isAttack = false;
-        gameObject.SetActive(false);       
+        //playerInput.isAttack = false;
+        playerInput.CooldownAttack = true;
+        gameObject.SetActive(false);
     }
 
 

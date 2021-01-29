@@ -78,6 +78,9 @@ namespace SwordGame
                     PlayerDetect.GetComponent<EnemyManager>().enabled = true;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyManager>().enabled = false;
 
+                    PlayerDetect.GetComponent<PlayerManager>().enabled = false;
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().enabled = true;
+
                     PlayerDetect.GetComponent<PlayerInput>().enabled = false;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].AddComponent<PlayerInput>().enabled = true;
 
