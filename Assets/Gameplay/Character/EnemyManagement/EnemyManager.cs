@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
 
     [ReadOnly] public int WaypointIndex;
     public float Speed;
-    [ReadOnly] public GameObject PlayerEnemy;
+    public GameObject PlayerEnemy;
 
     [ReadOnly] public bool CanVisible = false;
 

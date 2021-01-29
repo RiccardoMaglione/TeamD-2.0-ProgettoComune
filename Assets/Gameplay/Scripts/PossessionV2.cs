@@ -159,7 +159,7 @@ namespace SwordGame
             if (collision.gameObject.GetComponent<PlayerController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
             {
                 PlayerDetect = collision.gameObject;
-                collision.GetComponent<EnemyManager>().PlayerEnemy = PlayerDetect;
+                GetComponent<EnemyManager>().PlayerEnemy = PlayerDetect;
                 if (PromptCommand != null)
                 {
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
@@ -183,7 +183,7 @@ namespace SwordGame
             if (collision.gameObject.GetComponent<PlayerController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
             {
                 PlayerDetect = null;
-                collision.GetComponent<EnemyManager>().PlayerEnemy = null;
+                GetComponent<EnemyManager>().PlayerEnemy = null;
                 if (PromptCommand != null)
                 {
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
