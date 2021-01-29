@@ -184,6 +184,9 @@ namespace SwordGame
             {
                 PlayerDetect = null;
                 GetComponent<EnemyManager>().PlayerEnemy = null;
+
+                GetComponent<EnemyManager>().LightAttackCollider.SetActive(false);
+                GetComponent<EnemyManager>().HeavyAttackCollider.SetActive(false);
                 if (PromptCommand != null)
                 {
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
