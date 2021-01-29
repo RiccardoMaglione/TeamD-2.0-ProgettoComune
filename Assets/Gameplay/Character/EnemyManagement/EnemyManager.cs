@@ -10,29 +10,29 @@ public class EnemyManager : MonoBehaviour
     public int HeavyDamage;
     public int SpecialDamage;
 
-    [ReadOnly] public bool isStun = false;
-    [ReadOnly] public float timerStun = 0;
+    public bool isStun = false;
+    public float timerStun = 0;
     public float DurationStun = 5;
 
 
-    [ReadOnly] public bool isPossessed = false;
+    public bool isPossessed = false;
 
-    [ReadOnly] public int CountHit = 0;
+    public int CountHit = 0;
     public int MaxCountHit = 0;
 
 
     public GameObject[] WaypointEnemy;
 
-    [ReadOnly] public int WaypointIndex;
+    public int WaypointIndex;
     public float Speed;
     public GameObject PlayerEnemy;
 
-    [ReadOnly] public bool CanVisible = false;
+    public bool CanVisible = false;
 
     [Tooltip("Da 0 a Percentuage corrisponde al light attack, da percentuage a 100 è heavy attack\n0 <= Percentuage = Light && Percentuage >= 100 = Heavy")][Range(0,100)]
     public int PercentuageAttack;
-    [ReadOnly] public float LightTimerEnemyAttack;
-    [ReadOnly] public float HeavyTimerEnemyAttack;
+    public float LightTimerEnemyAttack;
+    public float HeavyTimerEnemyAttack;
     [Tooltip("Cooldown attacco leggero - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco leggero")]
     public float LightMaxTimerEnemyAttack;
     [Tooltip("Cooldown attacco pesante - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco pesante")]
@@ -47,10 +47,10 @@ public class EnemyManager : MonoBehaviour
     public float LightTimerAnimation;
     [Tooltip("Pre Attack Pesante - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
     public float HeavyTimerAnimation;
-    [ReadOnly] public bool CanMove = true;
+    public bool CanMove = true;
 
-    [ReadOnly] public int random;
-    [ReadOnly] public bool CanAttack;
+    public int random;
+    public bool CanAttack = true;
 
     void Update()
     {
@@ -107,22 +107,22 @@ public class EnemyManager : MonoBehaviour
 
 
                 //In caso sfarfallasse il nemico
-                //if(transform.position.x == PlayerEnemy.transform.position.x + 1)
-                //{
-                //    CanMove = false;
-                //}
-                //else
-                //{
-                //    CanMove = true;
-                //}
-                //if(transform.position.x == PlayerEnemy.transform.position.x - 1)
-                //{
-                //    CanMove = false;
-                //}
-                //else
-                //{
-                //    CanMove = true;
-                //}
+                if(transform.position.x == PlayerEnemy.transform.position.x + 1)
+                {
+                    CanMove = false;
+                }
+                else
+                {
+                    CanMove = true;
+                }
+                if(transform.position.x == PlayerEnemy.transform.position.x - 1)
+                {
+                    CanMove = false;
+                }
+                else
+                {
+                    CanMove = true;
+                }
             }
         }
     }
@@ -157,6 +157,7 @@ public class EnemyManager : MonoBehaviour
         if(CanAttack == true)
         {
             random = Random.Range(0, 101);
+            print("Random"+random);
             CanAttack = false;
         }
         if(CanVisible == true)
@@ -179,7 +180,10 @@ public class EnemyManager : MonoBehaviour
                 if (HeavyTimerEnemyAttack >= HeavyMaxTimerEnemyAttack)
                 {
                     print("Enemy Heavy Attack");
-                    StartCoroutine(HeavyTimerAttack());
+                    if (LightAttackCollider != null)
+                    {
+                        StartCoroutine(HeavyTimerAttack());
+                    }
                 }
             }
         }
@@ -192,7 +196,7 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(LightTimerAttackActivate);
         LightAttackCollider.SetActive(false);
         LightTimerEnemyAttack = 0;
-        CanAttack = false;
+        CanAttack = true;
         print("Ciao1");
     }
     public IEnumerator HeavyTimerAttack()
@@ -202,7 +206,7 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(HeavyTimerAttackActivate);
         HeavyAttackCollider.SetActive(false);
         HeavyTimerEnemyAttack = 0;
-        CanAttack = false;
+        CanAttack = true;
     }
     #endregion
 
