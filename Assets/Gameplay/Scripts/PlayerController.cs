@@ -103,6 +103,7 @@ namespace SwordGame
             {
                 CalculateSpeed();
                 rb.velocity = new Vector2(-ValueMovement.Speed, rb.velocity.y);
+                transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
                 //if (TempSprite != null)
                 //  TempSprite.flipX = true;
             }
@@ -110,6 +111,7 @@ namespace SwordGame
             {
                 CalculateSpeed();
                 rb.velocity = new Vector2(ValueMovement.Speed, rb.velocity.y);
+                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
                 //if (TempSprite != null)
                 //  TempSprite.flipX = false;
             }
@@ -158,6 +160,7 @@ namespace SwordGame
             if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false)
             {
                 CanDashLeft = true;
+                transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
                 //if (TempSprite != null)
                 //    TempSprite.flipX = true;
             }
@@ -175,6 +178,7 @@ namespace SwordGame
 
             if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false)
             {
+                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
                 CanDashRight = true;
                 //if (TempSprite != null)
                 //    TempSprite.flipX = false;
