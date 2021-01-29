@@ -32,6 +32,8 @@ namespace SwordGame
     public class PlayerController : MonoBehaviour
     {
         #region Variables
+        public PlayerManager PM;
+
         public StructMovement ValueMovement;
         public StructJump ValueJump;
 
@@ -55,6 +57,9 @@ namespace SwordGame
         public SpriteRenderer TempSprite;
 
         public float TimerCooldownDash;
+
+        public GameObject DashColliderBabushka;
+        public int DashDamageFatKnight;
         #endregion
 
         void Start()
@@ -187,7 +192,34 @@ namespace SwordGame
             yield return new WaitForSeconds(TimerCooldownDash);
             CanDashLeft = false;
             CanDashRight = false;
+
+            PM.Invulnerability = false;
+            DashColliderBabushka.SetActive(false);
+            gameObject.layer = 8;
+
             TimerDash = 0;
+        }
+
+        public void EffectDash()
+        {
+            switch (PM.TypeCharacter)
+            {
+                case TypePlayer.FatKnight:
+                    gameObject.layer = 0;
+                    
+                    break;
+                case TypePlayer.BoriousKnight:
+
+                    break;
+                case TypePlayer.Babushka:
+                    DashColliderBabushka.SetActive(true);
+                    break;
+                case TypePlayer.Thief:
+                    PM.Invulnerability = true;
+                    break;
+                default:
+                    break;
+            }
         }
         #endregion
 
