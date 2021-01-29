@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SwordGame
@@ -14,7 +13,7 @@ namespace SwordGame
         [Tooltip("It's a max speed of player")]
         public float MaxSpeed;
     }
-    
+
     [System.Serializable]
     public struct StructJump
     {
@@ -25,7 +24,7 @@ namespace SwordGame
         [Tooltip("It's a value for progressive jump")]
         public float lowJumpMultiplier;
     }
-    
+
     [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
 
@@ -43,7 +42,7 @@ namespace SwordGame
         public static float StaticSpeed;
         [Tooltip("It's a time of change rotation offset of platform")]
         public float TimeDoublePlatform;
-        
+
         Rigidbody2D rb;
         GameObject TempPlatform;
 
@@ -117,6 +116,7 @@ namespace SwordGame
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
+
         public void PlayerJump()
         {
             if (Input.GetKey(KeyCode.Space) && Grounded == true && rb.velocity.y == 0)
@@ -128,9 +128,13 @@ namespace SwordGame
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (ValueJump.fallMultiplier - 1) * Time.deltaTime;
             }
-            else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+            else if (rb.velocity.y > 1 && !Input.GetButton("Jump"))
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (ValueJump.lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y < 4)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 0);
             }
         }
         public void CalculateSpeed()
@@ -160,11 +164,11 @@ namespace SwordGame
                 //if (TempSprite != null)
                 //    TempSprite.flipX = true;
             }
-            if(CanDashLeft == true && TimerDash <= LimitTimerDash)
+            if (CanDashLeft == true && TimerDash <= LimitTimerDash)
             {
                 rb.velocity = new Vector2(-ValueMovement.Speed * 5, rb.velocity.y);
                 TimerDash += Time.deltaTime;
-                if(TimerDash >= LimitTimerDash)
+                if (TimerDash >= LimitTimerDash)
                 {
                     //CanDashLeft = false;
                     //TimerDash = 0;
@@ -212,7 +216,7 @@ namespace SwordGame
             {
                 case TypePlayer.FatKnight:
                     gameObject.layer = 0;
-                    
+
                     break;
                 case TypePlayer.BoriousKnight:
                     isBoriousDash = true;
