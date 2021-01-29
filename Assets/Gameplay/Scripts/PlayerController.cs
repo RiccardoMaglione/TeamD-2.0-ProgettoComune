@@ -50,7 +50,7 @@ namespace SwordGame
         bool CanDashLeft = false;
         bool CanDashRight = false;
         [Tooltip("Value of start of timer for dash")]
-        public float TimerDash = 0;
+        [ReadOnly] public float TimerDash = 0;
         [Tooltip("Value for limit timer of dash")]
         public float LimitTimerDash = 5;
 

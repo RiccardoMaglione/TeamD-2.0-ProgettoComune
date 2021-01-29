@@ -27,11 +27,11 @@ public class PlayerInput : MonoBehaviour
     public bool isHeavyAttack;
     public bool isSpecialAttack;
 
-    public float LightTimerActivation;
+    [ReadOnly] public float LightTimerActivation;
     public float LightMaxTimerActivation;
-    public float HeavyTimerActivation;
+    [ReadOnly] public float HeavyTimerActivation;
     public float HeavyMaxTimerActivation;
-    public float SpecialTimerActivation;
+    [ReadOnly] public float SpecialTimerActivation;
     public float SpecialMaxTimerActivation;
 
     public bool LightActivation;
@@ -40,11 +40,11 @@ public class PlayerInput : MonoBehaviour
 
     public bool CooldownAttack;
 
-    public float LightTimerCooldown;
+    [ReadOnly] public float LightTimerCooldown;
     public float LightMaxTimerCooldown;
-    public float HeavyTimerCooldown;
+    [ReadOnly] public float HeavyTimerCooldown;
     public float HeavyMaxTimerCooldown;
-    public float SpecialTimerCooldown;
+    [ReadOnly] public float SpecialTimerCooldown;
     public float SpecialMaxTimerCooldown;
 
     void LightAttack()

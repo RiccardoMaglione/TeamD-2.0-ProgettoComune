@@ -10,34 +10,47 @@ public class EnemyManager : MonoBehaviour
     public int HeavyDamage;
     public int SpecialDamage;
 
-    public bool isStun = false;
-    public float timerStun = 0;
+    [ReadOnly] public bool isStun = false;
+    [ReadOnly] public float timerStun = 0;
     public float DurationStun = 5;
 
 
-    public bool isPossessed = false;
+    [ReadOnly] public bool isPossessed = false;
 
-    public int CountHit = 0;
+    [ReadOnly] public int CountHit = 0;
     public int MaxCountHit = 0;
 
 
     public GameObject[] WaypointEnemy;
 
-    public int WaypointIndex;
+    [ReadOnly] public int WaypointIndex;
     public float Speed;
-    public GameObject PlayerEnemy;
+    [ReadOnly] public GameObject PlayerEnemy;
 
-    public bool CanVisible = false;
+    [ReadOnly] public bool CanVisible = false;
 
     [Tooltip("Da 0 a Percentuage corrisponde al light attack, da percentuage a 100 è heavy attack\n0 <= Percentuage = Light && Percentuage >= 100 = Heavy")][Range(0,100)]
     public int PercentuageAttack;
-    public float TimerEnemyAttack;
-    public float MaxTimerEnemyAttack;
+    [ReadOnly] public float LightTimerEnemyAttack;
+    [ReadOnly] public float HeavyTimerEnemyAttack;
+    [Tooltip("Cooldown attacco leggero - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco leggero")]
+    public float LightMaxTimerEnemyAttack;
+    [Tooltip("Cooldown attacco pesante - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco pesante")]
+    public float HeavyMaxTimerEnemyAttack;
     public GameObject LightAttackCollider;
     public GameObject HeavyAttackCollider;
-    public float TimerAttackActivate;
-    public float TimerAnimation;
-    public bool CanMove = true;
+    [Tooltip("Timer Collider Leggero Acceso - Indica la durata di quando il collider leggero è attivo")]
+    public float LightTimerAttackActivate;
+    [Tooltip("Timer Collider Pesante Acceso - Indica la durata di quando il collider Pesante è attivo")]
+    public float HeavyTimerAttackActivate;
+    [Tooltip("Pre Attack Leggero - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
+    public float LightTimerAnimation;
+    [Tooltip("Pre Attack Pesante - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
+    public float HeavyTimerAnimation;
+    [ReadOnly] public bool CanMove = true;
+
+    [ReadOnly] public int random;
+    [ReadOnly] public bool CanAttack;
 
     void Update()
     {
@@ -123,27 +136,32 @@ public class EnemyManager : MonoBehaviour
         //Slider x2 in cui si può settare la percentuale random - Light/Heavy
         //Pesca il valore randomico per poi passarlo allo switch
         //Switch in cui attiva l'attacco
+        if(CanAttack == true)
+        {
+            random = Random.Range(0, 101);
+            CanAttack = false;
+        }
         if(CanVisible == true)
         {
-            TimerEnemyAttack += Time.deltaTime;
-            if (TimerEnemyAttack >= MaxTimerEnemyAttack)
+            if (random <= PercentuageAttack)
             {
-                int random = Random.Range(0, 101);
-        
-                if (random <= PercentuageAttack)
+                LightTimerEnemyAttack += Time.deltaTime;
+                if (LightTimerEnemyAttack >= LightMaxTimerEnemyAttack)
                 {
                     print("Enemy Light Attack");
-                    if(LightAttackCollider != null)
+                    if (LightAttackCollider != null)
                     {
                         StartCoroutine(LightTimerAttack());
                     }
-                    TimerEnemyAttack = 0;
                 }
-                else
+            }
+            else
+            {
+                HeavyTimerEnemyAttack += Time.deltaTime;
+                if (HeavyTimerEnemyAttack >= HeavyMaxTimerEnemyAttack)
                 {
                     print("Enemy Heavy Attack");
                     StartCoroutine(HeavyTimerAttack());
-                    TimerEnemyAttack = 0;
                 }
             }
         }
@@ -151,17 +169,22 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator LightTimerAttack()
     {
-        yield return new WaitForSeconds(TimerAnimation);
+        yield return new WaitForSeconds(LightTimerAnimation);
         LightAttackCollider.SetActive(true);
-        yield return new WaitForSeconds(TimerAttackActivate);
+        yield return new WaitForSeconds(LightTimerAttackActivate);
         LightAttackCollider.SetActive(false);
+        LightTimerEnemyAttack = 0;
+        CanAttack = false;
+        print("Ciao1");
     }
     public IEnumerator HeavyTimerAttack()
     {
-        yield return new WaitForSeconds(TimerAnimation);
+        yield return new WaitForSeconds(HeavyTimerAnimation);
         HeavyAttackCollider.SetActive(true);
-        yield return new WaitForSeconds(TimerAttackActivate);
+        yield return new WaitForSeconds(HeavyTimerAttackActivate);
         HeavyAttackCollider.SetActive(false);
+        HeavyTimerEnemyAttack = 0;
+        CanAttack = false;
     }
     #endregion
 
