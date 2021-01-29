@@ -3,7 +3,7 @@ using System.Collections;
 using SwordGame;
 public class AttackSystem : MonoBehaviour
 {
-    [Tooltip("Velocità Attacco - Tempo in cui il collider di attacco è attivo")]
+    [Tooltip("Timer Collider Acceso - Tempo in cui il collider di attacco è attivo")]
     [SerializeField] float attackTimer;
 
     PlayerInput playerInput;

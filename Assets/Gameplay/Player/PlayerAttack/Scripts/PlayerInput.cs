@@ -28,10 +28,13 @@ public class PlayerInput : MonoBehaviour
     public bool isSpecialAttack;
 
     [ReadOnly] public float LightTimerActivation;
+    [Tooltip("Pre Attack Leggero - Indica il tempo precedente all'attivazione del collider")]
     public float LightMaxTimerActivation;
     [ReadOnly] public float HeavyTimerActivation;
+    [Tooltip("Pre Attack Pesante - Indica il tempo precedente all'attivazione del collider")]
     public float HeavyMaxTimerActivation;
     [ReadOnly] public float SpecialTimerActivation;
+    [Tooltip("Pre Attack Speciale - Indica il tempo precedente all'attivazione del collider")]
     public float SpecialMaxTimerActivation;
 
     public bool LightActivation;
@@ -41,10 +44,13 @@ public class PlayerInput : MonoBehaviour
     public bool CooldownAttack;
 
     [ReadOnly] public float LightTimerCooldown;
+    [Tooltip("Cooldown Leggero - Avviene quando il collider dell'attacco leggero viene disattivo, indica il tempo per ripoter premere l'input")]
     public float LightMaxTimerCooldown;
     [ReadOnly] public float HeavyTimerCooldown;
+    [Tooltip("Cooldown Pesante - Avviene quando il collider dell'attacco pesante viene disattivo, indica il tempo per ripoter premere l'input")]
     public float HeavyMaxTimerCooldown;
     [ReadOnly] public float SpecialTimerCooldown;
+    [Tooltip("Cooldown Speciale - Avviene quando il collider dell'attacco speciale viene disattivo, indica il tempo per ripoter premere l'input")]
     public float SpecialMaxTimerCooldown;
 
     void LightAttack()
