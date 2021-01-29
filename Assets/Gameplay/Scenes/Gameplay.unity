@@ -1863,7 +1863,7 @@ MonoBehaviour:
   TypeCharacter: 0
   hB: {fileID: 307283232}
   maxHealth: 100
-  currentHealth: 50
+  currentHealth: 100
   EnergyBar: {fileID: 932723239}
   MaxEnergy: 100
   CurrentEnergy: 100
@@ -3804,6 +3804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2041770061}
   - component: {fileID: 2041770060}
+  - component: {fileID: 2041770062}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3842,6 +3843,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2041770062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041770059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac13a7808ce567408588e89952dc766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2055707051
 GameObject:
   m_ObjectHideFlags: 0

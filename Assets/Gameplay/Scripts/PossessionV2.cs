@@ -39,6 +39,8 @@ namespace SwordGame
 
         public Color PlayerColor;
         public Color EnemyColor;
+
+        public static GameObject ThisCharacter;
         #endregion
         void Start()
         {
@@ -100,6 +102,8 @@ namespace SwordGame
                     ReturnPlayer.CanDestroyList.Add(true);
                     ReturnPlayer.CanDestroy = true;
                     PromptCommand.SetActive(false);
+
+                    ThisCharacter = gameObject;
 
                     PlayerDetect.GetComponent<PlayerController>().enabled = false;
                     PlayerDetect.GetComponent<PossessionV2>().enabled = true;
