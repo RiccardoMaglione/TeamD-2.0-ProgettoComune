@@ -685,7 +685,6 @@ GameObject:
   - component: {fileID: 248621477}
   - component: {fileID: 248621482}
   - component: {fileID: 248621483}
-  - component: {fileID: 248621484}
   m_Layer: 9
   m_Name: Enemy2
   m_TagString: Enemy
@@ -888,6 +887,7 @@ MonoBehaviour:
   WaypointEnemy: []
   WaypointIndex: 0
   Speed: 0
+  PlayerEnemy: {fileID: 0}
   CanVisible: 0
   PercentuageAttack: 0
   TimerEnemyAttack: 0
@@ -897,29 +897,6 @@ MonoBehaviour:
   TimerAttackActivate: 0.1
   TimerAnimation: 0
   CanMove: 1
---- !u!114 &248621484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248621476}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 060458ace2c68d349a93c125624c0bb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TypeCharacter: 0
-  hB: {fileID: 307283232}
-  maxHealth: 100
-  currentHealth: 100
-  EnergyBar: {fileID: 932723239}
-  MaxEnergy: 100
-  CurrentEnergy: 0
-  Invulnerability: 0
-  LightEnergyAmount: 5
-  HeavyEnergyAmount: 10
-  SpecialEnergyAmount: 15
 --- !u!1 &264023950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,6 +2239,7 @@ MonoBehaviour:
   - {fileID: 269968712}
   WaypointIndex: 0
   Speed: 5
+  PlayerEnemy: {fileID: 0}
   CanVisible: 0
   PercentuageAttack: 0
   TimerEnemyAttack: 0
@@ -5116,7 +5094,6 @@ GameObject:
   - component: {fileID: 2092240399}
   - component: {fileID: 2092240404}
   - component: {fileID: 2092240405}
-  - component: {fileID: 2092240406}
   m_Layer: 9
   m_Name: Enemy1
   m_TagString: Enemy
@@ -5324,6 +5301,7 @@ MonoBehaviour:
   - {fileID: 269968712}
   WaypointIndex: 0
   Speed: 2
+  PlayerEnemy: {fileID: 0}
   CanVisible: 0
   PercentuageAttack: 0
   TimerEnemyAttack: 0
@@ -5333,29 +5311,6 @@ MonoBehaviour:
   TimerAttackActivate: 0.5
   TimerAnimation: 0
   CanMove: 1
---- !u!114 &2092240406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092240398}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 060458ace2c68d349a93c125624c0bb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TypeCharacter: 0
-  hB: {fileID: 307283232}
-  maxHealth: 100
-  currentHealth: 100
-  EnergyBar: {fileID: 932723239}
-  MaxEnergy: 100
-  CurrentEnergy: 0
-  Invulnerability: 0
-  LightEnergyAmount: 5
-  HeavyEnergyAmount: 10
-  SpecialEnergyAmount: 15
 --- !u!1 &2136307419
 GameObject:
   m_ObjectHideFlags: 0
