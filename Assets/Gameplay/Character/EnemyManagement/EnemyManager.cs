@@ -25,7 +25,7 @@ public class EnemyManager : MonoBehaviour
 
     public int WaypointIndex;
     public float Speed;
-    GameObject PlayerEnemy;
+    public GameObject PlayerEnemy;
 
     public bool CanVisible = false;
 
@@ -79,15 +79,19 @@ public class EnemyManager : MonoBehaviour
         }
         if(CanVisible == true)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerEnemy.transform.position.x, transform.position.y), Speed * Time.deltaTime);
+            if(PlayerEnemy != null)
+            {
 
-            if (PlayerEnemy.transform.position.x > transform.position.x)
-            {
-                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);           //Destra
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);         //Sinistra
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerEnemy.transform.position.x, transform.position.y), Speed * Time.deltaTime);
+
+                if (PlayerEnemy.transform.position.x > transform.position.x)
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);           //Destra
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);         //Sinistra
+                }
             }
         }
     }
