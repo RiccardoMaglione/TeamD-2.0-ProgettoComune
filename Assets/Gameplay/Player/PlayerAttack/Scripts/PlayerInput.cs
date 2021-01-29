@@ -95,7 +95,7 @@ public class PlayerInput : MonoBehaviour
         {
             //originalSpeed = speed;
             //speed = 0;
-            LightAttack();
+            //LightAttack();
             LightActivation = true;
             //speed = originalSpeed;
         }
@@ -103,7 +103,7 @@ public class PlayerInput : MonoBehaviour
         {
             //originalSpeed = speed;
             //speed = 0;
-            HeavyAttack();
+            //HeavyAttack();
             HeavyActivation = true;
             //speed = originalSpeed;
         }
@@ -111,7 +111,7 @@ public class PlayerInput : MonoBehaviour
         {
             //originalSpeed = speed;
             //speed = 0;
-            SpecialAttack();
+            //SpecialAttack();
             SpecialActivation = true;
             //speed = originalSpeed;
         }

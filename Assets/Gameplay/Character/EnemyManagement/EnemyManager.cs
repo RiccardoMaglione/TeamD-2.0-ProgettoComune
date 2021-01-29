@@ -94,17 +94,35 @@ public class EnemyManager : MonoBehaviour
         {
             if(PlayerEnemy != null)
             {
-
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerEnemy.transform.position.x, transform.position.y), Speed * Time.deltaTime);
-
-                if (PlayerEnemy.transform.position.x > transform.position.x)
+                if (PlayerEnemy.transform.position.x + 1 > transform.position.x)
                 {
                     transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);           //Destra
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerEnemy.transform.position.x - 1, transform.position.y), Speed * Time.deltaTime);
                 }
-                else
+                else if(PlayerEnemy.transform.position.x - 1 < transform.position.x)
                 {
                     transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);         //Sinistra
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerEnemy.transform.position.x + 1, transform.position.y), Speed * Time.deltaTime);
                 }
+
+
+                //In caso sfarfallasse il nemico
+                //if(transform.position.x == PlayerEnemy.transform.position.x + 1)
+                //{
+                //    CanMove = false;
+                //}
+                //else
+                //{
+                //    CanMove = true;
+                //}
+                //if(transform.position.x == PlayerEnemy.transform.position.x - 1)
+                //{
+                //    CanMove = false;
+                //}
+                //else
+                //{
+                //    CanMove = true;
+                //}
             }
         }
     }
