@@ -201,6 +201,7 @@ namespace SwordGame
                     GetComponent<EnemyManager>().DeactiveColliderTimerLight = 0;
                     GetComponent<EnemyManager>().CooldownTimerLight = 0;
                     GetComponent<EnemyManager>().CanReset = false;
+                    GetComponent<EnemyManager>().CanAttack = true;
                 }
 
 

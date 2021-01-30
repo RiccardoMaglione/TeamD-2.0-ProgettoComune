@@ -360,6 +360,7 @@ public class EnemyManager : MonoBehaviour
             CooldownLight = false;                                                                  //Setto a falso la variabile del cooldown indicando l'inizio del cooldown
             CooldownTimerLight = 0;                                                                 //Resetto il timer del cooldown a 0
             DeactiveColliderTimerLight = 0;                                                         //Resetto il timer di disattivazione a 0
+            CanAttack = true;                                                                       //Resetto la possibilità di randomizer
         }
     }
     public void ActivateDifferentCicleHeavy()
@@ -403,6 +404,7 @@ public class EnemyManager : MonoBehaviour
             CooldownHeavy = false;                                                                  //Setto a falso la variabile del cooldown indicando l'inizio del cooldown
             CooldownTimerHeavy = 0;                                                                 //Resetto il timer del cooldown a 0
             DeactiveColliderTimerHeavy = 0;                                                         //Resetto il timer di disattivazione a 0
+            CanAttack = true;                                                                       //Resetto la possibilità di randomizer
         }
     }
 
