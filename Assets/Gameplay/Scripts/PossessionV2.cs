@@ -104,6 +104,8 @@ namespace SwordGame
                         }
                     }
 
+                    PlayerDetect.GetComponent<EnemyManager>().isStun = true;
+
                     PlayerDetect.GetComponent<PlayerController>().enabled = false;                                                  //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().enabled = true;                //Nemico in cui nel trigger c'è il player
                     
