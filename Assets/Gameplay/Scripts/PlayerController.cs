@@ -132,9 +132,9 @@ namespace SwordGame
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (ValueJump.lowJumpMultiplier - 1) * Time.deltaTime;
             }
-            else if (rb.velocity.y < 4)
+            else if (rb.velocity.y < 6)
             {
-                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.velocity = new Vector2(rb.velocity.x, 0.01f);
             }
         }
         public void CalculateSpeed()
