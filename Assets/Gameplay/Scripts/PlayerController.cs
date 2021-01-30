@@ -158,7 +158,7 @@ namespace SwordGame
         }
         public void Dash()          //Se il timerdash è maggiore del limit, dasha solo quando schiaccio e non perpetua
         {
-            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false)
+            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && CanDashRight == false)
             {
                 CanDashLeft = true;
                 //if (TempSprite != null)
@@ -176,7 +176,7 @@ namespace SwordGame
                 }
             }
 
-            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false)
+            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && CanDashLeft == false)
             {
                 CanDashRight = true;
                 //if (TempSprite != null)
