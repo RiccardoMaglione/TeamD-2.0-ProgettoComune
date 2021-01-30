@@ -163,7 +163,7 @@ public class EnemyManager : MonoBehaviour
     {
         // If Enemy didn't reach last waypoint it can move
         // If enemy reached last waypoint then it stops
-        if (WaypointIndex <= WaypointEnemy.Length - 1 && CanVisible == false && CanMove == true)
+        if (WaypointIndex <= WaypointEnemy.Length - 1 && CanVisible == false && CanMove == true && isStun == false)
         {
 
             // Move Enemy from current waypoint to the next one
@@ -189,7 +189,7 @@ public class EnemyManager : MonoBehaviour
                 }
             }
         }
-        if(CanVisible == true)
+        if(CanVisible == true && isStun == false)
         {
             if(PlayerEnemy != null)
             {
