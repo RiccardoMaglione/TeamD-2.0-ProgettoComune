@@ -141,16 +141,18 @@ public class EnemyManager : MonoBehaviour
         Stunned();
         Routine();
         Attack();
-
-        float Distance = Vector2.Distance(gameObject.transform.position, PlayerEnemy.transform.position);
-        print("Distance" + Distance);
-        if (Distance >= 2.3f)       //Il 2.3f sarnne il possession radius
+        if(PlayerEnemy != null)
         {
-            CanReset = true;
-        }
-        else
-        {
-            CanReset = false;
+            float Distance = Vector2.Distance(gameObject.transform.position, PlayerEnemy.transform.position);
+            print("Distance" + Distance);
+            if (Distance >= 2.3f)       //Il 2.3f sarnne il possession radius
+            {
+                CanReset = true;
+            }
+            else
+            {
+                CanReset = false;
+            }
         }
         //AttivatiLeggero();
         //AttivatiPesante();
@@ -257,7 +259,7 @@ public class EnemyManager : MonoBehaviour
             print("Random"+random);
             CanAttack = false;
         }
-        if(CanVisible == true)                                          //Do while --> nel senso ha un xtempo iniziale + un cooldown dopo, quindi do è x tempo e cooldown sta nel while
+        if(CanVisible == true && isStun == false)                                          //Do while --> nel senso ha un xtempo iniziale + un cooldown dopo, quindi do è x tempo e cooldown sta nel while
         {
             if (random <= PercentuageAttack)
             {

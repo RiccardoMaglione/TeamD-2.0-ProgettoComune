@@ -958,26 +958,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Life: 100
+  timerStun: 0
+  DurationStun: 5
+  CountHit: 0
+  MaxCountHit: 0
+  isStun: 0
+  isPossessed: 0
+  Speed: 0
+  WaypointEnemy: []
+  WaypointIndex: 0
+  CanMove: 1
+  PlayerEnemy: {fileID: 0}
+  CanVisible: 0
+  LightAttackCollider: {fileID: 1504583115}
+  HeavyAttackCollider: {fileID: 370748824}
+  PercentuageAttack: 55
+  random: 0
+  CanAttack: 1
   LightDamage: 8
   HeavyDamage: 9
   SpecialDamage: 20
-  isStun: 0
-  timerStun: 0
-  DurationStun: 5
-  isPossessed: 0
-  CountHit: 0
-  MaxCountHit: 0
-  WaypointEnemy: []
-  WaypointIndex: 0
-  Speed: 0
-  PlayerEnemy: {fileID: 0}
-  CanVisible: 0
-  PercentuageAttack: 55
-  CanMove: 1
-  random: 0
-  CanAttack: 1
-  LightAttackCollider: {fileID: 1504583115}
-  HeavyAttackCollider: {fileID: 370748824}
   InitialTimerLight: 0
   MaxInitialTimerLight: 0
   FirstCycleLight: 0
@@ -2431,28 +2431,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Life: 5
-  LightDamage: 3
-  HeavyDamage: 4
-  SpecialDamage: 5
-  isStun: 0
   timerStun: 0
   DurationStun: 5
-  isPossessed: 0
   CountHit: 0
   MaxCountHit: 3
+  isStun: 0
+  isPossessed: 0
+  Speed: 5
   WaypointEnemy:
   - {fileID: 1416235887}
   - {fileID: 269968712}
   WaypointIndex: 0
-  Speed: 5
+  CanMove: 1
   PlayerEnemy: {fileID: 0}
   CanVisible: 0
-  PercentuageAttack: 0
-  CanMove: 1
-  random: 0
-  CanAttack: 1
   LightAttackCollider: {fileID: 1907358071}
   HeavyAttackCollider: {fileID: 280582154}
+  PercentuageAttack: 0
+  random: 0
+  CanAttack: 1
+  LightDamage: 3
+  HeavyDamage: 4
+  SpecialDamage: 5
   InitialTimerLight: 0
   MaxInitialTimerLight: 0
   FirstCycleLight: 0
@@ -5840,28 +5840,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Life: 10
-  LightDamage: 2
-  HeavyDamage: 5
-  SpecialDamage: 8
-  isStun: 0
   timerStun: 0
   DurationStun: 5
-  isPossessed: 0
   CountHit: 0
   MaxCountHit: 0
+  isStun: 0
+  isPossessed: 0
+  Speed: 2
   WaypointEnemy:
   - {fileID: 1416235887}
   - {fileID: 269968712}
   WaypointIndex: 0
-  Speed: 2
+  CanMove: 1
   PlayerEnemy: {fileID: 0}
   CanVisible: 0
-  PercentuageAttack: 0
-  CanMove: 1
-  random: 0
-  CanAttack: 1
   LightAttackCollider: {fileID: 467281527}
   HeavyAttackCollider: {fileID: 1577358880}
+  PercentuageAttack: 50
+  random: 0
+  CanAttack: 1
+  LightDamage: 2
+  HeavyDamage: 5
+  SpecialDamage: 8
   InitialTimerLight: 0
   MaxInitialTimerLight: 2
   FirstCycleLight: 1

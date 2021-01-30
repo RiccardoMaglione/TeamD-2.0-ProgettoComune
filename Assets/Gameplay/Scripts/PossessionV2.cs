@@ -187,8 +187,8 @@ namespace SwordGame
 
                 GetComponent<EnemyManager>().LightAttackCollider.SetActive(false);
                 GetComponent<EnemyManager>().HeavyAttackCollider.SetActive(false);
-
-                if(GetComponent<EnemyManager>().CanReset == true)
+                GetComponent<EnemyManager>().CanMove = true;
+                if (GetComponent<EnemyManager>().CanReset == true)
                 {
                     GetComponent<EnemyManager>().FirstCycleHeavy = true;
                     GetComponent<EnemyManager>().FirstCycleLight = true;
