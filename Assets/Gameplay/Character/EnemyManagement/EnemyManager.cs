@@ -4,55 +4,56 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [Header("Life Value")]
-    public int Life;
+    #region Life Behaviour / Stun Sub-Behaviour - Possession Sub-Behaviour
+    [Space(10)]
+    [Header("------------------------ Life Behaviour -----------------------------------------------------------------------------------------------------------------------------")]
+    [Tooltip("Indica la vita del player")]
+    public int Life;    //life behaviour, indica la vita del player
+    
+    [Header("   ►  First Method - From stun to destoy")]
+    [Header("~~~ Stun Sub-Behaviour ~~~ Value Management")]
+    [Space(10)]
+    [ReadOnly] public float timerStun = 0;         //stun behaviour o life behaviour, è il timer di stun - readonly
+    [Tooltip("Indica la durata dello stato di stun prima che il personaggio si distrugga")]
+    public float DurationStun = 5;      //stun behaviour o life behaviour, max value of timer di stun 
+    
+    [Header("   ►  Second Method - From stun to destoy")]
+    [ReadOnly] public int CountHit = 0;            //Stunned behaviour quindi potremmo metterlo nel life behaviour, indica quanti colpi ha dato il player al nemico dopo lo stun - readonly
+    [Tooltip("Indica quanti attacchi da parte del player servano prima che il personaggio si distrugga")]
+    public int MaxCountHit = 0;         //Stunned behaviour quindi potremmo metterlo nel life behaviour, indica il max dei colpi prima di scomparire
+    [Header("   ►  Boolean for know if state stun is active or not - ReadOnly")]
+    [ReadOnly]public bool isStun = false;
+    
+    [Header("   ►  Boolean for the know if the player can possess this enemy - ReadOnly")]
+    [Header("~~~ Possesion Sub-Behaviour ~~~")]
+    [Space(10)]
+    [ReadOnly] public bool isPossessed = false; //Behaviour? forse life o stun, indica se l'enemy può essere posseduto oppure no
+    #endregion
 
+    #region Movement Behaviour
+    [Space(10)]
+    [Header("------------------------ Movement Behaviour -----------------------------------------------------------------------------------------------------------------------------")]
 
-    public bool isStun = false;
-    public float timerStun = 0;
-    public float DurationStun = 5;
+    public float Speed;             //Movement Behaviour - Velocità di movimento
 
+    [Space(10)]
+    [Header("►  Path Movement - Array")]
+    public GameObject[] WaypointEnemy;  //Movement Behaviour Lista di waypoint per il path
 
-    public bool isPossessed = false;
-
-    public int CountHit = 0;
-    public int MaxCountHit = 0;
-
-
-    public GameObject[] WaypointEnemy;
-
-    public int WaypointIndex;
-    public float Speed;
-    public GameObject PlayerEnemy;
-
-    public bool CanVisible = false;
-
-    //public float LightTimerEnemyAttack;
-    //public float HeavyTimerEnemyAttack;
-    //[Tooltip("Cooldown attacco leggero - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco leggero")]
-    //public float LightMaxTimerEnemyAttack;
-    //[Tooltip("Cooldown attacco pesante - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco pesante")]
-    //public float HeavyMaxTimerEnemyAttack;
-    //[Tooltip("Timer Collider Leggero Acceso - Indica la durata di quando il collider leggero è attivo")]
-    //public float LightTimerAttackActivate;
-    //[Tooltip("Timer Collider Pesante Acceso - Indica la durata di quando il collider Pesante è attivo")]
-    //public float HeavyTimerAttackActivate;
-    //[Tooltip("Pre Attack Leggero - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
-    //public float LightTimerAnimation;
-    //[Tooltip("Pre Attack Pesante - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
-    //public float HeavyTimerAnimation;
-    public bool CanMove = true;
-
-    public int random;
-    public bool CanAttack = true;   //Indica la nuova estrazione del valore random riferito alla percentuale della scelta dell'attacco
-
-    //[HideInInspector]public float TempTimerLight;
-    //[HideInInspector]public float TempTimerHeavy;
-    //[HideInInspector]public float Temp2TimerLight;
-    //[HideInInspector]public float Temp2TimerHeavy;
-    //public bool isActiveLight;
-    //public bool isActiveHeavy
-
+    [ReadOnly] public int WaypointIndex;       //Movement Behaviour - Indice del waypoint = readonly
+    
+    [Space(10)]
+    [Header("►  Value for indicate if the player can move")]
+    [Tooltip("Condition - Standard: True - 'Temp false for ranged'")]
+    public bool CanMove = true;      //Indica se il player si può muovere - si potrebbe anche usare se un nemico non si può muovere
+    
+    [Space(10)]
+    [Header("►  Variables for control when the player is in aggro")]
+    [ReadOnly] public GameObject PlayerEnemy;      //Movement Behaviour e Attack Behaviour - nel movement serve per andare in contro al player e nell'attack serve per la distance per il reset
+    
+    [ReadOnly] public bool CanVisible = false; //Movement Bahaviour e Attack Behaviour - Indica se il nemico viene visto (quindi se entra nel collider trigger) - readonly
+    #endregion
+    
     #region Variables Attack Behaviour
     [Space(10)]
     [Header("►  Collider Attack - Light And Heavy")]
@@ -64,6 +65,9 @@ public class EnemyManager : MonoBehaviour
     [Header("►  Percentuage of spawn of collider attack - Light And Heavy")]
     [Tooltip("Da 0 a Percentuage corrisponde al light attack, da percentuage a 100 è heavy attack\n0 <= Percentuage = Light && Percentuage >= 100 = Heavy")][Range(0,100)]
     public int PercentuageAttack;
+    [ReadOnly] public int random;              //Attack Bahaviour - Variabile per la pesca random per poi confrontare con la percentuale
+    [Tooltip("Sarebbe la variabile che indica che il random può attivarsi")]
+    [ReadOnly] public bool CanAttack = true;   //Attack Behaviour - Indica la nuova estrazione del valore random riferito alla percentuale della scelta dell'attacco
 
     [Space(10)]
     [Header("►  Value of damage of typology of attack - Value Management")]
@@ -106,6 +110,30 @@ public class EnemyManager : MonoBehaviour
     [ReadOnly] public bool CanReset = false;                    //Resetta i timer e i booleani di attacco quando il player esce fuori dall'aggro, visto che lo resettava ad ogni attaco, è stato strutturato tramite il controllo della distanza
     #endregion
 
+
+    #region OLD - Variables
+    //public float LightTimerEnemyAttack;
+    //public float HeavyTimerEnemyAttack;
+    //[Tooltip("Cooldown attacco leggero - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco leggero")]
+    //public float LightMaxTimerEnemyAttack;
+    //[Tooltip("Cooldown attacco pesante - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco pesante")]
+    //public float HeavyMaxTimerEnemyAttack;
+    //[Tooltip("Timer Collider Leggero Acceso - Indica la durata di quando il collider leggero è attivo")]
+    //public float LightTimerAttackActivate;
+    //[Tooltip("Timer Collider Pesante Acceso - Indica la durata di quando il collider Pesante è attivo")]
+    //public float HeavyTimerAttackActivate;
+    //[Tooltip("Pre Attack Leggero - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
+    //public float LightTimerAnimation;
+    //[Tooltip("Pre Attack Pesante - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
+    //public float HeavyTimerAnimation;
+
+    //[HideInInspector]public float TempTimerLight;
+    //[HideInInspector]public float TempTimerHeavy;
+    //[HideInInspector]public float Temp2TimerLight;
+    //[HideInInspector]public float Temp2TimerHeavy;
+    //public bool isActiveLight;
+    //public bool isActiveHeavy
+    #endregion
 
 
     void Update()
@@ -442,3 +470,8 @@ public class EnemyManager : MonoBehaviour
     }
     #endregion
 }
+
+
+
+//Cose da aggiungere:
+//- Devo mettere il controllo sull'esistenza dei waypoint
