@@ -973,25 +973,28 @@ MonoBehaviour:
   PlayerEnemy: {fileID: 0}
   CanVisible: 0
   PercentuageAttack: 55
-  LightTimerEnemyAttack: 0
-  HeavyTimerEnemyAttack: 0
-  LightMaxTimerEnemyAttack: 0.3
-  HeavyMaxTimerEnemyAttack: 1.4
-  LightAttackCollider: {fileID: 1504583115}
-  HeavyAttackCollider: {fileID: 370748824}
-  LightTimerAttackActivate: 0.1
-  HeavyTimerAttackActivate: 0.1
-  LightTimerAnimation: 0.2
-  HeavyTimerAnimation: 1
   CanMove: 1
   random: 0
   CanAttack: 1
-  TempTimerLight: 0
-  TempTimerHeavy: 0
-  Temp2TimerLight: 0
-  Temp2TimerHeavy: 0
-  isActiveLight: 0
-  isActiveHeavy: 0
+  LightAttackCollider: {fileID: 1504583115}
+  HeavyAttackCollider: {fileID: 370748824}
+  InitialTimerLight: 0
+  MaxInitialTimerLight: 0
+  FirstCycleLight: 0
+  DeactiveColliderTimerLight: 0
+  MaxDeactiveColliderTimerLight: 0
+  CooldownLight: 0
+  CooldownTimerLight: 0
+  MaxCooldownTimerLight: 0
+  InitialTimerHeavy: 0
+  MaxInitialTimerHeavy: 0
+  FirstCycleHeavy: 0
+  DeactiveColliderTimerHeavy: 0
+  MaxDeactiveColliderTimerHeavy: 0
+  CooldownHeavy: 0
+  CooldownTimerHeavy: 0
+  MaxCooldownTimerHeavy: 0
+  CanReset: 0
 --- !u!114 &248621484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1903,7 +1906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 3
+  attackTimer: 0.1
   LightDamage: 2
   HeavyDamage: 4
   SpecialDamage: 6
@@ -2128,7 +2131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 1
+  attackTimer: 0.1
   LightDamage: 2
   HeavyDamage: 4
   SpecialDamage: 6
@@ -2445,25 +2448,28 @@ MonoBehaviour:
   PlayerEnemy: {fileID: 0}
   CanVisible: 0
   PercentuageAttack: 0
-  LightTimerEnemyAttack: 0
-  HeavyTimerEnemyAttack: 0
-  LightMaxTimerEnemyAttack: 0.3
-  HeavyMaxTimerEnemyAttack: 1.4
-  LightAttackCollider: {fileID: 1907358071}
-  HeavyAttackCollider: {fileID: 280582154}
-  LightTimerAttackActivate: 0.1
-  HeavyTimerAttackActivate: 0.1
-  LightTimerAnimation: 0.2
-  HeavyTimerAnimation: 1
   CanMove: 1
   random: 0
   CanAttack: 1
-  TempTimerLight: 0
-  TempTimerHeavy: 0
-  Temp2TimerLight: 0
-  Temp2TimerHeavy: 0
-  isActiveLight: 0
-  isActiveHeavy: 0
+  LightAttackCollider: {fileID: 1907358071}
+  HeavyAttackCollider: {fileID: 280582154}
+  InitialTimerLight: 0
+  MaxInitialTimerLight: 0
+  FirstCycleLight: 0
+  DeactiveColliderTimerLight: 0
+  MaxDeactiveColliderTimerLight: 0
+  CooldownLight: 0
+  CooldownTimerLight: 0
+  MaxCooldownTimerLight: 0
+  InitialTimerHeavy: 0
+  MaxInitialTimerHeavy: 0
+  FirstCycleHeavy: 0
+  DeactiveColliderTimerHeavy: 0
+  MaxDeactiveColliderTimerHeavy: 0
+  CooldownHeavy: 0
+  CooldownTimerHeavy: 0
+  MaxCooldownTimerHeavy: 0
+  CanReset: 0
 --- !u!1 &900513789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2861,7 +2867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 3
+  attackTimer: 0.1
   LightDamage: 2
   HeavyDamage: 4
   SpecialDamage: 6
@@ -3672,7 +3678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 2
+  attackTimer: 0.1
   LightDamage: 2
   HeavyDamage: 4
   SpecialDamage: 6
@@ -3994,7 +4000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 1
+  attackTimer: 0.1
   LightDamage: 2
   HeavyDamage: 4
   SpecialDamage: 6
@@ -4143,7 +4149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 1
+  attackTimer: 0.1
   LightDamage: 2
   HeavyDamage: 4
   SpecialDamage: 6
@@ -4394,7 +4400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 3
+  attackTimer: 0.1
   LightDamage: 2
   HeavyDamage: 4
   SpecialDamage: 6
@@ -4624,7 +4630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 2
+  attackTimer: 0.1
   LightDamage: 2
   HeavyDamage: 4
   SpecialDamage: 6
@@ -5010,7 +5016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 2
+  attackTimer: 0.1
   LightDamage: 2
   HeavyDamage: 4
   SpecialDamage: 6
@@ -5851,25 +5857,28 @@ MonoBehaviour:
   PlayerEnemy: {fileID: 0}
   CanVisible: 0
   PercentuageAttack: 0
-  LightTimerEnemyAttack: 0
-  HeavyTimerEnemyAttack: 0
-  LightMaxTimerEnemyAttack: 0.3
-  HeavyMaxTimerEnemyAttack: 1.4
-  LightAttackCollider: {fileID: 467281527}
-  HeavyAttackCollider: {fileID: 1577358880}
-  LightTimerAttackActivate: 0.1
-  HeavyTimerAttackActivate: 0.1
-  LightTimerAnimation: 0.2
-  HeavyTimerAnimation: 1
   CanMove: 1
   random: 0
   CanAttack: 1
-  TempTimerLight: 0
-  TempTimerHeavy: 0
-  Temp2TimerLight: 0
-  Temp2TimerHeavy: 0
-  isActiveLight: 0
-  isActiveHeavy: 0
+  LightAttackCollider: {fileID: 467281527}
+  HeavyAttackCollider: {fileID: 1577358880}
+  InitialTimerLight: 0
+  MaxInitialTimerLight: 2
+  FirstCycleLight: 1
+  DeactiveColliderTimerLight: 0
+  MaxDeactiveColliderTimerLight: 0.5
+  CooldownLight: 0
+  CooldownTimerLight: 0
+  MaxCooldownTimerLight: 5
+  InitialTimerHeavy: 0
+  MaxInitialTimerHeavy: 2
+  FirstCycleHeavy: 1
+  DeactiveColliderTimerHeavy: 0
+  MaxDeactiveColliderTimerHeavy: 0.5
+  CooldownHeavy: 0
+  CooldownTimerHeavy: 0
+  MaxCooldownTimerHeavy: 5
+  CanReset: 0
 --- !u!114 &2092240406
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    [Header("Life Value")]
     public int Life;
 
-    public int LightDamage;
-    public int HeavyDamage;
-    public int SpecialDamage;
 
     public bool isStun = false;
     public float timerStun = 0;
@@ -29,35 +27,85 @@ public class EnemyManager : MonoBehaviour
 
     public bool CanVisible = false;
 
-    [Tooltip("Da 0 a Percentuage corrisponde al light attack, da percentuage a 100 è heavy attack\n0 <= Percentuage = Light && Percentuage >= 100 = Heavy")][Range(0,100)]
-    public int PercentuageAttack;
-    public float LightTimerEnemyAttack;
-    public float HeavyTimerEnemyAttack;
-    [Tooltip("Cooldown attacco leggero - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco leggero")]
-    public float LightMaxTimerEnemyAttack;
-    [Tooltip("Cooldown attacco pesante - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco pesante")]
-    public float HeavyMaxTimerEnemyAttack;
-    public GameObject LightAttackCollider;
-    public GameObject HeavyAttackCollider;
-    [Tooltip("Timer Collider Leggero Acceso - Indica la durata di quando il collider leggero è attivo")]
-    public float LightTimerAttackActivate;
-    [Tooltip("Timer Collider Pesante Acceso - Indica la durata di quando il collider Pesante è attivo")]
-    public float HeavyTimerAttackActivate;
-    [Tooltip("Pre Attack Leggero - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
-    public float LightTimerAnimation;
-    [Tooltip("Pre Attack Pesante - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
-    public float HeavyTimerAnimation;
+    //public float LightTimerEnemyAttack;
+    //public float HeavyTimerEnemyAttack;
+    //[Tooltip("Cooldown attacco leggero - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco leggero")]
+    //public float LightMaxTimerEnemyAttack;
+    //[Tooltip("Cooldown attacco pesante - Indica il tempo che passa tra un attacco e l'altro, si resetta quando si disattiva il collider dell'attacco pesante")]
+    //public float HeavyMaxTimerEnemyAttack;
+    //[Tooltip("Timer Collider Leggero Acceso - Indica la durata di quando il collider leggero è attivo")]
+    //public float LightTimerAttackActivate;
+    //[Tooltip("Timer Collider Pesante Acceso - Indica la durata di quando il collider Pesante è attivo")]
+    //public float HeavyTimerAttackActivate;
+    //[Tooltip("Pre Attack Leggero - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
+    //public float LightTimerAnimation;
+    //[Tooltip("Pre Attack Pesante - Indica il tempo precedente all'attivazione del collider ma viene dopo il cooldown")]
+    //public float HeavyTimerAnimation;
     public bool CanMove = true;
 
     public int random;
-    public bool CanAttack = true;
+    public bool CanAttack = true;   //Indica la nuova estrazione del valore random riferito alla percentuale della scelta dell'attacco
 
-    [HideInInspector]public float TempTimerLight;
-    [HideInInspector]public float TempTimerHeavy;
-    [HideInInspector]public float Temp2TimerLight;
-    [HideInInspector]public float Temp2TimerHeavy;
-    public bool isActiveLight;
-    public bool isActiveHeavy;
+    //[HideInInspector]public float TempTimerLight;
+    //[HideInInspector]public float TempTimerHeavy;
+    //[HideInInspector]public float Temp2TimerLight;
+    //[HideInInspector]public float Temp2TimerHeavy;
+    //public bool isActiveLight;
+    //public bool isActiveHeavy
+
+    #region Variables Attack Behaviour
+    [Space(10)]
+    [Header("►  Collider Attack - Light And Heavy")]
+    [Header("------------------------ Attack Behaviour -----------------------------------------------------------------------------------------------------------------------------")]
+    public GameObject LightAttackCollider;
+    public GameObject HeavyAttackCollider;
+
+    [Space(10)]
+    [Header("►  Percentuage of spawn of collider attack - Light And Heavy")]
+    [Tooltip("Da 0 a Percentuage corrisponde al light attack, da percentuage a 100 è heavy attack\n0 <= Percentuage = Light && Percentuage >= 100 = Heavy")][Range(0,100)]
+    public int PercentuageAttack;
+
+    [Space(10)]
+    [Header("►  Value of damage of typology of attack - Value Management")]
+    public int LightDamage;
+    public int HeavyDamage;
+    public int SpecialDamage;
+    
+    [Space(10)]
+    [Header("►  Cycle Light Attack - Value Management")]
+    
+    [ReadOnly] public float InitialTimerLight;
+    [Tooltip("Pre-Attack: Indica la durata di attesa prima del primo attacco, alla fine del quale si attiva il collider di attacco - Fa parte del ciclo iniziale")]
+    public float MaxInitialTimerLight;                          //Dopo tot secondi parte il primo ciclo attivando il collider
+    [ReadOnly] public bool FirstCycleLight = true;              //Questo booleano indica se va eseguito prima il primo ciclo
+    [ReadOnly] public float DeactiveColliderTimerLight;
+    [Tooltip("Mid-Attack: Indica la durata di attesa in cui il collider di attacco sta acceso, alla fine del quale si spegne il coollider di attacco - Fa parte di tutti i cicli ")]
+    public float MaxDeactiveColliderTimerLight;                 //Dopo tot secondi disattiva il collider
+    [ReadOnly] public bool CooldownLight;                       //Questo booleano indica quando è attivo e disattivo il cooldown - Vero indica che è uscito da cooldown - Falso indica che deve entrare nel cooldown
+    [ReadOnly] public float CooldownTimerLight;
+    [Tooltip("Pre/Post-Attack: Indica la durata di cooldown dell'attacco per poterlo ripetere, alla fine del quale il cooldown finisce e fa partire il timer Mid-Attack ")]
+    public float MaxCooldownTimerLight;                         //Dopo tot secondi finisce il cooldown
+    
+    [Space(10)]
+    [Header("►  Cycle Heavy Attack - Value Management")]
+
+    [ReadOnly] public float InitialTimerHeavy;
+    [Tooltip("Pre-Attack: Indica la durata di attesa prima del primo attacco, alla fine del quale si attiva il collider di attacco - Fa parte del ciclo iniziale")]
+    public float MaxInitialTimerHeavy;                          //Dopo tot secondi parte il primo ciclo attivando il collider
+    [ReadOnly]public bool FirstCycleHeavy = true;               //Questo booleano indica se va eseguito prima il primo ciclo
+    [ReadOnly] public float DeactiveColliderTimerHeavy;
+    [Tooltip("Mid-Attack: Indica la durata di attesa in cui il collider di attacco sta acceso, alla fine del quale si spegne il coollider di attacco - Fa parte di tutti i cicli ")]
+    public float MaxDeactiveColliderTimerHeavy;                 //Dopo tot secondi disattiva il collider
+    [ReadOnly] public bool CooldownHeavy;                       //Questo booleano indica quando è attivo e disattivo il cooldown - Vero indica che è uscito da cooldown - Falso indica che deve entrare nel cooldown
+    [ReadOnly] public float CooldownTimerHeavy;
+    [Tooltip("Pre/Post-Attack: Indica la durata di cooldown dell'attacco per poterlo ripetere, alla fine del quale il cooldown finisce e fa partire il timer Mid-Attack ")]
+    public float MaxCooldownTimerHeavy;                         //Dopo tot secondi finisce il cooldown
+    
+    [Space(10)]
+    [Header("►  Reset Cycle Attack - Value Management - ReadOnly")]
+    [ReadOnly] public bool CanReset = false;                    //Resetta i timer e i booleani di attacco quando il player esce fuori dall'aggro, visto che lo resettava ad ogni attaco, è stato strutturato tramite il controllo della distanza
+    #endregion
+
 
 
     void Update()
@@ -65,8 +113,19 @@ public class EnemyManager : MonoBehaviour
         Stunned();
         Routine();
         Attack();
-        AttivatiLeggero();
-        AttivatiPesante();
+
+        float Distance = Vector2.Distance(gameObject.transform.position, PlayerEnemy.transform.position);
+        print("Distance" + Distance);
+        if (Distance >= 2.3f)       //Il 2.3f sarnne il possession radius
+        {
+            CanReset = true;
+        }
+        else
+        {
+            CanReset = false;
+        }
+        //AttivatiLeggero();
+        //AttivatiPesante();
     }
 
     #region Method - IA - Enemy Behaviour
@@ -170,12 +229,13 @@ public class EnemyManager : MonoBehaviour
             print("Random"+random);
             CanAttack = false;
         }
-        if(CanVisible == true)
+        if(CanVisible == true)                                          //Do while --> nel senso ha un xtempo iniziale + un cooldown dopo, quindi do è x tempo e cooldown sta nel while
         {
             if (random <= PercentuageAttack)
             {
-                LightTimerEnemyAttack += Time.deltaTime;
-                if (LightTimerEnemyAttack >= LightMaxTimerEnemyAttack)
+                ActivateDifferentCicleLight();
+                /*LightTimerEnemyAttack += Time.deltaTime;
+                if (LightTimerEnemyAttack >= LightMaxTimerEnemyAttack)  //Prima ciclo, con un booleano diverrà falso per poi attivare il secondo ciclo in poi, se riesce e rientra dall'aggro, ricomincia dal ciclo uno
                 {
                     print("Enemy Light Attack");
                     if (LightAttackCollider != null)
@@ -197,11 +257,12 @@ public class EnemyManager : MonoBehaviour
                         //    }
                         //}
                     }
-                }
+                }*/
             }
             else
             {
-                HeavyTimerEnemyAttack += Time.deltaTime;
+                ActivateDifferentCicleHeavy();
+                /*HeavyTimerEnemyAttack += Time.deltaTime;
                 if (HeavyTimerEnemyAttack >= HeavyMaxTimerEnemyAttack)
                 {
                     print("Enemy Heavy Attack"+HeavyTimerEnemyAttack);
@@ -225,12 +286,99 @@ public class EnemyManager : MonoBehaviour
                         //}
 
                     }
-                }
+                }*/
             }
         }
     }
 
-    public void AttivatiLeggero()
+    public void ActivateDifferentCicleLight()
+    {
+        if (FirstCycleLight == true)                                                                //Se siamo al primo ciclo di attacco
+        {
+            InitialTimerLight += Time.deltaTime;                                                    //Faccio partire il timer initiale di attesa per l'attacco
+
+            //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
+
+            if (InitialTimerLight >= MaxInitialTimerLight)                                          //Se il timer iniziale raggiunge il valore max, vado ad attivare l'attacco - Collider
+            {
+                LightAttackCollider.SetActive(true);                                                //Attivo il collider dell'attacco - Attivo attacco
+                DeactiveColliderTimerLight += Time.deltaTime;                                       //Faccio partire il timer per disattivare il collider, quindi indica la durata di quando c'è il collider acceso
+                if(DeactiveColliderTimerLight >= MaxDeactiveColliderTimerLight)                     //Se il timer di disattiazione raggiunge il valore max, vado a disattivare l'attacco - Collider
+                {
+                    LightAttackCollider.SetActive(false);                                           //Disattivo il collider dell'attacco - Disattivo attaco
+                    FirstCycleLight = false;                                                        //Setto a falso il primo ciclo, quindi indica la fine di questo ciclo
+                    InitialTimerLight = 0;                                                          //Resetto il timer iniziale a 0
+                    DeactiveColliderTimerLight = 0;                                                 //Resetto il timer di disattivazione a 0
+                }
+            }
+        }
+        if (FirstCycleLight == false && CooldownLight == false)                                     //Se il primo ciclo è falso, quindi ci troviamo dal secondo in poi, e non siamo ancora nel cooldown e/o non è finito
+        {
+            CooldownTimerLight += Time.deltaTime;                                                   //Faccio partire il timer del cooldown per ripetere l'attacco
+            
+            //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
+            
+            if(CooldownTimerLight >= MaxCooldownTimerLight)                                         //Se il timer cooldown raggiunge il valore max, indica che il cooldown è finito e quindi vado ad attivare l'attacco
+            {
+                LightAttackCollider.SetActive(true);                                                //Attivo il collider dell'attacco - Attivo attacco
+                CooldownLight = true;                                                               //Questa booleana indica che abbiamo finito il cooldown e che al momento non ci dobbiamo rientrare
+                DeactiveColliderTimerLight = 0;                                                     //Resetto il timer di disattivazione del collider a 0
+            }
+        }
+        DeactiveColliderTimerLight += Time.deltaTime;                                               //Faccio partire il timer di disattivazione del collider
+        if (DeactiveColliderTimerLight >= MaxDeactiveColliderTimerLight && CooldownLight == true)   //Se il timer di disattivazione raggiunge il valore max e siamo fuori dal cooldown
+        {
+            LightAttackCollider.SetActive(false);                                                   //Disattivo il collider dell'attacco - Disattivo attaco
+            CooldownLight = false;                                                                  //Setto a falso la variabile del cooldown indicando l'inizio del cooldown
+            CooldownTimerLight = 0;                                                                 //Resetto il timer del cooldown a 0
+            DeactiveColliderTimerLight = 0;                                                         //Resetto il timer di disattivazione a 0
+        }
+    }
+    public void ActivateDifferentCicleHeavy()
+    {
+        if (FirstCycleHeavy == true)                                                                //Se siamo al primo ciclo di attacco
+        {
+            InitialTimerHeavy += Time.deltaTime;                                                    //Faccio partire il timer initiale di attesa per l'attacco
+
+            //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
+
+            if (InitialTimerHeavy >= MaxInitialTimerHeavy)                                          //Se il timer iniziale raggiunge il valore max, vado ad attivare l'attacco - Collider
+            {
+                LightAttackCollider.SetActive(true);                                                //Attivo il collider dell'attacco - Attivo attacco
+                DeactiveColliderTimerHeavy += Time.deltaTime;                                       //Faccio partire il timer per disattivare il collider, quindi indica la durata di quando c'è il collider acceso
+                if (DeactiveColliderTimerHeavy >= MaxDeactiveColliderTimerHeavy)                    //Se il timer di disattiazione raggiunge il valore max, vado a disattivare l'attacco - Collider
+                {
+                    LightAttackCollider.SetActive(false);                                           //Disattivo il collider dell'attacco - Disattivo attaco
+                    FirstCycleHeavy = false;                                                        //Setto a falso il primo ciclo, quindi indica la fine di questo ciclo
+                    InitialTimerHeavy = 0;                                                          //Resetto il timer iniziale a 0
+                    DeactiveColliderTimerHeavy = 0;                                                 //Resetto il timer di disattivazione a 0
+                }
+            }
+        }
+        if (FirstCycleHeavy == false && CooldownHeavy == false)                                     //Se il primo ciclo è falso, quindi ci troviamo dal secondo in poi, e non siamo ancora nel cooldown e/o non è finito
+        {
+            CooldownTimerHeavy += Time.deltaTime;                                                   //Faccio partire il timer del cooldown per ripetere l'attacco
+
+            //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
+
+            if (CooldownTimerHeavy >= MaxCooldownTimerHeavy)                                        //Se il timer cooldown raggiunge il valore max, indica che il cooldown è finito e quindi vado ad attivare l'attacco
+            {
+                HeavyAttackCollider.SetActive(true);                                                //Attivo il collider dell'attacco - Attivo attacco
+                CooldownHeavy = true;                                                               //Questa booleana indica che abbiamo finito il cooldown e che al momento non ci dobbiamo rientrare
+                DeactiveColliderTimerHeavy = 0;                                                     //Resetto il timer di disattivazione del collider a 0
+            }
+        }
+        DeactiveColliderTimerHeavy += Time.deltaTime;                                               //Faccio partire il timer di disattivazione del collider
+        if (DeactiveColliderTimerHeavy >= MaxDeactiveColliderTimerHeavy && CooldownHeavy == true)   //Se il timer di disattivazione raggiunge il valore max e siamo fuori dal cooldown
+        {
+            HeavyAttackCollider.SetActive(false);                                                   //Disattivo il collider dell'attacco - Disattivo attaco
+            CooldownHeavy = false;                                                                  //Setto a falso la variabile del cooldown indicando l'inizio del cooldown
+            CooldownTimerHeavy = 0;                                                                 //Resetto il timer del cooldown a 0
+            DeactiveColliderTimerHeavy = 0;                                                         //Resetto il timer di disattivazione a 0
+        }
+    }
+
+    /*public void AttivatiLeggero()
     {
         if(isActiveLight == true)
         {
@@ -273,7 +421,7 @@ public class EnemyManager : MonoBehaviour
             isActiveHeavy = false;
         print("Ciao2");
         //}
-    }
+    }*/
     #endregion
 
     #region Trigger Zone
