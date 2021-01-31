@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SwordGame
@@ -14,7 +13,7 @@ namespace SwordGame
         [Tooltip("It's a max speed of player")]
         public float MaxSpeed;
     }
-    
+
     [System.Serializable]
     public struct StructJump
     {
@@ -25,7 +24,7 @@ namespace SwordGame
         [Tooltip("It's a value for progressive jump")]
         public float lowJumpMultiplier;
     }
-    
+
     [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
 
@@ -43,7 +42,7 @@ namespace SwordGame
         public static float StaticSpeed;
         [Tooltip("It's a time of change rotation offset of platform")]
         public float TimeDoublePlatform;
-        
+
         Rigidbody2D rb;
         GameObject TempPlatform;
 
@@ -86,10 +85,10 @@ namespace SwordGame
             Staggered();
             //if (isInAttack == false)
             //{
-            if(isStaggered == false)
+            if (isStaggered == false)
             {
                 PlayerMovement();
-                if(CanDashLeft == false && CanDashRight == false)
+                if (CanDashLeft == false && CanDashRight == false)
                 {
                     PlayerJump();
                 }
@@ -188,11 +187,11 @@ namespace SwordGame
                 //if (TempSprite != null)
                 //    TempSprite.flipX = true;
             }
-            if(CanDashLeft == true && TimerDash <= LimitTimerDash)
+            if (CanDashLeft == true && TimerDash <= LimitTimerDash)
             {
                 rb.velocity = new Vector2(-ValueMovement.Speed * 5, rb.velocity.y);
                 TimerDash += Time.deltaTime;
-                if(TimerDash >= LimitTimerDash)
+                if (TimerDash >= LimitTimerDash)
                 {
                     //CanDashLeft = false;
                     //TimerDash = 0;
@@ -228,7 +227,7 @@ namespace SwordGame
             CanDashRight = false;
 
             PM.Invulnerability = false;
-            if(DashColliderBabushka != null)
+            if (DashColliderBabushka != null)
                 DashColliderBabushka.SetActive(false);
             gameObject.layer = 8;
             isBoriousDash = false;
@@ -259,9 +258,10 @@ namespace SwordGame
 
         public void Staggered()
         {
-            if(PoisePlayer >= MaxPoisePlayer)
+            if (PoisePlayer >= MaxPoisePlayer)
             {
                 isStaggered = true;
+                rb.velocity = Vector2.zero;
                 StartCoroutine(CooldownStaggered());
             }
         }
@@ -269,6 +269,7 @@ namespace SwordGame
         {
             yield return new WaitForSeconds(TimerStaggered);
             isStaggered = false;
+            PoisePlayer = 0;
         }
 
         public void ResetStaggered()
@@ -290,7 +291,7 @@ namespace SwordGame
         {
             if (Input.GetKey(KeyCode.S))
             {
-                if(collision.gameObject.GetComponent<PlatformEffector2D>() != null)
+                if (collision.gameObject.GetComponent<PlatformEffector2D>() != null)
                 {
                     collision.gameObject.GetComponent<PlatformEffector2D>().rotationalOffset = 180;
                     TempPlatform = collision.gameObject;

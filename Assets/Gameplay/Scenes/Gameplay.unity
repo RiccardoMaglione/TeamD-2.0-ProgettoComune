@@ -156,10 +156,10 @@ RectTransform:
   m_Father: {fileID: 243053904}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 215, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76002833
 MonoBehaviour:
@@ -1360,10 +1360,10 @@ RectTransform:
   m_Father: {fileID: 243053904}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -5, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303222037
 MonoBehaviour:
@@ -1986,10 +1986,10 @@ RectTransform:
   m_Father: {fileID: 243053904}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 105, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &735381500
 MonoBehaviour:
@@ -2149,8 +2149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTimer: 0.1
-  LightDamage: 2
-  HeavyDamage: 4
+  LightDamage: 20
+  HeavyDamage: 30
   SpecialDamage: 6
 --- !u!61 &783517406
 BoxCollider2D:
@@ -2233,8 +2233,8 @@ MonoBehaviour:
   DashColliderBabushka: {fileID: 0}
   DashDamageFatKnight: 0
   PoisePlayer: 0
-  MaxPoisePlayer: 1
-  TimerStaggered: 5
+  MaxPoisePlayer: 5
+  TimerStaggered: 0.8
   isStaggered: 0
   ResetTimerStaggered: 0
   MaxResetTimerStaggered: 5
@@ -2902,8 +2902,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTimer: 0.1
-  LightDamage: 2
-  HeavyDamage: 4
+  LightDamage: 20
+  HeavyDamage: 30
   SpecialDamage: 6
 --- !u!61 &1123410728
 BoxCollider2D:
@@ -3527,7 +3527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1391133208
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3789,8 +3789,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTimer: 0.1
-  LightDamage: 2
-  HeavyDamage: 4
+  LightDamage: 20
+  HeavyDamage: 30
   SpecialDamage: 6
 --- !u!61 &1417802647
 BoxCollider2D:
@@ -4023,10 +4023,10 @@ RectTransform:
   m_Father: {fileID: 243053904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -115, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1509997082
 MonoBehaviour:
@@ -5795,11 +5795,11 @@ MonoBehaviour:
   DashColliderBabushka: {fileID: 0}
   DashDamageFatKnight: 0
   PoisePlayer: 0
-  MaxPoisePlayer: 0
-  TimerStaggered: 0
+  MaxPoisePlayer: 5
+  TimerStaggered: 0.8
   isStaggered: 0
   ResetTimerStaggered: 0
-  MaxResetTimerStaggered: 0
+  MaxResetTimerStaggered: 5
 --- !u!50 &2092240400
 Rigidbody2D:
   serializedVersion: 4
@@ -5981,28 +5981,28 @@ MonoBehaviour:
   HeavyDamage: 5
   SpecialDamage: 8
   InitialTimerLight: 0
-  MaxInitialTimerLight: 2
+  MaxInitialTimerLight: 0.2
   FirstCycleLight: 1
   DeactiveColliderTimerLight: 0
-  MaxDeactiveColliderTimerLight: 0.5
+  MaxDeactiveColliderTimerLight: 0.1
   CooldownLight: 0
   CooldownTimerLight: 0
-  MaxCooldownTimerLight: 5
+  MaxCooldownTimerLight: 0.3
   InitialTimerHeavy: 0
-  MaxInitialTimerHeavy: 2
+  MaxInitialTimerHeavy: 0.5
   FirstCycleHeavy: 1
   DeactiveColliderTimerHeavy: 0
-  MaxDeactiveColliderTimerHeavy: 0.5
+  MaxDeactiveColliderTimerHeavy: 0.1
   CooldownHeavy: 0
   CooldownTimerHeavy: 0
-  MaxCooldownTimerHeavy: 5
+  MaxCooldownTimerHeavy: 1.2
   CanReset: 0
   TimerAttackAnimation: 0
   MaxTimerAttackAnimation: 0.1
   CountPoiseEnemy: 0
   MaxCountPoiseEnemy: 1
   isStaggeredEnemy: 0
-  TimerStaggeredEnemy: 3
+  TimerStaggeredEnemy: 0.2
   ResetTimerStaggeredEnemy: 0
   MaxResetTimerStaggeredEnemy: 5
 --- !u!114 &2092240406
