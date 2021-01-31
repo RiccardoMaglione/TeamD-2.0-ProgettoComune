@@ -18,9 +18,13 @@ namespace SwordGame
                 }
                 else
                 {
-                    ReturnPlayer.LastDetectList[i].GetComponent<PlayerManager>().currentHealth = ReturnPlayer.LastDetectList[i].GetComponent<PlayerManager>().maxHealth;
+                    //ReturnPlayer.LastDetectList[i].GetComponent<PlayerManager>().currentHealth = ReturnPlayer.LastDetectList[i].GetComponent<PlayerManager>().maxHealth;
                 }
             }
         }
     }
 }
+
+
+
+//Probabilmente non va utilizzato, serve solo conferma tramite console

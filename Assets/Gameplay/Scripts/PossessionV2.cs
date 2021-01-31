@@ -80,30 +80,39 @@ namespace SwordGame
 
                     PlayerDetect.GetComponent<PlayerManager>().enabled = false;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().enabled = true;
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().MaxHealth);
 
                     PlayerDetect.GetComponent<PlayerInput>().enabled = false;
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].AddComponent<PlayerInput>().enabled = true;
-
-                    foreach (AttackSystem item in PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponentsInChildren<AttackSystem>(true))
+                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>() == null)
                     {
-                        if (item.name == "LightAttackCollider")
-                        {
-                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().lightAttackCollider = item.gameObject;
-                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardLightlAttack = KeyCode.U;
-                        }
-                        if (item.name == "HeavyAttackCollider")
-                        {
-                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().heavyAttackCollider = item.gameObject;
-                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardHeavyAttack = KeyCode.I;
+                        PlayerDetectArray[PlayerDetectArray.Count - 1].AddComponent<PlayerInput>().enabled = true;
 
-                        }
-                        if (item.name == "SpecialAttackCollider")
+                        foreach (AttackSystem item in PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponentsInChildren<AttackSystem>(true))
                         {
-                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().specialAttackCollider = item.gameObject;
-                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardSpecialAttack = KeyCode.Y;
+                            if (item.name == "LightAttackCollider")
+                            {
+                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().lightAttackCollider = item.gameObject;
+                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardLightlAttack = KeyCode.U;
+                            }
+                            if (item.name == "HeavyAttackCollider")
+                            {
+                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().heavyAttackCollider = item.gameObject;
+                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardHeavyAttack = KeyCode.I;
+
+                            }
+                            if (item.name == "SpecialAttackCollider")
+                            {
+                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().specialAttackCollider = item.gameObject;
+                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardSpecialAttack = KeyCode.Y;
+                            }
                         }
                     }
+                    else
+                    {
+                        PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().enabled = true;
+                    }
 
+                    PlayerDetect.GetComponent<EnemyManager>().Life = 0;
                     PlayerDetect.GetComponent<EnemyManager>().isStun = true;
 
                     PlayerDetect.GetComponent<PlayerController>().enabled = false;                                                  //Attuale Player

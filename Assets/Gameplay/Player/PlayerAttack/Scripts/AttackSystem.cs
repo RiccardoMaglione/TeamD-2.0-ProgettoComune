@@ -54,6 +54,7 @@ public class AttackSystem : MonoBehaviour
         //playerInput.isAttack = false;
         playerInput.CooldownAttack = true;
         gameObject.SetActive(false);
+        //GetComponentInParent<PlayerController>().isInAttack = false;
     }
 
 

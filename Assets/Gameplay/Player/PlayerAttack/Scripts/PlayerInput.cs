@@ -96,6 +96,7 @@ public class PlayerInput : MonoBehaviour
             //originalSpeed = speed;
             //speed = 0;
             //LightAttack();
+            //GetComponentInParent<PlayerController>().isInAttack = true;
             LightActivation = true;
             //speed = originalSpeed;
         }
@@ -104,6 +105,7 @@ public class PlayerInput : MonoBehaviour
             //originalSpeed = speed;
             //speed = 0;
             //HeavyAttack();
+            //GetComponentInParent<PlayerController>().isInAttack = true;
             HeavyActivation = true;
             //speed = originalSpeed;
         }
@@ -112,6 +114,7 @@ public class PlayerInput : MonoBehaviour
             //originalSpeed = speed;
             //speed = 0;
             //SpecialAttack();
+            //GetComponentInParent<PlayerController>().isInAttack = true;
             SpecialActivation = true;
             //speed = originalSpeed;
         }

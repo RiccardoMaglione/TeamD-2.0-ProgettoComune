@@ -5,49 +5,97 @@ using UnityEngine.UI;
 
 namespace SwordGame
 {
+    [ExecuteInEditMode]
     public class PlayerManager : MonoBehaviour
     {
+        #region Variables
+        [Space(10)]
+        [Header("Character Type Management")]
+        [Tooltip("Permette di selezione la tipologia del player")]
         public TypePlayer TypeCharacter;
-
-        public HealthBar hB;
-        public int maxHealth;
-        public int currentHealth;
-
+        #region Variables - Life System
+        [Space(10)]
+        [Header("Life System - Value Management")]
+        [Space(20)]
+        [Tooltip("Slider riferito alla vita nella UI")]
+        public HealthBar HealthSlider;
+        [Tooltip("Valore massimo della vita del player")]
+        public int MaxHealth;
+        [Tooltip("Valore corrente della vita del player, si setta al cambio della MaxHealth in inspector")]
+        [ReadOnly] public int CurrentHealth;
+        [Tooltip("Booleano che indica quando il player non può prendere danni")]
+        [ReadOnly] public bool Invulnerability = false;
+        #endregion
+        #region Variables - Energy System
+        [Space(10)]
+        [Header("Energy System - Value Management")]
+        [Space(20)]
         public Image EnergyBar;
         public int MaxEnergy;
         public static int MaxEnergyStatic;
-        public int CurrentEnergy;
-
-        public bool Invulnerability = false;
-
+        [ReadOnly] public int CurrentEnergy;
+        #endregion
+        #region Variables - Attack System
+        [Space(10)]
+        [Header("Attack System - Value Management")]
+        [Space(20)]
         public int LightEnergyAmount;
         public int HeavyEnergyAmount;
         public int SpecialEnergyAmount;
+        #endregion
+        #region In caso servisse la life bar con un image
+        //public Image LifeBar;
+        //public int MaxLife;
+        //public static int MaxLifeStatic;
+        //public int CurrentLife;
+        #endregion
+        #endregion
+
+        void OnValidate()
+        {
+            CurrentHealth = MaxHealth;
+        }
 
         private void Start()
         {
             Initialize();
         }
+        private void Update()
+        {
+            print("3. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
+            HealthSlider.sliderBar.value = CurrentHealth;
+            EnergyBar.fillAmount = (float)CurrentEnergy / 100;
+            //LifeBar.fillAmount = (float)CurrentLife / 100;      //temp
+            if (CurrentHealth <= 0)
+            {
+                Destroy(this.gameObject);
+                print("Hai Perso");
+            }
+            print("4. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
+        }
+
+        #region Method
 
         public void Initialize()
         {
             //CurrentEnegy = PlayerPrefs.GetInt("EnergyValue", 0);
             EnergyBar.fillAmount = (float)CurrentEnergy / 100;
+            //LifeBar.fillAmount = (float)CurrentLife / 100;//temp
             //MaxEnergyStatic = MaxEnergy;
-
-            hB.SetHealth(currentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
+            print("1. Current Life is" + CurrentHealth + "Nome "+gameObject.name);
+            HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
+            print("2. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
         }
-        private void Update()
+        public void Refull()//Forse non serve
         {
-            print("Current life" + currentHealth);
-            hB.sliderBar.value = currentHealth;
-            EnergyBar.fillAmount = (float)CurrentEnergy / 100;
-            if(currentHealth <= 0)
+            if(RefullLife.CanRefull == true)
             {
-                Destroy(this.gameObject);
-                print("Hai Perso");
+                //currentHealth = maxHealth;
+                RefullLife.CanRefull = false;
             }
         }
+        #endregion
+        
         private void OnTriggerEnter2D(Collider2D collision)
         {
             #region PlayerLife
@@ -55,7 +103,8 @@ namespace SwordGame
             {
                 if (collision.tag == "LightAttack")
                 {
-                    currentHealth -= collision.GetComponentInParent<EnemyManager>().LightDamage;
+                    CurrentHealth -= collision.GetComponentInParent<EnemyManager>().LightDamage;
+                    //CurrentLife -= collision.GetComponentInParent<EnemyManager>().LightDamage;
                     print("Colpito Light");
                     if(PlayerController.isBoriousDash == true)
                     {
@@ -64,7 +113,8 @@ namespace SwordGame
                 }
                 if (collision.tag == "HeavyAttack")
                 {
-                    currentHealth -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
+                    CurrentHealth -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
+                    //CurrentLife -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
                     print("Colpito Heavy");
                     if (PlayerController.isBoriousDash == true)
                     {
@@ -81,15 +131,6 @@ namespace SwordGame
                 //}
             }
             #endregion
-        }
-
-        public void Refull()
-        {
-            if(RefullLife.CanRefull == true)
-            {
-                currentHealth = maxHealth;
-                RefullLife.CanRefull = false;
-            }
         }
     }
 

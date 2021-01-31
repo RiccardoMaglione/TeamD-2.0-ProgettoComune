@@ -11,7 +11,7 @@ namespace SwordGame
         [Tooltip("ViewOnly - It's a timer from 0 to timerLimit")]
         public float timerDestroyInspector;
         [Tooltip("It's a limit for the timer for destroy the last player")]
-        public float timerLimit = 5;
+        public float timerLimit = 5; //deve essere uguale al tempo di stun
         public static float timerDestroy;
 
         public static List<float> TimerDestroyList = new List<float>();
@@ -42,6 +42,7 @@ namespace SwordGame
                     {
                             if(LastDetectList[i] != PlayerNow)
                             {
+                                print("ForseQua");
                                 Destroy(LastDetectList[i]);
                             }
                         TimerDestroyList[i] = timerLimit;

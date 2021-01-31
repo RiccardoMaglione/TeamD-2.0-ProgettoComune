@@ -62,6 +62,7 @@ namespace SwordGame
         public int DashDamageFatKnight;
 
         public static bool isBoriousDash = false;
+        //public bool isInAttack = false;
         #endregion
 
         void Start()
@@ -75,10 +76,17 @@ namespace SwordGame
         void Update()
         {
             StaticSpeed = ValueMovement.Speed;
-            PlayerMovement();
-            PlayerJump();
+            //if (isInAttack == false)
+            //{
+                PlayerMovement();
+                PlayerJump();
+                Dash();
+            //}
+            //else
+            //{
+            //    rb.velocity = new Vector2(0, rb.velocity.y);
+            //}
             ResetPlatform();
-            Dash();
         }
 
         #region Player - Move and Jump and Dash
@@ -243,8 +251,11 @@ namespace SwordGame
         {
             if (Input.GetKey(KeyCode.S))
             {
-                collision.gameObject.GetComponent<PlatformEffector2D>().rotationalOffset = 180;
-                TempPlatform = collision.gameObject;
+                if(collision.gameObject.GetComponent<PlatformEffector2D>() != null)
+                {
+                    collision.gameObject.GetComponent<PlatformEffector2D>().rotationalOffset = 180;
+                    TempPlatform = collision.gameObject;
+                }
             }
         }
         #endregion
