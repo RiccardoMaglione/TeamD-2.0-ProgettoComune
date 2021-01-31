@@ -91,37 +91,40 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyboardLightlAttack) && isAttack == false)
+        if (GetComponent<PlayerController>().CanDashLeft == false && GetComponent<PlayerController>().CanDashRight == false)
         {
-            //originalSpeed = speed;
-            //speed = 0;
-            //LightAttack();
-            //GetComponentInParent<PlayerController>().isInAttack = true;
-            LightActivation = true;
-            //speed = originalSpeed;
-        }
-        if (Input.GetKeyDown(KeyboardHeavyAttack) && isAttack == false)
-        {
-            //originalSpeed = speed;
-            //speed = 0;
-            //HeavyAttack();
-            //GetComponentInParent<PlayerController>().isInAttack = true;
-            HeavyActivation = true;
-            //speed = originalSpeed;
-        }
-        if (Input.GetKeyDown(KeyboardSpecialAttack) && isAttack == false)
-        {
-            //originalSpeed = speed;
-            //speed = 0;
-            //SpecialAttack();
-            //GetComponentInParent<PlayerController>().isInAttack = true;
-            SpecialActivation = true;
-            //speed = originalSpeed;
+            if (Input.GetKeyDown(KeyboardLightlAttack) && isAttack == false)
+            {
+                //originalSpeed = speed;
+                //speed = 0;
+                //LightAttack();
+                //GetComponentInParent<PlayerController>().isInAttack = true;
+                LightActivation = true;
+                //speed = originalSpeed;
+            }
+            if (Input.GetKeyDown(KeyboardHeavyAttack) && isAttack == false)
+            {
+                //originalSpeed = speed;
+                //speed = 0;
+                //HeavyAttack();
+                //GetComponentInParent<PlayerController>().isInAttack = true;
+                HeavyActivation = true;
+                //speed = originalSpeed;
+            }
+            if (Input.GetKeyDown(KeyboardSpecialAttack) && isAttack == false)
+            {
+                //originalSpeed = speed;
+                //speed = 0;
+                //SpecialAttack();
+                //GetComponentInParent<PlayerController>().isInAttack = true;
+                SpecialActivation = true;
+                //speed = originalSpeed;
+            }
         }
 
-        LightTimer();
-        HeavyTimer();
-        SpecialTimer();
+            LightTimer();
+            HeavyTimer();
+            SpecialTimer();
     }
 
 

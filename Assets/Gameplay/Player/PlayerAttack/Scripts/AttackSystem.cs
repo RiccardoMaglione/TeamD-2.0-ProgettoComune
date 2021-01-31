@@ -22,6 +22,8 @@ public class AttackSystem : MonoBehaviour
                 playerInput.isLightAttack = false;
                 collision.GetComponent<EnemyManager>().Life -= LightDamage;
                 collision.GetComponent<EnemyManager>().CountHit++;
+                collision.GetComponent<EnemyManager>().CountPoiseEnemy++;
+                collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
                 print("Light");
                 GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().LightEnergyAmount;
                 print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
@@ -31,6 +33,8 @@ public class AttackSystem : MonoBehaviour
                 playerInput.isHeavyAttack = false;
                 collision.GetComponent<EnemyManager>().Life -= HeavyDamage;
                 collision.GetComponent<EnemyManager>().CountHit++;
+                collision.GetComponent<EnemyManager>().CountPoiseEnemy++;
+                collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
                 print("Heavy");
                 GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().HeavyEnergyAmount;
                 print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
@@ -40,6 +44,8 @@ public class AttackSystem : MonoBehaviour
                 playerInput.isSpecialAttack = false;
                 collision.GetComponent<EnemyManager>().Life -= SpecialDamage;
                 collision.GetComponent<EnemyManager>().CountHit++;
+                collision.GetComponent<EnemyManager>().CountPoiseEnemy++;
+                collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
                 print("Special");
                 GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().SpecialEnergyAmount;
                 print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);

@@ -329,7 +329,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -797,12 +797,20 @@ MonoBehaviour:
     fallMultiplier: 2.5
     lowJumpMultiplier: 1.8
   TimeDoublePlatform: 0.5
+  CanDashLeft: 0
+  CanDashRight: 0
   TimerDash: 0
   LimitTimerDash: 0.16
   TempSprite: {fileID: 248621480}
   TimerCooldownDash: 0.5
   DashColliderBabushka: {fileID: 0}
   DashDamageFatKnight: 0
+  PoisePlayer: 0
+  MaxPoisePlayer: 0
+  TimerStaggered: 0
+  isStaggered: 0
+  ResetTimerStaggered: 0
+  MaxResetTimerStaggered: 0
 --- !u!50 &248621478
 Rigidbody2D:
   serializedVersion: 4
@@ -995,6 +1003,14 @@ MonoBehaviour:
   CooldownTimerHeavy: 0
   MaxCooldownTimerHeavy: 0
   CanReset: 0
+  TimerAttackAnimation: 0
+  MaxTimerAttackAnimation: 0
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 0
+  isStaggeredEnemy: 0
+  TimerStaggeredEnemy: 0
+  ResetTimerStaggeredEnemy: 0
+  MaxResetTimerStaggeredEnemy: 0
 --- !u!114 &248621484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1018,6 +1034,7 @@ MonoBehaviour:
   LightEnergyAmount: 5
   HeavyEnergyAmount: 10
   SpecialEnergyAmount: 15
+  isTriggerOnlyOnce: 0
 --- !u!1 &264023950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1083,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -2173,10 +2190,10 @@ GameObject:
   - component: {fileID: 809275353}
   - component: {fileID: 809275356}
   - component: {fileID: 809275355}
+  - component: {fileID: 809275359}
   - component: {fileID: 809275352}
   - component: {fileID: 809275357}
   - component: {fileID: 809275358}
-  - component: {fileID: 809275359}
   - component: {fileID: 809275360}
   m_Layer: 8
   m_Name: Player
@@ -2207,12 +2224,20 @@ MonoBehaviour:
     fallMultiplier: 2.5
     lowJumpMultiplier: 1.8
   TimeDoublePlatform: 0.5
+  CanDashLeft: 0
+  CanDashRight: 0
   TimerDash: 0
   LimitTimerDash: 0.16
   TempSprite: {fileID: 809275353}
   TimerCooldownDash: 0.5
   DashColliderBabushka: {fileID: 0}
   DashDamageFatKnight: 0
+  PoisePlayer: 0
+  MaxPoisePlayer: 1
+  TimerStaggered: 5
+  isStaggered: 0
+  ResetTimerStaggered: 0
+  MaxResetTimerStaggered: 5
 --- !u!212 &809275353
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2418,6 +2443,7 @@ MonoBehaviour:
   LightEnergyAmount: 5
   HeavyEnergyAmount: 10
   SpecialEnergyAmount: 15
+  isTriggerOnlyOnce: 0
 --- !u!114 &809275360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2470,6 +2496,14 @@ MonoBehaviour:
   CooldownTimerHeavy: 0
   MaxCooldownTimerHeavy: 0
   CanReset: 0
+  TimerAttackAnimation: 0
+  MaxTimerAttackAnimation: 0
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 0
+  isStaggeredEnemy: 0
+  TimerStaggeredEnemy: 0
+  ResetTimerStaggeredEnemy: 0
+  MaxResetTimerStaggeredEnemy: 0
 --- !u!1 &900513789
 GameObject:
   m_ObjectHideFlags: 0
@@ -4819,7 +4853,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -5752,12 +5786,20 @@ MonoBehaviour:
     fallMultiplier: 2.5
     lowJumpMultiplier: 1.8
   TimeDoublePlatform: 0.5
+  CanDashLeft: 0
+  CanDashRight: 0
   TimerDash: 0
   LimitTimerDash: 0.16
   TempSprite: {fileID: 2092240402}
   TimerCooldownDash: 0.5
   DashColliderBabushka: {fileID: 0}
   DashDamageFatKnight: 0
+  PoisePlayer: 0
+  MaxPoisePlayer: 0
+  TimerStaggered: 0
+  isStaggered: 0
+  ResetTimerStaggered: 0
+  MaxResetTimerStaggered: 0
 --- !u!50 &2092240400
 Rigidbody2D:
   serializedVersion: 4
@@ -5915,7 +5957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 10
+  Life: 100
   timerStun: 0
   DurationStun: 500
   CountHit: 0
@@ -5955,6 +5997,14 @@ MonoBehaviour:
   CooldownTimerHeavy: 0
   MaxCooldownTimerHeavy: 5
   CanReset: 0
+  TimerAttackAnimation: 0
+  MaxTimerAttackAnimation: 0.1
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 1
+  isStaggeredEnemy: 0
+  TimerStaggeredEnemy: 3
+  ResetTimerStaggeredEnemy: 0
+  MaxResetTimerStaggeredEnemy: 5
 --- !u!114 &2092240406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5978,6 +6028,7 @@ MonoBehaviour:
   LightEnergyAmount: 5
   HeavyEnergyAmount: 10
   SpecialEnergyAmount: 15
+  isTriggerOnlyOnce: 0
 --- !u!1 &2136307419
 GameObject:
   m_ObjectHideFlags: 0

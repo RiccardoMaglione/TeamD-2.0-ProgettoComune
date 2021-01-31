@@ -49,6 +49,7 @@ namespace SwordGame
         //public static int MaxLifeStatic;
         //public int CurrentLife;
         #endregion
+        [ReadOnly] public bool isTriggerOnlyOnce = false;
         #endregion
 
         void OnValidate()
@@ -82,37 +83,43 @@ namespace SwordGame
             EnergyBar.fillAmount = (float)CurrentEnergy / 100;
             //LifeBar.fillAmount = (float)CurrentLife / 100;//temp
             //MaxEnergyStatic = MaxEnergy;
-            print("1. Current Life is" + CurrentHealth + "Nome "+gameObject.name);
+            print("1. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
             HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
             print("2. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
         }
         public void Refull()//Forse non serve
         {
-            if(RefullLife.CanRefull == true)
+            if (RefullLife.CanRefull == true)
             {
                 //currentHealth = maxHealth;
                 RefullLife.CanRefull = false;
             }
         }
         #endregion
-        
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             #region PlayerLife
-            if(Invulnerability == false)
+            if (Invulnerability == false && isTriggerOnlyOnce == false)
             {
                 if (collision.tag == "LightAttack")
                 {
+                    isTriggerOnlyOnce = true;
+                    GetComponent<PlayerController>().ResetTimerStaggered = 0;
+                    GetComponent<PlayerController>().PoisePlayer += 1;                                  //aumenta di 1
                     CurrentHealth -= collision.GetComponentInParent<EnemyManager>().LightDamage;
                     //CurrentLife -= collision.GetComponentInParent<EnemyManager>().LightDamage;
                     print("Colpito Light");
-                    if(PlayerController.isBoriousDash == true)
+                    if (PlayerController.isBoriousDash == true)
                     {
                         collision.GetComponentInParent<EnemyManager>().Life -= collision.GetComponentInParent<EnemyManager>().LightDamage;
                     }
                 }
                 if (collision.tag == "HeavyAttack")
                 {
+                    isTriggerOnlyOnce = true;
+                    GetComponent<PlayerController>().ResetTimerStaggered = 0;
+                    GetComponent<PlayerController>().PoisePlayer += 1;                                  //aumenta di 1
                     CurrentHealth -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
                     //CurrentLife -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
                     print("Colpito Heavy");
@@ -123,6 +130,8 @@ namespace SwordGame
                 }
                 //if (collision.tag == "SpecialAttack")                     //I nemici non hanno l'attacco speciale
                 //{
+                //    GetComponent<PlayerController>().ResetTimerStaggered = 0;
+                //    GetComponent<PlayerController>().PoisePlayer += 1;
                 //    currentHealth -= collision.GetComponent<EnemyManager>().SpecialDamage;
                 //    if (PlayerController.isBoriousDash == true)
                 //    {
@@ -132,8 +141,19 @@ namespace SwordGame
             }
             #endregion
         }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.tag == "LightAttack")
+            {
+                isTriggerOnlyOnce = false;
+            }
+            if (collision.tag == "HeavyAttack")
+            {
+                isTriggerOnlyOnce = false;
+            }
+        }
     }
-
+    
     public enum TypePlayer
     {
         FatKnight,

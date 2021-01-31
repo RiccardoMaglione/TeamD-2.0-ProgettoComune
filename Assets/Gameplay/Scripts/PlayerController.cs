@@ -47,8 +47,8 @@ namespace SwordGame
         Rigidbody2D rb;
         GameObject TempPlatform;
 
-        bool CanDashLeft = false;
-        bool CanDashRight = false;
+        public bool CanDashLeft = false;
+        public bool CanDashRight = false;
         [Tooltip("Value of start of timer for dash")]
         [ReadOnly] public float TimerDash = 0;
         [Tooltip("Value for limit timer of dash")]
@@ -63,6 +63,13 @@ namespace SwordGame
 
         public static bool isBoriousDash = false;
         //public bool isInAttack = false;
+
+        public int PoisePlayer;
+        public int MaxPoisePlayer;
+        public float TimerStaggered;
+        public bool isStaggered;
+        public float ResetTimerStaggered;
+        public float MaxResetTimerStaggered;
         #endregion
 
         void Start()
@@ -76,17 +83,25 @@ namespace SwordGame
         void Update()
         {
             StaticSpeed = ValueMovement.Speed;
+            Staggered();
             //if (isInAttack == false)
             //{
+            if(isStaggered == false)
+            {
                 PlayerMovement();
-                PlayerJump();
+                if(CanDashLeft == false && CanDashRight == false)
+                {
+                    PlayerJump();
+                }
                 Dash();
+            }
             //}
             //else
             //{
             //    rb.velocity = new Vector2(0, rb.velocity.y);
             //}
             ResetPlatform();
+            ResetStaggered();
         }
 
         #region Player - Move and Jump and Dash
@@ -169,6 +184,7 @@ namespace SwordGame
             {
                 CanDashLeft = true;
                 transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
+                EffectDash();
                 //if (TempSprite != null)
                 //    TempSprite.flipX = true;
             }
@@ -238,6 +254,29 @@ namespace SwordGame
                     break;
                 default:
                     break;
+            }
+        }
+
+        public void Staggered()
+        {
+            if(PoisePlayer >= MaxPoisePlayer)
+            {
+                isStaggered = true;
+                StartCoroutine(CooldownStaggered());
+            }
+        }
+        public IEnumerator CooldownStaggered()
+        {
+            yield return new WaitForSeconds(TimerStaggered);
+            isStaggered = false;
+        }
+
+        public void ResetStaggered()
+        {
+            ResetTimerStaggered += Time.deltaTime;
+            if (ResetTimerStaggered >= MaxResetTimerStaggered)
+            {
+                PoisePlayer = 0;
             }
         }
         #endregion
