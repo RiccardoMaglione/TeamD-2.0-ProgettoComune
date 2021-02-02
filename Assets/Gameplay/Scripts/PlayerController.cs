@@ -69,6 +69,7 @@ namespace SwordGame
         public bool isStaggered;
         public float ResetTimerStaggered;
         public float MaxResetTimerStaggered;
+        public bool CanDashJump;
         #endregion
 
         void Start()
@@ -101,6 +102,11 @@ namespace SwordGame
             //}
             ResetPlatform();
             ResetStaggered();
+            print("Grounded" + Grounded);
+            if(Grounded == true)
+            {
+                CanDashJump = true;
+            }
         }
 
         #region Player - Move and Jump and Dash
@@ -183,7 +189,7 @@ namespace SwordGame
         }
         public void Dash()          //Se il timerdash è maggiore del limit, dasha solo quando schiaccio e non perpetua
         {
-            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false)
+            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false && CanDashJump == true)
             {
                 CanDashLeft = true;
                 transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
@@ -193,7 +199,7 @@ namespace SwordGame
             }
             if (CanDashLeft == true && TimerDash <= LimitTimerDash)
             {
-                rb.velocity = new Vector2(-ValueMovement.Speed * 5, rb.velocity.y);
+                rb.velocity = new Vector2(-ValueMovement.Speed * 5, 0);
                 TimerDash += Time.deltaTime;
                 if (TimerDash >= LimitTimerDash)
                 {
@@ -203,7 +209,7 @@ namespace SwordGame
                 }
             }
 
-            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false)
+            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false && CanDashJump == true)
             {
                 transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
                 CanDashRight = true;
@@ -213,7 +219,7 @@ namespace SwordGame
             }
             if (CanDashRight == true && TimerDash <= LimitTimerDash)
             {
-                rb.velocity = new Vector2(ValueMovement.Speed * 5, rb.velocity.y);
+                rb.velocity = new Vector2(ValueMovement.Speed * 5, 0);
                 TimerDash += Time.deltaTime;
                 if (TimerDash >= LimitTimerDash)
                 {
@@ -237,6 +243,15 @@ namespace SwordGame
             isBoriousDash = false;
 
             TimerDash = 0;
+            if (rb.velocity.y == 0)
+            {
+                CanDashJump = true;
+                Grounded = true;
+            }
+            else
+            {
+                CanDashJump = false;
+            }
         }
 
         public void EffectDash()
