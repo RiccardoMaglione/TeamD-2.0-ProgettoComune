@@ -8,6 +8,8 @@ public class MenuManager : MonoBehaviour
     public GameObject options;
     public GameObject credits;
     public GameObject exitScreen;
+    public GameObject levelSelection;
+    public GameObject levelStats;
 
     public void GoToGameplay()
     {
@@ -39,6 +41,19 @@ public class MenuManager : MonoBehaviour
     {
         credits.SetActive(true);
         startingScreen.SetActive(false);
+    }
+
+    public void GoToLevelSelection()
+    {
+        levelSelection.SetActive(true);
+        startingScreen.SetActive(false);
+        levelStats.SetActive(false);
+    }
+
+    public void GoToLevelStats()
+    {
+        levelStats.SetActive(true);
+        levelSelection.SetActive(false);
     }
 
     public void QuitGame()
