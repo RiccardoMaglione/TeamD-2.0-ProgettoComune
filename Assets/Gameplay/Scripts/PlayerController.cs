@@ -192,6 +192,7 @@ namespace SwordGame
             if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false && CanDashJump == true)
             {
                 CanDashLeft = true;
+                GetComponent<Rigidbody2D>().gravityScale = 0.000001f;
                 transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
                 EffectDash();
                 //if (TempSprite != null)
@@ -212,6 +213,7 @@ namespace SwordGame
             if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false && CanDashJump == true)
             {
                 transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+                GetComponent<Rigidbody2D>().gravityScale = 0.000001f;
                 CanDashRight = true;
                 //if (TempSprite != null)
                 //    TempSprite.flipX = false;
@@ -235,7 +237,7 @@ namespace SwordGame
             yield return new WaitForSeconds(TimerCooldownDash);
             CanDashLeft = false;
             CanDashRight = false;
-
+            GetComponent<Rigidbody2D>().gravityScale = 1;
             PM.Invulnerability = false;
             if (DashColliderBabushka != null)
                 DashColliderBabushka.SetActive(false);
