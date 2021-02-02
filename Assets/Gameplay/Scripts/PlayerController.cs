@@ -70,6 +70,7 @@ namespace SwordGame
         public float ResetTimerStaggered;
         public float MaxResetTimerStaggered;
         public bool CanDashJump;
+        public bool GravityChange = true;
         #endregion
 
         void Start()
@@ -189,7 +190,7 @@ namespace SwordGame
         }
         public void Dash()          //Se il timerdash è maggiore del limit, dasha solo quando schiaccio e non perpetua
         {
-            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false && CanDashJump == true)
+            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false && CanDashJump == true && GravityChange == true)
             {
                 CanDashLeft = true;
                 GetComponent<Rigidbody2D>().gravityScale = 0.000001f;
@@ -210,7 +211,7 @@ namespace SwordGame
                 }
             }
 
-            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false && CanDashJump == true)
+            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false && CanDashJump == true && GravityChange == true)
             {
                 transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
                 GetComponent<Rigidbody2D>().gravityScale = 0.000001f;
@@ -234,10 +235,15 @@ namespace SwordGame
 
         public IEnumerator CooldownDash()
         {
+            GravityChange = false;
+            if (GravityChange == false)
+            {
+                GetComponent<Rigidbody2D>().gravityScale = 1f;
+                
+            }
             yield return new WaitForSeconds(TimerCooldownDash);
             CanDashLeft = false;
             CanDashRight = false;
-            GetComponent<Rigidbody2D>().gravityScale = 1;
             PM.Invulnerability = false;
             if (DashColliderBabushka != null)
                 DashColliderBabushka.SetActive(false);
@@ -254,6 +260,7 @@ namespace SwordGame
             {
                 CanDashJump = false;
             }
+            GravityChange = true;
         }
 
         public void EffectDash()
