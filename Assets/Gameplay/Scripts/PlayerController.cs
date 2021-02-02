@@ -153,9 +153,13 @@ namespace SwordGame
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (ValueJump.fallMultiplier - 1) * Time.deltaTime;
             }
-            else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+            else if (rb.velocity.y > 1 && !Input.GetButton("Jump"))
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (ValueJump.lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y < 6)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 0.01f);
             }
         }
         public void CalculateSpeed()
