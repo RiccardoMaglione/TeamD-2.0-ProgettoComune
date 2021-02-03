@@ -36,7 +36,9 @@ namespace SwordGame
         public StructMovement ValueMovement;
         public StructJump ValueJump;
 
+        [SerializeField]
         bool Grounded = true;
+        bool canJump;
         float waitTime;
         float tempSpeed;
         public static float StaticSpeed;
@@ -70,7 +72,10 @@ namespace SwordGame
         public float ResetTimerStaggered;
         public float MaxResetTimerStaggered;
         public bool CanDashJump;
+        public bool CanDash;
         public bool GravityChange = true;
+
+        public float velocityY;
         #endregion
 
         void Start()
@@ -83,6 +88,7 @@ namespace SwordGame
 
         void Update()
         {
+            velocityY = rb.velocity.y;
             StaticSpeed = ValueMovement.Speed;
             Staggered();
             //if (isInAttack == false)
@@ -104,9 +110,19 @@ namespace SwordGame
             ResetPlatform();
             ResetStaggered();
             print("Grounded" + Grounded);
-            if(Grounded == true)
+            if (Grounded == true)
             {
                 CanDashJump = true;
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                canJump = true;
+            }
+
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                CanDash = true;
             }
         }
 
@@ -151,10 +167,11 @@ namespace SwordGame
         }
         public void PlayerJump()
         {
-            if (Input.GetKey(KeyCode.Space) && Grounded == true && rb.velocity.y == 0)
+            if (Input.GetKey(KeyCode.Space) && Grounded == true && rb.velocity.y == 0 && canJump == true)
             {
                 rb.AddForce(Vector2.up * ValueJump.jumpForce, ForceMode2D.Impulse);
                 Grounded = false;
+                canJump = false;
             }
             if (rb.velocity.y < 0)
             {
@@ -190,9 +207,10 @@ namespace SwordGame
         }
         public void Dash()          //Se il timerdash è maggiore del limit, dasha solo quando schiaccio e non perpetua
         {
-            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashRight == false && CanDashJump == true && GravityChange == true)
+            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && CanDashRight == false && CanDashJump == true && GravityChange == true && CanDash == true)
             {
                 CanDashLeft = true;
+                CanDash = false;
                 GetComponent<Rigidbody2D>().gravityScale = 0.000001f;
                 transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
                 EffectDash();
@@ -211,11 +229,12 @@ namespace SwordGame
                 }
             }
 
-            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) && CanDashLeft == false && CanDashJump == true && GravityChange == true)
+            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && CanDashLeft == false && CanDashJump == true && GravityChange == true && CanDash == true)
             {
                 transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
                 GetComponent<Rigidbody2D>().gravityScale = 0.000001f;
                 CanDashRight = true;
+                CanDash = false;
                 //if (TempSprite != null)
                 //    TempSprite.flipX = false;
                 EffectDash();
@@ -238,10 +257,10 @@ namespace SwordGame
             GravityChange = false;
             if (GravityChange == false)
             {
-                GetComponent<Rigidbody2D>().gravityScale = 1f;
-                
+                GetComponent<Rigidbody2D>().gravityScale = ValueJump.fallMultiplier - 1;
             }
             yield return new WaitForSeconds(TimerCooldownDash);
+            GetComponent<Rigidbody2D>().gravityScale = 1;
             CanDashLeft = false;
             CanDashRight = false;
             PM.Invulnerability = false;
@@ -313,7 +332,10 @@ namespace SwordGame
         #region Collision
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Grounded = true;
+            if (rb.velocity.y == 0)
+            {
+                Grounded = true;
+            }
         }
         private void OnCollisionStay2D(Collision2D collision)
         {
