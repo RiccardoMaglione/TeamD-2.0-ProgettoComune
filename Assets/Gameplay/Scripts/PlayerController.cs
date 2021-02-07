@@ -332,10 +332,14 @@ namespace SwordGame
         #region Collision
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (rb.velocity.y == 0)
+            if (rb != null)
             {
-                Grounded = true;
+                if (rb.velocity.y == 0)
+                {
+                    Grounded = true;
+                }
             }
+
         }
         private void OnCollisionStay2D(Collision2D collision)
         {

@@ -64,8 +64,14 @@ namespace SwordGame
         private void Update()
         {
             print("3. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
-            HealthSlider.sliderBar.value = CurrentHealth;
-            EnergyBar.fillAmount = (float)CurrentEnergy / 100;
+            if(HealthSlider != null)
+            {
+                HealthSlider.sliderBar.value = CurrentHealth;
+            }
+            if(EnergyBar != null)
+            {
+                EnergyBar.fillAmount = (float)CurrentEnergy / 100;
+            }
             //LifeBar.fillAmount = (float)CurrentLife / 100;      //temp
             if (CurrentHealth <= 0)
             {
@@ -80,10 +86,12 @@ namespace SwordGame
         public void Initialize()
         {
             //CurrentEnegy = PlayerPrefs.GetInt("EnergyValue", 0);
-            EnergyBar.fillAmount = (float)CurrentEnergy / 100;
+            if (EnergyBar != null)
+                EnergyBar.fillAmount = (float)CurrentEnergy / 100;
             //LifeBar.fillAmount = (float)CurrentLife / 100;//temp
             //MaxEnergyStatic = MaxEnergy;
             print("1. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
+            if(HealthSlider!=null)
             HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
             print("2. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
         }

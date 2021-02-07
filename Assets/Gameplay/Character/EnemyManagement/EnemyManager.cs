@@ -68,7 +68,7 @@ public class EnemyManager : MonoBehaviour
     public int PercentuageAttack;
     [ReadOnly] public int random;                                          //Attack Bahaviour - Variabile per la pesca random per poi confrontare con la percentuale
     [Tooltip("Sarebbe la variabile che indica che il random può attivarsi")]
-    [ReadOnly] public bool CanAttack = true;                               //Attack Behaviour - Indica la nuova estrazione del valore random riferito alla percentuale della scelta dell'attacco
+    public bool CanAttack = true;                               //Attack Behaviour - Indica la nuova estrazione del valore random riferito alla percentuale della scelta dell'attacco
 
     [Space(10)]
     [Header("►  Value of damage of typology of attack - Value Management")]
@@ -129,18 +129,18 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-        Stunned();
-        Staggered();
+        //Stunned();
+        //Staggered();
 
         if(isStaggeredEnemy == false)
         {
-            Routine();
-            Attack();
+            //PatrolStateBehaviour();
+            //Attack();
         }
         
         CalculateDistance();
-        print("Stun" + timerStun);
-        ResetStaggeredEnemy();
+        //print("Stun" + timerStun);
+        //ResetStaggeredEnemy();
     }
 
     #region Method - IA - Enemy Behaviour
@@ -172,74 +172,77 @@ public class EnemyManager : MonoBehaviour
         }
     }
     #endregion
-    
+
     #region Movement Behaviour
-    public void Routine()
-    {
-        // If Enemy didn't reach last waypoint it can move
-        // If enemy reached last waypoint then it stops
-        if (WaypointIndex <= WaypointEnemy.Length - 1 && CanVisible == false && CanMove == true && isStun == false/* && CanMoveAttack == true*/)
-        {
-
-            // Move Enemy from current waypoint to the next one
-            // using MoveTowards method
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(WaypointEnemy[WaypointIndex].transform.position.x, transform.position.y), Speed * Time.deltaTime);
-            if(WaypointEnemy[WaypointIndex].transform.position.x > transform.position.x)
-            {
-                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);           //Destra
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);         //Sinistra
-            }
-            // If Enemy reaches position of waypoint he walked towards
-            // then waypointIndex is increased by 1
-            // and Enemy starts to walk to the next waypoint
-            if (transform.position.x == WaypointEnemy[WaypointIndex].transform.position.x)
-            {
-                WaypointIndex += 1;
-                if (WaypointIndex == WaypointEnemy.Length)
-                {
-                    WaypointIndex = 0;
-                }
-            }
-        }
-        if(CanVisible == true && isStun == false/* && CanMoveAttack == true*/)
-        {
-            if(PlayerEnemy != null)
-            {
-                if (PlayerEnemy.transform.position.x + 1 > transform.position.x)
-                {
-                    transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);           //Destra
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerEnemy.transform.position.x - 1, transform.position.y), Speed * Time.deltaTime);
-                }
-                else if(PlayerEnemy.transform.position.x - 1 < transform.position.x)
-                {
-                    transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);         //Sinistra
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerEnemy.transform.position.x + 1, transform.position.y), Speed * Time.deltaTime);
-                }
-
-
-                //In caso sfarfallasse il nemico
-                if(transform.position.x == PlayerEnemy.transform.position.x + 1)
-                {
-                    CanMove = false;
-                }
-                else
-                {
-                    CanMove = true;
-                }
-                if(transform.position.x == PlayerEnemy.transform.position.x - 1)
-                {
-                    CanMove = false;
-                }
-                else
-                {
-                    CanMove = true;
-                }
-            }
-        }
-    }
+    //public void PatrolStateBehaviour()
+    //{
+    //    // If Enemy didn't reach last waypoint it can move
+    //    // If enemy reached last waypoint then it stops
+    //    if (WaypointIndex <= WaypointEnemy.Length - 1 && CanVisible == false && CanMove == true && isStun == false/* && CanMoveAttack == true*/)
+    //    {
+    //
+    //        // Move Enemy from current waypoint to the next one
+    //        // using MoveTowards method
+    //        transform.position = Vector2.MoveTowards(transform.position, new Vector2(WaypointEnemy[WaypointIndex].transform.position.x, transform.position.y), Speed * Time.deltaTime);
+    //        if (WaypointEnemy[WaypointIndex].transform.position.x > transform.position.x)
+    //        {
+    //            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);           //Destra
+    //        }
+    //        else
+    //        {
+    //            transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);         //Sinistra
+    //        }
+    //        // If Enemy reaches position of waypoint he walked towards
+    //        // then waypointIndex is increased by 1
+    //        // and Enemy starts to walk to the next waypoint
+    //        if (transform.position.x == WaypointEnemy[WaypointIndex].transform.position.x)
+    //        {
+    //            WaypointIndex += 1;
+    //            if (WaypointIndex == WaypointEnemy.Length)
+    //            {
+    //                WaypointIndex = 0;
+    //            }
+    //        }
+    //    }
+    //}
+    //public void FollowStateBehaviour()
+    //{
+    //    if(CanVisible == true && isStun == false/* && CanMoveAttack == true*/)
+    //    {
+    //        if(PlayerEnemy != null)
+    //        {
+    //            if (PlayerEnemy.transform.position.x + 1 > transform.position.x)
+    //            {
+    //                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);           //Destra
+    //                transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerEnemy.transform.position.x - 1, transform.position.y), Speed * Time.deltaTime);
+    //            }
+    //            else if(PlayerEnemy.transform.position.x - 1 < transform.position.x)
+    //            {
+    //                transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);         //Sinistra
+    //                transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerEnemy.transform.position.x + 1, transform.position.y), Speed * Time.deltaTime);
+    //            }
+    //
+    //
+    //            //In caso sfarfallasse il nemico
+    //            if(transform.position.x == PlayerEnemy.transform.position.x + 1)
+    //            {
+    //                CanMove = false;
+    //            }
+    //            else
+    //            {
+    //                CanMove = true;
+    //            }
+    //            if(transform.position.x == PlayerEnemy.transform.position.x - 1)
+    //            {
+    //                CanMove = false;
+    //            }
+    //            else
+    //            {
+    //                CanMove = true;
+    //            }
+    //        }
+    //    }
+    //}
     #endregion
 
     #region Attack Behaviour
@@ -467,6 +470,7 @@ public class EnemyManager : MonoBehaviour
         if(collision.tag == "Player")
         {
             CanVisible = true;
+            GetComponent<Animator>().SetBool("IsFollowing", true);
         }
     }
 
@@ -475,6 +479,7 @@ public class EnemyManager : MonoBehaviour
         if (collision.tag == "Player")
         {
             CanVisible = false;
+            GetComponent<Animator>().SetBool("IsFollowing", false);
         }
     }
     #endregion

@@ -75,11 +75,16 @@ namespace SwordGame
                     PlayerDetect.gameObject.tag = "Enemy";
                     PlayerDetectArray[PlayerDetectArray.Count-1].gameObject.tag = "Player";
 
+                    PlayerDetect.GetComponent<Animator>().enabled = true;
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().enabled = false;
+                    
                     PlayerDetect.GetComponent<EnemyManager>().enabled = true;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyManager>().enabled = false;
 
+
                     PlayerDetect.GetComponent<PlayerManager>().enabled = false;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().enabled = true;
+                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().HealthSlider != null)
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().MaxHealth);
 
                     PlayerDetect.GetComponent<PlayerInput>().enabled = false;
@@ -150,6 +155,9 @@ namespace SwordGame
 
                     gameObject.SetActive(false);
                     gameObject.SetActive(true);
+                    
+                    PlayerDetect.GetComponent<Animator>().SetBool("CanPossession", true);
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().SetBool("CanPossession", true);
                 }
             }
             #endregion
@@ -195,7 +203,7 @@ namespace SwordGame
             {
                 PlayerDetect = null;
                 GetComponent<EnemyManager>().PlayerEnemy = null;
-
+                
                 GetComponent<EnemyManager>().LightAttackCollider.SetActive(false);
                 GetComponent<EnemyManager>().HeavyAttackCollider.SetActive(false);
                 GetComponent<EnemyManager>().CanMove = true;
@@ -214,8 +222,8 @@ namespace SwordGame
                     GetComponent<EnemyManager>().CanReset = false;
                     GetComponent<EnemyManager>().CanAttack = true;
                 }
-
-
+        
+        
                 if (PromptCommand != null)
                 {
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
@@ -223,8 +231,8 @@ namespace SwordGame
                     {
                         if(go.gameObject != go.GetComponent<PlayerController>().enabled)
                         {
-                            go.gameObject.SetActive(false);
-                            go.gameObject.SetActive(true);
+                            //go.gameObject.SetActive(false);
+                            //go.gameObject.SetActive(true);
                         }
                     }
                     PromptCommand.SetActive(false);
