@@ -13,9 +13,9 @@ public class HeavyAttackState : StateMachineBehaviour
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        #region HeavyAttack
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    #region HeavyAttack
         //animator.SetFloat("TotalTimer", animator.GetFloat("TotalTimer") + Time.deltaTime);
 
         //animator.GetComponent<EnemyManager>().ActivateDifferentCicleHeavy();
@@ -24,8 +24,8 @@ public class HeavyAttackState : StateMachineBehaviour
         //{
         //    //animator.SetBool("CanAttack", false);
         //}
-        #endregion
-    }
+        //#endregion
+    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

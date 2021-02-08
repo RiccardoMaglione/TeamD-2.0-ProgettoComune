@@ -119,61 +119,114 @@ public class EnemyManager : MonoBehaviour
     public float TimerStaggeredEnemy;
     public float ResetTimerStaggeredEnemy;
     public float MaxResetTimerStaggeredEnemy;
+
+
+    [Space(10)]
+    [Header("AI Animation - State Machine Behaviour - Speed Management")]
+    [Space(20)]
+    public int IdleAnimClipSpeed = 10;
+    public int PatrolAnimClipSpeed = 1;
+    public int FollowAnimClipSpeed = 1;
+    public int LightAttackAnimClipSpeed = 1;
+    public int LightRecoveryAnimClipSpeed = 1;
+    public int HeavyAttackAnimClipSpeed = 1;
+    public int HeavyRecoveryAnimClipSpeed = 1;
+    public int DamageAnimClipSpeed = 1;
+    public int StunAnimClipSpeed = 1;
+    public int StaggerAnimClipSpeed = 1;
+    public int PossessionAnimClipSpeed = 1;
+    public int DeathAnimClipSpeed = 1;
+
+    public void InitializeSpeedAnimation()
+    {
+        GetComponent<Animator>().SetFloat("IdleSpeed", IdleAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("IdlePatrol", PatrolAnimClipSpeed);
+    }
+
+
+
+
+
     #endregion
     #endregion
 
     private void Start()
     {
         timerStun = 0;
+        InitializeSpeedAnimation();
     }
 
     void Update()
     {
+        #region Don't Active - Update
         //Stunned();
         //Staggered();
-
-        if(isStaggeredEnemy == false)
-        {
-            //PatrolStateBehaviour();
-            //Attack();
-        }
-        
-        CalculateDistance();
+        //
+        //if(isStaggeredEnemy == false)
+        //{
+        //  //PatrolStateBehaviour();
+        //  //Attack();
+        //}
+        //
         //print("Stun" + timerStun);
         //ResetStaggeredEnemy();
+        #endregion
+
+        CalculateDistance();
     }
 
     #region Method - IA - Enemy Behaviour
-    
-    #region Life Behaviour
-    public void Stunned()
+    #region Attack Behaviour
+    public void CalculateDistance()
     {
-        if (Life <= 0)
+        if (PlayerEnemy != null)
         {
-            isStun = true;
-            CanMove = false;
-            GetComponent<SpriteRenderer>().color = Color.red;
-            if (isStun == true && isPossessed == false)
+            float Distance = Vector2.Distance(gameObject.transform.position, PlayerEnemy.transform.position);
+            print("Distance" + Distance);
+            if (Distance >= 2.3f)       //Il 2.3f sarebbe il possession radius
             {
-                timerStun += Time.deltaTime;
-                if (CountHit >= MaxCountHit)
-                {
-                    gameObject.SetActive(false);
-                    print("Causato dal count stun");
-                    //Destroy(this.gameObject);
-                }
-                if (timerStun >= DurationStun)
-                {
-                    gameObject.SetActive(false);
-                    print("Causato dal timer stun");
-                    //Destroy(this.gameObject);
-                }
+                CanReset = true;
+            }
+            else
+            {
+                CanReset = false;
             }
         }
     }
     #endregion
+    #endregion
 
-    #region Movement Behaviour
+    #region Don't Active Method - IA - Enemy Behaviour
+
+    #region Don't Active - Life Behaviour
+    //public void Stunned()
+    //{
+    //    if (Life <= 0)
+    //    {
+    //        isStun = true;
+    //        CanMove = false;
+    //        GetComponent<SpriteRenderer>().color = Color.red;
+    //        if (isStun == true && isPossessed == false)
+    //        {
+    //            timerStun += Time.deltaTime;
+    //            if (CountHit >= MaxCountHit)
+    //            {
+    //                gameObject.SetActive(false);
+    //                print("Causato dal count stun");
+    //                //Destroy(this.gameObject);
+    //            }
+    //            if (timerStun >= DurationStun)
+    //            {
+    //                gameObject.SetActive(false);
+    //                print("Causato dal timer stun");
+    //                //Destroy(this.gameObject);
+    //            }
+    //        }
+    //    }
+    //}
+    #endregion
+
+    #region Don't Active - Movement Behaviour
     //public void PatrolStateBehaviour()
     //{
     //    // If Enemy didn't reach last waypoint it can move
@@ -245,223 +298,207 @@ public class EnemyManager : MonoBehaviour
     //}
     #endregion
 
-    #region Attack Behaviour
-    public void Attack()
-    {
-        if(CanAttack == true)
-        {
-            random = Random.Range(0, 101);
-            print("Random"+random);
-            CanAttack = false;
-        }
-        if(CanVisible == true && isStun == false)
-        {
-            //CanMoveAttack = false;                  //Per non muoversi durante l'attacco, potrebbe cambiare posizione
-            if (random <= PercentuageAttack)
-            {
-                ActivateDifferentCicleLight();
-            }
-            else
-            {
-                ActivateDifferentCicleHeavy();
-            }
-        }
-        else
-        {
-            //CanMoveAttack = true;
-        }
-    }
-    public void ActivateDifferentCicleLight()
-    {
-        if (FirstCycleLight == true)                                                                //Se siamo al primo ciclo di attacco
-        {
-            InitialTimerLight += Time.deltaTime;                                                    //Faccio partire il timer initiale di attesa per l'attacco
+    #region Don't Active - Attack Behaviour
+    //public void Attack()
+    //{
+    //    if(CanAttack == true)
+    //    {
+    //        random = Random.Range(0, 101);
+    //        print("Random"+random);
+    //        CanAttack = false;
+    //    }
+    //    if(CanVisible == true && isStun == false)
+    //    {
+    //        //CanMoveAttack = false;                  //Per non muoversi durante l'attacco, potrebbe cambiare posizione
+    //        if (random <= PercentuageAttack)
+    //        {
+    //            ActivateDifferentCicleLight();
+    //        }
+    //        else
+    //        {
+    //            ActivateDifferentCicleHeavy();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //CanMoveAttack = true;
+    //    }
+    //}
+    //public void ActivateDifferentCicleLight()
+    //{
+    //    if (FirstCycleLight == true)                                                                //Se siamo al primo ciclo di attacco
+    //    {
+    //        InitialTimerLight += Time.deltaTime;                                                    //Faccio partire il timer initiale di attesa per l'attacco
+    //
+    //        //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
+    //
+    //        if (InitialTimerLight >= MaxInitialTimerLight)                                          //Se il timer iniziale raggiunge il valore max, vado ad attivare l'attacco - Collider
+    //        {
+    //            //StartAnimation, probabile un if per non mandarlo in loop che si va a disattivare nell'evento dopo faccio partire il cooldown
+    //            TimerAttackAnimation += Time.deltaTime;
+    //            if(TimerAttackAnimation >= MaxTimerAttackAnimation)                //Dopo cooldown e inizio animazione parte il blocco dei movimento //Qua faccio partire il timer per arrivare al culmine dell'animazione e dopo di questo setto a falso il cooldown 
+    //            {
+    //                LightAttackCollider.SetActive(true);                                                //Attivo il collider dell'attacco - Attivo attacco
+    //                DeactiveColliderTimerLight += Time.deltaTime;                                       //Faccio partire il timer per disattivare il collider, quindi indica la durata di quando c'è il collider acceso
+    //            }
+    //
+    //            if(DeactiveColliderTimerLight >= MaxDeactiveColliderTimerLight)                     //Se il timer di disattiazione raggiunge il valore max, vado a disattivare l'attacco - Collider
+    //            {
+    //                LightAttackCollider.SetActive(false);                                           //Disattivo il collider dell'attacco - Disattivo attaco
+    //                FirstCycleLight = false;                                                        //Setto a falso il primo ciclo, quindi indica la fine di questo ciclo
+    //                InitialTimerLight = 0;                                                          //Resetto il timer iniziale a 0
+    //                DeactiveColliderTimerLight = 0;                                                 //Resetto il timer di disattivazione a 0
+    //                TimerAttackAnimation = 0;
+    //            }
+    //        }
+    //    }
+    //    if (FirstCycleLight == false && CooldownLight == false)                                     //Se il primo ciclo è falso, quindi ci troviamo dal secondo in poi, e non siamo ancora nel cooldown e/o non è finito
+    //    {
+    //        CooldownTimerLight += Time.deltaTime;                                                   //Faccio partire il timer del cooldown per ripetere l'attacco
+    //        
+    //        //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
+    //        
+    //        if(CooldownTimerLight >= MaxCooldownTimerLight)                                         //Se il timer cooldown raggiunge il valore max, indica che il cooldown è finito e quindi vado ad attivare l'attacco
+    //        {
+    //            //StartAnimation, probabile un if per non mandarlo in loop che si va a disattivare nell'evento dopo faccio partire il cooldown
+    //            TimerAttackAnimation += Time.deltaTime; 
+    //            if(TimerAttackAnimation >= MaxTimerAttackAnimation)//Dopo cooldown e inizio animazione parte il blocco dei movimento //Qua faccio partire il timer per arrivare al culmine dell'animazione e dopo di questo setto a falso il cooldown 
+    //            {
+    //                LightAttackCollider.SetActive(true);                                                //Attivo il collider dell'attacco - Attivo attacco
+    //                CooldownLight = true;                                                               //Questa booleana indica che abbiamo finito il cooldown e che al momento non ci dobbiamo rientrare
+    //                DeactiveColliderTimerLight = 0;                                                     //Resetto il timer di disattivazione del collider a 0
+    //                TimerAttackAnimation = 0;
+    //            }
+    //        }
+    //
+    //    }
+    //    DeactiveColliderTimerLight += Time.deltaTime;                                               //Faccio partire il timer di disattivazione del collider
+    //    if (DeactiveColliderTimerLight >= MaxDeactiveColliderTimerLight && CooldownLight == true)   //Se il timer di disattivazione raggiunge il valore max e siamo fuori dal cooldown
+    //    {
+    //        LightAttackCollider.SetActive(false);                                                   //Disattivo il collider dell'attacco - Disattivo attaco
+    //        CooldownLight = false;                                                                  //Setto a falso la variabile del cooldown indicando l'inizio del cooldown                   //Questo visto che indica l'inizio del cooldown, va a fine animazione, quindi tramite l'evento
+    //        CooldownTimerLight = 0;                                                                 //Resetto il timer del cooldown a 0
+    //        DeactiveColliderTimerLight = 0;                                                         //Resetto il timer di disattivazione a 0
+    //        CanAttack = true;                                                                       //Resetto la possibilità di randomizer
+    //        //CanMoveAttack = true;
+    //    }
+    //}
+    //public void ActivateDifferentCicleHeavy()
+    //{
+    //    if (FirstCycleHeavy == true)                                                                //Se siamo al primo ciclo di attacco
+    //    {
+    //        InitialTimerHeavy += Time.deltaTime;                                                    //Faccio partire il timer initiale di attesa per l'attacco
+    //
+    //        //Non più //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
+    //
+    //        if (InitialTimerHeavy >= MaxInitialTimerHeavy)                                          //Se il timer iniziale raggiunge il valore max, vado ad attivare l'attacco - Collider
+    //        {
+    //            //StartAnimation, probabile un if per non mandarlo in loop che si va a disattivare nell'evento dopo faccio partire il cooldown
+    //            TimerAttackAnimation += Time.deltaTime;
+    //            if (TimerAttackAnimation >= MaxTimerAttackAnimation)                                    //Dopo cooldown e inizio animazione parte il blocco dei movimento //Qua faccio partire il timer per arrivare al culmine dell'animazione e dopo di questo setto a falso il cooldown 
+    //            {   
+    //                LightAttackCollider.SetActive(true);                                            //Attivo il collider dell'attacco - Attivo attacco
+    //                DeactiveColliderTimerHeavy += Time.deltaTime;                                   //Faccio partire il timer per disattivare il collider, quindi indica la durata di quando c'è il collider acceso
+    //            }
+    //            if (DeactiveColliderTimerHeavy >= MaxDeactiveColliderTimerHeavy)                    //Se il timer di disattiazione raggiunge il valore max, vado a disattivare l'attacco - Collider
+    //            {
+    //                LightAttackCollider.SetActive(false);                                           //Disattivo il collider dell'attacco - Disattivo attaco
+    //                FirstCycleHeavy = false;                                                        //Setto a falso il primo ciclo, quindi indica la fine di questo ciclo
+    //                InitialTimerHeavy = 0;                                                          //Resetto il timer iniziale a 0
+    //                DeactiveColliderTimerHeavy = 0;                                                 //Resetto il timer di disattivazione a 0
+    //            }
+    //        }
+    //    }
+    //    if (FirstCycleHeavy == false && CooldownHeavy == false)                                     //Se il primo ciclo è falso, quindi ci troviamo dal secondo in poi, e non siamo ancora nel cooldown e/o non è finito
+    //    {
+    //        CooldownTimerHeavy += Time.deltaTime;                                                   //Faccio partire il timer del cooldown per ripetere l'attacco
+    //
+    //        //Non più //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
+    //
+    //        if (CooldownTimerHeavy >= MaxCooldownTimerHeavy)                                        //Se il timer cooldown raggiunge il valore max, indica che il cooldown è finito e quindi vado ad attivare l'attacco
+    //        {
+    //            //StartAnimation, probabile un if per non mandarlo in loop che si va a disattivare nell'evento dopo faccio partire il cooldown
+    //            TimerAttackAnimation += Time.deltaTime;
+    //            if (TimerAttackAnimation >= MaxTimerAttackAnimation)                                    //Dopo cooldown e inizio animazione parte il blocco dei movimento //Qua faccio partire il timer per arrivare al culmine dell'animazione e dopo di questo setto a falso il cooldown 
+    //            {
+    //                HeavyAttackCollider.SetActive(true);                                            //Attivo il collider dell'attacco - Attivo attacco
+    //                CooldownHeavy = true;                                                           //Questa booleana indica che abbiamo finito il cooldown e che al momento non ci dobbiamo rientrare
+    //                DeactiveColliderTimerHeavy = 0;                                                 //Resetto il timer di disattivazione del collider a 0
+    //                TimerAttackAnimation = 0;
+    //            }
+    //        }
+    //    }
+    //    DeactiveColliderTimerHeavy += Time.deltaTime;                                               //Faccio partire il timer di disattivazione del collider
+    //    if (DeactiveColliderTimerHeavy >= MaxDeactiveColliderTimerHeavy && CooldownHeavy == true)   //Se il timer di disattivazione raggiunge il valore max e siamo fuori dal cooldown
+    //    {
+    //        HeavyAttackCollider.SetActive(false);                                                   //Disattivo il collider dell'attacco - Disattivo attaco
+    //        CooldownHeavy = false;                                                                  //Setto a falso la variabile del cooldown indicando l'inizio del cooldown
+    //        CooldownTimerHeavy = 0;                                                                 //Resetto il timer del cooldown a 0
+    //        DeactiveColliderTimerHeavy = 0;                                                         //Resetto il timer di disattivazione a 0
+    //        CanAttack = true;                                                                       //Resetto la possibilità di randomizer
+    //        //CanMoveAttack = true;
+    //    }
+    //}
 
-            //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
-
-            if (InitialTimerLight >= MaxInitialTimerLight)                                          //Se il timer iniziale raggiunge il valore max, vado ad attivare l'attacco - Collider
-            {
-                //StartAnimation, probabile un if per non mandarlo in loop che si va a disattivare nell'evento dopo faccio partire il cooldown
-                TimerAttackAnimation += Time.deltaTime;
-                if(TimerAttackAnimation >= MaxTimerAttackAnimation)                //Dopo cooldown e inizio animazione parte il blocco dei movimento //Qua faccio partire il timer per arrivare al culmine dell'animazione e dopo di questo setto a falso il cooldown 
-                {
-                    LightAttackCollider.SetActive(true);                                                //Attivo il collider dell'attacco - Attivo attacco
-                    DeactiveColliderTimerLight += Time.deltaTime;                                       //Faccio partire il timer per disattivare il collider, quindi indica la durata di quando c'è il collider acceso
-                }
-
-                if(DeactiveColliderTimerLight >= MaxDeactiveColliderTimerLight)                     //Se il timer di disattiazione raggiunge il valore max, vado a disattivare l'attacco - Collider
-                {
-                    LightAttackCollider.SetActive(false);                                           //Disattivo il collider dell'attacco - Disattivo attaco
-                    FirstCycleLight = false;                                                        //Setto a falso il primo ciclo, quindi indica la fine di questo ciclo
-                    InitialTimerLight = 0;                                                          //Resetto il timer iniziale a 0
-                    DeactiveColliderTimerLight = 0;                                                 //Resetto il timer di disattivazione a 0
-                    TimerAttackAnimation = 0;
-                }
-            }
-        }
-        if (FirstCycleLight == false && CooldownLight == false)                                     //Se il primo ciclo è falso, quindi ci troviamo dal secondo in poi, e non siamo ancora nel cooldown e/o non è finito
-        {
-            CooldownTimerLight += Time.deltaTime;                                                   //Faccio partire il timer del cooldown per ripetere l'attacco
-            
-            //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
-            
-            if(CooldownTimerLight >= MaxCooldownTimerLight)                                         //Se il timer cooldown raggiunge il valore max, indica che il cooldown è finito e quindi vado ad attivare l'attacco
-            {
-                //StartAnimation, probabile un if per non mandarlo in loop che si va a disattivare nell'evento dopo faccio partire il cooldown
-                TimerAttackAnimation += Time.deltaTime; 
-                if(TimerAttackAnimation >= MaxTimerAttackAnimation)//Dopo cooldown e inizio animazione parte il blocco dei movimento //Qua faccio partire il timer per arrivare al culmine dell'animazione e dopo di questo setto a falso il cooldown 
-                {
-                    LightAttackCollider.SetActive(true);                                                //Attivo il collider dell'attacco - Attivo attacco
-                    CooldownLight = true;                                                               //Questa booleana indica che abbiamo finito il cooldown e che al momento non ci dobbiamo rientrare
-                    DeactiveColliderTimerLight = 0;                                                     //Resetto il timer di disattivazione del collider a 0
-                    TimerAttackAnimation = 0;
-                }
-            }
-
-        }
-        DeactiveColliderTimerLight += Time.deltaTime;                                               //Faccio partire il timer di disattivazione del collider
-        if (DeactiveColliderTimerLight >= MaxDeactiveColliderTimerLight && CooldownLight == true)   //Se il timer di disattivazione raggiunge il valore max e siamo fuori dal cooldown
-        {
-            LightAttackCollider.SetActive(false);                                                   //Disattivo il collider dell'attacco - Disattivo attaco
-            CooldownLight = false;                                                                  //Setto a falso la variabile del cooldown indicando l'inizio del cooldown                   //Questo visto che indica l'inizio del cooldown, va a fine animazione, quindi tramite l'evento
-            CooldownTimerLight = 0;                                                                 //Resetto il timer del cooldown a 0
-            DeactiveColliderTimerLight = 0;                                                         //Resetto il timer di disattivazione a 0
-            CanAttack = true;                                                                       //Resetto la possibilità di randomizer
-            //CanMoveAttack = true;
-        }
-    }
-    public void ActivateDifferentCicleHeavy()
-    {
-        if (FirstCycleHeavy == true)                                                                //Se siamo al primo ciclo di attacco
-        {
-            InitialTimerHeavy += Time.deltaTime;                                                    //Faccio partire il timer initiale di attesa per l'attacco
-
-            //Non più //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
-
-            if (InitialTimerHeavy >= MaxInitialTimerHeavy)                                          //Se il timer iniziale raggiunge il valore max, vado ad attivare l'attacco - Collider
-            {
-                //StartAnimation, probabile un if per non mandarlo in loop che si va a disattivare nell'evento dopo faccio partire il cooldown
-                TimerAttackAnimation += Time.deltaTime;
-                if (TimerAttackAnimation >= MaxTimerAttackAnimation)                                    //Dopo cooldown e inizio animazione parte il blocco dei movimento //Qua faccio partire il timer per arrivare al culmine dell'animazione e dopo di questo setto a falso il cooldown 
-                {   
-                    LightAttackCollider.SetActive(true);                                            //Attivo il collider dell'attacco - Attivo attacco
-                    DeactiveColliderTimerHeavy += Time.deltaTime;                                   //Faccio partire il timer per disattivare il collider, quindi indica la durata di quando c'è il collider acceso
-                }
-                if (DeactiveColliderTimerHeavy >= MaxDeactiveColliderTimerHeavy)                    //Se il timer di disattiazione raggiunge il valore max, vado a disattivare l'attacco - Collider
-                {
-                    LightAttackCollider.SetActive(false);                                           //Disattivo il collider dell'attacco - Disattivo attaco
-                    FirstCycleHeavy = false;                                                        //Setto a falso il primo ciclo, quindi indica la fine di questo ciclo
-                    InitialTimerHeavy = 0;                                                          //Resetto il timer iniziale a 0
-                    DeactiveColliderTimerHeavy = 0;                                                 //Resetto il timer di disattivazione a 0
-                }
-            }
-        }
-        if (FirstCycleHeavy == false && CooldownHeavy == false)                                     //Se il primo ciclo è falso, quindi ci troviamo dal secondo in poi, e non siamo ancora nel cooldown e/o non è finito
-        {
-            CooldownTimerHeavy += Time.deltaTime;                                                   //Faccio partire il timer del cooldown per ripetere l'attacco
-
-            //Non più //Qua andrà messo un if in cui quando il timer del cooldown raggiunge un determinato valore, attiverà l'animazione di attacco
-
-            if (CooldownTimerHeavy >= MaxCooldownTimerHeavy)                                        //Se il timer cooldown raggiunge il valore max, indica che il cooldown è finito e quindi vado ad attivare l'attacco
-            {
-                //StartAnimation, probabile un if per non mandarlo in loop che si va a disattivare nell'evento dopo faccio partire il cooldown
-                TimerAttackAnimation += Time.deltaTime;
-                if (TimerAttackAnimation >= MaxTimerAttackAnimation)                                    //Dopo cooldown e inizio animazione parte il blocco dei movimento //Qua faccio partire il timer per arrivare al culmine dell'animazione e dopo di questo setto a falso il cooldown 
-                {
-                    HeavyAttackCollider.SetActive(true);                                            //Attivo il collider dell'attacco - Attivo attacco
-                    CooldownHeavy = true;                                                           //Questa booleana indica che abbiamo finito il cooldown e che al momento non ci dobbiamo rientrare
-                    DeactiveColliderTimerHeavy = 0;                                                 //Resetto il timer di disattivazione del collider a 0
-                    TimerAttackAnimation = 0;
-                }
-            }
-        }
-        DeactiveColliderTimerHeavy += Time.deltaTime;                                               //Faccio partire il timer di disattivazione del collider
-        if (DeactiveColliderTimerHeavy >= MaxDeactiveColliderTimerHeavy && CooldownHeavy == true)   //Se il timer di disattivazione raggiunge il valore max e siamo fuori dal cooldown
-        {
-            HeavyAttackCollider.SetActive(false);                                                   //Disattivo il collider dell'attacco - Disattivo attaco
-            CooldownHeavy = false;                                                                  //Setto a falso la variabile del cooldown indicando l'inizio del cooldown
-            CooldownTimerHeavy = 0;                                                                 //Resetto il timer del cooldown a 0
-            DeactiveColliderTimerHeavy = 0;                                                         //Resetto il timer di disattivazione a 0
-            CanAttack = true;                                                                       //Resetto la possibilità di randomizer
-            //CanMoveAttack = true;
-        }
-    }
-
-    public void EndAttackAnimationLight()
-    {
-        //if(FirstCycleLight == true)
-        //{
-        //    CooldownLight = true;
-        //    DeactiveColliderTimerLight = 0;
-        //    TimerAttackAnimation = 0;
-        //}
-        //else if(FirstCycleLight == false)
-        //{
-        //    LightAttackCollider.SetActive(false);
-        //    CooldownLight = false;
-        //    CooldownTimerLight = 0;
-        //    DeactiveColliderTimerLight = 0;
-        //    CanAttack = true;
-        //}
-    }
-    public void EndAttackAnimationHeavy()
-    {
-        //if(FirstCycleHeavy == true)
-        //{
-        //    FirstCycleHeavy = false;
-        //    InitialTimerHeavy = 0;
-        //    DeactiveColliderTimerHeavy = 0;
-        //}
-        //else if(FirstCycleHeavy == false)
-        //{
-        //    CooldownHeavy = false;
-        //    CooldownTimerHeavy = 0;
-        //    DeactiveColliderTimerHeavy = 0;
-        //    CanAttack = true;
-        //}
-    }
-
-    public void CalculateDistance()
-    {
-        if (PlayerEnemy != null)
-        {
-            float Distance = Vector2.Distance(gameObject.transform.position, PlayerEnemy.transform.position);
-            print("Distance" + Distance);
-            if (Distance >= 2.3f)       //Il 2.3f sarebbe il possession radius
-            {
-                CanReset = true;
-            }
-            else
-            {
-                CanReset = false;
-            }
-        }
-    }
+    //public void EndAttackAnimationLight()
+    //{
+    //    //if(FirstCycleLight == true)
+    //    //{
+    //    //    CooldownLight = true;
+    //    //    DeactiveColliderTimerLight = 0;
+    //    //    TimerAttackAnimation = 0;
+    //    //}
+    //    //else if(FirstCycleLight == false)
+    //    //{
+    //    //    LightAttackCollider.SetActive(false);
+    //    //    CooldownLight = false;
+    //    //    CooldownTimerLight = 0;
+    //    //    DeactiveColliderTimerLight = 0;
+    //    //    CanAttack = true;
+    //    //}
+    //}
+    //public void EndAttackAnimationHeavy()
+    //{
+    //    //if(FirstCycleHeavy == true)
+    //    //{
+    //    //    FirstCycleHeavy = false;
+    //    //    InitialTimerHeavy = 0;
+    //    //    DeactiveColliderTimerHeavy = 0;
+    //    //}
+    //    //else if(FirstCycleHeavy == false)
+    //    //{
+    //    //    CooldownHeavy = false;
+    //    //    CooldownTimerHeavy = 0;
+    //    //    DeactiveColliderTimerHeavy = 0;
+    //    //    CanAttack = true;
+    //    //}
+    //}
     #endregion
 
-    #region Staggered
-    public void Staggered()
-    {
-        if (CountPoiseEnemy >= MaxCountPoiseEnemy)
-        {
-            isStaggeredEnemy = true;
-            StartCoroutine(CooldownStaggeredEnemy());
-        }
-    }
-    public IEnumerator CooldownStaggeredEnemy()
-    {
-        yield return new WaitForSeconds(TimerStaggeredEnemy);
-        isStaggeredEnemy = false;
-    }
-    public void ResetStaggeredEnemy()
-    {
-        ResetTimerStaggeredEnemy += Time.deltaTime;
-        if (ResetTimerStaggeredEnemy >= MaxResetTimerStaggeredEnemy)
-        {
-            CountPoiseEnemy = 0;
-        }
-    }
+    #region Don't Active - Staggered
+    //public void Staggered()
+    //{
+    //    if (CountPoiseEnemy >= MaxCountPoiseEnemy)
+    //    {
+    //        isStaggeredEnemy = true;
+    //        StartCoroutine(CooldownStaggeredEnemy());
+    //    }
+    //}
+    //public IEnumerator CooldownStaggeredEnemy()
+    //{
+    //    yield return new WaitForSeconds(TimerStaggeredEnemy);
+    //    isStaggeredEnemy = false;
+    //}
+    //public void ResetStaggeredEnemy()
+    //{
+    //    ResetTimerStaggeredEnemy += Time.deltaTime;
+    //    if (ResetTimerStaggeredEnemy >= MaxResetTimerStaggeredEnemy)
+    //    {
+    //        CountPoiseEnemy = 0;
+    //    }
+    //}
     #endregion
+
     #endregion
 
     #region Trigger Zone
