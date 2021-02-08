@@ -14,16 +14,16 @@ public class EnemyManager : MonoBehaviour
     [Header("   ►  First Method - From stun to destoy")]
     [Header("~~~ Stun Sub-Behaviour ~~~ Value Management")]
     [Space(10)]
-    [ReadOnly] public float timerStun = 0;                               //stun behaviour o life behaviour, è il timer di stun - readonly
+    /*Si*/[ReadOnly] public float timerStun = 0;                               //stun behaviour o life behaviour, è il timer di stun - readonly
     [Tooltip("Indica la durata dello stato di stun prima che il personaggio si distrugga")]
     public float DurationStun = 5;                                       //stun behaviour o life behaviour, max value of timer di stun 
     
     [Header("   ►  Second Method - From stun to destoy")]
-    [ReadOnly] public int CountHit = 0;                                  //Stunned behaviour quindi potremmo metterlo nel life behaviour, indica quanti colpi ha dato il player al nemico dopo lo stun - readonly
+    /*Si*/[ReadOnly] public int CountHit = 0;                                  //Stunned behaviour quindi potremmo metterlo nel life behaviour, indica quanti colpi ha dato il player al nemico dopo lo stun - readonly
     [Tooltip("Indica quanti attacchi da parte del player servano prima che il personaggio si distrugga")]
     public int MaxCountHit = 0;                                          //Stunned behaviour quindi potremmo metterlo nel life behaviour, indica il max dei colpi prima di scomparire
     [Header("   ►  Boolean for know if state stun is active or not - ReadOnly")]
-    [ReadOnly]public bool isStun = false;
+    /*Si*/[ReadOnly]public bool isStun = false;
     
     [Header("   ►  Boolean for the know if the player can possess this enemy - ReadOnly")]
     [Header("~~~ Possesion Sub-Behaviour ~~~")]
@@ -46,13 +46,13 @@ public class EnemyManager : MonoBehaviour
     [Space(10)]
     [Header("►  Value for indicate if the player can move")]
     [Tooltip("Condition - Standard: True - 'Temp false for ranged'")]
-    public bool CanMove = true;                                           //Indica se il player si può muovere - si potrebbe anche usare se un nemico non si può muovere
+    /*Si*/public bool CanMove = true;                                           //Indica se il player si può muovere - si potrebbe anche usare se un nemico non si può muovere
     
     [Space(10)]
     [Header("►  Variables for control when the player is in aggro")]
     [ReadOnly] public GameObject PlayerEnemy;                             //Movement Behaviour e Attack Behaviour - nel movement serve per andare in contro al player e nell'attack serve per la distance per il reset
     
-    [ReadOnly] public bool CanVisible = false;                            //Movement Bahaviour e Attack Behaviour - Indica se il nemico viene visto (quindi se entra nel collider trigger) - readonly
+    /*Si*/[ReadOnly] public bool CanVisible = false;                            //Movement Bahaviour e Attack Behaviour - Indica se il nemico viene visto (quindi se entra nel collider trigger) - readonly
     #endregion
     
     #region Variables Attack Behaviour
@@ -68,7 +68,7 @@ public class EnemyManager : MonoBehaviour
     public int PercentuageAttack;
     [ReadOnly] public int random;                                          //Attack Bahaviour - Variabile per la pesca random per poi confrontare con la percentuale
     [Tooltip("Sarebbe la variabile che indica che il random può attivarsi")]
-    public bool CanAttack = true;                               //Attack Behaviour - Indica la nuova estrazione del valore random riferito alla percentuale della scelta dell'attacco
+    /*Si*/public bool CanAttack = true;                               //Attack Behaviour - Indica la nuova estrazione del valore random riferito alla percentuale della scelta dell'attacco
 
     [Space(10)]
     [Header("►  Value of damage of typology of attack - Value Management")]
@@ -76,49 +76,49 @@ public class EnemyManager : MonoBehaviour
     public int HeavyDamage;
     public int SpecialDamage;
     
-    [Space(10)]
-    [Header("►  Cycle Light Attack - Value Management")]
-    
-    [ReadOnly] public float InitialTimerLight;
-    [Tooltip("Pre-Attack: Indica la durata di attesa prima del primo attacco, alla fine del quale si attiva il collider di attacco - Fa parte del ciclo iniziale")]
-    public float MaxInitialTimerLight;                                      //Dopo tot secondi parte il primo ciclo attivando il collider
-    [ReadOnly] public bool FirstCycleLight = true;                          //Questo booleano indica se va eseguito prima il primo ciclo
-    [ReadOnly] public float DeactiveColliderTimerLight;
-    [Tooltip("Mid-Attack: Indica la durata di attesa in cui il collider di attacco sta acceso, alla fine del quale si spegne il coollider di attacco - Fa parte di tutti i cicli ")]
-    public float MaxDeactiveColliderTimerLight;                             //Dopo tot secondi disattiva il collider
-    [ReadOnly] public bool CooldownLight;                                   //Questo booleano indica quando è attivo e disattivo il cooldown - Vero indica che è uscito da cooldown - Falso indica che deve entrare nel cooldown
-    [ReadOnly] public float CooldownTimerLight;
-    [Tooltip("Pre/Post-Attack: Indica la durata di cooldown dell'attacco per poterlo ripetere, alla fine del quale il cooldown finisce e fa partire il timer Mid-Attack ")]
-    public float MaxCooldownTimerLight;                                     //Dopo tot secondi finisce il cooldown
-    
-    [Space(10)]
-    [Header("►  Cycle Heavy Attack - Value Management")]
-
-    [ReadOnly] public float InitialTimerHeavy;
-    [Tooltip("Pre-Attack: Indica la durata di attesa prima del primo attacco, alla fine del quale si attiva il collider di attacco - Fa parte del ciclo iniziale")]
-    public float MaxInitialTimerHeavy;                                      //Dopo tot secondi parte il primo ciclo attivando il collider
-    [ReadOnly]public bool FirstCycleHeavy = true;                           //Questo booleano indica se va eseguito prima il primo ciclo
-    [ReadOnly] public float DeactiveColliderTimerHeavy;
-    [Tooltip("Mid-Attack: Indica la durata di attesa in cui il collider di attacco sta acceso, alla fine del quale si spegne il coollider di attacco - Fa parte di tutti i cicli ")]
-    public float MaxDeactiveColliderTimerHeavy;                             //Dopo tot secondi disattiva il collider
-    [ReadOnly] public bool CooldownHeavy;                                   //Questo booleano indica quando è attivo e disattivo il cooldown - Vero indica che è uscito da cooldown - Falso indica che deve entrare nel cooldown
-    [ReadOnly] public float CooldownTimerHeavy;
-    [Tooltip("Pre/Post-Attack: Indica la durata di cooldown dell'attacco per poterlo ripetere, alla fine del quale il cooldown finisce e fa partire il timer Mid-Attack ")]
-    public float MaxCooldownTimerHeavy;                                     //Dopo tot secondi finisce il cooldown
+    //[Space(10)]
+    //[Header("►  Cycle Light Attack - Value Management")]
+    //
+    //[ReadOnly] public float InitialTimerLight;
+    //[Tooltip("Pre-Attack: Indica la durata di attesa prima del primo attacco, alla fine del quale si attiva il collider di attacco - Fa parte del ciclo iniziale")]
+    //public float MaxInitialTimerLight;                                      //Dopo tot secondi parte il primo ciclo attivando il collider
+    //[ReadOnly] public bool FirstCycleLight = true;                          //Questo booleano indica se va eseguito prima il primo ciclo
+    //[ReadOnly] public float DeactiveColliderTimerLight;
+    //[Tooltip("Mid-Attack: Indica la durata di attesa in cui il collider di attacco sta acceso, alla fine del quale si spegne il coollider di attacco - Fa parte di tutti i cicli ")]
+    //public float MaxDeactiveColliderTimerLight;                             //Dopo tot secondi disattiva il collider
+    //[ReadOnly] public bool CooldownLight;                                   //Questo booleano indica quando è attivo e disattivo il cooldown - Vero indica che è uscito da cooldown - Falso indica che deve entrare nel cooldown
+    //[ReadOnly] public float CooldownTimerLight;
+    //[Tooltip("Pre/Post-Attack: Indica la durata di cooldown dell'attacco per poterlo ripetere, alla fine del quale il cooldown finisce e fa partire il timer Mid-Attack ")]
+    //public float MaxCooldownTimerLight;                                     //Dopo tot secondi finisce il cooldown
+    //
+    //[Space(10)]
+    //[Header("►  Cycle Heavy Attack - Value Management")]
+    //
+    //[ReadOnly] public float InitialTimerHeavy;
+    //[Tooltip("Pre-Attack: Indica la durata di attesa prima del primo attacco, alla fine del quale si attiva il collider di attacco - Fa parte del ciclo iniziale")]
+    //public float MaxInitialTimerHeavy;                                      //Dopo tot secondi parte il primo ciclo attivando il collider
+    //[ReadOnly]public bool FirstCycleHeavy = true;                           //Questo booleano indica se va eseguito prima il primo ciclo
+    //[ReadOnly] public float DeactiveColliderTimerHeavy;
+    //[Tooltip("Mid-Attack: Indica la durata di attesa in cui il collider di attacco sta acceso, alla fine del quale si spegne il coollider di attacco - Fa parte di tutti i cicli ")]
+    //public float MaxDeactiveColliderTimerHeavy;                             //Dopo tot secondi disattiva il collider
+    //[ReadOnly] public bool CooldownHeavy;                                   //Questo booleano indica quando è attivo e disattivo il cooldown - Vero indica che è uscito da cooldown - Falso indica che deve entrare nel cooldown
+    //[ReadOnly] public float CooldownTimerHeavy;
+    //[Tooltip("Pre/Post-Attack: Indica la durata di cooldown dell'attacco per poterlo ripetere, alla fine del quale il cooldown finisce e fa partire il timer Mid-Attack ")]
+    //public float MaxCooldownTimerHeavy;                                     //Dopo tot secondi finisce il cooldown
     
     [Space(10)]
     [Header("►  Reset Cycle Attack - Value Management - ReadOnly")]
     [ReadOnly] public bool CanReset = false;                                //Resetta i timer e i booleani di attacco quando il player esce fuori dall'aggro, visto che lo resettava ad ogni attaco, è stato strutturato tramite il controllo della distanza
 
     //public bool CanMoveAttack = true;
-    public float TimerAttackAnimation;
-    public float MaxTimerAttackAnimation;
-    public int CountPoiseEnemy;
+    //public float TimerAttackAnimation;
+    //public float MaxTimerAttackAnimation;
+    public int CountPoiseEnemy;             //Si
     public int MaxCountPoiseEnemy;
-    public bool isStaggeredEnemy;
-    public float TimerStaggeredEnemy;
-    public float ResetTimerStaggeredEnemy;
-    public float MaxResetTimerStaggeredEnemy;
+    //public bool isStaggeredEnemy;
+    //public float TimerStaggeredEnemy;
+    //public float ResetTimerStaggeredEnemy;
+    //public float MaxResetTimerStaggeredEnemy;
 
 
     [Space(10)]
@@ -136,19 +136,9 @@ public class EnemyManager : MonoBehaviour
     public int StaggerAnimClipSpeed = 1;
     public int PossessionAnimClipSpeed = 1;
     public int DeathAnimClipSpeed = 1;
-
-    public void InitializeSpeedAnimation()
-    {
-        GetComponent<Animator>().SetFloat("IdleSpeed", IdleAnimClipSpeed);
-        GetComponent<Animator>().SetFloat("IdlePatrol", PatrolAnimClipSpeed);
-    }
-
-
-
-
-
     #endregion
     #endregion
+
 
     private void Start()
     {
@@ -175,7 +165,13 @@ public class EnemyManager : MonoBehaviour
         CalculateDistance();
     }
 
+
     #region Method - IA - Enemy Behaviour
+    public void InitializeSpeedAnimation()
+    {
+        GetComponent<Animator>().SetFloat("IdleSpeed", IdleAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("PatrolSpeed", PatrolAnimClipSpeed);
+    }
     #region Attack Behaviour
     public void CalculateDistance()
     {
@@ -192,6 +188,17 @@ public class EnemyManager : MonoBehaviour
                 CanReset = false;
             }
         }
+    }
+    #endregion
+    #region Animation Event
+    public void EventActivateAttack(GameObject ColliderAttack)
+    {
+        ColliderAttack.SetActive(true);
+    }
+
+    public void EventDeactivateAttack(GameObject ColliderAttack)
+    {
+        ColliderAttack.SetActive(false);
     }
     #endregion
     #endregion

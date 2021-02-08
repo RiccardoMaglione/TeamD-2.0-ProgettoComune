@@ -209,16 +209,16 @@ namespace SwordGame
                 GetComponent<EnemyManager>().CanMove = true;
                 if (GetComponent<EnemyManager>().CanReset == true)
                 {
-                    GetComponent<EnemyManager>().FirstCycleHeavy = true;
-                    GetComponent<EnemyManager>().FirstCycleLight = true;
-                    GetComponent<EnemyManager>().CooldownHeavy = false;
-                    GetComponent<EnemyManager>().CooldownLight = false;
-                    GetComponent<EnemyManager>().InitialTimerHeavy = 0;
-                    GetComponent<EnemyManager>().DeactiveColliderTimerHeavy = 0;
-                    GetComponent<EnemyManager>().CooldownTimerHeavy = 0;
-                    GetComponent<EnemyManager>().InitialTimerLight = 0;
-                    GetComponent<EnemyManager>().DeactiveColliderTimerLight = 0;
-                    GetComponent<EnemyManager>().CooldownTimerLight = 0;
+                    //GetComponent<EnemyManager>().FirstCycleHeavy = true;
+                    //GetComponent<EnemyManager>().FirstCycleLight = true;
+                    //GetComponent<EnemyManager>().CooldownHeavy = false;
+                    //GetComponent<EnemyManager>().CooldownLight = false;
+                    //GetComponent<EnemyManager>().InitialTimerHeavy = 0;
+                    //GetComponent<EnemyManager>().DeactiveColliderTimerHeavy = 0;
+                    //GetComponent<EnemyManager>().CooldownTimerHeavy = 0;
+                    //GetComponent<EnemyManager>().InitialTimerLight = 0;
+                    //GetComponent<EnemyManager>().DeactiveColliderTimerLight = 0;
+                    //GetComponent<EnemyManager>().CooldownTimerLight = 0;
                     GetComponent<EnemyManager>().CanReset = false;
                     GetComponent<EnemyManager>().CanAttack = true;
                 }
