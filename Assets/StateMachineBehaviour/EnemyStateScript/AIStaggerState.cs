@@ -9,6 +9,7 @@ public class AIStaggerState : StateMachineBehaviour
     {
         animator.GetComponent<EnemyManager>().GetComponent<SpriteRenderer>().color = Color.blue;       //MVC: View
         animator.GetComponent<EnemyManager>().CountPoiseEnemy = 0;
+        animator.GetComponent<EnemyManager>().LightAttackCollider.SetActive(false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

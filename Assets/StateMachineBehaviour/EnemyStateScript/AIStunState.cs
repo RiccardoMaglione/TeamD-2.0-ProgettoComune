@@ -10,6 +10,7 @@ public class AIStunState : StateMachineBehaviour
         animator.GetComponent<EnemyManager>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View
         animator.GetComponent<EnemyManager>().isStun = true;
         animator.GetComponent<EnemyManager>().CountHit = 0;
+        animator.GetComponent<EnemyManager>().LightAttackCollider.SetActive(false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
