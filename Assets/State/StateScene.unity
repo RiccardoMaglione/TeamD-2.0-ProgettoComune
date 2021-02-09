@@ -710,6 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TypeEnemy: 0
   Life: 5
   timerStun: 0
   DurationStun: 500
@@ -717,6 +718,8 @@ MonoBehaviour:
   MaxCountHit: 10
   isStun: 0
   isPossessed: 0
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 0
   Speed: 5
   WaypointEnemy:
   - {fileID: 1333082845}
@@ -734,8 +737,6 @@ MonoBehaviour:
   HeavyDamage: 4
   SpecialDamage: 5
   CanReset: 0
-  CountPoiseEnemy: 0
-  MaxCountPoiseEnemy: 0
   IdleAnimClipSpeed: 10
   PatrolAnimClipSpeed: 1
   FollowAnimClipSpeed: 1
@@ -2574,6 +2575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TypeEnemy: 0
   Life: 100
   timerStun: 0
   DurationStun: 50
@@ -2581,6 +2583,8 @@ MonoBehaviour:
   MaxCountHit: 10
   isStun: 0
   isPossessed: 0
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 2
   Speed: 2
   WaypointEnemy:
   - {fileID: 1333082845}
@@ -2598,8 +2602,6 @@ MonoBehaviour:
   HeavyDamage: 5
   SpecialDamage: 8
   CanReset: 0
-  CountPoiseEnemy: 0
-  MaxCountPoiseEnemy: 2
   IdleAnimClipSpeed: 10
   PatrolAnimClipSpeed: 1
   FollowAnimClipSpeed: 0.1
@@ -3257,6 +3259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TypeEnemy: 0
   Life: 100
   timerStun: 0
   DurationStun: 50
@@ -3264,6 +3267,8 @@ MonoBehaviour:
   MaxCountHit: 10
   isStun: 0
   isPossessed: 0
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 5
   Speed: 2
   WaypointEnemy:
   - {fileID: 1333082845}
@@ -3281,8 +3286,6 @@ MonoBehaviour:
   HeavyDamage: 5
   SpecialDamage: 8
   CanReset: 0
-  CountPoiseEnemy: 0
-  MaxCountPoiseEnemy: 5
   IdleAnimClipSpeed: 10
   PatrolAnimClipSpeed: 1
   FollowAnimClipSpeed: 0.1
