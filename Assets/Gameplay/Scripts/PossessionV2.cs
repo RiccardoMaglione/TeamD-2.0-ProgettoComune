@@ -202,13 +202,17 @@ namespace SwordGame
             if (collision.gameObject.GetComponent<PlayerController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
             {
                 PlayerDetect = null;
-                GetComponent<EnemyManager>().PlayerEnemy = null;
+                if(GetComponent<EnemyManager>().LightAttackCollider.activeSelf == true || GetComponent<EnemyManager>().HeavyAttackCollider.activeSelf == true)
+                {
+                    GetComponent<EnemyManager>().PlayerEnemy = null;
+                }
                 
                 GetComponent<EnemyManager>().LightAttackCollider.SetActive(false);
                 GetComponent<EnemyManager>().HeavyAttackCollider.SetActive(false);
                 GetComponent<EnemyManager>().CanMove = true;
                 if (GetComponent<EnemyManager>().CanReset == true)
                 {
+                    GetComponent<EnemyManager>().PlayerEnemy = null;
                     //GetComponent<EnemyManager>().FirstCycleHeavy = true;
                     //GetComponent<EnemyManager>().FirstCycleLight = true;
                     //GetComponent<EnemyManager>().CooldownHeavy = false;
