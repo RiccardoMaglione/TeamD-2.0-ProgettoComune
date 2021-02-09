@@ -2,33 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DistanceState : StateMachineBehaviour
+public class AttackStandState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<EnemyManager>().GetComponent<SpriteRenderer>().color = Color.cyan;
         animator.GetComponent<EnemyManager>().CanAttack = true;
-        if (animator.GetComponent<EnemyManager>().PlayerEnemy != null)
-        {
-            float Distance = Vector2.Distance(animator.gameObject.transform.position, animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position);
-            if (Distance >= 1.5f)
-            {
-                animator.SetBool("Distance", true);
-            }
-            else
-            {
-                animator.SetBool("Distance", false);
-                animator.SetBool("CanAttack", true);
-            }
-        }
-        else
-        {
-            animator.SetBool("Distance", true);
-        }
-        Debug.Log("aaarandom" + animator.GetComponent<EnemyManager>().CanAttack);
-        Debug.Log("aaarandom" + animator.GetComponent<EnemyManager>().CanVisible);
-        Debug.Log("aaarandom2" + animator.GetComponent<EnemyManager>().isStun);
+        animator.SetBool("CanAttack", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
