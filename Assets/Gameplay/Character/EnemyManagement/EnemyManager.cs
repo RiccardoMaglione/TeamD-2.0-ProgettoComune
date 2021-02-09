@@ -124,18 +124,18 @@ public class EnemyManager : MonoBehaviour
     [Space(10)]
     [Header("AI Animation - State Machine Behaviour - Speed Management")]
     [Space(20)]
-    public int IdleAnimClipSpeed = 10;
-    public int PatrolAnimClipSpeed = 1;
-    public int FollowAnimClipSpeed = 1;
-    public int LightAttackAnimClipSpeed = 1;
-    public int LightRecoveryAnimClipSpeed = 1;
-    public int HeavyAttackAnimClipSpeed = 1;
-    public int HeavyRecoveryAnimClipSpeed = 1;
-    public int DamageAnimClipSpeed = 1;
-    public int StunAnimClipSpeed = 1;
-    public int StaggerAnimClipSpeed = 1;
-    public int PossessionAnimClipSpeed = 1;
-    public int DeathAnimClipSpeed = 1;
+    public float IdleAnimClipSpeed = 10;
+    public float PatrolAnimClipSpeed = 1;
+    public float FollowAnimClipSpeed = 1;
+    public float LightAttackAnimClipSpeed = 1;
+    public float LightRecoveryAnimClipSpeed = 1;
+    public float HeavyAttackAnimClipSpeed = 1;
+    public float HeavyRecoveryAnimClipSpeed = 1;
+    public float DamageAnimClipSpeed = 1;
+    public float StunAnimClipSpeed = 1;
+    public float StaggerAnimClipSpeed = 1;
+    public float PossessionAnimClipSpeed = 1;
+    public float DeathAnimClipSpeed = 1;
     #endregion
     #endregion
 
@@ -171,6 +171,16 @@ public class EnemyManager : MonoBehaviour
     {
         GetComponent<Animator>().SetFloat("IdleSpeed", IdleAnimClipSpeed);
         GetComponent<Animator>().SetFloat("PatrolSpeed", PatrolAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("FollowSpeed", IdleAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("LightAttackSpeed", PatrolAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("LightRecoverySpeedSpeed", IdleAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("HeavyAttackSpeed", PatrolAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("HeavyRecoverySpeed", IdleAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("DamageSpeed", PatrolAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("StaggerSpeed", IdleAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("StunSpeed", PatrolAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("PossessionSpeed", IdleAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("DeathSpeed", PatrolAnimClipSpeed);
     }
     #region Attack Behaviour
     public void CalculateDistance()
@@ -512,6 +522,15 @@ public class EnemyManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
+        {
+            CanVisible = true;
+            GetComponent<Animator>().SetBool("IsFollowing", true);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
         {
             CanVisible = true;
             GetComponent<Animator>().SetBool("IsFollowing", true);

@@ -10,7 +10,7 @@ public class AIDamageState : StateMachineBehaviour
         if (animator.GetComponent<EnemyManager>().CountPoiseEnemy >= animator.GetComponent<EnemyManager>().MaxCountPoiseEnemy)
         {
             //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
-            animator.SetTrigger("IsStagger");
+            animator.SetBool("IsStagger", true);
         }
         animator.SetInteger("Life",animator.GetComponent<EnemyManager>().Life);
     }
