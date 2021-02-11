@@ -30,6 +30,7 @@ public class AIFollowState : StateMachineBehaviour
 
                 if (animator.GetComponent<EnemyManager>().transform.position.x == animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position.x + 1)
                 {
+                    animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, -180, animator.GetComponent<EnemyManager>().transform.rotation.z);           //Destra
                     animator.GetComponent<EnemyManager>().CanMove = false;
                 }
                 else
@@ -38,6 +39,7 @@ public class AIFollowState : StateMachineBehaviour
                 }
                 if (animator.GetComponent<EnemyManager>().transform.position.x == animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position.x - 1)
                 {
+                    animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, 0, animator.GetComponent<EnemyManager>().transform.rotation.z);           //Destra
                     animator.GetComponent<EnemyManager>().CanMove = false;
                 }
                 else
