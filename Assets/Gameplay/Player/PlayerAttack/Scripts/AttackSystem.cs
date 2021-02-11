@@ -23,7 +23,8 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponent<EnemyManager>().Life -= LightDamage;
                 collision.GetComponent<EnemyManager>().CountHit++;
                 collision.GetComponent<EnemyManager>().CountPoiseEnemy++;
-                collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
+                //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
+                collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 print("Light");
                 GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().LightEnergyAmount;
                 print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
@@ -34,7 +35,8 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponent<EnemyManager>().Life -= HeavyDamage;
                 collision.GetComponent<EnemyManager>().CountHit++;
                 collision.GetComponent<EnemyManager>().CountPoiseEnemy++;
-                collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
+                //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
+                collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 print("Heavy");
                 GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().HeavyEnergyAmount;
                 print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
@@ -45,7 +47,8 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponent<EnemyManager>().Life -= SpecialDamage;
                 collision.GetComponent<EnemyManager>().CountHit++;
                 collision.GetComponent<EnemyManager>().CountPoiseEnemy++;
-                collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
+                //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
+                collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 print("Special");
                 GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().SpecialEnergyAmount;
                 print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
