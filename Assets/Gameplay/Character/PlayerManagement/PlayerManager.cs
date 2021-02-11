@@ -92,7 +92,7 @@ namespace SwordGame
             //MaxEnergyStatic = MaxEnergy;
             print("1. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
             if(HealthSlider!=null)
-            HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
+                HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
             print("2. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
         }
         public void Refull()//Forse non serve

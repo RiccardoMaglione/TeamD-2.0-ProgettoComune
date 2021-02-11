@@ -9,7 +9,9 @@ public class Parallax : MonoBehaviour
     void Start()
     {
         startPos = transform.position.x;
-        lenght = GetComponent<SpriteRenderer>().bounds.size.x;
+
+        if (GetComponent<SpriteRenderer>() != null)
+            lenght = GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     void Update()

@@ -23326,8 +23326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeCharacter: 0
   HealthSlider: {fileID: 0}
-  MaxHealth: 0
-  CurrentHealth: 0
+  MaxHealth: 100
+  CurrentHealth: 100
   Invulnerability: 0
   EnergyBar: {fileID: 0}
   MaxEnergy: 100
@@ -23348,6 +23348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TypeEnemy: 0
   Life: 50
   timerStun: 0
   DurationStun: 5
@@ -23355,6 +23356,8 @@ MonoBehaviour:
   MaxCountHit: 0
   isStun: 0
   isPossessed: 0
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 0
   Speed: 0
   WaypointEnemy: []
   WaypointIndex: 0
@@ -23369,31 +23372,19 @@ MonoBehaviour:
   LightDamage: 0
   HeavyDamage: 0
   SpecialDamage: 0
-  InitialTimerLight: 0
-  MaxInitialTimerLight: 0
-  FirstCycleLight: 1
-  DeactiveColliderTimerLight: 0
-  MaxDeactiveColliderTimerLight: 0
-  CooldownLight: 0
-  CooldownTimerLight: 0
-  MaxCooldownTimerLight: 0
-  InitialTimerHeavy: 0
-  MaxInitialTimerHeavy: 0
-  FirstCycleHeavy: 1
-  DeactiveColliderTimerHeavy: 0
-  MaxDeactiveColliderTimerHeavy: 0
-  CooldownHeavy: 0
-  CooldownTimerHeavy: 0
-  MaxCooldownTimerHeavy: 0
   CanReset: 0
-  TimerAttackAnimation: 0
-  MaxTimerAttackAnimation: 0
-  CountPoiseEnemy: 0
-  MaxCountPoiseEnemy: 0
-  isStaggeredEnemy: 0
-  TimerStaggeredEnemy: 0
-  ResetTimerStaggeredEnemy: 0
-  MaxResetTimerStaggeredEnemy: 0
+  IdleAnimClipSpeed: 10
+  PatrolAnimClipSpeed: 1
+  FollowAnimClipSpeed: 1
+  LightAttackAnimClipSpeed: 1
+  LightRecoveryAnimClipSpeed: 1
+  HeavyAttackAnimClipSpeed: 1
+  HeavyRecoveryAnimClipSpeed: 1
+  DamageAnimClipSpeed: 1
+  StunAnimClipSpeed: 1
+  StaggerAnimClipSpeed: 1
+  PossessionAnimClipSpeed: 1
+  DeathAnimClipSpeed: 1
 --- !u!1 &810321732
 GameObject:
   m_ObjectHideFlags: 0
