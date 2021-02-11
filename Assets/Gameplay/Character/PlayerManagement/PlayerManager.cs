@@ -115,12 +115,12 @@ namespace SwordGame
                     isTriggerOnlyOnce = true;
                     GetComponent<PlayerController>().ResetTimerStaggered = 0;
                     GetComponent<PlayerController>().PoisePlayer += 1;                                  //aumenta di 1
-                    CurrentHealth -= collision.GetComponentInParent<EnemyManager>().LightDamage;
+                    CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
                     //CurrentLife -= collision.GetComponentInParent<EnemyManager>().LightDamage;
                     print("Colpito Light");
                     if (PlayerController.isBoriousDash == true)
                     {
-                        collision.GetComponentInParent<EnemyManager>().Life -= collision.GetComponentInParent<EnemyManager>().LightDamage;
+                        collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
                     }
                 }
                 if (collision.tag == "HeavyAttack")
@@ -128,12 +128,12 @@ namespace SwordGame
                     isTriggerOnlyOnce = true;
                     GetComponent<PlayerController>().ResetTimerStaggered = 0;
                     GetComponent<PlayerController>().PoisePlayer += 1;                                  //aumenta di 1
-                    CurrentHealth -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
+                    CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
                     //CurrentLife -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
                     print("Colpito Heavy");
                     if (PlayerController.isBoriousDash == true)
                     {
-                        collision.GetComponentInParent<EnemyManager>().Life -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
+                        collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
                     }
                 }
                 //if (collision.tag == "SpecialAttack")                     //I nemici non hanno l'attacco speciale

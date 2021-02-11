@@ -7,27 +7,27 @@ public class AttackStandState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyManager>().GetComponent<SpriteRenderer>().color = Color.cyan;
-        animator.GetComponent<EnemyManager>().CanAttack = true;
+        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.cyan;
+        animator.GetComponent<EnemyData>().CanAttack = true;
         animator.SetBool("CanAttack", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("aaaAttack" + animator.GetComponent<EnemyManager>().CanAttack);
-        if (animator.GetComponent<EnemyManager>().CanAttack == true)
+        Debug.Log("aaaAttack" + animator.GetComponent<EnemyData>().CanAttack);
+        if (animator.GetComponent<EnemyData>().CanAttack == true)
         {
-            animator.GetComponent<EnemyManager>().random = Random.Range(0, 101);
-            animator.GetComponent<EnemyManager>().CanAttack = false;
-            Debug.Log("aaaCiao" + animator.GetComponent<EnemyManager>().CanVisible);
-            Debug.Log("aaaCiao2" + animator.GetComponent<EnemyManager>().isStun);
+            animator.GetComponent<EnemyData>().random = Random.Range(0, 101);
+            animator.GetComponent<EnemyData>().CanAttack = false;
+            Debug.Log("aaaCiao" + animator.GetComponent<EnemyData>().CanVisible);
+            Debug.Log("aaaCiao2" + animator.GetComponent<EnemyData>().isStun);
 
         }
-        if (animator.GetComponent<EnemyManager>().CanVisible == true && animator.GetComponent<EnemyManager>().isStun == false)
+        if (animator.GetComponent<EnemyData>().CanVisible == true && animator.GetComponent<EnemyData>().isStun == false)
         {
             Debug.Log("aaaprova");
-            if (animator.GetComponent<EnemyManager>().random <= animator.GetComponent<EnemyManager>().PercentuageAttack)
+            if (animator.GetComponent<EnemyData>().random <= animator.GetComponent<EnemyData>().PercentuageAttack)
             {
                 Debug.Log("aaaleggero");
                 animator.SetTrigger("LightAttack");
@@ -41,22 +41,22 @@ public class AttackStandState : StateMachineBehaviour
             }
         }
 
-        if (animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position.x + 0.5f > animator.GetComponent<EnemyManager>().transform.position.x)
+        if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + 0.5f > animator.GetComponent<EnemyData>().transform.position.x)
         {
-            animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, 0, animator.GetComponent<EnemyManager>().transform.rotation.z);           //Destra
+            animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
         }
-        else if (animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position.x - 0.5f < animator.GetComponent<EnemyManager>().transform.position.x)
+        else if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - 0.5f < animator.GetComponent<EnemyData>().transform.position.x)
         {
-            animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, -180, animator.GetComponent<EnemyManager>().transform.rotation.z);         //Sinistra
+            animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);         //Sinistra
         }
 
-        if (animator.GetComponent<EnemyManager>().transform.position.x == animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position.x + 1)
+        if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + 1)
         {
-            animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, -180, animator.GetComponent<EnemyManager>().transform.rotation.z);           //Destra
+            animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
         }
-        if (animator.GetComponent<EnemyManager>().transform.position.x == animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position.x - 1)
+        if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - 1)
         {
-            animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, 0, animator.GetComponent<EnemyManager>().transform.rotation.z);           //Destra
+            animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
         }
     }
 

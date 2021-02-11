@@ -7,12 +7,12 @@ public class AIDamageState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.GetComponent<EnemyManager>().CountPoiseEnemy >= animator.GetComponent<EnemyManager>().MaxCountPoiseEnemy)
+        if (animator.GetComponent<EnemyData>().CountPoiseEnemy >= animator.GetComponent<EnemyData>().MaxCountPoiseEnemy)
         {
             //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
             animator.SetBool("IsStagger", true);
         }
-        animator.SetInteger("Life",animator.GetComponent<EnemyManager>().Life);
+        animator.SetInteger("Life",animator.GetComponent<EnemyData>().Life);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

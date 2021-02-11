@@ -20,9 +20,9 @@ public class AttackSystem : MonoBehaviour
             if(playerInput.isLightAttack == true)
             {
                 playerInput.isLightAttack = false;
-                collision.GetComponent<EnemyManager>().Life -= LightDamage;
-                collision.GetComponent<EnemyManager>().CountHit++;
-                collision.GetComponent<EnemyManager>().CountPoiseEnemy++;
+                collision.GetComponent<EnemyData>().Life -= LightDamage;
+                collision.GetComponent<EnemyData>().CountHit++;
+                collision.GetComponent<EnemyData>().CountPoiseEnemy++;
                 //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 print("Light");
@@ -32,9 +32,9 @@ public class AttackSystem : MonoBehaviour
             if (playerInput.isHeavyAttack == true)
             {
                 playerInput.isHeavyAttack = false;
-                collision.GetComponent<EnemyManager>().Life -= HeavyDamage;
-                collision.GetComponent<EnemyManager>().CountHit++;
-                collision.GetComponent<EnemyManager>().CountPoiseEnemy++;
+                collision.GetComponent<EnemyData>().Life -= HeavyDamage;
+                collision.GetComponent<EnemyData>().CountHit++;
+                collision.GetComponent<EnemyData>().CountPoiseEnemy++;
                 //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 print("Heavy");
@@ -44,9 +44,9 @@ public class AttackSystem : MonoBehaviour
             if (playerInput.isSpecialAttack == true)
             {
                 playerInput.isSpecialAttack = false;
-                collision.GetComponent<EnemyManager>().Life -= SpecialDamage;
-                collision.GetComponent<EnemyManager>().CountHit++;
-                collision.GetComponent<EnemyManager>().CountPoiseEnemy++;
+                collision.GetComponent<EnemyData>().Life -= SpecialDamage;
+                collision.GetComponent<EnemyData>().CountHit++;
+                collision.GetComponent<EnemyData>().CountPoiseEnemy++;
                 //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 print("Special");

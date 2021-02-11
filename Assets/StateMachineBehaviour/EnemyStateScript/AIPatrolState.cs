@@ -13,23 +13,23 @@ public class AIPatrolState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.GetComponent<EnemyManager>().WaypointIndex <= animator.GetComponent<EnemyManager>().WaypointEnemy.Length - 1 && animator.GetBool("IsFollowing") == false && animator.GetComponent<EnemyManager>().CanMove == true && animator.GetComponent<EnemyManager>().isStun == false/* && CanMoveAttack == true*/)
+        if (animator.GetComponent<EnemyData>().WaypointIndex <= animator.GetComponent<EnemyData>().WaypointEnemy.Length - 1 && animator.GetBool("IsFollowing") == false && animator.GetComponent<EnemyData>().CanMove == true && animator.GetComponent<EnemyData>().isStun == false/* && CanMoveAttack == true*/)
         {
-            animator.GetComponent<EnemyManager>().transform.position = Vector2.MoveTowards(animator.GetComponent<EnemyManager>().transform.position, new Vector2(animator.GetComponent<EnemyManager>().WaypointEnemy[animator.GetComponent<EnemyManager>().WaypointIndex].transform.position.x, animator.GetComponent<EnemyManager>().transform.position.y), animator.GetComponent<EnemyManager>().Speed * Time.deltaTime);
-            if (animator.GetComponent<EnemyManager>().WaypointEnemy[animator.GetComponent<EnemyManager>().WaypointIndex].transform.position.x > animator.GetComponent<EnemyManager>().transform.position.x)
+            animator.GetComponent<EnemyData>().transform.position = Vector2.MoveTowards(animator.GetComponent<EnemyData>().transform.position, new Vector2(animator.GetComponent<EnemyData>().WaypointEnemy[animator.GetComponent<EnemyData>().WaypointIndex].transform.position.x, animator.GetComponent<EnemyData>().transform.position.y), animator.GetComponent<EnemyData>().Speed * Time.deltaTime);
+            if (animator.GetComponent<EnemyData>().WaypointEnemy[animator.GetComponent<EnemyData>().WaypointIndex].transform.position.x > animator.GetComponent<EnemyData>().transform.position.x)
             {
-                animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, 0, animator.GetComponent<EnemyManager>().transform.rotation.z);           //Destra
+                animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
             }
             else
             {
-                animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, -180, animator.GetComponent<EnemyManager>().transform.rotation.z);         //Sinistra
+                animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);         //Sinistra
             }
-            if (animator.GetComponent<EnemyManager>().transform.position.x == animator.GetComponent<EnemyManager>().WaypointEnemy[animator.GetComponent<EnemyManager>().WaypointIndex].transform.position.x)
+            if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().WaypointEnemy[animator.GetComponent<EnemyData>().WaypointIndex].transform.position.x)
             {
-                animator.GetComponent<EnemyManager>().WaypointIndex += 1;
-                if (animator.GetComponent<EnemyManager>().WaypointIndex == animator.GetComponent<EnemyManager>().WaypointEnemy.Length)
+                animator.GetComponent<EnemyData>().WaypointIndex += 1;
+                if (animator.GetComponent<EnemyData>().WaypointIndex == animator.GetComponent<EnemyData>().WaypointEnemy.Length)
                 {
-                    animator.GetComponent<EnemyManager>().WaypointIndex = 0;
+                    animator.GetComponent<EnemyData>().WaypointIndex = 0;
                 }
             }
         }

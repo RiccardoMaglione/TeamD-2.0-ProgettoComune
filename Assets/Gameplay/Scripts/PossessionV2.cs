@@ -59,9 +59,9 @@ namespace SwordGame
             #region Action of Possession
             if (isPlayer == true)
             {
-                if (Input.GetKeyDown(KeyCode.P) && PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyManager>().isStun == true)
+                if (Input.GetKeyDown(KeyCode.P) && PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().isStun == true)
                 {
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyManager>().isPossessed = true;
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().isPossessed = true;
                     ReturnPlayer.CanDestroy = false;
                     ReturnPlayer.timerDestroy = 0;
                     if (LastPlayer != null)
@@ -78,8 +78,8 @@ namespace SwordGame
                     PlayerDetect.GetComponent<Animator>().enabled = true;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().enabled = false;
                     
-                    PlayerDetect.GetComponent<EnemyManager>().enabled = true;
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyManager>().enabled = false;
+                    PlayerDetect.GetComponent<EnemyData>().enabled = true;
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().enabled = false;
 
 
                     PlayerDetect.GetComponent<PlayerManager>().enabled = false;
@@ -117,8 +117,8 @@ namespace SwordGame
                         PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().enabled = true;
                     }
 
-                    PlayerDetect.GetComponent<EnemyManager>().Life = 0;
-                    PlayerDetect.GetComponent<EnemyManager>().isStun = true;
+                    PlayerDetect.GetComponent<EnemyData>().Life = 0;
+                    PlayerDetect.GetComponent<EnemyData>().isStun = true;
 
                     PlayerDetect.GetComponent<PlayerController>().enabled = false;                                                  //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().enabled = true;                //Nemico in cui nel trigger c'è il player
@@ -178,7 +178,7 @@ namespace SwordGame
             if (collision.gameObject.GetComponent<PlayerController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
             {
                 PlayerDetect = collision.gameObject;
-                GetComponent<EnemyManager>().PlayerEnemy = PlayerDetect;
+                GetComponent<EnemyData>().PlayerEnemy = PlayerDetect;
                 if (PromptCommand != null)
                 {
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
@@ -202,17 +202,17 @@ namespace SwordGame
             if (collision.gameObject.GetComponent<PlayerController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
             {
                 PlayerDetect = null;
-                if(GetComponent<EnemyManager>().LightAttackCollider.activeSelf == true || GetComponent<EnemyManager>().HeavyAttackCollider.activeSelf == true)
+                if(GetComponent<EnemyData>().LightAttackCollider.activeSelf == true || GetComponent<EnemyData>().HeavyAttackCollider.activeSelf == true)
                 {
-                    GetComponent<EnemyManager>().PlayerEnemy = null;
+                    GetComponent<EnemyData>().PlayerEnemy = null;
                 }
                 
-                GetComponent<EnemyManager>().LightAttackCollider.SetActive(false);
-                GetComponent<EnemyManager>().HeavyAttackCollider.SetActive(false);
-                GetComponent<EnemyManager>().CanMove = true;
-                if (GetComponent<EnemyManager>().CanReset == true)
+                GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
+                GetComponent<EnemyData>().HeavyAttackCollider.SetActive(false);
+                GetComponent<EnemyData>().CanMove = true;
+                if (GetComponent<EnemyData>().CanReset == true)
                 {
-                    GetComponent<EnemyManager>().PlayerEnemy = null;
+                    GetComponent<EnemyData>().PlayerEnemy = null;
                     //GetComponent<EnemyManager>().FirstCycleHeavy = true;
                     //GetComponent<EnemyManager>().FirstCycleLight = true;
                     //GetComponent<EnemyManager>().CooldownHeavy = false;
@@ -223,8 +223,8 @@ namespace SwordGame
                     //GetComponent<EnemyManager>().InitialTimerLight = 0;
                     //GetComponent<EnemyManager>().DeactiveColliderTimerLight = 0;
                     //GetComponent<EnemyManager>().CooldownTimerLight = 0;
-                    GetComponent<EnemyManager>().CanReset = false;
-                    GetComponent<EnemyManager>().CanAttack = true;
+                    GetComponent<EnemyData>().CanReset = false;
+                    GetComponent<EnemyData>().CanAttack = true;
                 }
         
         

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyData : MonoBehaviour
 {
     #region Variables
     #region Life Behaviour / Stun Sub-Behaviour - Possession Sub-Behaviour

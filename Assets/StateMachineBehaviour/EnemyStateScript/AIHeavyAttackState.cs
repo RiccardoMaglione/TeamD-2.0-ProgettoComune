@@ -7,7 +7,7 @@ public class AIHeavyAttackState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyManager>().GetComponent<SpriteRenderer>().color = Color.magenta;       //MVC: View
+        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.magenta;       //MVC: View
         animator.SetBool("IsPatroling", false);
         animator.SetBool("IsFollowing", false);
         animator.SetBool("RecoilHeavy", true);
@@ -31,7 +31,7 @@ public class AIHeavyAttackState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyManager>().HeavyAttackCollider.SetActive(true);
+        animator.GetComponent<EnemyData>().HeavyAttackCollider.SetActive(true);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

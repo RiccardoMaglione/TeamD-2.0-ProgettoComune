@@ -912,6 +912,7 @@ GameObject:
   - component: {fileID: 248621482}
   - component: {fileID: 248621483}
   - component: {fileID: 248621484}
+  - component: {fileID: 248621485}
   m_Layer: 9
   m_Name: Enemy2
   m_TagString: Enemy
@@ -1114,6 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TypeEnemy: 0
   Life: 100
   timerStun: 0
   DurationStun: 500
@@ -1121,6 +1123,8 @@ MonoBehaviour:
   MaxCountHit: 50
   isStun: 0
   isPossessed: 0
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 0
   Speed: 0
   WaypointEnemy: []
   WaypointIndex: 0
@@ -1135,31 +1139,19 @@ MonoBehaviour:
   LightDamage: 8
   HeavyDamage: 9
   SpecialDamage: 20
-  InitialTimerLight: 0
-  MaxInitialTimerLight: 0
-  FirstCycleLight: 0
-  DeactiveColliderTimerLight: 0
-  MaxDeactiveColliderTimerLight: 0
-  CooldownLight: 0
-  CooldownTimerLight: 0
-  MaxCooldownTimerLight: 0
-  InitialTimerHeavy: 0
-  MaxInitialTimerHeavy: 0
-  FirstCycleHeavy: 0
-  DeactiveColliderTimerHeavy: 0
-  MaxDeactiveColliderTimerHeavy: 0
-  CooldownHeavy: 0
-  CooldownTimerHeavy: 0
-  MaxCooldownTimerHeavy: 0
   CanReset: 0
-  TimerAttackAnimation: 0
-  MaxTimerAttackAnimation: 0
-  CountPoiseEnemy: 0
-  MaxCountPoiseEnemy: 0
-  isStaggeredEnemy: 0
-  TimerStaggeredEnemy: 0
-  ResetTimerStaggeredEnemy: 0
-  MaxResetTimerStaggeredEnemy: 0
+  IdleAnimClipSpeed: 10
+  PatrolAnimClipSpeed: 1
+  FollowAnimClipSpeed: 1
+  LightAttackAnimClipSpeed: 1
+  LightRecoveryAnimClipSpeed: 1
+  HeavyAttackAnimClipSpeed: 1
+  HeavyRecoveryAnimClipSpeed: 1
+  DamageAnimClipSpeed: 1
+  StunAnimClipSpeed: 1
+  StaggerAnimClipSpeed: 1
+  PossessionAnimClipSpeed: 1
+  DeathAnimClipSpeed: 1
 --- !u!114 &248621484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,6 +1176,25 @@ MonoBehaviour:
   HeavyEnergyAmount: 10
   SpecialEnergyAmount: 15
   isTriggerOnlyOnce: 0
+--- !u!95 &248621485
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248621476}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c247723edc7d1543b1fdbb609ba8b45, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &264023950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,6 +2652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TypeEnemy: 0
   Life: 5
   timerStun: 0
   DurationStun: 500
@@ -2648,6 +2660,8 @@ MonoBehaviour:
   MaxCountHit: 10
   isStun: 0
   isPossessed: 0
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 0
   Speed: 5
   WaypointEnemy:
   - {fileID: 1416235887}
@@ -2664,31 +2678,19 @@ MonoBehaviour:
   LightDamage: 3
   HeavyDamage: 4
   SpecialDamage: 5
-  InitialTimerLight: 0
-  MaxInitialTimerLight: 0
-  FirstCycleLight: 0
-  DeactiveColliderTimerLight: 0
-  MaxDeactiveColliderTimerLight: 0
-  CooldownLight: 0
-  CooldownTimerLight: 0
-  MaxCooldownTimerLight: 0
-  InitialTimerHeavy: 0
-  MaxInitialTimerHeavy: 0
-  FirstCycleHeavy: 0
-  DeactiveColliderTimerHeavy: 0
-  MaxDeactiveColliderTimerHeavy: 0
-  CooldownHeavy: 0
-  CooldownTimerHeavy: 0
-  MaxCooldownTimerHeavy: 0
   CanReset: 0
-  TimerAttackAnimation: 0
-  MaxTimerAttackAnimation: 0
-  CountPoiseEnemy: 0
-  MaxCountPoiseEnemy: 0
-  isStaggeredEnemy: 0
-  TimerStaggeredEnemy: 0
-  ResetTimerStaggeredEnemy: 0
-  MaxResetTimerStaggeredEnemy: 0
+  IdleAnimClipSpeed: 10
+  PatrolAnimClipSpeed: 1
+  FollowAnimClipSpeed: 1
+  LightAttackAnimClipSpeed: 1
+  LightRecoveryAnimClipSpeed: 1
+  HeavyAttackAnimClipSpeed: 1
+  HeavyRecoveryAnimClipSpeed: 1
+  DamageAnimClipSpeed: 1
+  StunAnimClipSpeed: 1
+  StaggerAnimClipSpeed: 1
+  PossessionAnimClipSpeed: 1
+  DeathAnimClipSpeed: 1
 --- !u!1 &828259853
 GameObject:
   m_ObjectHideFlags: 0
@@ -6283,6 +6285,7 @@ GameObject:
   - component: {fileID: 2092240404}
   - component: {fileID: 2092240405}
   - component: {fileID: 2092240406}
+  - component: {fileID: 2092240407}
   m_Layer: 9
   m_Name: Enemy1
   m_TagString: Enemy
@@ -6488,6 +6491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TypeEnemy: 0
   Life: 100
   timerStun: 0
   DurationStun: 500
@@ -6495,6 +6499,8 @@ MonoBehaviour:
   MaxCountHit: 50
   isStun: 0
   isPossessed: 0
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 3
   Speed: 2
   WaypointEnemy:
   - {fileID: 1416235887}
@@ -6511,31 +6517,19 @@ MonoBehaviour:
   LightDamage: 2
   HeavyDamage: 5
   SpecialDamage: 8
-  InitialTimerLight: 0
-  MaxInitialTimerLight: 0.2
-  FirstCycleLight: 1
-  DeactiveColliderTimerLight: 0
-  MaxDeactiveColliderTimerLight: 0.1
-  CooldownLight: 0
-  CooldownTimerLight: 0
-  MaxCooldownTimerLight: 0.3
-  InitialTimerHeavy: 0
-  MaxInitialTimerHeavy: 0.5
-  FirstCycleHeavy: 1
-  DeactiveColliderTimerHeavy: 0
-  MaxDeactiveColliderTimerHeavy: 0.1
-  CooldownHeavy: 0
-  CooldownTimerHeavy: 0
-  MaxCooldownTimerHeavy: 1.2
   CanReset: 0
-  TimerAttackAnimation: 0
-  MaxTimerAttackAnimation: 0.1
-  CountPoiseEnemy: 0
-  MaxCountPoiseEnemy: 3
-  isStaggeredEnemy: 0
-  TimerStaggeredEnemy: 0.2
-  ResetTimerStaggeredEnemy: 0
-  MaxResetTimerStaggeredEnemy: 5
+  IdleAnimClipSpeed: 10
+  PatrolAnimClipSpeed: 1
+  FollowAnimClipSpeed: 1
+  LightAttackAnimClipSpeed: 1
+  LightRecoveryAnimClipSpeed: 1
+  HeavyAttackAnimClipSpeed: 1
+  HeavyRecoveryAnimClipSpeed: 1
+  DamageAnimClipSpeed: 1
+  StunAnimClipSpeed: 1
+  StaggerAnimClipSpeed: 1
+  PossessionAnimClipSpeed: 1
+  DeathAnimClipSpeed: 1
 --- !u!114 &2092240406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6560,6 +6554,25 @@ MonoBehaviour:
   HeavyEnergyAmount: 10
   SpecialEnergyAmount: 15
   isTriggerOnlyOnce: 0
+--- !u!95 &2092240407
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092240398}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c247723edc7d1543b1fdbb609ba8b45, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2136307419
 GameObject:
   m_ObjectHideFlags: 0

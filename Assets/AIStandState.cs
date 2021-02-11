@@ -13,18 +13,18 @@ public class AIStandState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.GetComponent<EnemyManager>().CanAttack == true)
+        if (animator.GetComponent<EnemyData>().CanAttack == true)
         {
-            animator.GetComponent<EnemyManager>().random = Random.Range(0, 101);
-            animator.GetComponent<EnemyManager>().CanAttack = false;
-            Debug.Log("aaarandom" + animator.GetComponent<EnemyManager>().CanVisible);
-            Debug.Log("aaarandom2" + animator.GetComponent<EnemyManager>().isStun);
+            animator.GetComponent<EnemyData>().random = Random.Range(0, 101);
+            animator.GetComponent<EnemyData>().CanAttack = false;
+            Debug.Log("aaarandom" + animator.GetComponent<EnemyData>().CanVisible);
+            Debug.Log("aaarandom2" + animator.GetComponent<EnemyData>().isStun);
 
         }
-        if (animator.GetComponent<EnemyManager>().CanVisible == true && animator.GetComponent<EnemyManager>().isStun == false)
+        if (animator.GetComponent<EnemyData>().CanVisible == true && animator.GetComponent<EnemyData>().isStun == false)
         {
             Debug.Log("aaaprova");
-            if (animator.GetComponent<EnemyManager>().random <= animator.GetComponent<EnemyManager>().PercentuageAttack)
+            if (animator.GetComponent<EnemyData>().random <= animator.GetComponent<EnemyData>().PercentuageAttack)
             {
                 Debug.Log("aaaleggero");
                 animator.SetTrigger("LightAttack");

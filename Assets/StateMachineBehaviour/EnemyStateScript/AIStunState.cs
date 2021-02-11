@@ -7,24 +7,24 @@ public class AIStunState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyManager>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View
-        animator.GetComponent<EnemyManager>().isStun = true;
-        animator.GetComponent<EnemyManager>().CountHit = 0;
-        animator.GetComponent<EnemyManager>().LightAttackCollider.SetActive(false);
+        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View
+        animator.GetComponent<EnemyData>().isStun = true;
+        animator.GetComponent<EnemyData>().CountHit = 0;
+        animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyManager>().GetComponent<SpriteRenderer>().color = Color.red;
-        if (animator.GetComponent<EnemyManager>().isStun == true && animator.GetComponent<EnemyManager>().isPossessed == false)
+        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;
+        if (animator.GetComponent<EnemyData>().isStun == true && animator.GetComponent<EnemyData>().isPossessed == false)
         {
-            animator.GetComponent<EnemyManager>().timerStun += Time.deltaTime;
-            if (animator.GetComponent<EnemyManager>().CountHit >= animator.GetComponent<EnemyManager>().MaxCountHit)
+            animator.GetComponent<EnemyData>().timerStun += Time.deltaTime;
+            if (animator.GetComponent<EnemyData>().CountHit >= animator.GetComponent<EnemyData>().MaxCountHit)
             {
                 animator.SetTrigger("IsDeath");
             }
-            if (animator.GetComponent<EnemyManager>().timerStun >= animator.GetComponent<EnemyManager>().DurationStun)
+            if (animator.GetComponent<EnemyData>().timerStun >= animator.GetComponent<EnemyData>().DurationStun)
             {
                 animator.SetTrigger("IsDeath");
             }
