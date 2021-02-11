@@ -38,7 +38,7 @@ namespace SwordGame
 
         [SerializeField]
         bool Grounded = true;
-        bool canJump;
+        bool canJump = true;
         float waitTime;
         float tempSpeed;
         public static float StaticSpeed;
