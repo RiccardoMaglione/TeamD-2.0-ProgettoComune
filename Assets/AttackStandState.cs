@@ -40,6 +40,24 @@ public class AttackStandState : StateMachineBehaviour
                 animator.SetBool("CanAttack", true);
             }
         }
+
+        if (animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position.x + 0.5f > animator.GetComponent<EnemyManager>().transform.position.x)
+        {
+            animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, 0, animator.GetComponent<EnemyManager>().transform.rotation.z);           //Destra
+        }
+        else if (animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position.x - 0.5f < animator.GetComponent<EnemyManager>().transform.position.x)
+        {
+            animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, -180, animator.GetComponent<EnemyManager>().transform.rotation.z);         //Sinistra
+        }
+
+        if (animator.GetComponent<EnemyManager>().transform.position.x == animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position.x + 1)
+        {
+            animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, -180, animator.GetComponent<EnemyManager>().transform.rotation.z);           //Destra
+        }
+        if (animator.GetComponent<EnemyManager>().transform.position.x == animator.GetComponent<EnemyManager>().PlayerEnemy.transform.position.x - 1)
+        {
+            animator.GetComponent<EnemyManager>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyManager>().transform.rotation.x, 0, animator.GetComponent<EnemyManager>().transform.rotation.z);           //Destra
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
