@@ -4,8 +4,8 @@ public class WaypointsAttack1 : MonoBehaviour
 {
     public GameObject[] waypoints;
     int i = 0;
-    public float speed;
     float WPradius = 0.1f;
+    public float[] speed;
 
     public void Attack1()
     {
@@ -13,7 +13,7 @@ public class WaypointsAttack1 : MonoBehaviour
         {
             i++;
         }
-        transform.position = Vector3.MoveTowards(transform.position, waypoints[i].transform.position, Time.deltaTime * speed);       
+        transform.position = Vector3.MoveTowards(transform.position, waypoints[i].transform.position, Time.deltaTime * speed[i]);
     }
 
     void Update()
