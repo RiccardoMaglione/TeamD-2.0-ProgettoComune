@@ -123,6 +123,66 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &17603583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17603584}
+  m_Layer: 0
+  m_Name: Waypoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &17603584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17603583}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.97, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 257690734}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &153935918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 153935919}
+  m_Layer: 0
+  m_Name: Waypoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &153935919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153935918}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.06, y: -4.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 257690734}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &257690733
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 257690734}
   m_Layer: 0
-  m_Name: Waypoints Phase 2 First Attack
+  m_Name: Waypoint Attack 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +209,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2119550873}
+  - {fileID: 153935919}
+  - {fileID: 17603584}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -675,12 +738,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2065437698}
-  - component: {fileID: 2065437699}
   - component: {fileID: 2065437701}
-  - component: {fileID: 2065437700}
-  - component: {fileID: 2065437703}
+  - component: {fileID: 2065437699}
   - component: {fileID: 2065437697}
-  - component: {fileID: 2065437702}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -700,9 +760,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885a5cebc7797804fbf9ea1a4e111f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
-  speed: 0
-  anim: {fileID: 2065437702}
+  waypoints:
+  - {fileID: 2119550872}
+  - {fileID: 153935918}
+  - {fileID: 17603583}
+  speed: 10
 --- !u!4 &2065437698
 Transform:
   m_ObjectHideFlags: 0
@@ -728,27 +790,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2065437696}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f725c26803601146aa93c98f90dc8e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d4546199a419214a8c236dc60882d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  ParabolaRoot: {fileID: 1582107274}
-  Autostart: 1
-  Animation: 1
---- !u!114 &2065437700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065437696}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cd35764e8daf804b94ab899a169b008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1449918370}
-  height: 5
+  waypoints:
+  - {fileID: 1978043996}
+  - {fileID: 418505507}
+  - {fileID: 500479079}
+  speed: 10
 --- !u!58 &2065437701
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -765,43 +814,36 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.3
---- !u!95 &2065437702
-Animator:
-  serializedVersion: 3
+--- !u!1 &2119550872
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065437696}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 523d52234339c534186d8dbb80f87763, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2065437703
-MonoBehaviour:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2119550873}
+  m_Layer: 0
+  m_Name: Waypoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2119550873
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065437696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d4546199a419214a8c236dc60882d13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 1978043996}
-  - {fileID: 418505507}
-  - {fileID: 500479079}
-  speed: 7
-  anim: {fileID: 2065437702}
+  m_GameObject: {fileID: 2119550872}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 257690734}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2131083068
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +854,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2131083069}
   m_Layer: 0
-  m_Name: Waypoints Phase 1 First Attack
+  m_Name: Waypoint Attack 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
