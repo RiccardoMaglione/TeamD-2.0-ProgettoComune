@@ -7,6 +7,7 @@ public class AIStaggerState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.SetBool("IsStagger", false);
         animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.blue;       //MVC: View
         animator.GetComponent<EnemyData>().CountPoiseEnemy = 0;
         animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
