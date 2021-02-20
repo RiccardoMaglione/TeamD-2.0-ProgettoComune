@@ -64,18 +64,19 @@ namespace SwordGame
         private void Update()
         {
             print("3. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
-            if(HealthSlider != null)
+            if (HealthSlider != null)
             {
                 HealthSlider.sliderBar.value = CurrentHealth;
             }
-            if(EnergyBar != null)
+            if (EnergyBar != null)
             {
                 EnergyBar.fillAmount = (float)CurrentEnergy / 100;
             }
             //LifeBar.fillAmount = (float)CurrentLife / 100;      //temp
             if (CurrentHealth <= 0)
             {
-                Destroy(this.gameObject);
+                GetComponent<Animator>().SetBool("IsDie", true);
+                //Destroy(this.gameObject);
                 print("Hai Perso");
             }
             print("4. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
@@ -91,7 +92,7 @@ namespace SwordGame
             //LifeBar.fillAmount = (float)CurrentLife / 100;//temp
             //MaxEnergyStatic = MaxEnergy;
             print("1. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
-            if(HealthSlider!=null)
+            if (HealthSlider != null)
                 HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
             print("2. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
         }
@@ -146,6 +147,10 @@ namespace SwordGame
                 //        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().SpecialDamage;
                 //    }
                 //}
+                if (GetComponent<PlayerController>().PoisePlayer >= GetComponent<PlayerController>().MaxPoisePlayer)
+                {
+                    GetComponent<Animator>().SetBool("IsStagger", true);
+                }
             }
             #endregion
         }
@@ -161,7 +166,7 @@ namespace SwordGame
             }
         }
     }
-    
+
     public enum TypePlayer
     {
         FatKnight,

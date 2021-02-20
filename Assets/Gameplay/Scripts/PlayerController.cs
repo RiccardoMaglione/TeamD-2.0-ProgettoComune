@@ -37,15 +37,15 @@ namespace SwordGame
         public StructJump ValueJump;
 
         [SerializeField]
-        bool Grounded = true;
-        bool canJump = true;
+        public bool Grounded = true;
+        public bool canJump = true;
         float waitTime;
-        float tempSpeed;
+        public float tempSpeed;
         public static float StaticSpeed;
         [Tooltip("It's a time of change rotation offset of platform")]
         public float TimeDoublePlatform;
 
-        Rigidbody2D rb;
+        public Rigidbody2D rb;
         GameObject TempPlatform;
 
         public bool CanDashLeft = false;
@@ -90,17 +90,17 @@ namespace SwordGame
         {
             velocityY = rb.velocity.y;
             StaticSpeed = ValueMovement.Speed;
-            Staggered();
+            //Staggered();
             //if (isInAttack == false)
             //{
             if (isStaggered == false)
             {
-                PlayerMovement();
+                //PlayerMovement();
                 if (CanDashLeft == false && CanDashRight == false)
                 {
-                    PlayerJump();
+                    //PlayerJump();
                 }
-                Dash();
+                //Dash();
             }
             //}
             //else
@@ -110,82 +110,31 @@ namespace SwordGame
             ResetPlatform();
             ResetStaggered();
             print("Grounded" + Grounded);
+
             if (Grounded == true)
             {
                 CanDashJump = true;
             }
-
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 canJump = true;
             }
-
             if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
             {
                 CanDash = true;
             }
-        }
-
-        #region Player - Move and Jump and Dash
-        public void PlayerMovement()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (rb.velocity.y < 0 && CanDashLeft == false && CanDashRight == false)
             {
-                ValueMovement.Speed = tempSpeed;
-                //if(TempSprite != null)
-                //    TempSprite.flipX = true;
-                transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                ValueMovement.Speed = tempSpeed;
-                //if (TempSprite != null)
-                //    TempSprite.flipX = false;
-                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
-            }
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                CalculateSpeed();
-                rb.velocity = new Vector2(-ValueMovement.Speed, rb.velocity.y);
-                transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
-                //if (TempSprite != null)
-                //  TempSprite.flipX = true;
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                CalculateSpeed();
-                rb.velocity = new Vector2(ValueMovement.Speed, rb.velocity.y);
-                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
-                //if (TempSprite != null)
-                //  TempSprite.flipX = false;
+                GetComponent<Animator>().SetBool("IsFall", true);
             }
             else
             {
-                rb.velocity = new Vector2(0, rb.velocity.y);
+                GetComponent<Animator>().SetBool("IsFall", false);
             }
         }
-        public void PlayerJump()
-        {
-            if (Input.GetKey(KeyCode.Space) && Grounded == true && rb.velocity.y == 0 && canJump == true)
-            {
-                rb.AddForce(Vector2.up * ValueJump.jumpForce, ForceMode2D.Impulse);
-                Grounded = false;
-                canJump = false;
-            }
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (ValueJump.fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 1 && !Input.GetButton("Jump"))
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (ValueJump.lowJumpMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y < 6)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, 0.01f);
-            }
-        }
+
+        #region Player - Move and Jump and Dash
+
         public void CalculateSpeed()
         {
             ValueMovement.Speed = ValueMovement.Speed + ValueMovement.Acceleration * Time.deltaTime;
@@ -205,52 +154,6 @@ namespace SwordGame
                 }
             }
         }
-        public void Dash()          //Se il timerdash è maggiore del limit, dasha solo quando schiaccio e non perpetua
-        {
-            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && CanDashRight == false && CanDashJump == true && GravityChange == true && CanDash == true)
-            {
-                CanDashLeft = true;
-                CanDash = false;
-                GetComponent<Rigidbody2D>().gravityScale = 0.000001f;
-                transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
-                EffectDash();
-                //if (TempSprite != null)
-                //    TempSprite.flipX = true;
-            }
-            if (CanDashLeft == true && TimerDash <= LimitTimerDash)
-            {
-                rb.velocity = new Vector2(-ValueMovement.Speed * 5, 0);
-                TimerDash += Time.deltaTime;
-                if (TimerDash >= LimitTimerDash)
-                {
-                    //CanDashLeft = false;
-                    //TimerDash = 0;
-                    StartCoroutine(CooldownDash());
-                }
-            }
-
-            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && CanDashLeft == false && CanDashJump == true && GravityChange == true && CanDash == true)
-            {
-                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
-                GetComponent<Rigidbody2D>().gravityScale = 0.000001f;
-                CanDashRight = true;
-                CanDash = false;
-                //if (TempSprite != null)
-                //    TempSprite.flipX = false;
-                EffectDash();
-            }
-            if (CanDashRight == true && TimerDash <= LimitTimerDash)
-            {
-                rb.velocity = new Vector2(ValueMovement.Speed * 5, 0);
-                TimerDash += Time.deltaTime;
-                if (TimerDash >= LimitTimerDash)
-                {
-                    //CanDashRight = false;
-                    //TimerDash = 0;
-                    StartCoroutine(CooldownDash());
-                }
-            }
-        }
 
         public IEnumerator CooldownDash()
         {
@@ -259,6 +162,8 @@ namespace SwordGame
             {
                 GetComponent<Rigidbody2D>().gravityScale = ValueJump.fallMultiplier - 1;
             }
+            GetComponent<Animator>().SetBool("IsDash", false);
+            GetComponent<Animator>().SetBool("CanDashFall", false);
             yield return new WaitForSeconds(TimerCooldownDash);
             GetComponent<Rigidbody2D>().gravityScale = 1;
             CanDashLeft = false;
@@ -281,7 +186,6 @@ namespace SwordGame
             }
             GravityChange = true;
         }
-
         public void EffectDash()
         {
             switch (PM.TypeCharacter)
@@ -302,6 +206,7 @@ namespace SwordGame
                     break;
             }
         }
+
 
         public void Staggered()
         {
@@ -327,6 +232,7 @@ namespace SwordGame
                 PoisePlayer = 0;
             }
         }
+
         #endregion
 
         #region Collision
