@@ -28,85 +28,102 @@ namespace SwordGame
     [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
 
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : PlayerManager
     {
         #region Variables
-        public PlayerManager PM;
+        ///*[Custom Inspector]*/ public PlayerManager PM;
+        /*[Custom Inspector]*/ public Rigidbody2D rb;
+        public SpriteRenderer TempSprite;   //Non ci sono riferimenti ma c'è quello del player
 
-        public StructMovement ValueMovement;
-        public StructJump ValueJump;
-
-        [SerializeField]
-        public bool Grounded = true;
-        public bool canJump = true;
-        float waitTime;
-        public float tempSpeed;
-        public static float StaticSpeed;
-        [Tooltip("It's a time of change rotation offset of platform")]
-        public float TimeDoublePlatform;
-
-        public Rigidbody2D rb;
-        GameObject TempPlatform;
-
-        public bool CanDashLeft = false;
-        public bool CanDashRight = false;
-        [Tooltip("Value of start of timer for dash")]
-        [ReadOnly] public float TimerDash = 0;
-        [Tooltip("Value for limit timer of dash")]
-        public float LimitTimerDash = 5;
-
-        public SpriteRenderer TempSprite;
-
-        public float TimerCooldownDash;
-
-        public GameObject DashColliderBabushka;
-        public int DashDamageFatKnight;
-
-        public static bool isBoriousDash = false;
-        //public bool isInAttack = false;
-
-        public int PoisePlayer;
-        public int MaxPoisePlayer;
-        public float TimerStaggered;
-        public bool isStaggered;
-        public float ResetTimerStaggered;
-        public float MaxResetTimerStaggered;
-        public bool CanDashJump;
-        public bool CanDash;
-        public bool GravityChange = true;
-
-        public float velocityY;
+        #region Variables Struct
+        /*[Custom Inspector]*/ public StructMovement ValueMovement;
+        /*[Custom Inspector]*/ public StructJump ValueJump;
         #endregion
+        #region Variables Jump and Fall
+        [SerializeField]
+        /*Hide ma public*/ public bool Grounded = true;
+        /*Hide ma public*/ public bool canJump = true;
+        #endregion
+        #region Variables Platform
+        /*Hide*/ float waitTime;         //Piattaforma
+        [Tooltip("It's a time of change rotation offset of platform")]
+        /*Custom Inspector]*/public float TimeDoublePlatform;
+        GameObject TempPlatform;
+        #endregion
+        #region Variables Dash - Normal
+        /*Hide ma public*/ public bool CanDashLeft = false;
+        /*Hide ma public*/ public bool CanDashRight = false;
+        [Tooltip("Value of start of timer for dash")]
+        [ReadOnly] public float TimerDash = 0;//Controllare se utilizzato o no causa animator
+        [Tooltip("Value for limit timer of dash")]
+        public float LimitTimerDash = 5; //va nell'animator
+        public float TimerCooldownDash;             //Controllare se utilizzato o no causa animator
+        public bool CanDashJump;            //Utilizzato nella parte del dash - Non si possono modificare da inspector
+        public bool CanDash;                //Utilizzato nella parte del dash - Non si possono modificare da inspector
+        public bool GravityChange = true;   //Utilizzato nella parte del dash - Non si possono modificare da inspector
+        #endregion
+        #region Variables Dash - Effect
+        public GameObject DashColliderBabushka;     //Per gli effetti del dash - Deve essere possibile modificarlo
+        public int DashDamageFatKnight;             //Per gli effetti del dash - Deve essere possibile modificarlo
+        public static bool isBoriousDash = false;   //Per gli effetti del dash - Vedere dove utilizzato
+        #endregion
+        #region Variables Poise
+        /*Hide ma public*/ public int PoisePlayer;             //Utilizzato nella parte del poise - Non si possono modificare da inspector
+        /*[Custom Inspector]*/ public int MaxPoisePlayer;          //Utilizzato nella parte del poise - Deve essere possibile modificarlo
+        #endregion
+        #region Variables Stagger utilizzate
+        [ReadOnly] public float ResetTimerStaggered;   //Si potrebbero poter togliere - Non si possono modificare da inspector
+        /*[Custom Inspector]*/ public float MaxResetTimerStaggered;//Si potrebbero poter togliere - Non si possono modificare da inspector
+        #endregion
+
+        public float tempSpeed;                 //Va nell'animatore
+        [ReadOnly] public float velocityY;             //Check in inspector - Non si possono modificare da inspector
+        public static float StaticSpeed;        //Controllare dove va
+
+        #region Variables Stagger non utilizzate
+        public bool isStaggered;            //Si potrebbero poter togliere - Non si possono modificare da inspector
+        public float TimerStaggered;        //Si potrebbero poter togliere - Non si possono modificare da inspector
+        #endregion
+        #endregion
+
+        private void OnValidate()
+        {
+            OnValidatePlayerManager();
+        }
 
         void Start()
         {
-            PM = GetComponent<PlayerManager>();
-            rb = GetComponent<Rigidbody2D>();
-            waitTime = TimeDoublePlatform;
-            tempSpeed = ValueMovement.Speed;
+            InitializePlayerManager();
+            InitializePlayerController();
         }
 
         void Update()
         {
+            UpdatePlayerManager();
+            UpdatePlayerController();
+        }
+
+        #region Player - Move and Jump and Dash
+
+        /// <summary>
+        /// Metodo che inizializza alcune variabili del player controller
+        /// </summary>
+        public void InitializePlayerController()
+        {
+            //PM = GetComponent<PlayerManager>();     //Setta la referenza del PlayerManager
+            rb = GetComponent<Rigidbody2D>();       //Setta la referenza del Rigidbody2D
+            waitTime = TimeDoublePlatform;          //
+            tempSpeed = ValueMovement.Speed;        //
+        }
+        
+        /// <summary>
+        /// Metodo dell'update del PlayerController
+        /// </summary>
+        public void UpdatePlayerController()
+        {
             velocityY = rb.velocity.y;
-            StaticSpeed = ValueMovement.Speed;
-            //Staggered();
-            //if (isInAttack == false)
-            //{
-            if (isStaggered == false)
-            {
-                //PlayerMovement();
-                if (CanDashLeft == false && CanDashRight == false)
-                {
-                    //PlayerJump();
-                }
-                //Dash();
-            }
-            //}
-            //else
-            //{
-            //    rb.velocity = new Vector2(0, rb.velocity.y);
-            //}
+            StaticSpeed = ValueMovement.Speed;          //Controllare cosa fa
+
             ResetPlatform();
             ResetStaggered();
             print("Grounded" + Grounded);
@@ -123,6 +140,7 @@ namespace SwordGame
             {
                 CanDash = true;
             }
+
             if (rb.velocity.y < 0 && CanDashLeft == false && CanDashRight == false)
             {
                 GetComponent<Animator>().SetBool("IsFall", true);
@@ -132,15 +150,21 @@ namespace SwordGame
                 GetComponent<Animator>().SetBool("IsFall", false);
             }
         }
-
-        #region Player - Move and Jump and Dash
-
+        
+        /// <summary>
+        /// Metodo per calcolare la velocità del player e limitarla ad un massimo
+        /// </summary>
         public void CalculateSpeed()
         {
             ValueMovement.Speed = ValueMovement.Speed + ValueMovement.Acceleration * Time.deltaTime;
             if (ValueMovement.Speed >= ValueMovement.MaxSpeed)
                 ValueMovement.Speed = ValueMovement.MaxSpeed;
         }
+        
+        /// <summary>
+        /// Metodo per resettare il rotation offset delle piattaforme
+        /// TODO: Creare un array per risolvere il bug delle piattaforme che non si resettano
+        /// </summary>
         public void ResetPlatform()
         {
             if (TempPlatform != null)
@@ -155,6 +179,48 @@ namespace SwordGame
             }
         }
 
+        /// <summary>
+        /// Metodo che resetta il poise se il player non viene attaccato per un certo valore di tempo
+        /// </summary>
+        public void ResetStaggered()
+        {
+            ResetTimerStaggered += Time.deltaTime;              //Aumenta il timer
+            if (ResetTimerStaggered >= MaxResetTimerStaggered)  //Se il timer è superiore rispetto a un certo valore
+            {
+                PoisePlayer = 0;                                //Azzera il valore della poise
+            }
+        }
+        
+        #region Dash
+
+        /// <summary>
+        /// Metodo che definisce gli effetti dei dash dei vari personaggi giocabili
+        /// </summary>
+        public void EffectDash()
+        {
+            switch (TypeCharacter)
+            {
+                case TypePlayer.FatKnight:
+                    gameObject.layer = 0;
+                    break;
+                case TypePlayer.BoriousKnight:
+                    isBoriousDash = true;
+                    break;
+                case TypePlayer.Babushka:
+                    DashColliderBabushka.SetActive(true);
+                    break;
+                case TypePlayer.Thief:
+                    Invulnerability = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        /// <summary>
+        /// IEnumerator per il cooldown del dash
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator CooldownDash()
         {
             GravityChange = false;
@@ -168,7 +234,7 @@ namespace SwordGame
             GetComponent<Rigidbody2D>().gravityScale = 1;
             CanDashLeft = false;
             CanDashRight = false;
-            PM.Invulnerability = false;
+            Invulnerability = false;
             if (DashColliderBabushka != null)
                 DashColliderBabushka.SetActive(false);
             gameObject.layer = 8;
@@ -186,28 +252,14 @@ namespace SwordGame
             }
             GravityChange = true;
         }
-        public void EffectDash()
-        {
-            switch (PM.TypeCharacter)
-            {
-                case TypePlayer.FatKnight:
-                    gameObject.layer = 0;
-                    break;
-                case TypePlayer.BoriousKnight:
-                    isBoriousDash = true;
-                    break;
-                case TypePlayer.Babushka:
-                    DashColliderBabushka.SetActive(true);
-                    break;
-                case TypePlayer.Thief:
-                    PM.Invulnerability = true;
-                    break;
-                default:
-                    break;
-            }
-        }
 
+        #endregion
 
+        #region Contiene lo stagger con un timer - Al momento metodi inutilizzati
+
+        /// <summary>
+        /// Metodo per attivare lo stagger, azzerare la velocità del player e far partire il cooldown
+        /// </summary>
         public void Staggered()
         {
             if (PoisePlayer >= MaxPoisePlayer)
@@ -217,6 +269,10 @@ namespace SwordGame
                 StartCoroutine(CooldownStaggered());
             }
         }
+        /// <summary>
+        /// IEnumarator per il cooldown dello stagger, nel quale a fine resetta il valore di poise
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator CooldownStaggered()
         {
             yield return new WaitForSeconds(TimerStaggered);
@@ -224,15 +280,8 @@ namespace SwordGame
             PoisePlayer = 0;
         }
 
-        public void ResetStaggered()
-        {
-            ResetTimerStaggered += Time.deltaTime;
-            if (ResetTimerStaggered >= MaxResetTimerStaggered)
-            {
-                PoisePlayer = 0;
-            }
-        }
-
+        #endregion
+        
         #endregion
 
         #region Collision
@@ -256,6 +305,68 @@ namespace SwordGame
                     collision.gameObject.GetComponent<PlatformEffector2D>().rotationalOffset = 180;
                     TempPlatform = collision.gameObject;
                 }
+            }
+        }
+        #endregion
+
+        #region Trigger
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            #region PlayerLife
+            if (Invulnerability == false && isTriggerOnlyOnce == false)
+            {
+                if (collision.tag == "LightAttack")
+                {
+                    isTriggerOnlyOnce = true;
+                    GetComponent<PlayerController>().ResetTimerStaggered = 0;
+                    GetComponent<PlayerController>().PoisePlayer += 1;                                  //aumenta di 1
+                    CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                    //CurrentLife -= collision.GetComponentInParent<EnemyManager>().LightDamage;
+                    print("Colpito Light");
+                    if (PlayerController.isBoriousDash == true)
+                    {
+                        collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                    }
+                }
+                if (collision.tag == "HeavyAttack")
+                {
+                    isTriggerOnlyOnce = true;
+                    GetComponent<PlayerController>().ResetTimerStaggered = 0;
+                    GetComponent<PlayerController>().PoisePlayer += 1;                                  //aumenta di 1
+                    CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                    //CurrentLife -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
+                    print("Colpito Heavy");
+                    if (PlayerController.isBoriousDash == true)
+                    {
+                        collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                    }
+                }
+                //if (collision.tag == "SpecialAttack")                     //I nemici non hanno l'attacco speciale
+                //{
+                //    GetComponent<PlayerController>().ResetTimerStaggered = 0;
+                //    GetComponent<PlayerController>().PoisePlayer += 1;
+                //    currentHealth -= collision.GetComponent<EnemyManager>().SpecialDamage;
+                //    if (PlayerController.isBoriousDash == true)
+                //    {
+                //        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().SpecialDamage;
+                //    }
+                //}
+                if (GetComponent<PlayerController>().PoisePlayer >= GetComponent<PlayerController>().MaxPoisePlayer)
+                {
+                    GetComponent<Animator>().SetBool("IsStagger", true);
+                }
+            }
+            #endregion
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.tag == "LightAttack")
+            {
+                isTriggerOnlyOnce = false;
+            }
+            if (collision.tag == "HeavyAttack")
+            {
+                isTriggerOnlyOnce = false;
             }
         }
         #endregion

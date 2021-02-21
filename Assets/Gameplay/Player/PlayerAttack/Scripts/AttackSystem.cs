@@ -27,20 +27,20 @@ public class AttackSystem : MonoBehaviour
 
 
 
-                if (collision.GetComponentInParent<Animator>().GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponentInParent<Animator>().GetComponent<EnemyData>().MaxCountPoiseEnemy)
+                collision.GetComponent<Animator>().SetTrigger("DamageReceived");
+                collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
                     //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
-                collision.GetComponentInParent<Animator>().SetInteger("Life", GetComponentInParent<Animator>().GetComponent<EnemyData>().Life);
-                //collision.GetComponent<Animator>().SetTrigger("DamageReceived");
 
 
 
 
                 print("Light");
-                GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().LightEnergyAmount;
-                print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
+                GetComponentInParent<PlayerController>().CurrentEnergy += GetComponentInParent<PlayerController>().LightEnergyAmount;
+                print("Energy" + GetComponentInParent<PlayerController>().CurrentEnergy);
             }
             if (playerInput.isHeavyAttack == true)
             {
@@ -52,19 +52,19 @@ public class AttackSystem : MonoBehaviour
 
 
 
-                if (collision.GetComponentInParent<Animator>().GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponentInParent<Animator>().GetComponent<EnemyData>().MaxCountPoiseEnemy)
+                collision.GetComponent<Animator>().SetTrigger("DamageReceived");
+                collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
                     //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
-                collision.GetComponentInParent<Animator>().SetInteger("Life", GetComponentInParent<Animator>().GetComponent<EnemyData>().Life);
-                //collision.GetComponent<Animator>().SetTrigger("DamageReceived");
 
 
 
                 print("Heavy");
-                GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().HeavyEnergyAmount;
-                print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
+                GetComponentInParent<PlayerController>().CurrentEnergy += GetComponentInParent<PlayerController>().HeavyEnergyAmount;
+                print("Energy" + GetComponentInParent<PlayerController>().CurrentEnergy);
             }
             if (playerInput.isSpecialAttack == true)
             {
@@ -75,19 +75,19 @@ public class AttackSystem : MonoBehaviour
                 //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
 
 
-                if (collision.GetComponentInParent<Animator>().GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponentInParent<Animator>().GetComponent<EnemyData>().MaxCountPoiseEnemy)
+                collision.GetComponent<Animator>().SetTrigger("DamageReceived");
+                collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
                     //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
-                collision.GetComponentInParent<Animator>().SetInteger("Life", GetComponentInParent<Animator>().GetComponent<EnemyData>().Life);
-                //collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 
                 
                 
                 print("Special");
-                GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().SpecialEnergyAmount;
-                print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
+                GetComponentInParent<PlayerController>().CurrentEnergy += GetComponentInParent<PlayerController>().SpecialEnergyAmount;
+                print("Energy" + GetComponentInParent<PlayerController>().CurrentEnergy);
             }
         }
         
