@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SwordGame
@@ -44,13 +45,16 @@ namespace SwordGame
         /*Hide ma public*/ public bool canJump = true;
         #endregion
         #region Variables Platform
-        /*Hide*/ float waitTime;
+        /*Hide*/ float waitTime;                    //Si può cancellare
         [Tooltip("It's a time of change rotation offset of platform")]
         /*Custom Inspector]*/public float TimeDoublePlatform;
         GameObject TempPlatform;
+        public List<GameObject> ListTempPlatform = new List<GameObject>();
+        public List<float> ListWaitTime = new List<float>();
         #endregion
         #region Variables Dash - Normal
-        /*Hide ma public*/ public bool CanDashLeft = false;
+        /*Hide ma public*/
+        public bool CanDashLeft = false;
         /*Hide ma public*/ public bool CanDashRight = false;
         [Tooltip("Value of start of timer for dash")]
         [ReadOnly] public float TimerDash = 0;//Controllare se utilizzato o no causa animator
@@ -122,7 +126,7 @@ namespace SwordGame
         public void InitializePlayerController()
         {
             rb = GetComponent<Rigidbody2D>();       //Setta la referenza del Rigidbody2D
-            waitTime = TimeDoublePlatform;          //Setta il wait time uguale al TimeDoublePlatform
+            waitTime = TimeDoublePlatform;          //Setta il wait time uguale al TimeDoublePlatform - Si può cancellare
             tempSpeed = ValueMovement.Speed;        //Setta il tempSpeed uguale alla velocità del player
         }
 
@@ -196,16 +200,29 @@ namespace SwordGame
         /// </summary>
         public void ResetPlatform()
         {
-            if (TempPlatform != null)
+            for (int i = 0; i < ListWaitTime.Count; i++)
             {
-                waitTime -= Time.deltaTime;
-                if (waitTime <= 0)
+                if(ListTempPlatform[i] != null)
                 {
-                    TempPlatform.GetComponent<PlatformEffector2D>().rotationalOffset = 0;
-                    TempPlatform = null;
-                    waitTime = TimeDoublePlatform;
+                    ListWaitTime[i] -= Time.deltaTime;
+                    if(ListWaitTime[i] <= 0)
+                    {
+                        ListTempPlatform[i].GetComponent<PlatformEffector2D>().rotationalOffset = 0;
+                        ListWaitTime.RemoveAt(i);
+                        ListTempPlatform.RemoveAt(i);
+                    }
                 }
             }
+            //if (TempPlatform != null )
+            //{
+                //waitTime -= Time.deltaTime;
+                //if (waitTime <= 0)
+                //{
+                //    TempPlatform.GetComponent<PlatformEffector2D>().rotationalOffset = 0;
+                //    TempPlatform = null;
+                //    waitTime = TimeDoublePlatform;
+                //}
+            //}
         }
 
         /// <summary>
@@ -333,6 +350,8 @@ namespace SwordGame
                 {
                     collision.gameObject.GetComponent<PlatformEffector2D>().rotationalOffset = 180;
                     TempPlatform = collision.gameObject;
+                    ListTempPlatform.Add(TempPlatform);
+                    ListWaitTime.Add(TimeDoublePlatform);
                 }
             }
         }
