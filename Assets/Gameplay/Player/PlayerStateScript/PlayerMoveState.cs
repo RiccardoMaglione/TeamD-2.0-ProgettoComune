@@ -16,15 +16,11 @@ public class PlayerMoveState : StateMachineBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             animator.GetComponent<PlayerController>().ValueMovement.Speed = animator.GetComponent<PlayerController>().tempSpeed;
-            //if(TempSprite != null)
-            //    TempSprite.flipX = true;
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, -180, animator.GetComponent<PlayerController>().transform.rotation.z);
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             animator.GetComponent<PlayerController>().ValueMovement.Speed = animator.GetComponent<PlayerController>().tempSpeed;
-            //if (TempSprite != null)
-            //    TempSprite.flipX = false;
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, 0, animator.GetComponent<PlayerController>().transform.rotation.z);
         }
 
@@ -33,16 +29,12 @@ public class PlayerMoveState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().CalculateSpeed();
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(-animator.GetComponent<PlayerController>().ValueMovement.Speed, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, -180, animator.GetComponent<PlayerController>().transform.rotation.z);
-            //if (TempSprite != null)
-            //  TempSprite.flipX = true;
         }
         else if (Input.GetKey(KeyCode.D))
         {
             animator.GetComponent<PlayerController>().CalculateSpeed();
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(animator.GetComponent<PlayerController>().ValueMovement.Speed, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, 0, animator.GetComponent<PlayerController>().transform.rotation.z);
-            //if (TempSprite != null)
-            //  TempSprite.flipX = false;
         }
         else
         {

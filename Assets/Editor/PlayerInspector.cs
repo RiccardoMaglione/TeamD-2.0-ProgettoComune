@@ -11,7 +11,7 @@ public class PlayerInspector : Editor
     Color BGColor;
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
+        base.OnInspectorGUI();
 
         serializedObject.Update();
 

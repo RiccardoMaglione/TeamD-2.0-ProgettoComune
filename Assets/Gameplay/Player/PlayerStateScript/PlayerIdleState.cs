@@ -6,10 +6,11 @@ using SwordGame;
 public class PlayerIdleState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.GetComponent<PlayerController>().Grounded = true;
+        animator.SetBool("IsFall", false);
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -36,7 +37,8 @@ public class PlayerIdleState : StateMachineBehaviour
 
         if (animator.GetComponent<PlayerController>().rb.velocity.y < 0)
         {
-            animator.SetBool("IsFall", true);
+            animator.SetBool("IsFall", true);           //Possibile bug
+            Debug.Log("ciao1");
         }
 
         if (animator.GetComponent<PlayerController>().Grounded == true)

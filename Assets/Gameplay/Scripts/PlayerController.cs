@@ -141,9 +141,10 @@ namespace SwordGame
                 CanDash = true;
             }
 
-            if (rb.velocity.y < 0 && CanDashLeft == false && CanDashRight == false)
+            if (rb.velocity.y < -0.01f && CanDashLeft == false && CanDashRight == false)
             {
-                GetComponent<Animator>().SetBool("IsFall", true);
+                GetComponent<Animator>().SetBool("IsFall", true);       //Possibile bug
+                Debug.Log("Ciao3");
             }
             else
             {

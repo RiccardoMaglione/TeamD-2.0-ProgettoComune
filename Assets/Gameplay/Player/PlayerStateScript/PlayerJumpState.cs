@@ -14,7 +14,7 @@ public class PlayerJumpState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("IsJump", false);
-        if (Input.GetKey(KeyCode.Space) && animator.GetComponent<PlayerController>().Grounded == true && animator.GetComponent<PlayerController>().rb.velocity.y == 0 && animator.GetComponent<PlayerController>().canJump == true)
+        if (Input.GetKey(KeyCode.Space) && animator.GetComponent<PlayerController>().Grounded == true /*&& animator.GetComponent<PlayerController>().rb.velocity.y == 0 */&& animator.GetComponent<PlayerController>().canJump == true)
         {
             animator.GetComponent<PlayerController>().rb.AddForce(Vector2.up * animator.GetComponent<PlayerController>().ValueJump.jumpForce, ForceMode2D.Impulse);
             animator.GetComponent<PlayerController>().Grounded = false;
@@ -29,6 +29,7 @@ public class PlayerJumpState : StateMachineBehaviour
         {
             animator.SetBool("IsJump", false);
             animator.SetBool("IsFall", true);
+            Debug.Log("Ciao2");
         }
         //if (animator.GetComponent<PlayerController>().rb.velocity.y < 0) //Se cade
         //{
