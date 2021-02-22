@@ -126,6 +126,9 @@ namespace SwordGame
             tempSpeed = ValueMovement.Speed;        //Setta il tempSpeed uguale alla velocità del player
         }
 
+        /// <summary>
+        /// Metodo per inizializzare da inspector le velocità delle animazioni della state machine
+        /// </summary>
         public void InitializeSpeedAnimation()
         {
             GetComponent<Animator>().SetFloat("PlayerIdleSpeed", PlayerIdleSpeed);
