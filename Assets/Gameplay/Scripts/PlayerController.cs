@@ -31,7 +31,6 @@ namespace SwordGame
     public class PlayerController : PlayerManager
     {
         #region Variables
-        ///*[Custom Inspector]*/ public PlayerManager PM;
         /*[Custom Inspector]*/ public Rigidbody2D rb;
         public SpriteRenderer TempSprite;   //Non ci sono riferimenti ma c'è quello del player
 
@@ -45,7 +44,7 @@ namespace SwordGame
         /*Hide ma public*/ public bool canJump = true;
         #endregion
         #region Variables Platform
-        /*Hide*/ float waitTime;         //Piattaforma
+        /*Hide*/ float waitTime;
         [Tooltip("It's a time of change rotation offset of platform")]
         /*Custom Inspector]*/public float TimeDoublePlatform;
         GameObject TempPlatform;
@@ -76,14 +75,26 @@ namespace SwordGame
         /*[Custom Inspector]*/ public float MaxResetTimerStaggered;//Si potrebbero poter togliere - Non si possono modificare da inspector
         #endregion
 
-        public float tempSpeed;                 //Va nell'animatore
-        [ReadOnly] public float velocityY;             //Check in inspector - Non si possono modificare da inspector
-        public static float StaticSpeed;        //Controllare dove va
+        public float tempSpeed;                         //Va nell'animatore
+        [ReadOnly] public float velocityY;              //Check in inspector - Non si possono modificare da inspector
+        public static float StaticSpeed;                //Controllare dove va
 
         #region Variables Stagger non utilizzate
         public bool isStaggered;            //Si potrebbero poter togliere - Non si possono modificare da inspector
         public float TimerStaggered;        //Si potrebbero poter togliere - Non si possono modificare da inspector
         #endregion
+
+        public float PlayerIdleSpeed = 1;
+        public float PlayerMoveSpeed = 1;
+        public float PlayerDashSpeed = 1;
+        public float PlayerFallSpeed = 1;
+        public float PlayerDashFallSpeed = 1;
+        public float PlayerJumpSpeed = 1;
+        public float PlayerDieSpeed = 1;
+        public float PlayerStaggerSpeed = 1;
+        public float PlayerLightAttackSpeed = 1;
+        public float PlayerHeavyAttackSpeed = 1;
+        public float PlayerSpecialAttackSpeed = 1;
         #endregion
 
         private void OnValidate()
@@ -110,18 +121,32 @@ namespace SwordGame
         /// </summary>
         public void InitializePlayerController()
         {
-            //PM = GetComponent<PlayerManager>();     //Setta la referenza del PlayerManager
             rb = GetComponent<Rigidbody2D>();       //Setta la referenza del Rigidbody2D
-            waitTime = TimeDoublePlatform;          //
-            tempSpeed = ValueMovement.Speed;        //
+            waitTime = TimeDoublePlatform;          //Setta il wait time uguale al TimeDoublePlatform
+            tempSpeed = ValueMovement.Speed;        //Setta il tempSpeed uguale alla velocità del player
         }
-        
+
+        public void InitializeSpeedAnimation()
+        {
+            GetComponent<Animator>().SetFloat("PlayerIdleSpeed", PlayerIdleSpeed);
+            GetComponent<Animator>().SetFloat("PlayerMoveSpeed", PlayerMoveSpeed);
+            GetComponent<Animator>().SetFloat("PlayerDashSpeed", PlayerDashSpeed);
+            GetComponent<Animator>().SetFloat("PlayerFallSpeed", PlayerFallSpeed);
+            GetComponent<Animator>().SetFloat("PlayerDashFallSpeed", PlayerDashFallSpeed);
+            GetComponent<Animator>().SetFloat("PlayerJumpSpeed", PlayerJumpSpeed);
+            GetComponent<Animator>().SetFloat("PlayerDieSpeed", PlayerDieSpeed);
+            GetComponent<Animator>().SetFloat("PlayerStaggerSpeed", PlayerStaggerSpeed);
+            GetComponent<Animator>().SetFloat("PlayerLightAttackSpeed", PlayerLightAttackSpeed);
+            GetComponent<Animator>().SetFloat("PlayerHeavyAttackSpeed", PlayerHeavyAttackSpeed);
+            GetComponent<Animator>().SetFloat("PlayerSpecialAttackSpeed", PlayerSpecialAttackSpeed);
+        }
+
         /// <summary>
         /// Metodo dell'update del PlayerController
         /// </summary>
         public void UpdatePlayerController()
         {
-            velocityY = rb.velocity.y;
+            velocityY = rb.velocity.y;                  //Check rb.velocity.y in inspector
             StaticSpeed = ValueMovement.Speed;          //Controllare cosa fa
 
             ResetPlatform();

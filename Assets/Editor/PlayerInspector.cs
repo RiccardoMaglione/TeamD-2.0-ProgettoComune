@@ -11,7 +11,7 @@ public class PlayerInspector : Editor
     Color BGColor;
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
+        //base.OnInspectorGUI();
 
         serializedObject.Update();
 
@@ -344,6 +344,113 @@ public class PlayerInspector : Editor
             GUI.enabled = true;
         }
 
+        EditorGUILayout.EndHorizontal();
+        #endregion
+
+        EditorGUILayout.Space(20);
+        
+        #region Animation Clip Speed Animator
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        StyleTextFieldCustom.fontStyle = FontStyle.BoldAndItalic;
+        EditorGUILayout.TextField("Animator Speed", StyleTextFieldCustom);
+        StyleTextFieldCustom.fontStyle = FontStyle.Normal;
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.TextField("Idle Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerIdleSpeed = EditorGUILayout.FloatField(PC.PlayerIdleSpeed);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        EditorGUILayout.TextField("Move Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerMoveSpeed = EditorGUILayout.FloatField(PC.PlayerMoveSpeed);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        EditorGUILayout.TextField("Dash Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerDashSpeed = EditorGUILayout.FloatField(PC.PlayerDashSpeed);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        EditorGUILayout.TextField("Fall Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerFallSpeed = EditorGUILayout.FloatField(PC.PlayerFallSpeed);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        EditorGUILayout.TextField("Dash Fall Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerDashFallSpeed = EditorGUILayout.FloatField(PC.PlayerDashFallSpeed);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        EditorGUILayout.TextField("Jump Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerJumpSpeed = EditorGUILayout.FloatField(PC.PlayerJumpSpeed);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        EditorGUILayout.TextField("Die Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerDieSpeed = EditorGUILayout.FloatField(PC.PlayerDieSpeed);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        EditorGUILayout.TextField("Stagger Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerStaggerSpeed = EditorGUILayout.FloatField(PC.PlayerStaggerSpeed);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        EditorGUILayout.TextField("Light Attack Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerLightAttackSpeed = EditorGUILayout.FloatField(PC.PlayerLightAttackSpeed);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        EditorGUILayout.TextField("Heavy Attack Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerHeavyAttackSpeed = EditorGUILayout.FloatField(PC.PlayerHeavyAttackSpeed);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUI.enabled = false;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a * 2f);
+        EditorGUILayout.TextField("Special Attack Speed");
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, GUI.color.a / 2f);
+        GUI.enabled = true;
+        PC.PlayerSpecialAttackSpeed = EditorGUILayout.FloatField(PC.PlayerSpecialAttackSpeed);
         EditorGUILayout.EndHorizontal();
         #endregion
 
