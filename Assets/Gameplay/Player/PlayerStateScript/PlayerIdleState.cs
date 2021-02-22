@@ -17,6 +17,8 @@ public class PlayerIdleState : StateMachineBehaviour
     {
         animator.SetBool("CanDashFall", false);
         animator.GetComponent<PlayerController>().Grounded = true;
+
+        #region Set Movement State
         if (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.D)))
         {
             animator.SetBool("IsMove", true);
@@ -26,6 +28,9 @@ public class PlayerIdleState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(0, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.SetBool("IsMove", false);
         }
+        #endregion
+
+        #region Set Jump State
         if (Input.GetKey(KeyCode.Space) && (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0) && animator.GetComponent<PlayerController>().canJump == true)
         {
             animator.SetBool("IsJump", true);
@@ -34,17 +39,19 @@ public class PlayerIdleState : StateMachineBehaviour
         {
             animator.GetComponent<PlayerController>().canJump = true;
         }
+        #endregion
 
+        #region Set Fall State
         if (animator.GetComponent<PlayerController>().rb.velocity.y < 0)
         {
-            animator.SetBool("IsFall", true);           //Possibile bug
-            Debug.Log("ciao1");
+            animator.SetBool("IsFall", true);
         }
 
         if (animator.GetComponent<PlayerController>().Grounded == true)
         {
             animator.SetBool("IsGroundFallDash", true);
         }
+        #endregion
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

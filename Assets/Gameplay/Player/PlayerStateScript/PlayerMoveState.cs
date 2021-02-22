@@ -13,6 +13,7 @@ public class PlayerMoveState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        #region Movement Zone
         if (Input.GetKeyDown(KeyCode.A))
         {
             animator.GetComponent<PlayerController>().ValueMovement.Speed = animator.GetComponent<PlayerController>().tempSpeed;
@@ -41,7 +42,9 @@ public class PlayerMoveState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(0, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.SetBool("IsMove", false);
         }
+        #endregion
 
+        #region Jump Zone
         if (Input.GetKey(KeyCode.Space) && (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0) && animator.GetComponent<PlayerController>().canJump == true)
         {
             animator.SetBool("IsJump", true);
@@ -50,11 +53,9 @@ public class PlayerMoveState : StateMachineBehaviour
         {
             animator.GetComponent<PlayerController>().canJump = true;
         }
+        #endregion
 
-
-
-
-
+        #region Dash Zone
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
         {
             animator.GetComponent<PlayerController>().CanDash = true;
@@ -70,6 +71,7 @@ public class PlayerMoveState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().CanDashRight = true;
             animator.SetBool("IsDash", true);
         }
+        #endregion
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

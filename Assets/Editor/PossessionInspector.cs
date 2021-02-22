@@ -162,6 +162,8 @@ public class PossessionInspector : Editor
         EditorGUILayout.EndHorizontal();
         #endregion
 
+        StyleTextFieldCustom.alignment = TextAnchor.MiddleLeft;
+
         serializedObject.ApplyModifiedProperties();
     }
 }

@@ -6,13 +6,15 @@ using SwordGame;
 public class PlayerJumpState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-    }
+    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //
+    //}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        #region Jump Zone
         animator.SetBool("IsJump", false);
         if (Input.GetKey(KeyCode.Space) && animator.GetComponent<PlayerController>().Grounded == true /*&& animator.GetComponent<PlayerController>().rb.velocity.y == 0 */&& animator.GetComponent<PlayerController>().canJump == true)
         {
@@ -20,7 +22,7 @@ public class PlayerJumpState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().Grounded = false;
             animator.GetComponent<PlayerController>().canJump = false;
         }
-        else if (animator.GetComponent<PlayerController>().rb.velocity.y > 1 && !Input.GetButton("Jump")) //Se salta
+        else if (animator.GetComponent<PlayerController>().rb.velocity.y > 1 && !Input.GetButton("Jump")) //If Jump
         {
             animator.GetComponent<PlayerController>().rb.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PlayerController>().ValueJump.lowJumpMultiplier - 1) * Time.deltaTime;
         }
@@ -29,20 +31,10 @@ public class PlayerJumpState : StateMachineBehaviour
         {
             animator.SetBool("IsJump", false);
             animator.SetBool("IsFall", true);
-            Debug.Log("Ciao2");
         }
-        //if (animator.GetComponent<PlayerController>().rb.velocity.y < 0) //Se cade
-        //{
-        //    animator.GetComponent<PlayerController>().rb.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PlayerController>().ValueJump.fallMultiplier - 1) * Time.deltaTime;
-        //}
-        //else if (animator.GetComponent<PlayerController>().rb.velocity.y > 1 && !Input.GetButton("Jump")) //Se salta
-        //{
-        //    animator.GetComponent<PlayerController>().rb.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PlayerController>().ValueJump.lowJumpMultiplier - 1) * Time.deltaTime;
-        //}
-        //else if (animator.GetComponent<PlayerController>().rb.velocity.y < 6)
-        //{
-        //    animator.GetComponent<PlayerController>().rb.velocity = new Vector2(animator.GetComponent<PlayerController>().rb.velocity.x, 0.01f);
-        //}
+        #endregion
+
+        #region Movement in Jump Zone
         if (Input.GetKeyDown(KeyCode.A))
         {
             animator.GetComponent<PlayerController>().ValueMovement.Speed = animator.GetComponent<PlayerController>().tempSpeed;
@@ -71,9 +63,9 @@ public class PlayerJumpState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(0, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.SetBool("IsMove", false);
         }
+        #endregion
 
-
-
+        #region Dash in Jump Zone
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
         {
             animator.GetComponent<PlayerController>().CanDash = true;
@@ -88,6 +80,7 @@ public class PlayerJumpState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().CanDashRight = true;
             animator.SetBool("IsDash", true);
         }
+        #endregion
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

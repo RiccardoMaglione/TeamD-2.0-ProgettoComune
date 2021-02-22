@@ -14,14 +14,20 @@ public class PlayerFallState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        #region Fall
+        if (animator.GetComponent<PlayerController>().rb.velocity.y < 0) //If fall
+        {
+            animator.GetComponent<PlayerController>().rb.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PlayerController>().ValueJump.fallMultiplier - 1) * Time.deltaTime;
+        }
 
         if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
         {
             animator.SetBool("IsFall", false);
             animator.GetComponent<PlayerController>().Grounded = true;
-            Debug.Log("cuasdasda1");
         }
+        #endregion
 
+        #region Movement in Fall Zone
         if (Input.GetKeyDown(KeyCode.A))
         {
             animator.GetComponent<PlayerController>().ValueMovement.Speed = animator.GetComponent<PlayerController>().tempSpeed;
@@ -30,7 +36,6 @@ public class PlayerFallState : StateMachineBehaviour
             {
                 animator.SetBool("IsFall", false);
                 animator.GetComponent<PlayerController>().Grounded = true;
-                Debug.Log("cuasdasda2");
             }
         }
         else if (Input.GetKeyDown(KeyCode.D))
@@ -41,7 +46,6 @@ public class PlayerFallState : StateMachineBehaviour
             {
                 animator.SetBool("IsFall", false);
                 animator.GetComponent<PlayerController>().Grounded = true;
-                Debug.Log("cuasdasda3");
             }
         }
 
@@ -54,7 +58,6 @@ public class PlayerFallState : StateMachineBehaviour
             {
                 animator.SetBool("IsFall", false);
                 animator.GetComponent<PlayerController>().Grounded = true;
-                Debug.Log("cuasdasda4");
             }
         }
         else if (Input.GetKey(KeyCode.D))
@@ -66,7 +69,6 @@ public class PlayerFallState : StateMachineBehaviour
             {
                 animator.SetBool("IsFall", false);
                 animator.GetComponent<PlayerController>().Grounded = true;
-                Debug.Log("cuasdasda5");
             }
         }
         else
@@ -77,22 +79,11 @@ public class PlayerFallState : StateMachineBehaviour
             {
                 animator.SetBool("IsFall", false);
                 animator.GetComponent<PlayerController>().Grounded = true;
-                Debug.Log("cuasdasda6");
             }
         }
+        #endregion
 
-        //if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashRight == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
-        //{
-        //    animator.GetComponent<PlayerController>().CanDashLeft = true;
-        //    animator.SetBool("IsDash", true);
-        //}
-        //if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
-        //{
-        //    animator.GetComponent<PlayerController>().CanDashRight = true;
-        //    animator.SetBool("IsDash", true);
-        //}
-
-
+        #region Active Dash in Fall Zone
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
         {
             animator.GetComponent<PlayerController>().CanDash = true;
@@ -110,11 +101,7 @@ public class PlayerFallState : StateMachineBehaviour
             animator.SetBool("IsDash", false);
             animator.SetBool("CanDashFall", true);
         }
-        
-        if (animator.GetComponent<PlayerController>().rb.velocity.y < 0) //Se cade
-        {
-            animator.GetComponent<PlayerController>().rb.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PlayerController>().ValueJump.fallMultiplier - 1) * Time.deltaTime;
-        }
+        #endregion
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
