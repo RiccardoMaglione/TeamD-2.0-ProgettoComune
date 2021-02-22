@@ -17,7 +17,7 @@ public class PlayerInspector : Editor
 
         PlayerController PC = (PlayerController)target;
 
-        #region GUIStyle - Label
+        #region GUIStyle - TextField
         GUIStyle StyleTextFieldCustom;
         StyleTextFieldCustom = GUI.skin.textField;
         StyleTextFieldCustom.alignment = TextAnchor.MiddleCenter;
