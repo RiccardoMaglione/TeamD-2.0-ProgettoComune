@@ -6,10 +6,10 @@ using SwordGame;
 public class PlayerJumpState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.SetBool("IsGroundFallDash", true);
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,20 +21,31 @@ public class PlayerJumpState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().rb.AddForce(Vector2.up * animator.GetComponent<PlayerController>().ValueJump.jumpForce, ForceMode2D.Impulse);
             animator.GetComponent<PlayerController>().Grounded = false;
             animator.GetComponent<PlayerController>().canJump = false;
+            Debug.Log("Bloccato 5");
         }
         else if (animator.GetComponent<PlayerController>().rb.velocity.y > 1 && !Input.GetButton("Jump")) //If Jump
         {
             animator.GetComponent<PlayerController>().rb.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PlayerController>().ValueJump.lowJumpMultiplier - 1) * Time.deltaTime;
+            Debug.Log("Bloccato 4");
         }
-        else if (animator.GetComponent<PlayerController>().rb.velocity.y < 4)
+        else if (animator.GetComponent<PlayerController>().rb.velocity.y < 4 && animator.GetComponent<PlayerController>().rb.velocity.y > 0)
         {
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(animator.GetComponent<PlayerController>().rb.velocity.x, 0);
+            Debug.Log("Bloccato 3");
         }
 
         if (animator.GetComponent<PlayerController>().rb.velocity.y < 0)
         {
+            Debug.Log("Bloccato 2");
             animator.SetBool("IsJump", false);
             animator.SetBool("IsFall", true);
+        }
+        if (animator.GetComponent<PlayerController>().rb.velocity.y == 0)
+        {
+            animator.SetBool("IsJump", false);
+            animator.SetBool("IsFall", true);
+            animator.SetBool("DashJumpInJump", true);
+            Debug.Log("Bloccato 1");
         }
         #endregion
 
@@ -43,11 +54,13 @@ public class PlayerJumpState : StateMachineBehaviour
         {
             animator.GetComponent<PlayerController>().ValueMovement.Speed = animator.GetComponent<PlayerController>().tempSpeed;
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, -180, animator.GetComponent<PlayerController>().transform.rotation.z);
+            Debug.Log("Bloccato 6");
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             animator.GetComponent<PlayerController>().ValueMovement.Speed = animator.GetComponent<PlayerController>().tempSpeed;
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, 0, animator.GetComponent<PlayerController>().transform.rotation.z);
+            Debug.Log("Bloccato 7");
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -55,17 +68,20 @@ public class PlayerJumpState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().CalculateSpeed();
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(-animator.GetComponent<PlayerController>().ValueMovement.Speed, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, -180, animator.GetComponent<PlayerController>().transform.rotation.z);
+            Debug.Log("Bloccato 8");
         }
         else if (Input.GetKey(KeyCode.D))
         {
             animator.GetComponent<PlayerController>().CalculateSpeed();
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(animator.GetComponent<PlayerController>().ValueMovement.Speed, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, 0, animator.GetComponent<PlayerController>().transform.rotation.z);
+            Debug.Log("Bloccato 9");
         }
         else
         {
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(0, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.SetBool("IsMove", false);
+            Debug.Log("Bloccato 10");
         }
         #endregion
 
@@ -73,16 +89,19 @@ public class PlayerJumpState : StateMachineBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
         {
             animator.GetComponent<PlayerController>().CanDash = true;
+            Debug.Log("Bloccato 11");
         }
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashRight == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
         {
             animator.GetComponent<PlayerController>().CanDashLeft = true;
             animator.SetBool("IsDash", true);
+            Debug.Log("Bloccato 12");
         }
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
         {
             animator.GetComponent<PlayerController>().CanDashRight = true;
             animator.SetBool("IsDash", true);
+            Debug.Log("Bloccato 13");
         }
         #endregion
     }
