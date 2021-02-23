@@ -262,11 +262,11 @@ namespace SwordGame
                     break;
             }
         }
-        
-        /// <summary>
-        /// IEnumerator per il cooldown del dash
-        /// </summary>
-        /// <returns></returns>
+
+       /// <summary>
+       /// IEnumerator per il cooldown del dash
+       /// </summary>
+       /// <returns></returns>
         public IEnumerator CooldownDash()
         {
             GravityChange = false;
@@ -276,6 +276,7 @@ namespace SwordGame
             }
             GetComponent<Animator>().SetBool("IsDash", false);
             GetComponent<Animator>().SetBool("CanDashFall", false);
+            gameObject.layer = 8;
             yield return new WaitForSeconds(TimerCooldownDash);
             GetComponent<Rigidbody2D>().gravityScale = 1;
             CanDashLeft = false;
@@ -283,7 +284,6 @@ namespace SwordGame
             Invulnerability = false;
             if (DashColliderBabushka != null)
                 DashColliderBabushka.SetActive(false);
-            gameObject.layer = 8;
             isBoriousDash = false;
 
             TimerDash = 0;
