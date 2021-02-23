@@ -26,6 +26,10 @@ public class PlayerJumpState : StateMachineBehaviour
         {
             animator.GetComponent<PlayerController>().rb.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PlayerController>().ValueJump.lowJumpMultiplier - 1) * Time.deltaTime;
         }
+        else if (animator.GetComponent<PlayerController>().rb.velocity.y < 4)
+        {
+            animator.GetComponent<PlayerController>().rb.velocity = new Vector2(animator.GetComponent<PlayerController>().rb.velocity.x, 0);
+        }
 
         if (animator.GetComponent<PlayerController>().rb.velocity.y < 0)
         {

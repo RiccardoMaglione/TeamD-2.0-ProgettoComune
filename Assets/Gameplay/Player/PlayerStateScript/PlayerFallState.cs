@@ -15,7 +15,7 @@ public class PlayerFallState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         #region Fall
-        if (animator.GetComponent<PlayerController>().rb.velocity.y < 0) //If fall
+        if (animator.GetComponent<PlayerController>().rb.velocity.y < 0f) //If fall
         {
             animator.GetComponent<PlayerController>().rb.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PlayerController>().ValueJump.fallMultiplier - 1) * Time.deltaTime;
         }
@@ -23,6 +23,7 @@ public class PlayerFallState : StateMachineBehaviour
         if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
         {
             animator.SetBool("IsFall", false);
+            animator.SetBool("CanDashFall", false);
             animator.GetComponent<PlayerController>().Grounded = true;
         }
         #endregion
@@ -35,6 +36,7 @@ public class PlayerFallState : StateMachineBehaviour
             if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
             {
                 animator.SetBool("IsFall", false);
+                animator.SetBool("CanDashFall", false);
                 animator.GetComponent<PlayerController>().Grounded = true;
             }
         }
@@ -45,6 +47,7 @@ public class PlayerFallState : StateMachineBehaviour
             if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
             {
                 animator.SetBool("IsFall", false);
+                animator.SetBool("CanDashFall", false);
                 animator.GetComponent<PlayerController>().Grounded = true;
             }
         }
@@ -57,6 +60,7 @@ public class PlayerFallState : StateMachineBehaviour
             if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
             {
                 animator.SetBool("IsFall", false);
+                animator.SetBool("CanDashFall", false);
                 animator.GetComponent<PlayerController>().Grounded = true;
             }
         }
@@ -68,6 +72,7 @@ public class PlayerFallState : StateMachineBehaviour
             if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
             {
                 animator.SetBool("IsFall", false);
+                animator.SetBool("CanDashFall", false);
                 animator.GetComponent<PlayerController>().Grounded = true;
             }
         }
@@ -78,6 +83,7 @@ public class PlayerFallState : StateMachineBehaviour
             if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
             {
                 animator.SetBool("IsFall", false);
+                animator.SetBool("CanDashFall", false);
                 animator.GetComponent<PlayerController>().Grounded = true;
             }
         }

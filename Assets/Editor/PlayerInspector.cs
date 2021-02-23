@@ -11,7 +11,7 @@ public class PlayerInspector : Editor
     Color BGColor;
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
+        base.OnInspectorGUI();
 
         serializedObject.Update();
 
@@ -464,5 +464,5 @@ public class PlayerInspector : Editor
 //---Player Controller
 
 //StaticSpeed
-//Per il momento no TempPlatform
+//Per il momento no TempPlatform -> è stato sostituito da una lista
 //Mancano vari tooltip
