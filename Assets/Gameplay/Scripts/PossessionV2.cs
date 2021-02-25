@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SwordGame;
-
 
 namespace SwordGame
 {
@@ -41,6 +39,9 @@ namespace SwordGame
         public Color EnemyColor;
 
         public static GameObject ThisCharacter;
+
+        public RuntimeAnimatorController PlayerAnimator;
+        public RuntimeAnimatorController EnemyAnimator;
         #endregion
         void Start()
         {
@@ -71,21 +72,26 @@ namespace SwordGame
                         LastPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                     }
 
+                    FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().TypeEnemy,1);
 
                     PlayerDetect.gameObject.tag = "Enemy";
                     PlayerDetectArray[PlayerDetectArray.Count-1].gameObject.tag = "Player";
 
-                    PlayerDetect.GetComponent<Animator>().enabled = true;
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().enabled = false;
+                    //PlayerDetect.GetComponent<Animator>().enabled = true;
+                    //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().enabled = false;
                     
                     PlayerDetect.GetComponent<EnemyData>().enabled = true;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().enabled = false;
 
+                    PlayerDetect.GetComponent<Animator>().runtimeAnimatorController = EnemyAnimator;
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().runtimeAnimatorController = PlayerAnimator;
 
-                    PlayerDetect.GetComponent<PlayerManager>().enabled = false;
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().enabled = true;
-                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().HealthSlider != null)
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().MaxHealth);
+
+                    //PlayerDetect.GetComponent<PlayerManager>().enabled = false;
+                    //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().enabled = true;
+                    
+                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().HealthSlider != null)
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().MaxHealth);
 
                     PlayerDetect.GetComponent<PlayerInput>().enabled = false;
                     if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>() == null)

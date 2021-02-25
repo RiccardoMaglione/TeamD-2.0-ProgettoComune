@@ -100,6 +100,8 @@ public class PlayerInput : MonoBehaviour
                 //LightAttack();
                 //GetComponentInParent<PlayerController>().isInAttack = true;
                 LightActivation = true;
+                GetComponent<Animator>().SetBool("PlayerAttack", true);
+                GetComponent<Animator>().SetBool("PlayerLightAttack", true);
                 //speed = originalSpeed;
             }
             if (Input.GetKeyDown(KeyboardHeavyAttack) && isAttack == false)
@@ -109,6 +111,8 @@ public class PlayerInput : MonoBehaviour
                 //HeavyAttack();
                 //GetComponentInParent<PlayerController>().isInAttack = true;
                 HeavyActivation = true;
+                GetComponent<Animator>().SetBool("PlayerAttack", true);
+                GetComponent<Animator>().SetBool("PlayerHeavyAttack", true);
                 //speed = originalSpeed;
             }
             if (Input.GetKeyDown(KeyboardSpecialAttack) && isAttack == false)
@@ -118,6 +122,8 @@ public class PlayerInput : MonoBehaviour
                 //SpecialAttack();
                 //GetComponentInParent<PlayerController>().isInAttack = true;
                 SpecialActivation = true;
+                GetComponent<Animator>().SetBool("PlayerAttack", true);
+                GetComponent<Animator>().SetBool("PlayerSpecialAttack", true);
                 //speed = originalSpeed;
             }
         }
@@ -138,6 +144,7 @@ public class PlayerInput : MonoBehaviour
                 LightAttack();
                 LightTimerActivation = 0;
                 LightActivation = false;
+                GetComponent<Animator>().SetBool("PlayerLightAttack", false);
             }
         }
         if (CooldownAttack == true)
@@ -160,6 +167,7 @@ public class PlayerInput : MonoBehaviour
                 HeavyAttack();
                 HeavyTimerActivation = 0;
                 HeavyActivation = false;
+                GetComponent<Animator>().SetBool("PlayerHeavyAttack", false);
             }
         }
         if (CooldownAttack == true)
@@ -182,6 +190,7 @@ public class PlayerInput : MonoBehaviour
                 SpecialAttack();
                 SpecialTimerActivation = 0;
                 SpecialActivation = false;
+                GetComponent<Animator>().SetBool("PlayerSpecialAttack", false);
             }
         }
         if (CooldownAttack == true)

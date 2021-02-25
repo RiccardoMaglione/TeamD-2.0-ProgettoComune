@@ -17,6 +17,7 @@ public class AttackSystem : MonoBehaviour
         Debug.Log("HIT" + collision.name);
         if(collision.gameObject.tag == "Enemy")
         {
+            Knockback.ActiveKnockback = true;
             if(playerInput.isLightAttack == true)
             {
                 playerInput.isLightAttack = false;
@@ -25,9 +26,15 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
                 //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
+                collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
+                {
+                    //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
+                    collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
+                }
                 print("Light");
-                GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().LightEnergyAmount;
-                print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
+                GetComponentInParent<PlayerController>().CurrentEnergy += GetComponentInParent<PlayerController>().LightEnergyAmount;
+                print("Energy" + GetComponentInParent<PlayerController>().CurrentEnergy);
             }
             if (playerInput.isHeavyAttack == true)
             {
@@ -37,21 +44,37 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
                 //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
+                collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
+                {
+                    //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
+                    collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
+                }
                 print("Heavy");
-                GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().HeavyEnergyAmount;
-                print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
+                GetComponentInParent<PlayerController>().CurrentEnergy += GetComponentInParent<PlayerController>().HeavyEnergyAmount;
+                print("Energy" + GetComponentInParent<PlayerController>().CurrentEnergy);
             }
             if (playerInput.isSpecialAttack == true)
             {
                 playerInput.isSpecialAttack = false;
                 collision.GetComponent<EnemyData>().Life -= SpecialDamage;
+                if (collision.GetComponent<EnemyData>().Life <= 0)
+                {
+                    FindObjectOfType<ScoreSystem>(true).SpecialType = true;
+                }
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
                 //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
+                collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
+                {
+                    //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
+                    collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
+                }
                 print("Special");
-                GetComponentInParent<PlayerManager>().CurrentEnergy += GetComponentInParent<PlayerManager>().SpecialEnergyAmount;
-                print("Energy" + GetComponentInParent<PlayerManager>().CurrentEnergy);
+                GetComponentInParent<PlayerController>().CurrentEnergy += GetComponentInParent<PlayerController>().SpecialEnergyAmount;
+                print("Energy" + GetComponentInParent<PlayerController>().CurrentEnergy);
             }
         }
         
