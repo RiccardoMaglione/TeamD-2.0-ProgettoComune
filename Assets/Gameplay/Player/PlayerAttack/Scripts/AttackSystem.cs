@@ -17,6 +17,7 @@ public class AttackSystem : MonoBehaviour
         Debug.Log("HIT" + collision.name);
         if(collision.gameObject.tag == "Enemy")
         {
+            Knockback.ActiveKnockback = true;
             if(playerInput.isLightAttack == true)
             {
                 playerInput.isLightAttack = false;
@@ -57,6 +58,10 @@ public class AttackSystem : MonoBehaviour
             {
                 playerInput.isSpecialAttack = false;
                 collision.GetComponent<EnemyData>().Life -= SpecialDamage;
+                if (collision.GetComponent<EnemyData>().Life <= 0)
+                {
+                    FindObjectOfType<ScoreSystem>(true).SpecialType = true;
+                }
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
                 //collision.GetComponent<EnemyManager>().ResetTimerStaggeredEnemy = 0;
