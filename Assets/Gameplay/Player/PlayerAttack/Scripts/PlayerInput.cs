@@ -95,36 +95,48 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyboardLightlAttack) && isAttack == false)
             {
-                //originalSpeed = speed;
-                //speed = 0;
-                //LightAttack();
-                //GetComponentInParent<PlayerController>().isInAttack = true;
-                LightActivation = true;
-                GetComponent<Animator>().SetBool("PlayerAttack", true);
-                GetComponent<Animator>().SetBool("PlayerLightAttack", true);
-                //speed = originalSpeed;
+                if(GetComponent<Animator>().GetBool("PlayerCanAttack") == true)
+                {
+                    GetComponent<Animator>().SetBool("PlayerCanAttack", false);
+                    //originalSpeed = speed;
+                    //speed = 0;
+                    //LightAttack();
+                    //GetComponentInParent<PlayerController>().isInAttack = true;
+                    LightActivation = true;
+                    GetComponent<Animator>().SetBool("PlayerAttack", true);
+                    GetComponent<Animator>().SetBool("PlayerLightAttack", true);
+                    //speed = originalSpeed;
+                }
             }
             if (Input.GetKeyDown(KeyboardHeavyAttack) && isAttack == false)
             {
-                //originalSpeed = speed;
-                //speed = 0;
-                //HeavyAttack();
-                //GetComponentInParent<PlayerController>().isInAttack = true;
-                HeavyActivation = true;
-                GetComponent<Animator>().SetBool("PlayerAttack", true);
-                GetComponent<Animator>().SetBool("PlayerHeavyAttack", true);
-                //speed = originalSpeed;
+                if (GetComponent<Animator>().GetBool("PlayerCanAttack") == true)
+                {
+                    GetComponent<Animator>().SetBool("PlayerCanAttack", false);
+                    //originalSpeed = speed;
+                    //speed = 0;
+                    //HeavyAttack();
+                    //GetComponentInParent<PlayerController>().isInAttack = true;
+                    HeavyActivation = true;
+                    GetComponent<Animator>().SetBool("PlayerAttack", true);
+                    GetComponent<Animator>().SetBool("PlayerHeavyAttack", true);
+                    //speed = originalSpeed;
+                }
             }
             if (Input.GetKeyDown(KeyboardSpecialAttack) && isAttack == false)
             {
-                //originalSpeed = speed;
-                //speed = 0;
-                //SpecialAttack();
-                //GetComponentInParent<PlayerController>().isInAttack = true;
-                SpecialActivation = true;
-                GetComponent<Animator>().SetBool("PlayerAttack", true);
-                GetComponent<Animator>().SetBool("PlayerSpecialAttack", true);
-                //speed = originalSpeed;
+                if (GetComponent<Animator>().GetBool("PlayerCanAttack") == true)
+                {
+                    GetComponent<Animator>().SetBool("PlayerCanAttack", false);
+                    //originalSpeed = speed;
+                    //speed = 0;
+                    //SpecialAttack();
+                    //GetComponentInParent<PlayerController>().isInAttack = true;
+                    SpecialActivation = true;
+                    GetComponent<Animator>().SetBool("PlayerAttack", true);
+                    GetComponent<Animator>().SetBool("PlayerSpecialAttack", true);
+                    //speed = originalSpeed;
+                }
             }
         }
 
