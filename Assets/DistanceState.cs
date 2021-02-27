@@ -35,7 +35,7 @@ public class DistanceState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         
-        Debug.Log("aaaAttack" + animator.GetComponent<EnemyData>().CanAttack);
+      //  Debug.Log("aaaAttack" + animator.GetComponent<EnemyData>().CanAttack);
         if (animator.GetComponent<EnemyData>().CanAttack == true)
         {
             animator.GetComponent<EnemyData>().random = Random.Range(0, 101);
