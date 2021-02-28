@@ -9,6 +9,8 @@ namespace SwordGame
         public int thrust;                                              //Spinta aggiuntiva
         public List<Rigidbody2D> RB2DList = new List<Rigidbody2D>();    //Lista rigidbody nemici nel trigger
         public static bool ActiveKnockback;                             //Variabile che indica quando attivare l'impulso
+        [Tooltip("Davanti del player + Vettore direzione local")]
+        public Vector3 KnockbackDirection;
 
         void Update()
         {
@@ -17,7 +19,7 @@ namespace SwordGame
                 ActiveKnockback = false;                                                //Setta a falso per evitare possibili danni multipli
                 foreach (Rigidbody2D item in RB2DList)                                  //Per ogni oggetti nella lista dei rigidbody nemici
                 {
-                    item.AddForce(transform.right * thrust, ForceMode2D.Impulse);       //All'oggetto si aggiunge una forza di tipologia impulso per affligere un knockback verso il davanti del player
+                    item.AddForce(transform.right + transform.InverseTransformPoint(KnockbackDirection) * thrust, ForceMode2D.Impulse);       //All'oggetto si aggiunge una forza di tipologia impulso per affligere un knockback verso il davanti del player
                 }
             }
         }
