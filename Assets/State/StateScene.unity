@@ -4769,7 +4769,7 @@ MonoBehaviour:
   DashDamageFatKnight: 0
   PoisePlayer: 0
   MaxPoisePlayer: 5
-  ResetTimerStaggered: 290.99405
+  ResetTimerStaggered: 309.6198
   MaxResetTimerStaggered: 5
   tempSpeed: 4
   velocityY: 0
@@ -4908,7 +4908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 5
   RB2DList: []
-  KnockbackDirection: {x: -10, y: 0, z: 0}
+  KnockbackDirection: {x: 1, y: 1, z: 0}
 --- !u!61 &2464628706403383725
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6388,7 +6388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3071521394144507685}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.61, y: -3.12, z: -1.859302}
+  m_LocalPosition: {x: 0, y: -3.12, z: -1.859302}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 3071521393558295316}
@@ -6511,7 +6511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeEnemy: 0
-  Life: 1
+  Life: 1000
   timerStun: 0
   DurationStun: 50
   CountHit: 0
@@ -6520,7 +6520,7 @@ MonoBehaviour:
   isPossessed: 0
   CountPoiseEnemy: 0
   MaxCountPoiseEnemy: 20
-  Speed: 2
+  Speed: 0
   WaypointEnemy:
   - {fileID: 1333082845}
   - {fileID: 604340666}
