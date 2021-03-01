@@ -12,7 +12,7 @@ public class AttackState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(animator.gameObject.transform.position.y >= player.position.y)
+        if(animator.gameObject.transform.position.y >= -3)
         {
             animator.gameObject.transform.Translate(Vector3.down * FallSpeed * Time.deltaTime);
         }
