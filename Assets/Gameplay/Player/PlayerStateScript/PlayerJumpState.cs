@@ -34,17 +34,19 @@ public class PlayerJumpState : StateMachineBehaviour
             Debug.Log("Bloccato 3");
         }
 
-        if (animator.GetComponent<PlayerController>().rb.velocity.y < 0)
+        if (animator.GetComponent<PlayerController>().rb.velocity.y <= 0)
         {
             Debug.Log("Bloccato 2");
             animator.SetBool("IsJump", false);
             animator.SetBool("IsFall", true);
+            animator.Play("Fall");
         }
         if (animator.GetComponent<PlayerController>().rb.velocity.y == 0)
         {
             animator.SetBool("IsJump", false);
             animator.SetBool("IsFall", true);
             animator.SetBool("DashJumpInJump", true);
+            animator.Play("Fall");
             Debug.Log("Bloccato 1");
         }
         #endregion

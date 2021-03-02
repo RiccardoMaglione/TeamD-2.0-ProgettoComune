@@ -100,7 +100,7 @@ namespace SwordGame
         public float PlayerHeavyAttackSpeed = 1;
         public float PlayerSpecialAttackSpeed = 1;
         #endregion
-
+        public static bool Deactivate;
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -159,6 +159,15 @@ namespace SwordGame
             ResetPlatform();
             ResetStaggered();
             print("Grounded" + Grounded);
+
+            if (rb.velocity.y == 0)
+            {
+                //if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+                //{
+                //    GetComponent<Animator>().SetBool("IsJump", false);
+                //    GetComponent<Animator>().Play("Idle");
+                //}
+            }
 
             if (Grounded == true)
             {

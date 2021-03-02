@@ -64,12 +64,26 @@ public class PlayerMoveState : StateMachineBehaviour
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashRight == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
         {
             animator.GetComponent<PlayerController>().CanDashLeft = true;
-            animator.SetBool("IsDash", true);
+            if(animator.GetComponent<PlayerController>().rb.velocity.y < 0)
+            {
+                animator.SetBool("IsDash", false);
+            }
+            else
+            {
+                animator.SetBool("IsDash", true);
+            }
         }
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
         {
             animator.GetComponent<PlayerController>().CanDashRight = true;
-            animator.SetBool("IsDash", true);
+            if (animator.GetComponent<PlayerController>().rb.velocity.y < 0)
+            {
+                animator.SetBool("IsDash", false);
+            }
+            else
+            {
+                animator.SetBool("IsDash", true);
+            }
         }
         #endregion
     }

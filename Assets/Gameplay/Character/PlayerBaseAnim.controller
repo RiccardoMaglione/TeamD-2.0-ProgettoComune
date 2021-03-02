@@ -147,7 +147,6 @@ AnimatorState:
   m_Transitions:
   - {fileID: 7213218659773599573}
   - {fileID: 4898014898622231707}
-  - {fileID: -5048024399924622891}
   m_StateMachineBehaviours:
   - {fileID: 383019971753352215}
   m_Position: {x: 50, y: 50, z: 0}
@@ -247,31 +246,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &-5048024399924622891
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: DashJumpInJump
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 2014696920041033923}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0
-  m_HasExitTime: 0
-  m_HasFixedDuration: 0
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!114 &-4285103509022909085
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,18 +308,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!114 &-3549830341220813352
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cddc9aea09148a040ae0b3d5f71e307f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-3018803993663156068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -806,34 +768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d6a4343bc9dc44bad8be0fe4cb6dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1102 &2014696920041033923
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Jump in DashJump
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 8882517983629224017}
-  m_StateMachineBehaviours:
-  - {fileID: -3549830341220813352}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!114 &2018626344621638847
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1195,9 +1129,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 8351670821208067202}
     m_Position: {x: 1220, y: 210, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 2014696920041033923}
-    m_Position: {x: 800, y: 10, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1433326459297004271}
@@ -1402,31 +1333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323f346e457765549b0b31cb961e2fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1101 &8882517983629224017
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: DashJumpInJump
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -7877753430547451425}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0
-  m_HasExitTime: 0
-  m_HasFixedDuration: 0
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!1102 &9001789438269311969
 AnimatorState:
   serializedVersion: 5
