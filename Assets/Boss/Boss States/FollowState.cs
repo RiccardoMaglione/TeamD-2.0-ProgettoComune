@@ -7,7 +7,6 @@ public class FollowState : StateMachineBehaviour
 
     [Tooltip("Più piccolo è il valore più è veloce")]
     [SerializeField] float bossChaseSpeed;
-    [SerializeField] float FollowTime;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -16,7 +15,7 @@ public class FollowState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.gameObject.transform.position = new Vector3(player.position.x, player.position.y + 5, 0);
+        animator.gameObject.transform.DOMove(new Vector3(player.position.x, player.position.y + 5, 0), bossChaseSpeed);
         
         animator.SetTrigger("GoToNext");
     }
