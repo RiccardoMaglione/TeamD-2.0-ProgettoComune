@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using DG.Tweening;
+﻿using DG.Tweening;
+using UnityEngine;
 
 public class FollowState : StateMachineBehaviour
 {
@@ -7,6 +7,8 @@ public class FollowState : StateMachineBehaviour
 
     [Tooltip("Più piccolo è il valore più è veloce")]
     [SerializeField] float bossChaseSpeed;
+    [SerializeField] float dropTime = 1f;
+    float time;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -16,8 +18,14 @@ public class FollowState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.gameObject.transform.DOMove(new Vector3(player.position.x, player.position.y + 5, 0), bossChaseSpeed);
-        
-        animator.SetTrigger("GoToNext");
+        if (time >= dropTime)
+        {
+            animator.SetTrigger("GoToNext");
+        }
+        else
+        {
+            time += Time.deltaTime;
+        }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
