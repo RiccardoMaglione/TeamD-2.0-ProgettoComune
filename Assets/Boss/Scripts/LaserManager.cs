@@ -15,6 +15,7 @@ public class LaserManager : MonoBehaviour
     [HideInInspector] public bool isActive = false;
     
     int rand;
+    int oldRandom;
 
     float timer = 0;
     bool isRandom = false;
@@ -24,9 +25,15 @@ public class LaserManager : MonoBehaviour
     {
         if (isActive == false)
         {
-            if(isRandom == false)
+            do
             {
                 rand = Random.Range(1, 4);
+            }
+            while (oldRandom == rand);
+            
+            if(isRandom == false)
+            {
+                oldRandom = rand;
 
                 if (rand == 1)
                     particle1.SetActive(true);

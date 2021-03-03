@@ -60,10 +60,28 @@ public class ParabolaController : MonoBehaviour
         }
     }
 
+    [SerializeField] GameObject point1;
+    [SerializeField] GameObject point2;
+    [SerializeField] GameObject point3;
+
+    [SerializeField] GameObject player;
+
+    void Calculation()
+    {
+        point1.transform.position = new Vector3(0, 0, 0);
+        point2.transform.position = new Vector3(0, 0, 0);
+        point3.transform.position = new Vector3(0, 0, 0);
+
+        point1.transform.position = transform.position;
+        point3.transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        point2.transform.position = new Vector3((point1.transform.position.x - point3.transform.position.x) / 2, point2.transform.position.y + 6, point2.transform.position.z);
+    }
 
     // Use this for initialization
-    void Start()
+    void OnEnable()
     {
+        Calculation();
+
         parabolaFly = new ParabolaFly(ParabolaRoot.transform);
 
         if (Autostart)
