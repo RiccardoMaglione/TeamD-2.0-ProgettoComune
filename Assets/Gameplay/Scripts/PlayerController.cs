@@ -103,6 +103,8 @@ namespace SwordGame
         public float PlayerSpecialAttackSpeed = 1;
         #endregion
         public static bool Deactivate;
+        public bool CanJumpDashCooldown;
+        public float tempY;
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -193,6 +195,18 @@ namespace SwordGame
             {
                 GetComponent<Animator>().SetBool("IsFall", false);
             }
+
+            if (CanJumpDashCooldown == true && rb.velocity.y == 0)         //Sistema bug del salto nel dash in cui viene bloccata l'altezza - Controllare se permetti di saltare in aria, ma non sembra
+            {
+                if (Input.GetKey(KeyCode.Space) && rb.velocity.y == 0)
+                {
+                    rb.AddForce(Vector2.up * ValueJump.jumpForce/5, ForceMode2D.Impulse);
+                    if (tempY + 1 < transform.position.y)
+                    {
+                        CanJumpDashCooldown = false;
+                    }
+                }
+            }
         }
         
         /// <summary>
@@ -280,6 +294,8 @@ namespace SwordGame
        /// <returns></returns>
         public IEnumerator CooldownDash()
         {
+            tempY = transform.position.y;
+            CanJumpDashCooldown = true;
             GravityChange = false;
             if (GravityChange == false)
             {
@@ -290,6 +306,7 @@ namespace SwordGame
             gameObject.layer = 8;
             yield return new WaitForSeconds(TimerCooldownDash);
             GetComponent<Rigidbody2D>().gravityScale = 1;
+            CanJumpDashCooldown = false;
             CanDashLeft = false;
             CanDashRight = false;
             Invulnerability = false;
@@ -302,12 +319,18 @@ namespace SwordGame
             {
                 CanDashJump = true;
                 Grounded = true;
+                GetComponent<Animator>().SetBool("IsGroundFallDash", true);
+                GetComponent<Animator>().SetBool("GroundDash", true);
             }
             else
             {
                 CanDashJump = false;
             }
             GravityChange = true;
+            if(rb.velocity.y < -0.2f)
+            {
+                GetComponent<Animator>().Play("Fall");
+            }
         }
 
         #endregion
@@ -349,10 +372,12 @@ namespace SwordGame
                 if (rb.velocity.y == 0)
                 {
                     Grounded = true;
+                    GetComponent<Animator>().SetBool("IsGroundFallDash", true);
+                    GetComponent<Animator>().SetBool("GroundDash", true);
                 }
             }
-
         }
+
         private void OnCollisionStay2D(Collision2D collision)
         {
             if (Input.GetKey(KeyCode.S))

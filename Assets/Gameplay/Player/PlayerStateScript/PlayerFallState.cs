@@ -18,6 +18,7 @@ public class PlayerFallState : StateMachineBehaviour
         if (animator.GetComponent<PlayerController>().rb.velocity.y < 0f) //If fall
         {
             animator.GetComponent<PlayerController>().rb.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PlayerController>().ValueJump.fallMultiplier - 1) * Time.deltaTime;
+            animator.GetComponent<PlayerController>().Grounded = false;
         }
 
         if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
