@@ -5,13 +5,18 @@ using SwordGame;
 
 public class PlayerJumpState : StateMachineBehaviour
 {
+    public static bool InitialJump;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.Log("Initial Jump"+InitialJump);
         //animator.SetBool("IsGroundFallDash", true);
         if (animator.GetComponent<PlayerController>().Grounded == true /*&& animator.GetComponent<PlayerController>().rb.velocity.y == 0 */&& animator.GetComponent<PlayerController>().canJump == true)
         {
-            animator.GetComponent<PlayerController>().rb.AddForce(Vector2.up * animator.GetComponent<PlayerController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);
+            if(InitialJump == true)
+            {
+                animator.GetComponent<PlayerController>().rb.AddForce(Vector2.up * animator.GetComponent<PlayerController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);
+            }
         }
     }
 
@@ -19,6 +24,8 @@ public class PlayerJumpState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         #region Jump Zone
+        InitialJump = true;
+        Debug.Log("Initial Jump" + InitialJump);
         animator.SetBool("IsJump", false);
         if (Input.GetKey(KeyCode.Space) && animator.GetComponent<PlayerController>().Grounded == true /*&& animator.GetComponent<PlayerController>().rb.velocity.y == 0 */&& animator.GetComponent<PlayerController>().canJump == true)
         {
