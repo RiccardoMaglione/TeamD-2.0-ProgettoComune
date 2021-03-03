@@ -48,6 +48,7 @@ public class PlayerMoveState : StateMachineBehaviour
         if (Input.GetKey(KeyCode.Space) && (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0) && animator.GetComponent<PlayerController>().canJump == true)
         {
             animator.SetBool("IsJump", true);
+            animator.Play("Jump");
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {

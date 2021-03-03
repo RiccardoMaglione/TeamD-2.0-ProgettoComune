@@ -9,6 +9,7 @@ public class PlayerJumpState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("IsGroundFallDash", true);
+        animator.GetComponent<PlayerController>().rb.AddForce(Vector2.up * animator.GetComponent<PlayerController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -111,7 +112,7 @@ public class PlayerJumpState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    
+    //
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

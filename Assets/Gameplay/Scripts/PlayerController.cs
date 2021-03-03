@@ -19,6 +19,8 @@ namespace SwordGame
     public struct StructJump
     {
         [Tooltip("It's a force of player's jump")]
+        public float InitialJumpForce;
+        [Tooltip("It's a force of player's jump")]
         public float jumpForce;
         [Tooltip("It's value of gravity fall")]
         public float fallMultiplier;
