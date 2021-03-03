@@ -200,7 +200,7 @@ namespace SwordGame
             {
                 if (Input.GetKey(KeyCode.Space) && rb.velocity.y == 0)
                 {
-                    rb.AddForce(Vector2.up * ValueJump.jumpForce/5, ForceMode2D.Impulse);
+                    rb.AddForce(Vector2.up * ValueJump.jumpForce*2, ForceMode2D.Impulse);
                     if (tempY + 1 < transform.position.y)
                     {
                         CanJumpDashCooldown = false;
