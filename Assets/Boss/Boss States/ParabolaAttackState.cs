@@ -1,28 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
 using UnityEngine;
 
 public class ParabolaAttackState : StateMachineBehaviour
 {
-    ParabolaController parabolaController;
+    ArcMovement arcMovement;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        parabolaController = animator.GetComponent<ParabolaController>();
-        parabolaController.enabled = true;
+        arcMovement = animator.GetComponent<ArcMovement>();
+        arcMovement.Arc();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(parabolaController.Animation == false)
+        if (animator.transform.position.y == arcMovement.initialPosition + arcMovement.height)
         {
-            parabolaController.enabled = false;
+            animator.transform.DOMoveY(arcMovement.initialPosition, 0.5f);
+        }
+
+        if(animator.transform.position.y == arcMovement.initialPosition)
             animator.SetTrigger("GoToIdle");
-        }          
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+
     }
 }
