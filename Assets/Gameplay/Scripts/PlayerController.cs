@@ -200,7 +200,7 @@ namespace SwordGame
 
             if (CanJumpDashCooldown == true)         //Sistema bug del salto nel dash in cui viene bloccata l'altezza - Controllare se permetti di saltare in aria, ma non sembra
             {
-                if (Input.GetKey(KeyCode.Space) && Grounded == true)
+                if (Input.GetKeyDown(KeyCode.Space) && Grounded == true)
                 {
                     rb.AddForce(Vector2.up * ValueJump.jumpForce/5, ForceMode2D.Impulse);
                 }
@@ -323,7 +323,7 @@ namespace SwordGame
             if (rb.velocity.y == 0)
             {
                 CanDashJump = true;
-                Grounded = true;
+                //Grounded = true;
                 GetComponent<Animator>().SetBool("IsGroundFallDash", true);
                 GetComponent<Animator>().SetBool("GroundDash", true);
             }
@@ -383,15 +383,13 @@ namespace SwordGame
             }
         }
 
-
-
         private void OnCollisionStay2D(Collision2D collision)
         {
             if (rb != null)
             {
                 if (collision.gameObject.tag == "Floor")
                 {
-                    Grounded = true;
+                    //Grounded = true;
                     GetComponent<Animator>().SetBool("IsGroundFallDash", true);
                     GetComponent<Animator>().SetBool("GroundDash", true);
                 }
