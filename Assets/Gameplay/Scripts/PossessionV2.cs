@@ -72,7 +72,7 @@ namespace SwordGame
                         LastPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                     }
 
-                    FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().TypeEnemy,1);
+                    //FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().TypeEnemy,1);
 
                     PlayerDetect.gameObject.tag = "Enemy";
                     PlayerDetectArray[PlayerDetectArray.Count-1].gameObject.tag = "Player";

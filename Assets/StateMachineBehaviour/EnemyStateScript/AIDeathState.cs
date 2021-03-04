@@ -8,14 +8,14 @@ public class AIDeathState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(FindObjectOfType<ScoreSystem>(true).SpecialType == true)
+        /* if(FindObjectOfType<ScoreSystem>(true).SpecialType == true)
         {
             FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)animator.GetComponent<EnemyData>().TypeEnemy,3);
         }
         else
         {
             FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)animator.GetComponent<EnemyData>().TypeEnemy, 3);
-        }
+        } */
         animator.GetComponent<EnemyData>().gameObject.SetActive(false);
     }
 
