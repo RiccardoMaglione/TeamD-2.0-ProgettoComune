@@ -167,6 +167,7 @@ namespace SwordGame
 
             if (rb.velocity.y == 0)
             {
+                //GetComponent<Animator>().SetBool("GroundDash", true);
                 //if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Jump"))
                 //{
                 //    GetComponent<Animator>().SetBool("IsJump", false);
@@ -324,7 +325,7 @@ namespace SwordGame
                 CanDashJump = true;
                 Grounded = true;
                 GetComponent<Animator>().SetBool("IsGroundFallDash", true);
-                GetComponent<Animator>().SetBool("GroundDash", true);
+                //GetComponent<Animator>().SetBool("GroundDash", true);
             }
             else
             {
@@ -377,7 +378,7 @@ namespace SwordGame
                 {
                     Grounded = true;
                     GetComponent<Animator>().SetBool("IsGroundFallDash", true);
-                    GetComponent<Animator>().SetBool("GroundDash", true);
+                    //GetComponent<Animator>().SetBool("GroundDash", true);
                 }
             }
         }

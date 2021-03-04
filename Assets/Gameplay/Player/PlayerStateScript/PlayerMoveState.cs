@@ -74,7 +74,7 @@ public class PlayerMoveState : StateMachineBehaviour
                 else
                 {
                     animator.SetBool("IsDash", true);
-                    animator.SetBool("GroundDash", true);
+                    //animator.SetBool("GroundDash", true);
                 }
             }
             if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
@@ -87,7 +87,7 @@ public class PlayerMoveState : StateMachineBehaviour
                 else
                 {
                     animator.SetBool("IsDash", true);
-                    animator.SetBool("GroundDash", true);
+                    //animator.SetBool("GroundDash", true);
                 }
             }
         }
