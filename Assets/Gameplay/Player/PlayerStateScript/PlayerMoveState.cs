@@ -66,6 +66,7 @@ public class PlayerMoveState : StateMachineBehaviour
 
             if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashRight == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
             {
+                Debug.Log("ci sono 1");
                 animator.GetComponent<PlayerController>().CanDashLeft = true;
                 if(animator.GetComponent<PlayerController>().rb.velocity.y < 0)
                 {
@@ -79,6 +80,7 @@ public class PlayerMoveState : StateMachineBehaviour
             }
             if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
             {
+                Debug.Log("ci sono 2");
                 animator.GetComponent<PlayerController>().CanDashRight = true;
                 if (animator.GetComponent<PlayerController>().rb.velocity.y < 0)
                 {

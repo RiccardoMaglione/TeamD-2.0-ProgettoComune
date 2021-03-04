@@ -383,8 +383,20 @@ namespace SwordGame
             }
         }
 
+
+
         private void OnCollisionStay2D(Collision2D collision)
         {
+            if (rb != null)
+            {
+                if (collision.gameObject.tag == "Floor")
+                {
+                    Grounded = true;
+                    GetComponent<Animator>().SetBool("IsGroundFallDash", true);
+                    GetComponent<Animator>().SetBool("GroundDash", true);
+                }
+            }
+
             if (Input.GetKey(KeyCode.S))
             {
                 if (collision.gameObject.GetComponent<PlatformEffector2D>() != null)
