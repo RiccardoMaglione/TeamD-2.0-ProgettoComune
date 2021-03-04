@@ -31,7 +31,7 @@ public class PlayerIdleState : StateMachineBehaviour
         #endregion
 
         #region Set Jump State
-        if (Input.GetKey(KeyCode.Space) && (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0) && animator.GetComponent<PlayerController>().canJump == true)
+        if (Input.GetKey(KeyCode.Space) && (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0) && animator.GetComponent<PlayerController>().canJump == true && animator.GetComponent<PlayerController>().CanJumpDashCooldown == false)
         {
             animator.SetBool("IsJump", true);
             animator.Play("Jump");

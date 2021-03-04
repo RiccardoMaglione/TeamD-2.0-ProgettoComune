@@ -105,6 +105,7 @@ namespace SwordGame
         public static bool Deactivate;
         public bool CanJumpDashCooldown;
         public float tempY;
+
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -196,15 +197,16 @@ namespace SwordGame
                 GetComponent<Animator>().SetBool("IsFall", false);
             }
 
-            if (CanJumpDashCooldown == true && rb.velocity.y == 0)         //Sistema bug del salto nel dash in cui viene bloccata l'altezza - Controllare se permetti di saltare in aria, ma non sembra
+            if (CanJumpDashCooldown == true)         //Sistema bug del salto nel dash in cui viene bloccata l'altezza - Controllare se permetti di saltare in aria, ma non sembra
             {
-                if (Input.GetKey(KeyCode.Space) && rb.velocity.y == 0)
+                if (Input.GetKey(KeyCode.Space) && Grounded == true)
                 {
-                    rb.AddForce(Vector2.up * ValueJump.jumpForce*2, ForceMode2D.Impulse);
-                    if (tempY + 1 < transform.position.y)
-                    {
-                        CanJumpDashCooldown = false;
-                    }
+                    rb.AddForce(Vector2.up * ValueJump.jumpForce/5, ForceMode2D.Impulse);
+                }
+                if (tempY + 3 < transform.position.y)
+                {
+                    //rb.velocity = new Vector2(rb.velocity.x, 0.1f);
+                    CanJumpDashCooldown = false;
                 }
             }
         }
@@ -305,8 +307,9 @@ namespace SwordGame
             GetComponent<Animator>().SetBool("CanDashFall", false);
             gameObject.layer = 8;
             yield return new WaitForSeconds(TimerCooldownDash);
-            GetComponent<Rigidbody2D>().gravityScale = 1;
             CanJumpDashCooldown = false;
+            GetComponent<Rigidbody2D>().gravityScale = 1;
+            rb.velocity = new Vector2(rb.velocity.x, -0.1f);
             CanDashLeft = false;
             CanDashRight = false;
             Invulnerability = false;
@@ -315,6 +318,7 @@ namespace SwordGame
             isBoriousDash = false;
 
             TimerDash = 0;
+
             if (rb.velocity.y == 0)
             {
                 CanDashJump = true;

@@ -45,7 +45,7 @@ public class PlayerMoveState : StateMachineBehaviour
         #endregion
 
         #region Jump Zone
-        if (Input.GetKey(KeyCode.Space) && (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0) && animator.GetComponent<PlayerController>().canJump == true)
+        if (Input.GetKey(KeyCode.Space) && (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0) && animator.GetComponent<PlayerController>().canJump == true && animator.GetComponent<PlayerController>().CanJumpDashCooldown == false)
         {
             animator.SetBool("IsJump", true);
             animator.Play("Jump");
@@ -74,6 +74,7 @@ public class PlayerMoveState : StateMachineBehaviour
                 else
                 {
                     animator.SetBool("IsDash", true);
+                    animator.SetBool("GroundDash", true);
                 }
             }
             if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
@@ -86,6 +87,7 @@ public class PlayerMoveState : StateMachineBehaviour
                 else
                 {
                     animator.SetBool("IsDash", true);
+                    animator.SetBool("GroundDash", true);
                 }
             }
         }
