@@ -8,15 +8,15 @@ public class PlayerIdleState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<PlayerController>().Grounded = true;
-        animator.SetBool("IsFall", false);
+        //animator.GetComponent<PlayerController>().Grounded = true;
+        //animator.SetBool("IsFall", false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("CanDashFall", false);
-        animator.GetComponent<PlayerController>().Grounded = true;
+        //animator.SetBool("CanDashFall", false);
+        //animator.GetComponent<PlayerController>().Grounded = true;
 
         #region Set Movement State
         if (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.D)))

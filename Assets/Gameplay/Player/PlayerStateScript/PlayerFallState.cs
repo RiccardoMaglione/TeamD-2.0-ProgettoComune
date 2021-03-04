@@ -9,6 +9,7 @@ public class PlayerFallState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("OnlyOnceFall", false);
+        //animator.GetComponent<PlayerController>().Grounded = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -21,11 +22,11 @@ public class PlayerFallState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().Grounded = false;
         }
 
-        if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
+        if (animator.GetComponent<PlayerController>().Grounded == true/* || animator.GetComponent<PlayerController>().rb.velocity.y == 0*/)
         {
             animator.SetBool("IsFall", false);
             animator.SetBool("CanDashFall", false);
-            animator.GetComponent<PlayerController>().Grounded = true;
+            //animator.GetComponent<PlayerController>().Grounded = true;
         }
         #endregion
 
@@ -34,23 +35,23 @@ public class PlayerFallState : StateMachineBehaviour
         {
             animator.GetComponent<PlayerController>().ValueMovement.Speed = animator.GetComponent<PlayerController>().tempSpeed;
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, -180, animator.GetComponent<PlayerController>().transform.rotation.z);
-            if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
-            {
-                animator.SetBool("IsFall", false);
-                animator.SetBool("CanDashFall", false);
-                animator.GetComponent<PlayerController>().Grounded = true;
-            }
+            //if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
+            //{
+            //    animator.SetBool("IsFall", false);
+            //    animator.SetBool("CanDashFall", false);
+            //    //animator.GetComponent<PlayerController>().Grounded = true;
+            //}
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             animator.GetComponent<PlayerController>().ValueMovement.Speed = animator.GetComponent<PlayerController>().tempSpeed;
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, 0, animator.GetComponent<PlayerController>().transform.rotation.z);
-            if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
-            {
-                animator.SetBool("IsFall", false);
-                animator.SetBool("CanDashFall", false);
-                animator.GetComponent<PlayerController>().Grounded = true;
-            }
+            //if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
+            //{
+            //    animator.SetBool("IsFall", false);
+            //    animator.SetBool("CanDashFall", false);
+            //    //animator.GetComponent<PlayerController>().Grounded = true;
+            //}
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -58,35 +59,35 @@ public class PlayerFallState : StateMachineBehaviour
             animator.GetComponent<PlayerController>().CalculateSpeed();
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(-animator.GetComponent<PlayerController>().ValueMovement.Speed, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, -180, animator.GetComponent<PlayerController>().transform.rotation.z);
-            if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
-            {
-                animator.SetBool("IsFall", false);
-                animator.SetBool("CanDashFall", false);
-                animator.GetComponent<PlayerController>().Grounded = true;
-            }
+            //if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
+            //{
+            //    animator.SetBool("IsFall", false);
+            //    animator.SetBool("CanDashFall", false);
+            //    //animator.GetComponent<PlayerController>().Grounded = true;
+            //}
         }
         else if (Input.GetKey(KeyCode.D))
         {
             animator.GetComponent<PlayerController>().CalculateSpeed();
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(animator.GetComponent<PlayerController>().ValueMovement.Speed, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, 0, animator.GetComponent<PlayerController>().transform.rotation.z);
-            if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
-            {
-                animator.SetBool("IsFall", false);
-                animator.SetBool("CanDashFall", false);
-                animator.GetComponent<PlayerController>().Grounded = true;
-            }
+            //if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
+            //{
+            //    animator.SetBool("IsFall", false);
+            //    animator.SetBool("CanDashFall", false);
+            //    //animator.GetComponent<PlayerController>().Grounded = true;
+            //}
         }
         else
         {
             animator.GetComponent<PlayerController>().rb.velocity = new Vector2(0, animator.GetComponent<PlayerController>().rb.velocity.y);
             animator.SetBool("IsMove", false);
-            if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
-            {
-                animator.SetBool("IsFall", false);
-                animator.SetBool("CanDashFall", false);
-                animator.GetComponent<PlayerController>().Grounded = true;
-            }
+            //if (animator.GetComponent<PlayerController>().Grounded == true || animator.GetComponent<PlayerController>().rb.velocity.y == 0)
+            //{
+            //    animator.SetBool("IsFall", false);
+            //    animator.SetBool("CanDashFall", false);
+            //    //animator.GetComponent<PlayerController>().Grounded = true;
+            //}
         }
         #endregion
 

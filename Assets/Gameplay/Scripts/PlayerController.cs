@@ -369,7 +369,7 @@ namespace SwordGame
         {
             if (rb != null)
             {
-                if (rb.velocity.y == 0)
+                if (collision.gameObject.tag == "Floor")
                 {
                     Grounded = true;
                     GetComponent<Animator>().SetBool("IsGroundFallDash", true);
