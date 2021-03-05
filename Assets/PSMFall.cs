@@ -22,6 +22,7 @@ public class PSMFall : StateMachineBehaviour
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(-animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                        //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);   //Ruoto il player
             Debug.Log("PlayerState - Vai a sinistra");
+            animator.SetBool("PSM-CanMove", true);
         }
         else if (Input.GetKey(KeyCode.D))                                                                                                                                                                                   //Se schiaccio D vado a destra
         {
@@ -29,10 +30,12 @@ public class PSMFall : StateMachineBehaviour
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                         //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);      //Ruoto il player
             Debug.Log("PlayerState - Vai a destra");
+            animator.SetBool("PSM-CanMove", true);
         }
         else                                                                                                                                                                                                                //Se non premo A e D
         {
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);                                                                                  //Setto a 0 la velocità sulla x (Orizzontale)                                                                                                                                                                              //Ritorno in idle
+            animator.SetBool("PSM-CanMove", false);
         }
         #endregion
 
