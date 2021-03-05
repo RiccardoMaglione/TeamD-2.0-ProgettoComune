@@ -758,7 +758,7 @@ MonoBehaviour:
   DashDamageFatKnight: 0
   PoisePlayer: 0
   MaxPoisePlayer: 5
-  ResetTimerStaggered: 282.2906
+  ResetTimerStaggered: 375.7193
   MaxResetTimerStaggered: 0.2
   tempSpeed: 4
   velocityY: 0
@@ -1499,28 +1499,41 @@ GameObject:
   m_Component:
   - component: {fileID: 749733640}
   - component: {fileID: 749733639}
-  - component: {fileID: 749733638}
   - component: {fileID: 749733641}
+  - component: {fileID: 749733638}
   m_Layer: 0
-  m_Name: Crack 3
+  m_Name: Laser 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!65 &749733638
-BoxCollider:
+--- !u!61 &749733638
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749733637}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!212 &749733639
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1598,7 +1611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218ede9a9776c2a458af91aecb4d62d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: 1
 --- !u!1 &878638409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,28 +1621,41 @@ GameObject:
   m_Component:
   - component: {fileID: 878638412}
   - component: {fileID: 878638411}
-  - component: {fileID: 878638410}
   - component: {fileID: 878638413}
+  - component: {fileID: 878638410}
   m_Layer: 0
-  m_Name: Crack 1
+  m_Name: Laser 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!65 &878638410
-BoxCollider:
+--- !u!61 &878638410
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878638409}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!212 &878638411
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1708,7 +1733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218ede9a9776c2a458af91aecb4d62d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: 1
 --- !u!1 &910781121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,28 +1856,41 @@ GameObject:
   m_Component:
   - component: {fileID: 967951545}
   - component: {fileID: 967951544}
-  - component: {fileID: 967951543}
   - component: {fileID: 967951546}
+  - component: {fileID: 967951543}
   m_Layer: 0
-  m_Name: Crack 2
+  m_Name: Laser 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!65 &967951543
-BoxCollider:
+--- !u!61 &967951543
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967951542}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!212 &967951544
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1931,7 +1968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218ede9a9776c2a458af91aecb4d62d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeTime: 1
 --- !u!1 &1107335702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,6 +1978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107335704}
   - component: {fileID: 1107335703}
+  - component: {fileID: 1107335705}
   m_Layer: 0
   m_Name: LaserManager
   m_TagString: Untagged
@@ -1956,19 +1993,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107335702}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d151aac27aacf74b86f24db8241b7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crack1: {fileID: 878638409}
-  crack2: {fileID: 967951542}
-  crack3: {fileID: 749733637}
+  laser1: {fileID: 878638409}
+  laser2: {fileID: 967951542}
+  laser3: {fileID: 749733637}
   particle1: {fileID: 493008486}
   particle2: {fileID: 394466207}
   particle3: {fileID: 41392003}
-  isActive: 0
-  coolDown: 3
+  rand: 0
+  animator: {fileID: 2065437700}
 --- !u!4 &1107335704
 Transform:
   m_ObjectHideFlags: 0
@@ -1983,6 +2020,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1107335705
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107335702}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 426efb265f3264249856347d638fe092, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1148266228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3436,7 +3492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25ecef676c53eb4bbe9f4282c9a685a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
+  life: 60
 --- !u!114 &2065437704
 MonoBehaviour:
   m_ObjectHideFlags: 0

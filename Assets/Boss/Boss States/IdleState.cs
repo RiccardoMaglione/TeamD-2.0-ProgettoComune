@@ -23,7 +23,7 @@ public class IdleState : StateMachineBehaviour
         if (rand == 1)
             animator.SetTrigger("Attack1");
         else
-            animator.SetTrigger("Attack2");      
+            animator.SetTrigger("Attack2");
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

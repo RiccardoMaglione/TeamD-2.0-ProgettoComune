@@ -2,83 +2,41 @@
 
 public class LaserManager : MonoBehaviour
 {
-    [SerializeField] GameObject crack1;
-    [SerializeField] GameObject crack2;
-    [SerializeField] GameObject crack3;
+    public GameObject laser1;
+    public GameObject laser2;
+    public GameObject laser3;
+ 
+    public GameObject particle1;
+    public GameObject particle2;
+    public GameObject particle3;
 
-    [SerializeField] GameObject particle1;
-    [SerializeField] GameObject particle2;
-    [SerializeField] GameObject particle3;
-
-    public static LaserManager instance;
-
-    [HideInInspector] public bool isActive = false;
-    
-    int rand;
+    [HideInInspector] public int rand;
     int oldRandom;
 
-    float timer = 0;
-    bool isRandom = false;
-    [SerializeField] float coolDown = 0;
+    public Animator animator;
 
-    void Update()
+    public void DoRandom()
     {
-        if (isActive == false)
+        if (animator.GetBool("GoToPhase3") == true)
         {
             do
             {
                 rand = Random.Range(1, 4);
             }
             while (oldRandom == rand);
-            
-            if(isRandom == false)
-            {
-                oldRandom = rand;
 
-                if (rand == 1)
-                    particle1.SetActive(true);
-                
-                if (rand == 2)
-                    particle2.SetActive(true);
+            Debug.Log(rand);
 
-                if (rand == 3)
-                    particle3.SetActive(true);
+            if (rand == 1)
+                particle1.SetActive(true);
 
-                isRandom = true;
-            }
-                       
-            timer += Time.deltaTime;
+            if (rand == 2)
+                particle2.SetActive(true);
 
-            if (rand == 1 && timer > coolDown)
-            {
-                crack1.SetActive(true);
-                particle1.SetActive(false);
-                timer = 0;
-                isRandom = false;
-            }
+            if (rand == 3)
+                particle3.SetActive(true);
 
-            if (rand == 2 && timer > coolDown)
-            {
-                crack2.SetActive(true);
-                particle2.SetActive(false);
-                timer = 0;
-                isRandom = false;
-            }
-
-
-            if (rand == 3 && timer > coolDown)
-            {
-                crack3.SetActive(true);
-                particle3.SetActive(false);
-                timer = 0;
-                isRandom = false;
-            }               
+            oldRandom = rand;
         }
-    }
-
-    void Awake()
-    {
-        if (instance == null)
-            instance = this;
     }
 }
