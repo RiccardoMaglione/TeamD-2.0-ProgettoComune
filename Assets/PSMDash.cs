@@ -14,9 +14,11 @@ public class PSMDash : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         #region Left Dash
-        if(animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("CanDashInAir") == false)    //Se CanDashInAir è falso entra sempre, altrimenti entra solo 1 volta
+        Debug.Log("PlayerState - State Dash");
+        if (animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("CanDashInAir") == false)    //Se CanDashInAir è falso entra sempre, altrimenti entra solo 1 volta
         {
-            if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PSMController>().CanDashRight == false)
+            Debug.Log("PlayerState - Initial dash");
+            if (/*Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && */animator.GetComponent<PSMController>().CanDashRight == false)
             {
                 Debug.Log("PlayerState - Dash sinistro");
                 animator.GetComponent<PSMController>().CanDashLeft = true;
@@ -35,6 +37,7 @@ public class PSMDash : StateMachineBehaviour
                     if (animator.GetBool("PSM-IsGrounded") == false)        //Se non tocca il pavimento
                     {
                         animator.SetBool("PSM-CanDashInAir", true);         //Blocco la possibilità di rientrare nel dash dallo stato di caduta
+                        Debug.Log("PlayerState - Air dash - Dash destro");
                     }
                     //animator.GetComponent<PlayerController>().StartCoroutine(animator.GetComponent<PlayerController>().CooldownDash());
                 }
@@ -42,7 +45,7 @@ public class PSMDash : StateMachineBehaviour
             #endregion
 
             #region Right Dash
-            if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PSMController>().CanDashLeft == false)
+            if (/*Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) &&*/ animator.GetComponent<PSMController>().CanDashLeft == false)
             {
                 Debug.Log("PlayerState - Dash Destro");
                 animator.GetComponent<PSMController>().CanDashRight = true;
@@ -61,6 +64,7 @@ public class PSMDash : StateMachineBehaviour
                     if (animator.GetBool("PSM-IsGrounded") == false)        //Se non tocca il pavimento
                     {
                         animator.SetBool("PSM-CanDashInAir", true);         //Blocco la possibilità di rientrare nel dash dallo stato di caduta
+                        Debug.Log("PlayerState - Air dash - Dash destro");
                     }
                     //animator.GetComponent<PlayerController>().StartCoroutine(animator.GetComponent<PlayerController>().CooldownDash());
                 }

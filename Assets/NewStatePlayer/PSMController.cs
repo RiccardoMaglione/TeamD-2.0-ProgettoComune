@@ -87,6 +87,7 @@ public class PSMController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Floor")
         {
+            GetComponent<Animator>().SetBool("PSM-IsGrounded", true);
             GetComponent<Animator>().SetBool("PSM-CanDashInAir", false); //Permette di rientrare in dash
         }
     }

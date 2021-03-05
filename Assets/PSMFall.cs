@@ -41,10 +41,12 @@ public class PSMFall : StateMachineBehaviour
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Entra solo 1 volta per CanDashInAir
         {
             animator.SetBool("PSM-CanDash", true);
+            animator.GetComponent<PSMController>().CanDashLeft = true;
         }
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Entra solo 1 volta per CanDashInAir
         {
             animator.SetBool("PSM-CanDash", true);
+            animator.GetComponent<PSMController>().CanDashRight = true;
         }
         #endregion
     }

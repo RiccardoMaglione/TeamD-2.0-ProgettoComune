@@ -36,7 +36,7 @@ public class PSMMove : StateMachineBehaviour
         #endregion
 
         #region Jump Zone
-        if (Input.GetKey(KeyCode.Space))     //Se schiaccio spazio
+        if (Input.GetKeyDown(KeyCode.Space))     //Se schiaccio spazio
         {
             Debug.Log("PlayerState - Vai nello stato 'PSMJump'");           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                             //Setto attivo il trigger - Prima condizione per il cambio stato in "Player Jump State"
@@ -56,10 +56,12 @@ public class PSMMove : StateMachineBehaviour
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false)
         {
             animator.SetBool("PSM-CanDash", true);
+            animator.GetComponent<PSMController>().CanDashLeft = false;
         }
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false)
         {
             animator.SetBool("PSM-CanDash", true);
+            animator.GetComponent<PSMController>().CanDashRight = true;
         }
         #endregion
     }

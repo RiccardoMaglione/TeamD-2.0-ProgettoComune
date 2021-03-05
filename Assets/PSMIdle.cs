@@ -24,7 +24,7 @@ public class PSMIdle : StateMachineBehaviour
         #endregion
 
         #region Jump
-        if (Input.GetKey(KeyCode.Space))     //Se schiaccio spazio
+        if (Input.GetKeyDown(KeyCode.Space))     //Se schiaccio spazio
         {
             Debug.Log("PlayerState - Vai nello stato 'PSMJump'");           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                             //Setto attivo il trigger - Prima condizione per il cambio stato in "Player Jump State"

@@ -33,7 +33,7 @@ public class PSMJump : StateMachineBehaviour
         #endregion
 
         #region Fall
-        if (animator.GetComponent<PSMController>().RB2D.velocity.y < 0)
+        if (animator.GetComponent<PSMController>().RB2D.velocity.y <= 0)
         {
             Debug.Log("PlayerState - Vai in 'Player Fall State'");
             animator.SetTrigger("PSM-IsInFall");
@@ -65,10 +65,12 @@ public class PSMJump : StateMachineBehaviour
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)
         {
             animator.SetBool("PSM-CanDash", true);
+            animator.GetComponent<PSMController>().CanDashLeft = true;
         }
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)
         {
             animator.SetBool("PSM-CanDash", true);
+            animator.GetComponent<PSMController>().CanDashRight = true;
         }
         #endregion
     }
