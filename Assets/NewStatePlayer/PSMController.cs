@@ -39,6 +39,7 @@ public class PSMController : MonoBehaviour
     /*[HideInInspector]*/ public bool CanDashRight = false;
     /*[HideInInspector]*/ public bool CanDashLeft = false;
     /*[HideInInspector]*/ public bool CooldownDashDirectional = false;
+    /*[HideInInspector]*/ public bool OnceJump = false;
     #endregion
     void Start()
     {
