@@ -52580,6 +52580,7 @@ GameObject:
   - component: {fileID: 1500550192}
   - component: {fileID: 1500550191}
   - component: {fileID: 1500550190}
+  - component: {fileID: 1500550199}
   m_Layer: 8
   m_Name: Player (1)
   m_TagString: Player
@@ -52772,7 +52773,7 @@ MonoBehaviour:
   DashDamageFatKnight: 0
   PoisePlayer: 0
   MaxPoisePlayer: 5
-  ResetTimerStaggered: 162.32968
+  ResetTimerStaggered: 296.38596
   MaxResetTimerStaggered: 0.2
   tempSpeed: 4
   velocityY: 0
@@ -52910,6 +52911,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1500550199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500550189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247fe66e960012e4d9c2ced8718a7280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RB2D: {fileID: 0}
+  ValueMovement:
+    Acceleration: 3
+    Speed: 4
+    MaxSpeed: 5.5
+  ValueJump:
+    InitialJumpForce: 6
+    jumpForce: 3
+    fallMultiplier: 5
+    lowJumpMultiplier: 6
+  TimerDash: 0
+  LimitTimerDash: 0.16
+  TimerDashCooldown: 0
+  LimiTimerDashCooldown: 0.2
+  CanDashRight: 0
+  CanDashLeft: 0
+  CooldownDashDirectional: 0
 --- !u!1 &1507026257
 GameObject:
   m_ObjectHideFlags: 0
