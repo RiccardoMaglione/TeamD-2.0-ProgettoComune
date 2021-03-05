@@ -40,6 +40,8 @@ public class PSMMove : StateMachineBehaviour
         {
             Debug.Log("PlayerState - Vai nello stato 'PSMJump'");           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                             //Setto attivo il trigger - Prima condizione per il cambio stato in "Player Jump State"
+            if (animator.GetBool("PSM-IsGrounded") == true)
+                animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);
         }
         #endregion
 

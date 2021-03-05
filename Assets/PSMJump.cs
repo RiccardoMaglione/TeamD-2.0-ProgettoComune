@@ -7,10 +7,11 @@ public class PSMJump : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(animator.GetBool("PSM-IsGrounded") == true)
-        {
-            animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);
-        }
+        //if(animator.GetBool("PSM-IsGrounded") == true)
+        //{
+        //    animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);
+        //}
+        Debug.Log("PlayerState - Grounded'" + animator.GetBool("PSM-IsGrounded"));
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
