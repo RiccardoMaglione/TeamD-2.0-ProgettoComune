@@ -17,14 +17,16 @@ public class PSMFall : StateMachineBehaviour
         animator.GetComponent<PSMController>().RB2D.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PSMController>().ValueJump.fallMultiplier - 1) * Time.deltaTime;  //Cade gradualmente più velocemente
         #endregion
 
-        #region Move - Permette il movimento all'interno del fall (Le righe di movimento non servono) - Permette una transizione più fluida tra "Player Fall State" e "Player Move State"
+        #region Move - Permette il movimento all'interno del fall - Contiene passaggi tra "Player Fall State" e "Player Move State" o "Player Idle State"
         if (Input.GetKey(KeyCode.A))                                                                                                                                                                                        //Se schiaccio A vado a sinistra
         {
             animator.GetComponent<PSMController>().CalculateSpeed();                                                                                                                                                        //Calcolo la velocità
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(-animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                        //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);   //Ruoto il player
             Debug.Log("PlayerState - Vai a sinistra");
+            #region - Da "Player Fall State" in "Player Move State" - Permette una transizione più fluida senza passare da "Player Idle State"
             animator.SetBool("PSM-CanMove", true);
+            #endregion
         }
         else if (Input.GetKey(KeyCode.D))                                                                                                                                                                                   //Se schiaccio D vado a destra
         {
@@ -32,7 +34,9 @@ public class PSMFall : StateMachineBehaviour
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                         //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);      //Ruoto il player
             Debug.Log("PlayerState - Vai a destra");
+            #region - Da "Player Fall State" in "Player Move State" - Permette una transizione più fluida senza passare da "Player Idle State"
             animator.SetBool("PSM-CanMove", true);
+            #endregion
         }
         else                                                                                                                                                                                                                //Se non premo A e D
         {
