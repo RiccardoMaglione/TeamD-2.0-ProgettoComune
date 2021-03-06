@@ -13,9 +13,11 @@ public class PSMFall : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        #region Fall Zone - Compito principale dello script della caduta
         animator.GetComponent<PSMController>().RB2D.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PSMController>().ValueJump.fallMultiplier - 1) * Time.deltaTime;  //Cade gradualmente più velocemente
+        #endregion
 
-        #region Move
+        #region Move - Permette il movimento all'interno del fall (Le righe di movimento non servono) - Permette una transizione più fluida tra "Player Fall State" e "Player Move State"
         if (Input.GetKey(KeyCode.A))                                                                                                                                                                                        //Se schiaccio A vado a sinistra
         {
             animator.GetComponent<PSMController>().CalculateSpeed();                                                                                                                                                        //Calcolo la velocità
@@ -34,22 +36,24 @@ public class PSMFall : StateMachineBehaviour
         }
         else                                                                                                                                                                                                                //Se non premo A e D
         {
-            animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);                                                                                  //Setto a 0 la velocità sulla x (Orizzontale)                                                                                                                                                                              //Ritorno in idle
-            animator.SetBool("PSM-CanMove", false);
+            #region - Da "Player Fall State" in "Player Idle State"
+            animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);                                                                                  //Setto a 0 la velocità sulla x (Orizzontale)            
+            animator.SetBool("PSM-CanMove", false);                                                                                                                                                                         //Rende veritiera la condizione per il passaggio tra "Player Fall State" e "Player Idle State"
+            #endregion
         }
         #endregion
 
 
-        #region Dash Zone
-        if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Entra solo 1 volta per CanDashInAir
+        #region Dash Zone - Da "Player Fall State" in "Player Dash State"
+        if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Entra solo 1 volta per CanDashInAir + Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash - Faccio un ulteriore controllo bloccare i dash in aria ad uno
         {
-            animator.SetBool("PSM-CanDash", true);
-            animator.GetComponent<PSMController>().CanDashLeft = true;
+            animator.SetBool("PSM-CanDash", true);                                              //Setto la prima condizione per il dash a vero, mi sposto da "Player Jump State" a "Player Dash State"
+            animator.GetComponent<PSMController>().CanDashLeft = true;                          //Setto la direzione del dash a sinistra
         }
-        if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Entra solo 1 volta per CanDashInAir
+        if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Entra solo 1 volta per CanDashInAir + Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash - Faccio un ulteriore controllo bloccare i dash in aria ad uno
         {
-            animator.SetBool("PSM-CanDash", true);
-            animator.GetComponent<PSMController>().CanDashRight = true;
+            animator.SetBool("PSM-CanDash", true);                                              //Setto la prima condizione per il dash a vero, mi sposto da "Player Fall State" a "Player Dash State"
+            animator.GetComponent<PSMController>().CanDashRight = true;                         //Setto la direzione del dash a destra
         }
         #endregion
     }
