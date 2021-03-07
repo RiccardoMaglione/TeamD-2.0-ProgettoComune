@@ -5,19 +5,20 @@ public class ArcMovement : MonoBehaviour
 {
     [SerializeField] Transform player;
     public float height;
+    public float parableRaiseSpeed;
 
     public void Arc()
     {
         if (transform.position.x < player.position.x)
         {
-            transform.DOMoveX(transform.position.x + (-(transform.position.x - player.position.x)), 1);
-            transform.DOMoveY(height, 0.5f);
+            transform.DOMoveX(transform.position.x + (-(transform.position.x - player.position.x)) + 2, parableRaiseSpeed);
+            transform.DOMoveY(height, parableRaiseSpeed / 2);
         }
 
         if (transform.position.x >= player.position.x)
         {
-            transform.DOMoveX(transform.position.x - (transform.position.x - player.position.x), 1);
-            transform.DOMoveY(height, 0.5f);
+            transform.DOMoveX(transform.position.x - (transform.position.x - player.position.x) - 2, parableRaiseSpeed);
+            transform.DOMoveY(height, parableRaiseSpeed / 2);
         }
     }
 }
