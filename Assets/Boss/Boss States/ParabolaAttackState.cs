@@ -30,7 +30,7 @@ public class ParabolaAttackState : StateMachineBehaviour
 
         if (animator.transform.position.y == initialPosition)
         {
-            animator.SetTrigger("GoToIdle");
+            animator.SetTrigger("GoToNext");
             isUp = false;
         }
             
@@ -38,6 +38,5 @@ public class ParabolaAttackState : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
     }
 }

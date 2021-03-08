@@ -3,7 +3,7 @@
 public class WaypointsAttack2 : MonoBehaviour
 {
     public GameObject[] waypoints;
-    public int i = 0;
+    [HideInInspector] public int i = 0;
     public float[] speed;
     float WPradius = 0.1f;
 

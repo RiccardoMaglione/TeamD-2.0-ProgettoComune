@@ -11,12 +11,19 @@ public class IdleState : StateMachineBehaviour
         if (boss.life < 70 && boss.life > 29)
             animator.SetBool("GoToPhase2", true);
         
-        if (boss.life < 30)
+        if (boss.life < 30 && boss.life > 0)
         {
             animator.SetBool("GoToPhase2", false);
             animator.SetBool("GoToPhase3", true);
         }
-  
+
+        if (boss.life <= 0)
+        {
+            animator.SetBool("GoToDeath", true);
+            animator.SetBool("GoToPhase2", false);
+            animator.SetBool("GoToPhase3", false);
+        }
+
 
         int rand = Random.Range(1, 3);
         
