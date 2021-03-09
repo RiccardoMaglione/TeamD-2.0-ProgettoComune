@@ -59,4 +59,4 @@ namespace SwordGame
     }
 }
 
-//How to use: Mettere lo script sul collider range, sia melee e sia ranged
+//How to use: Mettere lo script sul collider range, sia melee e sia ranged, definire la percentuale per i vari attacchi
