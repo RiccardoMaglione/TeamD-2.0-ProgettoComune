@@ -91,64 +91,36 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (GetComponent<PlayerController>().CanDashLeft == false && GetComponent<PlayerController>().CanDashRight == false)
+        if (GetComponent<PSMController>().CanDashLeft == false && GetComponent<PSMController>().CanDashRight == false)
         {
             if (Input.GetKeyDown(KeyboardLightlAttack) && isAttack == false)
             {
-                if(/*GetComponent<Animator>().GetBool("PlayerCanAttack") == true*/ GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+                if(GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
                 {
-                    //GetComponent<Animator>().SetBool("PlayerCanAttack", false);
                     GetComponent<Animator>().SetBool("PSM-CanAttack", true);
-                    //originalSpeed = speed;
-                    //speed = 0;
-                    //LightAttack();
-                    //GetComponentInParent<PlayerController>().isInAttack = true;
                     LightActivation = true;
-                    //GetComponent<Animator>().SetBool("PlayerAttack", true);
-                    //GetComponent<Animator>().SetBool("PlayerLightAttack", true);
-
                     GetComponent<Animator>().SetBool("PSM-Attack", true);
                     GetComponent<Animator>().SetBool("PSM-LightAttack", true);
-
-                    //speed = originalSpeed;
                 }
             }
             if (Input.GetKeyDown(KeyboardHeavyAttack) && isAttack == false)
             {
-                if (/*GetComponent<Animator>().GetBool("PlayerCanAttack") == true*/GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+                if (GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
                 {
-                    //GetComponent<Animator>().SetBool("PlayerCanAttack", false);
                     GetComponent<Animator>().SetBool("PSM-CanAttack", true);
-                    //originalSpeed = speed;
-                    //speed = 0;
-                    //HeavyAttack();
-                    //GetComponentInParent<PlayerController>().isInAttack = true;
                     HeavyActivation = true;
-                    //GetComponent<Animator>().SetBool("PlayerAttack", true);
-                    //GetComponent<Animator>().SetBool("PlayerHeavyAttack", true);
-
-
                     GetComponent<Animator>().SetBool("PSM-Attack", true);
                     GetComponent<Animator>().SetBool("PSM-HeavyAttack", true);
-                    //speed = originalSpeed;
                 }
             }
             if (Input.GetKeyDown(KeyboardSpecialAttack) && isAttack == false)
             {
-                if (/*GetComponent<Animator>().GetBool("PlayerCanAttack") == true*/GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+                if (GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
                 {
-                    //GetComponent<Animator>().SetBool("PlayerCanAttack", false);
                     GetComponent<Animator>().SetBool("PSM-CanAttack", true);
-                    //originalSpeed = speed;
-                    //speed = 0;
-                    //SpecialAttack();
-                    //GetComponentInParent<PlayerController>().isInAttack = true;
                     SpecialActivation = true;
-                    //GetComponent<Animator>().SetBool("PlayerAttack", true);
-                    //GetComponent<Animator>().SetBool("PlayerSpecialAttack", true);
                     GetComponent<Animator>().SetBool("PSM-Attack", true);
                     GetComponent<Animator>().SetBool("PSM-SpecialAttack", true);
-                    //speed = originalSpeed;
                 }
             }
         }
@@ -169,7 +141,6 @@ public class PlayerInput : MonoBehaviour
                 LightAttack();
                 LightTimerActivation = 0;
                 LightActivation = false;
-                //GetComponent<Animator>().SetBool("PlayerLightAttack", false);
                 GetComponent<Animator>().SetBool("PSM-LightAttack", false);
             }
         }
@@ -193,7 +164,6 @@ public class PlayerInput : MonoBehaviour
                 HeavyAttack();
                 HeavyTimerActivation = 0;
                 HeavyActivation = false;
-                //GetComponent<Animator>().SetBool("PlayerHeavyAttack", false);
                 GetComponent<Animator>().SetBool("PSM-HeavyAttack", false);
             }
         }
@@ -217,7 +187,6 @@ public class PlayerInput : MonoBehaviour
                 SpecialAttack();
                 SpecialTimerActivation = 0;
                 SpecialActivation = false;
-                //GetComponent<Animator>().SetBool("PlayerSpecialAttack", false);
                 GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
             }
         }

@@ -67,7 +67,7 @@ namespace SwordGame
                     ReturnPlayer.timerDestroy = 0;
                     if (LastPlayer != null)
                     {
-                        LastPlayer.GetComponent<PlayerController>().enabled = false;
+                        LastPlayer.GetComponent<PSMController>().enabled = false;
                         LastPlayer.GetComponent<PossessionV2>().enabled = true;
                         LastPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                     }
@@ -90,8 +90,8 @@ namespace SwordGame
                     //PlayerDetect.GetComponent<PlayerManager>().enabled = false;
                     //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().enabled = true;
                     
-                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().HealthSlider != null)
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().MaxHealth);
+                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider != null)
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().MaxHealth);
 
                     PlayerDetect.GetComponent<PlayerInput>().enabled = false;
                     if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>() == null)
@@ -126,8 +126,8 @@ namespace SwordGame
                     PlayerDetect.GetComponent<EnemyData>().Life = 0;
                     PlayerDetect.GetComponent<EnemyData>().isStun = true;
 
-                    PlayerDetect.GetComponent<PlayerController>().enabled = false;                                                  //Attuale Player
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().enabled = true;                //Nemico in cui nel trigger c'è il player
+                    PlayerDetect.GetComponent<PSMController>().enabled = false;                                                  //Attuale Player
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().enabled = true;                //Nemico in cui nel trigger c'è il player
                     
                     PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<Rigidbody2D>().sharedMaterial = MaterialYesFriction;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<Rigidbody2D>().sharedMaterial = MaterialNoFriction;                    //Nemico in cui nel trigger c'è il player
@@ -156,7 +156,7 @@ namespace SwordGame
 
                     ThisCharacter = gameObject;
 
-                    PlayerDetect.GetComponent<PlayerController>().enabled = false;
+                    PlayerDetect.GetComponent<PSMController>().enabled = false;
                     PlayerDetect.GetComponent<PossessionV2>().enabled = true;
 
                     gameObject.SetActive(false);
@@ -181,7 +181,7 @@ namespace SwordGame
         #region Trigger Zone
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.GetComponent<PlayerController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
+            if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
             {
                 PlayerDetect = collision.gameObject;
                 GetComponent<EnemyData>().PlayerEnemy = PlayerDetect;
@@ -205,7 +205,7 @@ namespace SwordGame
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.gameObject.GetComponent<PlayerController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
+            if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
             {
                 PlayerDetect = null;
                 if(GetComponent<EnemyData>().LightAttackCollider.activeSelf == true || GetComponent<EnemyData>().HeavyAttackCollider.activeSelf == true)
@@ -239,7 +239,7 @@ namespace SwordGame
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
                     foreach (PossessionV2 go in AllPossession)
                     {
-                        if(go.gameObject != go.GetComponent<PlayerController>().enabled)
+                        if(go.gameObject != go.GetComponent<PSMController>().enabled)
                         {
                             //go.gameObject.SetActive(false);
                             //go.gameObject.SetActive(true);
