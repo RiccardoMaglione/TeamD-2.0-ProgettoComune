@@ -41,6 +41,12 @@ public class PSMController : MonoBehaviour
     /*[HideInInspector]*/ public bool CooldownDashDirectional = false;
     /*[HideInInspector]*/ public bool OnceJump = false;
     #endregion
+    #region Variables Poise
+    /*[HideInInspector]*/ public float ResetTimerStaggered;
+    public float MaxResetTimerStaggered;
+    /*[HideInInspector]*/ public int PoisePlayer;
+    public int MaxPoisePlayer;
+    #endregion
     void Start()
     {
         RB2D = GetComponent<Rigidbody2D>();
@@ -49,6 +55,7 @@ public class PSMController : MonoBehaviour
     void Update()
     {
         DashCooldownState();
+        ResetStaggered();
     }
 
     public void DashCooldownState()
@@ -75,6 +82,40 @@ public class PSMController : MonoBehaviour
         ValueMovement.Speed = ValueMovement.Speed + ValueMovement.Acceleration * Time.deltaTime;
         if (ValueMovement.Speed >= ValueMovement.MaxSpeed)
             ValueMovement.Speed = ValueMovement.MaxSpeed;
+    }
+
+    /// <summary>
+    /// Metodo che resetta il poise se il player non viene attaccato per un certo valore di tempo
+    /// </summary>
+    public void ResetStaggered()
+    {
+        ResetTimerStaggered += Time.deltaTime;              //Aumenta il timer
+        if (ResetTimerStaggered >= MaxResetTimerStaggered)  //Se il timer è superiore rispetto a un certo valore
+        {
+            PoisePlayer = 0;                                //Azzera il valore della poise
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "LightAttack")
+        {
+            ResetTimerStaggered = 0;
+            PoisePlayer += 1;
+            print("PSM-Trigger: Entra nel light attack");
+        }
+        if (collision.tag == "HeavyAttack")
+        {
+            ResetTimerStaggered = 0;
+            PoisePlayer += 1;
+            print("PSM-Trigger: Entra nel heavy attack");
+        }
+
+        if (PoisePlayer >= MaxPoisePlayer)
+        {
+            GetComponent<Animator>().SetBool("PSM-IsStagger", true);
+            print("PSM-Trigger: Entra nello stagger");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

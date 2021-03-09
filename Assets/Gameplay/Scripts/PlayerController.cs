@@ -345,7 +345,7 @@ namespace SwordGame
         /// <summary>
         /// Metodo per attivare lo stagger, azzerare la velocità del player e far partire il cooldown
         /// </summary>
-        public void Staggered()
+        public void Staggered() //Non sono stati trovati riferimenti
         {
             if (PoisePlayer >= MaxPoisePlayer)
             {
@@ -358,7 +358,7 @@ namespace SwordGame
         /// IEnumarator per il cooldown dello stagger, nel quale a fine resetta il valore di poise
         /// </summary>
         /// <returns></returns>
-        public IEnumerator CooldownStaggered()
+        public IEnumerator CooldownStaggered()  //Trovato riferimenti in staggered()
         {
             yield return new WaitForSeconds(TimerStaggered);
             isStaggered = false;
@@ -417,12 +417,12 @@ namespace SwordGame
                 if (collision.tag == "LightAttack")
                 {
                     isTriggerOnlyOnce = true;
-                    GetComponent<PlayerController>().ResetTimerStaggered = 0;
-                    GetComponent<PlayerController>().PoisePlayer += 1;                                  //aumenta di 1
+                    ResetTimerStaggered = 0;
+                    PoisePlayer += 1;                                  //aumenta di 1
                     CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
                     //CurrentLife -= collision.GetComponentInParent<EnemyManager>().LightDamage;
                     print("Colpito Light");
-                    if (PlayerController.isBoriousDash == true)
+                    if (isBoriousDash == true)
                     {
                         collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
                     }
@@ -430,12 +430,12 @@ namespace SwordGame
                 if (collision.tag == "HeavyAttack")
                 {
                     isTriggerOnlyOnce = true;
-                    GetComponent<PlayerController>().ResetTimerStaggered = 0;
-                    GetComponent<PlayerController>().PoisePlayer += 1;                                  //aumenta di 1
+                    ResetTimerStaggered = 0;
+                    PoisePlayer += 1;                                  //aumenta di 1
                     CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
                     //CurrentLife -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
                     print("Colpito Heavy");
-                    if (PlayerController.isBoriousDash == true)
+                    if (isBoriousDash == true)
                     {
                         collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
                     }
@@ -450,7 +450,7 @@ namespace SwordGame
                 //        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().SpecialDamage;
                 //    }
                 //}
-                if (GetComponent<PlayerController>().PoisePlayer >= GetComponent<PlayerController>().MaxPoisePlayer)
+                if (PoisePlayer >= MaxPoisePlayer)
                 {
                     GetComponent<Animator>().SetBool("IsStagger", true);
                 }

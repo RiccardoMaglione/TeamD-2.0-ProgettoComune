@@ -30,7 +30,8 @@ public class AttackSystem : MonoBehaviour
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
                     //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
-                    collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
+                    //collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
+                    collision.GetComponentInParent<Animator>().SetBool("PSM-IsStagger", true);
                 }
                 print("Light");
                 GetComponentInParent<PlayerController>().CurrentEnergy += GetComponentInParent<PlayerController>().LightEnergyAmount;
@@ -48,7 +49,8 @@ public class AttackSystem : MonoBehaviour
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
                     //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
-                    collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
+                    //collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
+                    collision.GetComponentInParent<Animator>().SetBool("PSM-IsStagger", true);
                 }
                 print("Heavy");
                 GetComponentInParent<PlayerController>().CurrentEnergy += GetComponentInParent<PlayerController>().HeavyEnergyAmount;
@@ -70,7 +72,8 @@ public class AttackSystem : MonoBehaviour
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
                     //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
-                    collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
+                    //collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
+                    collision.GetComponentInParent<Animator>().SetBool("PSM-IsStagger", true);
                 }
                 print("Special");
                 GetComponentInParent<PlayerController>().CurrentEnergy += GetComponentInParent<PlayerController>().SpecialEnergyAmount;
