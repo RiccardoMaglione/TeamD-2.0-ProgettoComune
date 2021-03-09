@@ -52882,7 +52882,7 @@ MonoBehaviour:
   DashDamageFatKnight: 0
   PoisePlayer: 0
   MaxPoisePlayer: 5
-  ResetTimerStaggered: 460.49384
+  ResetTimerStaggered: 465.69098
   MaxResetTimerStaggered: 0.2
   tempSpeed: 4
   velocityY: 0
@@ -53032,7 +53032,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247fe66e960012e4d9c2ced8718a7280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RB2D: {fileID: 0}
+  TypeCharacter: 0
+  HealthSlider: {fileID: 0}
+  MaxHealth: 100
+  CurrentHealth: 100
+  Invulnerability: 0
+  EnergyBar: {fileID: 0}
+  MaxEnergy: 0
+  CurrentEnergy: 0
+  LightEnergyAmount: 0
+  HeavyEnergyAmount: 0
+  SpecialEnergyAmount: 0
+  isTriggerOnlyOnce: 0
+  RB2D: {fileID: 1500550195}
   ValueMovement:
     Acceleration: 3
     Speed: 4
@@ -53050,10 +53062,25 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 0
+  ResetTimerStaggered: 4.863724
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 5
+  TimeDoublePlatform: 0
+  ListTempPlatform: []
+  ListWaitTime: []
+  PlayerIdleSpeed: 1
+  PlayerMoveSpeed: 1
+  PlayerDashSpeed: 1
+  PlayerFallSpeed: 1
+  PlayerDashFallSpeed: 1
+  PlayerJumpSpeed: 1
+  PlayerDieSpeed: 1
+  PlayerStaggerSpeed: 1
+  PlayerLightAttackSpeed: 1
+  PlayerHeavyAttackSpeed: 1
+  PlayerSpecialAttackSpeed: 1
+  DashColliderBabushka: {fileID: 0}
 --- !u!1 &1507026257
 GameObject:
   m_ObjectHideFlags: 0
