@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Attack1_Phase2State : StateMachineBehaviour
 {
@@ -41,8 +40,7 @@ public class Attack1_Phase2State : StateMachineBehaviour
         if (animator.transform.position.y == initialPosition && isMove == true)
         {
             isMove = false;
-            isUp = false;  
-            Debug.LogWarning(i);     
+            isUp = false;     
         }      
         
         if(i == 3)
