@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace SwordGame
@@ -47,7 +46,7 @@ namespace SwordGame
         {
             if (PromptCommand != null)
                 PromptCommand.SetActive(false);
-            CC2D = GetComponentInChildren <CircleCollider2D>();
+            CC2D = GetComponentInChildren<CircleCollider2D>();
             CC2D.radius = RadiusArea;
         }
 
@@ -72,14 +71,14 @@ namespace SwordGame
                         LastPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                     }
 
-                    FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().TypeEnemy,1);
+                    //FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().TypeEnemy,1);
 
                     PlayerDetect.gameObject.tag = "Enemy";
-                    PlayerDetectArray[PlayerDetectArray.Count-1].gameObject.tag = "Player";
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].gameObject.tag = "Player";
 
                     //PlayerDetect.GetComponent<Animator>().enabled = true;
                     //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().enabled = false;
-                    
+
                     PlayerDetect.GetComponent<EnemyData>().enabled = true;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().enabled = false;
 
@@ -89,12 +88,12 @@ namespace SwordGame
 
                     //PlayerDetect.GetComponent<PlayerManager>().enabled = false;
                     //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().enabled = true;
-                    
-                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().HealthSlider != null)
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().MaxHealth);
+
+                    if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().HealthSlider != null)
+                        PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().MaxHealth);
 
                     PlayerDetect.GetComponent<PlayerInput>().enabled = false;
-                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>() == null)
+                    if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>() == null)
                     {
                         PlayerDetectArray[PlayerDetectArray.Count - 1].AddComponent<PlayerInput>().enabled = true;
 
@@ -128,7 +127,7 @@ namespace SwordGame
 
                     PlayerDetect.GetComponent<PlayerController>().enabled = false;                                                  //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerController>().enabled = true;                //Nemico in cui nel trigger c'è il player
-                    
+
                     PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<Rigidbody2D>().sharedMaterial = MaterialYesFriction;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<Rigidbody2D>().sharedMaterial = MaterialNoFriction;                    //Nemico in cui nel trigger c'è il player
 
@@ -161,7 +160,7 @@ namespace SwordGame
 
                     gameObject.SetActive(false);
                     gameObject.SetActive(true);
-                    
+
                     PlayerDetect.GetComponent<Animator>().SetBool("CanPossession", true);
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().SetBool("CanPossession", true);
                 }
@@ -208,11 +207,11 @@ namespace SwordGame
             if (collision.gameObject.GetComponent<PlayerController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
             {
                 PlayerDetect = null;
-                if(GetComponent<EnemyData>().LightAttackCollider.activeSelf == true || GetComponent<EnemyData>().HeavyAttackCollider.activeSelf == true)
+                if (GetComponent<EnemyData>().LightAttackCollider.activeSelf == true || GetComponent<EnemyData>().HeavyAttackCollider.activeSelf == true)
                 {
                     GetComponent<EnemyData>().PlayerEnemy = null;
                 }
-                
+
                 GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
                 GetComponent<EnemyData>().HeavyAttackCollider.SetActive(false);
                 GetComponent<EnemyData>().CanMove = true;
@@ -232,14 +231,14 @@ namespace SwordGame
                     GetComponent<EnemyData>().CanReset = false;
                     GetComponent<EnemyData>().CanAttack = true;
                 }
-        
-        
+
+
                 if (PromptCommand != null)
                 {
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
                     foreach (PossessionV2 go in AllPossession)
                     {
-                        if(go.gameObject != go.GetComponent<PlayerController>().enabled)
+                        if (go.gameObject != go.GetComponent<PlayerController>().enabled)
                         {
                             //go.gameObject.SetActive(false);
                             //go.gameObject.SetActive(true);
