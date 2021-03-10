@@ -21,6 +21,7 @@ public class PageFlipper : MonoBehaviour
 
     private int pageCounter;
 
+    private float flipTime = 5;
     [SerializeField]
     private float flipSpeed;
 
@@ -30,23 +31,44 @@ public class PageFlipper : MonoBehaviour
         notFlippedPosition = Quaternion.Euler(0, 0, 0);
         flippedPosition = Quaternion.Euler(0, 180, 0);
     }
-    /*private void Update()
-    {
-        page1Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, Time.time * flipSpeed);
-
-    }*/
     public void Page1FlipForward()
     {
+        StopAllCoroutines();
         StartCoroutine(Page1FlipForwardCoroutine());
     }
     public void Page1FlipFBackward()
     {
+        StopAllCoroutines();
+        StartCoroutine(Page1FlipBackwardCoroutine());
     }
 
     IEnumerator Page1FlipForwardCoroutine()
     {
-        while (pageCounter < 2)
-            page1Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, Time.time * flipSpeed);
-        yield return null;
+        float progress = 0;
+        while (progress < flipTime)
+        {
+            page1Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, progress * flipSpeed);
+            progress += Time.deltaTime;
+            /*if (page1Pivot.transform.rotation.y == 0)
+            {
+                progress = flipTime;
+            }*/
+            yield return null;
+        }
     }
+    IEnumerator Page1FlipBackwardCoroutine()
+    {
+        float progress = 0;
+        while (progress < flipTime)
+        {
+            page1Pivot.transform.rotation = Quaternion.Lerp(notFlippedPosition, flippedPosition, progress * flipSpeed);
+            progress += Time.deltaTime;
+            /*if (page1Pivot.transform.rotation.y == 180)
+            {
+                progress = flipTime;
+            }*/
+            yield return null;
+        }
+    }
+
 }
