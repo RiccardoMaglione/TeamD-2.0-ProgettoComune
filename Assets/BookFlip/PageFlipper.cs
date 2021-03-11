@@ -4,6 +4,8 @@ using UnityEngine;
 public class PageFlipper : MonoBehaviour
 {
     [SerializeField]
+    private GameObject page0Pivot;
+    [SerializeField]
     private GameObject page1Pivot;
     [SerializeField]
     private GameObject page2Pivot;
@@ -20,8 +22,9 @@ public class PageFlipper : MonoBehaviour
     private Quaternion flippedPosition;
 
     private bool aPageIsFlipping = false;
+    private bool introCutscene = false;
 
-    public int pageCounter;
+    public int introPageCounter;
 
     private float flipTime = 10;
     [SerializeField]
@@ -29,52 +32,58 @@ public class PageFlipper : MonoBehaviour
 
     private void Start()
     {
-        pageCounter = 0;
+        introPageCounter = 0;
         notFlippedPosition = Quaternion.Euler(0, 0, 0);
         flippedPosition = Quaternion.Euler(0, 180, 0);
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && introCutscene == true)
         {
-            PageFlipForward();
+            CutsceneFlipForward();
         }
     }
-    public void PageFlipForward()
+
+    public void EnterCutscene()
+    {
+        StartCoroutine(EnterCutsceneCoroutine());
+        introCutscene = true;
+    }
+    public void CutsceneFlipForward()
     {
         if (aPageIsFlipping == false)
         {
-            if (pageCounter == 0)
+            if (introPageCounter == 0)
             {
                 StopAllCoroutines();
                 StartCoroutine(Page1FlipForwardCoroutine());
             }
-            else if (pageCounter == 1)
+            else if (introPageCounter == 1)
             {
                 StopAllCoroutines();
 
                 StartCoroutine(Page2FlipForwardCoroutine());
             }
-            else if (pageCounter == 2)
+            else if (introPageCounter == 2)
             {
                 StopAllCoroutines();
 
                 StartCoroutine(Page3FlipForwardCoroutine());
             }
-            else if (pageCounter == 3)
+            else if (introPageCounter == 3)
             {
                 StopAllCoroutines();
 
                 StartCoroutine(Page4FlipForwardCoroutine());
             }
-            else if (pageCounter == 4)
+            else if (introPageCounter == 4)
             {
                 StopAllCoroutines();
 
                 StartCoroutine(Page5FlipForwardCoroutine());
             }
-            else if (pageCounter == 5)
+            else if (introPageCounter == 5)
             {
                 StopAllCoroutines();
 
@@ -83,11 +92,25 @@ public class PageFlipper : MonoBehaviour
 
         }
     }
-    /*public void Page1FlipFBackward()
+
+    IEnumerator EnterCutsceneCoroutine()
     {
-        StopAllCoroutines();
-        StartCoroutine(Page1FlipBackwardCoroutine());
-    }*/
+        float progress = 0;
+        while (progress < flipTime)
+        {
+            aPageIsFlipping = true;
+            page0Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, progress * flipSpeed);
+            progress += Time.deltaTime;
+            if (page0Pivot.transform.rotation.y == 0)
+            {
+                aPageIsFlipping = false;
+            }
+            yield return new WaitForEndOfFrame();
+            page1Pivot.SetActive(true);
+            yield return null;
+        }
+    }
+
 
     IEnumerator Page1FlipForwardCoroutine()
     {
@@ -99,7 +122,7 @@ public class PageFlipper : MonoBehaviour
             progress += Time.deltaTime;
             if (page1Pivot.transform.rotation.y == 0)
             {
-                pageCounter = 1;
+                introPageCounter = 1;
                 aPageIsFlipping = false;
             }
             yield return new WaitForEndOfFrame();
@@ -117,7 +140,7 @@ public class PageFlipper : MonoBehaviour
             progress += Time.deltaTime;
             if (page2Pivot.transform.rotation.y == 0)
             {
-                pageCounter = 2;
+                introPageCounter = 2;
                 aPageIsFlipping = false;
             }
             yield return new WaitForEndOfFrame();
@@ -135,7 +158,7 @@ public class PageFlipper : MonoBehaviour
             progress += Time.deltaTime;
             if (page3Pivot.transform.rotation.y == 0)
             {
-                pageCounter = 3;
+                introPageCounter = 3;
                 aPageIsFlipping = false;
             }
             yield return new WaitForEndOfFrame();
@@ -153,7 +176,7 @@ public class PageFlipper : MonoBehaviour
             progress += Time.deltaTime;
             if (page4Pivot.transform.rotation.y == 0)
             {
-                pageCounter = 4;
+                introPageCounter = 4;
                 aPageIsFlipping = false;
             }
             yield return new WaitForEndOfFrame();
@@ -171,7 +194,7 @@ public class PageFlipper : MonoBehaviour
             progress += Time.deltaTime;
             if (page5Pivot.transform.rotation.y == 0)
             {
-                pageCounter = 5;
+                introPageCounter = 5;
                 aPageIsFlipping = false;
             }
             yield return new WaitForEndOfFrame();
@@ -189,41 +212,10 @@ public class PageFlipper : MonoBehaviour
             progress += Time.deltaTime;
             if (page6Pivot.transform.rotation.y == 0)
             {
-                pageCounter = 6;
+                introPageCounter = 6;
                 aPageIsFlipping = false;
             }
             yield return null;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*IEnumerator PageXFlipBackwardCoroutine()
-    {
-        float progress = 0;
-        while (progress < flipTime)
-        {
-            aPageIsFlipping = true;
-            page1Pivot.transform.rotation = Quaternion.Lerp(notFlippedPosition, flippedPosition, progress * flipSpeed);
-            progress += Time.deltaTime;
-            if (page1Pivot.transform.rotation.y == 180)
-            {
-               
-            }
-            yield return null;
-        }
-    }*/
-
 }
