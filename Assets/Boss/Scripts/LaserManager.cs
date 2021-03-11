@@ -25,8 +25,6 @@ public class LaserManager : MonoBehaviour
             }
             while (oldRandom == rand);
 
-            Debug.Log(rand);
-
             if (rand == 1)
                 particle1.SetActive(true);
 
