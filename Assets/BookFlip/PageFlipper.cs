@@ -4,6 +4,12 @@ using UnityEngine;
 public class PageFlipper : MonoBehaviour
 {
     [SerializeField]
+    private GameObject illustration0;
+    [SerializeField]
+    private GameObject levelSelectionPage1;
+
+
+    [SerializeField]
     private GameObject page0Pivot;
     [SerializeField]
     private GameObject page1Pivot;
@@ -45,11 +51,18 @@ public class PageFlipper : MonoBehaviour
         }
     }
 
-    public void EnterCutscene()
+    public void NewGame()
     {
         StartCoroutine(EnterCutsceneCoroutine());
         introCutscene = true;
+        illustration0.SetActive(true);
     }
+    public void Continue()
+    {
+        StartCoroutine(EnterLevelSelectionCoroutine());
+        levelSelectionPage1.SetActive(true);
+    }
+
     public void CutsceneFlipForward()
     {
         if (aPageIsFlipping == false)
@@ -107,6 +120,23 @@ public class PageFlipper : MonoBehaviour
             }
             yield return new WaitForEndOfFrame();
             page1Pivot.SetActive(true);
+            yield return null;
+        }
+    }
+    IEnumerator EnterLevelSelectionCoroutine()
+    {
+        float progress = 0;
+        while (progress < flipTime)
+        {
+            aPageIsFlipping = true;
+            page0Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, progress * flipSpeed);
+            progress += Time.deltaTime;
+            if (page0Pivot.transform.rotation.y == 0)
+            {
+                aPageIsFlipping = false;
+            }
+            yield return new WaitForEndOfFrame();
+            //page1Pivot.SetActive(true);
             yield return null;
         }
     }
