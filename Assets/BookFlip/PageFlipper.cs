@@ -73,13 +73,29 @@ public class PageFlipper : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(EnterCutsceneCoroutine());
         introCutscene = true;
+        introPageCounter = 0;
         illustration0.SetActive(true);
         levelSelectionPage1.SetActive(false);
+        page7Pivot.SetActive(false);
+        page8Pivot.SetActive(false);
+
+        page1Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+        page2Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+        page3Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+        page4Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+        page5Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+        page6Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+        page7Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+        page8Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+        page9Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+
     }
     public void Continue()
     {
         StopAllCoroutines();
+        page8Pivot.SetActive(false);
         StartCoroutine(EnterLevelSelectionCoroutine());
+        introCutscene = false;
         levelSelectionPage1.SetActive(true);
         illustration0.SetActive(false);
     }
@@ -313,6 +329,15 @@ public class PageFlipper : MonoBehaviour
             }
             yield return new WaitForEndOfFrame();
             pageCounter = 0;
+            illustration0.SetActive(false);
+            levelSelectionPage1.SetActive(true);
+            page1Pivot.SetActive(false);
+            page2Pivot.SetActive(false);
+            page3Pivot.SetActive(false);
+            page4Pivot.SetActive(false);
+            page5Pivot.SetActive(false);
+            page6Pivot.SetActive(false);
+            page7Pivot.SetActive(false);
             yield return null;
         }
     }
