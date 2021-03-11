@@ -23,14 +23,21 @@ public class PageFlipper : MonoBehaviour
     private GameObject page5Pivot;
     [SerializeField]
     private GameObject page6Pivot;
+    [SerializeField]
+    private GameObject page7Pivot;
+    [SerializeField]
+    private GameObject page8Pivot;
+    [SerializeField]
+    private GameObject page9Pivot;
 
     private Quaternion notFlippedPosition;
     private Quaternion flippedPosition;
 
-    private bool aPageIsFlipping = false;
-    private bool introCutscene = false;
+    public bool aPageIsFlipping = false;
+    public bool introCutscene = false;
 
     public int introPageCounter;
+    public int pageCounter;
 
     private float flipTime = 10;
     [SerializeField]
@@ -39,6 +46,7 @@ public class PageFlipper : MonoBehaviour
     private void Start()
     {
         introPageCounter = 0;
+        pageCounter = 0;
         notFlippedPosition = Quaternion.Euler(0, 0, 0);
         flippedPosition = Quaternion.Euler(0, 180, 0);
     }
@@ -49,18 +57,31 @@ public class PageFlipper : MonoBehaviour
         {
             CutsceneFlipForward();
         }
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && introCutscene == false)
+        {
+            if (pageCounter == 1)
+            {
+                StopAllCoroutines();
+                StartCoroutine(BackToMenuCoroutine());
+            }
+        }
+
     }
 
     public void NewGame()
     {
+        StopAllCoroutines();
         StartCoroutine(EnterCutsceneCoroutine());
         introCutscene = true;
         illustration0.SetActive(true);
+        levelSelectionPage1.SetActive(false);
     }
     public void Continue()
     {
+        StopAllCoroutines();
         StartCoroutine(EnterLevelSelectionCoroutine());
         levelSelectionPage1.SetActive(true);
+        illustration0.SetActive(false);
     }
 
     public void CutsceneFlipForward()
@@ -102,6 +123,13 @@ public class PageFlipper : MonoBehaviour
 
                 StartCoroutine(Page6FlipForwardCoroutine());
             }
+            else if (introPageCounter == 6)
+            {
+                StopAllCoroutines();
+                StartCoroutine(Page7FlipForwardCoroutine());
+                introCutscene = false;
+            }
+
 
         }
     }
@@ -133,10 +161,11 @@ public class PageFlipper : MonoBehaviour
             progress += Time.deltaTime;
             if (page0Pivot.transform.rotation.y == 0)
             {
+                pageCounter = 1;
                 aPageIsFlipping = false;
             }
             yield return new WaitForEndOfFrame();
-            //page1Pivot.SetActive(true);
+            page8Pivot.SetActive(true);
             yield return null;
         }
     }
@@ -245,6 +274,45 @@ public class PageFlipper : MonoBehaviour
                 introPageCounter = 6;
                 aPageIsFlipping = false;
             }
+            yield return new WaitForEndOfFrame();
+            page7Pivot.SetActive(true);
+            yield return null;
+        }
+
+    }
+    IEnumerator Page7FlipForwardCoroutine()
+    {
+        float progress = 0;
+        while (progress < flipTime)
+        {
+            aPageIsFlipping = true;
+            page7Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, progress * flipSpeed);
+            progress += Time.deltaTime;
+            if (page7Pivot.transform.rotation.y == 0)
+            {
+                pageCounter = 1;
+                aPageIsFlipping = false;
+            }
+            yield return new WaitForEndOfFrame();
+            page8Pivot.SetActive(true);
+            yield return null;
+        }
+    }
+    IEnumerator BackToMenuCoroutine()
+    {
+        float progress = 0;
+        while (progress < flipTime)
+        {
+            aPageIsFlipping = true;
+            page0Pivot.transform.rotation = Quaternion.Lerp(notFlippedPosition, flippedPosition, progress * flipSpeed);
+            progress += Time.deltaTime;
+            if (page0Pivot.transform.rotation.y == 180)
+            {
+                pageCounter = 0;
+                aPageIsFlipping = false;
+            }
+            yield return new WaitForEndOfFrame();
+            pageCounter = 0;
             yield return null;
         }
     }
