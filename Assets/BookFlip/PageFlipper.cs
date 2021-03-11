@@ -33,32 +33,51 @@ public class PageFlipper : MonoBehaviour
         notFlippedPosition = Quaternion.Euler(0, 0, 0);
         flippedPosition = Quaternion.Euler(0, 180, 0);
     }
-    public void Page1FlipForward()
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            PageFlipForward();
+        }
+    }
+    public void PageFlipForward()
     {
         if (aPageIsFlipping == false)
         {
             if (pageCounter == 0)
             {
+                StopAllCoroutines();
                 StartCoroutine(Page1FlipForwardCoroutine());
             }
             else if (pageCounter == 1)
             {
+                StopAllCoroutines();
+
                 StartCoroutine(Page2FlipForwardCoroutine());
             }
             else if (pageCounter == 2)
             {
+                StopAllCoroutines();
+
                 StartCoroutine(Page3FlipForwardCoroutine());
             }
             else if (pageCounter == 3)
             {
+                StopAllCoroutines();
+
                 StartCoroutine(Page4FlipForwardCoroutine());
             }
             else if (pageCounter == 4)
             {
+                StopAllCoroutines();
+
                 StartCoroutine(Page5FlipForwardCoroutine());
             }
             else if (pageCounter == 5)
             {
+                StopAllCoroutines();
+
                 StartCoroutine(Page6FlipForwardCoroutine());
             }
 
@@ -77,13 +96,14 @@ public class PageFlipper : MonoBehaviour
         {
             aPageIsFlipping = true;
             page1Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, progress * flipSpeed);
-            page2Pivot.SetActive(true);
             progress += Time.deltaTime;
             if (page1Pivot.transform.rotation.y == 0)
             {
                 pageCounter = 1;
                 aPageIsFlipping = false;
             }
+            yield return new WaitForEndOfFrame();
+            page2Pivot.SetActive(true);
             yield return null;
         }
     }
@@ -94,13 +114,14 @@ public class PageFlipper : MonoBehaviour
         {
             aPageIsFlipping = true;
             page2Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, progress * flipSpeed);
-            page3Pivot.SetActive(true);
             progress += Time.deltaTime;
             if (page2Pivot.transform.rotation.y == 0)
             {
                 pageCounter = 2;
                 aPageIsFlipping = false;
             }
+            yield return new WaitForEndOfFrame();
+            page3Pivot.SetActive(true);
             yield return null;
         }
     }
@@ -111,13 +132,14 @@ public class PageFlipper : MonoBehaviour
         {
             aPageIsFlipping = true;
             page3Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, progress * flipSpeed);
-            page4Pivot.SetActive(true);
             progress += Time.deltaTime;
             if (page3Pivot.transform.rotation.y == 0)
             {
                 pageCounter = 3;
                 aPageIsFlipping = false;
             }
+            yield return new WaitForEndOfFrame();
+            page4Pivot.SetActive(true);
             yield return null;
         }
     }
@@ -128,13 +150,14 @@ public class PageFlipper : MonoBehaviour
         {
             aPageIsFlipping = true;
             page4Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, progress * flipSpeed);
-            page5Pivot.SetActive(true);
             progress += Time.deltaTime;
             if (page4Pivot.transform.rotation.y == 0)
             {
                 pageCounter = 4;
                 aPageIsFlipping = false;
             }
+            yield return new WaitForEndOfFrame();
+            page5Pivot.SetActive(true);
             yield return null;
         }
     }
@@ -145,13 +168,14 @@ public class PageFlipper : MonoBehaviour
         {
             aPageIsFlipping = true;
             page5Pivot.transform.rotation = Quaternion.Lerp(flippedPosition, notFlippedPosition, progress * flipSpeed);
-            page6Pivot.SetActive(true);
             progress += Time.deltaTime;
             if (page5Pivot.transform.rotation.y == 0)
             {
                 pageCounter = 5;
                 aPageIsFlipping = false;
             }
+            yield return new WaitForEndOfFrame();
+            page6Pivot.SetActive(true);
             yield return null;
         }
     }
@@ -186,11 +210,12 @@ public class PageFlipper : MonoBehaviour
 
 
 
-    /*IEnumerator Page1FlipBackwardCoroutine()
+    /*IEnumerator PageXFlipBackwardCoroutine()
     {
         float progress = 0;
         while (progress < flipTime)
         {
+            aPageIsFlipping = true;
             page1Pivot.transform.rotation = Quaternion.Lerp(notFlippedPosition, flippedPosition, progress * flipSpeed);
             progress += Time.deltaTime;
             if (page1Pivot.transform.rotation.y == 180)
