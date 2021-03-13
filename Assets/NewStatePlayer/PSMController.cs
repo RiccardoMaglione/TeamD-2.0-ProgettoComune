@@ -261,6 +261,10 @@ namespace SwordGame
         {
             if (collision.gameObject.layer == 11)
             {
+                if (RB2D.velocity.y <= 0)
+                {
+                    JumpTest.isJumping = false;
+                }
                 GetComponent<Animator>().SetBool("PSM-IsGrounded", true);   //Setto PSM-IsGrounded = true quando tocca il pavimento
             }
         }
