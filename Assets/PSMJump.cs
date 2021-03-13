@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
 
 public class PSMJump : StateMachineBehaviour
 {
@@ -34,7 +32,8 @@ public class PSMJump : StateMachineBehaviour
         #region Fall Zone - Da "Player Jump State" da "Player Fall State"
         if (animator.GetComponent<PSMController>().RB2D.velocity.y <= 0)                //Se la velocità di y è minore o uguale a 0 - Minore e uguale perché potrebbe capitare un salto che potrebbe buggare senza l'uguaglianza
         {
-            /*Test*/animator.SetBool("PSM-IsGrounded", false);                                  
+            /*Test*/
+            animator.SetBool("PSM-IsGrounded", false);
             Debug.Log("PlayerState - Vai in 'Player Fall State'");                      //Debuggo in console cosa fa
             animator.SetTrigger("PSM-IsInFall");                                        //Setto la prima condizione, un trigger, attivo, per entrare in "Player Fall State" da "Player Jump State"
         }
@@ -61,14 +60,18 @@ public class PSMJump : StateMachineBehaviour
         }
         #endregion
 
+
         #region Dash Zone - Da "Player Jump State" da "Player Fall State"
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash - Faccio un ulteriore controllo bloccare i dash in aria ad uno
         {
+            JumpTest.isJumping = false;
             animator.SetBool("PSM-CanDash", true);                                                  //Setto la prima condizione per il dash a vero, mi sposto da "Player Jump State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashLeft = true;                              //Setto la direzione del dash a sinistra
         }
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash - Faccio un ulteriore controllo bloccare i dash in aria ad uno
         {
+            JumpTest.isJumping = false;
+
             animator.SetBool("PSM-CanDash", true);                                                  //Setto la prima condizione per il dash a vero, mi sposto da "Player Jump State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashRight = true;                             //Setto la direzione del dash a destra
         }

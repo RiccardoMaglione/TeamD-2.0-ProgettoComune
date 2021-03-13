@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
 
 public class PSMMove : StateMachineBehaviour
 {
@@ -39,7 +37,7 @@ public class PSMMove : StateMachineBehaviour
         #endregion
 
         #region Jump Zone - Da "Player Move State" da "Player Jump State"
-        if (Input.GetKeyDown(KeyCode.Space))                                                                                                                                //Se schiaccio spazio
+        /*if (Input.GetKeyDown(KeyCode.Space))                                                                                                                                //Se schiaccio spazio
         {
             Debug.Log("PlayerState - Vai nello stato 'PSMJump'");                                                                                                           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                                                                                                                             //Setto attivo il trigger - Prima condizione per il cambio stato in "Player Jump State"
@@ -49,7 +47,7 @@ public class PSMMove : StateMachineBehaviour
                 animator.GetComponent<PSMController>().OnceJump = true;                                                                                                     //Controllo di sicurezza per eseguirlo solo una volta
                 animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);  //Spinta iniziale per evitare un salto non visibili
             }
-        }
+        }*/
         #endregion
 
         #region Fall Zone - Da "Player Move State" da "Player Fall State"
@@ -64,11 +62,15 @@ public class PSMMove : StateMachineBehaviour
         #region Dash Zone - Da "Player Move State" da "Player Dash State"
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
         {
+            JumpTest.isJumping = false;
+
             animator.SetBool("PSM-CanDash", true);                                      //Setto la prima condizione per il dash a vero, mi sposto da "Player Move State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashLeft = true;                  //Setto la direzione del dash a sinistra
         }
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
         {
+            JumpTest.isJumping = false;
+
             animator.SetBool("PSM-CanDash", true);                                      //Setto la prima condizione per il dash a vero, mi sposto da "Player Move State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashRight = true;                 //Setto la direzione del dash a destra
         }

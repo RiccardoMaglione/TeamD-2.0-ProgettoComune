@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
 
 public class PlayerFallState : StateMachineBehaviour
 {
@@ -94,17 +92,23 @@ public class PlayerFallState : StateMachineBehaviour
         #region Active Dash in Fall Zone
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
         {
+            JumpTest.isJumping = false;
+
             animator.GetComponent<PlayerController>().CanDash = true;
             animator.SetBool("IsDash", false);
         }
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashRight == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true && animator.GetBool("CanDashFall") == false)
         {
+            JumpTest.isJumping = false;
+
             animator.GetComponent<PlayerController>().CanDashLeft = true;
             animator.SetBool("IsDash", false);
             animator.SetBool("CanDashFall", true);
         }
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true && animator.GetBool("CanDashFall") == false)
         {
+            JumpTest.isJumping = false;
+
             animator.GetComponent<PlayerController>().CanDashRight = true;
             animator.SetBool("IsDash", false);
             animator.SetBool("CanDashFall", true);

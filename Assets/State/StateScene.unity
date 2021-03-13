@@ -1696,6 +1696,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &637792376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 637792377}
+  m_Layer: 8
+  m_Name: GroundChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &637792377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637792376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2464628706244063401}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &822499809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2063,7 +2093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914532159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -26.8, y: 20.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3355,7 +3385,7 @@ GameObject:
   - component: {fileID: 1595495510}
   - component: {fileID: 1595495509}
   - component: {fileID: 1595495508}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor (2)
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -4867,6 +4897,7 @@ GameObject:
   - component: {fileID: 2464628706244063379}
   - component: {fileID: 1111788437}
   - component: {fileID: 2464628706244063397}
+  - component: {fileID: 2464628706244063398}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -4886,7 +4917,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247fe66e960012e4d9c2ced8718a7280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RB2D: {fileID: 0}
+  TypeCharacter: 0
+  HealthSlider: {fileID: 0}
+  MaxHealth: 100
+  CurrentHealth: 100
+  Invulnerability: 0
+  EnergyBar: {fileID: 0}
+  MaxEnergy: 0
+  CurrentEnergy: 0
+  LightEnergyAmount: 0
+  HeavyEnergyAmount: 0
+  SpecialEnergyAmount: 0
+  isTriggerOnlyOnce: 0
+  RB2D: {fileID: 2464628706244063400}
   ValueMovement:
     Acceleration: 5
     Speed: 5
@@ -4899,11 +4942,50 @@ MonoBehaviour:
   TimerDash: 0
   LimitTimerDash: 0.2
   TimerDashCooldown: 0
-  LimiTimerDashCooldown: 1
+  LimiTimerDashCooldown: 0.2
   CanDashRight: 0
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
+  ResetTimerStaggered: 24.07765
+  MaxResetTimerStaggered: 0
+  PoisePlayer: 0
+  MaxPoisePlayer: 3
+  TimeDoublePlatform: 0
+  ListTempPlatform: []
+  ListWaitTime: []
+  PlayerIdleSpeed: 1
+  PlayerMoveSpeed: 1
+  PlayerDashSpeed: 1
+  PlayerFallSpeed: 1
+  PlayerDashFallSpeed: 1
+  PlayerJumpSpeed: 1
+  PlayerDieSpeed: 1
+  PlayerStaggerSpeed: 1
+  PlayerLightAttackSpeed: 1
+  PlayerHeavyAttackSpeed: 1
+  PlayerSpecialAttackSpeed: 1
+  DashColliderBabushka: {fileID: 0}
+--- !u!114 &2464628706244063398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464628706244063396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f309bf2e916df408933579c468d562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpStrenght: 7.8
+  jumpTime: 0.45
+  fallMultiplier: 1
+  groundChecker: {fileID: 637792377}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  grounded: 0
 --- !u!50 &2464628706244063400
 Rigidbody2D:
   serializedVersion: 4
@@ -4919,7 +5001,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 6200000, guid: 8199ed652c9e2744088b4fdf110e3aaa, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -4943,6 +5025,7 @@ Transform:
   - {fileID: 2464628707487443224}
   - {fileID: 2464628707140265695}
   - {fileID: 2066446214}
+  - {fileID: 637792377}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

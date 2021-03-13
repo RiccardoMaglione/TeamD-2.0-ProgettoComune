@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
 public class PlayerMoveState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -57,18 +55,22 @@ public class PlayerMoveState : StateMachineBehaviour
         #endregion
 
         #region Dash Zone
-        if(animator.GetComponent<PlayerController>().Grounded == true)
+        if (animator.GetComponent<PlayerController>().Grounded == true)
         {
             if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
             {
+                JumpTest.isJumping = false;
+
                 animator.GetComponent<PlayerController>().CanDash = true;
             }
 
             if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashRight == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
             {
+                JumpTest.isJumping = false;
+
                 Debug.Log("ci sono 1");
                 animator.GetComponent<PlayerController>().CanDashLeft = true;
-                if(animator.GetComponent<PlayerController>().rb.velocity.y < 0)
+                if (animator.GetComponent<PlayerController>().rb.velocity.y < 0)
                 {
                     animator.SetBool("IsDash", false);
                 }
@@ -80,6 +82,8 @@ public class PlayerMoveState : StateMachineBehaviour
             }
             if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
             {
+                JumpTest.isJumping = false;
+
                 Debug.Log("ci sono 2");
                 animator.GetComponent<PlayerController>().CanDashRight = true;
                 if (animator.GetComponent<PlayerController>().rb.velocity.y < 0)

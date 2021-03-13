@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
 
 public class PlayerDashState : StateMachineBehaviour
 {
@@ -17,6 +15,8 @@ public class PlayerDashState : StateMachineBehaviour
         #region Left Dash
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashRight == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
         {
+            JumpTest.isJumping = false;
+
             animator.GetComponent<PlayerController>().CanDashLeft = true;
             animator.GetComponent<PlayerController>().CanDash = false;
             animator.GetComponent<PlayerController>().GetComponent<Rigidbody2D>().gravityScale = 0.000001f;
@@ -37,6 +37,8 @@ public class PlayerDashState : StateMachineBehaviour
         #region Right Dash
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
         {
+            JumpTest.isJumping = false;
+
             animator.GetComponent<PlayerController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PlayerController>().transform.rotation.x, 0, animator.GetComponent<PlayerController>().transform.rotation.z);
             animator.GetComponent<PlayerController>().GetComponent<Rigidbody2D>().gravityScale = 0.000001f;
             animator.GetComponent<PlayerController>().CanDashRight = true;

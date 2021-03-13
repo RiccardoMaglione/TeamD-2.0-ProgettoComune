@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
 
 public class PSMIdle : StateMachineBehaviour
 {
@@ -25,7 +23,7 @@ public class PSMIdle : StateMachineBehaviour
         #endregion
 
         #region Jump Zone - Da "Player Idle State" da "Player Jump State"
-        if (Input.GetKeyDown(KeyCode.Space))                                                                                                //Se schiaccio spazio una volta
+        /*if (Input.GetKeyDown(KeyCode.Space))                                                                                                //Se schiaccio spazio una volta
         {
             Debug.Log("PlayerState - Vai nello stato 'PSMJump'");                                                                           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                                                                                             //Setto attivo il trigger - Prima condizione per il cambio stato da "Player Idle State" in "Player Jump State"
@@ -36,7 +34,7 @@ public class PSMIdle : StateMachineBehaviour
                 animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);          //Spinta iniziale per evitare un salto non visibile
                 Debug.Log("PlayerState - Primo passaggio del salto'");                                                                      //Debuggo in console il numero del passaggio
             }
-        }
+        }*/
         #endregion
 
         #region Fall Zone - Da "Player Idle State" da "Player Fall State"
