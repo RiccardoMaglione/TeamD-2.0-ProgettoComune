@@ -9,7 +9,8 @@ public class PlayerJumpState : StateMachineBehaviour
     {
         Debug.Log("Initial Jump" + InitialJump);
         //animator.SetBool("IsGroundFallDash", true);
-        if (animator.GetComponent<PlayerController>().Grounded == true /*&& animator.GetComponent<PlayerController>().rb.velocity.y == 0 */&& animator.GetComponent<PlayerController>().canJump == true)
+        if (animator.GetComponent<PlayerController>().Grounded == true /*&& animator.GetComponent<PlayerController>().rb.
+            == 0 */&& animator.GetComponent<PlayerController>().canJump == true)
         {
             if (InitialJump == true)
             {
@@ -22,10 +23,10 @@ public class PlayerJumpState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         #region Jump Zone
-        InitialJump = true;
+        /*InitialJump = true;
         Debug.Log("Initial Jump" + InitialJump);
         animator.SetBool("IsJump", false);
-        if (Input.GetKey(KeyCode.Space) && animator.GetComponent<PlayerController>().Grounded == true /*&& animator.GetComponent<PlayerController>().rb.velocity.y == 0 */&& animator.GetComponent<PlayerController>().canJump == true)
+        if (Input.GetKey(KeyCode.Space) && animator.GetComponent<PlayerController>().Grounded == true && animator.GetComponent<PlayerController>().canJump == true)
         {
             animator.GetComponent<PlayerController>().rb.AddForce(Vector2.up * animator.GetComponent<PlayerController>().ValueJump.jumpForce, ForceMode2D.Impulse);
             animator.GetComponent<PlayerController>().Grounded = false;
@@ -57,7 +58,7 @@ public class PlayerJumpState : StateMachineBehaviour
             animator.SetBool("DashJumpInJump", true);
             animator.Play("Fall");
             Debug.Log("Bloccato 1");
-        }
+        }*/
         #endregion
 
         #region Movement in Jump Zone
@@ -100,6 +101,7 @@ public class PlayerJumpState : StateMachineBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
         {
             JumpTest.isJumping = false;
+            animator.SetBool("IsJumping", false);
 
             animator.GetComponent<PlayerController>().CanDash = true;
             Debug.Log("Bloccato 11");
@@ -107,6 +109,7 @@ public class PlayerJumpState : StateMachineBehaviour
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashRight == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
         {
             JumpTest.isJumping = false;
+            animator.SetBool("IsJumping", false);
 
             animator.GetComponent<PlayerController>().CanDashLeft = true;
             animator.SetBool("IsDash", true);
@@ -115,6 +118,7 @@ public class PlayerJumpState : StateMachineBehaviour
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
         {
             JumpTest.isJumping = false;
+            animator.SetBool("IsJumping", false);
 
             animator.GetComponent<PlayerController>().CanDashRight = true;
             animator.SetBool("IsDash", true);

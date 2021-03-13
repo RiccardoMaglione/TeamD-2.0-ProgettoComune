@@ -13,7 +13,7 @@ public class PSMJump : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         #region Jump - Compito principale dello script di movimento
-        if (Input.GetKey(KeyCode.Space) && animator.GetBool("PSM-IsGrounded") == true)                                                                                                                  //Se Schiaccio spazio (è un getkey e non un getkeydown perché altrimenti non avrebbe preso l'input) e verifico grounded
+        /*if (Input.GetKey(KeyCode.Space) && animator.GetBool("PSM-IsGrounded") == true)                                                                                                                  //Se Schiaccio spazio (è un getkey e non un getkeydown perché altrimenti non avrebbe preso l'input) e verifico grounded
         {
             animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.jumpForce, ForceMode2D.Impulse);                                         //Applico una forza di tipo impulso con un direzione precisa (UP) e moltiplico per una determinata forza
             animator.SetBool("PSM-IsGrounded", false);                                                                                                                                                  //Setto grounded a falso per due motivi - 1. Il player non tocca più il terreno - 2. Blocco l'entrata al'if precedente per evitare salti infiniti/multipli
@@ -26,7 +26,7 @@ public class PSMJump : StateMachineBehaviour
         else if (animator.GetComponent<PSMController>().RB2D.velocity.y < 4 && animator.GetComponent<PSMController>().RB2D.velocity.y > 0)                                                              //Altrimenti se la velocità è compresa tra due valori - Evita la fluttuazione del salto tagliandolo prima
         {
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().RB2D.velocity.x, 0);                                                              //Setto la velocità di y uguale a 0, in modo tale che da qui in poi, posso solo scendere, quindi andare in "Player Fall State"
-        }
+        }*/
         #endregion
 
         #region Fall Zone - Da "Player Jump State" da "Player Fall State"
@@ -65,12 +65,15 @@ public class PSMJump : StateMachineBehaviour
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash - Faccio un ulteriore controllo bloccare i dash in aria ad uno
         {
             JumpTest.isJumping = false;
+            animator.SetBool("IsJumping", false);
+
             animator.SetBool("PSM-CanDash", true);                                                  //Setto la prima condizione per il dash a vero, mi sposto da "Player Jump State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashLeft = true;                              //Setto la direzione del dash a sinistra
         }
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash - Faccio un ulteriore controllo bloccare i dash in aria ad uno
         {
             JumpTest.isJumping = false;
+            animator.SetBool("IsJumping", false);
 
             animator.SetBool("PSM-CanDash", true);                                                  //Setto la prima condizione per il dash a vero, mi sposto da "Player Jump State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashRight = true;                             //Setto la direzione del dash a destra

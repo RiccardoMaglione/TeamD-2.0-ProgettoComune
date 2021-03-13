@@ -50,6 +50,7 @@ public class PSMFall : StateMachineBehaviour
         if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Entra solo 1 volta per CanDashInAir + Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash - Faccio un ulteriore controllo bloccare i dash in aria ad uno
         {
             JumpTest.isJumping = false;
+            animator.SetBool("IsJumping", false);
 
             animator.SetBool("PSM-CanDash", true);                                              //Setto la prima condizione per il dash a vero, mi sposto da "Player Jump State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashLeft = true;                          //Setto la direzione del dash a sinistra
@@ -57,6 +58,7 @@ public class PSMFall : StateMachineBehaviour
         if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("PSM-CanDashInAir") == false)      //Entra solo 1 volta per CanDashInAir + Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash - Faccio un ulteriore controllo bloccare i dash in aria ad uno
         {
             JumpTest.isJumping = false;
+            animator.SetBool("IsJumping", false);
 
             animator.SetBool("PSM-CanDash", true);                                              //Setto la prima condizione per il dash a vero, mi sposto da "Player Fall State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashRight = true;                         //Setto la direzione del dash a destra

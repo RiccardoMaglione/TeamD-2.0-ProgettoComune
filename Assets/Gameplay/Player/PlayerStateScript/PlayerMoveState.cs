@@ -60,6 +60,7 @@ public class PlayerMoveState : StateMachineBehaviour
             if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
             {
                 JumpTest.isJumping = false;
+                animator.SetBool("IsJumping", false);
 
                 animator.GetComponent<PlayerController>().CanDash = true;
             }
@@ -67,6 +68,7 @@ public class PlayerMoveState : StateMachineBehaviour
             if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashRight == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
             {
                 JumpTest.isJumping = false;
+                animator.SetBool("IsJumping", false);
 
                 Debug.Log("ci sono 1");
                 animator.GetComponent<PlayerController>().CanDashLeft = true;
@@ -83,6 +85,7 @@ public class PlayerMoveState : StateMachineBehaviour
             if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.LeftShift))) && animator.GetComponent<PlayerController>().CanDashLeft == false && animator.GetComponent<PlayerController>().CanDashJump == true && animator.GetComponent<PlayerController>().GravityChange == true && animator.GetComponent<PlayerController>().CanDash == true)
             {
                 JumpTest.isJumping = false;
+                animator.SetBool("IsJumping", false);
 
                 Debug.Log("ci sono 2");
                 animator.GetComponent<PlayerController>().CanDashRight = true;

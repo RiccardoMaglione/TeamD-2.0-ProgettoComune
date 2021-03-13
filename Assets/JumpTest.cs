@@ -9,12 +9,14 @@ public class JumpTest : MonoBehaviour
     private float jumpTimeCounter;
     public float jumpTime;
     public static bool isJumping;
-    //public bool isFalling;
+    public bool isFalling;
     public float fallMultiplier;
 
     public Transform groundChecker;
     public LayerMask groundLayer;
-    public bool grounded;
+    public static bool grounded;
+
+    public float velocityY;
 
     private void Start()
     {
@@ -23,10 +25,12 @@ public class JumpTest : MonoBehaviour
 
     void Update()
     {
-        grounded = Physics2D.OverlapBox(groundChecker.position, new Vector2(0.9f, 0.01f), transform.eulerAngles.z, groundLayer);
-        GetComponent<Animator>().SetBool("IsJumping", rb.velocity.y > 0);
+        velocityY = rb.velocity.y;
 
-        //isFalling = rb.velocity.y < 0;
+        grounded = Physics2D.OverlapBox(groundChecker.position, new Vector2(0.9f, 0.01f), transform.eulerAngles.z, groundLayer);
+        GetComponent<Animator>().SetBool("IsFalling", rb.velocity.y < 0);
+
+        isFalling = rb.velocity.y < 0;
         Jump();
     }
 
@@ -36,6 +40,7 @@ public class JumpTest : MonoBehaviour
         if (Input.GetButtonDown("Jump") && grounded)
         {
             isJumping = true;
+            GetComponent<Animator>().SetBool("IsJumping", true);
             jumpTimeCounter = jumpTime;
             rb.velocity = new Vector2(rb.velocity.x, jumpStrenght);
         }
@@ -52,6 +57,8 @@ public class JumpTest : MonoBehaviour
         else
         {
             isJumping = false;
+
+            GetComponent<Animator>().SetBool("IsJumping", false);
         }
 
         if (rb.velocity.y < 0)
