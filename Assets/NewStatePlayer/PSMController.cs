@@ -255,14 +255,14 @@ namespace SwordGame
         #region Collision Zone
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == "Floor")
+            if (collision.gameObject.tag == "Floor" && RB2D.velocity.y == 0)
             {
                 GetComponent<Animator>().SetBool("PSM-IsGrounded", true);   //Setto PSM-IsGrounded = true quando tocca il pavimento
             }
         }
         private void OnCollisionStay2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == "Floor")
+            if (collision.gameObject.tag == "Floor" && RB2D.velocity.y == 0)
             {
                 GetComponent<Animator>().SetBool("PSM-IsGrounded", true);
                 GetComponent<Animator>().SetBool("PSM-CanDashInAir", false); //Permette di rientrare in dash

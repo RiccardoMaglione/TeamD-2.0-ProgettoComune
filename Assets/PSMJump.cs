@@ -17,7 +17,7 @@ public class PSMJump : StateMachineBehaviour
         #region Jump - Compito principale dello script di movimento
         if (Input.GetKey(KeyCode.Space) && animator.GetBool("PSM-IsGrounded") == true)                                                                                                                  //Se Schiaccio spazio (è un getkey e non un getkeydown perché altrimenti non avrebbe preso l'input) e verifico grounded
         {
-            animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.jumpForce, ForceMode2D.Impulse);                                         //Applico una forza di tipo impulso con un direzione precisa (UP) e moltiplico per una determinata forza
+            //animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.jumpForce, ForceMode2D.Impulse);                                         //Applico una forza di tipo impulso con un direzione precisa (UP) e moltiplico per una determinata forza
             animator.SetBool("PSM-IsGrounded", false);                                                                                                                                                  //Setto grounded a falso per due motivi - 1. Il player non tocca più il terreno - 2. Blocco l'entrata al'if precedente per evitare salti infiniti/multipli
             Debug.Log("PlayerState - Secondo passaggio del salto'");                                                                                                                                    //Debuggo in console cosa fa - Secondo passaggio per verificare quante volte ci entra
         }

@@ -4886,7 +4886,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247fe66e960012e4d9c2ced8718a7280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RB2D: {fileID: 0}
+  TypeCharacter: 0
+  HealthSlider: {fileID: 0}
+  MaxHealth: 0
+  CurrentHealth: 0
+  Invulnerability: 0
+  EnergyBar: {fileID: 0}
+  MaxEnergy: 0
+  CurrentEnergy: 0
+  LightEnergyAmount: 0
+  HeavyEnergyAmount: 0
+  SpecialEnergyAmount: 0
+  isTriggerOnlyOnce: 0
+  RB2D: {fileID: 2464628706244063400}
   ValueMovement:
     Acceleration: 5
     Speed: 5
@@ -4904,6 +4916,25 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
+  ResetTimerStaggered: 14.787711
+  MaxResetTimerStaggered: 0
+  PoisePlayer: 0
+  MaxPoisePlayer: 0
+  TimeDoublePlatform: 0
+  ListTempPlatform: []
+  ListWaitTime: []
+  PlayerIdleSpeed: 1
+  PlayerMoveSpeed: 1
+  PlayerDashSpeed: 1
+  PlayerFallSpeed: 1
+  PlayerDashFallSpeed: 1
+  PlayerJumpSpeed: 1
+  PlayerDieSpeed: 1
+  PlayerStaggerSpeed: 1
+  PlayerLightAttackSpeed: 1
+  PlayerHeavyAttackSpeed: 1
+  PlayerSpecialAttackSpeed: 1
+  DashColliderBabushka: {fileID: 0}
 --- !u!50 &2464628706244063400
 Rigidbody2D:
   serializedVersion: 4
