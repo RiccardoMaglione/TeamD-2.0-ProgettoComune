@@ -97,7 +97,7 @@ public class PlayerInput : MonoBehaviour
             {
                 if(GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
                 {
-                    GetComponent<Animator>().SetBool("PSM-CanAttack", true);
+                    GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                     LightActivation = true;
                     GetComponent<Animator>().SetBool("PSM-Attack", true);
                     GetComponent<Animator>().SetBool("PSM-LightAttack", true);
@@ -107,7 +107,7 @@ public class PlayerInput : MonoBehaviour
             {
                 if (GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
                 {
-                    GetComponent<Animator>().SetBool("PSM-CanAttack", true);
+                    GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                     HeavyActivation = true;
                     GetComponent<Animator>().SetBool("PSM-Attack", true);
                     GetComponent<Animator>().SetBool("PSM-HeavyAttack", true);
@@ -117,7 +117,7 @@ public class PlayerInput : MonoBehaviour
             {
                 if (GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
                 {
-                    GetComponent<Animator>().SetBool("PSM-CanAttack", true);
+                    GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                     SpecialActivation = true;
                     GetComponent<Animator>().SetBool("PSM-Attack", true);
                     GetComponent<Animator>().SetBool("PSM-SpecialAttack", true);
