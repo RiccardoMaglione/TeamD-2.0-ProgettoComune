@@ -74,6 +74,7 @@ namespace SwordGame
         public GameObject DashColliderBabushka;
         public static bool isBoriousDash = false;
         #endregion
+        //[HideInInspector] public Vector3 InitialPos;
         private void OnValidate()
         {
             OnValidatePlayerManager();

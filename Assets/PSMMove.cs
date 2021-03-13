@@ -45,6 +45,7 @@ public class PSMMove : StateMachineBehaviour
             animator.SetTrigger("PSM-CanJump");                                                                                                                             //Setto attivo il trigger - Prima condizione per il cambio stato in "Player Jump State"
             if (animator.GetBool("PSM-IsGrounded") == true && animator.GetComponent<PSMController>().OnceJump == false)                                                     //Se tocca terra ed è il primo ciclo (OnceJump non dovrebbe servire ma è stato messo per sicurezza)
             {
+                //animator.GetComponent<PSMController>().InitialPos = animator.transform.position;
                 animator.GetComponent<PSMController>().OnceJump = true;                                                                                                     //Controllo di sicurezza per eseguirlo solo una volta
                 animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);  //Spinta iniziale per evitare un salto non visibili
             }

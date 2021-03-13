@@ -34,6 +34,7 @@ public class PSMJump : StateMachineBehaviour
         #region Fall Zone - Da "Player Jump State" da "Player Fall State"
         if (animator.GetComponent<PSMController>().RB2D.velocity.y <= 0)                //Se la velocità di y è minore o uguale a 0 - Minore e uguale perché potrebbe capitare un salto che potrebbe buggare senza l'uguaglianza
         {
+            /*Test*/animator.SetBool("PSM-IsGrounded", false);                                  
             Debug.Log("PlayerState - Vai in 'Player Fall State'");                      //Debuggo in console cosa fa
             animator.SetTrigger("PSM-IsInFall");                                        //Setto la prima condizione, un trigger, attivo, per entrare in "Player Fall State" da "Player Jump State"
         }
@@ -72,6 +73,19 @@ public class PSMJump : StateMachineBehaviour
             animator.GetComponent<PSMController>().CanDashRight = true;                             //Setto la direzione del dash a destra
         }
         #endregion
+
+
+        //Blocca il salto e lo butta giù - Possibile soluzione per il salto alto
+        //Referenza riga 77 nello script PSMController
+        //Referenza riga 48 nello script PSMMove
+        //Referenza riga 34nello script PSMIdle
+        /*if (animator.transform.position.y >= animator.GetComponent<PSMController>().InitialPos.y + 3)
+        {
+            //Blocca il salto e lo butta giù
+            animator.SetBool("PSM-IsGrounded", false);
+            animator.SetTrigger("PSM-IsInFall");
+            //animator.Play("Player Fall State");       //In caso le condizioni di prima non bastino
+        }*/
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
