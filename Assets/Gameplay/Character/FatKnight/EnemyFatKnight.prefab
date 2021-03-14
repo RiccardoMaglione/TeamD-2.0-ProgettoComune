@@ -443,7 +443,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -509,7 +509,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6375362479636607824}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 247fe66e960012e4d9c2ced8718a7280, type: 3}
   m_Name: 
@@ -522,17 +522,17 @@ MonoBehaviour:
   EnergyBar: {fileID: 0}
   MaxEnergy: 0
   CurrentEnergy: 0
-  LightEnergyAmount: 5
-  HeavyEnergyAmount: 10
-  SpecialEnergyAmount: 15
+  LightEnergyAmount: 0
+  HeavyEnergyAmount: 0
+  SpecialEnergyAmount: 0
   isTriggerOnlyOnce: 0
-  RB2D: {fileID: 6375362479636607822}
+  RB2D: {fileID: 1953563232913232819, guid: ace1ed57afdf57d4d9546329f061752e, type: 3}
   ValueMovement:
     Acceleration: 3
     Speed: 4
     MaxSpeed: 5.5
   ValueJump:
-    InitialJumpForce: 5
+    InitialJumpForce: 9
     jumpForce: 4
     fallMultiplier: 5
     lowJumpMultiplier: 6
@@ -544,11 +544,11 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 4.1648607
+  ResetTimerStaggered: 29.06228
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 5
-  TimeDoublePlatform: 0
+  TimeDoublePlatform: 0.45
   ListTempPlatform: []
   ListWaitTime: []
   PlayerIdleSpeed: 1
