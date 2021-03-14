@@ -479,7 +479,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.16, y: 0.38}
   m_EdgeRadius: 0
 --- !u!50 &6375362479636607822
 Rigidbody2D:
@@ -526,7 +526,7 @@ MonoBehaviour:
   HeavyEnergyAmount: 0
   SpecialEnergyAmount: 0
   isTriggerOnlyOnce: 0
-  RB2D: {fileID: 1953563232913232819, guid: ace1ed57afdf57d4d9546329f061752e, type: 3}
+  RB2D: {fileID: 6375362479636607822}
   ValueMovement:
     Acceleration: 3
     Speed: 4
@@ -544,7 +544,7 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 29.06228
+  ResetTimerStaggered: 49.483948
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 5
@@ -604,16 +604,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeEnemy: 0
-  Life: 1000
+  Life: 100
   timerStun: 0
-  DurationStun: 50
+  DurationStun: 5
   CountHit: 0
-  MaxCountHit: 1
+  MaxCountHit: 2
   isStun: 0
   isPossessed: 0
   CountPoiseEnemy: 0
-  MaxCountPoiseEnemy: 20
-  Speed: 0
+  MaxCountPoiseEnemy: 3
+  Speed: 3.7
   WaypointEnemy: []
   WaypointIndex: 0
   CanMove: 1
@@ -621,12 +621,12 @@ MonoBehaviour:
   CanVisible: 0
   LightAttackCollider: {fileID: 6375362480263715625}
   HeavyAttackCollider: {fileID: 6375362479142628222}
-  PercentuageAttack: 100
+  PercentuageAttack: 75
   random: 0
   CanAttack: 1
-  LightDamage: 2
-  HeavyDamage: 5
-  SpecialDamage: 8
+  LightDamage: 30
+  HeavyDamage: 40
+  SpecialDamage: 100
   CanReset: 0
   IdleAnimClipSpeed: 10
   PatrolAnimClipSpeed: 1
