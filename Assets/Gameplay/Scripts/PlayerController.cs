@@ -19,6 +19,8 @@ namespace SwordGame
     public struct StructJump
     {
         [Tooltip("It's a force of player's jump")]
+        public float InitialJumpForce;
+        [Tooltip("It's a force of player's jump")]
         public float jumpForce;
         [Tooltip("It's value of gravity fall")]
         public float fallMultiplier;
@@ -100,6 +102,9 @@ namespace SwordGame
         public float PlayerHeavyAttackSpeed = 1;
         public float PlayerSpecialAttackSpeed = 1;
         #endregion
+        public static bool Deactivate;
+        public bool CanJumpDashCooldown;
+        public float tempY;
 
         private void OnValidate()
         {
@@ -160,6 +165,16 @@ namespace SwordGame
             ResetStaggered();
             print("Grounded" + Grounded);
 
+            if (rb.velocity.y == 0)
+            {
+                GetComponent<Animator>().SetBool("GroundDash", true);
+                //if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+                //{
+                //    GetComponent<Animator>().SetBool("IsJump", false);
+                //    GetComponent<Animator>().Play("Idle");
+                //}
+            }
+
             if (Grounded == true)
             {
                 CanDashJump = true;
@@ -181,6 +196,19 @@ namespace SwordGame
             else
             {
                 GetComponent<Animator>().SetBool("IsFall", false);
+            }
+
+            if (CanJumpDashCooldown == true)         //Sistema bug del salto nel dash in cui viene bloccata l'altezza - Controllare se permetti di saltare in aria, ma non sembra
+            {
+                if (Input.GetKeyDown(KeyCode.Space) && Grounded == true)
+                {
+                    rb.AddForce(Vector2.up * ValueJump.jumpForce/5, ForceMode2D.Impulse);
+                }
+                if (tempY + 3 < transform.position.y)
+                {
+                    //rb.velocity = new Vector2(rb.velocity.x, 0.1f);
+                    CanJumpDashCooldown = false;
+                }
             }
         }
         
@@ -269,6 +297,8 @@ namespace SwordGame
        /// <returns></returns>
         public IEnumerator CooldownDash()
         {
+            tempY = transform.position.y;
+            CanJumpDashCooldown = true;
             GravityChange = false;
             if (GravityChange == false)
             {
@@ -278,7 +308,9 @@ namespace SwordGame
             GetComponent<Animator>().SetBool("CanDashFall", false);
             gameObject.layer = 8;
             yield return new WaitForSeconds(TimerCooldownDash);
+            CanJumpDashCooldown = false;
             GetComponent<Rigidbody2D>().gravityScale = 1;
+            rb.velocity = new Vector2(rb.velocity.x, -0.1f);
             CanDashLeft = false;
             CanDashRight = false;
             Invulnerability = false;
@@ -287,16 +319,23 @@ namespace SwordGame
             isBoriousDash = false;
 
             TimerDash = 0;
+
             if (rb.velocity.y == 0)
             {
                 CanDashJump = true;
-                Grounded = true;
+                //Grounded = true;
+                GetComponent<Animator>().SetBool("IsGroundFallDash", true);
+                GetComponent<Animator>().SetBool("GroundDash", true);
             }
             else
             {
                 CanDashJump = false;
             }
             GravityChange = true;
+            if(rb.velocity.y < -0.2f)
+            {
+                GetComponent<Animator>().Play("Fall");
+            }
         }
 
         #endregion
@@ -306,7 +345,7 @@ namespace SwordGame
         /// <summary>
         /// Metodo per attivare lo stagger, azzerare la velocità del player e far partire il cooldown
         /// </summary>
-        public void Staggered()
+        public void Staggered() //Non sono stati trovati riferimenti
         {
             if (PoisePlayer >= MaxPoisePlayer)
             {
@@ -319,7 +358,7 @@ namespace SwordGame
         /// IEnumarator per il cooldown dello stagger, nel quale a fine resetta il valore di poise
         /// </summary>
         /// <returns></returns>
-        public IEnumerator CooldownStaggered()
+        public IEnumerator CooldownStaggered()  //Trovato riferimenti in staggered()
         {
             yield return new WaitForSeconds(TimerStaggered);
             isStaggered = false;
@@ -335,15 +374,27 @@ namespace SwordGame
         {
             if (rb != null)
             {
-                if (rb.velocity.y == 0)
+                if (collision.gameObject.tag == "Floor")
                 {
                     Grounded = true;
+                    GetComponent<Animator>().SetBool("IsGroundFallDash", true);
+                    GetComponent<Animator>().SetBool("GroundDash", true);
+                }
+            }
+        }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            if (rb != null)
+            {
+                if (collision.gameObject.tag == "Floor")
+                {
+                    Grounded = true;
+                    GetComponent<Animator>().SetBool("IsGroundFallDash", true);
+                    GetComponent<Animator>().SetBool("GroundDash", true);
                 }
             }
 
-        }
-        private void OnCollisionStay2D(Collision2D collision)
-        {
             if (Input.GetKey(KeyCode.S))
             {
                 if (collision.gameObject.GetComponent<PlatformEffector2D>() != null)
@@ -366,12 +417,12 @@ namespace SwordGame
                 if (collision.tag == "LightAttack")
                 {
                     isTriggerOnlyOnce = true;
-                    GetComponent<PlayerController>().ResetTimerStaggered = 0;
-                    GetComponent<PlayerController>().PoisePlayer += 1;                                  //aumenta di 1
+                    ResetTimerStaggered = 0;
+                    PoisePlayer += 1;                                  //aumenta di 1
                     CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
                     //CurrentLife -= collision.GetComponentInParent<EnemyManager>().LightDamage;
                     print("Colpito Light");
-                    if (PlayerController.isBoriousDash == true)
+                    if (isBoriousDash == true)
                     {
                         collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
                     }
@@ -379,12 +430,12 @@ namespace SwordGame
                 if (collision.tag == "HeavyAttack")
                 {
                     isTriggerOnlyOnce = true;
-                    GetComponent<PlayerController>().ResetTimerStaggered = 0;
-                    GetComponent<PlayerController>().PoisePlayer += 1;                                  //aumenta di 1
+                    ResetTimerStaggered = 0;
+                    PoisePlayer += 1;                                  //aumenta di 1
                     CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
                     //CurrentLife -= collision.GetComponentInParent<EnemyManager>().HeavyDamage;
                     print("Colpito Heavy");
-                    if (PlayerController.isBoriousDash == true)
+                    if (isBoriousDash == true)
                     {
                         collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
                     }
@@ -399,7 +450,7 @@ namespace SwordGame
                 //        collision.GetComponent<EnemyManager>().Life -= collision.GetComponent<EnemyManager>().SpecialDamage;
                 //    }
                 //}
-                if (GetComponent<PlayerController>().PoisePlayer >= GetComponent<PlayerController>().MaxPoisePlayer)
+                if (PoisePlayer >= MaxPoisePlayer)
                 {
                     GetComponent<Animator>().SetBool("IsStagger", true);
                 }

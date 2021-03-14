@@ -5,16 +5,27 @@ using SwordGame;
 
 public class PlayerJumpState : StateMachineBehaviour
 {
+    public static bool InitialJump;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("IsGroundFallDash", true);
+        Debug.Log("Initial Jump"+InitialJump);
+        //animator.SetBool("IsGroundFallDash", true);
+        if (animator.GetComponent<PlayerController>().Grounded == true /*&& animator.GetComponent<PlayerController>().rb.velocity.y == 0 */&& animator.GetComponent<PlayerController>().canJump == true)
+        {
+            if(InitialJump == true)
+            {
+                animator.GetComponent<PlayerController>().rb.AddForce(Vector2.up * animator.GetComponent<PlayerController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);
+            }
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         #region Jump Zone
+        InitialJump = true;
+        Debug.Log("Initial Jump" + InitialJump);
         animator.SetBool("IsJump", false);
         if (Input.GetKey(KeyCode.Space) && animator.GetComponent<PlayerController>().Grounded == true /*&& animator.GetComponent<PlayerController>().rb.velocity.y == 0 */&& animator.GetComponent<PlayerController>().canJump == true)
         {
@@ -34,17 +45,19 @@ public class PlayerJumpState : StateMachineBehaviour
             Debug.Log("Bloccato 3");
         }
 
-        if (animator.GetComponent<PlayerController>().rb.velocity.y < 0)
+        if (animator.GetComponent<PlayerController>().rb.velocity.y <= 0)
         {
             Debug.Log("Bloccato 2");
             animator.SetBool("IsJump", false);
             animator.SetBool("IsFall", true);
+            animator.Play("Fall");
         }
         if (animator.GetComponent<PlayerController>().rb.velocity.y == 0)
         {
             animator.SetBool("IsJump", false);
             animator.SetBool("IsFall", true);
             animator.SetBool("DashJumpInJump", true);
+            animator.Play("Fall");
             Debug.Log("Bloccato 1");
         }
         #endregion
@@ -109,7 +122,7 @@ public class PlayerJumpState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    
+    //
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

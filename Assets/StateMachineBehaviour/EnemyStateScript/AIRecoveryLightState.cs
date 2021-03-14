@@ -15,7 +15,7 @@ public class AIRecoveryLightState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
-        animator.GetComponent<EnemyData>().CanAttack = false;
+        //animator.GetComponent<EnemyData>().CanAttack = false;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
