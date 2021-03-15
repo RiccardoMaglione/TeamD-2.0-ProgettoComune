@@ -577,6 +577,7 @@ MonoBehaviour:
     Speed: 4
     MaxSpeed: 5.5
   ValueJump:
+    InitialJumpForce: 0
     jumpForce: 9
     fallMultiplier: 5
     lowJumpMultiplier: 6
@@ -597,7 +598,7 @@ MonoBehaviour:
   DashDamageFatKnight: 0
   PoisePlayer: 0
   MaxPoisePlayer: 5
-  ResetTimerStaggered: 265.02335
+  ResetTimerStaggered: 886.99097
   MaxResetTimerStaggered: 0.2
   tempSpeed: 4
   velocityY: 0
@@ -614,6 +615,8 @@ MonoBehaviour:
   PlayerLightAttackSpeed: 1
   PlayerHeavyAttackSpeed: 1
   PlayerSpecialAttackSpeed: 1
+  CanJumpDashCooldown: 0
+  tempY: 0
 --- !u!50 &95778486
 Rigidbody2D:
   serializedVersion: 4
@@ -652,7 +655,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.39423078, y: 0.5}
+    oldSize: {x: 1.9711539, y: 2.5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -720,7 +723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95778480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.59, y: -2.8, z: -1.859302}
+  m_LocalPosition: {x: -8.4, y: -2.8, z: -1.859302}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1341069153}
@@ -4822,6 +4825,7 @@ MonoBehaviour:
     Speed: 4
     MaxSpeed: 5.5
   ValueJump:
+    InitialJumpForce: 0
     jumpForce: 10
     fallMultiplier: 5
     lowJumpMultiplier: 6
@@ -4859,6 +4863,8 @@ MonoBehaviour:
   PlayerLightAttackSpeed: 1
   PlayerHeavyAttackSpeed: 1
   PlayerSpecialAttackSpeed: 1
+  CanJumpDashCooldown: 0
+  tempY: 0
 --- !u!50 &1312973745
 Rigidbody2D:
   serializedVersion: 4
@@ -4897,7 +4903,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.39423078, y: 0.5}
+    oldSize: {x: 1.9711539, y: 2.5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5489,7 +5495,19 @@ CompositeCollider2D:
   m_EdgeRadius: 0
   m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 2.2667882, y: -1.5022784}
+      - {x: 2.2667882, y: 0.4805872}
+      - {x: 1.7119616, y: 0.4806096}
+      - {x: 1.7119324, y: 1.5109711}
+      - {x: 0.8140134, y: 1.5109863}
+      - {x: 0.8139841, y: 1.9412638}
+      - {x: -0.613191, y: 1.9412053}
+      - {x: -0.6131324, y: 0.358149}
+      - {x: -0.1417358, y: 0.3581196}
+      - {x: -0.1416987, y: -0.0631273}
+      - {x: -0.0683527, y: -0.0631567}
+      - {x: -0.0683021, y: -1.5022784}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1417802648
