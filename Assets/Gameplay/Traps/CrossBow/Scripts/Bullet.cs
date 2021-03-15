@@ -4,31 +4,25 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Transform target;
     public float speed = 4f;
+    public Rigidbody2D rb;
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        rb = GetComponentInChildren<Rigidbody2D>();
     }
 
-    void shotDirection()
-    {
-        if (Vector3.Distance(transform.position, target.position) > 0f) ///1
-        {
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        }
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject); //sistemare la collisione e la direzione dello sparo
+            Destroy(this.gameObject);
         }
     }
 
     private void Update()
     {
-        shotDirection();
+        transform.position += transform.right * speed * Time.deltaTime;
+       
     }
 }

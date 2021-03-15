@@ -6,20 +6,26 @@ public class CrossbowTrap : MonoBehaviour
     public bool canShot;
     public bool cooldownIsActive;
     public bool touchRangeStartCrono;
+    public Transform player;
+    public BoxCollider2D boxColl;
+
+    public bool isShotRight = false;
+    public bool isShotLeft = false;
 
     public float delayAttak = 0f;
     public float cooldownTrap = 0f;
 
     public GameObject bullet;
     public GameObject shotPoint;
-    
+
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.tag == "Player")
         {
-            playerInRange = true;
-            touchRangeStartCrono = true;
+                playerInRange = true;
+                touchRangeStartCrono = true;
         }
     }
 
@@ -33,13 +39,12 @@ public class CrossbowTrap : MonoBehaviour
 
     private void Update()
     { 
-        /// aggiustare il range //while
-
+      
         if (touchRangeStartCrono)
         {
             delayAttak += Time.deltaTime;
 
-            if(delayAttak >= 1f) //delay
+            if(delayAttak >= 1f) 
             {
                 canShot = true;
                 delayAttak = 0f;

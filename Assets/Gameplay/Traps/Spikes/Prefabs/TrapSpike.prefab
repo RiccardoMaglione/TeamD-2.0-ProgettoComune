@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1993859927389583779}
-  - component: {fileID: 5640504115288033278}
   m_Layer: 0
   m_Name: TrapSpike
   m_TagString: Spikes
@@ -32,22 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5640504115288033278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993859927389583778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc63746fca72b9f4192057193c87acf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldownTrap: 0
-  cooldownIsActive: 0
-  health: 0
-  canAttak: 0
 --- !u!1 &1993859927507156329
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +42,7 @@ GameObject:
   - component: {fileID: 1993859927507156330}
   - component: {fileID: 1993859927507156331}
   - component: {fileID: 1993859927507156324}
-  - component: {fileID: 943639672857226426}
+  - component: {fileID: 3611059913694518158}
   m_Layer: 0
   m_Name: spike
   m_TagString: Spikes
@@ -158,7 +141,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &943639672857226426
+--- !u!114 &3611059913694518158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,6 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTrap: 0
+  rechargeTime: 0
   cooldownIsActive: 0
-  health: 0
-  canAttak: 0
+  health: 3
