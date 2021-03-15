@@ -12,35 +12,32 @@ public class SliderManager : MonoBehaviour
     public float sfx = 1f;
     [SerializeField] Slider sfxSlider;
 
-    public void ChangeMaster()
+    /// <summary>
+    /// Save the Master Slider value
+    /// </summary>
+    public void ChangeMasterSlider()
     {
         master = masterSlider.value;
         PlayerPrefs.SetFloat("MasterVolume", master);
     }
 
-    public void ChangeMusic()
+    /// <summary>
+    /// Save the Music Slider value
+    /// </summary>
+    public void ChangeMusicSlider()
     {
         music = musicSlider.value;
         PlayerPrefs.SetFloat("MusicVolume", music);
     }
 
-    public void ChangeSfx()
+    /// <summary>
+    /// Save the SFX Slider value
+    /// </summary>
+    public void ChangeSfxSlider()
     {
         sfx = sfxSlider.value;
         PlayerPrefs.SetFloat("SfxVolume", sfx);
     }
-
-    //public void MusicText()
-    //{
-    //    music = 100 * music;
-    //    Musicperc.text = Mathf.RoundToInt(music) + "%";
-    //}
-    //
-    //public void SFXText()
-    //{
-    //    sfx = 100 * sfx;
-    //    SFXperc.text = Mathf.RoundToInt(sfx) + "%";
-    //}
 
 
     private void Awake()
@@ -57,10 +54,11 @@ public class SliderManager : MonoBehaviour
 
     void Update()
     {
-        ChangeMaster();
-        ChangeMusic();
-        ChangeSfx();
+        ChangeMasterSlider();
+        ChangeMusicSlider();
+        ChangeSfxSlider();
 
-        AudioManager.instance.ChangeVolume("MainMenuMusic", PlayerPrefs.GetFloat("MusicVolume"), PlayerPrefs.GetFloat("MasterVolume"));
+        AudioManager.instance.ChangeSfxVolume();
+        AudioManager.instance.ChangeMusicVolume();
     }
 }

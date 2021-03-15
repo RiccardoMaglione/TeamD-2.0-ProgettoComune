@@ -1,18 +1,38 @@
 ﻿using UnityEngine;
- 
+
+public enum Type
+{ 
+    Music,
+    SFX
+}
 
 [System.Serializable]
 public class Sound
 {
-    public string name;            //Nome da dare alla clip
+    /// <summary>
+    /// Name of the clip
+    /// </summary>
+    public string name;
 
-    public AudioClip clip;         //Clip da riprodurre
+    /// <summary>
+    /// Clip to play
+    /// </summary>
+    public AudioClip clip;
 
-    [Range(0f, 1f)]
-    public float volume;           //Volume della clip
 
-    public bool loop;              //Setto se la clip deve andare in loop
+    /// <summary>
+    /// Check for the loop of the Clip
+    /// </summary>
+    public bool loop;
 
+    /// <summary>
+    /// Type of the clip
+    /// </summary>
+    public Type type;
+
+    /// <summary>
+    /// AudioSource of the clip
+    /// </summary>
     [HideInInspector]
     public AudioSource source;
 }

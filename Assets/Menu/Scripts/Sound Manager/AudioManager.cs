@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
@@ -11,11 +11,14 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="name"> Name of the song</param>
     /// <param name="volume"> Volume of the song </param>
-    public void Play(string name, float originalVolume, float masterVolume)
+    public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
-        s.source.volume = originalVolume * masterVolume;
+        if(s.type == Type.Music)
+            s.source.volume = PlayerPrefs.GetFloat("MusicVolume") * PlayerPrefs.GetFloat("MasterVolume");
+        else
+            s.source.volume = PlayerPrefs.GetFloat("SfxVolume") * PlayerPrefs.GetFloat("MasterVolume");
     }
 
     /// <summary>
@@ -29,14 +32,31 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Change The volume of the selected song by slider
+    /// Change SFX Volume by slider
     /// </summary>
     /// <param name="name"> Name of the song </param>
     /// <param name="slider"> Slider that change the volume </param>
-    public void ChangeVolume(string name, float originalVolume, float masterVolume)
+    public void ChangeSfxVolume()
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.volume = originalVolume * masterVolume;
+        foreach (Sound s in sounds)
+        {
+            if(s.type == Type.SFX)
+                s.source.volume = PlayerPrefs.GetFloat("SfxVolume") * PlayerPrefs.GetFloat("MasterVolume");
+        }  
+    }
+
+    /// <summary>
+    /// Change Music Volume by slider
+    /// </summary>
+    /// <param name="name"> Name of the song </param>
+    /// <param name="slider"> Slider that change the volume </param>
+    public void ChangeMusicVolume()
+    {
+        foreach (Sound s in sounds)
+        {
+            if (s.type == Type.Music)
+                s.source.volume = PlayerPrefs.GetFloat("MusicVolume") * PlayerPrefs.GetFloat("MasterVolume");
+        }
     }
 
 
@@ -55,10 +75,9 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.volume = s.volume;
             s.source.loop = s.loop;
         }
 
-        Play("MainMenuMusic", PlayerPrefs.GetFloat("MusicVolume"), PlayerPrefs.GetFloat("MasterVolume"));
+        Play("test");
     }
 }
