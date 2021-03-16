@@ -255,16 +255,6 @@ namespace SwordGame
                 if (GetComponent<EnemyData>().CanReset == true)
                 {
                     GetComponent<EnemyData>().PlayerEnemy = null;
-                    //GetComponent<EnemyManager>().FirstCycleHeavy = true;
-                    //GetComponent<EnemyManager>().FirstCycleLight = true;
-                    //GetComponent<EnemyManager>().CooldownHeavy = false;
-                    //GetComponent<EnemyManager>().CooldownLight = false;
-                    //GetComponent<EnemyManager>().InitialTimerHeavy = 0;
-                    //GetComponent<EnemyManager>().DeactiveColliderTimerHeavy = 0;
-                    //GetComponent<EnemyManager>().CooldownTimerHeavy = 0;
-                    //GetComponent<EnemyManager>().InitialTimerLight = 0;
-                    //GetComponent<EnemyManager>().DeactiveColliderTimerLight = 0;
-                    //GetComponent<EnemyManager>().CooldownTimerLight = 0;
                     GetComponent<EnemyData>().CanReset = false;
                     GetComponent<EnemyData>().CanAttack = true;
                 }

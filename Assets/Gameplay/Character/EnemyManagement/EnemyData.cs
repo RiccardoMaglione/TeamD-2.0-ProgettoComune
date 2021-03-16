@@ -106,6 +106,8 @@ public class EnemyData : MonoBehaviour
     public float StaggerAnimClipSpeed = 1;
     public float PossessionAnimClipSpeed = 1;
     public float DeathAnimClipSpeed = 1;
+
+    public GameObject Aggro;
     #endregion
 
 
@@ -146,7 +148,7 @@ public class EnemyData : MonoBehaviour
         {
             float Distance = Vector2.Distance(gameObject.transform.position, PlayerEnemy.transform.position);
             print("Distance" + Distance);
-            if (Distance >= 2.3f)       //Il 2.3f sarebbe il possession radius
+            if (Distance >= Aggro.GetComponentInChildren<CircleCollider2D>().radius)       //Il 2.3f sarebbe il possession radius
             {
                 CanReset = true;
             }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SwordGame;
 
 public class DistanceState : StateMachineBehaviour
 {
@@ -49,15 +50,21 @@ public class DistanceState : StateMachineBehaviour
             Debug.Log("aaaprova");
             if (animator.GetComponent<EnemyData>().random <= animator.GetComponent<EnemyData>().PercentuageAttack)
             {
-                Debug.Log("aaaleggero");
-                animator.SetTrigger("LightAttack");
-                animator.SetBool("CanAttack", true);
+                if (RangeAttack.isMelee == true)
+                {
+                    Debug.Log("aaaleggero");
+                    animator.SetTrigger("LightAttack");
+                    animator.SetBool("CanAttack", true);
+                }
             }
             else
             {
-                Debug.Log("aaaPesante");
-                animator.SetTrigger("HeavyAttack");
-                animator.SetBool("CanAttack", true);
+                if(RangeAttack.isRanged == true)
+                {
+                    Debug.Log("aaaPesante");
+                    animator.SetTrigger("HeavyAttack");
+                    animator.SetBool("CanAttack", true);
+                }
             }
         }
 
