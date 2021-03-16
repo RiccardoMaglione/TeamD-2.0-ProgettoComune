@@ -17,7 +17,7 @@ public class LaserManager : MonoBehaviour
 
     public void DoRandom()
     {
-        if (animator.GetBool("GoToPhase3") == true)
+        if (animator.GetBool("Laser") == true)
         {
             do
             {

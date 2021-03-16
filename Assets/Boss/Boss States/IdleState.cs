@@ -10,25 +10,25 @@ public class IdleState : StateMachineBehaviour
         
         int rand = Random.Range(1, 3);
 
-        if (boss.life < 70 && boss.life > 29)
-            animator.SetBool("GoToPhase2", true);
-        
+        if (boss.life <= 0)
+        {
+            animator.SetBool("GoToDeath", true);
+            animator.SetBool("GoToPhase2", false);
+            animator.SetBool("GoToPhase3", false);
+            animator.SetBool("Laser", false);
+        }
         
         if (boss.life < 30 && boss.life > 0)
         {
             animator.SetBool("GoToPhase2", false);
             animator.SetBool("GoToPhase3", true);
         }
+
+
+        if (boss.life < 70 && boss.life > 29)
+            animator.SetBool("GoToPhase2", true);
         
-        
-        if (boss.life <= 0)
-        {
-            animator.SetBool("GoToDeath", true);
-            animator.SetBool("GoToPhase2", false);
-            animator.SetBool("GoToPhase3", false);
-        }
-       
-        
+         
         if (rand == 1)
             animator.SetTrigger("Attack1");
         else
