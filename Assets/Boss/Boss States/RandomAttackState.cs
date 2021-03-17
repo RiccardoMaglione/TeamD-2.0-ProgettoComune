@@ -2,26 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnState2 : StateMachineBehaviour
+public class RandomAttackState : StateMachineBehaviour
 {
-    SpawnManager spawnManager;
-    SpawnMinionWaypoint spawnMinion;
-
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        spawnManager = FindObjectOfType<SpawnManager>();
-        spawnManager.StartWave2();
-        spawnMinion = animator.GetComponent<SpawnMinionWaypoint>();
-        spawnMinion.i = 0;
+        int rand = Random.Range(1, 3);
+
+        if (rand == 1)
+            animator.SetTrigger("Attack1");
+        else
+            animator.SetTrigger("Attack2");
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        spawnMinion.Move();
+        
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        
     }
 }

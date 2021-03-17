@@ -23,7 +23,6 @@ public class SpawnManager : MonoBehaviour
             {
                 wave1.SetActive(false);
                 wave2.SetActive(false);
-                Debug.LogWarning("Wave Completed!");
                 animator.SetTrigger("GoToSmash");
             }
         }
