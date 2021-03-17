@@ -85,6 +85,10 @@ namespace SwordGame
         [SerializeField] public KeyCode KeyboardLightlAttack;
         [SerializeField] public KeyCode KeyboardHeavyAttack;
         [SerializeField] public KeyCode KeyboardSpecialAttack;
+
+        public bool IsLightAttack = false;
+        public bool IsHeavyAttack = false;
+        public bool IsSpecialAttack = false;
         #endregion
         private void OnValidate()
         {
@@ -224,18 +228,27 @@ namespace SwordGame
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
                 GetComponent<Animator>().SetBool("PSM-LightAttack", true);
+                IsLightAttack = true;
+                IsHeavyAttack = false;
+                IsSpecialAttack = false;
             }
             if (Input.GetKeyDown(KeyboardHeavyAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
             {
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
                 GetComponent<Animator>().SetBool("PSM-HeavyAttack", true);
+                IsLightAttack = false;
+                IsHeavyAttack = true;
+                IsSpecialAttack = false;
             }
             if (Input.GetKeyDown(KeyboardSpecialAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
             {
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
                 GetComponent<Animator>().SetBool("PSM-SpecialAttack", true);
+                IsLightAttack = false;
+                IsHeavyAttack = false;
+                IsSpecialAttack = true;
             }
         }
 
@@ -294,6 +307,9 @@ namespace SwordGame
             {
                 GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
             }
+            IsLightAttack = false;
+            IsHeavyAttack = false;
+            IsSpecialAttack = false;
         }
 
         #region Trigger Zone

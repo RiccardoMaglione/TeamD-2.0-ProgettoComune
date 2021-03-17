@@ -93,71 +93,74 @@ namespace SwordGame
                     if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider != null)
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().MaxHealth);
 
-                    PlayerDetect.GetComponent<PlayerInput>().enabled = false;
-                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>() == null)
-                    {
-                        PlayerDetectArray[PlayerDetectArray.Count - 1].AddComponent<PlayerInput>().enabled = true;
+                    PlayerDetect.transform.Find("Aggro").gameObject.SetActive(true);                                    //Diventa nemico attiva aggro
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].transform.Find("Aggro").gameObject.SetActive(false);  //diventa player disattiva aggro
 
-                        foreach (AttackSystem item in PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponentsInChildren<AttackSystem>(true))
-                        {
-                            if (item.name == "LightAttackCollider")
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().lightAttackCollider = item.gameObject;
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardLightlAttack = KeyCode.U;
-                            }
-                            if (item.name == "HeavyAttackCollider")
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().heavyAttackCollider = item.gameObject;
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardHeavyAttack = KeyCode.I;
-
-                            }
-                            if (item.name == "SpecialAttackCollider")
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().specialAttackCollider = item.gameObject;
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardSpecialAttack = KeyCode.Y;
-                            }
-                            if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.FatKnight)
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
-                            }
-                            if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.BoriousKnight)
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
-                            }
-                            if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.Babushka)
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
-                            }
-                            if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.Thief)
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
-                            }
-                        }
-                    }
-                    else
-                    {
-                        PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().enabled = true;
-                    }
+                    //PlayerDetect.GetComponent<PlayerInput>().enabled = false;
+                    //if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>() == null)
+                    //{
+                    //    PlayerDetectArray[PlayerDetectArray.Count - 1].AddComponent<PlayerInput>().enabled = true;
+                    //
+                    //    foreach (AttackSystem item in PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponentsInChildren<AttackSystem>(true))
+                    //    {
+                    //        //if (item.name == "LightAttackCollider")
+                    //        //{
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().lightAttackCollider = item.gameObject;
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardLightlAttack = KeyCode.U;
+                    //        //}
+                    //        //if (item.name == "HeavyAttackCollider")
+                    //        //{
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().heavyAttackCollider = item.gameObject;
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardHeavyAttack = KeyCode.I;
+                    //        //
+                    //        //}
+                    //        //if (item.name == "SpecialAttackCollider")
+                    //        //{
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().specialAttackCollider = item.gameObject;
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardSpecialAttack = KeyCode.Y;
+                    //        //}
+                    //        //if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.FatKnight)
+                    //        //{
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
+                    //        //}
+                    //        //if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.BoriousKnight)
+                    //        //{
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
+                    //        //}
+                    //        //if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.Babushka)
+                    //        //{
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
+                    //        //}
+                    //        //if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.Thief)
+                    //        //{
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
+                    //        //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
+                    //        //}
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().enabled = true;
+                    //}
 
                     PlayerDetect.GetComponent<EnemyData>().Life = 0;
                     PlayerDetect.GetComponent<EnemyData>().isStun = true;

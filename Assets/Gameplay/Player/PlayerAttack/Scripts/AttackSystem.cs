@@ -14,13 +14,13 @@ public class AttackSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("HIT" + collision.name);
+        Debug.Log("Passa qui HIT" + collision.name);
         if(collision.gameObject.tag == "Enemy")
         {
             Knockback.ActiveKnockback = true;
-            if(GetComponentInParent<Animator>().GetBool("PSM-LightAttack") == true)
+            if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
-                //playerInput.isLightAttack = false;
+                GetComponentInParent<PSMController>().IsLightAttack = false;
                 collision.GetComponent<EnemyData>().Life -= LightDamage;
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
@@ -30,13 +30,13 @@ public class AttackSystem : MonoBehaviour
                 {
                     collision.GetComponentInParent<Animator>().SetBool("PSM-IsStagger", true);
                 }
-                //print("Light");
+                print("Light");
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
-                //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
+                print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
-            if (GetComponentInParent<Animator>().GetBool("PSM-HeavyAttack") == true)
+            if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
-                //playerInput.isHeavyAttack = false;
+                GetComponentInParent<PSMController>().IsHeavyAttack = false;
                 collision.GetComponent<EnemyData>().Life -= HeavyDamage;
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
@@ -50,9 +50,9 @@ public class AttackSystem : MonoBehaviour
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
                 print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
-            if (GetComponentInParent<Animator>().GetBool("PSM-SpecialAttack") == true)
+            if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
             {
-                //playerInput.isSpecialAttack = false;
+                GetComponentInParent<PSMController>().IsSpecialAttack = false;
                 collision.GetComponent<EnemyData>().Life -= SpecialDamage;
                 if (collision.GetComponent<EnemyData>().Life <= 0)
                 {
