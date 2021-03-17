@@ -75,6 +75,17 @@ namespace SwordGame
         public static bool isBoriousDash = false;
         #endregion
         //[HideInInspector] public Vector3 InitialPos;
+
+        #region Attack
+        [SerializeField] public GameObject LightAttackCollider;
+        [SerializeField] public GameObject HeavyAttackCollider;
+        [SerializeField] public GameObject SpecialAttackCollider;
+
+        [Header("KEYBOARD INPUTS")]
+        [SerializeField] public KeyCode KeyboardLightlAttack;
+        [SerializeField] public KeyCode KeyboardHeavyAttack;
+        [SerializeField] public KeyCode KeyboardSpecialAttack;
+        #endregion
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -93,6 +104,7 @@ namespace SwordGame
             ResetStaggered();
             ResetPlatform();
             UpdatePlayerManager();
+            AttackPlayer();
         }
     
         public void InitializeSpeedAnimation()
@@ -199,6 +211,88 @@ namespace SwordGame
                     break;
                 default:
                     break;
+            }
+        }
+
+        /// <summary>
+        /// Metodo per attaccare
+        /// </summary>
+        public void AttackPlayer()
+        {
+            if (Input.GetKeyDown(KeyboardLightlAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-CanAttack", false);
+                GetComponent<Animator>().SetBool("PSM-Attack", true);
+                GetComponent<Animator>().SetBool("PSM-LightAttack", true);
+            }
+            if (Input.GetKeyDown(KeyboardHeavyAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-CanAttack", false);
+                GetComponent<Animator>().SetBool("PSM-Attack", true);
+                GetComponent<Animator>().SetBool("PSM-HeavyAttack", true);
+            }
+            if (Input.GetKeyDown(KeyboardSpecialAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-CanAttack", false);
+                GetComponent<Animator>().SetBool("PSM-Attack", true);
+                GetComponent<Animator>().SetBool("PSM-SpecialAttack", true);
+            }
+        }
+
+        /// <summary>
+        /// Evento: Attivazione del collider di attacco
+        /// </summary>
+        public void EventActivateCollider()
+        {
+            if(GetComponent<Animator>().GetBool("PSM-LightAttack") == true)
+            {
+                LightAttackCollider.SetActive(true);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-HeavyAttack") == true)
+            {
+                HeavyAttackCollider.SetActive(true);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-SpecialAttack") == true)
+            {
+                SpecialAttackCollider.SetActive(true);
+            }
+        }
+
+        /// <summary>
+        /// Evento: Disattivazione del collider di attacco
+        /// </summary>
+        public void EventDeactivateCollider()
+        {
+            if (GetComponent<Animator>().GetBool("PSM-LightAttack") == true)
+            {
+                LightAttackCollider.SetActive(false);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-HeavyAttack") == true)
+            {
+                HeavyAttackCollider.SetActive(false);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-SpecialAttack") == true)
+            {
+                SpecialAttackCollider.SetActive(false);
+            }
+        }
+
+        /// <summary>
+        /// Evento: Va nell'ultimo frame dell'attacco, serve per passare allo stato successivo dell'attacco - Exit
+        /// </summary>
+        public void EventFinishAttack()
+        {
+            if (GetComponent<Animator>().GetBool("PSM-LightAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-LightAttack", false);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-HeavyAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-HeavyAttack", false);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-SpecialAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
             }
         }
 

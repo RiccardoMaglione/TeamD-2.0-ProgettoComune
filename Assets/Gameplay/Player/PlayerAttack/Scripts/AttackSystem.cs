@@ -3,10 +3,10 @@ using System.Collections;
 using SwordGame;
 public class AttackSystem : MonoBehaviour
 {
-    [Tooltip("Timer Collider Acceso - Tempo in cui il collider di attacco è attivo")]
-    [SerializeField] float attackTimer;
+    //[Tooltip("Timer Collider Acceso - Tempo in cui il collider di attacco è attivo")]
+    //[SerializeField] float attackTimer;
 
-    PlayerInput playerInput;
+    //PlayerInput playerInput;
 
     [SerializeField] int LightDamage;
     [SerializeField] int HeavyDamage;
@@ -18,9 +18,9 @@ public class AttackSystem : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             Knockback.ActiveKnockback = true;
-            if(playerInput.isLightAttack == true)
+            if(GetComponentInParent<Animator>().GetBool("PSM-LightAttack") == true)
             {
-                playerInput.isLightAttack = false;
+                //playerInput.isLightAttack = false;
                 collision.GetComponent<EnemyData>().Life -= LightDamage;
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
@@ -30,13 +30,13 @@ public class AttackSystem : MonoBehaviour
                 {
                     collision.GetComponentInParent<Animator>().SetBool("PSM-IsStagger", true);
                 }
-                print("Light");
+                //print("Light");
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
-                print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
+                //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
-            if (playerInput.isHeavyAttack == true)
+            if (GetComponentInParent<Animator>().GetBool("PSM-HeavyAttack") == true)
             {
-                playerInput.isHeavyAttack = false;
+                //playerInput.isHeavyAttack = false;
                 collision.GetComponent<EnemyData>().Life -= HeavyDamage;
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
@@ -50,9 +50,9 @@ public class AttackSystem : MonoBehaviour
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
                 print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
-            if (playerInput.isSpecialAttack == true)
+            if (GetComponentInParent<Animator>().GetBool("PSM-SpecialAttack") == true)
             {
-                playerInput.isSpecialAttack = false;
+                //playerInput.isSpecialAttack = false;
                 collision.GetComponent<EnemyData>().Life -= SpecialDamage;
                 if (collision.GetComponent<EnemyData>().Life <= 0)
                 {
@@ -74,21 +74,21 @@ public class AttackSystem : MonoBehaviour
         
     }
 
-    IEnumerator Attack()
-    {
-        yield return new WaitForSeconds(attackTimer);
-        playerInput.CooldownAttack = true;
-        gameObject.SetActive(false);
-    }
-
-
-    void Awake()
-    {
-        playerInput = FindObjectOfType<PlayerInput>();
-    }
-
-    void OnEnable()
-    {
-        StartCoroutine(Attack());
-    }
+    //IEnumerator Attack()
+    //{
+    //    yield return new WaitForSeconds(attackTimer);
+    //    playerInput.CooldownAttack = true;
+    //    gameObject.SetActive(false);
+    //}
+    //
+    //
+    //void Awake()
+    //{
+    //    playerInput = FindObjectOfType<PlayerInput>();
+    //}
+    //
+    //void OnEnable()
+    //{
+    //    StartCoroutine(Attack());
+    //}
 }

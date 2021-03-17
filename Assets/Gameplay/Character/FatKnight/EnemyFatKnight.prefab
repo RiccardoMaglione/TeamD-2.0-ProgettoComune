@@ -255,7 +255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 0.1
   LightDamage: 20
   HeavyDamage: 30
   SpecialDamage: 6
@@ -755,7 +754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 0.1
   LightDamage: 20
   HeavyDamage: 30
   SpecialDamage: 6
@@ -1368,6 +1366,12 @@ MonoBehaviour:
   PlayerHeavyAttackSpeed: 1
   PlayerSpecialAttackSpeed: 1
   DashColliderBabushka: {fileID: 0}
+  LightAttackCollider: {fileID: 7252822116077840430}
+  HeavyAttackCollider: {fileID: 449714299952407506}
+  SpecialAttackCollider: {fileID: 2866992270692852994}
+  KeyboardLightlAttack: 117
+  KeyboardHeavyAttack: 105
+  KeyboardSpecialAttack: 121
 --- !u!114 &6375362479636607818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,6 +1449,7 @@ MonoBehaviour:
   StaggerAnimClipSpeed: 0.1
   PossessionAnimClipSpeed: 1
   DeathAnimClipSpeed: 1
+  Aggro: {fileID: 0}
 --- !u!95 &8275903121361279368
 Animator:
   serializedVersion: 3
@@ -1700,7 +1705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 0.1
   LightDamage: 20
   HeavyDamage: 30
   SpecialDamage: 6
