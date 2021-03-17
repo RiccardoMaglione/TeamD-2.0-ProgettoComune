@@ -10,6 +10,7 @@ public class PSMPoise : StateMachineBehaviour
     {
         animator.GetComponent<PSMController>().RB2D.velocity = Vector2.zero;
         animator.SetBool("PSM-IsStagger", false);
+        animator.SetBool("PSM-CanAttack", false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -22,6 +23,7 @@ public class PSMPoise : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<PSMController>().PoisePlayer = 0;
+        animator.SetBool("PSM-CanAttack", true);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
