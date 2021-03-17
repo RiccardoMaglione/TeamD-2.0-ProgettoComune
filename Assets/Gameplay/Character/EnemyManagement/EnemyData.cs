@@ -47,7 +47,7 @@ public class EnemyData : MonoBehaviour
 
     [Space(10)]
     [Header("►  Path Movement - Array")]
-    public GameObject[] WaypointEnemy;                                    //Movement Behaviour Lista di waypoint per il path
+    public List<GameObject> WaypointEnemy = new List<GameObject>();                                    //Movement Behaviour Lista di waypoint per il path
 
     [ReadOnly] public int WaypointIndex;                                  //Movement Behaviour - Indice del waypoint = readonly
     
