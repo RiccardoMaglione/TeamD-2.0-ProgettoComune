@@ -136,7 +136,7 @@ public class EnemyData : MonoBehaviour
         //ResetStaggeredEnemy();
         #endregion
 
-        CalculateDistance();
+        //CalculateDistance();
     }
 
 

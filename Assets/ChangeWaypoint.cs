@@ -24,6 +24,7 @@ public class ChangeWaypoint : MonoBehaviour
             {
                 EnemyAggro[i].GetComponent<EnemyData>().CanVisible = false;
                 EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
+                EnemyAggro[i].GetComponent<EnemyData>().CanReset = true;
             }
         }
         if (collision.tag == "Player")
@@ -32,6 +33,7 @@ public class ChangeWaypoint : MonoBehaviour
             {
                 EnemyAggro[i].GetComponent<EnemyData>().CanVisible = true;
                 EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", true);
+                EnemyAggro[i].GetComponent<EnemyData>().CanReset = false;
                 PlayerSee = true;
             }
         }
@@ -46,6 +48,7 @@ public class ChangeWaypoint : MonoBehaviour
             {
                 EnemyAggro[i].GetComponent<EnemyData>().CanVisible = true;
                 EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", true);
+                EnemyAggro[i].GetComponent<EnemyData>().CanReset = false;
                 PlayerSee = true;
             }
         }
@@ -60,6 +63,7 @@ public class ChangeWaypoint : MonoBehaviour
                 {
                     EnemyAggro[i].GetComponent<EnemyData>().CanVisible = false;
                     EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
+                    EnemyAggro[i].GetComponent<EnemyData>().CanReset = true;
                 }
             }
         }
@@ -74,6 +78,7 @@ public class ChangeWaypoint : MonoBehaviour
             {
                 EnemyAggro[i].GetComponent<EnemyData>().CanVisible = false;
                 EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
+                EnemyAggro[i].GetComponent<EnemyData>().CanReset = true;
                 PlayerSee = true;
             }
         }
