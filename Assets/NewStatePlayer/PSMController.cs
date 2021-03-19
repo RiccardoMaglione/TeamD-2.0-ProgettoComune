@@ -90,6 +90,7 @@ namespace SwordGame
         public bool IsHeavyAttack = false;
         public bool IsSpecialAttack = false;
         #endregion
+        public bool JumpFollow = false;
         private void OnValidate()
         {
             OnValidatePlayerManager();
