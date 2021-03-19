@@ -211,6 +211,7 @@ public class EnemyData : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            print("COLLIDE CON IL PLAYER" + this.name);
             CanVisible = true;
             GetComponent<Animator>().SetBool("IsFollowing", true);
         }
