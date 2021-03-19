@@ -77,5 +77,15 @@ public class ChangeWaypoint : MonoBehaviour
                 PlayerSee = true;
             }
         }
+        if(collision.tag == "Enemy")
+        {
+            for (int i = 0; i < EnemyAggro.Count; i++)
+            {
+                if (collision.gameObject == EnemyAggro[i])
+                {
+                    EnemyAggro.RemoveAt(i);
+                }
+            }
+        }
     }
 }
