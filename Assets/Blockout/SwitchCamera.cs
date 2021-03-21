@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SwitchCamera : MonoBehaviour
 {
     public GameObject nextCamera;
+    public GameObject currentCamera;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,6 +11,7 @@ public class SwitchCamera : MonoBehaviour
         {
             nextCamera.SetActive(true);
             this.gameObject.SetActive(false);
+            currentCamera.SetActive(false);
         }
     }
 

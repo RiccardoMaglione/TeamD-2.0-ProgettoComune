@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Cinemachine;
+using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
     float lenght, startPos;
-    public GameObject cam;
+    public CinemachineVirtualCamera cam;
     public float parallaxEffect;
 
     void Start()
@@ -16,6 +17,8 @@ public class Parallax : MonoBehaviour
 
     void Update()
     {
+        cam = FindObjectOfType<CinemachineVirtualCamera>();
+        cam.transform.position = new Vector3(FixParallax.position.x, FixParallax.position.y, FixParallax.position.z);
         float temp = (cam.transform.position.x * (1 - parallaxEffect));
         float dist = (cam.transform.position.x * parallaxEffect);
 
