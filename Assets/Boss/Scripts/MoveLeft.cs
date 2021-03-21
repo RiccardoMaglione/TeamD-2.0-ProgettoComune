@@ -3,6 +3,7 @@
 public class MoveLeft : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] float damage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -10,7 +11,7 @@ public class MoveLeft : MonoBehaviour
             Destroy(gameObject);
 
         if (collision.gameObject.tag == "Player")
-            Debug.LogWarning("HIT");
+            Debug.LogWarning(damage+" WAVE DAMAGE");
     }
 
     void Update()
