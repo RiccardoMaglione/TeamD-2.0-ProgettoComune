@@ -20,7 +20,7 @@ public class AttackSystem : MonoBehaviour
             Knockback.ActiveKnockback = true;
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
-                GetComponentInParent<PSMController>().IsLightAttack = false;
+                //GetComponentInParent<PSMController>().IsLightAttack = false;
                 collision.GetComponent<EnemyData>().Life -= LightDamage;
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
@@ -36,7 +36,7 @@ public class AttackSystem : MonoBehaviour
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
-                GetComponentInParent<PSMController>().IsHeavyAttack = false;
+                //GetComponentInParent<PSMController>().IsHeavyAttack = false;
                 collision.GetComponent<EnemyData>().Life -= HeavyDamage;
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
@@ -52,7 +52,7 @@ public class AttackSystem : MonoBehaviour
             }
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
             {
-                GetComponentInParent<PSMController>().IsSpecialAttack = false;
+                //GetComponentInParent<PSMController>().IsSpecialAttack = false;
                 collision.GetComponent<EnemyData>().Life -= SpecialDamage;
                 if (collision.GetComponent<EnemyData>().Life <= 0)
                 {
@@ -73,7 +73,12 @@ public class AttackSystem : MonoBehaviour
         }
         
     }
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        GetComponentInParent<PSMController>().IsLightAttack = false;
+        GetComponentInParent<PSMController>().IsHeavyAttack = false;
+        GetComponentInParent<PSMController>().IsSpecialAttack = false;
+    }
     //IEnumerator Attack()
     //{
     //    yield return new WaitForSeconds(attackTimer);

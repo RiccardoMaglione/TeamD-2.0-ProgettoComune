@@ -9,13 +9,15 @@ public class PSMAttack : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("PSM-Attack", false);
-        animator.GetComponent<PSMController>().RB2D.velocity = Vector2.zero;
+        //animator.GetComponent<PSMController>().RB2D.velocity = Vector2.zero;
+        animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<PSMController>().RB2D.velocity = Vector2.zero;
+        animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);
+        //animator.GetComponent<PSMController>().RB2D.velocity = Vector2.zero;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

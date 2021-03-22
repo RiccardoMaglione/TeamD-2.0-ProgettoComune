@@ -37,7 +37,7 @@ public class DistanceState : StateMachineBehaviour
     {
         
       //  Debug.Log("aaaAttack" + animator.GetComponent<EnemyData>().CanAttack);
-        if (animator.GetComponent<EnemyData>().CanAttack == true)
+        if (animator.GetComponent<EnemyData>().CanAttack == true && (RangeAttack.isMelee == true || RangeAttack.isRanged == true))
         {
             animator.GetComponent<EnemyData>().random = Random.Range(0, 101);
             animator.GetComponent<EnemyData>().CanAttack = false;
@@ -45,26 +45,26 @@ public class DistanceState : StateMachineBehaviour
             Debug.Log("aaaCiao2" + animator.GetComponent<EnemyData>().isStun);
 
         }
-        if (animator.GetComponent<EnemyData>().CanVisible == true && animator.GetComponent<EnemyData>().isStun == false)
+        if (animator.GetComponent<EnemyData>().CanVisible == true && animator.GetComponent<EnemyData>().isStun == false && (RangeAttack.isMelee == true || RangeAttack.isRanged == true))
         {
             Debug.Log("aaaprova");
             if (animator.GetComponent<EnemyData>().random <= animator.GetComponent<EnemyData>().PercentuageAttack)
             {
-                if (RangeAttack.isMelee == true)
-                {
+                //if (RangeAttack.isMelee == true)
+                //{
                     Debug.Log("aaaleggero");
                     animator.SetTrigger("LightAttack");
                     animator.SetBool("CanAttack", true);
-                }
+                //}
             }
             else
             {
-                if(RangeAttack.isRanged == true)
-                {
+                //if(RangeAttack.isRanged == true)
+                //{
                     Debug.Log("aaaPesante");
                     animator.SetTrigger("HeavyAttack");
                     animator.SetBool("CanAttack", true);
-                }
+                //}
             }
         }
 
