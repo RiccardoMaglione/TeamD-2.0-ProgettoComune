@@ -118,6 +118,7 @@ public class EnemyData : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<Animator>().SetInteger("Life", Life);
         timerStun = 0;
         InitializeSpeedAnimation();
     }
