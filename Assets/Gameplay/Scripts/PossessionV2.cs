@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace SwordGame
@@ -47,7 +46,7 @@ namespace SwordGame
         {
             if (PromptCommand != null)
                 PromptCommand.SetActive(false);
-            CC2D = GetComponentInChildren <CircleCollider2D>();
+            CC2D = GetComponentInChildren<CircleCollider2D>();
             CC2D.radius = RadiusArea;
         }
 
@@ -75,11 +74,11 @@ namespace SwordGame
                     //FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().TypeEnemy,1);
 
                     PlayerDetect.gameObject.tag = "Enemy";
-                    PlayerDetectArray[PlayerDetectArray.Count-1].gameObject.tag = "Player";
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].gameObject.tag = "Player";
 
                     //PlayerDetect.GetComponent<Animator>().enabled = true;
                     //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().enabled = false;
-                    
+
                     PlayerDetect.GetComponent<EnemyData>().enabled = true;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().enabled = false;
 
@@ -89,9 +88,9 @@ namespace SwordGame
 
                     //PlayerDetect.GetComponent<PlayerManager>().enabled = false;
                     //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().enabled = true;
-                    
-                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider != null)
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().MaxHealth);
+
+                    if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider != null)
+                        PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().MaxHealth);
 
                     PlayerDetect.transform.Find("Aggro").gameObject.SetActive(true);                                    //Diventa nemico attiva aggro
                     PlayerDetectArray[PlayerDetectArray.Count - 1].transform.Find("Aggro").gameObject.SetActive(false);  //diventa player disattiva aggro
@@ -167,15 +166,16 @@ namespace SwordGame
 
                     PlayerDetect.GetComponent<PSMController>().enabled = false;                                                  //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().enabled = true;                //Nemico in cui nel trigger c'è il player
-                    
+
                     PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<Rigidbody2D>().sharedMaterial = MaterialYesFriction;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<Rigidbody2D>().sharedMaterial = MaterialNoFriction;                    //Nemico in cui nel trigger c'è il player
 
                     PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().color = EnemyColor;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().color = PlayerColor;                    //Nemico in cui nel trigger c'è il player
 
-                    PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;                                                       //Attuale Player
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;                    //Nemico in cui nel trigger c'è il player
+                    PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder = PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder;                    //Nemico in cui nel trigger c'è il player
+                                                                                                                                                                                                                                                                              //Attuale Player
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder = 9;                    //Nemico in cui nel trigger c'è il player
 
 
                     PlayerDetect.GetComponent<PossessionV2>().gameObject.layer = 9;                                                       //Attuale 
@@ -200,7 +200,7 @@ namespace SwordGame
 
                     gameObject.SetActive(false);
                     gameObject.SetActive(true);
-                    
+
                     PlayerDetect.GetComponent<Animator>().SetBool("CanPossession", true);
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().SetBool("CanPossession", true);
                 }
@@ -247,11 +247,11 @@ namespace SwordGame
             if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
             {
                 PlayerDetect = null;
-                if(GetComponent<EnemyData>().LightAttackCollider.activeSelf == true || GetComponent<EnemyData>().HeavyAttackCollider.activeSelf == true)
+                if (GetComponent<EnemyData>().LightAttackCollider.activeSelf == true || GetComponent<EnemyData>().HeavyAttackCollider.activeSelf == true)
                 {
                     GetComponent<EnemyData>().PlayerEnemy = null;
                 }
-                
+
                 GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
                 GetComponent<EnemyData>().HeavyAttackCollider.SetActive(false);
                 GetComponent<EnemyData>().CanMove = true;
@@ -261,14 +261,14 @@ namespace SwordGame
                     GetComponent<EnemyData>().CanReset = false;
                     GetComponent<EnemyData>().CanAttack = true;
                 }
-        
-        
+
+
                 if (PromptCommand != null)
                 {
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
                     foreach (PossessionV2 go in AllPossession)
                     {
-                        if(go.gameObject != go.GetComponent<PSMController>().enabled)
+                        if (go.gameObject != go.GetComponent<PSMController>().enabled)
                         {
                             //go.gameObject.SetActive(false);
                             //go.gameObject.SetActive(true);
