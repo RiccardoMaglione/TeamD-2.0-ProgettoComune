@@ -203,6 +203,7 @@ namespace SwordGame
 
                     PlayerDetect.GetComponent<Animator>().SetBool("CanPossession", true);
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().SetBool("CanPossession", true);
+                    PromptCommand.SetActive(true);
                 }
             }
             #endregion
@@ -230,15 +231,26 @@ namespace SwordGame
                     foreach (PossessionV2 go in AllPossession)
                     {
                         go.PromptCommand.SetActive(false);
+                        print("Disattiva12");
                     }
                 }
-                PromptCommand.SetActive(true);
+                if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+                    PromptCommand.SetActive(true);
                 isPlayer = true;
 
 
 
                 PlayerDetectArray.Add(this.gameObject);
                 count++;
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
+            {
+                if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+                    PromptCommand.SetActive(true);
             }
         }
 
@@ -275,6 +287,7 @@ namespace SwordGame
                         }
                     }
                     PromptCommand.SetActive(false);
+                    print("Disattiva23");
                 }
                 isPlayer = false;
             }

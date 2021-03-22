@@ -37,7 +37,7 @@ public class DistanceState : StateMachineBehaviour
     {
         
       //  Debug.Log("aaaAttack" + animator.GetComponent<EnemyData>().CanAttack);
-        if (animator.GetComponent<EnemyData>().CanAttack == true && (RangeAttack.isMelee == true || RangeAttack.isRanged == true))
+        if (animator.GetComponent<EnemyData>().CanAttack == true && (animator.GetComponentInChildren<RangeAttack>().isMelee == true || animator.GetComponentInChildren<RangeAttack>().isRanged == true))
         {
             animator.GetComponent<EnemyData>().random = Random.Range(0, 101);
             animator.GetComponent<EnemyData>().CanAttack = false;
@@ -45,7 +45,7 @@ public class DistanceState : StateMachineBehaviour
             Debug.Log("aaaCiao2" + animator.GetComponent<EnemyData>().isStun);
 
         }
-        if (animator.GetComponent<EnemyData>().CanVisible == true && animator.GetComponent<EnemyData>().isStun == false && (RangeAttack.isMelee == true || RangeAttack.isRanged == true))
+        if (animator.GetComponent<EnemyData>().CanVisible == true && animator.GetComponent<EnemyData>().isStun == false && (animator.GetComponentInChildren<RangeAttack>().isMelee == true || animator.GetComponentInChildren<RangeAttack>().isRanged == true))
         {
             Debug.Log("aaaprova");
             if (animator.GetComponent<EnemyData>().random <= animator.GetComponent<EnemyData>().PercentuageAttack)

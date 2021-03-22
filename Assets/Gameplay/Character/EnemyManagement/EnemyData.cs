@@ -108,6 +108,8 @@ public class EnemyData : MonoBehaviour
     public float DeathAnimClipSpeed = 1;
 
     public GameObject Aggro;
+
+    public bool IsTriggerAttack = false;
     #endregion
 
 
@@ -198,33 +200,31 @@ public class EnemyData : MonoBehaviour
 
     #region Trigger Zone
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Player")
-        {
-            CanVisible = true;
-            GetComponent<Animator>().SetBool("IsFollowing", true);
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            print("COLLIDE CON IL PLAYER" + this.name);
-            CanVisible = true;
-            GetComponent<Animator>().SetBool("IsFollowing", true);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            CanVisible = false;
-            GetComponent<Animator>().SetBool("IsFollowing", false);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if(collision.tag == "Player")
+    //    {
+    //        CanVisible = true;
+    //        GetComponent<Animator>().SetBool("IsFollowing", true);
+    //    }
+    //}
+    //
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Player")
+    //    {
+    //        print("COLLIDE CON IL PLAYER" + this.name);
+    //        CanVisible = true;
+    //        GetComponent<Animator>().SetBool("IsFollowing", true);
+    //    }
+    //}
+    //
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //
+    //    //CanVisible = false;
+    //    //GetComponent<Animator>().SetBool("IsFollowing", false);
+    //}
 
     #endregion
 

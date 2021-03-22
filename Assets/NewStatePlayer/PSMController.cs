@@ -316,11 +316,11 @@ namespace SwordGame
         #region Trigger Zone
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(Invulnerability == false && isTriggerOnlyOnce == false)
+            if(Invulnerability == false && collision.GetComponentInParent<EnemyData>().IsTriggerAttack == false)
             {
                 if (collision.tag == "LightAttack")
                 {
-                    isTriggerOnlyOnce = true;
+                    collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                     ResetTimerStaggered = 0;
                     PoisePlayer += 1;
                     CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
@@ -329,10 +329,11 @@ namespace SwordGame
                     {
                         collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
                     }
+                    collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                 }
                 if (collision.tag == "HeavyAttack")
                 {
-                    isTriggerOnlyOnce = true;
+                    collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                     ResetTimerStaggered = 0;
                     PoisePlayer += 1;
                     CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
@@ -341,6 +342,7 @@ namespace SwordGame
                     {
                         collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
                     }
+                    collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                 }
             }
 
@@ -354,11 +356,11 @@ namespace SwordGame
         {
             if (collision.tag == "LightAttack")
             {
-                isTriggerOnlyOnce = false;
+                collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
             }
             if (collision.tag == "HeavyAttack")
             {
-                isTriggerOnlyOnce = false;
+                collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
             }
         }
         #endregion
