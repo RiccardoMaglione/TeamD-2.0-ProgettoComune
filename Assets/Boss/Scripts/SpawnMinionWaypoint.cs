@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class WaypointsAttack1 : MonoBehaviour
+public class SpawnMinionWaypoint : MonoBehaviour
 {
     public GameObject[] waypoints;
     [HideInInspector] public int i = 0;
     public float[] speed;
     float WPradius = 0.1f;
-    
-    public void Attack1()
+
+    public void Move()
     {
         if (i < waypoints.Length)
         {

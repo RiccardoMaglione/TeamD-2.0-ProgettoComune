@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 
-public class WaypointsAttack1 : MonoBehaviour
+public class Smash1 : MonoBehaviour
 {
     public GameObject[] waypoints;
     [HideInInspector] public int i = 0;
     public float[] speed;
     float WPradius = 0.1f;
-    
-    public void Attack1()
+    public int checkGroundWP;
+    bool hit = false;
+
+    public void Smash()
     {
         if (i < waypoints.Length)
         {
@@ -17,6 +19,12 @@ public class WaypointsAttack1 : MonoBehaviour
             {
                 i++;
             }
+        }
+
+        if (waypoints[checkGroundWP].transform.position.y >= transform.position.y && hit == false)
+        {
+            hit = true;
+            GroundManager.instance.Smash();
         }
     }
 }

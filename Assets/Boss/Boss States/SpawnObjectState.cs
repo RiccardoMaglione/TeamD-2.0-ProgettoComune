@@ -7,18 +7,16 @@ public class SpawnObjectState : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Instantiate(prefab1, animator.gameObject.transform.position, animator.gameObject.transform.rotation);
-        Instantiate(prefab2, animator.gameObject.transform.position, animator.gameObject.transform.rotation);
-        
+        Instantiate(prefab1, new Vector2(animator.gameObject.transform.position.x-2.7f, animator.gameObject.transform.position.y - 1.8f), animator.gameObject.transform.rotation);
+        Instantiate(prefab2, new Vector2(animator.gameObject.transform.position.x+2.7f, animator.gameObject.transform.position.y - 1.8f), animator.gameObject.transform.rotation);     
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetTrigger("GoToNext"); 
+        animator.SetTrigger("GoToIdle"); 
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("GoToNext");
     }
 }
