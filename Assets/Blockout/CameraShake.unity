@@ -7293,7 +7293,7 @@ MonoBehaviour:
   m_ImpulseDefinition:
     m_ImpulseChannel: -1
     m_RawSignal: {fileID: 11400000, guid: e90574c1b514efe4da5fc0967b615edd, type: 2}
-    m_AmplitudeGain: 1
+    m_AmplitudeGain: 0.01
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 0
@@ -7374,11 +7374,11 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_AttackTime: 0
-      m_SustainTime: 0.2
-      m_DecayTime: 0.7
+      m_SustainTime: 0.1
+      m_DecayTime: 0.3
       m_ScaleWithImpact: 0
       m_HoldForever: 0
-    m_ImpactRadius: 100
+    m_ImpactRadius: 1000
     m_DirectionMode: 0
     m_DissipationMode: 2
     m_DissipationDistance: 1000
@@ -11840,7 +11840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &294072706
 GameObject:
@@ -13048,7 +13048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &322641349
 GameObject:
@@ -21879,7 +21879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!4 &500426967 stripped
 Transform:
@@ -22309,7 +22309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &527285009
 GameObject:
@@ -25952,7 +25952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!4 &606875059 stripped
 Transform:
@@ -27021,7 +27021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!4 &622698117 stripped
 Transform:
@@ -28243,7 +28243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &655778015
 GameObject:
@@ -29536,7 +29536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!4 &685006248 stripped
 Transform:
@@ -38309,7 +38309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1001 &889917853
 PrefabInstance:
@@ -40919,7 +40919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &931799154
 GameObject:
@@ -44211,7 +44211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3820037514289953313, guid: ace1ed57afdf57d4d9546329f061752e, type: 3}
       propertyPath: stopTime
-      value: 0.1
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 4265060939957550900, guid: ace1ed57afdf57d4d9546329f061752e, type: 3}
       propertyPath: thrust
@@ -44289,6 +44289,10 @@ PrefabInstance:
       propertyPath: specialAttackCollider
       value: 
       objectReference: {fileID: 539650226}
+    - target: {fileID: 7440506355589575096, guid: ace1ed57afdf57d4d9546329f061752e, type: 3}
+      propertyPath: stopTime
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7440506355589575096, guid: ace1ed57afdf57d4d9546329f061752e, type: 3}
       propertyPath: HeavyDamage
       value: 10
@@ -46637,7 +46641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1001 &1056953888
 PrefabInstance:
@@ -56783,7 +56787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1306916181
 GameObject:
@@ -59466,7 +59470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1380626333
 GameObject:
@@ -59896,7 +59900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1400247978
 GameObject:
@@ -60943,7 +60947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!4 &1416512927 stripped
 Transform:
@@ -63209,7 +63213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1463906670
 GameObject:
@@ -63310,7 +63314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1464189314
 GameObject:
@@ -65419,7 +65423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1499520806
 GameObject:
@@ -65602,7 +65606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1507026257
 GameObject:
@@ -70191,7 +70195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603372515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.269587, y: 0.74350166, z: -10}
+  m_LocalPosition: {x: -13.259348, y: 0.74350166, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -71019,7 +71023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1621183822
 GameObject:
@@ -71496,7 +71500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1628395636
 GameObject:
@@ -76401,7 +76405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1745054259
 GameObject:
@@ -78003,7 +78007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1779163315
 GameObject:
@@ -79217,7 +79221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ChannelMask: -1
-  m_Gain: 0.01
+  m_Gain: 1
   m_Use2DDistance: 1
 --- !u!1 &1808390935
 GameObject:
@@ -91732,6 +91736,55 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8769111216981088140, guid: ace1ed57afdf57d4d9546329f061752e, type: 3}
   m_PrefabInstance: {fileID: 1003962763}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2097833972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097833967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: e90574c1b514efe4da5fc0967b615edd, type: 2}
+    m_AmplitudeGain: 0.01
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.1
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
+    m_PropagationSpeed: 343
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 513
+  m_IgnoreTag: 
+  m_UseImpactDirection: 0
+  m_ScaleImpactWithMass: 0
+  m_ScaleImpactWithSpeed: 0
 --- !u!1 &2099475691
 GameObject:
   m_ObjectHideFlags: 0
