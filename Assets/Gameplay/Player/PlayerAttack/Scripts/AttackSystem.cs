@@ -12,11 +12,23 @@ public class AttackSystem : MonoBehaviour
     [SerializeField] int HeavyDamage;
     [SerializeField] int SpecialDamage;
 
+    [SerializeField] float stopTime;
+
+    public IEnumerator StartTimeAgain()
+    {
+        Debug.LogError("stop");
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(stopTime);
+        Time.timeScale = 1;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Passa qui HIT" + collision.name);
         if(collision.gameObject.tag == "Enemy")
         {
+            StartCoroutine("StartTimeAgain");
+
             Knockback.ActiveKnockback = true;
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
