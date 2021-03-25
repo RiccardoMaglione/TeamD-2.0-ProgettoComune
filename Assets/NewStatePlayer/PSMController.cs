@@ -316,33 +316,36 @@ namespace SwordGame
         #region Trigger Zone
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(Invulnerability == false && collision.GetComponentInParent<EnemyData>().IsTriggerAttack == false)
+            if(collision.GetComponentInParent<EnemyData>() != null)
             {
-                if (collision.tag == "LightAttack")
+                if(Invulnerability == false && collision.GetComponentInParent<EnemyData>().IsTriggerAttack == false)
                 {
-                    collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
-                    ResetTimerStaggered = 0;
-                    PoisePlayer += 1;
-                    CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
-                    print("PSM-Trigger: Entra nel light attack - Colpito");
-                    if (isBoriousDash == true)
+                    if (collision.tag == "LightAttack")
                     {
-                        collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                        collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
+                        ResetTimerStaggered = 0;
+                        PoisePlayer += 1;
+                        CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                        print("PSM-Trigger: Entra nel light attack - Colpito");
+                        if (isBoriousDash == true)
+                        {
+                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                        }
+                        collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                     }
-                    collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
-                }
-                if (collision.tag == "HeavyAttack")
-                {
-                    collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
-                    ResetTimerStaggered = 0;
-                    PoisePlayer += 1;
-                    CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
-                    print("PSM-Trigger: Entra nel heavy attack - Colpito");
-                    if (isBoriousDash == true)
+                    if (collision.tag == "HeavyAttack")
                     {
-                        collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                        collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
+                        ResetTimerStaggered = 0;
+                        PoisePlayer += 1;
+                        CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                        print("PSM-Trigger: Entra nel heavy attack - Colpito");
+                        if (isBoriousDash == true)
+                        {
+                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                        }
+                        collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                     }
-                    collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                 }
             }
 

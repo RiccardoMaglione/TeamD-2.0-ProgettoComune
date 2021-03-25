@@ -7,6 +7,7 @@ public class AIStunState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.SetBool("AI-IsStun",true);
         animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View
         animator.GetComponent<EnemyData>().isStun = true;
         animator.GetComponent<EnemyData>().CountHit = 0;
@@ -29,6 +30,7 @@ public class AIStunState : StateMachineBehaviour
                 animator.SetTrigger("IsDeath");
             }
         }
+        animator.GetComponent<EnemyData>().GetComponent<Rigidbody2D>().velocity = new Vector2(0, animator.GetComponent<EnemyData>().GetComponent<Rigidbody2D>().velocity.y);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -201,10 +201,10 @@ AnimatorStateMachine:
     m_Position: {x: 280, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7681003345657540712}
-    m_Position: {x: 30, y: -90, z: 0}
+    m_Position: {x: 50, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7763294784670044773}
-    m_Position: {x: 30, y: -220, z: 0}
+    m_Position: {x: 50, y: -220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3848660372142965450}
     m_Position: {x: -260, y: -90, z: 0}
@@ -945,6 +945,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: AI-IsStun
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1221,6 +1227,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: Life
     m_EventTreshold: 1
+  - m_ConditionMode: 2
+    m_ConditionEvent: AI-IsStun
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7681003345657540712}
   m_Solo: 0
