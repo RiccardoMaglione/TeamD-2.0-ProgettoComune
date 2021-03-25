@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using SwordGame;
 using System.Collections;
-using SwordGame;
+using UnityEngine;
 public class AttackSystem : MonoBehaviour
 {
     //[Tooltip("Timer Collider Acceso - Tempo in cui il collider di attacco è attivo")]
@@ -14,6 +14,8 @@ public class AttackSystem : MonoBehaviour
 
     [SerializeField] float stopTime;
 
+    [SerializeField] GameObject hitAnimation; //25/03/21
+
     public IEnumerator StartTimeAgain()
     {
         Debug.LogError("stop");
@@ -25,9 +27,11 @@ public class AttackSystem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Passa qui HIT" + collision.name);
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             StartCoroutine("StartTimeAgain");
+            hitAnimation.SetActive(true); //25/03/21
+            collision.gameObject.GetComponent<EnemyData>().bloodPS.Play();//25/03/21
 
             Knockback.ActiveKnockback = true;
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
@@ -83,13 +87,15 @@ public class AttackSystem : MonoBehaviour
                 print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
         }
-        
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         GetComponentInParent<PSMController>().IsLightAttack = false;
         GetComponentInParent<PSMController>().IsHeavyAttack = false;
         GetComponentInParent<PSMController>().IsSpecialAttack = false;
+
+        hitAnimation.SetActive(false); //25/03/21
     }
     //IEnumerator Attack()
     //{
