@@ -845,6 +845,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: PSM-LightAttack
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: PSM-CanDash
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2650230664982804810}
   m_Solo: 0
@@ -909,6 +912,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: PSM-SpecialAttack
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: PSM-CanDash
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1282779249335233670}
@@ -1639,6 +1645,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: PSM-HeavyAttack
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: PSM-CanDash
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4363915940369616162}
