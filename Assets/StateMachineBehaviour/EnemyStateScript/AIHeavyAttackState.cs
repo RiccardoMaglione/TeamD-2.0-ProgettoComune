@@ -7,6 +7,7 @@ public class AIHeavyAttackState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.SetBool("AI-HeavyAttack", true);
         animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.magenta;       //MVC: View
         animator.SetBool("IsPatroling", false);
         animator.SetBool("IsFollowing", false);

@@ -190,14 +190,60 @@ public class EnemyData : MonoBehaviour
     #endregion
 
     #region Animation Event
-    public void EventActivateAttack(GameObject ColliderAttack)
+    //public void EventActivateAttack(GameObject ColliderAttack)
+    //{
+    //    ColliderAttack.SetActive(true);
+    //}
+    //
+    //public void EventDeactivateAttack(GameObject ColliderAttack)
+    //{
+    //    ColliderAttack.SetActive(false);
+    //}
+
+    /// <summary>
+    /// Evento: Attivazione del collider di attacco
+    /// </summary>
+    public void EventEnemyActivateCollider()
     {
-        ColliderAttack.SetActive(true);
+        if (GetComponent<Animator>().GetBool("AI-LightAttack") == true)
+        {
+            LightAttackCollider .SetActive(true);
+        }
+        if (GetComponent<Animator>().GetBool("AI-HeavyAttack") == true)
+        {
+            HeavyAttackCollider.SetActive(true);
+        }
     }
 
-    public void EventDeactivateAttack(GameObject ColliderAttack)
+    /// <summary>
+    /// Evento: Disattivazione del collider di attacco
+    /// </summary>
+    public void EventEnemyDeactivateCollider()
     {
-        ColliderAttack.SetActive(false);
+        if (GetComponent<Animator>().GetBool("AI-LightAttack") == true)
+        {
+            LightAttackCollider.SetActive(false);
+        }
+        if (GetComponent<Animator>().GetBool("AI-HeavyAttack") == true)
+        {
+            HeavyAttackCollider.SetActive(false);
+        }
+
+    }
+
+    /// <summary>
+    /// Evento: Va nell'ultimo frame dell'attacco, serve per passare allo stato successivo dell'attacco - Exit
+    /// </summary>
+    public void EventEnemyFinishAttack()
+    {
+        if (GetComponent<Animator>().GetBool("AI-LightAttack") == true)
+        {
+            GetComponent<Animator>().SetBool("AI-LightAttack", false);
+        }
+        if (GetComponent<Animator>().GetBool("AI-HeavyAttack") == true)
+        {
+            GetComponent<Animator>().SetBool("AI-HeavyAttack", false);
+        }
     }
     #endregion
 
