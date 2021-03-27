@@ -29,7 +29,7 @@ public class AttackSystem : MonoBehaviour
         Debug.Log("Passa qui HIT" + collision.name);
         if (collision.gameObject.tag == "Enemy")
         {
-            //StartCoroutine("StartTimeAgain");
+            StartCoroutine("StartTimeAgain");
             if(hitAnimation != null) //27/03/21
                 hitAnimation.SetActive(true); //25/03/21
             if(collision.gameObject.GetComponent<EnemyData>().bloodPS != null)//27/03/21
