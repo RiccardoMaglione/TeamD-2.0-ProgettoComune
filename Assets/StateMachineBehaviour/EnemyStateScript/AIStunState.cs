@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AIStunState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("AI-IsStun",true);
+        animator.SetBool("AI-IsStun", true);
         animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View
         animator.GetComponent<EnemyData>().isStun = true;
         animator.GetComponent<EnemyData>().CountHit = 0;

@@ -9,9 +9,12 @@ public class SwitchCamera : MonoBehaviour
 
     public GameObject activateAggroBox1;
 
+    public int killedEnemyToProgress;
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && killedEnemyToProgress == FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
         {
             nextCamera.SetActive(true);
             this.gameObject.SetActive(false);
