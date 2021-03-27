@@ -29,9 +29,11 @@ public class AttackSystem : MonoBehaviour
         Debug.Log("Passa qui HIT" + collision.name);
         if (collision.gameObject.tag == "Enemy")
         {
-            StartCoroutine("StartTimeAgain");
-            hitAnimation.SetActive(true); //25/03/21
-            collision.gameObject.GetComponent<EnemyData>().bloodPS.Play();//25/03/21
+            //StartCoroutine("StartTimeAgain");
+            if(hitAnimation != null) //27/03/21
+                hitAnimation.SetActive(true); //25/03/21
+            if(collision.gameObject.GetComponent<EnemyData>().bloodPS != null)//27/03/21
+                collision.gameObject.GetComponent<EnemyData>().bloodPS.Play();//25/03/21
 
             Knockback.ActiveKnockback = true;
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
@@ -95,7 +97,8 @@ public class AttackSystem : MonoBehaviour
         GetComponentInParent<PSMController>().IsHeavyAttack = false;
         GetComponentInParent<PSMController>().IsSpecialAttack = false;
 
-        hitAnimation.SetActive(false); //25/03/21
+        if(hitAnimation != null)    //27/03/21
+            hitAnimation.SetActive(false); //25/03/21
     }
     //IEnumerator Attack()
     //{
