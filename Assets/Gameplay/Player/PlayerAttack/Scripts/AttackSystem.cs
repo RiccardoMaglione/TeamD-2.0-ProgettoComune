@@ -1,5 +1,4 @@
 ﻿using SwordGame;
-using System.Collections;
 using UnityEngine;
 public class AttackSystem : MonoBehaviour
 {
@@ -22,16 +21,19 @@ public class AttackSystem : MonoBehaviour
         {
             ColorChangeController colorChangeController = collision.GetComponent<ColorChangeController>();
             colorChangeController.isAttacked = true;
-        
+
             if (hitAnimation != null) //27/03/21
                 hitAnimation.SetActive(true); //25/03/21
-            if(collision.gameObject.GetComponent<EnemyData>().bloodPS != null)//27/03/21
+            if (collision.gameObject.GetComponent<EnemyData>().bloodPS != null)//27/03/21
                 collision.gameObject.GetComponent<EnemyData>().bloodPS.Play();//25/03/21
 
             Knockback.ActiveKnockback = true;
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
-                StartCoroutine(FeedbackManager.instance.StopTimeLight());
+                if (FeedbackManager.instance.isTimeStopped == false)
+                {
+                    StartCoroutine(FeedbackManager.instance.StopTimeLight());
+                }
                 //GetComponentInParent<PSMController>().IsLightAttack = false;
                 collision.GetComponent<EnemyData>().Life -= LightDamage;
                 collision.GetComponent<EnemyData>().CountHit++;
@@ -48,7 +50,11 @@ public class AttackSystem : MonoBehaviour
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
-                StartCoroutine(FeedbackManager.instance.StopTimeHeavy());
+                if (FeedbackManager.instance.isTimeStopped == false)
+                {
+                    StartCoroutine(FeedbackManager.instance.StopTimeHeavy());
+                }
+
                 //GetComponentInParent<PSMController>().IsHeavyAttack = false;
                 collision.GetComponent<EnemyData>().Life -= HeavyDamage;
                 collision.GetComponent<EnemyData>().CountHit++;
@@ -92,7 +98,7 @@ public class AttackSystem : MonoBehaviour
         GetComponentInParent<PSMController>().IsHeavyAttack = false;
         GetComponentInParent<PSMController>().IsSpecialAttack = false;
 
-        if(hitAnimation != null)    //27/03/21
+        if (hitAnimation != null)    //27/03/21
             hitAnimation.SetActive(false); //25/03/21
     }
     //IEnumerator Attack()
