@@ -9,7 +9,7 @@ public class ChangeWaypoint : MonoBehaviour
     public GameObject PlayerAggro;
     public List<GameObject> EnemyAggro = new List<GameObject>();
     public bool PlayerSee;
-
+    public int InitialOrderLayer = 7;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Enemy")
@@ -25,6 +25,8 @@ public class ChangeWaypoint : MonoBehaviour
                 EnemyAggro[i].GetComponent<EnemyData>().CanVisible = false;
                 EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
                 EnemyAggro[i].GetComponent<EnemyData>().CanReset = true;
+
+                EnemyAggro[i].GetComponent<EnemyData>().GetComponent<SpriteRenderer>().sortingOrder = InitialOrderLayer - i;
             }
         }
         if (collision.tag == "Player")
@@ -64,6 +66,7 @@ public class ChangeWaypoint : MonoBehaviour
                     EnemyAggro[i].GetComponent<EnemyData>().CanVisible = false;
                     EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
                     EnemyAggro[i].GetComponent<EnemyData>().CanReset = true;
+                    EnemyAggro[i].GetComponent<EnemyData>().GetComponent<SpriteRenderer>().sortingOrder = InitialOrderLayer - i;
                 }
             }
         }
