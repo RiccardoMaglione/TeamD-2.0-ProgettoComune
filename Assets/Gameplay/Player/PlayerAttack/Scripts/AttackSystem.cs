@@ -12,25 +12,18 @@ public class AttackSystem : MonoBehaviour
     [SerializeField] int HeavyDamage;
     [SerializeField] int SpecialDamage;
 
-    [SerializeField] float stopTime;
-
     [SerializeField] GameObject hitAnimation; //25/03/21
 
-    public IEnumerator StartTimeAgain()
-    {
-        Debug.LogError("stop");
-        Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(stopTime);
-        Time.timeScale = 1;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Passa qui HIT" + collision.name);
         if (collision.gameObject.tag == "Enemy")
         {
-            //StartCoroutine("StartTimeAgain");
-            if(hitAnimation != null) //27/03/21
+            ColorChangeController colorChangeController = collision.GetComponent<ColorChangeController>();
+            colorChangeController.isAttacked = true;
+        
+            if (hitAnimation != null) //27/03/21
                 hitAnimation.SetActive(true); //25/03/21
             if(collision.gameObject.GetComponent<EnemyData>().bloodPS != null)//27/03/21
                 collision.gameObject.GetComponent<EnemyData>().bloodPS.Play();//25/03/21
@@ -38,6 +31,7 @@ public class AttackSystem : MonoBehaviour
             Knockback.ActiveKnockback = true;
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
+                StartCoroutine(FeedbackManager.instance.StopTimeLight());
                 //GetComponentInParent<PSMController>().IsLightAttack = false;
                 collision.GetComponent<EnemyData>().Life -= LightDamage;
                 collision.GetComponent<EnemyData>().CountHit++;
@@ -54,6 +48,7 @@ public class AttackSystem : MonoBehaviour
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
+                StartCoroutine(FeedbackManager.instance.StopTimeHeavy());
                 //GetComponentInParent<PSMController>().IsHeavyAttack = false;
                 collision.GetComponent<EnemyData>().Life -= HeavyDamage;
                 collision.GetComponent<EnemyData>().CountHit++;

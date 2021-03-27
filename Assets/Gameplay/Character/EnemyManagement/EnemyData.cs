@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyData : MonoBehaviour
@@ -116,9 +117,7 @@ public class EnemyData : MonoBehaviour
     public bool IsTriggerAttack = false;
     #endregion
 
-
     #endregion
-
 
     private void Start()
     {
@@ -142,7 +141,6 @@ public class EnemyData : MonoBehaviour
         //print("Stun" + timerStun);
         //ResetStaggeredEnemy();
         #endregion
-
         //CalculateDistance();
     }
 

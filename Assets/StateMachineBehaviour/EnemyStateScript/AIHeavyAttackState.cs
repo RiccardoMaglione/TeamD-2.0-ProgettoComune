@@ -8,7 +8,6 @@ public class AIHeavyAttackState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("AI-HeavyAttack", true);
-        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.magenta;       //MVC: View
         animator.SetBool("IsPatroling", false);
         animator.SetBool("IsFollowing", false);
         animator.SetBool("RecoilHeavy", true);
