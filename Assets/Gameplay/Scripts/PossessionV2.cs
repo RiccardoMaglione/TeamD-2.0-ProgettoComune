@@ -144,6 +144,8 @@ namespace SwordGame
                     PlayerDetect.GetComponent<Animator>().SetBool("CanPossession", true);
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().SetBool("CanPossession", false);
                     PromptCommand.SetActive(true);
+
+                    ChangeFollow.NewPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                 }
             }
             #endregion
