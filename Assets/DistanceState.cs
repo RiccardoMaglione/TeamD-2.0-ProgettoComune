@@ -8,7 +8,6 @@ public class DistanceState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.cyan;
         animator.GetComponent<EnemyData>().CanAttack = true;
         if (animator.GetComponent<EnemyData>().PlayerEnemy != null)
         {
