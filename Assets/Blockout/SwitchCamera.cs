@@ -29,4 +29,22 @@ public class SwitchCamera : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && killedEnemyToProgress == FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
+        {
+            nextCamera.SetActive(true);
+            this.gameObject.SetActive(false);
+            currentCamera.SetActive(false);
+            nextConfiner.SetActive(true);
+            currentConfiner.SetActive(false);
+            if (activateAggroBox1 != null)
+            {
+                activateAggroBox1.SetActive(true);
+            }
+
+        }
+    }
+
+
 }
