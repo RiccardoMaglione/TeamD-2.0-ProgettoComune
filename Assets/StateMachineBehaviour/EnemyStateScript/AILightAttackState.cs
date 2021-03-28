@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AILightAttackState : StateMachineBehaviour
 {
@@ -22,7 +20,7 @@ public class AILightAttackState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(true);
+        //animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(true);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
