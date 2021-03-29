@@ -6,7 +6,7 @@ public class AIStunState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("AI-IsStun", true);
-        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View
+        //animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View
         animator.GetComponent<EnemyData>().isStun = true;
         animator.GetComponent<EnemyData>().CountHit = 0;
         animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
@@ -15,7 +15,7 @@ public class AIStunState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;
+        //animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;
         if (animator.GetComponent<EnemyData>().isStun == true && animator.GetComponent<EnemyData>().isPossessed == false)
         {
             animator.GetComponent<EnemyData>().timerStun += Time.deltaTime;
