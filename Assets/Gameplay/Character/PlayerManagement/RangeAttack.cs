@@ -21,7 +21,12 @@ namespace SwordGame
             {
                 if (tag == "RangeMelee")                                                                //Quando il player è nel range melee
                 {
-                    isMelee = true;
+                    //isMelee = true;
+                    //isRanged = true;
+                    if (OverridePercetuageMelee <= 100)
+                        isMelee = true;
+                    if (OverridePercetuageRanged > 0)
+                        isRanged = true;
                     GetComponentInParent<EnemyData>().PercentuageAttack = OverridePercetuageMelee;      //Override della percentuale di attacco in quella melee
                 }
                 else if (tag == "RangeRanged" && isMelee == false)                                      //Quando il player è nel range ranged ma è fuori dal melee
@@ -44,7 +49,8 @@ namespace SwordGame
                 if (tag == "RangeMelee")                                                                //Se esce dall'area melee - Conseguenza: il range da melee viene passato a ranged
                 {
                     isMelee = false;
-                    if(isRanged == true && isMelee == false)                                            //Deve tornare alla percentuale ranged quando isMelee è falso e isRanged è true - Controllo per sicurezza isMelee - Controllo isRanged perché potrebbe non avere l'area ranged
+                    isRanged = false;
+                    if (isRanged == true && isMelee == false)                                            //Deve tornare alla percentuale ranged quando isMelee è falso e isRanged è true - Controllo per sicurezza isMelee - Controllo isRanged perché potrebbe non avere l'area ranged
                     {
                         GetComponentInParent<EnemyData>().PercentuageAttack = OverridePercetuageRanged; //Override della percentuale di attacco in quella ranged
                     }
