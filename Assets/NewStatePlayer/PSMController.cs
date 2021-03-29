@@ -264,6 +264,7 @@ namespace SwordGame
             }
             if (GetComponent<Animator>().GetBool("PSM-HeavyAttack") == true)
             {
+                StartCoroutine(FeedbackManager.instance.Vibration());
                 HeavyAttackCollider.SetActive(true);
             }
             if (GetComponent<Animator>().GetBool("PSM-SpecialAttack") == true)
