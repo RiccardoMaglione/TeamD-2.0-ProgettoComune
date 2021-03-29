@@ -96,6 +96,7 @@ namespace SwordGame
             //LifeBar.fillAmount = (float)CurrentLife / 100;      //temp
             if (CurrentHealth <= 0)
             {
+                FeedbackManager.instance.StopVibration();
                 //GetComponent<Animator>().SetBool("IsDie", true);
                 GetComponent<Animator>().SetTrigger("PSM-IsDie");
                 //Destroy(this.gameObject);

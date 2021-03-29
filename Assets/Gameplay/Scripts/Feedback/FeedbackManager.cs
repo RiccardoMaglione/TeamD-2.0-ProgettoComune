@@ -42,11 +42,20 @@ public class FeedbackManager : MonoBehaviour
         isTimeStopped = false;
     }
 
-    public IEnumerator Vibration()
+    public void StartVibration()
     {
         GamePad.SetVibration(playerIndex, leftMotor, rightMotor);
-        yield return new WaitForSecondsRealtime(vibrationDuration);
+    }
+
+    public void StopVibration()
+    {
         GamePad.SetVibration(playerIndex, 0f, 0f);
+    }
+    public IEnumerator Vibration()
+    {
+        StartVibration();
+        yield return new WaitForSecondsRealtime(vibrationDuration);
+        StopVibration();
     }
 
     void Awake()
