@@ -318,7 +318,7 @@ namespace SwordGame
         {
             if(collision.GetComponentInParent<EnemyData>() != null)
             {
-                if(Invulnerability == false && collision.GetComponentInParent<EnemyData>().IsTriggerAttack == false)
+                if(Invulnerability == false && collision.GetComponentInParent<EnemyData>().IsTriggerAttack == false && tag == "Player")
                 {
                     if (collision.tag == "LightAttack")
                     {
@@ -327,19 +327,21 @@ namespace SwordGame
                         PoisePlayer += 1;
                         CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
                         print("PSM-Trigger: Entra nel light attack - Colpito");
+                        StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
                         {
                             collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
                         }
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                     }
-                    if (collision.tag == "HeavyAttack")
+                    if (collision.tag == "HeavyAttack" )
                     {
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
                         PoisePlayer += 1;
                         CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
                         print("PSM-Trigger: Entra nel heavy attack - Colpito");
+                        StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
                         {
                             collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
