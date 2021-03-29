@@ -99,6 +99,8 @@ namespace SwordGame
                     PlayerDetect.transform.Find("Aggro").gameObject.SetActive(true);                                    //Diventa nemico attiva aggro
                     PlayerDetectArray[PlayerDetectArray.Count - 1].transform.Find("Aggro").gameObject.SetActive(false);  //diventa player disattiva aggro
 
+                    
+
 
                     PlayerDetect.GetComponent<EnemyData>().Life = 0;
                     PlayerDetect.GetComponent<EnemyData>().isStun = true;
@@ -163,30 +165,36 @@ namespace SwordGame
         #region Trigger Zone
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
-            {
-                PlayerDetect = collision.gameObject;
-                GetComponent<EnemyData>().PlayerEnemy = PlayerDetect;
-                if (PromptCommand != null)
+            //if(GetComponent<EnemyData>().AreaPossession.activeSelf== true)
+            //{
+                if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
                 {
-                    PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
-                    foreach (PossessionV2 go in AllPossession)
+                    PlayerDetect = collision.gameObject;
+                    GetComponent<EnemyData>().PlayerEnemy = PlayerDetect;
+                    if (PromptCommand != null)
                     {
-                        go.PromptCommand.SetActive(false);
-                        print("Disattiva12");
+                        PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
+                        foreach (PossessionV2 go in AllPossession)
+                        {
+                            if(GetComponent<EnemyData>().AreaPossession.activeSelf == true)
+                            {
+                                go.PromptCommand.SetActive(false);
+                            }
+                            print("Disattiva12");
+                        }
                     }
+                    if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+                    {
+                        PromptCommand.SetActive(true);
+                    }
+                    isPlayer = true;
+                
+                
+                
+                    PlayerDetectArray.Add(this.gameObject);
+                    count++;
                 }
-                if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun"))
-                {
-                    PromptCommand.SetActive(true);
-                }
-                isPlayer = true;
-
-
-
-                PlayerDetectArray.Add(this.gameObject);
-                count++;
-            }
+            //}
         }
 
         private void OnTriggerStay2D(Collider2D collision)
@@ -207,7 +215,7 @@ namespace SwordGame
                 {
                     GetComponent<EnemyData>().PlayerEnemy = null;
                 }
-
+            
                 GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
                 GetComponent<EnemyData>().HeavyAttackCollider.SetActive(false);
                 GetComponent<EnemyData>().CanMove = true;
@@ -217,8 +225,8 @@ namespace SwordGame
                     GetComponent<EnemyData>().CanReset = false;
                     GetComponent<EnemyData>().CanAttack = true;
                 }
-
-
+            
+            
                 if (PromptCommand != null)
                 {
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();

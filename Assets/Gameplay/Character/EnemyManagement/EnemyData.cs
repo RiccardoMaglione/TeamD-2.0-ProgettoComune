@@ -117,6 +117,9 @@ public class EnemyData : MonoBehaviour
     public bool IsTriggerAttack = false;
     #endregion
 
+    public GameObject RangeMelee;
+    public GameObject RangeRanged;
+    public GameObject AreaPossession;
     #endregion
 
     private void Start()
