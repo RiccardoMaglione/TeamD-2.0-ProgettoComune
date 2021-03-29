@@ -55,7 +55,7 @@ public class ChangeWaypoint : MonoBehaviour
             }
         }
 
-        if (collision.tag == "Enemy")
+        if (collision.tag == "Enemy" && collision.tag != "Player")
         {
             collision.GetComponent<EnemyData>().PlayerEnemy = PlayerAggro;
             collision.GetComponent<PossessionV2>().PlayerDetect = PlayerAggro;
