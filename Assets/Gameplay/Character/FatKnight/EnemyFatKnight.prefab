@@ -255,7 +255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 0.1
   LightDamage: 20
   HeavyDamage: 30
   SpecialDamage: 6
@@ -755,7 +754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 0.1
   LightDamage: 20
   HeavyDamage: 30
   SpecialDamage: 6
@@ -1144,7 +1142,7 @@ Transform:
   m_GameObject: {fileID: 6375362479348193120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6375362479636607821}
   m_RootOrder: 0
@@ -1205,6 +1203,7 @@ Transform:
   - {fileID: 8696405184943604801}
   - {fileID: 8275903122291585543}
   - {fileID: 8275903121217354696}
+  - {fileID: 3611383624308038365}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1367,6 +1366,16 @@ MonoBehaviour:
   PlayerHeavyAttackSpeed: 1
   PlayerSpecialAttackSpeed: 1
   DashColliderBabushka: {fileID: 0}
+  LightAttackCollider: {fileID: 7252822116077840430}
+  HeavyAttackCollider: {fileID: 449714299952407506}
+  SpecialAttackCollider: {fileID: 2866992270692852994}
+  KeyboardLightlAttack: 117
+  KeyboardHeavyAttack: 105
+  KeyboardSpecialAttack: 121
+  IsLightAttack: 0
+  IsHeavyAttack: 0
+  IsSpecialAttack: 0
+  JumpFollow: 0
 --- !u!114 &6375362479636607818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,6 +1453,8 @@ MonoBehaviour:
   StaggerAnimClipSpeed: 0.1
   PossessionAnimClipSpeed: 1
   DeathAnimClipSpeed: 1
+  Aggro: {fileID: 0}
+  IsTriggerAttack: 0
 --- !u!95 &8275903121361279368
 Animator:
   serializedVersion: 3
@@ -1488,8 +1499,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6375362479725762281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 6375362479636607821}
   m_RootOrder: 1
@@ -1699,7 +1710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 0.1
   LightDamage: 20
   HeavyDamage: 30
   SpecialDamage: 6
@@ -1872,6 +1882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff3652369ed7f74e84f2655a3d77c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMelee: 0
+  isRanged: 0
   OverridePercetuageMelee: 100
   OverridePercetuageRanged: 0
 --- !u!1 &8275903122291585540
@@ -1970,6 +1982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff3652369ed7f74e84f2655a3d77c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMelee: 0
+  isRanged: 0
   OverridePercetuageMelee: 100
   OverridePercetuageRanged: 0
 --- !u!61 &8275903122291585536
@@ -1998,3 +2012,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!1 &8523198157168523140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3611383624308038365}
+  - component: {fileID: 7878749929041391268}
+  m_Layer: 0
+  m_Name: Aggro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3611383624308038365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523198157168523140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 6375362479636607821}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &7878749929041391268
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523198157168523140}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1

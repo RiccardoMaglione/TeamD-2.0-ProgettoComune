@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AIStunState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View
+        animator.SetBool("AI-IsStun", true);
+        //animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View
         animator.GetComponent<EnemyData>().isStun = true;
         animator.GetComponent<EnemyData>().CountHit = 0;
         animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
@@ -16,7 +15,7 @@ public class AIStunState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;
+        //animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;
         if (animator.GetComponent<EnemyData>().isStun == true && animator.GetComponent<EnemyData>().isPossessed == false)
         {
             animator.GetComponent<EnemyData>().timerStun += Time.deltaTime;
@@ -29,6 +28,7 @@ public class AIStunState : StateMachineBehaviour
                 animator.SetTrigger("IsDeath");
             }
         }
+        animator.GetComponent<EnemyData>().GetComponent<Rigidbody2D>().velocity = new Vector2(0, animator.GetComponent<EnemyData>().GetComponent<Rigidbody2D>().velocity.y);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

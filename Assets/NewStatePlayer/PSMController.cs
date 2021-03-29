@@ -75,6 +75,22 @@ namespace SwordGame
         public static bool isBoriousDash = false;
         #endregion
         //[HideInInspector] public Vector3 InitialPos;
+
+        #region Attack
+        [SerializeField] public GameObject LightAttackCollider;
+        [SerializeField] public GameObject HeavyAttackCollider;
+        [SerializeField] public GameObject SpecialAttackCollider;
+
+        [Header("KEYBOARD INPUTS")]
+        [SerializeField] public KeyCode KeyboardLightlAttack;
+        [SerializeField] public KeyCode KeyboardHeavyAttack;
+        [SerializeField] public KeyCode KeyboardSpecialAttack;
+
+        public bool IsLightAttack = false;
+        public bool IsHeavyAttack = false;
+        public bool IsSpecialAttack = false;
+        #endregion
+        public bool JumpFollow = false;
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -93,6 +109,7 @@ namespace SwordGame
             ResetStaggered();
             ResetPlatform();
             UpdatePlayerManager();
+            AttackPlayer();
         }
     
         public void InitializeSpeedAnimation()
@@ -202,33 +219,132 @@ namespace SwordGame
             }
         }
 
+        /// <summary>
+        /// Metodo per attaccare
+        /// </summary>
+        public void AttackPlayer()
+        {
+            if (Input.GetKeyDown(KeyboardLightlAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-CanAttack", false);
+                GetComponent<Animator>().SetBool("PSM-Attack", true);
+                GetComponent<Animator>().SetBool("PSM-LightAttack", true);
+                IsLightAttack = true;
+                IsHeavyAttack = false;
+                IsSpecialAttack = false;
+            }
+            if (Input.GetKeyDown(KeyboardHeavyAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-CanAttack", false);
+                GetComponent<Animator>().SetBool("PSM-Attack", true);
+                GetComponent<Animator>().SetBool("PSM-HeavyAttack", true);
+                IsLightAttack = false;
+                IsHeavyAttack = true;
+                IsSpecialAttack = false;
+            }
+            if (Input.GetKeyDown(KeyboardSpecialAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-CanAttack", false);
+                GetComponent<Animator>().SetBool("PSM-Attack", true);
+                GetComponent<Animator>().SetBool("PSM-SpecialAttack", true);
+                IsLightAttack = false;
+                IsHeavyAttack = false;
+                IsSpecialAttack = true;
+            }
+        }
+
+        /// <summary>
+        /// Evento: Attivazione del collider di attacco
+        /// </summary>
+        public void EventActivateCollider()
+        {
+            if(GetComponent<Animator>().GetBool("PSM-LightAttack") == true)
+            {
+                LightAttackCollider.SetActive(true);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-HeavyAttack") == true)
+            {
+                HeavyAttackCollider.SetActive(true);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-SpecialAttack") == true)
+            {
+                SpecialAttackCollider.SetActive(true);
+            }
+        }
+
+        /// <summary>
+        /// Evento: Disattivazione del collider di attacco
+        /// </summary>
+        public void EventDeactivateCollider()
+        {
+            if (GetComponent<Animator>().GetBool("PSM-LightAttack") == true)
+            {
+                LightAttackCollider.SetActive(false);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-HeavyAttack") == true)
+            {
+                HeavyAttackCollider.SetActive(false);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-SpecialAttack") == true)
+            {
+                SpecialAttackCollider.SetActive(false);
+            }
+        }
+
+        /// <summary>
+        /// Evento: Va nell'ultimo frame dell'attacco, serve per passare allo stato successivo dell'attacco - Exit
+        /// </summary>
+        public void EventFinishAttack()
+        {
+            if (GetComponent<Animator>().GetBool("PSM-LightAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-LightAttack", false);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-HeavyAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-HeavyAttack", false);
+            }
+            if (GetComponent<Animator>().GetBool("PSM-SpecialAttack") == true)
+            {
+                GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
+            }
+            IsLightAttack = false;
+            IsHeavyAttack = false;
+            IsSpecialAttack = false;
+        }
+
         #region Trigger Zone
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(Invulnerability == false && isTriggerOnlyOnce == false)
+            if(collision.GetComponentInParent<EnemyData>() != null)
             {
-                if (collision.tag == "LightAttack")
+                if(Invulnerability == false && collision.GetComponentInParent<EnemyData>().IsTriggerAttack == false)
                 {
-                    isTriggerOnlyOnce = true;
-                    ResetTimerStaggered = 0;
-                    PoisePlayer += 1;
-                    CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
-                    print("PSM-Trigger: Entra nel light attack - Colpito");
-                    if (isBoriousDash == true)
+                    if (collision.tag == "LightAttack")
                     {
-                        collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                        collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
+                        ResetTimerStaggered = 0;
+                        PoisePlayer += 1;
+                        CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                        print("PSM-Trigger: Entra nel light attack - Colpito");
+                        if (isBoriousDash == true)
+                        {
+                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                        }
+                        collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                     }
-                }
-                if (collision.tag == "HeavyAttack")
-                {
-                    isTriggerOnlyOnce = true;
-                    ResetTimerStaggered = 0;
-                    PoisePlayer += 1;
-                    CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
-                    print("PSM-Trigger: Entra nel heavy attack - Colpito");
-                    if (isBoriousDash == true)
+                    if (collision.tag == "HeavyAttack")
                     {
-                        collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                        collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
+                        ResetTimerStaggered = 0;
+                        PoisePlayer += 1;
+                        CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                        print("PSM-Trigger: Entra nel heavy attack - Colpito");
+                        if (isBoriousDash == true)
+                        {
+                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                        }
+                        collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                     }
                 }
             }
@@ -243,11 +359,11 @@ namespace SwordGame
         {
             if (collision.tag == "LightAttack")
             {
-                isTriggerOnlyOnce = false;
+                collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
             }
             if (collision.tag == "HeavyAttack")
             {
-                isTriggerOnlyOnce = false;
+                collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
             }
         }
         #endregion

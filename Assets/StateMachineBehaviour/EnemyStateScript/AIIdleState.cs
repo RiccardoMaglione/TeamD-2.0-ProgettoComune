@@ -15,7 +15,7 @@ public class AIIdleState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponentInParent<Animator>().SetInteger("Life", animator.GetComponent<EnemyData>().Life);
-        if (animator.GetComponent<EnemyData>().WaypointEnemy.Length != 0)
+        if (animator.GetComponent<EnemyData>().WaypointEnemy.Count != 0)
         {
             animator.SetBool("IsPatroling", true);
         }

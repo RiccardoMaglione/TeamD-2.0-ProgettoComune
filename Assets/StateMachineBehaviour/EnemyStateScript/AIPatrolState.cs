@@ -13,7 +13,7 @@ public class AIPatrolState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.GetComponent<EnemyData>().WaypointIndex <= animator.GetComponent<EnemyData>().WaypointEnemy.Length - 1 && animator.GetBool("IsFollowing") == false && animator.GetComponent<EnemyData>().CanMove == true && animator.GetComponent<EnemyData>().isStun == false/* && CanMoveAttack == true*/)
+        if (animator.GetComponent<EnemyData>().WaypointIndex <= animator.GetComponent<EnemyData>().WaypointEnemy.Count - 1 && animator.GetBool("IsFollowing") == false && animator.GetComponent<EnemyData>().CanMove == true && animator.GetComponent<EnemyData>().isStun == false/* && CanMoveAttack == true*/)
         {
             animator.GetComponent<EnemyData>().transform.position = Vector2.MoveTowards(animator.GetComponent<EnemyData>().transform.position, new Vector2(animator.GetComponent<EnemyData>().WaypointEnemy[animator.GetComponent<EnemyData>().WaypointIndex].transform.position.x, animator.GetComponent<EnemyData>().transform.position.y), animator.GetComponent<EnemyData>().Speed * Time.deltaTime);
             if (animator.GetComponent<EnemyData>().WaypointEnemy[animator.GetComponent<EnemyData>().WaypointIndex].transform.position.x > animator.GetComponent<EnemyData>().transform.position.x)
@@ -27,7 +27,7 @@ public class AIPatrolState : StateMachineBehaviour
             if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().WaypointEnemy[animator.GetComponent<EnemyData>().WaypointIndex].transform.position.x)
             {
                 animator.GetComponent<EnemyData>().WaypointIndex += 1;
-                if (animator.GetComponent<EnemyData>().WaypointIndex == animator.GetComponent<EnemyData>().WaypointEnemy.Length)
+                if (animator.GetComponent<EnemyData>().WaypointIndex == animator.GetComponent<EnemyData>().WaypointEnemy.Count)
                 {
                     animator.GetComponent<EnemyData>().WaypointIndex = 0;
                 }

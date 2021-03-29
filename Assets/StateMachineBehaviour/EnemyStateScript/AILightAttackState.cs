@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AILightAttackState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.magenta;       //MVC: View
+        animator.SetBool("AI-LightAttack", true);
         animator.SetBool("IsPatroling", false);
         animator.SetBool("IsFollowing", false);
         animator.SetBool("RecoilLight", true);
@@ -22,7 +20,7 @@ public class AILightAttackState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(true);
+        //animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(true);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

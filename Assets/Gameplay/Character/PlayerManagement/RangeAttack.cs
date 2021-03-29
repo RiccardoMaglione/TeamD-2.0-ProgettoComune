@@ -6,8 +6,8 @@ namespace SwordGame
 {
     public class RangeAttack : MonoBehaviour
     {
-        public static bool isMelee;
-        public static bool isRanged;
+        public bool isMelee;
+        public bool isRanged;
     
         [Tooltip("Percentuale di attacco melee quando il player sta nel range melee")]
         public int OverridePercetuageMelee;                                                             //Override di percentuage attack - Default: PercentuageAttack - Max = 100

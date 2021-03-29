@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace SwordGame
 {
     public class Knockback : MonoBehaviour
     {
-        public int thrust;                                              //Spinta aggiuntiva
+        public float thrust;                                              //Spinta aggiuntiva
         public List<Rigidbody2D> RB2DList = new List<Rigidbody2D>();    //Lista rigidbody nemici nel trigger
         public static bool ActiveKnockback;                             //Variabile che indica quando attivare l'impulso
         [Tooltip("Davanti del player + Vettore direzione local")]
@@ -19,7 +18,7 @@ namespace SwordGame
                 ActiveKnockback = false;                                                //Setta a falso per evitare possibili danni multipli
                 foreach (Rigidbody2D item in RB2DList)                                  //Per ogni oggetti nella lista dei rigidbody nemici
                 {
-                    print("Normallize"+((transform.right + transform.InverseTransformDirection(KnockbackDirection).normalized)));
+                    print("Normallize" + ((transform.right + transform.InverseTransformDirection(KnockbackDirection).normalized)));
                     item.AddForce((transform.right + transform.InverseTransformDirection(KnockbackDirection)).normalized * thrust, ForceMode2D.Impulse);       //All'oggetto si aggiunge una forza di tipologia impulso per affligere un knockback verso il davanti del player
                 }
             }

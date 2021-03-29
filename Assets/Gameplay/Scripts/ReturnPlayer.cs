@@ -40,11 +40,12 @@ namespace SwordGame
                     TimerDestroyList[i] += Time.deltaTime;
                     if(TimerDestroyList[i] >= timerLimit)
                     {
-                            if(LastDetectList[i] != PlayerNow)
-                            {
-                                print("ForseQua");
-                                Destroy(LastDetectList[i]);
-                            }
+                        if(LastDetectList[i] != PlayerNow)
+                        {
+                            print("ForseQua");
+                            LastDetectList[i].GetComponent<Animator>().SetTrigger("IsDeath");
+                            //Destroy(LastDetectList[i]);
+                        }
                         TimerDestroyList[i] = timerLimit;
                         CanDestroyList[i] = false;
                     }

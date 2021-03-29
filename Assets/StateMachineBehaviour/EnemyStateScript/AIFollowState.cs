@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SwordGame;
 
 public class AIFollowState : StateMachineBehaviour
 {
@@ -17,18 +18,24 @@ public class AIFollowState : StateMachineBehaviour
         {
             if (animator.GetComponent<EnemyData>().PlayerEnemy != null)
             {
-                if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + 1 > animator.GetComponent<EnemyData>().transform.position.x)
+                if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + 1f > animator.GetComponent<EnemyData>().transform.position.x)
                 {
-                    animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
                     animator.GetComponent<EnemyData>().transform.position = Vector2.MoveTowards(animator.GetComponent<EnemyData>().transform.position, new Vector2(animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - 1, animator.GetComponent<EnemyData>().transform.position.y), animator.GetComponent<EnemyData>().Speed * Time.deltaTime);
                 }
-                else if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - 1 < animator.GetComponent<EnemyData>().transform.position.x)
+                if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x > animator.GetComponent<EnemyData>().transform.position.x)
                 {
-                    animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);         //Sinistra
+                    animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
+                }
+                if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - 1f < animator.GetComponent<EnemyData>().transform.position.x)
+                {
                     animator.GetComponent<EnemyData>().transform.position = Vector2.MoveTowards(animator.GetComponent<EnemyData>().transform.position, new Vector2(animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + 1, animator.GetComponent<EnemyData>().transform.position.y), animator.GetComponent<EnemyData>().Speed * Time.deltaTime);
                 }
+                if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x < animator.GetComponent<EnemyData>().transform.position.x)
+                {
+                    animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);         //Sinistra
+                }
 
-                if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + 1)
+                if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + 1f)
                 {
                     animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
                     animator.GetComponent<EnemyData>().CanMove = false;
@@ -37,7 +44,7 @@ public class AIFollowState : StateMachineBehaviour
                 {
                     animator.GetComponent<EnemyData>().CanMove = true;
                 }
-                if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - 1)
+                if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - 1f)
                 {
                     animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
                     animator.GetComponent<EnemyData>().CanMove = false;
@@ -62,15 +69,21 @@ public class AIFollowState : StateMachineBehaviour
             Debug.Log("aaaprova");
             if (animator.GetComponent<EnemyData>().random <= animator.GetComponent<EnemyData>().PercentuageAttack)
             {
-                Debug.Log("aaaleggero");
-                animator.SetTrigger("LightAttack");
-                animator.SetBool("CanAttack", true);
+                if (animator.GetComponentInChildren<RangeAttack>().isMelee == true)
+                {
+                    Debug.Log("aaaleggero");
+                    animator.SetTrigger("LightAttack");
+                    animator.SetBool("CanAttack", true);
+                }
             }
             else
             {
-                Debug.Log("aaaPesante");
-                animator.SetTrigger("HeavyAttack");
-                animator.SetBool("CanAttack", true);
+                if (animator.GetComponentInChildren<RangeAttack>().isRanged == true)
+                {
+                    Debug.Log("aaaPesante");
+                    animator.SetTrigger("HeavyAttack");
+                    animator.SetBool("CanAttack", true);
+                }
             }
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using SwordGame;
 
-[CustomEditor(typeof(PossessionV2))]
+//[CustomEditor(typeof(PossessionV2))]
 public class PossessionInspector : Editor
 {
     public override void OnInspectorGUI()

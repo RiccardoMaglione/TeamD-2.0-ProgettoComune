@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AIHeavyAttackState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.magenta;       //MVC: View
+        animator.SetBool("AI-HeavyAttack", true);
         animator.SetBool("IsPatroling", false);
         animator.SetBool("IsFollowing", false);
         animator.SetBool("RecoilHeavy", true);
@@ -17,21 +15,21 @@ public class AIHeavyAttackState : StateMachineBehaviour
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
     //    #region HeavyAttack
-        //animator.SetFloat("TotalTimer", animator.GetFloat("TotalTimer") + Time.deltaTime);
+    //animator.SetFloat("TotalTimer", animator.GetFloat("TotalTimer") + Time.deltaTime);
 
-        //animator.GetComponent<EnemyManager>().ActivateDifferentCicleHeavy();
+    //animator.GetComponent<EnemyManager>().ActivateDifferentCicleHeavy();
 
-        //if(animator.GetFloat("TotalTimer") >= animator.GetComponent<EnemyManager>().CooldownTimerHeavy + animator.GetComponent<EnemyManager>().MaxDeactiveColliderTimerHeavy + animator.GetComponent<EnemyManager>().MaxInitialTimerHeavy + +0.01f)
-        //{
-        //    //animator.SetBool("CanAttack", false);
-        //}
-        //#endregion
+    //if(animator.GetFloat("TotalTimer") >= animator.GetComponent<EnemyManager>().CooldownTimerHeavy + animator.GetComponent<EnemyManager>().MaxDeactiveColliderTimerHeavy + animator.GetComponent<EnemyManager>().MaxInitialTimerHeavy + +0.01f)
+    //{
+    //    //animator.SetBool("CanAttack", false);
+    //}
+    //#endregion
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<EnemyData>().HeavyAttackCollider.SetActive(true);
+        //animator.GetComponent<EnemyData>().HeavyAttackCollider.SetActive(true);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

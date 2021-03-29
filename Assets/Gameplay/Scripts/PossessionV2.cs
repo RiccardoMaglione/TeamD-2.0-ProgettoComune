@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace SwordGame
@@ -47,7 +46,7 @@ namespace SwordGame
         {
             if (PromptCommand != null)
                 PromptCommand.SetActive(false);
-            CC2D = GetComponentInChildren <CircleCollider2D>();
+            CC2D = GetComponentInChildren<CircleCollider2D>();
             CC2D.radius = RadiusArea;
         }
 
@@ -75,11 +74,15 @@ namespace SwordGame
                     //FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().TypeEnemy,1);
 
                     PlayerDetect.gameObject.tag = "Enemy";
-                    PlayerDetectArray[PlayerDetectArray.Count-1].gameObject.tag = "Player";
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].gameObject.tag = "Player";
+
+                    PlayerDetect.GetComponent<Animator>().SetInteger("Life", PlayerDetect.GetComponent<EnemyData>().Life);
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().CurrentHealth = PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().MaxHealth;
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().PoisePlayer = 0;
 
                     //PlayerDetect.GetComponent<Animator>().enabled = true;
                     //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().enabled = false;
-                    
+
                     PlayerDetect.GetComponent<EnemyData>().enabled = true;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().enabled = false;
 
@@ -89,91 +92,31 @@ namespace SwordGame
 
                     //PlayerDetect.GetComponent<PlayerManager>().enabled = false;
                     //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().enabled = true;
-                    
-                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider != null)
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().MaxHealth);
 
-                    PlayerDetect.GetComponent<PlayerInput>().enabled = false;
-                    if(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>() == null)
-                    {
-                        PlayerDetectArray[PlayerDetectArray.Count - 1].AddComponent<PlayerInput>().enabled = true;
+                    if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider != null)
+                        PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().HealthSlider.MaxHealth(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().MaxHealth);
 
-                        foreach (AttackSystem item in PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponentsInChildren<AttackSystem>(true))
-                        {
-                            if (item.name == "LightAttackCollider")
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().lightAttackCollider = item.gameObject;
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardLightlAttack = KeyCode.U;
-                            }
-                            if (item.name == "HeavyAttackCollider")
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().heavyAttackCollider = item.gameObject;
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardHeavyAttack = KeyCode.I;
+                    PlayerDetect.transform.Find("Aggro").gameObject.SetActive(true);                                    //Diventa nemico attiva aggro
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].transform.Find("Aggro").gameObject.SetActive(false);  //diventa player disattiva aggro
 
-                            }
-                            if (item.name == "SpecialAttackCollider")
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().specialAttackCollider = item.gameObject;
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().KeyboardSpecialAttack = KeyCode.Y;
-                            }
-                            if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.FatKnight)
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
-                            }
-                            if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.BoriousKnight)
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
-                            }
-                            if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.Babushka)
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
-                            }
-                            if (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter == TypePlayer.Thief)
-                            {
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerActivation = 0.3f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerActivation = 1.4f;      //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerActivation = 0.1f;    //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().LightMaxTimerCooldown = 0.2f;        //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().HeavyMaxTimerCooldown = 1f;          //Valore che potrebbe variare
-                                PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().SpecialMaxTimerCooldown = 0.1f;      //Valore che potrebbe variare
-                            }
-                        }
-                    }
-                    else
-                    {
-                        PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerInput>().enabled = true;
-                    }
 
                     PlayerDetect.GetComponent<EnemyData>().Life = 0;
                     PlayerDetect.GetComponent<EnemyData>().isStun = true;
 
                     PlayerDetect.GetComponent<PSMController>().enabled = false;                                                  //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().enabled = true;                //Nemico in cui nel trigger c'è il player
-                    
+
                     PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<Rigidbody2D>().sharedMaterial = MaterialYesFriction;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<Rigidbody2D>().sharedMaterial = MaterialNoFriction;                    //Nemico in cui nel trigger c'è il player
 
                     PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().color = EnemyColor;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().color = PlayerColor;                    //Nemico in cui nel trigger c'è il player
 
-                    PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;                                                       //Attuale Player
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;                    //Nemico in cui nel trigger c'è il player
+                    PlayerDetect.GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder = PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder;              //Attuale Player
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().gameObject.GetComponent<SpriteRenderer>().sortingOrder = 9;                    //Nemico in cui nel trigger c'è il player
 
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().HeavyAttackCollider.SetActive(false);
 
                     PlayerDetect.GetComponent<PossessionV2>().gameObject.layer = 9;                                                       //Attuale 
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().PromptCommand.layer = 8;                    //Nemico in cui nel trigger c'è il player
@@ -197,9 +140,12 @@ namespace SwordGame
 
                     gameObject.SetActive(false);
                     gameObject.SetActive(true);
-                    
+
                     PlayerDetect.GetComponent<Animator>().SetBool("CanPossession", true);
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().SetBool("CanPossession", true);
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().SetBool("CanPossession", false);
+                    PromptCommand.SetActive(true);
+
+                    ChangeFollow.NewPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                 }
             }
             #endregion
@@ -227,9 +173,13 @@ namespace SwordGame
                     foreach (PossessionV2 go in AllPossession)
                     {
                         go.PromptCommand.SetActive(false);
+                        print("Disattiva12");
                     }
                 }
-                PromptCommand.SetActive(true);
+                if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+                {
+                    PromptCommand.SetActive(true);
+                }
                 isPlayer = true;
 
 
@@ -239,49 +189,49 @@ namespace SwordGame
             }
         }
 
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player" && this.gameObject == PlayerDetectArray[PlayerDetectArray.Count - 1])
+            {
+                if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+                    PromptCommand.SetActive(true);
+            }
+        }
+
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
             {
                 PlayerDetect = null;
-                if(GetComponent<EnemyData>().LightAttackCollider.activeSelf == true || GetComponent<EnemyData>().HeavyAttackCollider.activeSelf == true)
+                if (GetComponent<EnemyData>().LightAttackCollider.activeSelf == true || GetComponent<EnemyData>().HeavyAttackCollider.activeSelf == true)
                 {
                     GetComponent<EnemyData>().PlayerEnemy = null;
                 }
-                
+
                 GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
                 GetComponent<EnemyData>().HeavyAttackCollider.SetActive(false);
                 GetComponent<EnemyData>().CanMove = true;
                 if (GetComponent<EnemyData>().CanReset == true)
                 {
                     GetComponent<EnemyData>().PlayerEnemy = null;
-                    //GetComponent<EnemyManager>().FirstCycleHeavy = true;
-                    //GetComponent<EnemyManager>().FirstCycleLight = true;
-                    //GetComponent<EnemyManager>().CooldownHeavy = false;
-                    //GetComponent<EnemyManager>().CooldownLight = false;
-                    //GetComponent<EnemyManager>().InitialTimerHeavy = 0;
-                    //GetComponent<EnemyManager>().DeactiveColliderTimerHeavy = 0;
-                    //GetComponent<EnemyManager>().CooldownTimerHeavy = 0;
-                    //GetComponent<EnemyManager>().InitialTimerLight = 0;
-                    //GetComponent<EnemyManager>().DeactiveColliderTimerLight = 0;
-                    //GetComponent<EnemyManager>().CooldownTimerLight = 0;
                     GetComponent<EnemyData>().CanReset = false;
                     GetComponent<EnemyData>().CanAttack = true;
                 }
-        
-        
+
+
                 if (PromptCommand != null)
                 {
                     PossessionV2[] AllPossession = FindObjectsOfType<PossessionV2>();
                     foreach (PossessionV2 go in AllPossession)
                     {
-                        if(go.gameObject != go.GetComponent<PSMController>().enabled)
+                        if (go.gameObject != go.GetComponent<PSMController>().enabled)
                         {
                             //go.gameObject.SetActive(false);
                             //go.gameObject.SetActive(true);
                         }
                     }
                     PromptCommand.SetActive(false);
+                    print("Disattiva23");
                 }
                 isPlayer = false;
             }
