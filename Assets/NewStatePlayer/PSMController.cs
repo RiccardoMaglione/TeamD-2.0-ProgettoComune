@@ -389,7 +389,7 @@ namespace SwordGame
 
             if (Input.GetKey(KeyCode.S))
             {
-                if (collision.gameObject.GetComponent<PlatformEffector2D>() != null)
+                if (collision.gameObject.GetComponent<PlatformEffector2D>() != null && this.gameObject.tag == "Player")
                 {
                     collision.gameObject.GetComponent<PlatformEffector2D>().rotationalOffset = 180;
                     TempPlatform = collision.gameObject;
