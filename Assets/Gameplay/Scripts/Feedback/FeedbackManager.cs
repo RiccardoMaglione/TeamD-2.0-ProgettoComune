@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 using XInputDotNetPure;
+using Cinemachine;
 
 public class FeedbackManager : MonoBehaviour
 {
-    PlayerIndex playerIndex;
+    public CinemachineVirtualCamera[] cam;
+    [Header("ZOOM VALUES")]
+    public float speed;
+    public float endPosition;
 
+    PlayerIndex playerIndex;
     [Header("CONTROLLER VIBRATION VALUES")]
     [Range(0f, 1f)]
     public float leftMotor;
@@ -13,7 +18,7 @@ public class FeedbackManager : MonoBehaviour
     public float rightMotor;
     public float vibrationDuration;
 
-
+    
     [Header("TIME STOP VALUES")]
     public float stopTimeLightDuration;
     public float stopTimeHeavyDuration;
@@ -51,6 +56,7 @@ public class FeedbackManager : MonoBehaviour
     {
         GamePad.SetVibration(playerIndex, 0f, 0f);
     }
+
     public IEnumerator Vibration()
     {
         StartVibration();
@@ -58,9 +64,18 @@ public class FeedbackManager : MonoBehaviour
         StopVibration();
     }
 
+    public void Zoom()
+    {
+        for (int i = 0; i < cam.Length; i++)
+        {
+            cam[i].GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
+            cam[i].m_Lens.OrthographicSize = Mathf.Lerp(cam[i].m_Lens.OrthographicSize, endPosition, speed);
+        }
+    }
+
     void Awake()
     {
         if (instance == null)
-            instance = this;
+            instance = this;    
     }
 }

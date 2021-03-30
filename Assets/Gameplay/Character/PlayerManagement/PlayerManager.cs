@@ -97,6 +97,7 @@ namespace SwordGame
             if (CurrentHealth <= 0)
             {
                 FeedbackManager.instance.StopVibration();
+                FeedbackManager.instance.Zoom();
                 //GetComponent<Animator>().SetBool("IsDie", true);
                 GetComponent<Animator>().SetTrigger("PSM-IsDie");
                 //Destroy(this.gameObject);
