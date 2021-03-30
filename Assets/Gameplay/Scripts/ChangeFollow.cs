@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using SwordGame;
 
 public class ChangeFollow : MonoBehaviour
 {
     public List<CinemachineVirtualCamera> CamList = new List<CinemachineVirtualCamera>();
-    public static GameObject NewPlayer;
+    public GameObject NewPlayer;
 
     void Update()
     {
@@ -15,6 +16,8 @@ public class ChangeFollow : MonoBehaviour
             if(NewPlayer != null)
             {
                 CamList[i].Follow = NewPlayer.transform;
+                NewPlayer.GetComponent<PSMController>().MaxHealth = 2147483647;
+                NewPlayer.GetComponent<PSMController>().CurrentHealth = 2147483647;
             }
         }
     }

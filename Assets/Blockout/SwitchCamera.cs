@@ -11,6 +11,18 @@ public class SwitchCamera : MonoBehaviour
 
     public int killedEnemyToProgress;
 
+    public GameObject Enemies1;
+
+    private void Update()
+    {
+        if(2 == FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
+        {
+            if(Enemies1 != null)
+            {
+                Enemies1.SetActive(true);
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

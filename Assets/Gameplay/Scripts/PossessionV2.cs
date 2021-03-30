@@ -71,6 +71,7 @@ namespace SwordGame
                         LastPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                     }
 
+                    FindObjectOfType<ChangeFollow>().NewPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                     //FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().TypeEnemy,1);
 
                     PlayerDetect.gameObject.tag = "Enemy";
@@ -147,7 +148,6 @@ namespace SwordGame
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().SetBool("CanPossession", false);
                     PromptCommand.SetActive(true);
 
-                    ChangeFollow.NewPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                 }
             }
             #endregion
