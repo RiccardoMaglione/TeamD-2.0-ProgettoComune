@@ -26,7 +26,7 @@ public class SwitchCamera : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && killedEnemyToProgress == FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
+        if (collision.CompareTag("Player") && killedEnemyToProgress <= FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
         {
             nextCamera.SetActive(true);
             this.gameObject.SetActive(false);
@@ -43,7 +43,7 @@ public class SwitchCamera : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && killedEnemyToProgress == FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
+        if (collision.CompareTag("Player") && killedEnemyToProgress <= FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
         {
             nextCamera.SetActive(true);
             this.gameObject.SetActive(false);
