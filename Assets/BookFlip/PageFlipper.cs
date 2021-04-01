@@ -75,40 +75,44 @@ public class PageFlipper : MonoBehaviour
 
     public void NewGame()
     {
-        introPageCounter = 0;
-        pageCounter = 0;
+        if (aPageIsFlipping == false)
+        {
+            introPageCounter = 0;
+            pageCounter = 0;
 
-        StopAllCoroutines();
-        StartCoroutine(EnterCutsceneCoroutine());
-        introCutscene = true;
-        illustration0.SetActive(true);
-        levelSelectionPage1.SetActive(false);
-        page7Pivot.SetActive(false);
-        page8Pivot.SetActive(false);
+            StopAllCoroutines();
+            StartCoroutine(EnterCutsceneCoroutine());
+            introCutscene = true;
+            illustration0.SetActive(true);
+            levelSelectionPage1.SetActive(false);
+            page7Pivot.SetActive(false);
+            page8Pivot.SetActive(false);
 
-        page1Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
-        page2Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
-        page3Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
-        page4Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
-        page5Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
-        page6Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
-        page7Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
-        page8Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
-        page9Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
-
+            page1Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+            page2Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+            page3Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+            page4Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+            page5Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+            page6Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+            page7Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+            page8Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+            page9Pivot.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
     }
     public void Continue()
     {
-        introPageCounter = 0;
-        pageCounter = 0;
+        if (aPageIsFlipping == false)
+        {
+            introPageCounter = 0;
+            pageCounter = 0;
 
-        StopAllCoroutines();
-        page8Pivot.SetActive(false);
-        StartCoroutine(EnterLevelSelectionCoroutine());
-        introCutscene = false;
-        levelSelectionPage1.SetActive(true);
-        illustration0.SetActive(false);
-
+            StopAllCoroutines();
+            page8Pivot.SetActive(false);
+            StartCoroutine(EnterLevelSelectionCoroutine());
+            introCutscene = false;
+            levelSelectionPage1.SetActive(true);
+            illustration0.SetActive(false);
+        }
     }
 
     public void ToLevel3()
@@ -397,6 +401,7 @@ public class PageFlipper : MonoBehaviour
             if (page8Pivot.transform.rotation.eulerAngles.y == 180)
             {
                 aPageIsFlipping = false;
+                page9Pivot.SetActive(false);
             }
             yield return new WaitForEndOfFrame();
             pageCounter = 1;
