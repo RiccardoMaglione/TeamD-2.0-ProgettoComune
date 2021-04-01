@@ -33,7 +33,7 @@ public class PageFlipper : MonoBehaviour
     private Quaternion notFlippedPosition;
     private Quaternion flippedPosition;
 
-    public bool aPageIsFlipping = false;
+    public static bool aPageIsFlipping = false;
     public bool introCutscene = false;
 
     public int introPageCounter;
