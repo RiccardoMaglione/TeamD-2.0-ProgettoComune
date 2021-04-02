@@ -13,6 +13,7 @@ public class TornPage : MonoBehaviour
     [SerializeField] GameObject RateUs;
     [SerializeField] GameObject Credits;
     [SerializeField] GameObject Quit;
+    [SerializeField] GameObject shadowPanel;
 
     private float transitionTime = 10;
 
@@ -98,12 +99,13 @@ public class TornPage : MonoBehaviour
         while (progress < transitionTime)
         {
             PageFlipper.aPageIsFlipping = true;
-            tornPage.transform.position = Vector3.Lerp(tornPage.transform.position, endPos, progress * speed * Time.deltaTime);
+            tornPage.transform.position = Vector3.MoveTowards(tornPage.transform.position, endPos, progress * speed * Time.deltaTime);
             progress += Time.deltaTime;
             if (tornPage.transform.position == endPos)
             {
                 tornPageOpen = true;
                 PageFlipper.aPageIsFlipping = false;
+                shadowPanel.SetActive(true);
             }
             yield return null;
         }
@@ -112,11 +114,12 @@ public class TornPage : MonoBehaviour
 
     public IEnumerator MoveOutTornPage()
     {
+        shadowPanel.SetActive(false);
         float progress = 0;
         while (progress < transitionTime)
         {
             PageFlipper.aPageIsFlipping = true;
-            tornPage.transform.position = Vector3.Lerp(tornPage.transform.position, startPos, progress * speed * Time.deltaTime);
+            tornPage.transform.position = Vector3.MoveTowards(tornPage.transform.position, startPos, progress * speed * Time.deltaTime);
             progress += Time.deltaTime;
             if (tornPage.transform.position == startPos)
             {
