@@ -20,7 +20,7 @@ public class SwitchCamera : MonoBehaviour
             this.gameObject.SetActive(false);
             currentCamera.SetActive(false);
             nextConfiner.SetActive(true);
-            currentConfiner.SetActive(false);
+            Invoke("DeactivatePreviousConfiner", 0.5f);
             /*if (activateAggroBox1 != null)
             {
                 activateAggroBox1.SetActive(true);
@@ -37,13 +37,18 @@ public class SwitchCamera : MonoBehaviour
             this.gameObject.SetActive(false);
             currentCamera.SetActive(false);
             nextConfiner.SetActive(true);
-            currentConfiner.SetActive(false);
+            Invoke("DeactivatePreviousConfiner", 0.5f);
             if (activateAggroBox1 != null)
             {
                 activateAggroBox1.SetActive(true);
             }
 
         }
+    }
+
+    public void DeactivatePreviousConfiner()
+    {
+        currentConfiner.SetActive(false);
     }
 
 
