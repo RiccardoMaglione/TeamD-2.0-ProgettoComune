@@ -13,6 +13,8 @@ public class TornPage : MonoBehaviour
     [SerializeField] GameObject RateUs;
     [SerializeField] GameObject Credits;
     [SerializeField] GameObject Quit;
+    [SerializeField] GameObject SkullPage;
+
     [SerializeField] GameObject shadowPanel;
 
     private float transitionTime = 10;
@@ -42,6 +44,7 @@ public class TornPage : MonoBehaviour
             RateUs.SetActive(false);
             Credits.SetActive(false);
             Quit.SetActive(false);
+            SkullPage.SetActive(false);
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
@@ -56,6 +59,7 @@ public class TornPage : MonoBehaviour
             RateUs.SetActive(true);
             Credits.SetActive(false);
             Quit.SetActive(false);
+            SkullPage.SetActive(false);
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
@@ -71,6 +75,7 @@ public class TornPage : MonoBehaviour
             RateUs.SetActive(false);
             Credits.SetActive(true);
             Quit.SetActive(false);
+            SkullPage.SetActive(false);
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
@@ -86,11 +91,28 @@ public class TornPage : MonoBehaviour
             RateUs.SetActive(false);
             Credits.SetActive(false);
             Quit.SetActive(true);
+            SkullPage.SetActive(false);
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
         }
     }
+    public void SkullCollectionButton()
+    {
+        if (tornPageOpen == false && PageFlipper.aPageIsFlipping == false)
+        {
+
+            Options.SetActive(false);
+            RateUs.SetActive(false);
+            Credits.SetActive(false);
+            Quit.SetActive(false);
+            SkullPage.SetActive(true);
+
+            StopAllCoroutines();
+            StartCoroutine(MoveInTornPage());
+        }
+    }
+
 
 
     public IEnumerator MoveInTornPage()
