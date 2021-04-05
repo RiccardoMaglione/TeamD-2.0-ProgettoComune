@@ -32,9 +32,14 @@ public class TornPage : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            StopAllCoroutines();
-            StartCoroutine(MoveOutTornPage());
+            MoveOutTornPage();
         }
+    }
+
+    public void MoveOutTornPage()
+    {
+        StopAllCoroutines();
+        StartCoroutine(MoveOutTornPageCoroutine());
     }
     public void OptionsButton()
     {
@@ -134,7 +139,7 @@ public class TornPage : MonoBehaviour
 
     }
 
-    public IEnumerator MoveOutTornPage()
+    public IEnumerator MoveOutTornPageCoroutine()
     {
         shadowPanel.SetActive(false);
         float progress = 0;
