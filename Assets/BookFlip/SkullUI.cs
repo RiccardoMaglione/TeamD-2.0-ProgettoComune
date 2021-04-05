@@ -30,7 +30,7 @@ public class SkullUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        skullDescription.text = "Move on a skull to read its description";
+        skullDescription.text = "Move on an unlocked skull to read its description";
     }
     public void ActivateSkull()
     {
