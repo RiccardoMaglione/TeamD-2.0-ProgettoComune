@@ -41,6 +41,7 @@ public class TornPage : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(MoveOutTornPageCoroutine());
     }
+
     public void OptionsButton()
     {
         if (tornPageOpen == false && PageFlipper.aPageIsFlipping == false)
@@ -101,6 +102,10 @@ public class TornPage : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
         }
+    }
+    public void ConfirmQuit()
+    {
+        Application.Quit();
     }
     public void SkullCollectionButton()
     {
