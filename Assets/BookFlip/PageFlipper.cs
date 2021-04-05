@@ -53,7 +53,7 @@ public class PageFlipper : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && introCutscene == true && aPageIsFlipping == false)
+        if (Input.GetKeyDown(KeyCode.Return) && introCutscene == true && aPageIsFlipping == false || Input.GetMouseButtonDown(0) && introCutscene == true && aPageIsFlipping == false)
         {
             CutsceneFlipForward();
         }
