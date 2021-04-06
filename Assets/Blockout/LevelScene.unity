@@ -3795,6 +3795,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 530664942}
   currentCamera: {fileID: 1037798370}
   currentConfiner: {fileID: 738366127}
+  previousConfinerBarrier: {fileID: 323842853}
   activateAggroBox1: {fileID: 1952363548}
   killedEnemyToProgress: 43
 --- !u!61 &56503112
@@ -6341,7 +6342,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 766770379}
   m_Father: {fileID: 797813766}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10956,6 +10958,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 1344731396}
   currentCamera: {fileID: 1524621495}
   currentConfiner: {fileID: 97687026}
+  previousConfinerBarrier: {fileID: 766770378}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 0
 --- !u!61 &177760454
@@ -12693,6 +12696,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 2042389188}
   currentCamera: {fileID: 1799210597}
   currentConfiner: {fileID: 407944883}
+  previousConfinerBarrier: {fileID: 980947083}
   activateAggroBox1: {fileID: 1111584767}
   killedEnemyToProgress: 41
 --- !u!61 &210492470
@@ -14777,6 +14781,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 738366127}
   currentCamera: {fileID: 1854495193}
   currentConfiner: {fileID: 2042389188}
+  previousConfinerBarrier: {fileID: 1712373947}
   activateAggroBox1: {fileID: 1952363548}
   killedEnemyToProgress: 43
 --- !u!61 &248634251
@@ -18274,6 +18279,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 407944883}
   currentCamera: {fileID: 779421030}
   currentConfiner: {fileID: 953219546}
+  previousConfinerBarrier: {fileID: 89226060}
   activateAggroBox1: {fileID: 797077531}
   killedEnemyToProgress: 31
 --- !u!61 &329934448
@@ -19900,6 +19906,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 1549071248}
   currentCamera: {fileID: 1462419713}
   currentConfiner: {fileID: 508292178}
+  previousConfinerBarrier: {fileID: 617551733}
   activateAggroBox1: {fileID: 1177570837}
   killedEnemyToProgress: 102
 --- !u!61 &358010535
@@ -26789,6 +26796,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 194160786}
   currentCamera: {fileID: 239820082}
   currentConfiner: {fileID: 1344731396}
+  previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 0
 --- !u!61 &456877712
@@ -33744,6 +33752,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 699237936}
   currentCamera: {fileID: 1122475847}
   currentConfiner: {fileID: 771911518}
+  previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 139302067}
   killedEnemyToProgress: 8
 --- !u!61 &584117373
@@ -34799,7 +34808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604796354}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 463.5, y: 33.8, z: -10}
+  m_LocalPosition: {x: 427.3, y: 42.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 984824825}
@@ -42023,6 +42032,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 543417481}
   currentCamera: {fileID: 1069123631}
   currentConfiner: {fileID: 1549071248}
+  previousConfinerBarrier: {fileID: 503259879}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 0
 --- !u!61 &750467888
@@ -42315,6 +42325,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 1647572869}
   currentCamera: {fileID: 604796354}
   currentConfiner: {fileID: 131018044}
+  previousConfinerBarrier: {fileID: 874040628}
   activateAggroBox1: {fileID: 1595951329}
   killedEnemyToProgress: 95
 --- !u!61 &751887608
@@ -43222,6 +43233,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 508292178}
   currentCamera: {fileID: 1568664931}
   currentConfiner: {fileID: 1647572869}
+  previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 95
 --- !u!61 &764625340
@@ -43249,6 +43261,63 @@ BoxCollider2D:
   m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 2.4127808, y: 9.065704}
+  m_EdgeRadius: 0
+--- !u!1 &766770378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 766770379}
+  - component: {fileID: 766770380}
+  m_Layer: 0
+  m_Name: Collider 1.1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &766770379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766770378}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.5, y: -2.37, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 97687027}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &766770380
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766770378}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.557023, y: 1.3484926}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.09785867, y: 11.880907}
   m_EdgeRadius: 0
 --- !u!1 &768766305
 GameObject:
@@ -44033,6 +44102,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 1905556647}
   currentCamera: {fileID: 1625435821}
   currentConfiner: {fileID: 699237936}
+  previousConfinerBarrier: {fileID: 974559747}
   activateAggroBox1: {fileID: 1105609774}
   killedEnemyToProgress: 15
 --- !u!61 &784547297
@@ -55394,6 +55464,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 302522803}
   currentCamera: {fileID: 1312279304}
   currentConfiner: {fileID: 76726228}
+  previousConfinerBarrier: {fileID: 1472602827}
   activateAggroBox1: {fileID: 571598836}
   killedEnemyToProgress: 72
 --- !u!61 &983591991
@@ -57540,6 +57611,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 939177914}
   currentCamera: {fileID: 2054753182}
   currentConfiner: {fileID: 1905556647}
+  previousConfinerBarrier: {fileID: 19806727}
   activateAggroBox1: {fileID: 900609803}
   killedEnemyToProgress: 17
 --- !u!61 &1024983416
@@ -64119,6 +64191,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 249916314}
   currentCamera: {fileID: 1505163444}
   currentConfiner: {fileID: 302522803}
+  previousConfinerBarrier: {fileID: 866375512}
   activateAggroBox1: {fileID: 1130091085}
   killedEnemyToProgress: 86
 --- !u!61 &1159257501
@@ -65143,6 +65216,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 1741736078}
   currentCamera: {fileID: 973285907}
   currentConfiner: {fileID: 1052598909}
+  previousConfinerBarrier: {fileID: 493438178}
   activateAggroBox1: {fileID: 772026621}
   killedEnemyToProgress: 58
 --- !u!61 &1186964071
@@ -72360,7 +72434,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312279304}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 348.5, y: 21.1, z: -10}
+  m_LocalPosition: {x: 427.3, y: 42.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 918981686}
@@ -75719,6 +75793,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 953219546}
   currentCamera: {fileID: 647577381}
   currentConfiner: {fileID: 939177914}
+  previousConfinerBarrier: {fileID: 1635403210}
   activateAggroBox1: {fileID: 1230093187}
   killedEnemyToProgress: 25
 --- !u!61 &1373242944
@@ -83404,7 +83479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524621495}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.7, y: 0.4000001, z: -10}
+  m_LocalPosition: {x: -20.9, y: -0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1372691478}
@@ -88090,7 +88165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603372515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.5037155, y: 0.9000001, z: -10}
+  m_LocalPosition: {x: -13.515478, y: 0.9000001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88730,6 +88805,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 131018044}
   currentCamera: {fileID: 1876841970}
   currentConfiner: {fileID: 249916314}
+  previousConfinerBarrier: {fileID: 1754928357}
   activateAggroBox1: {fileID: 1547464983}
   killedEnemyToProgress: 93
 --- !u!61 &1616438696
@@ -105905,6 +105981,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 771911518}
   currentCamera: {fileID: 150781807}
   currentConfiner: {fileID: 1961053692}
+  previousConfinerBarrier: {fileID: 78711948}
   activateAggroBox1: {fileID: 92119136}
   killedEnemyToProgress: 8
 --- !u!61 &1944730427
@@ -106274,6 +106351,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 76726228}
   currentCamera: {fileID: 466741571}
   currentConfiner: {fileID: 1741736078}
+  previousConfinerBarrier: {fileID: 1657505890}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 60
 --- !u!61 &1946268884
@@ -107844,6 +107922,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 1164337241}
   currentCamera: {fileID: 1517740865}
   currentConfiner: {fileID: 543417481}
+  previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 0
 --- !u!61 &1978091051
@@ -112497,6 +112576,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 1052598909}
   currentCamera: {fileID: 410721241}
   currentConfiner: {fileID: 530664942}
+  previousConfinerBarrier: {fileID: 1989409437}
   activateAggroBox1: {fileID: 1243105205}
   killedEnemyToProgress: 50
 --- !u!61 &2060437770
@@ -112819,6 +112899,7 @@ MonoBehaviour:
   nextConfiner: {fileID: 1961053692}
   currentCamera: {fileID: 791710205}
   currentConfiner: {fileID: 194160786}
+  previousConfinerBarrier: {fileID: 1723494323}
   activateAggroBox1: {fileID: 1138509454}
   killedEnemyToProgress: 2
 --- !u!61 &2063933512
@@ -119596,7 +119677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8974479539208527925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.7, y: -2.1, z: 0}
+  m_LocalPosition: {x: -20.9, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8197210564496613086}
@@ -120178,7 +120259,7 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 4719.28
+  ResetTimerStaggered: 4747.152
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647
