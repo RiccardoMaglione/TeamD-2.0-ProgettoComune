@@ -1,31 +1,33 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class CrossbowTrap : MonoBehaviour
 {
+    [Tooltip("bool che verifica se il player è nel range")]
     public bool playerInRange;
-    public bool canShot;
-    public bool cooldownIsActive;
-    public bool touchRangeStartCrono;
-    public Transform player;
-    public BoxCollider2D boxColl;
-
-    public bool isShotRight = false;
-    public bool isShotLeft = false;
-
-    public float delayAttak = 0f;
-    public float cooldownTrap = 0f;
+    [Tooltip("tempo tra un colpo e l'altro")]
+    public float timeBetweenShot;
+    [Tooltip("se non dovesse prendere il player o pareti si distruggerà dopo tot secondi")]
+    public float destroyBulletTime;
+    [Tooltip("bool che verifica se puo sparare")]
+    public bool canShot = true;
 
     public GameObject bullet;
     public GameObject shotPoint;
 
-   
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.tag == "Player")
         {
                 playerInRange = true;
-                touchRangeStartCrono = true;
+
+            if (canShot)
+            {
+                StartCoroutine("Shoot");
+            }
         }
     }
 
@@ -33,42 +35,24 @@ public class CrossbowTrap : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            playerInRange = false;
+           playerInRange = false;
         }
     }
 
-    private void Update()
-    { 
-      
-        if (touchRangeStartCrono)
-        {
-            delayAttak += Time.deltaTime;
+    IEnumerator Shoot()
+    {
 
-            if(delayAttak >= 1f) 
+
+            while (playerInRange)
             {
+                canShot = false;
+                yield return new WaitForSeconds(timeBetweenShot);
                 canShot = true;
-                delayAttak = 0f;
-                touchRangeStartCrono = false;
+
+                GameObject go = Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+                Destroy(go, destroyBulletTime);
+
             }
-        }
-
-        if(canShot == true && !cooldownIsActive)
-        {
-            Instantiate(bullet, shotPoint.transform.position, transform.rotation);
-            canShot = false;
-            cooldownIsActive = true;
-        }
-
-        if (cooldownIsActive)
-        {
-            cooldownTrap += Time.deltaTime;
-            touchRangeStartCrono = false;
-
-            if(cooldownTrap >= 3f)
-            {
-                cooldownIsActive = false;
-                cooldownTrap = 0f;
-            }
-        }
+       
     }
 }
