@@ -21,21 +21,21 @@ public class DialogueType1 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, -100);
+
             blackPanel.SetActive(true);
             dialogueText.text = insertTutorialText;
             Time.timeScale = 0;
+            dialogueBox.SetActive(true);
             dialogueActive = true;
             StartCoroutine("DialogueIn");
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void DestroyCollider()
     {
-        if (collision.CompareTag("Player"))
-        {
-            StopCoroutine("DialogueOut");
-            Destroy(this);
-        }
+        StopCoroutine("DialogueOut");
+        Destroy(this);
     }
 
     private void Update()
@@ -47,6 +47,9 @@ public class DialogueType1 : MonoBehaviour
             dialogueActive = false;
             StopCoroutine("DialogueIn");
             StartCoroutine("DialogueOut");
+
+            Invoke("DestroyCollider", 0.4f);
+
         }
     }
     private IEnumerator DialogueIn()
