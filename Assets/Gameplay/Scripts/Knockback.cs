@@ -30,7 +30,7 @@ namespace SwordGame
         /// <param name="collision"></param>
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == "Enemy")
+            if (collision.tag == "Enemy" || collision.CompareTag("Breakable"))
             {
                 RB2DList.Add(collision.GetComponent<Rigidbody2D>());
             }

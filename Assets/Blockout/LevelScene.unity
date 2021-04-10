@@ -8735,7 +8735,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &145201577
 BoxCollider2D:
@@ -13814,6 +13814,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &230362338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 230362339}
+  - component: {fileID: 230362340}
+  m_Layer: 0
+  m_Name: Dialogue 4 VARIANT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &230362339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230362338}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.555473, y: -2.1454504, z: -3.2131038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1279180188}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &230362340
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230362338}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.0667906, y: 2.2373672}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.9709473, y: 8.173751}
+  m_EdgeRadius: 0
 --- !u!1 &231362027
 GameObject:
   m_ObjectHideFlags: 0
@@ -15436,7 +15493,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &264624571
 BoxCollider2D:
@@ -22721,6 +22778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 401259437}
   - component: {fileID: 401259438}
+  - component: {fileID: 401259439}
   m_Layer: 0
   m_Name: Dialogue 3
   m_TagString: Untagged
@@ -22740,7 +22798,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &401259438
 BoxCollider2D:
@@ -22755,7 +22813,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.84438324, y: 2.3020873}
+  m_Offset: {x: 1.1615124, y: 2.3020873}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -22766,8 +22824,31 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8795166, y: 8.303191}
+  m_Size: {x: 0.72826767, y: 8.303191}
   m_EdgeRadius: 0
+--- !u!114 &401259439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401259436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 967985598}
+  startPos: {fileID: 2072323994}
+  endPos: {fileID: 1982355696}
+  speedTransition: 2000
+  blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: Provami su quel fantoccio! Premi U per un attacco leggero e
+    I per un attacco pesante e non farmelo ripetere.
+  buttonToSkip1: 117
+  buttonToSkip2: 105
+  dialogueActive: 0
 --- !u!1 &402291111
 GameObject:
   m_ObjectHideFlags: 0
@@ -31755,6 +31836,101 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &551545409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 551545410}
+  - component: {fileID: 551545412}
+  - component: {fileID: 551545411}
+  - component: {fileID: 551545413}
+  m_Layer: 0
+  m_Name: Dialogue 2  VARIANT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &551545410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551545409}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -14.794527, y: -2.1554503, z: -3.2131038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1279180188}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &551545411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551545409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 967985598}
+  startPos: {fileID: 2072323994}
+  endPos: {fileID: 1982355696}
+  speedTransition: 2000
+  blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: "Bene!! Tu e questo corpo non siete poi cos\xEC inutili! Adesso
+    premi SPAZIO per...gi\xE0 fatto? Forse sei meno stupido di quanto pensavo."
+  buttonToSkip1: 32
+  buttonToSkip2: 13
+  dialogueActive: 0
+--- !u!61 &551545412
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551545409}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.1259804, y: 1.7748146}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3287582, y: 2.7563515}
+  m_EdgeRadius: 0
+--- !u!114 &551545413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551545409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f13aec8e469ae4597b8f515882586e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherVariantTrigger: {fileID: 2142967078}
 --- !u!1 &557103335
 GameObject:
   m_ObjectHideFlags: 0
@@ -33095,7 +33271,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &573814961
 BoxCollider2D:
@@ -34228,8 +34404,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 50}
+  m_AnchoredPosition: {x: 1.3999939, y: 2.800003}
+  m_SizeDelta: {x: 458.41394, y: 136.26837}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &590726337
 MonoBehaviour:
@@ -34278,8 +34454,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -54748,7 +54924,7 @@ GameObject:
   - component: {fileID: 967985601}
   - component: {fileID: 967985600}
   m_Layer: 5
-  m_Name: Dialogue2
+  m_Name: DialoguePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58255,6 +58431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1029467916}
   - component: {fileID: 1029467917}
+  - component: {fileID: 1029467918}
   m_Layer: 0
   m_Name: 'Dialogue 1 '
   m_TagString: Untagged
@@ -58302,6 +58479,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.045391, y: 5.0247135}
   m_EdgeRadius: 0
+--- !u!114 &1029467918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029467915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 967985598}
+  startPos: {fileID: 2072323994}
+  endPos: {fileID: 1982355696}
+  speedTransition: 2000
+  blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: 'Su! Premi le FRECCE DX e SX per muovermi e fai presto che
+    non ho tutto il giorno! '
+  buttonToSkip1: 97
+  buttonToSkip2: 100
+  dialogueActive: 0
 --- !u!1 &1030319111
 GameObject:
   m_ObjectHideFlags: 0
@@ -60940,7 +61140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1076622779
 BoxCollider2D:
@@ -70533,8 +70733,10 @@ Transform:
   m_Children:
   - {fileID: 1029467916}
   - {fileID: 2142967079}
+  - {fileID: 551545410}
   - {fileID: 401259437}
   - {fileID: 2119084383}
+  - {fileID: 230362339}
   - {fileID: 145201576}
   - {fileID: 1512051613}
   - {fileID: 264624570}
@@ -78150,9 +78352,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1431329078}
   - component: {fileID: 1431329077}
-  m_Layer: 8
+  - component: {fileID: 1431329079}
+  m_Layer: 9
   m_Name: Manichino
-  m_TagString: Player
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78222,6 +78425,19 @@ Transform:
   m_Father: {fileID: 80018595}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1431329079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431329076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cfbd123138068489c516a44fbc95e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitCounter: 0
 --- !u!1 &1431606364
 GameObject:
   m_ObjectHideFlags: 0
@@ -83024,7 +83240,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1512051614
 BoxCollider2D:
@@ -83768,7 +83984,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524621495}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.3, y: -0.4000001, z: -10}
+  m_LocalPosition: {x: -21.46, y: -0.51, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1372691478}
@@ -88454,7 +88670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603372515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.498184, y: -0.39999914, z: -10}
+  m_LocalPosition: {x: -13.495266, y: -0.4695003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -117121,7 +117337,7 @@ GameObject:
   - component: {fileID: 2119084383}
   - component: {fileID: 2119084384}
   m_Layer: 0
-  m_Name: Dialogue 4 (double)
+  m_Name: Dialogue 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117139,7 +117355,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2119084384
 BoxCollider2D:
@@ -118713,6 +118929,7 @@ GameObject:
   - component: {fileID: 2142967079}
   - component: {fileID: 2142967080}
   - component: {fileID: 2142967081}
+  - component: {fileID: 2142967082}
   m_Layer: 0
   m_Name: Dialogue 2
   m_TagString: Untagged
@@ -118747,7 +118964,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.031327724, y: 0.651741}
+  m_Offset: {x: 0.25587177, y: -1.5944061}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -118758,7 +118975,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4971647, y: 5.0024986}
+  m_Size: {x: 1.0480766, y: 0.5102043}
   m_EdgeRadius: 0
 --- !u!114 &2142967081
 MonoBehaviour:
@@ -118777,7 +118994,25 @@ MonoBehaviour:
   endPos: {fileID: 1982355696}
   speedTransition: 2000
   blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: "Bene!! Tu e questo corpo non siete poi cos\xEC inutili! Adesso
+    SPAZIO per farmi saltare."
+  buttonToSkip1: 32
+  buttonToSkip2: 0
   dialogueActive: 0
+--- !u!114 &2142967082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142967078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f13aec8e469ae4597b8f515882586e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherVariantTrigger: {fileID: 551545409}
 --- !u!1 &47410070660833283
 GameObject:
   m_ObjectHideFlags: 0
@@ -120055,7 +120290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8974479539208527925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.3, y: -2.9, z: 0}
+  m_LocalPosition: {x: -21.46, y: -3.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8197210564496613086}
@@ -120637,7 +120872,7 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 5362.0654
+  ResetTimerStaggered: 5458.5522
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647

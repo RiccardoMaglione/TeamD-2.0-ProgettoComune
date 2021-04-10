@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class DialogueType1 : MonoBehaviour
@@ -8,6 +9,11 @@ public class DialogueType1 : MonoBehaviour
     [SerializeField] RectTransform endPos;
     [SerializeField] float speedTransition;
     [SerializeField] GameObject blackPanel;
+    [SerializeField] private TextMeshProUGUI dialogueText;
+    [TextArea]
+    [SerializeField] private string insertTutorialText;
+    [SerializeField] public KeyCode buttonToSkip1;
+    [SerializeField] public KeyCode buttonToSkip2;
 
     public bool dialogueActive = false;
 
@@ -16,9 +22,9 @@ public class DialogueType1 : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             blackPanel.SetActive(true);
+            dialogueText.text = insertTutorialText;
             Time.timeScale = 0;
             dialogueActive = true;
-            dialogueBox.SetActive(true);
             StartCoroutine("DialogueIn");
         }
     }
@@ -28,14 +34,13 @@ public class DialogueType1 : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             StopCoroutine("DialogueOut");
-            dialogueBox.SetActive(false);
             Destroy(this);
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dialogueActive == true)
+        if (Input.GetKeyDown(buttonToSkip1) && dialogueActive == true || Input.GetKeyDown(buttonToSkip2) && dialogueActive == true)
         {
             blackPanel.SetActive(false);
             Time.timeScale = 1;
