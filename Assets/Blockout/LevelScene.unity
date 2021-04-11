@@ -3798,6 +3798,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 323842853}
   activateAggroBox1: {fileID: 1952363548}
   killedEnemyToProgress: 44
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &56503112
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10986,6 +10987,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 766770378}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 1
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &177760454
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12752,6 +12754,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 980947083}
   activateAggroBox1: {fileID: 1111584767}
   killedEnemyToProgress: 42
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &210492470
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14837,6 +14840,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 1712373947}
   activateAggroBox1: {fileID: 1952363548}
   killedEnemyToProgress: 44
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &248634251
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17585,11 +17589,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e78c27bf61b4f64baa77437b8889828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: []
+  speed: 0
+  endPosition: 0
   leftMotor: 1
   rightMotor: 1
   vibrationDuration: 1
   stopTimeLightDuration: 0.05
   stopTimeHeavyDuration: 0.06
+  cutInDuration: 0
+  cutInBabushkaImage: {fileID: 0}
+  cutInThiefImage: {fileID: 0}
+  cutInBoriusImage: {fileID: 0}
+  cutInFatImage: {fileID: 0}
+  isCutIn: 0
   isTimeStopped: 0
 --- !u!4 &309768198
 Transform:
@@ -18604,6 +18617,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 89226060}
   activateAggroBox1: {fileID: 797077531}
   killedEnemyToProgress: 32
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &329934448
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20231,6 +20245,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 617551733}
   activateAggroBox1: {fileID: 1177570837}
   killedEnemyToProgress: 103
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &358010535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27064,6 +27079,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 3
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &456877712
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33036,6 +33052,7 @@ MonoBehaviour:
   - {fileID: 1069123634}
   - {fileID: 1517740868}
   - {fileID: 566281362}
+  NewPlayer: {fileID: 0}
 --- !u!1 &566281359
 GameObject:
   m_ObjectHideFlags: 0
@@ -34272,6 +34289,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 139302067}
   killedEnemyToProgress: 9
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &584117373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42901,6 +42919,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 503259879}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 0
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &750467888
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43194,6 +43213,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 874040628}
   activateAggroBox1: {fileID: 1595951329}
   killedEnemyToProgress: 96
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &751887608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44102,6 +44122,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 96
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &764625340
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44971,6 +44992,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 974559747}
   activateAggroBox1: {fileID: 1105609774}
   killedEnemyToProgress: 16
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &784547297
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56553,6 +56575,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 1472602827}
   activateAggroBox1: {fileID: 571598836}
   killedEnemyToProgress: 73
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &983591991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58700,6 +58723,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 19806727}
   activateAggroBox1: {fileID: 900609803}
   killedEnemyToProgress: 18
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &1024983416
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65414,6 +65438,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 866375512}
   activateAggroBox1: {fileID: 1130091085}
   killedEnemyToProgress: 87
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &1159257501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66451,6 +66476,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 493438178}
   activateAggroBox1: {fileID: 772026621}
   killedEnemyToProgress: 59
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &1186964071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -77270,6 +77296,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 1635403210}
   activateAggroBox1: {fileID: 1230093187}
   killedEnemyToProgress: 26
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &1373242944
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -89817,7 +89844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603372515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.502533, y: -0.46950006, z: -10}
+  m_LocalPosition: {x: -13.50444, y: -0.46950006, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -90460,6 +90487,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 1754928357}
   activateAggroBox1: {fileID: 1547464983}
   killedEnemyToProgress: 94
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &1616438696
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -108091,6 +108119,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 78711948}
   activateAggroBox1: {fileID: 92119136}
   killedEnemyToProgress: 9
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &1944730427
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -108461,6 +108490,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 1657505890}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 61
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &1946268884
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -110032,6 +110062,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 0}
   killedEnemyToProgress: 0
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &1978091051
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -114721,6 +114752,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 1989409437}
   activateAggroBox1: {fileID: 1243105205}
   killedEnemyToProgress: 51
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &2060437770
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -115044,6 +115076,7 @@ MonoBehaviour:
   previousConfinerBarrier: {fileID: 1723494323}
   activateAggroBox1: {fileID: 1392487342}
   killedEnemyToProgress: 3
+  Enemies1: {fileID: 1392487342}
 --- !u!61 &2063933512
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -121208,7 +121241,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 8199ed652c9e2744088b4fdf110e3aaa, type: 2}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &2064094139864399042
@@ -122641,7 +122674,7 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 5953.0806
+  ResetTimerStaggered: 5958.5767
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647
