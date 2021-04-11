@@ -244,12 +244,35 @@ namespace SwordGame
             }
             if (Input.GetKeyDown(KeyboardSpecialAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
             {
-                GetComponent<Animator>().SetBool("PSM-CanAttack", false);
-                GetComponent<Animator>().SetBool("PSM-Attack", true);
-                GetComponent<Animator>().SetBool("PSM-SpecialAttack", true);
-                IsLightAttack = false;
-                IsHeavyAttack = false;
-                IsSpecialAttack = true;
+                //GetComponent<Animator>().SetBool("PSM-CanAttack", false);
+                //GetComponent<Animator>().SetBool("PSM-Attack", true);
+                //GetComponent<Animator>().SetBool("PSM-SpecialAttack", true);
+                //IsLightAttack = false;
+                //IsHeavyAttack = false;
+                //IsSpecialAttack = true;
+                if (TypeCharacter == TypePlayer.FatKnight)
+                {
+                    if (FeedbackManager.instance.isCutIn == false)
+                        StartCoroutine(FeedbackManager.instance.CutInFat());
+                }
+
+                if (TypeCharacter == TypePlayer.Babushka)
+                {
+                    if (FeedbackManager.instance.isCutIn == false)
+                        StartCoroutine(FeedbackManager.instance.CutInBabushka());
+                }
+
+                if (TypeCharacter == TypePlayer.BoriousKnight)
+                {
+                    if (FeedbackManager.instance.isCutIn == false)
+                        StartCoroutine(FeedbackManager.instance.CutInBorius());
+                }
+
+                if (TypeCharacter == TypePlayer.Thief)
+                {
+                    if (FeedbackManager.instance.isCutIn == false)
+                        StartCoroutine(FeedbackManager.instance.CutInThief());
+                }
             }
         }
 

@@ -2,16 +2,17 @@
 using UnityEngine;
 using XInputDotNetPure;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class FeedbackManager : MonoBehaviour
 {
     public CinemachineVirtualCamera[] cam;
-    [Header("ZOOM VALUES")]
+    [Header("ZOOM")]
     public float speed;
     public float endPosition;
 
     PlayerIndex playerIndex;
-    [Header("CONTROLLER VIBRATION VALUES")]
+    [Header("CONTROLLER VIBRATION")]
     [Range(0f, 1f)]
     public float leftMotor;
     [Range(0f, 1f)]
@@ -19,9 +20,18 @@ public class FeedbackManager : MonoBehaviour
     public float vibrationDuration;
 
     
-    [Header("TIME STOP VALUES")]
+    [Header("TIME STOP")]
     public float stopTimeLightDuration;
     public float stopTimeHeavyDuration;
+
+    [Header("CUT IN")]
+    public float cutInDuration;
+    public GameObject cutInBabushkaImage;
+    public GameObject cutInThiefImage;
+    public GameObject cutInBoriusImage;
+    public GameObject cutInFatImage;
+    [HideInInspector]
+    public bool isCutIn = false;
 
     public static FeedbackManager instance;
 
@@ -45,6 +55,50 @@ public class FeedbackManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(stopTimeHeavyDuration);
         Time.timeScale = 1;
         isTimeStopped = false;
+    }
+
+    public IEnumerator CutInFat()
+    {
+        isCutIn = true;
+        cutInFatImage.SetActive(true);
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(cutInDuration);
+        Time.timeScale = 1;
+        cutInFatImage.SetActive(false);
+        isCutIn = false;
+    }
+    
+    public IEnumerator CutInBabushka()
+    {
+        isCutIn = true;
+        cutInBabushkaImage.SetActive(true);
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(cutInDuration);
+        Time.timeScale = 1;
+        cutInBabushkaImage.SetActive(false);
+        isCutIn = false;
+    }
+
+    public IEnumerator CutInBorius()
+    {
+        isCutIn = true;
+        cutInBoriusImage.SetActive(true);
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(cutInDuration);
+        Time.timeScale = 1;
+        cutInBoriusImage.SetActive(false);
+        isCutIn = false;
+    }
+
+    public IEnumerator CutInThief()
+    {
+        isCutIn = true;
+        cutInThiefImage.SetActive(true);
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(cutInDuration);
+        Time.timeScale = 1;
+        cutInThiefImage.SetActive(false);
+        isCutIn = false;
     }
 
     public void StartVibration()
