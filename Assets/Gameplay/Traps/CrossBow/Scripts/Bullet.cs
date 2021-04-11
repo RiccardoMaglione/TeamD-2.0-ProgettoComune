@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float speed = 4f;
+    public int damage;
     public Rigidbody2D rb;
 
     private void Start()
@@ -18,11 +17,17 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        Destroy(this.gameObject);
+        Debug.Log("Preso");
+
+        if (collision.gameObject)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Update()
     {
         transform.position += transform.right * speed * Time.deltaTime;
-       
     }
 }

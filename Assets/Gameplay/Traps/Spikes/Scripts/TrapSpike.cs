@@ -10,6 +10,7 @@ public class TrapSpike : MonoBehaviour
 
     public bool cooldownIsActive;
     public int health = 3; //------------ change with player health
+    public int damage;
 
     private void Start()
     {
