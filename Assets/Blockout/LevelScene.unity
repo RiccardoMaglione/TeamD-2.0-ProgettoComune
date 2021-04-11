@@ -3797,7 +3797,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 738366127}
   previousConfinerBarrier: {fileID: 323842853}
   activateAggroBox1: {fileID: 1952363548}
-  killedEnemyToProgress: 43
+  killedEnemyToProgress: 44
 --- !u!61 &56503112
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8717,6 +8717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 145201576}
   - component: {fileID: 145201577}
+  - component: {fileID: 145201578}
   m_Layer: 0
   m_Name: Dialogue 5
   m_TagString: Untagged
@@ -8736,7 +8737,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &145201577
 BoxCollider2D:
@@ -8751,7 +8752,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.30688095, y: -1.203115}
+  m_Offset: {x: 0.02273941, y: -1.203115}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8762,8 +8763,31 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3593597, y: 1.9657469}
+  m_Size: {x: 0.700119, y: 1.9657469}
   m_EdgeRadius: 0
+--- !u!114 &145201578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145201575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 967985598}
+  startPos: {fileID: 2072323994}
+  endPos: {fileID: 1982355696}
+  speedTransition: 2500
+  blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: "Dai \xE8 facile, se premi il tasto S puoi scendere qua sotto..
+    speriamo che non scenda qualcos'altro dal retro del verme! "
+  buttonToSkip1: 115
+  buttonToSkip2: 0
+  dialogueActive: 0
 --- !u!1 &147516290
 GameObject:
   m_ObjectHideFlags: 0
@@ -10961,7 +10985,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 97687026}
   previousConfinerBarrier: {fileID: 766770378}
   activateAggroBox1: {fileID: 0}
-  killedEnemyToProgress: 0
+  killedEnemyToProgress: 1
 --- !u!61 &177760454
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10975,7 +10999,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7031634, y: 0.37224412}
+  m_Offset: {x: 1.416254, y: 0.37224412}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -10986,7 +11010,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 4.95771, y: 4.4125705}
+  m_Size: {x: 3.5315285, y: 4.4125705}
   m_EdgeRadius: 0
 --- !u!1 &177970875
 GameObject:
@@ -12699,7 +12723,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 407944883}
   previousConfinerBarrier: {fileID: 980947083}
   activateAggroBox1: {fileID: 1111584767}
-  killedEnemyToProgress: 41
+  killedEnemyToProgress: 42
 --- !u!61 &210492470
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13815,63 +13839,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &230362338
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 230362339}
-  - component: {fileID: 230362340}
-  m_Layer: 0
-  m_Name: Dialogue 4 VARIANT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &230362339
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230362338}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.555473, y: -2.1454504, z: -3.2131038}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1279180188}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &230362340
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230362338}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -1.0667906, y: 2.2373672}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.9709473, y: 8.173751}
-  m_EdgeRadius: 0
 --- !u!1 &231362027
 GameObject:
   m_ObjectHideFlags: 0
@@ -14841,7 +14808,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 2042389188}
   previousConfinerBarrier: {fileID: 1712373947}
   activateAggroBox1: {fileID: 1952363548}
-  killedEnemyToProgress: 43
+  killedEnemyToProgress: 44
 --- !u!61 &248634251
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15356,6 +15323,87 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &262196748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 262196749}
+  - component: {fileID: 262196751}
+  - component: {fileID: 262196750}
+  m_Layer: 0
+  m_Name: Dialogue 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &262196749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262196748}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.55, y: -2.1454504, z: -3.2131038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1279180188}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &262196750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262196748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 967985598}
+  startPos: {fileID: 2072323994}
+  endPos: {fileID: 1982355696}
+  speedTransition: 2500
+  blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: Prova a distruggere quel fantoccio! Premi U per un attacco
+    leggero e I per un attacco pesante e non farmelo ripetere.
+  buttonToSkip1: 117
+  buttonToSkip2: 105
+  dialogueActive: 0
+--- !u!61 &262196751
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262196748}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.84842086, y: 2.2373672}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5342078, y: 8.173751}
+  m_EdgeRadius: 0
 --- !u!1 &262286634
 GameObject:
   m_ObjectHideFlags: 0
@@ -15475,6 +15523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 264624570}
   - component: {fileID: 264624571}
+  - component: {fileID: 264624572}
   m_Layer: 0
   m_Name: 'Dialogue 7 '
   m_TagString: Untagged
@@ -15494,7 +15543,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &264624571
 BoxCollider2D:
@@ -15522,6 +15571,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.2168655, y: 9.190187}
   m_EdgeRadius: 0
+--- !u!114 &264624572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264624569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 967985598}
+  startPos: {fileID: 2072323994}
+  endPos: {fileID: 1982355696}
+  speedTransition: 2500
+  blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: Oh un muro alto qui? ma che...! Ascoltami e questi cavoli dell'altezza
+    salta e scatta per superare questo ostacolo.
+  buttonToSkip1: 13
+  buttonToSkip2: 32
+  dialogueActive: 0
 --- !u!1 &265035947
 GameObject:
   m_ObjectHideFlags: 0
@@ -18473,7 +18545,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 953219546}
   previousConfinerBarrier: {fileID: 89226060}
   activateAggroBox1: {fileID: 797077531}
-  killedEnemyToProgress: 31
+  killedEnemyToProgress: 32
 --- !u!61 &329934448
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20100,7 +20172,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 508292178}
   previousConfinerBarrier: {fileID: 617551733}
   activateAggroBox1: {fileID: 1177570837}
-  killedEnemyToProgress: 102
+  killedEnemyToProgress: 103
 --- !u!61 &358010535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22903,87 +22975,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &401259436
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 401259437}
-  - component: {fileID: 401259438}
-  - component: {fileID: 401259439}
-  m_Layer: 9
-  m_Name: Dialogue 3
-  m_TagString: Breakable
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &401259437
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401259436}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.335474, y: -2.1554503, z: -3.2131038}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1279180188}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &401259438
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401259436}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -2.4209857, y: 2.3020873}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.18723, y: 8.303191}
-  m_EdgeRadius: 0
---- !u!114 &401259439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401259436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueBox: {fileID: 967985598}
-  startPos: {fileID: 2072323994}
-  endPos: {fileID: 1982355696}
-  speedTransition: 2500
-  blackPanel: {fileID: 713037072}
-  dialogueText: {fileID: 590726337}
-  insertTutorialText: Provami su quel fantoccio! Premi U per un attacco leggero e
-    I per un attacco pesante e non farmelo ripetere.
-  buttonToSkip1: 117
-  buttonToSkip2: 105
-  dialogueActive: 0
 --- !u!1 &402291111
 GameObject:
   m_ObjectHideFlags: 0
@@ -27014,7 +27005,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 1344731396}
   previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 0}
-  killedEnemyToProgress: 0
+  killedEnemyToProgress: 3
 --- !u!61 &456877712
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31989,7 +31980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &551545410
 Transform:
   m_ObjectHideFlags: 0
@@ -31998,7 +31989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551545409}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.794527, y: -2.1554503, z: -3.2131038}
+  m_LocalPosition: {x: -14.794527, y: -2.77, z: -3.2131038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
@@ -33387,8 +33378,9 @@ GameObject:
   m_Component:
   - component: {fileID: 573814960}
   - component: {fileID: 573814961}
+  - component: {fileID: 573814962}
   m_Layer: 0
-  m_Name: 'Dialogue 8 '
+  m_Name: Dialogue 8  VARIANT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33434,6 +33426,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.8552322, y: 0.9664278}
   m_EdgeRadius: 0
+--- !u!114 &573814962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573814959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 967985598}
+  startPos: {fileID: 2072323994}
+  endPos: {fileID: 1982355696}
+  speedTransition: 2500
+  blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: Dai riprovaci e vedi di non essere un senza mani questa volta!
+  buttonToSkip1: 13
+  buttonToSkip2: 32
+  dialogueActive: 0
 --- !u!1001 &575872699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34065,7 +34079,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 771911518}
   previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 139302067}
-  killedEnemyToProgress: 8
+  killedEnemyToProgress: 9
 --- !u!61 &584117373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42847,7 +42861,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 131018044}
   previousConfinerBarrier: {fileID: 874040628}
   activateAggroBox1: {fileID: 1595951329}
-  killedEnemyToProgress: 95
+  killedEnemyToProgress: 96
 --- !u!61 &751887608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43755,7 +43769,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 1647572869}
   previousConfinerBarrier: {fileID: 0}
   activateAggroBox1: {fileID: 0}
-  killedEnemyToProgress: 95
+  killedEnemyToProgress: 96
 --- !u!61 &764625340
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44624,7 +44638,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 699237936}
   previousConfinerBarrier: {fileID: 974559747}
   activateAggroBox1: {fileID: 1105609774}
-  killedEnemyToProgress: 15
+  killedEnemyToProgress: 16
 --- !u!61 &784547297
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55082,7 +55096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -600, y: -100}
+  m_AnchoredPosition: {x: -600, y: -240}
   m_SizeDelta: {x: 500, y: 180}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &967985600
@@ -56206,7 +56220,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 76726228}
   previousConfinerBarrier: {fileID: 1472602827}
   activateAggroBox1: {fileID: 571598836}
-  killedEnemyToProgress: 72
+  killedEnemyToProgress: 73
 --- !u!61 &983591991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58353,7 +58367,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 1905556647}
   previousConfinerBarrier: {fileID: 19806727}
   activateAggroBox1: {fileID: 900609803}
-  killedEnemyToProgress: 17
+  killedEnemyToProgress: 18
 --- !u!61 &1024983416
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58717,7 +58731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1029467916
 Transform:
   m_ObjectHideFlags: 0
@@ -61400,8 +61414,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1076622778}
   - component: {fileID: 1076622779}
+  - component: {fileID: 1076622781}
+  - component: {fileID: 1076622780}
   m_Layer: 0
-  m_Name: 'Dialogue 9 '
+  m_Name: Dialogue 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61419,7 +61435,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1076622779
 BoxCollider2D:
@@ -61447,6 +61463,42 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.480606, y: 6.7379155}
   m_EdgeRadius: 0
+--- !u!114 &1076622780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076622777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 967985598}
+  startPos: {fileID: 2072323994}
+  endPos: {fileID: 1982355696}
+  speedTransition: 2500
+  blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: "Sono stato grandioso emh grandiosi si!  Bah  ma a chi la do
+    a bere \xE8 tutto merito MIO!"
+  buttonToSkip1: 13
+  buttonToSkip2: 0
+  dialogueActive: 0
+--- !u!114 &1076622781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076622777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f13aec8e469ae4597b8f515882586e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherVariantTrigger: {fileID: 573814959}
 --- !u!4 &1079978751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2558042844394459738, guid: 24f1047263dcd124aa5f365c8087b0c3, type: 3}
@@ -64588,11 +64640,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2558042844394459738, guid: 24f1047263dcd124aa5f365c8087b0c3, type: 3}
   m_PrefabInstance: {fileID: 623348937}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1138509454 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2558042844394459737, guid: 24f1047263dcd124aa5f365c8087b0c3, type: 3}
-  m_PrefabInstance: {fileID: 1519484126}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1139382543
 GameObject:
   m_ObjectHideFlags: 0
@@ -64957,7 +65004,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 302522803}
   previousConfinerBarrier: {fileID: 866375512}
   activateAggroBox1: {fileID: 1130091085}
-  killedEnemyToProgress: 86
+  killedEnemyToProgress: 87
 --- !u!61 &1159257501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65986,7 +66033,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 1052598909}
   previousConfinerBarrier: {fileID: 493438178}
   activateAggroBox1: {fileID: 772026621}
-  killedEnemyToProgress: 58
+  killedEnemyToProgress: 59
 --- !u!61 &1186964071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71013,14 +71060,13 @@ Transform:
   - {fileID: 1029467916}
   - {fileID: 2142967079}
   - {fileID: 551545410}
-  - {fileID: 401259437}
+  - {fileID: 262196749}
   - {fileID: 2119084383}
-  - {fileID: 230362339}
   - {fileID: 145201576}
   - {fileID: 1512051613}
   - {fileID: 264624570}
-  - {fileID: 573814960}
   - {fileID: 1076622778}
+  - {fileID: 573814960}
   m_Father: {fileID: 1038510070}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76699,7 +76745,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 939177914}
   previousConfinerBarrier: {fileID: 1635403210}
   activateAggroBox1: {fileID: 1230093187}
-  killedEnemyToProgress: 25
+  killedEnemyToProgress: 26
 --- !u!61 &1373242944
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -78854,6 +78900,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitCounter: 0
   dummyPieces: {fileID: 1496156133}
+  tutorialTrigger4: {fileID: 2119084382}
+  enemyCounterIncreased: 0
 --- !u!61 &1431329081
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -83714,6 +83762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512051613}
   - component: {fileID: 1512051614}
+  - component: {fileID: 1512051615}
   m_Layer: 0
   m_Name: Dialogue 6
   m_TagString: Untagged
@@ -83733,7 +83782,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1512051614
 BoxCollider2D:
@@ -83761,6 +83810,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.54303455, y: 2.5495725}
   m_EdgeRadius: 0
+--- !u!114 &1512051615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512051612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 967985598}
+  startPos: {fileID: 2072323994}
+  endPos: {fileID: 1982355696}
+  speedTransition: 2500
+  blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: Ok se non vuoi rimanere infilzato come una salsiccia sullo
+    spiedo premi Shift per eseguire uno scatto!
+  buttonToSkip1: 304
+  buttonToSkip2: 0
+  dialogueActive: 0
 --- !u!1 &1512941525
 GameObject:
   m_ObjectHideFlags: 0
@@ -84142,7 +84214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2558042844394459737, guid: 24f1047263dcd124aa5f365c8087b0c3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2558042844394459738, guid: 24f1047263dcd124aa5f365c8087b0c3, type: 3}
       propertyPath: m_RootOrder
@@ -89163,7 +89235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603372515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.512581, y: -0.4695003, z: -10}
+  m_LocalPosition: {x: -13.495853, y: -0.4695003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -89805,7 +89877,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 249916314}
   previousConfinerBarrier: {fileID: 1754928357}
   activateAggroBox1: {fileID: 1547464983}
-  killedEnemyToProgress: 93
+  killedEnemyToProgress: 94
 --- !u!61 &1616438696
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -90004,7 +90076,7 @@ RectTransform:
   m_GameObject: {fileID: 1618401973}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 231704791}
   - {fileID: 870186044}
@@ -107249,7 +107321,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 1961053692}
   previousConfinerBarrier: {fileID: 78711948}
   activateAggroBox1: {fileID: 92119136}
-  killedEnemyToProgress: 8
+  killedEnemyToProgress: 9
 --- !u!61 &1944730427
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -107619,7 +107691,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 1741736078}
   previousConfinerBarrier: {fileID: 1657505890}
   activateAggroBox1: {fileID: 0}
-  killedEnemyToProgress: 60
+  killedEnemyToProgress: 61
 --- !u!61 &1946268884
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -109331,7 +109403,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -100}
+  m_AnchoredPosition: {x: 30, y: -240}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1984201003
@@ -113879,7 +113951,7 @@ MonoBehaviour:
   currentConfiner: {fileID: 530664942}
   previousConfinerBarrier: {fileID: 1989409437}
   activateAggroBox1: {fileID: 1243105205}
-  killedEnemyToProgress: 50
+  killedEnemyToProgress: 51
 --- !u!61 &2060437770
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -114201,8 +114273,8 @@ MonoBehaviour:
   currentCamera: {fileID: 791710205}
   currentConfiner: {fileID: 194160786}
   previousConfinerBarrier: {fileID: 1723494323}
-  activateAggroBox1: {fileID: 1138509454}
-  killedEnemyToProgress: 2
+  activateAggroBox1: {fileID: 1392487342}
+  killedEnemyToProgress: 3
 --- !u!61 &2063933512
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -114734,7 +114806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -600, y: -100}
+  m_AnchoredPosition: {x: -600, y: -240}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &2072448297
@@ -118097,6 +118169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2119084383}
   - component: {fileID: 2119084384}
+  - component: {fileID: 2119084385}
   m_Layer: 0
   m_Name: Dialogue 4
   m_TagString: Untagged
@@ -118112,7 +118185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119084382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.555473, y: -2.1454504, z: -3.2131038}
+  m_LocalPosition: {x: 10.58, y: -2.1454504, z: -3.2131038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1279180188}
@@ -118144,6 +118217,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.9709473, y: 8.173751}
   m_EdgeRadius: 0
+--- !u!114 &2119084385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119084382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d761c1de806b14d8ebfb309c0ca02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 967985598}
+  startPos: {fileID: 2072323994}
+  endPos: {fileID: 1982355696}
+  speedTransition: 2500
+  blackPanel: {fileID: 713037072}
+  dialogueText: {fileID: 590726337}
+  insertTutorialText: 'Hey sto parlando con TE testa vuota!  Distruggi quel fantoccio
+
+    e
+    ANDIAMO AVANTI, mi sto annoiando! '
+  buttonToSkip1: 13
+  buttonToSkip2: 0
+  dialogueActive: 0
 --- !u!1001 &2125214544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119697,7 +119795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2142967079
 Transform:
   m_ObjectHideFlags: 0
@@ -121633,7 +121731,7 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 5735.378
+  ResetTimerStaggered: 5814.061
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647

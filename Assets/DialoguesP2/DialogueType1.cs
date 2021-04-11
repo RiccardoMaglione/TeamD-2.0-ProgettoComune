@@ -21,13 +21,12 @@ public class DialogueType1 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, -100);
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, -240);
 
             blackPanel.SetActive(true);
             dialogueText.text = insertTutorialText;
             Time.timeScale = 0;
             dialogueBox.SetActive(true);
-            dialogueActive = true;
             StartCoroutine("DialogueIn");
         }
     }
@@ -56,7 +55,11 @@ public class DialogueType1 : MonoBehaviour
     {
         while (dialogueBox.GetComponent<RectTransform>().anchoredPosition.x != endPos.position.x)
         {
-            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(30, -100), speedTransition * Time.unscaledDeltaTime);
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(30, -240), speedTransition * Time.unscaledDeltaTime);
+            if (dialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(30, -240))
+            {
+                dialogueActive = true;
+            }
             yield return null;
         }
     }
@@ -64,7 +67,7 @@ public class DialogueType1 : MonoBehaviour
     {
         while (dialogueBox.GetComponent<RectTransform>().anchoredPosition.x != startPos.position.x)
         {
-            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-600, -100), speedTransition * Time.unscaledDeltaTime);
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-600, -240), speedTransition * Time.unscaledDeltaTime);
             yield return null;
         }
     }
