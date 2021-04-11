@@ -7,9 +7,11 @@ public class SwitchCamera : MonoBehaviour
     public GameObject currentCamera;
     public GameObject currentConfiner;
 
+    public GameObject previousConfinerBarrier;
+
     public GameObject activateAggroBox1;
 
-    public int killedEnemyToProgress;
+    public int killedEnemyToProgress = 0;
 
     public GameObject Enemies1;
 
@@ -32,7 +34,11 @@ public class SwitchCamera : MonoBehaviour
             this.gameObject.SetActive(false);
             currentCamera.SetActive(false);
             nextConfiner.SetActive(true);
-            currentConfiner.SetActive(false);
+            if (previousConfinerBarrier != null)
+            {
+                previousConfinerBarrier.SetActive(false);
+            }
+            Invoke("DeactivatePreviousConfiner", 0.5f);
             if (activateAggroBox1 != null)
             {
                 activateAggroBox1.SetActive(true);
@@ -40,7 +46,6 @@ public class SwitchCamera : MonoBehaviour
 
         }
     }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && killedEnemyToProgress <= FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
@@ -49,13 +54,23 @@ public class SwitchCamera : MonoBehaviour
             this.gameObject.SetActive(false);
             currentCamera.SetActive(false);
             nextConfiner.SetActive(true);
-            currentConfiner.SetActive(false);
+            if (previousConfinerBarrier != null)
+            {
+                previousConfinerBarrier.SetActive(false);
+            }
+            Invoke("DeactivatePreviousConfiner", 0.5f);
             if (activateAggroBox1 != null)
             {
                 activateAggroBox1.SetActive(true);
             }
 
         }
+    }
+
+
+    public void DeactivatePreviousConfiner()
+    {
+        currentConfiner.SetActive(false);
     }
 
 

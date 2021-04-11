@@ -16,6 +16,12 @@ public class AttackSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Breakable") //10/04
+        {
+            Knockback.ActiveKnockback = true;//10/04
+
+        }
+
         Debug.Log("Passa qui HIT" + collision.name);
         if (collision.gameObject.tag == "Enemy")
         {
@@ -90,7 +96,6 @@ public class AttackSystem : MonoBehaviour
                 print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
         }
-
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
