@@ -49,7 +49,7 @@ public class DistanceState : StateMachineBehaviour
             Debug.Log("aaaprova");
             if (animator.GetComponent<EnemyData>().random <= animator.GetComponent<EnemyData>().PercentuageAttack)
             {
-                //if (RangeAttack.isMelee == true)
+                //if (animator.GetComponentInChildren<RangeAttack>().isMelee == true)
                 //{
                     Debug.Log("aaaleggero");
                     animator.SetTrigger("LightAttack");
@@ -58,7 +58,7 @@ public class DistanceState : StateMachineBehaviour
             }
             else
             {
-                //if(RangeAttack.isRanged == true)
+                //if (animator.GetComponentInChildren<RangeAttack>().isRanged == true)
                 //{
                     Debug.Log("aaaPesante");
                     animator.SetTrigger("HeavyAttack");

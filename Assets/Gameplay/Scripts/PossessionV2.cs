@@ -71,6 +71,7 @@ namespace SwordGame
                         LastPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                     }
 
+                    FindObjectOfType<ChangeFollow>().NewPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
                     //FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().TypeEnemy,1);
 
                     PlayerDetect.gameObject.tag = "Enemy";
@@ -147,7 +148,7 @@ namespace SwordGame
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().SetBool("CanPossession", false);
                     PromptCommand.SetActive(true);
 
-                    ChangeFollow.NewPlayer = PlayerDetectArray[PlayerDetectArray.Count - 1];
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<SpriteRenderer>().material = PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<ColorChangeController>().originalMaterial;
                 }
             }
             #endregion
@@ -165,8 +166,8 @@ namespace SwordGame
         #region Trigger Zone
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            //if(GetComponent<EnemyData>().AreaPossession.activeSelf== true)
-            //{
+            if(GetComponent<EnemyData>().AreaPossession.activeSelf== true)
+            {
                 if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player")
                 {
                     PlayerDetect = collision.gameObject;
@@ -188,13 +189,12 @@ namespace SwordGame
                         PromptCommand.SetActive(true);
                     }
                     isPlayer = true;
-                
-                
-                
+
                     PlayerDetectArray.Add(this.gameObject);
                     count++;
+                    print("Aggiungi");
                 }
-            //}
+            }
         }
 
         private void OnTriggerStay2D(Collider2D collision)
@@ -202,7 +202,9 @@ namespace SwordGame
             if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player" && this.gameObject == PlayerDetectArray[PlayerDetectArray.Count - 1])
             {
                 if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+                { 
                     PromptCommand.SetActive(true);
+                }
             }
         }
 

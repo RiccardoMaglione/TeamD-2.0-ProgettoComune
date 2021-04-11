@@ -31,6 +31,7 @@ public class AIStunState : StateMachineBehaviour
         }
         animator.GetComponent<EnemyData>().GetComponent<Rigidbody2D>().velocity = new Vector2(0, animator.GetComponent<EnemyData>().GetComponent<Rigidbody2D>().velocity.y);
         animator.GetComponent<EnemyData>().AreaPossession.SetActive(true);
+        animator.GetComponent<EnemyData>().AreaPossession.GetComponent<CircleCollider2D>().radius = animator.GetComponent<PossessionV2>().RadiusArea;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
