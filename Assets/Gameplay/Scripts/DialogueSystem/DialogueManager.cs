@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] float textSpeed;
     public GameObject leftPanel;
     public GameObject rightPanel;
+    public GameObject blackPanel;
 
     public Animator animator;
 
@@ -32,6 +33,10 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        blackPanel.SetActive(true); //11/04/21
+        Time.timeScale = 0; //11/04/21
+
+
         animator.SetBool("isOpen", true);
 
         sentences.Clear();
@@ -90,7 +95,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
-            dialogueText.text += letter;          
+            dialogueText.text += letter;
         }
     }
 
@@ -116,12 +121,15 @@ public class DialogueManager : MonoBehaviour
             {
                 rightNameText.text += letter;
             }
-        }       
+        }
     }
 
     void EndDialogue()
     {
         isTalk = false;
         animator.SetBool("isOpen", false);
+
+        Time.timeScale = 1; //11/04/21
+        blackPanel.SetActive(false); //11/04/21
     }
 }

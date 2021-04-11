@@ -120,8 +120,6 @@ GameObject:
   - component: {fileID: 7228021880596922802}
   - component: {fileID: 7228021880596922801}
   - component: {fileID: 721572349477286292}
-  - component: {fileID: 2409875657736799582}
-  - component: {fileID: 4911572161207281232}
   m_Layer: 0
   m_Name: CrossBow
   m_TagString: Untagged
@@ -184,71 +182,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInRange: 0
-  canShot: 0
-  cooldownIsActive: 0
-  touchRangeStartCrono: 0
-  player: {fileID: 0}
-  boxColl: {fileID: 0}
-  delayAttak: 0
-  cooldownTrap: 0
+  timeBetweenShot: 4
+  destroyBulletTime: 10
+  canShot: 1
   bullet: {fileID: 1601693672974173087, guid: 628aadde062469f4f9412d646aa0d6ae, type: 3}
   shotPoint: {fileID: 7228021881301880238}
-  ShotLeft: 0
-  ShotRight: 0
-  boxCollRight: {fileID: 0}
-  boxCollLeft: {fileID: 0}
---- !u!61 &2409875657736799582
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7228021880596922803}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 1.22, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.87, y: 2}
-  m_EdgeRadius: 0
---- !u!61 &4911572161207281232
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7228021880596922803}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -1.22, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
 --- !u!1 &7228021881301880238
 GameObject:
   m_ObjectHideFlags: 0

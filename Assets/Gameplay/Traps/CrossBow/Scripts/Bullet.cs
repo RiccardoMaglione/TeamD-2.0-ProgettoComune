@@ -17,7 +17,11 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
+        /*if (collision.gameObject.tag == "Floor")
+        {
+            Destroy(this.gameObject);
+        }*/
+
         Debug.Log("Preso");
 
         if (collision.gameObject)
