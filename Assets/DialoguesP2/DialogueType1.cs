@@ -41,13 +41,11 @@ public class DialogueType1 : MonoBehaviour
     {
         if (Input.GetKeyDown(buttonToSkip1) && dialogueActive == true || Input.GetKeyDown(buttonToSkip2) && dialogueActive == true)
         {
-            blackPanel.SetActive(false);
-            Time.timeScale = 1;
             dialogueActive = false;
             StopCoroutine("DialogueIn");
             StartCoroutine("DialogueOut");
 
-            Invoke("DestroyCollider", 0.4f);
+            Invoke("DestroyCollider", 0.1f);
 
         }
     }
@@ -68,6 +66,13 @@ public class DialogueType1 : MonoBehaviour
         while (dialogueBox.GetComponent<RectTransform>().anchoredPosition.x != startPos.position.x)
         {
             dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-600, -240), speedTransition * Time.unscaledDeltaTime);
+            if (dialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(-600, -240))
+            {
+                Time.timeScale = 1;
+                blackPanel.SetActive(false);
+
+            }
+
             yield return null;
         }
     }
