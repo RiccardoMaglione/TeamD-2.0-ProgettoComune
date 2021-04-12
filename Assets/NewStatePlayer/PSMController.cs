@@ -224,7 +224,7 @@ namespace SwordGame
         /// </summary>
         public void AttackPlayer()
         {
-            if (Input.GetKeyDown(KeyboardLightlAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+            if (Input.GetKeyDown(KeyboardLightlAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))
             {
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
@@ -233,7 +233,7 @@ namespace SwordGame
                 IsHeavyAttack = false;
                 IsSpecialAttack = false;
             }
-            if (Input.GetKeyDown(KeyboardHeavyAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+            if (Input.GetKeyDown(KeyboardHeavyAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))
             {
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
@@ -242,7 +242,7 @@ namespace SwordGame
                 IsHeavyAttack = true;
                 IsSpecialAttack = false;
             }
-            if (Input.GetKeyDown(KeyboardSpecialAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true)
+            if (Input.GetKeyDown(KeyboardSpecialAttack) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))
             {
                 //GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 //GetComponent<Animator>().SetBool("PSM-Attack", true);
@@ -410,7 +410,7 @@ namespace SwordGame
                 GetComponent<Animator>().SetBool("PSM-CanDashInAir", false); //Permette di rientrare in dash
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S) && (DialogueType1.StaticTutorial != -1))
             {
                 if (collision.gameObject.GetComponent<PlatformEffector2D>() != null && this.gameObject.tag == "Player")
                 {

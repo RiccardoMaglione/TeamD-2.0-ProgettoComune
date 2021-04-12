@@ -16,7 +16,7 @@ public class PSMJump : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         #region Jump - Compito principale dello script di movimento
-        if (Input.GetKey(KeyCode.Space) && animator.GetBool("PSM-IsGrounded") == true)                                                                                                                  //Se Schiaccio spazio (è un getkey e non un getkeydown perché altrimenti non avrebbe preso l'input) e verifico grounded
+        if (Input.GetKey(KeyCode.Space) && animator.GetBool("PSM-IsGrounded") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4))                                                                                                                  //Se Schiaccio spazio (è un getkey e non un getkeydown perché altrimenti non avrebbe preso l'input) e verifico grounded
         {
             //animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.jumpForce, ForceMode2D.Impulse);                                         //Applico una forza di tipo impulso con un direzione precisa (UP) e moltiplico per una determinata forza
             animator.SetBool("PSM-IsGrounded", false);                                                                                                                                                  //Setto grounded a falso per due motivi - 1. Il player non tocca più il terreno - 2. Blocco l'entrata al'if precedente per evitare salti infiniti/multipli
@@ -42,14 +42,14 @@ public class PSMJump : StateMachineBehaviour
         #endregion
 
         #region Move Zone - Permette il movimento direzionale del salto
-        if (Input.GetKey(KeyCode.A))                                                                                                                                                                                        //Se schiaccio A vado a sinistra
+        if (Input.GetKey(KeyCode.A) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                        //Se schiaccio A vado a sinistra
         {
             animator.GetComponent<PSMController>().CalculateSpeed();                                                                                                                                                        //Calcolo la velocità
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(-animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                        //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);   //Ruoto il player
             Debug.Log("PlayerState - Vai a sinistra");
         }
-        else if (Input.GetKey(KeyCode.D))                                                                                                                                                                                   //Se schiaccio D vado a destra
+        else if (Input.GetKey(KeyCode.D) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                   //Se schiaccio D vado a destra
         {
             animator.GetComponent<PSMController>().CalculateSpeed();                                                                                                                                                        //Calcolo la velocità
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                         //Aumento la velocità
