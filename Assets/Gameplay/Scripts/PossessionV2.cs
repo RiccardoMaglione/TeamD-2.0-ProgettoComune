@@ -59,7 +59,7 @@ namespace SwordGame
             #region Action of Possession
             if (isPlayer == true)
             {
-                if (Input.GetKeyDown(KeyCode.P) && PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().isStun == true)
+                if (Input.GetKeyDown(KeyCode.V) && PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().isStun == true)
                 {
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().isPossessed = true;
                     ReturnPlayer.CanDestroy = false;
