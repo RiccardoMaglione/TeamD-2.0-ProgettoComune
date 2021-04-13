@@ -7,7 +7,7 @@ public class PSMMove : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ParticlesManager.instance.PlayRun();  
+        PlayerParticlesController.instance.PlayRun();  
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

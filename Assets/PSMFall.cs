@@ -64,7 +64,7 @@ public class PSMFall : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ParticlesManager.instance.PlayLanding();
+        PlayerParticlesController.instance.PlayLanding();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

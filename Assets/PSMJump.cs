@@ -8,7 +8,7 @@ public class PSMJump : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ParticlesManager.instance.PlayJump();
+        PlayerParticlesController.instance.PlayJump();
         Debug.Log("PlayerState - Grounded'" + animator.GetBool("PSM-IsGrounded"));                      //Debuggo lo stato di grounded per verificare se toccava o non toccava terra (Default: true)
         animator.GetComponent<PSMController>().JumpFollow = true;
     }

@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class ParticlesManager : MonoBehaviour
+public class PlayerParticlesController : MonoBehaviour
 {
     public ParticleSystem runParticle;
     public ParticleSystem jumpParticle;
     public ParticleSystem landingParticle;
     public ParticleSystem dashParticle;
 
-    public static ParticlesManager instance;
+    public static PlayerParticlesController instance;
 
     #region Run Particles
     public void PlayRun()
@@ -35,7 +35,6 @@ public class ParticlesManager : MonoBehaviour
     {
         dashParticle.Play();
     }
-
 
     void Awake()
     {

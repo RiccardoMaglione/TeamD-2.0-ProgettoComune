@@ -30,8 +30,9 @@ public class AttackSystem : MonoBehaviour
 
             if (hitAnimation != null) //27/03/21
                 hitAnimation.SetActive(true); //25/03/21
-            if (collision.gameObject.GetComponent<EnemyData>().bloodPS != null)//27/03/21
-                collision.gameObject.GetComponent<EnemyData>().bloodPS.Play();//25/03/21
+            //if (collision.gameObject.GetComponent<EnemyData>().bloodPS != null)//27/03/21
+            //    collision.gameObject.GetComponent<EnemyData>().bloodPS.Play();//25/03/21
+            EnemyParticleController.instance.PlayBlood();
 
             Knockback.ActiveKnockback = true;
             if (GetComponentInParent<PSMController>().IsLightAttack == true)

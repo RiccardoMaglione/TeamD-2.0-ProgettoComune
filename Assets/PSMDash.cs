@@ -7,7 +7,7 @@ public class PSMDash : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ParticlesManager.instance.PlayDash();
+        PlayerParticlesController.instance.PlayDash();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
