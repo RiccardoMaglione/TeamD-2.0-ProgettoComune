@@ -51,6 +51,8 @@ public class DialogueType1 : MonoBehaviour
     {
         StaticTutorial++;
         StaticTutorial2++;
+        print("Numero tutorial è " + StaticTutorial);
+        print("2 Numero tutorial è " + StaticTutorial2);
         StopCoroutine("DialogueOut");
         Destroy(this);
     }

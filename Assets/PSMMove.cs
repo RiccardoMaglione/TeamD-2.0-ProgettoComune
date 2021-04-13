@@ -39,7 +39,7 @@ public class PSMMove : StateMachineBehaviour
         #endregion
 
         #region Jump Zone - Da "Player Move State" da "Player Jump State"
-        if (Input.GetKeyDown(KeyCode.UpArrow) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4)                                                                                                                                //Se schiaccio spazio
+        if (Input.GetKeyDown(KeyCode.UpArrow) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6)                                                                                                                                //Se schiaccio spazio
         {
             Debug.Log("PlayerState - Vai nello stato 'PSMJump'");                                                                                                           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                                                                                                                             //Setto attivo il trigger - Prima condizione per il cambio stato in "Player Jump State"

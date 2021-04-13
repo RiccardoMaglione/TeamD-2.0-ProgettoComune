@@ -25,7 +25,7 @@ public class PSMIdle : StateMachineBehaviour
         #endregion
 
         #region Jump Zone - Da "Player Idle State" da "Player Jump State"
-        if (Input.GetKeyDown(KeyCode.UpArrow) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6)                                                                                                //Se schiaccio spazio una volta
+        if (Input.GetKeyDown(KeyCode.UpArrow) && DialogueType1.StaticTutorial != 1 &&  DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6)                                                                                                //Se schiaccio spazio una volta
         {
             Debug.Log("PlayerState - Vai nello stato 'PSMJump'");                                                                           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                                                                                             //Setto attivo il trigger - Prima condizione per il cambio stato da "Player Idle State" in "Player Jump State"
