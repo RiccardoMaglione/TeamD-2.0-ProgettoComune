@@ -44,12 +44,6 @@ namespace SwordGame
         public int HeavyEnergyAmount;
         public int SpecialEnergyAmount;
         #endregion
-        #region In caso servisse la life bar con un image
-        //public Image LifeBar;
-        //public int MaxLife;
-        //public static int MaxLifeStatic;
-        //public int CurrentLife;
-        #endregion
         [ReadOnly] public bool isTriggerOnlyOnce = false;
         #endregion
 
@@ -69,8 +63,6 @@ namespace SwordGame
         /// </summary>
         public void InitializePlayerManager()
         {
-            //if (EnergyBar != null)
-            //    EnergyBar.fillAmount = (float)CurrentEnergy / 100;
             if (HealthSlider != null)
             {
                 HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
@@ -79,11 +71,6 @@ namespace SwordGame
             {
                 EnergySliderPM.MaxEnergy(MaxEnergy);
             }
-            //CurrentEnegy = PlayerPrefs.GetInt("EnergyValue", 0);
-            //LifeBar.fillAmount = (float)CurrentLife / 100;//temp
-            //MaxEnergyStatic = MaxEnergy;
-            //print("1. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
-            //print("2. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
         }
         
         /// <summary>
@@ -91,12 +78,6 @@ namespace SwordGame
         /// </summary>
         public void UpdatePlayerManager()
         {
-            //print("3. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
-            //if (EnergyBar != null)
-            //{
-            //    EnergyBar.fillAmount = (float)CurrentEnergy / 100;
-            //}
-            //LifeBar.fillAmount = (float)CurrentLife / 100;      //temp
             if (HealthSlider != null)
             {
                 HealthSlider.sliderBar.value = CurrentHealth;
@@ -109,9 +90,7 @@ namespace SwordGame
             {
                 FeedbackManager.instance.StopVibration();
                 FeedbackManager.instance.Zoom();
-                //GetComponent<Animator>().SetBool("IsDie", true);
                 GetComponent<Animator>().SetTrigger("PSM-IsDie");
-                //Destroy(this.gameObject);
                 print("Hai Perso");
             }
            print("4. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
