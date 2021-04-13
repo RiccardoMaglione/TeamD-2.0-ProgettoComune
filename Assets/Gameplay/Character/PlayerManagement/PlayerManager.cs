@@ -31,6 +31,7 @@ namespace SwordGame
         [Header("Energy System - Value Management")]
         [Space(20)]
         public Image EnergyBar;
+        public EnergyBar EnergySliderPM;
         public int MaxEnergy;
         public static int MaxEnergyStatic;
         [ReadOnly] public int CurrentEnergy;
@@ -68,15 +69,21 @@ namespace SwordGame
         /// </summary>
         public void InitializePlayerManager()
         {
+            //if (EnergyBar != null)
+            //    EnergyBar.fillAmount = (float)CurrentEnergy / 100;
+            if (HealthSlider != null)
+            {
+                HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
+            }
+            if(EnergySliderPM != null)
+            {
+                EnergySliderPM.MaxEnergy(MaxEnergy);
+            }
             //CurrentEnegy = PlayerPrefs.GetInt("EnergyValue", 0);
-            if (EnergyBar != null)
-                EnergyBar.fillAmount = (float)CurrentEnergy / 100;
             //LifeBar.fillAmount = (float)CurrentLife / 100;//temp
             //MaxEnergyStatic = MaxEnergy;
-            print("1. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
-            if (HealthSlider != null)
-                HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
-            print("2. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
+            //print("1. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
+            //print("2. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
         }
         
         /// <summary>
@@ -84,16 +91,20 @@ namespace SwordGame
         /// </summary>
         public void UpdatePlayerManager()
         {
-            print("3. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
+            //print("3. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
+            //if (EnergyBar != null)
+            //{
+            //    EnergyBar.fillAmount = (float)CurrentEnergy / 100;
+            //}
+            //LifeBar.fillAmount = (float)CurrentLife / 100;      //temp
             if (HealthSlider != null)
             {
                 HealthSlider.sliderBar.value = CurrentHealth;
             }
-            if (EnergyBar != null)
+            if (EnergySliderPM != null)
             {
-                EnergyBar.fillAmount = (float)CurrentEnergy / 100;
+                EnergySliderPM.EnergySlider.value = CurrentEnergy;
             }
-            //LifeBar.fillAmount = (float)CurrentLife / 100;      //temp
             if (CurrentHealth <= 0)
             {
                 FeedbackManager.instance.StopVibration();
