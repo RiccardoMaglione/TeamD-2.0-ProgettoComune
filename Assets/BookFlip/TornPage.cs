@@ -17,6 +17,8 @@ public class TornPage : MonoBehaviour
 
     [SerializeField] GameObject shadowPanel;
 
+    public static bool tornPageIsMoving;
+
     private float transitionTime = 10;
 
     public bool tornPageOpen = false;
@@ -44,7 +46,7 @@ public class TornPage : MonoBehaviour
 
     public void OptionsButton()
     {
-        if (tornPageOpen == false && PageFlipper.aPageIsFlipping == false)
+        if (tornPageOpen == false && tornPageIsMoving == false)
         {
             Options.SetActive(true);
             RateUs.SetActive(false);
@@ -59,7 +61,7 @@ public class TornPage : MonoBehaviour
 
     public void RateUsButton()
     {
-        if (tornPageOpen == false && PageFlipper.aPageIsFlipping == false)
+        if (tornPageOpen == false && tornPageIsMoving == false)
         {
             Options.SetActive(false);
             RateUs.SetActive(true);
@@ -74,7 +76,7 @@ public class TornPage : MonoBehaviour
 
     public void CreditsButton()
     {
-        if (tornPageOpen == false && PageFlipper.aPageIsFlipping == false)
+        if (tornPageOpen == false && tornPageIsMoving == false)
         {
 
             Options.SetActive(false);
@@ -90,7 +92,7 @@ public class TornPage : MonoBehaviour
 
     public void QuitButton()
     {
-        if (tornPageOpen == false && PageFlipper.aPageIsFlipping == false)
+        if (tornPageOpen == false && tornPageIsMoving == false)
         {
 
             Options.SetActive(false);
@@ -109,7 +111,7 @@ public class TornPage : MonoBehaviour
     }
     public void SkullCollectionButton()
     {
-        if (tornPageOpen == false && PageFlipper.aPageIsFlipping == false)
+        if (tornPageOpen == false && tornPageIsMoving == false)
         {
 
             Options.SetActive(false);
@@ -127,17 +129,18 @@ public class TornPage : MonoBehaviour
 
     public IEnumerator MoveInTornPage()
     {
+        shadowPanel.SetActive(true);
+
         float progress = 0;
         while (progress < transitionTime)
         {
-            PageFlipper.aPageIsFlipping = true;
+            tornPageIsMoving = true;
             tornPage.transform.position = Vector3.MoveTowards(tornPage.transform.position, endPos, progress * speed * Time.deltaTime);
             progress += Time.deltaTime;
             if (tornPage.transform.position == endPos)
             {
                 tornPageOpen = true;
-                PageFlipper.aPageIsFlipping = false;
-                shadowPanel.SetActive(true);
+                tornPageIsMoving = false;
             }
             yield return null;
         }
@@ -150,13 +153,13 @@ public class TornPage : MonoBehaviour
         float progress = 0;
         while (progress < transitionTime)
         {
-            PageFlipper.aPageIsFlipping = true;
+            tornPageIsMoving = true;
             tornPage.transform.position = Vector3.MoveTowards(tornPage.transform.position, startPos, progress * speed * Time.deltaTime);
             progress += Time.deltaTime;
             if (tornPage.transform.position == startPos)
             {
                 tornPageOpen = false;
-                PageFlipper.aPageIsFlipping = false;
+                tornPageIsMoving = false;
             }
             yield return null;
         }

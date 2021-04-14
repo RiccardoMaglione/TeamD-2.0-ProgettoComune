@@ -33,7 +33,7 @@ public class PageFlipper : MonoBehaviour
     private Quaternion notFlippedPosition;
     private Quaternion flippedPosition;
 
-    public static bool aPageIsFlipping = false;
+    public bool aPageIsFlipping = false;
     public bool introCutscene = false;
 
     public int introPageCounter;
@@ -66,8 +66,11 @@ public class PageFlipper : MonoBehaviour
             }
             if (pageCounter == 2)
             {
-                StopAllCoroutines();
-                StartCoroutine(BackToLevelSelectionCoroutine());
+                if (TornPage.tornPageIsMoving == false)
+                {
+                    StopAllCoroutines();
+                    StartCoroutine(BackToLevelSelectionCoroutine());
+                }
             }
         }
 
@@ -367,12 +370,9 @@ public class PageFlipper : MonoBehaviour
             aPageIsFlipping = true;
             page0Pivot.transform.rotation = Quaternion.Lerp(notFlippedPosition, flippedPosition, progress * flipSpeed);
             progress += Time.deltaTime;
-            if (page8Pivot.transform.rotation.eulerAngles.y == 180)
-            {
-                aPageIsFlipping = false;
-            }
             if (page0Pivot.transform.rotation.eulerAngles.y == 180)
             {
+                aPageIsFlipping = false;
                 page8Pivot.SetActive(false);
             }
             yield return new WaitForEndOfFrame();
