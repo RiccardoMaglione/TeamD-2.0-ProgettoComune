@@ -5,6 +5,7 @@ public class EnemyParticleController : MonoBehaviour
     public ParticleSystem deathParticle;
     public ParticleSystem stunParticle;
     public ParticleSystem bloodParticle;
+    public ParticleSystem rageAuraParticle;
 
     public static EnemyParticleController instance;
 
@@ -22,6 +23,18 @@ public class EnemyParticleController : MonoBehaviour
     {
         bloodParticle.Play();
     }
+
+    #region Rage Aura Particle
+    public void PlayRageAura()
+    {
+        rageAuraParticle.Play();
+    }
+
+    public void StopRageAura()
+    {
+        rageAuraParticle.Play();
+    }
+    #endregion
 
     void Awake()
     {
