@@ -9,7 +9,6 @@ public class PSMIdle : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<PSMController>().OnceJump = false;
-        PlayerParticlesController.instance.StopRun();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

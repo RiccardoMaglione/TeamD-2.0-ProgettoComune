@@ -7,6 +7,7 @@ public class AIStunState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         EnemyParticleController.instance.PlayStun();
+
         animator.SetBool("AI-IsStun", true);
         //animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View
         animator.GetComponent<EnemyData>().isStun = true;
