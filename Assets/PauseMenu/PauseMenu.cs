@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -59,7 +60,7 @@ public class PauseMenu : MonoBehaviour
             menuOpen = true;
             Time.timeScale = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && paused == true && menuOpen == true && tornPageOpen == false)
+        else if (Input.GetKeyDown(KeyCode.Escape) && paused == true && menuOpen == true && tornPageOpen == false && tornPageIsMoving == false)
         {
             book.SetActive(false);
             pausePanel.SetActive(false);
@@ -76,16 +77,12 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeButton()
     {
-        if (tornPageOpen == false && tornPageIsMoving == false)
+        if (paused == true && menuOpen == true && tornPageOpen == false && tornPageIsMoving == false)
         {
-            Resume.SetActive(true);
-            RestartLevel.SetActive(false);
-            Controls.SetActive(false);
-            Options.SetActive(false);
-            MainMenu.SetActive(false);
-
-            StopCoroutine("MoveOutTornPageCoroutine");
-            StartCoroutine("MoveInTornPageCoroutine");
+            book.SetActive(false);
+            pausePanel.SetActive(false);
+            menuOpen = false;
+            Time.timeScale = 1;
         }
     }
 
@@ -151,7 +148,25 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void NoButton()
+    {
+        if (paused == true && menuOpen == true && tornPageOpen == true)
+        {
+            StopCoroutine("MoveInTornPageCoroutine");
+            StartCoroutine("MoveOutTornPageCoroutine");
+        }
 
+    }
+
+    public void ConfirmRestart()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void ConfirmBackToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     public IEnumerator MoveInTornPageCoroutine()
     {
