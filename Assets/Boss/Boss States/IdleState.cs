@@ -3,6 +3,8 @@
 public class IdleState : StateMachineBehaviour
 {
     Boss boss;
+    [SerializeField] private float threshold1;
+    [SerializeField] private float threshold2;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -15,15 +17,15 @@ public class IdleState : StateMachineBehaviour
             animator.SetBool("GoToPhase3", false);
             animator.SetBool("Laser", false);
         }
-        
-        if (boss.life < 30 && boss.life > 0)
+
+        if (boss.life < threshold2 && boss.life > 0)
         {
             animator.SetBool("GoToPhase2", false);
             animator.SetBool("GoToPhase3", true);
         }
 
 
-        if (boss.life < 70 && boss.life > 29)
+        if (boss.life < threshold1 && boss.life > threshold2 - 1)
             animator.SetBool("GoToPhase2", true);
     }
 

@@ -29,5 +29,6 @@ public class ToBossFight : MonoBehaviour
 
         player.transform.position = new Vector2(528, 27);
     }
+    //aggiungere setactive false dei primi 2 nemici
 
 }

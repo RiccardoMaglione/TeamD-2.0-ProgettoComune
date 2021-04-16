@@ -2,7 +2,7 @@
 
 public class FollowState : StateMachineBehaviour
 {
-    Transform player;
+    public Transform player;
 
     [SerializeField] float bossChaseSpeed;
     [SerializeField] float chaseTime;
@@ -20,15 +20,15 @@ public class FollowState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         time += Time.deltaTime;
-        
-        if(time < chaseTime)
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, new Vector2(player.position.x, player.position.y + 8), bossChaseSpeed * Time.deltaTime);
-       
+
+        if (time < chaseTime)
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, new Vector2(player.position.x, player.position.y + 6), bossChaseSpeed * Time.deltaTime);
+
         else
         {
             time2 += Time.deltaTime;
-            
-            if(time2 > waitTime)
+
+            if (time2 > waitTime)
                 animator.SetTrigger("GoToNext");
         }
     }

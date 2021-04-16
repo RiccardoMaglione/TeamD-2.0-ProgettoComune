@@ -22,6 +22,24 @@ public class AttackSystem : MonoBehaviour
 
         }
 
+
+        if (collision.gameObject.tag == "Boss") //16/04
+        {
+            if (GetComponentInParent<PSMController>().IsLightAttack == true)
+            {
+                collision.GetComponent<Boss>().life -= LightDamage;
+            }
+            if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
+            {
+                collision.GetComponent<Boss>().life -= HeavyDamage;
+            }
+            if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
+            {
+                collision.GetComponent<Boss>().life -= SpecialDamage;
+            }
+        }
+
+
         Debug.Log("Passa qui HIT" + collision.name);
         if (collision.gameObject.tag == "Enemy")
         {
