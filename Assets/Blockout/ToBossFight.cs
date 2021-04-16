@@ -5,9 +5,11 @@ public class ToBossFight : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject[] cameras;
     [SerializeField] GameObject[] cameraConfiners;
+    [SerializeField] GameObject Enemies0;
 
     public void ToBossFightButton()
     {
+        Enemies0.SetActive(false);
         for (int i = 0; i < cameraConfiners.Length; i++)
         {
             if (i < 22)
@@ -29,6 +31,6 @@ public class ToBossFight : MonoBehaviour
 
         player.transform.position = new Vector2(528, 27);
     }
-    //aggiungere setactive false dei primi 2 nemici
+
 
 }
