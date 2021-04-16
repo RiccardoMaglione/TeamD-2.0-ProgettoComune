@@ -9,6 +9,9 @@ public class Smash1 : MonoBehaviour
     public int checkGroundWP;
     bool hit = false;
 
+    public GameObject[] cameraConfiners;
+    public GameObject[] cameras;
+
     public void Smash()
     {
         if (i < waypoints.Length)
@@ -24,6 +27,23 @@ public class Smash1 : MonoBehaviour
         if (waypoints[checkGroundWP].transform.position.y >= transform.position.y && hit == false)
         {
             hit = true;
+            for (int i = 0; i < cameraConfiners.Length; i++)
+            {
+                cameraConfiners[i].SetActive(false);
+                if (i == 24)
+                {
+                    cameraConfiners[24].SetActive(true);
+                }
+            }
+            for (int i = 0; i < cameras.Length; i++)
+            {
+                cameras[i].SetActive(false);
+                if (i == 24)
+                {
+                    cameras[24].SetActive(true);
+                }
+            }
+
             GroundManager.instance.Smash();
         }
     }
