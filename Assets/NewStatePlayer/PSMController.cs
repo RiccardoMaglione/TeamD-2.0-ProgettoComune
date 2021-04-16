@@ -411,7 +411,7 @@ namespace SwordGame
                 GetComponent<Animator>().SetBool("PSM-CanDashInAir", false); //Permette di rientrare in dash
             }
 
-            if ((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxis("Vertical") < 0) || (Input.GetAxis("DPad Y") < 0)) && (DialogueType1.StaticTutorial != -1))
+            if ((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxisRaw("Vertical") < 0) || (Input.GetAxisRaw("DPad Y") < 0)) && (DialogueType1.StaticTutorial != -1))
             {
                 if (collision.gameObject.GetComponent<PlatformEffector2D>() != null && this.gameObject.tag == "Player")
                 {
