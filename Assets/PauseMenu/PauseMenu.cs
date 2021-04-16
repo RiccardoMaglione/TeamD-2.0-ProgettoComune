@@ -160,11 +160,13 @@ public class PauseMenu : MonoBehaviour
 
     public void ConfirmRestart()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
 
     public void ConfirmBackToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
