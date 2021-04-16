@@ -3,7 +3,7 @@
 public class BossEnabler : MonoBehaviour
 {
     [SerializeField] GameObject boss;
-    public float activationTime = 1f;
+    public float activationTime = 0.2f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
