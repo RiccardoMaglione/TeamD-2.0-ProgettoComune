@@ -161,13 +161,13 @@ public class PauseMenu : MonoBehaviour
     public void ConfirmRestart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void ConfirmBackToMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public IEnumerator MoveInTornPageCoroutine()

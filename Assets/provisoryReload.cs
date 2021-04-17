@@ -10,7 +10,7 @@ public class provisoryReload : MonoBehaviour
     }
     public void ToGameplay()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void ToBlockout()

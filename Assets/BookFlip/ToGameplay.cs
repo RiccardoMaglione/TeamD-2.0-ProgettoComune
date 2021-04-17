@@ -5,6 +5,6 @@ public class ToGameplay : MonoBehaviour
 {
     public void ToGameplayButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
