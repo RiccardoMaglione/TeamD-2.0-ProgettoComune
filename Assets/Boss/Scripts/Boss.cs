@@ -5,7 +5,7 @@ public class Boss : MonoBehaviour
 
 {
     public int damage;
-    public bool canDamage = false;
+    public static bool canDamage = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

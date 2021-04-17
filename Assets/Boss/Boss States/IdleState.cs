@@ -10,7 +10,7 @@ public class IdleState : StateMachineBehaviour
     {
         boss = animator.GetComponent<Boss>();           
         
-        boss.canDamage = false;
+        Boss.canDamage = false;
 
         if (boss.life <= 0)
         {

@@ -16,6 +16,9 @@ public class WaypointsAttack2 : MonoBehaviour
             if ((Vector3.Distance(waypoints[i].transform.position, transform.position) < WPradius) && i < waypoints.Length)
             {
                 i++;
+
+                if (i == waypoints.Length - 1)
+                    Boss.canDamage = false;
             }
         }
     }

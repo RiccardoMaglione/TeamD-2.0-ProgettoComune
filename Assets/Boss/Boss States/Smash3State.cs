@@ -3,8 +3,10 @@
 public class Smash3State : StateMachineBehaviour
 {
     Smash3 smash3;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Boss.canDamage = true;
         smash3 = animator.GetComponent<Smash3>();
     }
 
