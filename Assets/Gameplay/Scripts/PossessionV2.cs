@@ -100,7 +100,10 @@ namespace SwordGame
                     PlayerDetect.transform.Find("Aggro").gameObject.SetActive(true);                                    //Diventa nemico attiva aggro
                     PlayerDetectArray[PlayerDetectArray.Count - 1].transform.Find("Aggro").gameObject.SetActive(false);  //diventa player disattiva aggro
 
-                    
+
+                    //Disattivo range melee e range
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().RangeMelee.SetActive(false);
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().RangeRanged.SetActive(false);
 
 
                     PlayerDetect.GetComponent<EnemyData>().Life = 0;
@@ -149,6 +152,7 @@ namespace SwordGame
                     PromptCommand.SetActive(true);
 
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<SpriteRenderer>().material = PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<ColorChangeController>().originalMaterial;
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().AreaPossession.SetActive(false);
                 }
             }
             #endregion
