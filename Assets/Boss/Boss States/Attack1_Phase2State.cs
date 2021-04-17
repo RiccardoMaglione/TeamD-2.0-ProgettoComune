@@ -3,7 +3,7 @@
 public class Attack1_Phase2State : StateMachineBehaviour
 {
     ArcMovement arcMovement;
-    int i = 0;
+    public int i = 0;
     bool isMove;
     float initialPosition;
     bool isUp = false;
@@ -14,7 +14,6 @@ public class Attack1_Phase2State : StateMachineBehaviour
     {
         arcMovement = animator.GetComponent<ArcMovement>();
         initialPosition = animator.transform.position.y;
-        i = 0;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -43,12 +42,12 @@ public class Attack1_Phase2State : StateMachineBehaviour
             isUp = false;     
         }      
         
-        if(i == 3)
+        if(i == 6)
             animator.SetTrigger("GoToIdle");
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        i = 0;
     }
 }

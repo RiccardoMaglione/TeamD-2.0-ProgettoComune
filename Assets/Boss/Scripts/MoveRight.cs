@@ -7,11 +7,11 @@ public class MoveRight : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
-            Destroy(gameObject);
-
         if (collision.gameObject.tag == "Player")
             Debug.LogWarning(damage+" WAVE DAMAGE");
+        
+        if (collision.gameObject.tag == "Wall")
+            Destroy(gameObject);
     }
 
     void Update()

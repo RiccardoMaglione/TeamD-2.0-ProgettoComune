@@ -17,7 +17,7 @@ public class Waypoints3Phase : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, waypoints[i].transform.position, Time.deltaTime * speed[i]);
 
-            if ((Vector3.Distance(waypoints[i].transform.position, transform.position) < WPradius) && i < waypoints.Length)
+            if ((Vector3.Distance(waypoints[i].transform.position, transform.position) <= WPradius) && i < waypoints.Length)
             {
                 i++;
             }

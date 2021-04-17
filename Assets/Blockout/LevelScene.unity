@@ -89861,7 +89861,7 @@ GameObject:
   - component: {fileID: 1444356645}
   m_Layer: 0
   m_Name: Wall SX
-  m_TagString: Floor
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99330,7 +99330,7 @@ GameObject:
   - component: {fileID: 1594812065}
   m_Layer: 0
   m_Name: WAll DX
-  m_TagString: Floor
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100335,7 +100335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603372515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.498241, y: -0.46950006, z: -10}
+  m_LocalPosition: {x: -13.489845, y: -0.46950006, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -131030,7 +131030,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  life: 1000
+  canDamage: 0
+  life: 600
 --- !u!58 &2091389880
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -136911,7 +136912,7 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 6656.2104
+  ResetTimerStaggered: 6689.728
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647
