@@ -15,7 +15,7 @@ public class PSMIdle : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         #region Move Zone - Da "Player Idle State" da "Player Move State"
-        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Horizontal") < 0) || (Input.GetAxisRaw("DPad X") > 0 || Input.GetAxisRaw("DPad X") < 0)) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                             //Se schiaccio A o D
+        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || (Input.GetAxisRaw("Horizontal") > 0.25f || Input.GetAxisRaw("Horizontal") < -0.25f) || (Input.GetAxisRaw("DPad X") > 0.25f || Input.GetAxisRaw("DPad X") < 0.25f)) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                             //Se schiaccio A o D
         {
             Debug.Log("PlayerState - Vai nello stato 'PSMMove'");                                                                           //Debuggo in console cosa fa
             animator.SetBool("PSM-CanMove", true);                                                                                          //Cambio stato da "Player Idle State" in "Player Move State"
