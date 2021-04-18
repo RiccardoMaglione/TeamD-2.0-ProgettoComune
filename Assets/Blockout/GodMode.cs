@@ -8,6 +8,13 @@ namespace SwordGame
         public HealthBar healthBar;
 
         public bool godModeActive = false;
+        public GameObject TempPlayer;
+
+        private void Update()
+        {
+            if(TempPlayer != ChangeFollow.StaticPlayerTemp)
+            player = ChangeFollow.StaticPlayerTemp;
+        }
 
         public void SetGodMode()
         {
