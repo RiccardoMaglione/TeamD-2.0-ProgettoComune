@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using SwordGame;
 
 public class TrapSpike : MonoBehaviour
 {
@@ -21,7 +22,8 @@ public class TrapSpike : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && !cooldownIsActive && cooldownTrap <=0f)
         {
-            health--;  // -------------------- change with player health
+            //health--;  // -------------------- change with player health
+            collision.gameObject.GetComponent<PSMController>().CurrentHealth -= damage;
             cooldownIsActive = true;
         }
     }

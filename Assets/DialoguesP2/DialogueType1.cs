@@ -17,6 +17,19 @@ public class DialogueType1 : MonoBehaviour
 
     public bool dialogueActive = false;
 
+    public int NumTutorial;
+    public static int StaticTutorial;
+
+    public int NumTutorial2;
+    public static int StaticTutorial2;
+
+    //0 default
+    //1 ad          Se è 0 o 1 o 2 o 3 o 4 o 5
+    //2 jump        Se è 0 o 2 o 3 o 4 o 5
+    //3 ui          Se è 0 o 3 o 4 o 5
+    //4 s           Se è 0 o 4 o 5
+    //5 shift       Se è 0 o 5
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -28,11 +41,18 @@ public class DialogueType1 : MonoBehaviour
             Time.timeScale = 0;
             dialogueBox.SetActive(true);
             StartCoroutine("DialogueIn");
+            StaticTutorial = NumTutorial;
+            StaticTutorial2 = NumTutorial2;
+            print("Numero tutorial è " + StaticTutorial);
         }
     }
 
     private void DestroyCollider()
     {
+        StaticTutorial++;
+        StaticTutorial2++;
+        print("Numero tutorial è " + StaticTutorial);
+        print("2 Numero tutorial è " + StaticTutorial2);
         StopCoroutine("DialogueOut");
         Destroy(this);
     }

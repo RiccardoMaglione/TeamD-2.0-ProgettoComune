@@ -31,6 +31,7 @@ namespace SwordGame
         [Header("Energy System - Value Management")]
         [Space(20)]
         public Image EnergyBar;
+        public EnergyBar EnergySliderPM;
         public int MaxEnergy;
         public static int MaxEnergyStatic;
         [ReadOnly] public int CurrentEnergy;
@@ -42,12 +43,6 @@ namespace SwordGame
         public int LightEnergyAmount;
         public int HeavyEnergyAmount;
         public int SpecialEnergyAmount;
-        #endregion
-        #region In caso servisse la life bar con un image
-        //public Image LifeBar;
-        //public int MaxLife;
-        //public static int MaxLifeStatic;
-        //public int CurrentLife;
         #endregion
         [ReadOnly] public bool isTriggerOnlyOnce = false;
         #endregion
@@ -68,15 +63,14 @@ namespace SwordGame
         /// </summary>
         public void InitializePlayerManager()
         {
-            //CurrentEnegy = PlayerPrefs.GetInt("EnergyValue", 0);
-            if (EnergyBar != null)
-                EnergyBar.fillAmount = (float)CurrentEnergy / 100;
-            //LifeBar.fillAmount = (float)CurrentLife / 100;//temp
-            //MaxEnergyStatic = MaxEnergy;
-            print("1. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
             if (HealthSlider != null)
+            {
                 HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
-            print("2. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
+            }
+            if(EnergySliderPM != null)
+            {
+                EnergySliderPM.MaxEnergy(MaxEnergy);
+            }
         }
         
         /// <summary>
@@ -84,23 +78,19 @@ namespace SwordGame
         /// </summary>
         public void UpdatePlayerManager()
         {
-            print("3. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
             if (HealthSlider != null)
             {
                 HealthSlider.sliderBar.value = CurrentHealth;
             }
-            if (EnergyBar != null)
+            if (EnergySliderPM != null)
             {
-                EnergyBar.fillAmount = (float)CurrentEnergy / 100;
+                EnergySliderPM.EnergySlider.value = CurrentEnergy;
             }
-            //LifeBar.fillAmount = (float)CurrentLife / 100;      //temp
             if (CurrentHealth <= 0)
             {
                 FeedbackManager.instance.StopVibration();
                 FeedbackManager.instance.Zoom();
-                //GetComponent<Animator>().SetBool("IsDie", true);
                 GetComponent<Animator>().SetTrigger("PSM-IsDie");
-                //Destroy(this.gameObject);
                 print("Hai Perso");
             }
            print("4. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
