@@ -87,8 +87,6 @@ namespace SwordGame
                     PlayerDetect.GetComponent<EnemyData>().enabled = true;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().enabled = false;
 
-                    PlayerDetect.GetComponent<Animator>().runtimeAnimatorController = EnemyAnimator;
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().runtimeAnimatorController = PlayerAnimator;
 
 
                     //PlayerDetect.GetComponent<PlayerManager>().enabled = false;
@@ -105,6 +103,8 @@ namespace SwordGame
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().RangeMelee.SetActive(false);
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().RangeRanged.SetActive(false);
 
+                    PlayerDetect.GetComponent<Animator>().runtimeAnimatorController = PlayerDetect.GetComponent<PossessionV2>().EnemyAnimator;                                            //Il player diventa il nemico
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().runtimeAnimatorController = PlayerAnimator;         //Il nemico diventa il player
 
                     PlayerDetect.GetComponent<EnemyData>().Life = 0;
                     PlayerDetect.GetComponent<EnemyData>().isStun = true;
