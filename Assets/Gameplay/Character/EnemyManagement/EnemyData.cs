@@ -8,7 +8,6 @@ public class EnemyData : MonoBehaviour
 
     #region Life Behaviour / Stun Sub-Behaviour - Possession Sub-Behaviour
     public TypeEnemies TypeEnemy;
-    public ParticleSystem bloodPS;
 
     [Space(10)]
     [Header("------------------------ Life Behaviour -----------------------------------------------------------------------------------------------------------------------------")]
