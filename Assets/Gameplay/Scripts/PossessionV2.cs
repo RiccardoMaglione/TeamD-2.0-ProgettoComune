@@ -42,8 +42,6 @@ namespace SwordGame
         public RuntimeAnimatorController PlayerAnimator;
         public RuntimeAnimatorController EnemyAnimator;
 
-        public GameObject EnemyParticle;
-        public GameObject PlayerParticle;
         #endregion
         void Start()
         {
@@ -63,7 +61,7 @@ namespace SwordGame
             if (isPlayer == true)
             {
                 if ((Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().isStun == true)
-                {
+                {   
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().isPossessed = true;
                     ReturnPlayer.CanDestroy = false;
                     ReturnPlayer.timerDestroy = 0;
@@ -89,12 +87,6 @@ namespace SwordGame
 
                     PlayerDetect.GetComponent<EnemyData>().enabled = true;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().enabled = false;
-
-                    PlayerDetect.GetComponent<PossessionV2>().EnemyParticle.SetActive(true);
-                    PlayerDetect.GetComponent<PossessionV2>().PlayerParticle.SetActive(false);
-
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().EnemyParticle.SetActive(false);
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().PlayerParticle.SetActive(true);
 
                     //PlayerDetect.GetComponent<PlayerManager>().enabled = false;
                     //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PlayerManager>().enabled = true;

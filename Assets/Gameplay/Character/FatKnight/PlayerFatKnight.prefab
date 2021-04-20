@@ -269,7 +269,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0.77281, a: 1}
+      maxColor: {r: 0, g: 1, b: 0.011921406, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9745,7 +9745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6089246363782402167
 Transform:
   m_ObjectHideFlags: 0
@@ -9762,7 +9762,7 @@ Transform:
   - {fileID: 3741684767874182860}
   - {fileID: 560369084784831838}
   m_Father: {fileID: 4377472122600917200}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7245447830646364276
 MonoBehaviour:
@@ -10026,8 +10026,8 @@ Transform:
   - {fileID: 90713861945717711}
   - {fileID: 9144508095747054093}
   - {fileID: 3440262277641467113}
-  - {fileID: 2943131586494497718}
   - {fileID: 6089246363782402167}
+  - {fileID: 2943131586494497718}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10172,7 +10172,7 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 12057.106
+  ResetTimerStaggered: 12091.117
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647
@@ -10226,8 +10226,6 @@ MonoBehaviour:
   EnemyColor: {r: 1, g: 1, b: 1, a: 1}
   PlayerAnimator: {fileID: 22100000, guid: df27faab894cd3c429a432429ca75a56, type: 2}
   EnemyAnimator: {fileID: 22100000, guid: 42d4f845aa3315f42b508a022ca750c9, type: 2}
-  EnemyParticle: {fileID: 377123056295770196}
-  PlayerParticle: {fileID: 2535909870950593029}
 --- !u!114 &4529155594793230523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20308,7 +20306,7 @@ Transform:
   - {fileID: 751392783948671226}
   - {fileID: 8381090491274788769}
   m_Father: {fileID: 4377472122600917200}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &954945927031801717
 MonoBehaviour:
@@ -36351,7 +36349,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6037736, g: 0.11050192, b: 0.11050192, a: 1}
+      maxColor: {r: 0, g: 0.008930683, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -36875,7 +36873,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 1.75
       mode: 0
       spread: 0
       speed:

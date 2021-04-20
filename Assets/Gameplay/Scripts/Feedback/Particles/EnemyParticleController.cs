@@ -7,8 +7,6 @@ public class EnemyParticleController : MonoBehaviour
     public ParticleSystem deathParticle;
     public ParticleSystem possessionParticle;
 
-    public static EnemyParticleController instance;
-
     public void PlayBlood()
     {
         bloodParticle.Play();
@@ -27,13 +25,5 @@ public class EnemyParticleController : MonoBehaviour
     public void PlayPossession()
     {
         possessionParticle.Play();
-    }
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
     }
 }

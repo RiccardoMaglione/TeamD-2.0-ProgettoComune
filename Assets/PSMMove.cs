@@ -10,16 +10,16 @@ public class PSMMove : StateMachineBehaviour
         switch (animator.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
-                FindObjectOfType<FatKnightParticleController>().PlayRun();
+                animator.GetComponentInChildren<FatKnightParticleController>().PlayRun();
                 break;
             case TypePlayer.BoriousKnight:
-                FindObjectOfType<BabushkaParticleController>().PlayRun();
+                animator.GetComponentInChildren<BabushkaParticleController>().PlayRun();
                 break;
             case TypePlayer.Babushka:
-                FindObjectOfType<BabushkaParticleController>().PlayRun();
+                animator.GetComponentInChildren<BabushkaParticleController>().PlayRun();
                 break;
             case TypePlayer.Thief:
-                FindObjectOfType<ThiefParticlesController>().PlayRun();
+                animator.GetComponentInChildren<ThiefParticlesController>().PlayRun();
                 break;
         }
     }

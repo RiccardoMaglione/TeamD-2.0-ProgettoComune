@@ -632,7 +632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6062479923079898297}
-  - component: {fileID: 6390376965602489339}
+  - component: {fileID: 602412711121604872}
   m_Layer: 0
   m_Name: Enemy Particles
   m_TagString: Untagged
@@ -658,7 +658,7 @@ Transform:
   m_Father: {fileID: 8866432838277455787}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6390376965602489339
+--- !u!114 &602412711121604872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb65903f9156e0e4b93614eca4e76453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodParticle: {fileID: 606433580653052471}
+  bloodParticle: {fileID: 0}
   stunParticle: {fileID: 0}
   deathParticle: {fileID: 0}
   possessionParticle: {fileID: 0}
@@ -6855,7 +6855,7 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 12077.864
+  ResetTimerStaggered: 12080.197
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647
@@ -7330,7 +7330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 452765435637329297}
-  - component: {fileID: 1451568767269466431}
+  - component: {fileID: 7637417074885815918}
   m_Layer: 0
   m_Name: Player Particles
   m_TagString: Untagged
@@ -7357,7 +7357,7 @@ Transform:
   m_Father: {fileID: 8866432838277455787}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1451568767269466431
+--- !u!114 &7637417074885815918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7366,11 +7366,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9112161429619310880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9852d8d624896b745bc7960b33246179, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a129b484a57af24492352f6ab5dcd47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   runParticle: {fileID: 0}
   jumpParticle: {fileID: 0}
   landingParticle: {fileID: 0}
   dashParticle: {fileID: 0}
-  rageAuraParticle: {fileID: 0}
