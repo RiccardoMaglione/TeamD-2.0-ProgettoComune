@@ -261,6 +261,8 @@ namespace SwordGame
                 {
                     if (FeedbackManager.instance.isCutIn == false)
                         StartCoroutine(FeedbackManager.instance.CutInBabushka());
+                    
+                    GetComponentInChildren<BabushkaParticleController>().PlayRageAura();
                 }
 
                 if (TypeCharacter == TypePlayer.BoriousKnight)

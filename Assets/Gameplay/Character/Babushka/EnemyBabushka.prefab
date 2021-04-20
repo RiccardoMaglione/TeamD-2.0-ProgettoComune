@@ -31,7 +31,6 @@ Transform:
   - {fileID: 4448874289706402296}
   - {fileID: 3510182704541989377}
   - {fileID: 8354039618278803744}
-  - {fileID: 6396852195417287492}
   m_Father: {fileID: 7333063049490549777}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,7 +49,6 @@ MonoBehaviour:
   bloodParticle: {fileID: 4448874289706402298}
   stunParticle: {fileID: 7036723767745499104}
   deathParticle: {fileID: 2021605774371584812}
-  possessionParticle: {fileID: 2712653938972707227}
 --- !u!1 &680291137017176659
 GameObject:
   m_ObjectHideFlags: 0
@@ -15521,7 +15519,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6037736, g: 0.11050192, b: 0.11050192, a: 1}
+      maxColor: {r: 0.5283019, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -16045,7 +16043,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 2.24
       mode: 0
       spread: 0
       speed:
@@ -30597,7 +30595,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -35514,8 +35512,6 @@ MonoBehaviour:
   EnemyColor: {r: 1, g: 1, b: 1, a: 1}
   PlayerAnimator: {fileID: 22100000, guid: b883c4e2c916971459deaa72ca62446a, type: 2}
   EnemyAnimator: {fileID: 22100000, guid: 0a0384612ad7da640899fbe6c57809f0, type: 2}
-  EnemyParticle: {fileID: 349692798594196492}
-  PlayerParticle: {fileID: 7644189444140619597}
 --- !u!114 &7333063049490549783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40637,6 +40633,7 @@ Transform:
   - {fileID: 1571001049047376071}
   - {fileID: 8571618154097257802}
   - {fileID: 8754526401960450809}
+  - {fileID: 6396852195417287492}
   m_Father: {fileID: 7333063049490549777}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40656,7 +40653,8 @@ MonoBehaviour:
   jumpParticle: {fileID: 7235950408936025810}
   landingParticle: {fileID: 4291257089992555979}
   dashParticle: {fileID: 4575741406673957134}
-  rageAuraParticle: {fileID: 0}
+  possessionParticle: {fileID: 2712653938972707227}
+  rageAuraParticle: {fileID: 7736027856985405629}
 --- !u!1 &8150349521473645568
 GameObject:
   m_ObjectHideFlags: 0
@@ -40768,8 +40766,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5480191148666711438}
-  m_RootOrder: 3
+  m_Father: {fileID: 4472707703125584089}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &2712653938972707227
 ParticleSystem:
@@ -41485,7 +41483,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 2.32
+      value: 4.52
       mode: 0
       spread: 0
       speed:

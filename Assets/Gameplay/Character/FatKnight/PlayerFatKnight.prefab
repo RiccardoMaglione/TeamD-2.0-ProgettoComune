@@ -9760,7 +9760,6 @@ Transform:
   - {fileID: 2577834731216862643}
   - {fileID: 7807511982148438229}
   - {fileID: 3741684767874182860}
-  - {fileID: 560369084784831838}
   m_Father: {fileID: 4377472122600917200}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9779,7 +9778,6 @@ MonoBehaviour:
   bloodParticle: {fileID: 6254706481118341644}
   stunParticle: {fileID: 6779327487903463444}
   deathParticle: {fileID: 5100095042912273008}
-  possessionParticle: {fileID: 7367398797045932313}
 --- !u!1 &616029431577888031
 GameObject:
   m_ObjectHideFlags: 0
@@ -10172,7 +10170,7 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 12091.117
+  ResetTimerStaggered: 12104.73
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647
@@ -20305,6 +20303,7 @@ Transform:
   - {fileID: 848924146683842375}
   - {fileID: 751392783948671226}
   - {fileID: 8381090491274788769}
+  - {fileID: 560369084784831838}
   m_Father: {fileID: 4377472122600917200}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20324,6 +20323,7 @@ MonoBehaviour:
   jumpParticle: {fileID: 1916971267666407821}
   landingParticle: {fileID: 1573502254350861580}
   dashParticle: {fileID: 4511700245689029920}
+  possessionParticle: {fileID: 7367398797045932313}
 --- !u!1 &2799098333703216350
 GameObject:
   m_ObjectHideFlags: 0
@@ -36156,8 +36156,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children: []
-  m_Father: {fileID: 6089246363782402167}
-  m_RootOrder: 3
+  m_Father: {fileID: 2943131586494497718}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &7367398797045932313
 ParticleSystem:
@@ -36873,7 +36873,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1.75
+      value: 2.84
       mode: 0
       spread: 0
       speed:

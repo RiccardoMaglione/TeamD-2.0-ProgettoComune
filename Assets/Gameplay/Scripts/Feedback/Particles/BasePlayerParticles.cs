@@ -6,6 +6,7 @@ public class BasePlayerParticles : MonoBehaviour
     public ParticleSystem jumpParticle;
     public ParticleSystem landingParticle;
     public ParticleSystem dashParticle;
+    public ParticleSystem possessionParticle;
 
     #region Run Particles
     public void PlayRun()
@@ -32,5 +33,10 @@ public class BasePlayerParticles : MonoBehaviour
     public void PlayDash()
     {
         dashParticle.Play();
+    }
+
+    public void PlayPossession()
+    {
+        possessionParticle.Play();
     }
 }

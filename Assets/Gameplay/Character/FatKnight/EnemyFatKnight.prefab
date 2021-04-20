@@ -10094,7 +10094,6 @@ Transform:
   - {fileID: 3069426018539946213}
   - {fileID: 6540087229668378469}
   - {fileID: 8751329559141297276}
-  - {fileID: 8682051769113294170}
   m_Father: {fileID: 8277929296192245004}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10113,7 +10112,6 @@ MonoBehaviour:
   bloodParticle: {fileID: 3069426018539946215}
   stunParticle: {fileID: 1739995918064728901}
   deathParticle: {fileID: 8981086731480511893}
-  possessionParticle: {fileID: 8648292842947702173}
 --- !u!1 &3069426018539946212
 GameObject:
   m_ObjectHideFlags: 0
@@ -10860,7 +10858,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 2.12
       mode: 0
       spread: 0
       speed:
@@ -25170,8 +25168,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5012392176156697304}
-  m_RootOrder: 3
+  m_Father: {fileID: 1575003181053401883}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &8648292842947702173
 ParticleSystem:
@@ -25887,7 +25885,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 2.29
+      value: 6.11
       mode: 0
       spread: 0
       speed:
@@ -30134,6 +30132,7 @@ Transform:
   - {fileID: 1055587382037110128}
   - {fileID: 807107020610138017}
   - {fileID: 6049712566724683136}
+  - {fileID: 8682051769113294170}
   m_Father: {fileID: 8277929296192245004}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30153,6 +30152,7 @@ MonoBehaviour:
   jumpParticle: {fileID: 5469792602134636297}
   landingParticle: {fileID: 6960734764932024835}
   dashParticle: {fileID: 3487317091906390973}
+  possessionParticle: {fileID: 8648292842947702173}
 --- !u!1 &6314438338218354744
 GameObject:
   m_ObjectHideFlags: 0

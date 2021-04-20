@@ -6,7 +6,7 @@ public class AIStunState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        EnemyParticleController.instance.PlayStun();
+        animator.GetComponentInChildren<EnemyParticleController>().PlayStun();
 
         animator.SetBool("AI-IsStun", true);
         //animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.red;       //MVC: View

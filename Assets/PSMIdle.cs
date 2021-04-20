@@ -17,7 +17,7 @@ public class PSMIdle : StateMachineBehaviour
                 animator.GetComponentInChildren<BabushkaParticleController>().StopRun();
                 break;
             case TypePlayer.Babushka:
-                animator.GetComponentInChildren<BabushkaParticleController>().StopRun();
+                animator.GetComponentInChildren<BabushkaParticleController>().StopRun();            
                 break;
             case TypePlayer.Thief:
                 animator.GetComponentInChildren<ThiefParticlesController>().StopRun();

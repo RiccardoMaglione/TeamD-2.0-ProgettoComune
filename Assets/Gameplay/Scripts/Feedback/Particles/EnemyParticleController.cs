@@ -5,7 +5,6 @@ public class EnemyParticleController : MonoBehaviour
     public ParticleSystem bloodParticle;
     public ParticleSystem stunParticle;
     public ParticleSystem deathParticle;
-    public ParticleSystem possessionParticle;
 
     public void PlayBlood()
     {
@@ -20,10 +19,5 @@ public class EnemyParticleController : MonoBehaviour
     public void PlayDeath()
     {
         deathParticle.Play();
-    }
-
-    public void PlayPossession()
-    {
-        possessionParticle.Play();
     }
 }
