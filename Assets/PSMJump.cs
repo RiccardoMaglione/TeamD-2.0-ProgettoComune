@@ -10,6 +10,22 @@ public class PSMJump : StateMachineBehaviour
     {
         Debug.Log("PlayerState - Grounded'" + animator.GetBool("PSM-IsGrounded"));                      //Debuggo lo stato di grounded per verificare se toccava o non toccava terra (Default: true)
         animator.GetComponent<PSMController>().JumpFollow = true;
+
+        switch (animator.GetComponent<PSMController>().TypeCharacter)
+        {
+            case TypePlayer.FatKnight:
+                FindObjectOfType<FatKnightParticleController>().PlayJump();
+                break;
+            case TypePlayer.BoriousKnight:
+                FindObjectOfType<BabushkaParticleController>().PlayJump();
+                break;
+            case TypePlayer.Babushka:
+                FindObjectOfType<BabushkaParticleController>().PlayJump();
+                break;
+            case TypePlayer.Thief:
+                FindObjectOfType<ThiefParticlesController>().PlayJump();
+                break;
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

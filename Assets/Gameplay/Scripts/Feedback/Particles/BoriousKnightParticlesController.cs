@@ -1,7 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class BoriousKnightParticlesController : BasePlayerParticles
+﻿public class BoriousKnightParticlesController : BasePlayerParticles
 {
 }

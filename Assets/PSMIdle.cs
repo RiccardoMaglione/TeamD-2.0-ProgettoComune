@@ -8,6 +8,22 @@ public class PSMIdle : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        switch (animator.GetComponent<PSMController>().TypeCharacter)
+        {
+            case TypePlayer.FatKnight:
+                FindObjectOfType<FatKnightParticleController>().StopRun();
+                break;
+            case TypePlayer.BoriousKnight:
+                FindObjectOfType<BabushkaParticleController>().StopRun();
+                break;
+            case TypePlayer.Babushka:
+                FindObjectOfType<BabushkaParticleController>().StopRun();
+                break;
+            case TypePlayer.Thief:
+                FindObjectOfType<ThiefParticlesController>().StopRun();
+                break;
+        }
+
         animator.GetComponent<PSMController>().OnceJump = false;
     }
 

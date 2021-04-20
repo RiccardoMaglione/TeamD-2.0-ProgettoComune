@@ -2,8 +2,6 @@
 
 public class BabushkaParticleController : BasePlayerParticles
 {
-    BabushkaParticleController instance;
-
     public ParticleSystem rageAuraParticle;
 
     public void PlayRageAura()
@@ -14,14 +12,5 @@ public class BabushkaParticleController : BasePlayerParticles
     public void StopRageAura()
     {
         rageAuraParticle.Play();
-    }
-
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
     }
 }
