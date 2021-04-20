@@ -11,16 +11,16 @@ public class PSMIdle : StateMachineBehaviour
         switch (animator.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
-                FindObjectOfType<FatKnightParticleController>().StopRun();
+                animator.GetComponentInChildren<FatKnightParticleController>().StopRun();
                 break;
             case TypePlayer.BoriousKnight:
-                FindObjectOfType<BabushkaParticleController>().StopRun();
+                animator.GetComponentInChildren<BabushkaParticleController>().StopRun();
                 break;
             case TypePlayer.Babushka:
-                FindObjectOfType<BabushkaParticleController>().StopRun();
+                animator.GetComponentInChildren<BabushkaParticleController>().StopRun();
                 break;
             case TypePlayer.Thief:
-                FindObjectOfType<ThiefParticlesController>().StopRun();
+                animator.GetComponentInChildren<ThiefParticlesController>().StopRun();
                 break;
         }
 

@@ -67,16 +67,16 @@ public class PSMFall : StateMachineBehaviour
         switch (animator.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
-                FindObjectOfType<FatKnightParticleController>().PlayLanding();
+                animator.GetComponentInChildren<FatKnightParticleController>().PlayLanding();
                 break;
             case TypePlayer.BoriousKnight:
-                FindObjectOfType<BabushkaParticleController>().PlayLanding();
+                animator.GetComponentInChildren<BabushkaParticleController>().PlayLanding();
                 break;
             case TypePlayer.Babushka:
-                FindObjectOfType<BabushkaParticleController>().PlayLanding();
+                animator.GetComponentInChildren<BabushkaParticleController>().PlayLanding();
                 break;
             case TypePlayer.Thief:
-                FindObjectOfType<ThiefParticlesController>().PlayLanding();
+                animator.GetComponentInChildren<ThiefParticlesController>().PlayLanding();
                 break;
         }
     }

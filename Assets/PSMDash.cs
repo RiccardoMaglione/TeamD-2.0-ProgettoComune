@@ -10,16 +10,16 @@ public class PSMDash : StateMachineBehaviour
         switch (animator.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
-                FindObjectOfType<FatKnightParticleController>().PlayDash();
+                animator.GetComponentInChildren<FatKnightParticleController>().PlayDash();
                 break;
             case TypePlayer.BoriousKnight:
-                FindObjectOfType<BabushkaParticleController>().PlayDash();
+                animator.GetComponentInChildren<BabushkaParticleController>().PlayDash();
                 break;
             case TypePlayer.Babushka:
-                FindObjectOfType<BabushkaParticleController>().PlayDash();
+                animator.GetComponentInChildren<BabushkaParticleController>().PlayDash();
                 break;
             case TypePlayer.Thief:
-                FindObjectOfType<ThiefParticlesController>().PlayDash();
+                animator.GetComponentInChildren<ThiefParticlesController>().PlayDash();
                 break;
         }
     }

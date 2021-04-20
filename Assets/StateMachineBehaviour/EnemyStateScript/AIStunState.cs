@@ -13,6 +13,8 @@ public class AIStunState : StateMachineBehaviour
         animator.GetComponent<EnemyData>().isStun = true;
         animator.GetComponent<EnemyData>().CountHit = 0;
         animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
+
+        animator.GetComponent<EnemyParticleController>().PlayStun();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

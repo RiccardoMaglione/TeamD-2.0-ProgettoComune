@@ -14,16 +14,16 @@ public class PSMJump : StateMachineBehaviour
         switch (animator.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
-                FindObjectOfType<FatKnightParticleController>().PlayJump();
+                animator.GetComponentInChildren<FatKnightParticleController>().PlayJump();
                 break;
             case TypePlayer.BoriousKnight:
-                FindObjectOfType<BabushkaParticleController>().PlayJump();
+                animator.GetComponentInChildren<BabushkaParticleController>().PlayJump();
                 break;
             case TypePlayer.Babushka:
-                FindObjectOfType<BabushkaParticleController>().PlayJump();
+                animator.GetComponentInChildren<BabushkaParticleController>().PlayJump();
                 break;
             case TypePlayer.Thief:
-                FindObjectOfType<ThiefParticlesController>().PlayJump();
+                animator.GetComponentInChildren<ThiefParticlesController>().PlayJump();
                 break;
         }
     }
