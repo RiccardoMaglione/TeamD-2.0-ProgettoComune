@@ -14,6 +14,9 @@ public class TornPage : MonoBehaviour
     [SerializeField] GameObject Credits;
     [SerializeField] GameObject Quit;
     [SerializeField] GameObject SkullPage;
+    [SerializeField] GameObject newGame;
+    private PageFlipper pageFlipper;
+
 
     [SerializeField] GameObject shadowPanel;
 
@@ -23,11 +26,14 @@ public class TornPage : MonoBehaviour
 
     public bool tornPageOpen = false;
 
+    public bool thereAreSavedData; //bool da integrare con sistema di salvataggio
+
 
     private void Start()
     {
         startPos = tornPage.transform.position;
         endPos = tornPageDestination.transform.position;
+        pageFlipper = FindObjectOfType<PageFlipper>();
     }
 
     private void Update()
@@ -53,6 +59,8 @@ public class TornPage : MonoBehaviour
             Credits.SetActive(false);
             Quit.SetActive(false);
             SkullPage.SetActive(false);
+            newGame.SetActive(false);
+
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
@@ -68,6 +76,8 @@ public class TornPage : MonoBehaviour
             Credits.SetActive(false);
             Quit.SetActive(false);
             SkullPage.SetActive(false);
+            newGame.SetActive(false);
+
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
@@ -84,12 +94,44 @@ public class TornPage : MonoBehaviour
             Credits.SetActive(true);
             Quit.SetActive(false);
             SkullPage.SetActive(false);
+            newGame.SetActive(false);
+
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
         }
     }
+    public void NewGameButton()
+    {
+        if (tornPageOpen == false && tornPageIsMoving == false)
+        {
+            if (thereAreSavedData == true)
+            {
+                Options.SetActive(false);
+                RateUs.SetActive(false);
+                Credits.SetActive(false);
+                Quit.SetActive(false);
+                SkullPage.SetActive(false);
+                newGame.SetActive(true);
 
+                StopAllCoroutines();
+                StartCoroutine(MoveInTornPage());
+
+            }
+            if (thereAreSavedData == false)
+            {
+                pageFlipper.NewGame();
+            }
+        }
+    }
+    public void newGameConfirm()
+    {
+        //script che resetta i dati di gioco
+        StopAllCoroutines();
+        StartCoroutine(MoveOutTornPageCoroutine());
+
+        pageFlipper.NewGame();
+    }
     public void QuitButton()
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
@@ -100,6 +142,8 @@ public class TornPage : MonoBehaviour
             Credits.SetActive(false);
             Quit.SetActive(true);
             SkullPage.SetActive(false);
+            newGame.SetActive(false);
+
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
@@ -119,6 +163,8 @@ public class TornPage : MonoBehaviour
             Credits.SetActive(false);
             Quit.SetActive(false);
             SkullPage.SetActive(true);
+            newGame.SetActive(false);
+
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
