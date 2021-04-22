@@ -6,9 +6,9 @@ public class LaserManager : MonoBehaviour
     public GameObject laser2;
     public GameObject laser3;
  
-    public GameObject particle1;
-    public GameObject particle2;
-    public GameObject particle3;
+    public ParticleSystem  particle1;
+    public ParticleSystem particle2;
+    public ParticleSystem particle3;
 
     [HideInInspector] public int rand;
     int oldRandom;
@@ -26,13 +26,13 @@ public class LaserManager : MonoBehaviour
             while (oldRandom == rand);
 
             if (rand == 1)
-                particle1.SetActive(true);
+                particle1.Play();
 
             if (rand == 2)
-                particle2.SetActive(true);
+                particle2.Play();
 
             if (rand == 3)
-                particle3.SetActive(true);
+                particle3.Play();
 
             oldRandom = rand;
         }
