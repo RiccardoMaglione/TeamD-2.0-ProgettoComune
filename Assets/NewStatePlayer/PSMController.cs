@@ -97,6 +97,11 @@ namespace SwordGame
         public float CoeffReduceDamageHeavy = 1;
         public GameObject ArrowThief;
         public GameObject SpawnArrow;
+
+        public int ValuePoiseLight = 1;
+        public int ValuePoiseHeavy = 1;
+        public int ValuePoiseSpecial = 1;
+
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -362,7 +367,7 @@ namespace SwordGame
                     {
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
-                        PoisePlayer += 1;
+                        PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseLight;
                         CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().LightDamage * CoeffReduceDamageLight);
                         print("PSM-Trigger: Entra nel light attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
@@ -376,7 +381,7 @@ namespace SwordGame
                     {
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
-                        PoisePlayer += 1;
+                        PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseHeavy;
                         CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy);
                         print("PSM-Trigger: Entra nel heavy attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());

@@ -61,7 +61,7 @@ public class AttackSystem : MonoBehaviour
                 //GetComponentInParent<PSMController>().IsLightAttack = false;
                 collision.GetComponent<EnemyData>().Life -= LightDamage;
                 collision.GetComponent<EnemyData>().CountHit++;
-                collision.GetComponent<EnemyData>().CountPoiseEnemy++;
+                collision.GetComponent<EnemyData>().CountPoiseEnemy += GetComponentInParent<PSMController>().ValuePoiseLight;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
@@ -81,7 +81,7 @@ public class AttackSystem : MonoBehaviour
 
                 //GetComponentInParent<PSMController>().IsHeavyAttack = false;
                 collision.GetComponent<EnemyData>().Life -= HeavyDamage;
-                collision.GetComponent<EnemyData>().CountHit++;
+                collision.GetComponent<EnemyData>().CountHit += GetComponentInParent<PSMController>().ValuePoiseHeavy;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
@@ -102,7 +102,7 @@ public class AttackSystem : MonoBehaviour
                     FindObjectOfType<ScoreSystem>(true).SpecialType = true;
                 }
                 collision.GetComponent<EnemyData>().CountHit++;
-                collision.GetComponent<EnemyData>().CountPoiseEnemy++;
+                collision.GetComponent<EnemyData>().CountPoiseEnemy += GetComponentInParent<PSMController>().ValuePoiseSpecial;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)

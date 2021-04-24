@@ -123,6 +123,8 @@ public class EnemyData : MonoBehaviour
 
     public GameObject ArrowThief;
     public GameObject SpawnArrow;
+    public int ValuePoiseLight = 1;
+    public int ValuePoiseHeavy = 1;
 
     private void Start()
     {
