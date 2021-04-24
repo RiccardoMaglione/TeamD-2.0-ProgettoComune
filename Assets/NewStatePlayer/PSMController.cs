@@ -95,6 +95,8 @@ namespace SwordGame
 
         public float CoeffReduceDamageLight = 1;
         public float CoeffReduceDamageHeavy = 1;
+        public GameObject ArrowThief;
+        public GameObject SpawnArrow;
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -342,6 +344,11 @@ namespace SwordGame
             IsLightAttack = false;
             IsHeavyAttack = false;
             IsSpecialAttack = false;
+        }
+
+        public void EventArrowThief()
+        {
+            GameObject GoArrow = Instantiate(ArrowThief, SpawnArrow.transform.position, transform.rotation);
         }
 
         #region Trigger Zone

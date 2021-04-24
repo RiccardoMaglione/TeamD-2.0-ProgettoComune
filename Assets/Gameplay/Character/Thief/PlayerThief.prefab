@@ -175,6 +175,36 @@ Transform:
   m_Father: {fileID: 9146201629709627944}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1495379520188465476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2966026325745582558}
+  m_Layer: 0
+  m_Name: SpawnArrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2966026325745582558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495379520188465476}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000004371139}
+  m_LocalPosition: {x: 1, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9146201629709627944}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2507875640756651206
 GameObject:
   m_ObjectHideFlags: 0
@@ -6599,6 +6629,7 @@ Transform:
   - {fileID: 9146201629410347633}
   - {fileID: 9169883409703335825}
   - {fileID: 1127595258093654813}
+  - {fileID: 2966026325745582558}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6743,7 +6774,8 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  ResetTimerStaggered: 12267.907
+  VelocityDash: 5
+  ResetTimerStaggered: 12282.954
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647
@@ -6772,6 +6804,10 @@ MonoBehaviour:
   IsHeavyAttack: 0
   IsSpecialAttack: 0
   JumpFollow: 0
+  CoeffReduceDamageLight: 1
+  CoeffReduceDamageHeavy: 1
+  ArrowThief: {fileID: 7682607842086701567, guid: d898c5e8a65dd994695e189b7950d527, type: 3}
+  SpawnArrow: {fileID: 1495379520188465476}
 --- !u!114 &9146201629709627923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6851,6 +6887,8 @@ MonoBehaviour:
   RangeMelee: {fileID: 9146201628002937996}
   RangeRanged: {fileID: 9146201629087192639}
   AreaPossession: {fileID: 9146201628535353787}
+  ArrowThief: {fileID: 7682607842086701567, guid: d898c5e8a65dd994695e189b7950d527, type: 3}
+  SpawnArrow: {fileID: 1495379520188465476}
 --- !u!95 &9146201629709627921
 Animator:
   serializedVersion: 3
