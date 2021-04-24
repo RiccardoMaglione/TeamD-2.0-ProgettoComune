@@ -41,7 +41,7 @@ public class PSMDash : StateMachineBehaviour
             }
             if (animator.GetComponent<PSMController>().CanDashLeft == true && animator.GetComponent<PSMController>().TimerDash <= animator.GetComponent<PSMController>().LimitTimerDash && animator.GetBool("PSM-CanDash") == true)    //Se può dashare a sinistra e il timer non è ancora terminato e la condizione di poter dashare è vera
             {
-                animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(-animator.GetComponent<PSMController>().ValueMovement.Speed * 5, 0);     //Aumento la velocità di x di *5 (Valore da modifica da inspector)
+                animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(-animator.GetComponent<PSMController>().ValueMovement.Speed * animator.GetComponent<PSMController>().VelocityDash, 0);     //Aumento la velocità di x di *5 (Valore da modifica da inspector)
                 animator.GetComponent<PSMController>().TimerDash += Time.deltaTime;
                 if (animator.GetComponent<PSMController>().TimerDash >= animator.GetComponent<PSMController>().LimitTimerDash)          //Se la durata del dash è scaduta
                 {
@@ -67,7 +67,7 @@ public class PSMDash : StateMachineBehaviour
             }
             if (animator.GetComponent<PSMController>().CanDashRight == true && animator.GetComponent<PSMController>().TimerDash <= animator.GetComponent<PSMController>().LimitTimerDash && animator.GetBool("PSM-CanDash") == true)    //Se può dashare a destra e il timer non è ancora terminato e la condizione di poter dashare è vera
             {
-                animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().ValueMovement.Speed * 5, 0);      //Aumento la velocità di x di *5 (Valore da modifica da inspector)
+                animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().ValueMovement.Speed * animator.GetComponent<PSMController>().VelocityDash, 0);      //Aumento la velocità di x di *5 (Valore da modifica da inspector)
                 animator.GetComponent<PSMController>().TimerDash += Time.deltaTime;
                 if (animator.GetComponent<PSMController>().TimerDash >= animator.GetComponent<PSMController>().LimitTimerDash)          //Se la durata del dash è scaduta
                 {

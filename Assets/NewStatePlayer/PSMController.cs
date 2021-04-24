@@ -44,6 +44,7 @@ namespace SwordGame
         /*[HideInInspector]*/ public bool CanDashLeft = false;
         /*[HideInInspector]*/ public bool CooldownDashDirectional = false;
         /*[HideInInspector]*/ public bool OnceJump = false;
+        public float VelocityDash = 5;
         #endregion
         #region Variables Poise
         /*[HideInInspector]*/ public float ResetTimerStaggered;
