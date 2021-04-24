@@ -7,7 +7,7 @@ public class Boss : MonoBehaviour
     public int damage;
     public static bool canDamage = true;
     public float life = 100;
-    public float maxLife;
+    [HideInInspector] public float maxLife;
 
 
     private void OnTriggerEnter2D(Collider2D collision)

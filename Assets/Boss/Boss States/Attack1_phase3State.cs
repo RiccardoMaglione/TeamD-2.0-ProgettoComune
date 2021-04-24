@@ -14,7 +14,8 @@ public class Attack1_phase3State : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        waypoints3Phase.Attack3();
+        if(waypoints3Phase.ground < n)
+            waypoints3Phase.Attack3();
 
         if (waypoints3Phase.ground == n)
             animator.SetTrigger("GoToIdle");
