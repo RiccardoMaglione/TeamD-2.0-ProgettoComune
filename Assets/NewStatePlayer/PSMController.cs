@@ -92,6 +92,9 @@ namespace SwordGame
         public bool IsSpecialAttack = false;
         #endregion
         public bool JumpFollow = false;
+
+        public float CoeffReduceDamageLight = 1;
+        public float CoeffReduceDamageHeavy = 1;
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -353,7 +356,7 @@ namespace SwordGame
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
                         PoisePlayer += 1;
-                        CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                        CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().LightDamage * CoeffReduceDamageLight);
                         print("PSM-Trigger: Entra nel light attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
@@ -367,7 +370,7 @@ namespace SwordGame
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
                         PoisePlayer += 1;
-                        CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                        CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy);
                         print("PSM-Trigger: Entra nel heavy attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
