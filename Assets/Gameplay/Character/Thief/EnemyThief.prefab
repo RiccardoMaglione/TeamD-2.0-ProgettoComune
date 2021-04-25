@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 235645251959410298}
   - component: {fileID: 235645251959410299}
   m_Layer: 0
-  m_Name: RangeMelee
+  m_Name: RangeRanged
   m_TagString: RangeMelee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 235645251959410303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 75.06068, y: 9.618124, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3018839418382831414}
   m_RootOrder: 4
@@ -130,8 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMelee: 0
   isRanged: 0
-  OverridePercetuageMelee: 70
-  OverridePercetuageRanged: 30
+  OverridePercetuageMelee: 100
+  OverridePercetuageRanged: 0
 --- !u!61 &235645251959410299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.43649316}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -156,7 +156,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.04, y: 0.16}
+  m_Size: {x: 20, y: 2.066318}
   m_EdgeRadius: 0
 --- !u!1 &235645253032658866
 GameObject:
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 235645253032658865}
   - component: {fileID: 235645253032658894}
   m_Layer: 0
-  m_Name: RangeRanged
+  m_Name: RangeMelee
   m_TagString: RangeRanged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,8 +185,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235645253032658866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.96, y: 0, z: 0}
-  m_LocalScale: {x: 99.34357, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3018839418382831414}
   m_RootOrder: 5
@@ -255,7 +255,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.57816255, y: -0.5374396}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -266,7 +266,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.6558667}
+  m_Size: {x: 1.3563251, y: 1.8475795}
   m_EdgeRadius: 0
 --- !u!114 &235645253032658894
 MonoBehaviour:
@@ -282,8 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMelee: 0
   isRanged: 0
-  OverridePercetuageMelee: 100
-  OverridePercetuageRanged: 0
+  OverridePercetuageMelee: 70
+  OverridePercetuageRanged: 30
 --- !u!1 &564286416716762111
 GameObject:
   m_ObjectHideFlags: 0
