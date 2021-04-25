@@ -35792,6 +35792,7 @@ MonoBehaviour:
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
+  VelocityDash: 5
   ResetTimerStaggered: 109.36122
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
@@ -35821,6 +35822,13 @@ MonoBehaviour:
   IsHeavyAttack: 0
   IsSpecialAttack: 0
   JumpFollow: 0
+  CoeffReduceDamageLight: 1
+  CoeffReduceDamageHeavy: 1
+  ArrowThief: {fileID: 0}
+  SpawnArrow: {fileID: 0}
+  ValuePoiseLight: 1
+  ValuePoiseHeavy: 1
+  ValuePoiseSpecial: 1
 --- !u!114 &7333063049490549782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35882,8 +35890,8 @@ MonoBehaviour:
   PercentuageAttack: 75
   random: 0
   CanAttack: 1
-  LightDamage: 50
-  HeavyDamage: 1
+  LightDamage: 10
+  HeavyDamage: 20
   SpecialDamage: 100
   CanReset: 0
   IdleAnimClipSpeed: 10
@@ -35903,6 +35911,10 @@ MonoBehaviour:
   RangeMelee: {fileID: 5720831097504714072}
   RangeRanged: {fileID: 5720831098578945173}
   AreaPossession: {fileID: 7333063050399688764}
+  ArrowThief: {fileID: 0}
+  SpawnArrow: {fileID: 0}
+  ValuePoiseLight: 1
+  ValuePoiseHeavy: 1
 --- !u!95 &5720831098887579348
 Animator:
   serializedVersion: 3
