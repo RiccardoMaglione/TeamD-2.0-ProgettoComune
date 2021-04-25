@@ -15140,8 +15140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 20
-  HeavyDamage: 30
+  LightDamage: 16
+  HeavyDamage: 60
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
 --- !u!114 &997448192961839102
@@ -30565,8 +30565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 20
-  HeavyDamage: 30
+  LightDamage: 16
+  HeavyDamage: 60
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
 --- !u!114 &7884497982009952480
@@ -35715,7 +35715,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.026344568, y: -0.2}
+  m_Offset: {x: 0, y: -0.07}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -35726,7 +35726,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7185152, y: 1.7}
+  m_Size: {x: 0.9, y: 1.9}
   m_EdgeRadius: 0
 --- !u!50 &7333063049490549778
 Rigidbody2D:
@@ -35768,31 +35768,31 @@ MonoBehaviour:
   Invulnerability: 0
   EnergyBar: {fileID: 0}
   EnergySliderPM: {fileID: 0}
-  MaxEnergy: 0
+  MaxEnergy: 500
   CurrentEnergy: 0
-  LightEnergyAmount: 0
-  HeavyEnergyAmount: 0
-  SpecialEnergyAmount: 0
+  LightEnergyAmount: 2
+  HeavyEnergyAmount: 10
+  SpecialEnergyAmount: 20
   isTriggerOnlyOnce: 0
   RB2D: {fileID: 7333063049490549778}
   ValueMovement:
     Acceleration: 3
-    Speed: 4
-    MaxSpeed: 5.5
+    Speed: 6.7
+    MaxSpeed: 6.7
   ValueJump:
     InitialJumpForce: 9
     jumpForce: 4
     fallMultiplier: 5
     lowJumpMultiplier: 6
   TimerDash: 0
-  LimitTimerDash: 0.16
+  LimitTimerDash: 0.215
   TimerDashCooldown: 0
   LimiTimerDashCooldown: 0.2
   CanDashRight: 0
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  VelocityDash: 5
+  VelocityDash: 3
   ResetTimerStaggered: 109.36122
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
@@ -35822,8 +35822,8 @@ MonoBehaviour:
   IsHeavyAttack: 0
   IsSpecialAttack: 0
   JumpFollow: 0
-  CoeffReduceDamageLight: 1
-  CoeffReduceDamageHeavy: 1
+  CoeffReduceDamageLight: 0.6
+  CoeffReduceDamageHeavy: 0.6
   ArrowThief: {fileID: 0}
   SpawnArrow: {fileID: 0}
   ValuePoiseLight: 1
@@ -35890,8 +35890,8 @@ MonoBehaviour:
   PercentuageAttack: 75
   random: 0
   CanAttack: 1
-  LightDamage: 10
-  HeavyDamage: 20
+  LightDamage: 16
+  HeavyDamage: 60
   SpecialDamage: 100
   CanReset: 0
   IdleAnimClipSpeed: 10
