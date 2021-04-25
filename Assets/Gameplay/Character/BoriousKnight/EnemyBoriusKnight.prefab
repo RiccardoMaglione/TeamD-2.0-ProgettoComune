@@ -155,9 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 20
-  HeavyDamage: 30
-  SpecialDamage: 6
+  LightDamage: 21
+  HeavyDamage: 70
+  SpecialDamage: 0
   hitAnimation: {fileID: 0}
 --- !u!114 &1544971435251322180
 MonoBehaviour:
@@ -5434,9 +5434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 20
-  HeavyDamage: 30
-  SpecialDamage: 6
+  LightDamage: 21
+  HeavyDamage: 70
+  SpecialDamage: 0
   hitAnimation: {fileID: 0}
 --- !u!114 &1341606112905229658
 MonoBehaviour:
@@ -10766,9 +10766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 20
-  HeavyDamage: 30
-  SpecialDamage: 6
+  LightDamage: 21
+  HeavyDamage: 70
+  SpecialDamage: 0
   hitAnimation: {fileID: 0}
 --- !u!114 &8224328670656971332
 MonoBehaviour:
@@ -16764,22 +16764,22 @@ MonoBehaviour:
   RB2D: {fileID: 8830916221084911286}
   ValueMovement:
     Acceleration: 3
-    Speed: 4
-    MaxSpeed: 5.5
+    Speed: 6.2
+    MaxSpeed: 6.2
   ValueJump:
     InitialJumpForce: 9
     jumpForce: 4
     fallMultiplier: 5
     lowJumpMultiplier: 6
   TimerDash: 0
-  LimitTimerDash: 0.16
+  LimitTimerDash: 0.245
   TimerDashCooldown: 0
-  LimiTimerDashCooldown: 0.2
+  LimiTimerDashCooldown: 0.5
   CanDashRight: 0
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  VelocityDash: 5
+  VelocityDash: 2.4
   ResetTimerStaggered: 109.36122
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
@@ -16795,8 +16795,8 @@ MonoBehaviour:
   PlayerJumpSpeed: 1
   PlayerDieSpeed: 1
   PlayerStaggerSpeed: 1
-  PlayerLightAttackSpeed: 1
-  PlayerHeavyAttackSpeed: 1
+  PlayerLightAttackSpeed: 4.3
+  PlayerHeavyAttackSpeed: 2
   PlayerSpecialAttackSpeed: 1
   DashColliderBabushka: {fileID: 0}
   LightAttackCollider: {fileID: 5067484921354591702}
@@ -16809,8 +16809,8 @@ MonoBehaviour:
   IsHeavyAttack: 0
   IsSpecialAttack: 0
   JumpFollow: 0
-  CoeffReduceDamageLight: 1
-  CoeffReduceDamageHeavy: 1
+  CoeffReduceDamageLight: 0.4
+  CoeffReduceDamageHeavy: 0.4
   ArrowThief: {fileID: 0}
   SpawnArrow: {fileID: 0}
   ValuePoiseLight: 1
@@ -16866,7 +16866,7 @@ MonoBehaviour:
   isPossessed: 0
   CountPoiseEnemy: 0
   MaxCountPoiseEnemy: 3
-  Speed: 3.7
+  Speed: 5.2
   WaypointEnemy: []
   WaypointIndex: 0
   CanMove: 1
@@ -16877,16 +16877,16 @@ MonoBehaviour:
   PercentuageAttack: 75
   random: 0
   CanAttack: 1
-  LightDamage: 10
-  HeavyDamage: 10
-  SpecialDamage: 100
+  LightDamage: 21
+  HeavyDamage: 70
+  SpecialDamage: 0
   CanReset: 0
   IdleAnimClipSpeed: 10
   PatrolAnimClipSpeed: 1
   FollowAnimClipSpeed: 1
-  LightAttackAnimClipSpeed: 1
+  LightAttackAnimClipSpeed: 4.3
   LightRecoveryAnimClipSpeed: 1
-  HeavyAttackAnimClipSpeed: 1
+  HeavyAttackAnimClipSpeed: 2
   HeavyRecoveryAnimClipSpeed: 1
   DamageAnimClipSpeed: 1
   StunAnimClipSpeed: 1
