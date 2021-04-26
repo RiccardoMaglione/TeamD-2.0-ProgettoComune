@@ -287,7 +287,10 @@ public class EnemyData : MonoBehaviour
 
     #endregion
 
-
+    public void EventEnemyStaggerFinish()
+    {
+        GetComponent<Animator>().SetTrigger("AI-FromStaggerToIdle");
+    }
 }
 public enum TypeEnemies
 {

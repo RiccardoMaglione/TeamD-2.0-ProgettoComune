@@ -66,7 +66,7 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
-                    collision.GetComponentInParent<Animator>().SetBool("PSM-IsStagger", true);
+                    collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
                 print("Light");
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
@@ -87,7 +87,7 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
-                    collision.GetComponentInParent<Animator>().SetBool("PSM-IsStagger", true);
+                    collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
                 print("Heavy");
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
@@ -107,7 +107,7 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
-                    collision.GetComponentInParent<Animator>().SetBool("PSM-IsStagger", true);
+                    collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
                 print("Special");
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().SpecialEnergyAmount;
