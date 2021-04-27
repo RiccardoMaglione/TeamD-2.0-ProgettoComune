@@ -18,9 +18,5 @@ public class ShowParticlesState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("GoToLaser");
-        
-        laserManager.particle1.SetActive(false);
-        laserManager.particle2.SetActive(false);
-        laserManager.particle3.SetActive(false);
     }
 }
