@@ -13,7 +13,7 @@ public class PSMDash : StateMachineBehaviour
                 animator.GetComponentInChildren<FatKnightParticleController>().PlayDash();
                 break;
             case TypePlayer.BoriousKnight:
-                animator.GetComponentInChildren<BabushkaParticleController>().PlayDash();
+                animator.GetComponentInChildren<BoriousKnightParticlesController>().PlayDash();
                 break;
             case TypePlayer.Babushka:
                 animator.GetComponentInChildren<BabushkaParticleController>().PlayDash();
@@ -27,14 +27,14 @@ public class PSMDash : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("PlayerState - State Dash");                                                                                          //Debuggo in console cosa fa e il punto in cui è arrivato
+        //Debug.Log("PlayerState - State Dash");                                                                                          //Debuggo in console cosa fa e il punto in cui è arrivato
         if (animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("CanDashInAir") == false)       //Se CanDashInAir è falso entra sempre, altrimenti entra solo 1 volta
         {
             #region Left Dash - Dash del Player verso sinistra - Possibili cambi di stato: da "Player Dash State" a "Player Move State" o a "Player Fall State"
-            Debug.Log("PlayerState - Initial dash");                                                                                    //Debuggo in console cosa fa e il punto in cui è arrivato
+            //Debug.Log("PlayerState - Initial dash");                                                                                    //Debuggo in console cosa fa e il punto in cui è arrivato
             if (animator.GetComponent<PSMController>().CanDashRight == false)                                                           //Se la direzione destra è falsa, entro nel dash sinistro
             {
-                Debug.Log("PlayerState - Dash sinistro");                                                                               //Debuggo in console cosa fa e il punto in cui è arrivato
+                //Debug.Log("PlayerState - Dash sinistro");                                                                               //Debuggo in console cosa fa e il punto in cui è arrivato
                 animator.GetComponent<PSMController>().CanDashLeft = true;                                                              //Setto a vero la direzione Sinistra
                 animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);       //Setto la rotazione del player verso sinistra
                 //animator.GetComponent<PlayerController>().EffectDash();
@@ -46,12 +46,12 @@ public class PSMDash : StateMachineBehaviour
                 if (animator.GetComponent<PSMController>().TimerDash >= animator.GetComponent<PSMController>().LimitTimerDash)          //Se la durata del dash è scaduta
                 {
                     animator.GetComponent<PSMController>().CooldownDashDirectional = true;                                              //Setto a vero la condizione per entrare nella fase di cooldown del dash
-                    Debug.Log("PlayerState - Entra nel cooldown - Dash sinistro");                                                      //Debuggo in console cosa fa e il punto in cui è arrivato
+                    //Debug.Log("PlayerState - Entra nel cooldown - Dash sinistro");                                                      //Debuggo in console cosa fa e il punto in cui è arrivato
                     animator.SetBool("PSM-CanDash", false);
                     if (animator.GetBool("PSM-IsGrounded") == false)                                                                    //Se non tocca il pavimento
                     {
                         animator.SetBool("PSM-CanDashInAir", true);                                                                     //Blocco la possibilità di rientrare nel dash dallo stato di caduta
-                        Debug.Log("PlayerState - Air dash - Dash destro");                                                              //Debuggo in console cosa fa e il punto in cui è arrivato
+                        //Debug.Log("PlayerState - Air dash - Dash destro");                                                              //Debuggo in console cosa fa e il punto in cui è arrivato
                     }
                 }
             }
@@ -60,7 +60,7 @@ public class PSMDash : StateMachineBehaviour
             #region Right Dash - Dash del Player verso destra - Possibili cambi di stato: da "Player Dash State" a "Player Move State" o a "Player Fall State"
             if (animator.GetComponent<PSMController>().CanDashLeft == false)                                                            //Se la direzione sinistra è falsa, entro nel dash destro
             {
-                Debug.Log("PlayerState - Dash Destro");                                                                                 //Debuggo in console cosa fa e il punto in cui è arrivato
+                //Debug.Log("PlayerState - Dash Destro");                                                                                 //Debuggo in console cosa fa e il punto in cui è arrivato
                 animator.GetComponent<PSMController>().CanDashRight = true;                                                             //Setto a vero la direzione destra
                 animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);              //Setto la rotazione del player verso destra
                 //animator.GetComponent<PlayerController>().EffectDash();
@@ -72,12 +72,12 @@ public class PSMDash : StateMachineBehaviour
                 if (animator.GetComponent<PSMController>().TimerDash >= animator.GetComponent<PSMController>().LimitTimerDash)          //Se la durata del dash è scaduta
                 {
                     animator.GetComponent<PSMController>().CooldownDashDirectional = true;                                              //Setto a vero la condizione per entrare nella fase di cooldown del dash
-                    Debug.Log("PlayerState - Entra nel cooldown - Dash destro");                                                        //Debuggo in console cosa fa e il punto in cui è arrivato
+                    //Debug.Log("PlayerState - Entra nel cooldown - Dash destro");                                                        //Debuggo in console cosa fa e il punto in cui è arrivato
                     animator.SetBool("PSM-CanDash", false);
                     if (animator.GetBool("PSM-IsGrounded") == false)                                                                    //Se non tocca il pavimento
                     {
                         animator.SetBool("PSM-CanDashInAir", true);                                                                     //Blocco la possibilità di rientrare nel dash dallo stato di caduta
-                        Debug.Log("PlayerState - Air dash - Dash destro");                                                              //Debuggo in console cosa fa e il punto in cui è arrivato
+                        //Debug.Log("PlayerState - Air dash - Dash destro");                                                              //Debuggo in console cosa fa e il punto in cui è arrivato
                     }
                 }
             }

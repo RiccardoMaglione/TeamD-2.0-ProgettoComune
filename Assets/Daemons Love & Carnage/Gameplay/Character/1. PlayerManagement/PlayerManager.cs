@@ -93,7 +93,7 @@ namespace SwordGame
                 GetComponent<Animator>().SetTrigger("PSM-IsDie");
                 print("Hai Perso");
             }
-           print("4. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
+           //print("4. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
         }
 
         #endregion

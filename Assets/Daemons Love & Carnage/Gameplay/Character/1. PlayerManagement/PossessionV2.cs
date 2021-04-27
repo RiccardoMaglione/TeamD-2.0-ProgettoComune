@@ -42,7 +42,21 @@ namespace SwordGame
         public RuntimeAnimatorController PlayerAnimator;
         public RuntimeAnimatorController EnemyAnimator;
 
+        public GameObject EnemyParticle;
+        public GameObject PlayerParticle;
+
         #endregion
+
+        public RuntimeAnimatorController FatKnightEnemyAnimator;
+        public RuntimeAnimatorController BoriousEnemyAnimator;
+        public RuntimeAnimatorController BabushkaEnemyAnimator;
+        public RuntimeAnimatorController ThiefEnemyAnimator;
+
+        public RuntimeAnimatorController FatKnightPlayerAnimator;
+        public RuntimeAnimatorController BoriousKnightPlayerAnimator;
+        public RuntimeAnimatorController BabushkaPlayerAnimator;
+        public RuntimeAnimatorController ThiefPlayerAnimator;
+
         void Start()
         {
             if (PromptCommand != null)
@@ -79,8 +93,13 @@ namespace SwordGame
                     PlayerDetectArray[PlayerDetectArray.Count - 1].gameObject.tag = "Player";
 
                     PlayerDetect.GetComponent<Animator>().SetInteger("Life", PlayerDetect.GetComponent<EnemyData>().Life);
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().CurrentHealth = PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().MaxHealth;
+                    //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().CurrentHealth = PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().MaxHealth;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().PoisePlayer = 0;
+
+                    PlayerDetect.GetComponent<PossessionV2>().EnemyParticle.SetActive(true);
+                    PlayerDetect.GetComponent<PossessionV2>().PlayerParticle.SetActive(false);
+
+
 
                     //PlayerDetect.GetComponent<Animator>().enabled = true;
                     //PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().enabled = false;
@@ -102,8 +121,42 @@ namespace SwordGame
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().RangeMelee.SetActive(false);
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().RangeRanged.SetActive(false);
 
-                    PlayerDetect.GetComponent<Animator>().runtimeAnimatorController = PlayerDetect.GetComponent<PossessionV2>().EnemyAnimator;                                            //Il player diventa il nemico
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().runtimeAnimatorController = PlayerAnimator;         //Il nemico diventa il player
+
+                    switch (PlayerDetect.GetComponent<EnemyData>().TypeEnemy)
+                    {
+                        case TypeEnemies.FatKnight:
+                            PlayerDetect.GetComponent<Animator>().runtimeAnimatorController = PlayerDetect.GetComponent<PossessionV2>().FatKnightEnemyAnimator;                                            //Il player diventa il nemico
+                            break;
+                        case TypeEnemies.BoriusKnight:
+                            PlayerDetect.GetComponent<Animator>().runtimeAnimatorController = PlayerDetect.GetComponent<PossessionV2>().BoriousEnemyAnimator;                                            //Il player diventa il nemico
+                            break;
+                        case TypeEnemies.Babushka:
+                            PlayerDetect.GetComponent<Animator>().runtimeAnimatorController = PlayerDetect.GetComponent<PossessionV2>().BabushkaEnemyAnimator;                                            //Il player diventa il nemico
+                            break;
+                        case TypeEnemies.Thief:
+                            PlayerDetect.GetComponent<Animator>().runtimeAnimatorController = PlayerDetect.GetComponent<PossessionV2>().ThiefEnemyAnimator;                                            //Il player diventa il nemico
+                            break;
+                        default:
+                            break;
+                    }
+
+                    switch (PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PSMController>().TypeCharacter)
+                    {
+                        case TypePlayer.FatKnight:
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().runtimeAnimatorController = FatKnightPlayerAnimator;         //Il nemico diventa il player
+                            break;
+                        case TypePlayer.BoriousKnight:
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().runtimeAnimatorController = BoriousKnightPlayerAnimator;         //Il nemico diventa il player
+                            break;
+                        case TypePlayer.Babushka:
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().runtimeAnimatorController = BabushkaPlayerAnimator;         //Il nemico diventa il player
+                            break;
+                        case TypePlayer.Thief:
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().runtimeAnimatorController = ThiefPlayerAnimator;         //Il nemico diventa il player
+                            break;
+                        default:
+                            break;
+                    }
 
                     PlayerDetect.GetComponent<EnemyData>().Life = 0;
                     PlayerDetect.GetComponent<EnemyData>().isStun = true;
@@ -130,6 +183,9 @@ namespace SwordGame
 
                     PlayerDetect.GetComponent<PossessionV2>().enabled = true;                                                       //Attuale Player
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().enabled = false;                    //Nemico in cui nel trigger c'è il player
+                    
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().EnemyParticle.SetActive(false);
+                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<PossessionV2>().PlayerParticle.SetActive(true);
 
                     ReturnPlayer.PlayerNow = PlayerDetectArray[PlayerDetectArray.Count - 1];
                     ReturnPlayer.LastDetectList.Add(PlayerDetect);
@@ -146,12 +202,13 @@ namespace SwordGame
                     gameObject.SetActive(false);
                     gameObject.SetActive(true);
 
-                    PlayerDetect.GetComponent<Animator>().SetBool("CanPossession", true);
+                    /*Da errore quando passo alla babushka - Wip*/ PlayerDetect.GetComponent<Animator>().SetBool("CanPossession", true);
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().SetBool("CanPossession", false);
                     PromptCommand.SetActive(true);
-
-                    PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<SpriteRenderer>().material = PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<ColorChangeController>().originalMaterial;
+                    
+                    /*da errore perché è = 0 quando ritorno al personaggio precedente*/ PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<SpriteRenderer>().material = PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<ColorChangeController>().originalMaterial;
                     PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().AreaPossession.SetActive(false);
+                    
                 }
             }
             #endregion
@@ -184,7 +241,7 @@ namespace SwordGame
                             {
                                 go.PromptCommand.SetActive(false);
                             }
-                            print("Disattiva12");
+                            //print("Disattiva12");
                         }
                     }
                     if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun"))
@@ -195,18 +252,22 @@ namespace SwordGame
 
                     PlayerDetectArray.Add(this.gameObject);
                     count++;
-                    print("Aggiungi");
+                    //print("Aggiungi");
                 }
             }
         }
 
         private void OnTriggerStay2D(Collider2D collision)
-        {
-            if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player" && this.gameObject == PlayerDetectArray[PlayerDetectArray.Count - 1])
+        {                
+            if(PlayerDetectArray.Count - 1 > 0)     //Risolve l'out of index
             {
-                if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun"))
-                { 
-                    PromptCommand.SetActive(true);
+                if (collision.gameObject.GetComponent<PSMController>() != null && collision.gameObject != this.gameObject && collision.gameObject.tag == "Player" && this.gameObject == PlayerDetectArray[PlayerDetectArray.Count - 1])
+                {
+
+                    if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun"))
+                    { 
+                        PromptCommand.SetActive(true);
+                    }
                 }
             }
         }
@@ -244,7 +305,7 @@ namespace SwordGame
                         }
                     }
                     PromptCommand.SetActive(false);
-                    print("Disattiva23");
+                    //print("Disattiva23");
                 }
                 isPlayer = false;
             }

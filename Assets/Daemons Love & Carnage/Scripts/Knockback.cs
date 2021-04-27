@@ -18,7 +18,7 @@ namespace SwordGame
                 ActiveKnockback = false;                                                //Setta a falso per evitare possibili danni multipli
                 foreach (Rigidbody2D item in RB2DList)                                  //Per ogni oggetti nella lista dei rigidbody nemici
                 {
-                    print("Normallize" + ((transform.right + transform.InverseTransformDirection(KnockbackDirection).normalized)));
+                    //print("Normallize" + ((transform.right + transform.InverseTransformDirection(KnockbackDirection).normalized)));
                     item.AddForce((transform.right + transform.InverseTransformDirection(KnockbackDirection)).normalized * thrust, ForceMode2D.Impulse);       //All'oggetto si aggiunge una forza di tipologia impulso per affligere un knockback verso il davanti del player
                 }
             }
@@ -32,7 +32,10 @@ namespace SwordGame
         {
             if (collision.tag == "Enemy" || collision.CompareTag("Breakable"))//10/04
             {
-                RB2DList.Add(collision.GetComponent<Rigidbody2D>());
+                if(collision.GetComponent<Rigidbody2D>() != null)
+                {
+                    RB2DList.Add(collision.GetComponent<Rigidbody2D>());
+                }
             }
         }
 

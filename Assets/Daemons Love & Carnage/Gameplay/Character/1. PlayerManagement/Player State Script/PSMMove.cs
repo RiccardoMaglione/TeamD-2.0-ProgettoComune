@@ -13,7 +13,7 @@ public class PSMMove : StateMachineBehaviour
                 animator.GetComponentInChildren<FatKnightParticleController>().PlayRun();
                 break;
             case TypePlayer.BoriousKnight:
-                animator.GetComponentInChildren<BabushkaParticleController>().PlayRun();
+                animator.GetComponentInChildren<BoriousKnightParticlesController>().PlayRun();
                 break;
             case TypePlayer.Babushka:
                 animator.GetComponentInChildren<BabushkaParticleController>().PlayRun();
@@ -33,14 +33,14 @@ public class PSMMove : StateMachineBehaviour
             animator.GetComponent<PSMController>().CalculateSpeed();                                                                                                                                                        //Calcolo la velocità
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(-animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                        //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);   //Ruoto il player
-            Debug.Log("PlayerState - Vai a sinistra");
+            //Debug.Log("PlayerState - Vai a sinistra");
         }
         else if ((Input.GetKey(KeyCode.RightArrow)|| Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                   //Se schiaccio D vado a destra
         {
             animator.GetComponent<PSMController>().CalculateSpeed();                                                                                                                                                        //Calcolo la velocità
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                         //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);      //Ruoto il player
-            Debug.Log("PlayerState - Vai a destra");
+            //Debug.Log("PlayerState - Vai a destra");
         }
         else                                                                                                                                                                                                                //Se non premo A e D
         {
@@ -54,7 +54,7 @@ public class PSMMove : StateMachineBehaviour
         #region Jump Zone - Da "Player Move State" da "Player Jump State"
         if ((Input.GetKeyDown(KeyCode.UpArrow)|| Input.GetKeyDown(KeyCode.Joystick1Button0)) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6)                                                                                                                                //Se schiaccio spazio
         {
-            Debug.Log("PlayerState - Vai nello stato 'PSMJump'");                                                                                                           //Debuggo in console cosa fa
+            //Debug.Log("PlayerState - Vai nello stato 'PSMJump'");                                                                                                           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                                                                                                                             //Setto attivo il trigger - Prima condizione per il cambio stato in "Player Jump State"
             if (animator.GetBool("PSM-IsGrounded") == true && animator.GetComponent<PSMController>().OnceJump == false)                                                     //Se tocca terra ed è il primo ciclo (OnceJump non dovrebbe servire ma è stato messo per sicurezza)
             {
@@ -68,7 +68,7 @@ public class PSMMove : StateMachineBehaviour
         #region Fall Zone - Da "Player Move State" da "Player Fall State"
         if (animator.GetComponent<PSMController>().RB2D.velocity.y < 0)                                         //Se la velocità di y è minore di 0 - Non minore e uguale perché lo stato di move sta sempre uguale a 0
         {
-            Debug.Log("PlayerState - Vai in 'Player Fall State'");                                              //Debuggo in console cosa fa
+            //Debug.Log("PlayerState - Vai in 'Player Fall State'");                                              //Debuggo in console cosa fa
             animator.SetBool("PSM-IsGrounded", false);                                                          //Setto la prima condizione del tocco del terreno a falso, per entrare in "Player Fall State" da "Player Move State"
             animator.SetTrigger("PSM-IsInFall");                                                                //Setto la seconda condizione, un trigger, attivo, per entrare in "Player Fall State" da "Player Move State"
         }

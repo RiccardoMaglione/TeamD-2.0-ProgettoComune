@@ -8,7 +8,7 @@ public class PSMJump : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("PlayerState - Grounded'" + animator.GetBool("PSM-IsGrounded"));                      //Debuggo lo stato di grounded per verificare se toccava o non toccava terra (Default: true)
+        //Debug.Log("PlayerState - Grounded'" + animator.GetBool("PSM-IsGrounded"));                      //Debuggo lo stato di grounded per verificare se toccava o non toccava terra (Default: true)
         animator.GetComponent<PSMController>().JumpFollow = true;
 
         switch (animator.GetComponent<PSMController>().TypeCharacter)
@@ -17,7 +17,7 @@ public class PSMJump : StateMachineBehaviour
                 animator.GetComponentInChildren<FatKnightParticleController>().PlayJump();
                 break;
             case TypePlayer.BoriousKnight:
-                animator.GetComponentInChildren<BabushkaParticleController>().PlayJump();
+                animator.GetComponentInChildren<BoriousKnightParticlesController>().PlayJump();
                 break;
             case TypePlayer.Babushka:
                 animator.GetComponentInChildren<BabushkaParticleController>().PlayJump();
@@ -36,7 +36,7 @@ public class PSMJump : StateMachineBehaviour
         {
             //animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.jumpForce, ForceMode2D.Impulse);                                         //Applico una forza di tipo impulso con un direzione precisa (UP) e moltiplico per una determinata forza
             animator.SetBool("PSM-IsGrounded", false);                                                                                                                                                  //Setto grounded a falso per due motivi - 1. Il player non tocca più il terreno - 2. Blocco l'entrata al'if precedente per evitare salti infiniti/multipli
-            Debug.Log("PlayerState - Secondo passaggio del salto'");                                                                                                                                    //Debuggo in console cosa fa - Secondo passaggio per verificare quante volte ci entra
+            //Debug.Log("PlayerState - Secondo passaggio del salto'");                                                                                                                                    //Debuggo in console cosa fa - Secondo passaggio per verificare quante volte ci entra
         }
         else if (animator.GetComponent<PSMController>().RB2D.velocity.y > 1 && !Input.GetButton("Jump"))                                                                                                //Altrimenti se la velocità è maggiore di 1 e non sto più schiacciando il pulsante spazio - Da un minimo di velocà di salto minimo - Permette di fare salti graduali
         {
@@ -52,7 +52,7 @@ public class PSMJump : StateMachineBehaviour
         if (animator.GetComponent<PSMController>().RB2D.velocity.y <= 0)                //Se la velocità di y è minore o uguale a 0 - Minore e uguale perché potrebbe capitare un salto che potrebbe buggare senza l'uguaglianza
         {
             /*Test*/animator.SetBool("PSM-IsGrounded", false);                                  
-            Debug.Log("PlayerState - Vai in 'Player Fall State'");                      //Debuggo in console cosa fa
+            //Debug.Log("PlayerState - Vai in 'Player Fall State'");                      //Debuggo in console cosa fa
             animator.SetTrigger("PSM-IsInFall");                                        //Setto la prima condizione, un trigger, attivo, per entrare in "Player Fall State" da "Player Jump State"
         }
         #endregion
@@ -63,14 +63,14 @@ public class PSMJump : StateMachineBehaviour
             animator.GetComponent<PSMController>().CalculateSpeed();                                                                                                                                                        //Calcolo la velocità
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(-animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                        //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);   //Ruoto il player
-            Debug.Log("PlayerState - Vai a sinistra");
+            //Debug.Log("PlayerState - Vai a sinistra");
         }
         else if ((Input.GetKey(KeyCode.RightArrow)|| Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                   //Se schiaccio D vado a destra
         {
             animator.GetComponent<PSMController>().CalculateSpeed();                                                                                                                                                        //Calcolo la velocità
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                         //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);      //Ruoto il player
-            Debug.Log("PlayerState - Vai a destra");
+            //Debug.Log("PlayerState - Vai a destra");
         }
         else                                                                                                                                                                                                                //Se non premo A e D
         {

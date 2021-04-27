@@ -26,7 +26,7 @@ public class DummyScript : MonoBehaviour
                 dummyPieces.SetActive(true);
                 this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
                 this.gameObject.AddComponent<Rigidbody2D>();
-                Debug.Log("ManichinoMortucciso");
+                //Debug.Log("Manichino Mortucciso");
             }
         }
         if (collision.GetComponentInParent<PSMController>().IsHeavyAttack == true)
@@ -45,7 +45,7 @@ public class DummyScript : MonoBehaviour
                 dummyPieces.SetActive(true);
                 this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
                 this.gameObject.AddComponent<Rigidbody2D>();
-                Debug.Log("ManichinoMortucciso");
+                //Debug.Log("ManichinoMortucciso");
             }
         }
         if (collision.GetComponentInParent<PSMController>().IsSpecialAttack == true)

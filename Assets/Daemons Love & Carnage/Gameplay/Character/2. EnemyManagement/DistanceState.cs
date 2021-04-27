@@ -26,9 +26,9 @@ public class DistanceState : StateMachineBehaviour
         {
             animator.SetBool("Distance", true);
         }
-        Debug.Log("aaarandom" + animator.GetComponent<EnemyData>().CanAttack);
-        Debug.Log("aaarandom" + animator.GetComponent<EnemyData>().CanVisible);
-        Debug.Log("aaarandom2" + animator.GetComponent<EnemyData>().isStun);
+        //Debug.Log("aaarandom" + animator.GetComponent<EnemyData>().CanAttack);
+        //Debug.Log("aaarandom" + animator.GetComponent<EnemyData>().CanVisible);
+        //Debug.Log("aaarandom2" + animator.GetComponent<EnemyData>().isStun);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -40,18 +40,18 @@ public class DistanceState : StateMachineBehaviour
         {
             animator.GetComponent<EnemyData>().random = Random.Range(0, 101);
             animator.GetComponent<EnemyData>().CanAttack = false;
-            Debug.Log("aaaCiao" + animator.GetComponent<EnemyData>().CanVisible);
-            Debug.Log("aaaCiao2" + animator.GetComponent<EnemyData>().isStun);
+            //Debug.Log("aaaCiao" + animator.GetComponent<EnemyData>().CanVisible);
+            //Debug.Log("aaaCiao2" + animator.GetComponent<EnemyData>().isStun);
 
         }
         if (animator.GetComponent<EnemyData>().CanVisible == true && animator.GetComponent<EnemyData>().isStun == false && (animator.GetComponentInChildren<RangeAttack>().isMelee == true || animator.GetComponentInChildren<RangeAttack>().isRanged == true))
         {
-            Debug.Log("aaaprova");
+            //Debug.Log("aaaprova");
             if (animator.GetComponent<EnemyData>().random <= animator.GetComponent<EnemyData>().PercentuageAttack)
             {
                 //if (animator.GetComponentInChildren<RangeAttack>().isMelee == true)
                 //{
-                    Debug.Log("aaaleggero");
+                    //Debug.Log("aaaleggero");
                     animator.SetTrigger("LightAttack");
                     animator.SetBool("CanAttack", true);
                 //}
@@ -60,7 +60,7 @@ public class DistanceState : StateMachineBehaviour
             {
                 //if (animator.GetComponentInChildren<RangeAttack>().isRanged == true)
                 //{
-                    Debug.Log("aaaPesante");
+                    //Debug.Log("aaaPesante");
                     animator.SetTrigger("HeavyAttack");
                     animator.SetBool("CanAttack", true);
                 //}

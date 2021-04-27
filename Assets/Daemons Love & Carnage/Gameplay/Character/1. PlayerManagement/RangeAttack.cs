@@ -39,7 +39,7 @@ namespace SwordGame
 
         private void Update()
         {
-            print("Print range melee" + isMelee + "range ranged" + isRanged);
+            //print("Print range melee" + isMelee + "range ranged" + isRanged);
         }
 
         private void OnTriggerExit2D(Collider2D collision)

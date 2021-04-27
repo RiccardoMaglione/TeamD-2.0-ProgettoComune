@@ -40,7 +40,7 @@ public class AttackSystem : MonoBehaviour
         }
 
 
-        Debug.Log("Passa qui HIT" + collision.name);
+        //Debug.Log("Passa qui HIT" + collision.name);
         if (collision.gameObject.tag == "Enemy")
         {
             ColorChangeController colorChangeController = collision.GetComponent<ColorChangeController>();
@@ -68,9 +68,9 @@ public class AttackSystem : MonoBehaviour
                 {
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
-                print("Light");
+                //print("Light");
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
-                print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
+                //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
@@ -89,9 +89,9 @@ public class AttackSystem : MonoBehaviour
                 {
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
-                print("Heavy");
+                //print("Heavy");
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
-                print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
+                //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
             {

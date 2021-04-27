@@ -42,7 +42,7 @@ namespace SwordGame
                     {
                         if(LastDetectList[i] != PlayerNow)
                         {
-                            print("ForseQua");
+                            //print("ForseQua");
                             LastDetectList[i].GetComponent<Animator>().SetTrigger("IsDeath");
                             //Destroy(LastDetectList[i]);
                         }

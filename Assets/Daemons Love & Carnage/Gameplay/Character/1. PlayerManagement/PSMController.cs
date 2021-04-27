@@ -145,7 +145,7 @@ namespace SwordGame
         {
             if (CooldownDashDirectional == true)
             {
-                Debug.Log("PlayerState - E' nel cooldown dash");
+                //Debug.Log("PlayerState - E' nel cooldown dash");
                 TimerDashCooldown += Time.deltaTime;
                 if (TimerDashCooldown >= LimiTimerDashCooldown)
                 {
@@ -369,7 +369,7 @@ namespace SwordGame
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseLight;
                         CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().LightDamage * CoeffReduceDamageLight);
-                        print("PSM-Trigger: Entra nel light attack - Colpito");
+                        //print("PSM-Trigger: Entra nel light attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
                         {
@@ -383,7 +383,7 @@ namespace SwordGame
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseHeavy;
                         CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy);
-                        print("PSM-Trigger: Entra nel heavy attack - Colpito");
+                        //print("PSM-Trigger: Entra nel heavy attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
                         {
@@ -404,11 +404,17 @@ namespace SwordGame
         {
             if (collision.tag == "LightAttack")
             {
-                collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
+                if(collision.GetComponentInParent<EnemyData>() != null)
+                {
+                    collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
+                }
             }
             if (collision.tag == "HeavyAttack")
             {
-                collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
+                if (collision.GetComponentInParent<EnemyData>() != null)
+                {
+                    collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
+                }
             }
         }
         #endregion

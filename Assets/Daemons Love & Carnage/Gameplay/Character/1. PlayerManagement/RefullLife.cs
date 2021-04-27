@@ -13,7 +13,7 @@ namespace SwordGame
             {
                 if(ReturnPlayer.LastDetectList[i] == PossessionV2.ThisCharacter)
                 {
-                    print("Non refullare" + ReturnPlayer.LastDetectList[i].name);
+                    //print("Non refullare" + ReturnPlayer.LastDetectList[i].name);
                     CanRefull = true;
                 }
                 else

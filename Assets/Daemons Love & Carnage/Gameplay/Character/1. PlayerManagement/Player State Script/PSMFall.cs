@@ -24,7 +24,7 @@ public class PSMFall : StateMachineBehaviour
             animator.GetComponent<PSMController>().CalculateSpeed();                                                                                                                                                        //Calcolo la velocità
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(-animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                        //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);   //Ruoto il player
-            Debug.Log("PlayerState - Vai a sinistra");
+            //Debug.Log("PlayerState - Vai a sinistra");
             #region - Da "Player Fall State" in "Player Move State" - Permette una transizione più fluida senza passare da "Player Idle State"
             animator.SetBool("PSM-CanMove", true);
             #endregion
@@ -34,7 +34,7 @@ public class PSMFall : StateMachineBehaviour
             animator.GetComponent<PSMController>().CalculateSpeed();                                                                                                                                                        //Calcolo la velocità
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                         //Aumento la velocità
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);      //Ruoto il player
-            Debug.Log("PlayerState - Vai a destra");
+            //Debug.Log("PlayerState - Vai a destra");
             #region - Da "Player Fall State" in "Player Move State" - Permette una transizione più fluida senza passare da "Player Idle State"
             animator.SetBool("PSM-CanMove", true);
             #endregion
@@ -70,7 +70,7 @@ public class PSMFall : StateMachineBehaviour
                 animator.GetComponentInChildren<FatKnightParticleController>().PlayLanding();
                 break;
             case TypePlayer.BoriousKnight:
-                animator.GetComponentInChildren<BabushkaParticleController>().PlayLanding();
+                animator.GetComponentInChildren<BoriousKnightParticlesController>().PlayLanding();
                 break;
             case TypePlayer.Babushka:
                 animator.GetComponentInChildren<BabushkaParticleController>().PlayLanding();
