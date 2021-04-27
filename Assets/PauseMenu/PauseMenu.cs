@@ -161,15 +161,28 @@ public class PauseMenu : MonoBehaviour
     public void ConfirmRestart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(2);
+        FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
+        FindObjectOfType<FadeInOutTransition>().FadeIn();
+        Invoke("Reload", 0.5f);
     }
 
     public void ConfirmBackToMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(1);
+        FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
+        FindObjectOfType<FadeInOutTransition>().FadeIn();
+        Invoke("ToMainMenu", 0.5f);
     }
 
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void Reload()
+    {
+        SceneManager.LoadScene(2);
+
+    }
     public IEnumerator MoveInTornPageCoroutine()
     {
         shadowPanel.SetActive(true);

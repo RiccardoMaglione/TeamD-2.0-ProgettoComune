@@ -26,7 +26,14 @@ public class PressAnyKey : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            SceneManager.LoadScene(1);
+            FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
+            FindObjectOfType<FadeInOutTransition>().FadeIn();
+            Invoke("ToMainMenu", 0.5f);
         }
+    }
+
+    void ToMainMenu()
+    {
+        SceneManager.LoadScene(1);
     }
 }
