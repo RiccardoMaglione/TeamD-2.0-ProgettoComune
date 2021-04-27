@@ -52,6 +52,7 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && paused == false && menuOpen == false)
         {
+            Cursor.visible = true;
             shadowPanel.SetActive(false);
             tornPage.GetComponent<RectTransform>().anchoredPosition = startPos;
             book.SetActive(true);
@@ -62,6 +63,7 @@ public class PauseMenu : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && paused == true && menuOpen == true && tornPageOpen == false && tornPageIsMoving == false)
         {
+            Cursor.visible = false;
             book.SetActive(false);
             pausePanel.SetActive(false);
             menuOpen = false;
@@ -79,6 +81,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (paused == true && menuOpen == true && tornPageOpen == false && tornPageIsMoving == false)
         {
+            Cursor.visible = false;
             book.SetActive(false);
             pausePanel.SetActive(false);
             menuOpen = false;
@@ -160,6 +163,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ConfirmRestart()
     {
+        Cursor.visible = false;
         Time.timeScale = 1;
         FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
         FindObjectOfType<FadeInOutTransition>().FadeIn();
