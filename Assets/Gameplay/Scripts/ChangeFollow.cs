@@ -17,8 +17,8 @@ public class ChangeFollow : MonoBehaviour
             {
                 CamList[i].Follow = NewPlayer.transform;
                 StaticPlayerTemp = NewPlayer;
-                NewPlayer.GetComponent<PSMController>().MaxHealth = 2147483647;
-                NewPlayer.GetComponent<PSMController>().CurrentHealth = 2147483647;
+                //NewPlayer.GetComponent<PSMController>().MaxHealth = 2147483647;
+                //NewPlayer.GetComponent<PSMController>().CurrentHealth = 2147483647;
             }
         }
     }

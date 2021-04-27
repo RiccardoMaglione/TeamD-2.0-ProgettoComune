@@ -121,6 +121,11 @@ public class EnemyData : MonoBehaviour
     public GameObject AreaPossession;
     #endregion
 
+    public GameObject ArrowThief;
+    public GameObject SpawnArrow;
+    public int ValuePoiseLight = 1;
+    public int ValuePoiseHeavy = 1;
+
     private void Start()
     {
         GetComponent<Animator>().SetInteger("Life", Life);
@@ -246,7 +251,10 @@ public class EnemyData : MonoBehaviour
         }
     }
     #endregion
-
+    public void EventEnemyArrowThief()
+    {
+        GameObject GoArrow = Instantiate(ArrowThief, SpawnArrow.transform.position, transform.rotation);
+    }
     #endregion
 
     #region Trigger Zone
@@ -279,7 +287,10 @@ public class EnemyData : MonoBehaviour
 
     #endregion
 
-
+    public void EventEnemyStaggerFinish()
+    {
+        GetComponent<Animator>().SetTrigger("AI-FromStaggerToIdle");
+    }
 }
 public enum TypeEnemies
 {

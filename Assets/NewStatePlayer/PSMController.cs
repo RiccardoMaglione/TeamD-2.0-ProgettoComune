@@ -44,6 +44,7 @@ namespace SwordGame
         /*[HideInInspector]*/ public bool CanDashLeft = false;
         /*[HideInInspector]*/ public bool CooldownDashDirectional = false;
         /*[HideInInspector]*/ public bool OnceJump = false;
+        public float VelocityDash = 5;
         #endregion
         #region Variables Poise
         /*[HideInInspector]*/ public float ResetTimerStaggered;
@@ -91,6 +92,16 @@ namespace SwordGame
         public bool IsSpecialAttack = false;
         #endregion
         public bool JumpFollow = false;
+
+        public float CoeffReduceDamageLight = 1;
+        public float CoeffReduceDamageHeavy = 1;
+        public GameObject ArrowThief;
+        public GameObject SpawnArrow;
+
+        public int ValuePoiseLight = 1;
+        public int ValuePoiseHeavy = 1;
+        public int ValuePoiseSpecial = 1;
+
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -340,6 +351,11 @@ namespace SwordGame
             IsSpecialAttack = false;
         }
 
+        public void EventArrowThief()
+        {
+            GameObject GoArrow = Instantiate(ArrowThief, SpawnArrow.transform.position, transform.rotation);
+        }
+
         #region Trigger Zone
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -351,8 +367,8 @@ namespace SwordGame
                     {
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
-                        PoisePlayer += 1;
-                        CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                        PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseLight;
+                        CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().LightDamage * CoeffReduceDamageLight);
                         print("PSM-Trigger: Entra nel light attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
@@ -365,8 +381,8 @@ namespace SwordGame
                     {
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
-                        PoisePlayer += 1;
-                        CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                        PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseHeavy;
+                        CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy);
                         print("PSM-Trigger: Entra nel heavy attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)

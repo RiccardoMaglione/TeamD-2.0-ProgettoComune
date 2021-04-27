@@ -336,7 +336,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Light Attack
-  m_Speed: 6
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7157127118188284730}
@@ -617,7 +617,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: AI-FromStaggerToIdle
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
   m_Solo: 0
@@ -640,7 +643,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Stagger
-  m_Speed: 1
+  m_Speed: 20
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1780695033368095760}
@@ -733,7 +736,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Heavy Attack
-  m_Speed: 2.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1820739612349518779}
@@ -978,6 +981,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: AI-HeavyAttack
     m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: AI-FromStaggerToIdle
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0

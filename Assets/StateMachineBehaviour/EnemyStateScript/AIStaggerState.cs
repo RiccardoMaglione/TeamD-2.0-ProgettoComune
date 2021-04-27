@@ -8,7 +8,7 @@ public class AIStaggerState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("IsStagger", false);
-        animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.blue;       //MVC: View
+        //animator.GetComponent<EnemyData>().GetComponent<SpriteRenderer>().color = Color.blue;       //MVC: View
         animator.GetComponent<EnemyData>().CountPoiseEnemy = 0;
         animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
     }

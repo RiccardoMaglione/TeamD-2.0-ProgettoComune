@@ -14,6 +14,7 @@ public class DialogueType1 : MonoBehaviour
     [SerializeField] private string insertTutorialText;
     [SerializeField] public KeyCode buttonToSkip1;
     [SerializeField] public KeyCode buttonToSkip2;
+    [SerializeField] public KeyCode buttonToSkip3;
 
     public bool dialogueActive = false;
 
@@ -59,7 +60,7 @@ public class DialogueType1 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(buttonToSkip1) && dialogueActive == true || Input.GetKeyDown(buttonToSkip2) && dialogueActive == true)
+        if (Input.GetKeyDown(buttonToSkip1) && dialogueActive == true || Input.GetKeyDown(buttonToSkip2) && dialogueActive == true || Input.GetKeyDown(buttonToSkip3) && dialogueActive == true)
         {
             dialogueActive = false;
             StopCoroutine("DialogueIn");

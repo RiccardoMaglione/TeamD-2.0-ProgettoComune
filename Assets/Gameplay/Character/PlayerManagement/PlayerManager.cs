@@ -34,7 +34,7 @@ namespace SwordGame
         public EnergyBar EnergySliderPM;
         public int MaxEnergy;
         public static int MaxEnergyStatic;
-        [ReadOnly] public int CurrentEnergy;
+        /* [ReadOnly] */ public int CurrentEnergy;
         #endregion
         #region Variables - Attack System
         [Space(10)]
