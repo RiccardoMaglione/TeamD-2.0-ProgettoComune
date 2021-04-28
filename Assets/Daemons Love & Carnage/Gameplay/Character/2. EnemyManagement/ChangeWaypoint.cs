@@ -23,7 +23,10 @@ public class ChangeWaypoint : MonoBehaviour
             for (int i = 0; i < EnemyAggro.Count; i++)
             {
                 EnemyAggro[i].GetComponent<EnemyData>().CanVisible = false;
-                EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
+                if (EnemyAggro[i].GetComponent<EnemyData>().isActiveAndEnabled == true)
+                {
+                    EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
+                }
                 EnemyAggro[i].GetComponent<EnemyData>().CanReset = true;
 
                 EnemyAggro[i].GetComponent<EnemyData>().GetComponent<SpriteRenderer>().sortingOrder = InitialOrderLayer - i;
@@ -34,7 +37,10 @@ public class ChangeWaypoint : MonoBehaviour
             for (int i = 0; i < EnemyAggro.Count; i++)
             {
                 EnemyAggro[i].GetComponent<EnemyData>().CanVisible = true;
-                EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", true);
+                if (EnemyAggro[i].GetComponent<EnemyData>().isActiveAndEnabled == true)
+                {
+                    EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", true);
+                }
                 EnemyAggro[i].GetComponent<EnemyData>().CanReset = false;
                 PlayerSee = true;
             }
@@ -49,7 +55,10 @@ public class ChangeWaypoint : MonoBehaviour
             for (int i = 0; i < EnemyAggro.Count; i++)
             {
                 EnemyAggro[i].GetComponent<EnemyData>().CanVisible = true;
-                EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", true);
+                if (EnemyAggro[i].GetComponent<EnemyData>().isActiveAndEnabled == true)
+                {
+                    EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", true);
+                }
                 EnemyAggro[i].GetComponent<EnemyData>().CanReset = false;
                 PlayerSee = true;
             }
@@ -64,7 +73,10 @@ public class ChangeWaypoint : MonoBehaviour
                 for (int i = 0; i < EnemyAggro.Count; i++)
                 {
                     EnemyAggro[i].GetComponent<EnemyData>().CanVisible = false;
-                    EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
+                    if (EnemyAggro[i].GetComponent<EnemyData>().isActiveAndEnabled == true)
+                    {
+                        EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
+                    }
                     EnemyAggro[i].GetComponent<EnemyData>().CanReset = true;
                     EnemyAggro[i].GetComponent<EnemyData>().GetComponent<SpriteRenderer>().sortingOrder = InitialOrderLayer - i;
                 }
@@ -80,7 +92,10 @@ public class ChangeWaypoint : MonoBehaviour
             for (int i = 0; i < EnemyAggro.Count; i++)
             {
                 EnemyAggro[i].GetComponent<EnemyData>().CanVisible = false;
-                EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
+                if (EnemyAggro[i].GetComponent<EnemyData>().isActiveAndEnabled == true)
+                {
+                    EnemyAggro[i].GetComponent<Animator>().SetBool("IsFollowing", false);
+                }
                 EnemyAggro[i].GetComponent<EnemyData>().CanReset = true;
                 PlayerSee = true;
             }

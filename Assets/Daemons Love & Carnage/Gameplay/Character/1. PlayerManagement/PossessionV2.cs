@@ -153,6 +153,8 @@ namespace SwordGame
                             break;
                         case TypePlayer.Thief:
                             PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<Animator>().runtimeAnimatorController = ThiefPlayerAnimator;         //Il nemico diventa il player
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<BoxCollider2D>().size = new Vector2(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<BoxCollider2D>().size.x, 1.717764f);
+                            PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<BoxCollider2D>().offset = new Vector2(PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<BoxCollider2D>().offset.x, -0.1982318f);
                             break;
                         default:
                             break;

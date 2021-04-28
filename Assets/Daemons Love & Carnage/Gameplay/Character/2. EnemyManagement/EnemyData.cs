@@ -182,7 +182,7 @@ public class EnemyData : MonoBehaviour
         GetComponent<Animator>().SetFloat("PatrolSpeed", PatrolAnimClipSpeed);
         GetComponent<Animator>().SetFloat("FollowSpeed", FollowAnimClipSpeed);
         GetComponent<Animator>().SetFloat("LightAttackSpeed", LightAttackAnimClipSpeed);
-        GetComponent<Animator>().SetFloat("LightRecoverySpeedSpeed", LightRecoveryAnimClipSpeed);
+        GetComponent<Animator>().SetFloat("LightRecoverySpeed", LightRecoveryAnimClipSpeed);
         GetComponent<Animator>().SetFloat("HeavyAttackSpeed", HeavyAttackAnimClipSpeed);
         GetComponent<Animator>().SetFloat("HeavyRecoverySpeed", HeavyRecoveryAnimClipSpeed);
         GetComponent<Animator>().SetFloat("DamageSpeed", DamageAnimClipSpeed);

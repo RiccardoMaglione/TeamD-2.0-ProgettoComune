@@ -424,15 +424,21 @@ namespace SwordGame
         {
             if (collision.gameObject.tag == "Floor" && RB2D.velocity.y == 0)
             {
-                GetComponent<Animator>().SetBool("PSM-IsGrounded", true);   //Setto PSM-IsGrounded = true quando tocca il pavimento
+                if(isActiveAndEnabled == true)
+                {
+                    GetComponent<Animator>().SetBool("PSM-IsGrounded", true);   //Setto PSM-IsGrounded = true quando tocca il pavimento
+                }
             }
         }
         private void OnCollisionStay2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Floor" && RB2D.velocity.y == 0)
             {
-                GetComponent<Animator>().SetBool("PSM-IsGrounded", true);
-                GetComponent<Animator>().SetBool("PSM-CanDashInAir", false); //Permette di rientrare in dash
+                if (isActiveAndEnabled == true)
+                {
+                    GetComponent<Animator>().SetBool("PSM-IsGrounded", true);
+                    GetComponent<Animator>().SetBool("PSM-CanDashInAir", false); //Permette di rientrare in dash
+                }
             }
 
             if ((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxisRaw("Vertical") < 0) || (Input.GetAxisRaw("DPad Y") < 0)) && (DialogueType1.StaticTutorial != -1))
