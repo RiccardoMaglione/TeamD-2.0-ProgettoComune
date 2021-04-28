@@ -8,6 +8,8 @@ public class TutorialSkipper : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("DisableTutorial") == 1)
         {
+            DialogueType1.StaticTutorial = 7;
+            DialogueType1.StaticTutorial2 = 7;
             tutorialTrigger.SetActive(false);
         }
         else
@@ -19,8 +21,9 @@ public class TutorialSkipper : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("DisableTutorial") == 0)
         {
+            DialogueType1.StaticTutorial = 7;
+            DialogueType1.StaticTutorial2 = 7;
             PlayerPrefs.SetInt("DisableTutorial", 1);
-
         }
         else
         {
