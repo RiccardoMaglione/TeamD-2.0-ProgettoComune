@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
 
 public class PSMDash : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY; //30/04/21
         switch (animator.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
@@ -85,11 +84,12 @@ public class PSMDash : StateMachineBehaviour
         }
     }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None; //30/04/21
+        animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation; //30/04/21
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
