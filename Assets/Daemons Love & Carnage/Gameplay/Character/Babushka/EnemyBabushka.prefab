@@ -305,6 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 452775765041745803}
   - component: {fileID: 8176761082343220639}
+  - component: {fileID: 3291028259925227204}
   m_Layer: 0
   m_Name: EnemyHeavyAttackCollider
   m_TagString: HeavyAttack
@@ -340,7 +341,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0658696, y: -0.034593053}
+  m_Offset: {x: 0.094039485, y: -0.034593053}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -351,8 +352,23 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41394103, y: 0.09694834}
+  m_Size: {x: 0.35760126, y: 0.09694834}
   m_EdgeRadius: 0
+--- !u!114 &3291028259925227204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680291137017176659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 2.5
+  RB2DList: []
+  KnockbackDirection: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1233300981341435117
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1991248676578389397}
   - component: {fileID: 8554904036290781683}
+  - component: {fileID: 1060947959946266881}
   m_Layer: 0
   m_Name: EnemyLightAttackCollider
   m_TagString: LightAttack
@@ -411,6 +428,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.199426, y: 0.14130028}
   m_EdgeRadius: 0
+--- !u!114 &1060947959946266881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233300981341435117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 1
+  RB2DList: []
+  KnockbackDirection: {x: 0, y: 0.5, z: 0}
 --- !u!1 &2289803507690081562
 GameObject:
   m_ObjectHideFlags: 0
@@ -30041,7 +30073,7 @@ GameObject:
   - component: {fileID: 4977117404188867357}
   m_Layer: 8
   m_Name: Container-EnemyAttack
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35794,9 +35826,9 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 3
   ResetTimerStaggered: 109.36122
-  MaxResetTimerStaggered: 3
+  MaxResetTimerStaggered: 2
   PoisePlayer: 0
-  MaxPoisePlayer: 100000
+  MaxPoisePlayer: 1
   TimeDoublePlatform: 0.45
   ListTempPlatform: []
   ListWaitTime: []
@@ -35807,7 +35839,7 @@ MonoBehaviour:
   PlayerDashFallSpeed: 1
   PlayerJumpSpeed: 1
   PlayerDieSpeed: 1
-  PlayerStaggerSpeed: 1
+  PlayerStaggerSpeed: 2
   PlayerLightAttackSpeed: 3.5
   PlayerHeavyAttackSpeed: 2
   PlayerSpecialAttackSpeed: 1
@@ -45813,7 +45845,7 @@ GameObject:
   - component: {fileID: 5045166457125436211}
   m_Layer: 8
   m_Name: Container-PlayerAttack
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45861,8 +45893,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9091052180345725214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06581, y: -0.03478, z: 0}
-  m_LocalScale: {x: 0.41287825, y: 0.096734844, z: 1}
+  m_LocalPosition: {x: 0.0922, y: -0.03478, z: -0}
+  m_LocalScale: {x: 0.36005974, y: 0.096734844, z: 1}
   m_Children: []
   m_Father: {fileID: 452775765041745803}
   m_RootOrder: 0
