@@ -30,9 +30,9 @@ namespace SwordGame
         /// <param name="collision"></param>
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == "Enemy" || collision.CompareTag("Breakable"))//10/04
+            if (collision.tag == "Enemy" || collision.CompareTag("Breakable") || collision.CompareTag("Player"))//02/05
             {
-                if(collision.GetComponent<Rigidbody2D>() != null)
+                if (collision.GetComponent<Rigidbody2D>() != null)
                 {
                     RB2DList.Add(collision.GetComponent<Rigidbody2D>());
                 }
@@ -45,7 +45,7 @@ namespace SwordGame
         /// <param name="collision"></param>
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.tag == "Enemy" || collision.CompareTag("Breakable"))//10/04
+            if (collision.tag == "Enemy" || collision.CompareTag("Breakable") || collision.CompareTag("Player"))//02/05
             {
                 RB2DList.Remove(collision.GetComponent<Rigidbody2D>());
             }

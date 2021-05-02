@@ -10171,7 +10171,7 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 2
-  ResetTimerStaggered: 326.355
+  ResetTimerStaggered: 334.18765
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647
@@ -30527,6 +30527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2615908787675729252}
   - component: {fileID: 8105527695002969794}
+  - component: {fileID: 7937137842219481732}
   m_Layer: 0
   m_Name: EnemyHeavyAttackCollider
   m_TagString: HeavyAttack
@@ -30586,6 +30587,21 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &7937137842219481732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5305237201548330310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 4
+  RB2DList: []
+  KnockbackDirection: {x: 0, y: 0.5, z: 0}
 --- !u!1 &5329712771692821528
 GameObject:
   m_ObjectHideFlags: 0
@@ -30687,9 +30703,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 1.5
+  thrust: 4
   RB2DList: []
-  KnockbackDirection: {x: 0, y: 0, z: 0}
+  KnockbackDirection: {x: 0, y: 0.5, z: 0}
 --- !u!114 &8551755996721453692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30812,6 +30828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2289931283987311595}
   - component: {fileID: 6082922194634972178}
+  - component: {fileID: 778121767807324099}
   m_Layer: 0
   m_Name: EnemyLightAttackCollider
   m_TagString: LightAttack
@@ -30860,6 +30877,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.31166083, y: 0.059999995}
   m_EdgeRadius: 0
+--- !u!114 &778121767807324099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8504379325986869743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 2.5
+  RB2DList: []
+  KnockbackDirection: {x: 0, y: 1, z: 0}
 --- !u!1 &8551755997384026611
 GameObject:
   m_ObjectHideFlags: 0

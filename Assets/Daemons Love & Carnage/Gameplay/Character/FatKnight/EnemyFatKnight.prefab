@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 902706970246524040}
   - component: {fileID: 7033574572004810990}
+  - component: {fileID: 6659900881009757316}
   m_Layer: 0
   m_Name: EnemyLightAttackCollider
   m_TagString: LightAttack
@@ -58,6 +59,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.31166083, y: 0.059999995}
   m_EdgeRadius: 0
+--- !u!114 &6659900881009757316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448329846297523696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 2.5
+  RB2DList: []
+  KnockbackDirection: {x: 0, y: 1, z: 0}
 --- !u!1 &959637205350964035
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1255884185118428822}
   - component: {fileID: 388934759072245725}
+  - component: {fileID: 3962987489158189676}
   m_Layer: 0
   m_Name: EnemyHeavyAttackCollider
   m_TagString: HeavyAttack
@@ -299,6 +316,21 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &3962987489158189676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185855524413285198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 4
+  RB2DList: []
+  KnockbackDirection: {x: 0, y: 0.5, z: 0}
 --- !u!1 &2236898629117512458
 GameObject:
   m_ObjectHideFlags: 0
@@ -14965,9 +14997,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 1
+  thrust: 4
   RB2DList: []
-  KnockbackDirection: {x: 0, y: 0, z: 0}
+  KnockbackDirection: {x: 0, y: 0.5, z: 0}
 --- !u!68 &616278621659468915
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -30015,9 +30047,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 1
+  thrust: 2.5
   RB2DList: []
-  KnockbackDirection: {x: 0, y: 0, z: 0}
+  KnockbackDirection: {x: 0, y: 1, z: 0}
 --- !u!1 &5691673990527385508
 GameObject:
   m_ObjectHideFlags: 0
