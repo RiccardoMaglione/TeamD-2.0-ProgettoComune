@@ -30,12 +30,27 @@ namespace SwordGame
         /// <param name="collision"></param>
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == "Enemy" || collision.CompareTag("Breakable") || collision.CompareTag("Player"))//02/05
+            if (this.gameObject.transform.root.CompareTag("Player"))
             {
-                if (collision.GetComponent<Rigidbody2D>() != null)
+                if (collision.tag == "Enemy" || collision.CompareTag("Breakable"))//02/05
                 {
-                    RB2DList.Add(collision.GetComponent<Rigidbody2D>());
+                    if (collision.GetComponent<Rigidbody2D>() != null)
+                    {
+                        RB2DList.Add(collision.GetComponent<Rigidbody2D>());
+                    }
                 }
+
+            }
+            else
+            {
+                if (collision.CompareTag("Player"))
+                {
+                    if (collision.GetComponent<Rigidbody2D>() != null)
+                    {
+                        RB2DList.Add(collision.GetComponent<Rigidbody2D>());
+                    }
+                }
+
             }
         }
 
