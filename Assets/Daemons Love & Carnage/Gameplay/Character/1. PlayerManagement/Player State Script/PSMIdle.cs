@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
 
 public class PSMIdle : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);      //Per sicurezza blocca il movimento - non dovrebbe servire
+
         switch (animator.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
@@ -17,7 +17,7 @@ public class PSMIdle : StateMachineBehaviour
                 animator.GetComponentInChildren<BoriousKnightParticlesController>().StopRun();
                 break;
             case TypePlayer.Babushka:
-                animator.GetComponentInChildren<BabushkaParticleController>().StopRun();            
+                animator.GetComponentInChildren<BabushkaParticleController>().StopRun();
                 break;
             case TypePlayer.Thief:
                 animator.GetComponentInChildren<ThiefParticlesController>().StopRun();
@@ -37,11 +37,11 @@ public class PSMIdle : StateMachineBehaviour
             animator.SetBool("PSM-CanMove", true);                                                                                          //Cambio stato da "Player Idle State" in "Player Move State"
         }
 
-        animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);      //Per sicurezza blocca il movimento - non dovrebbe servire
+        animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().RB2D.velocity.x, animator.GetComponent<PSMController>().RB2D.velocity.y);      //Per sicurezza blocca il movimento - non dovrebbe servire
         #endregion
 
         #region Jump Zone - Da "Player Idle State" da "Player Jump State"
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && DialogueType1.StaticTutorial != 1 &&  DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6)                                                                                                //Se schiaccio spazio una volta
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6)                                                                                                //Se schiaccio spazio una volta
         {
             //Debug.Log("PlayerState - Vai nello stato 'PSMJump'");                                                                           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                                                                                             //Setto attivo il trigger - Prima condizione per il cambio stato da "Player Idle State" in "Player Jump State"

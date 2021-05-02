@@ -1,55 +1,59 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using SwordGame;
 
 namespace SwordGame
 {
     [System.Serializable]
     public struct PSMStructMovement
-{
-    [Tooltip("It's an acceleration of player")]
-    public float Acceleration;
-    [Tooltip("It's a velocity of player on right and left way")]
-    public float Speed;
-    [Tooltip("It's a max speed of player")]
-    public float MaxSpeed;
-}
-    
+    {
+        [Tooltip("It's an acceleration of player")]
+        public float Acceleration;
+        [Tooltip("It's a velocity of player on right and left way")]
+        public float Speed;
+        [Tooltip("It's a max speed of player")]
+        public float MaxSpeed;
+    }
+
     [System.Serializable]
     public struct PSMStructJump
-{
-    [Tooltip("It's a force of player's jump")]
-    public float InitialJumpForce;
-    [Tooltip("It's a force of player's jump")]
-    public float jumpForce;
-    [Tooltip("It's value of gravity fall")]
-    public float fallMultiplier;
-    [Tooltip("It's a value for progressive jump")]
-    public float lowJumpMultiplier;
-}
+    {
+        [Tooltip("It's a force of player's jump")]
+        public float InitialJumpForce;
+        [Tooltip("It's a force of player's jump")]
+        public float jumpForce;
+        [Tooltip("It's value of gravity fall")]
+        public float fallMultiplier;
+        [Tooltip("It's a value for progressive jump")]
+        public float lowJumpMultiplier;
+    }
     public class PSMController : PlayerManager
     {
         [HideInInspector] public Rigidbody2D RB2D;
-    
+
         public PSMStructMovement ValueMovement;
         public PSMStructJump ValueJump;
-    
+
         #region Variables Dash
         [HideInInspector] public float TimerDash = 0;
         public float LimitTimerDash = 0.2f;
         [HideInInspector] public float TimerDashCooldown = 0;
         public float LimiTimerDashCooldown = 1f;
-        /*[HideInInspector]*/ public bool CanDashRight = false;
-        /*[HideInInspector]*/ public bool CanDashLeft = false;
-        /*[HideInInspector]*/ public bool CooldownDashDirectional = false;
-        /*[HideInInspector]*/ public bool OnceJump = false;
+        /*[HideInInspector]*/
+        public bool CanDashRight = false;
+        /*[HideInInspector]*/
+        public bool CanDashLeft = false;
+        /*[HideInInspector]*/
+        public bool CooldownDashDirectional = false;
+        /*[HideInInspector]*/
+        public bool OnceJump = false;
         public float VelocityDash = 5;
         #endregion
         #region Variables Poise
-        /*[HideInInspector]*/ public float ResetTimerStaggered;
+        /*[HideInInspector]*/
+        public float ResetTimerStaggered;
         public float MaxResetTimerStaggered;
-        /*[HideInInspector]*/ public int PoisePlayer;
+        /*[HideInInspector]*/
+        public int PoisePlayer;
         public int MaxPoisePlayer;
         #endregion
         #region Variables Platform
@@ -106,14 +110,14 @@ namespace SwordGame
         {
             OnValidatePlayerManager();
         }
-    
+
         void Start()
         {
             RB2D = GetComponent<Rigidbody2D>();
             InitializePlayerManager();
             InitializeSpeedAnimation();
         }
-    
+
         void Update()
         {
             DashCooldownState();
@@ -122,7 +126,7 @@ namespace SwordGame
             UpdatePlayerManager();
             AttackPlayer();
         }
-    
+
         public void InitializeSpeedAnimation()
         {
             GetComponent<Animator>().SetFloat("PlayerIdleSpeed", PlayerIdleSpeed);
@@ -137,7 +141,7 @@ namespace SwordGame
             GetComponent<Animator>().SetFloat("PlayerHeavyAttackSpeed", PlayerHeavyAttackSpeed);
             GetComponent<Animator>().SetFloat("PlayerSpecialAttackSpeed", PlayerSpecialAttackSpeed);
         }
-    
+
         /// <summary>
         /// Metodo per il cooldown del dash
         /// </summary>
@@ -163,7 +167,7 @@ namespace SwordGame
 
             }
         }
-    
+
         /// <summary>
         /// Metodo per calcolare la velocità del player e limitarla ad un massimo
         /// </summary>
@@ -173,7 +177,7 @@ namespace SwordGame
             if (ValueMovement.Speed >= ValueMovement.MaxSpeed)
                 ValueMovement.Speed = ValueMovement.MaxSpeed;
         }
-    
+
         /// <summary>
         /// Metodo che resetta il poise se il player non viene attaccato per un certo valore di tempo
         /// </summary>
@@ -185,7 +189,7 @@ namespace SwordGame
                 PoisePlayer = 0;                                //Azzera il valore della poise
             }
         }
-    
+
         /// <summary>
         /// Metodo per resettare il rotation offset delle piattaforme
         /// </summary>
@@ -272,7 +276,7 @@ namespace SwordGame
                 {
                     if (FeedbackManager.instance.isCutIn == false)
                         StartCoroutine(FeedbackManager.instance.CutInBabushka());
-                    
+
                     GetComponentInChildren<BabushkaParticleController>().PlayRageAura();
                 }
 
@@ -295,7 +299,7 @@ namespace SwordGame
         /// </summary>
         public void EventActivateCollider()
         {
-            if(GetComponent<Animator>().GetBool("PSM-LightAttack") == true)
+            if (GetComponent<Animator>().GetBool("PSM-LightAttack") == true)
             {
                 LightAttackCollider.SetActive(true);
             }
@@ -359,9 +363,9 @@ namespace SwordGame
         #region Trigger Zone
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.GetComponentInParent<EnemyData>() != null)
+            if (collision.GetComponentInParent<EnemyData>() != null)
             {
-                if(Invulnerability == false && collision.GetComponentInParent<EnemyData>().IsTriggerAttack == false && tag == "Player")
+                if (Invulnerability == false && collision.GetComponentInParent<EnemyData>().IsTriggerAttack == false && tag == "Player")
                 {
                     if (collision.tag == "LightAttack")
                     {
@@ -369,6 +373,7 @@ namespace SwordGame
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseLight;
                         CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().LightDamage * CoeffReduceDamageLight);
+                        Knockback.ActiveKnockback = true;
                         //print("PSM-Trigger: Entra nel light attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
@@ -377,12 +382,13 @@ namespace SwordGame
                         }
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                     }
-                    if (collision.tag == "HeavyAttack" )
+                    if (collision.tag == "HeavyAttack")
                     {
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseHeavy;
                         CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy);
+                        Knockback.ActiveKnockback = true;
                         //print("PSM-Trigger: Entra nel heavy attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
@@ -404,7 +410,7 @@ namespace SwordGame
         {
             if (collision.tag == "LightAttack")
             {
-                if(collision.GetComponentInParent<EnemyData>() != null)
+                if (collision.GetComponentInParent<EnemyData>() != null)
                 {
                     collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                 }
@@ -418,13 +424,13 @@ namespace SwordGame
             }
         }
         #endregion
-    
+
         #region Collision Zone
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Floor" && RB2D.velocity.y == 0)
             {
-                if(isActiveAndEnabled == true)
+                if (isActiveAndEnabled == true)
                 {
                     GetComponent<Animator>().SetBool("PSM-IsGrounded", true);   //Setto PSM-IsGrounded = true quando tocca il pavimento
                 }
