@@ -35178,7 +35178,7 @@ GameObject:
   - component: {fileID: 5924235459229956608}
   m_Layer: 8
   m_Name: Container-EnemyAttack
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35257,7 +35257,7 @@ GameObject:
   - component: {fileID: 5846042862190770734}
   m_Layer: 8
   m_Name: Container-PlayerAttack
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40632,9 +40632,9 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 2
   ResetTimerStaggered: 278.0043
-  MaxResetTimerStaggered: 3
+  MaxResetTimerStaggered: 2
   PoisePlayer: 0
-  MaxPoisePlayer: 2147483647
+  MaxPoisePlayer: 1
   TimeDoublePlatform: 0.45
   ListTempPlatform: []
   ListWaitTime: []
@@ -40645,7 +40645,7 @@ MonoBehaviour:
   PlayerDashFallSpeed: 1
   PlayerJumpSpeed: 1
   PlayerDieSpeed: 1
-  PlayerStaggerSpeed: 1
+  PlayerStaggerSpeed: 2
   PlayerLightAttackSpeed: 3.5
   PlayerHeavyAttackSpeed: 3
   PlayerSpecialAttackSpeed: 1

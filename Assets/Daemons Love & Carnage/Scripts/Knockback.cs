@@ -30,8 +30,9 @@ namespace SwordGame
         /// <param name="collision"></param>
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (this.gameObject.transform.root.CompareTag("Player"))
+            if (this.gameObject.transform.parent.CompareTag("Player"))
             {
+                Debug.Log("knockback");
                 if (collision.tag == "Enemy" || collision.CompareTag("Breakable"))//02/05
                 {
                     if (collision.GetComponent<Rigidbody2D>() != null)
