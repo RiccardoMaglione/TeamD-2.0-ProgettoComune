@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (wave1.activeSelf == true || wave2.activeSelf == true)
         {
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 1)
             {
                 wave1.SetActive(false);
                 wave2.SetActive(false);

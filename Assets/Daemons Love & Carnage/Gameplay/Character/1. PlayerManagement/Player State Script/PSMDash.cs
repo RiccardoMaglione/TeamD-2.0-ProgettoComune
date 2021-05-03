@@ -5,7 +5,8 @@ public class PSMDash : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY; //30/04/21
+        animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation; //30/04/21
+
         switch (animator.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
