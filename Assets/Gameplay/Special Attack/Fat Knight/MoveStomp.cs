@@ -21,7 +21,7 @@ public class MoveStomp : MonoBehaviour
     void Update()
     {
         transform.Translate(direction * speed * Time.deltaTime);
-        if(transform.position.y >= 11)
+        if(transform.position.y >= 30)
         {
             Destroy(gameObject);
             specialAttack.i++;
