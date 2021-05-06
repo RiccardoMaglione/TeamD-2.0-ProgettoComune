@@ -24,11 +24,8 @@ public class MoveStomp : MonoBehaviour
     {
         if (transform.position.y < specialAttack.obj[specialAttack.i].transform.position.y - 1 + 4 && specialAttack.obj[specialAttack.i] != null)
             direction = new Vector2(0, 1);
-        else
-        {
-            transform.position = new Vector2(specialAttack.obj[specialAttack.i].transform.position.x, transform.position.y);
+        transform.position = new Vector2(specialAttack.obj[specialAttack.i].transform.position.x, transform.position.y);
 
-        }
 
         transform.Translate(direction * speed * Time.deltaTime);
         if (transform.position.y >= 30)
