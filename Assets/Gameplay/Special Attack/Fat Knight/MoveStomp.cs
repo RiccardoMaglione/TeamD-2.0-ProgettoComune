@@ -4,14 +4,16 @@ public class MoveStomp : MonoBehaviour
 {
     SpecialAttack specialAttack;
     [SerializeField] float speed;
+    [SerializeField] int damage;
     Vector2 direction;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
-            direction = new Vector2(0, 1);
-    }
+            collision.GetComponent<EnemyData>().Life -= damage;
+        //direction = new Vector2(0, 1);
 
+    }
     private void Awake()
     {
         direction = new Vector2(0, -1);
@@ -20,17 +22,21 @@ public class MoveStomp : MonoBehaviour
 
     void Update()
     {
+        if (transform.position.y < specialAttack.obj[specialAttack.i].transform.position.y - 1 + 4 && specialAttack.obj[specialAttack.i] != null)
+            direction = new Vector2(0, 1);
+        else
+        {
+            transform.position = new Vector2(specialAttack.obj[specialAttack.i].transform.position.x, transform.position.y);
+
+        }
+
         transform.Translate(direction * speed * Time.deltaTime);
-        if(transform.position.y >= 30)
+        if (transform.position.y >= 30)
         {
             Destroy(gameObject);
             specialAttack.i++;
             specialAttack.animator.SetTrigger("Repeat");
         }
 
-        if(transform.position.y <= specialAttack.obj[specialAttack.i].transform.position.y)
-            direction = new Vector2(0, 1);
-
-        //transform.position = new Vector2(specialAttack.obj[specialAttack.i].transform.position.x, transform.position.y);
     }
 }
