@@ -35910,7 +35910,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.07}
+  m_Offset: {x: 0, y: -0.18992656}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -35921,7 +35921,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 1.9}
+  m_Size: {x: 0.9, y: 1.6601468}
   m_EdgeRadius: 0
 --- !u!50 &7333063049490549778
 Rigidbody2D:
@@ -35938,7 +35938,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3.9
   m_Material: {fileID: 6200000, guid: 0cd5cc7973424184baeea2930c4b4744, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 0
@@ -35975,9 +35975,9 @@ MonoBehaviour:
     Speed: 6.7
     MaxSpeed: 6.7
   ValueJump:
-    InitialJumpForce: 9
-    jumpForce: 4
-    fallMultiplier: 5
+    InitialJumpForce: 18
+    jumpForce: 8
+    fallMultiplier: 7
     lowJumpMultiplier: 6
   TimerDash: 0
   LimitTimerDash: 0.215
@@ -36003,8 +36003,8 @@ MonoBehaviour:
   PlayerJumpSpeed: 1
   PlayerDieSpeed: 1
   PlayerStaggerSpeed: 2
-  PlayerLightAttackSpeed: 3.5
-  PlayerHeavyAttackSpeed: 2
+  PlayerLightAttackSpeed: 8
+  PlayerHeavyAttackSpeed: 3
   PlayerSpecialAttackSpeed: 1
   DashColliderBabushka: {fileID: 0}
   LightAttackCollider: {fileID: 6420621042482419570}
@@ -36102,9 +36102,9 @@ MonoBehaviour:
   IdleAnimClipSpeed: 10
   PatrolAnimClipSpeed: 1
   FollowAnimClipSpeed: 1
-  LightAttackAnimClipSpeed: 3.5
+  LightAttackAnimClipSpeed: 8
   LightRecoveryAnimClipSpeed: 1
-  HeavyAttackAnimClipSpeed: 2
+  HeavyAttackAnimClipSpeed: 4
   HeavyRecoveryAnimClipSpeed: 1
   DamageAnimClipSpeed: 1
   StunAnimClipSpeed: 1

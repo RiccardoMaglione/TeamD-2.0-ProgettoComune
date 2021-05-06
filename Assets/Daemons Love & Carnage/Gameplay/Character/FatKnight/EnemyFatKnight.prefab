@@ -40637,7 +40637,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8277929296192245009}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 36.7, y: -2.8, z: 0}
+  m_LocalPosition: {x: 36.7, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8277929295962597664}
@@ -40716,7 +40716,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08, y: 0}
+  m_Offset: {x: -0.07999998, y: -0.043999076}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -40727,7 +40727,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 2}
+  m_Size: {x: 1.2, y: 1.9120018}
   m_EdgeRadius: 0
 --- !u!50 &8277929296192245007
 Rigidbody2D:
@@ -40744,7 +40744,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3.9
   m_Material: {fileID: 6200000, guid: 0cd5cc7973424184baeea2930c4b4744, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 0
@@ -40778,22 +40778,22 @@ MonoBehaviour:
   RB2D: {fileID: 8277929296192245007}
   ValueMovement:
     Acceleration: 3
-    Speed: 5.5
-    MaxSpeed: 5.5
+    Speed: 5.9
+    MaxSpeed: 5.9
   ValueJump:
-    InitialJumpForce: 9
-    jumpForce: 4
-    fallMultiplier: 5
+    InitialJumpForce: 18
+    jumpForce: 8
+    fallMultiplier: 7
     lowJumpMultiplier: 6
   TimerDash: 0
-  LimitTimerDash: 0.4
+  LimitTimerDash: 0.35
   TimerDashCooldown: 0
   LimiTimerDashCooldown: 0.85
   CanDashRight: 0
   CanDashLeft: 0
   CooldownDashDirectional: 0
   OnceJump: 0
-  VelocityDash: 2
+  VelocityDash: 2.2
   ResetTimerStaggered: 278.0043
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
@@ -40809,8 +40809,8 @@ MonoBehaviour:
   PlayerJumpSpeed: 1
   PlayerDieSpeed: 1
   PlayerStaggerSpeed: 2
-  PlayerLightAttackSpeed: 3.5
-  PlayerHeavyAttackSpeed: 3
+  PlayerLightAttackSpeed: 6
+  PlayerHeavyAttackSpeed: 5
   PlayerSpecialAttackSpeed: 1
   DashColliderBabushka: {fileID: 0}
   LightAttackCollider: {fileID: 5638500111058982511}
@@ -40908,9 +40908,9 @@ MonoBehaviour:
   IdleAnimClipSpeed: 10
   PatrolAnimClipSpeed: 1
   FollowAnimClipSpeed: 1
-  LightAttackAnimClipSpeed: 3.5
+  LightAttackAnimClipSpeed: 6
   LightRecoveryAnimClipSpeed: 1
-  HeavyAttackAnimClipSpeed: 3
+  HeavyAttackAnimClipSpeed: 5
   HeavyRecoveryAnimClipSpeed: 1
   DamageAnimClipSpeed: 1
   StunAnimClipSpeed: 1
