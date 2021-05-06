@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 4377472122600917200}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &3144827218769663713
 CircleCollider2D:
@@ -269,7 +269,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 0.011921406, a: 1}
+      maxColor: {r: 0, g: 1, b: 0.00002193451, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9761,7 +9761,7 @@ Transform:
   - {fileID: 7807511982148438229}
   - {fileID: 3741684767874182860}
   m_Father: {fileID: 4377472122600917200}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7245447830646364276
 MonoBehaviour:
@@ -10021,6 +10021,7 @@ Transform:
   - {fileID: 8831338008277857073}
   - {fileID: 3575482323623852244}
   - {fileID: 4158729777327640932}
+  - {fileID: 2837281823650416280}
   - {fileID: 90713861945717711}
   - {fileID: 9144508095747054093}
   - {fileID: 3440262277641467113}
@@ -10171,7 +10172,7 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 2
-  ResetTimerStaggered: 314.15317
+  ResetTimerStaggered: 280.30353
   MaxResetTimerStaggered: 3
   PoisePlayer: 0
   MaxPoisePlayer: 2147483647
@@ -10269,7 +10270,7 @@ MonoBehaviour:
   HeavyDamage: 60
   SpecialDamage: 200
   CanReset: 0
-  IdleAnimClipSpeed: 10
+  IdleAnimClipSpeed: 1
   PatrolAnimClipSpeed: 1
   FollowAnimClipSpeed: 1
   LightAttackAnimClipSpeed: 3.5
@@ -10482,7 +10483,7 @@ Transform:
   m_LocalScale: {x: 75.06068, y: 9.61812, z: 1}
   m_Children: []
   m_Father: {fileID: 4377472122600917200}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4637565031187629101
 SpriteRenderer:
@@ -20317,7 +20318,7 @@ Transform:
   - {fileID: 8381090491274788769}
   - {fileID: 560369084784831838}
   m_Father: {fileID: 4377472122600917200}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &954945927031801717
 MonoBehaviour:
@@ -30311,6 +30312,73 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!1 &4150755372038889713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2837281823650416280}
+  - component: {fileID: 4526999565964975828}
+  - component: {fileID: 5520232495241231626}
+  m_Layer: 0
+  m_Name: SpecialAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2837281823650416280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150755372038889713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4377472122600917200}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4526999565964975828
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150755372038889713}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57b4b1a78443b85498a08561378ed4de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5520232495241231626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150755372038889713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7358bcc0e8ab5b4eada380257cfd589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: []
+  i: 0
+  stompPrefab: {fileID: 5269674836100724338, guid: ec5115d79cff38547909ec758152fd98, type: 3}
+  animator: {fileID: 4526999565964975828}
 --- !u!1 &4303891974360089874
 GameObject:
   m_ObjectHideFlags: 0
@@ -36037,7 +36105,7 @@ Transform:
   m_LocalScale: {x: 20, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4377472122600917200}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3011327535320989242
 SpriteRenderer:
@@ -36354,7 +36422,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.008930683, b: 1, a: 1}
+      maxColor: {r: 0.0048570633, g: 0, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
