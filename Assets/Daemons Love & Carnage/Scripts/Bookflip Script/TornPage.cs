@@ -101,6 +101,7 @@ public class TornPage : MonoBehaviour
             StartCoroutine(MoveInTornPage());
         }
     }
+
     public void NewGameButton()
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
@@ -124,6 +125,7 @@ public class TornPage : MonoBehaviour
             }
         }
     }
+
     public void newGameConfirm()
     {
         //script che resetta i dati di gioco
@@ -132,6 +134,7 @@ public class TornPage : MonoBehaviour
 
         pageFlipper.NewGame();
     }
+
     public void QuitButton()
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
@@ -149,10 +152,12 @@ public class TornPage : MonoBehaviour
             StartCoroutine(MoveInTornPage());
         }
     }
+
     public void ConfirmQuit()
     {
         Application.Quit();
     }
+
     public void SkullCollectionButton()
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
@@ -170,8 +175,6 @@ public class TornPage : MonoBehaviour
             StartCoroutine(MoveInTornPage());
         }
     }
-
-
 
     public IEnumerator MoveInTornPage()
     {
