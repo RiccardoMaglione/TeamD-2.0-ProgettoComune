@@ -1,16 +1,15 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
-
+﻿using UnityEngine;
+using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
-    //public Slider BossLife;
-    //public Boss boss;
+    public Slider BossLife;
+    public Boss boss;
     public GameObject arrow;
     public static UIManager instance;
 
     void Update()
     {
-        //BossLife.value = boss.life / boss.maxLife;
+        BossLife.value = boss.life / boss.maxLife;
     }
 
     void Awake()

@@ -17,9 +17,9 @@ public class SwitchCamera : MonoBehaviour
 
     private void Update()
     {
-        if(2 == FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
+        if (2 == FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
         {
-            if(Enemies1 != null)
+            if (Enemies1 != null)
             {
                 Enemies1.SetActive(true);
             }

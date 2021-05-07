@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class WaveController : MonoBehaviour
 {
     [SerializeField] GameObject[] waves;
-    
+
     int i = 0;
     private void OnEnable()
     {
@@ -13,18 +12,18 @@ public class WaveController : MonoBehaviour
 
     void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-        {      
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 1)
+        {
             i++;
-            if(i < waves.Length)
+            if (i < waves.Length)
                 waves[i].SetActive(true);
-            
+
             if (i == waves.Length)
             {
                 UIManager.instance.arrow.SetActive(true);
                 gameObject.SetActive(false);
             }
-                
-        }            
+
+        }
     }
 }
