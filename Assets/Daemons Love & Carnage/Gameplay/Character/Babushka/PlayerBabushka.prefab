@@ -25643,7 +25643,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.07}
+  m_Offset: {x: 0, y: -0.1754592}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.48}
@@ -25654,7 +25654,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 1.9}
+  m_Size: {x: 0.9, y: 1.6890815}
   m_EdgeRadius: 0
 --- !u!50 &6596650215088342590
 Rigidbody2D:
@@ -25671,7 +25671,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3.9
   m_Material: {fileID: 6200000, guid: 8199ed652c9e2744088b4fdf110e3aaa, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 0
@@ -25708,9 +25708,9 @@ MonoBehaviour:
     Speed: 6.7
     MaxSpeed: 6.7
   ValueJump:
-    InitialJumpForce: 9
-    jumpForce: 4
-    fallMultiplier: 5
+    InitialJumpForce: 18
+    jumpForce: 8
+    fallMultiplier: 7
     lowJumpMultiplier: 6
   TimerDash: 0
   LimitTimerDash: 0.215
@@ -25721,11 +25721,11 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 3
-  ResetTimerStaggered: 13408.242
+  ResetTimerStaggered: 13414.609
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1
-  TimeDoublePlatform: 0.45
+  TimeDoublePlatform: 0.35
   ListTempPlatform: []
   ListWaitTime: []
   PlayerIdleSpeed: 1
@@ -25736,8 +25736,8 @@ MonoBehaviour:
   PlayerJumpSpeed: 1
   PlayerDieSpeed: 1
   PlayerStaggerSpeed: 2
-  PlayerLightAttackSpeed: 3.5
-  PlayerHeavyAttackSpeed: 2
+  PlayerLightAttackSpeed: 7
+  PlayerHeavyAttackSpeed: 3
   PlayerSpecialAttackSpeed: 1
   DashColliderBabushka: {fileID: 2234856564991557371}
   LightAttackCollider: {fileID: 8430004604001630503}
@@ -25832,9 +25832,9 @@ MonoBehaviour:
   IdleAnimClipSpeed: 10
   PatrolAnimClipSpeed: 1
   FollowAnimClipSpeed: 1
-  LightAttackAnimClipSpeed: 3.5
+  LightAttackAnimClipSpeed: 7
   LightRecoveryAnimClipSpeed: 1
-  HeavyAttackAnimClipSpeed: 2
+  HeavyAttackAnimClipSpeed: 3
   HeavyRecoveryAnimClipSpeed: 1
   DamageAnimClipSpeed: 1
   StunAnimClipSpeed: 1

@@ -30806,7 +30806,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3.9
   m_Material: {fileID: 6200000, guid: 8199ed652c9e2744088b4fdf110e3aaa, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 0
@@ -30840,12 +30840,12 @@ MonoBehaviour:
   RB2D: {fileID: 9146201629709627925}
   ValueMovement:
     Acceleration: 3
-    Speed: 5.5
-    MaxSpeed: 5.5
+    Speed: 6.7
+    MaxSpeed: 6.7
   ValueJump:
-    InitialJumpForce: 9
-    jumpForce: 4
-    fallMultiplier: 5
+    InitialJumpForce: 18
+    jumpForce: 8
+    fallMultiplier: 7
     lowJumpMultiplier: 6
   TimerDash: 0
   LimitTimerDash: 0.16
@@ -30856,11 +30856,11 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 5
-  ResetTimerStaggered: 12457.455
+  ResetTimerStaggered: 12458.546
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1
-  TimeDoublePlatform: 0.45
+  TimeDoublePlatform: 0.35
   ListTempPlatform: []
   ListWaitTime: []
   PlayerIdleSpeed: 1
