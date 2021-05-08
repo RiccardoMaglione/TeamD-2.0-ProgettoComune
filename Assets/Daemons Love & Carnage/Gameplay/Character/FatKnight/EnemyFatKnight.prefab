@@ -40486,6 +40486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8277929295962597664}
   - component: {fileID: 8277929295962597726}
+  - component: {fileID: 7551627517402817545}
   m_Layer: 10
   m_Name: AreaPossession
   m_TagString: Untagged
@@ -40522,7 +40523,35 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2.3
+--- !u!114 &7551627517402817545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277929295962597665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7574af0448a7954eb7ee1918f1ad8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FatKnightEnemyAnimator: {fileID: 22100000, guid: 42d4f845aa3315f42b508a022ca750c9, type: 2}
+  BoriousEnemyAnimator: {fileID: 22100000, guid: 673427aa7bae9ff4381c39e0bd7ad646, type: 2}
+  BabushkaEnemyAnimator: {fileID: 22100000, guid: 0a0384612ad7da640899fbe6c57809f0, type: 2}
+  ThiefEnemyAnimator: {fileID: 22100000, guid: 2d1a6e161c3c8d040adecf332432c22f, type: 2}
+  FatKnightPlayerAnimator: {fileID: 22100000, guid: df27faab894cd3c429a432429ca75a56, type: 2}
+  BoriousKnightPlayerAnimator: {fileID: 22100000, guid: 602810e5f5c37594ba6bec8ec92b9a00, type: 2}
+  BabushkaPlayerAnimator: {fileID: 22100000, guid: b883c4e2c916971459deaa72ca62446a, type: 2}
+  ThiefPlayerAnimator: {fileID: 22100000, guid: 5f6d22e1af8147a48a3effd6269a51fa, type: 2}
+  MaterialNoFriction: {fileID: 6200000, guid: 8199ed652c9e2744088b4fdf110e3aaa, type: 2}
+  MaterialYesFriction: {fileID: 6200000, guid: 0cd5cc7973424184baeea2930c4b4744, type: 2}
+  EnemyParticle: {fileID: 3025648309712999271}
+  PlayerParticle: {fileID: 5691673990527385508}
+  Player: {fileID: 0}
+  InspectorEnemy: {fileID: 0}
+  PromptEnemy: {fileID: 8277929296071829672}
+  RadiusArea: 2.3
 --- !u!1 &8277929296071829672
 GameObject:
   m_ObjectHideFlags: 0
@@ -40539,7 +40568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8277929296071829671
 Transform:
   m_ObjectHideFlags: 0
@@ -40618,7 +40647,6 @@ GameObject:
   - component: {fileID: 8277929296192245006}
   - component: {fileID: 8277929296192245007}
   - component: {fileID: 4322643252999441878}
-  - component: {fileID: 8277929296192245003}
   - component: {fileID: 8277929296192245002}
   - component: {fileID: 6359400128268756937}
   - component: {fileID: 8277929296192245010}
@@ -40830,44 +40858,6 @@ MonoBehaviour:
   ValuePoiseLight: 2
   ValuePoiseHeavy: 3
   ValuePoiseSpecial: 1
---- !u!114 &8277929296192245003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8277929296192245009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657fb864419858f43bdb80d43a07813e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RadiusArea: 2.3
-  PromptCommand: {fileID: 8277929296071829672}
-  PlayerDetect: {fileID: 0}
-  CC2D: {fileID: 0}
-  isPlayer: 0
-  PlayerDetectArrayInspector:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  TimeDestroyLastPlayer: 5
-  MaterialNoFriction: {fileID: 6200000, guid: 8199ed652c9e2744088b4fdf110e3aaa, type: 2}
-  MaterialYesFriction: {fileID: 6200000, guid: 0cd5cc7973424184baeea2930c4b4744, type: 2}
-  PlayerColor: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
-  EnemyColor: {r: 1, g: 1, b: 1, a: 1}
-  PlayerAnimator: {fileID: 22100000, guid: df27faab894cd3c429a432429ca75a56, type: 2}
-  EnemyAnimator: {fileID: 22100000, guid: 42d4f845aa3315f42b508a022ca750c9, type: 2}
-  EnemyParticle: {fileID: 3025648309712999271}
-  PlayerParticle: {fileID: 5691673990527385508}
-  FatKnightEnemyAnimator: {fileID: 22100000, guid: 42d4f845aa3315f42b508a022ca750c9, type: 2}
-  BoriousEnemyAnimator: {fileID: 22100000, guid: 673427aa7bae9ff4381c39e0bd7ad646, type: 2}
-  BabushkaEnemyAnimator: {fileID: 22100000, guid: 0a0384612ad7da640899fbe6c57809f0, type: 2}
-  ThiefEnemyAnimator: {fileID: 22100000, guid: 2d1a6e161c3c8d040adecf332432c22f, type: 2}
-  FatKnightPlayerAnimator: {fileID: 22100000, guid: df27faab894cd3c429a432429ca75a56, type: 2}
-  BoriousKnightPlayerAnimator: {fileID: 22100000, guid: 602810e5f5c37594ba6bec8ec92b9a00, type: 2}
-  BabushkaPlayerAnimator: {fileID: 22100000, guid: b883c4e2c916971459deaa72ca62446a, type: 2}
-  ThiefPlayerAnimator: {fileID: 22100000, guid: 5f6d22e1af8147a48a3effd6269a51fa, type: 2}
 --- !u!114 &8277929296192245002
 MonoBehaviour:
   m_ObjectHideFlags: 0

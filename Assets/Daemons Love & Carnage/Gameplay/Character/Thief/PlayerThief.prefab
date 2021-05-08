@@ -30457,9 +30457,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9146201628535353789}
   - component: {fileID: 9146201628535353788}
+  - component: {fileID: 5771323689200581266}
   m_Layer: 10
   m_Name: AreaPossesion
-  m_TagString: Untagged
+  m_TagString: PlayerPossession
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30493,7 +30494,35 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2.3
+--- !u!114 &5771323689200581266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146201628535353787}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7574af0448a7954eb7ee1918f1ad8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FatKnightEnemyAnimator: {fileID: 22100000, guid: 42d4f845aa3315f42b508a022ca750c9, type: 2}
+  BoriousEnemyAnimator: {fileID: 22100000, guid: 673427aa7bae9ff4381c39e0bd7ad646, type: 2}
+  BabushkaEnemyAnimator: {fileID: 22100000, guid: 0a0384612ad7da640899fbe6c57809f0, type: 2}
+  ThiefEnemyAnimator: {fileID: 22100000, guid: 2d1a6e161c3c8d040adecf332432c22f, type: 2}
+  FatKnightPlayerAnimator: {fileID: 22100000, guid: df27faab894cd3c429a432429ca75a56, type: 2}
+  BoriousKnightPlayerAnimator: {fileID: 22100000, guid: 602810e5f5c37594ba6bec8ec92b9a00, type: 2}
+  BabushkaPlayerAnimator: {fileID: 22100000, guid: b883c4e2c916971459deaa72ca62446a, type: 2}
+  ThiefPlayerAnimator: {fileID: 22100000, guid: 5f6d22e1af8147a48a3effd6269a51fa, type: 2}
+  MaterialNoFriction: {fileID: 6200000, guid: 8199ed652c9e2744088b4fdf110e3aaa, type: 2}
+  MaterialYesFriction: {fileID: 6200000, guid: 0cd5cc7973424184baeea2930c4b4744, type: 2}
+  EnemyParticle: {fileID: 3835576874616780144}
+  PlayerParticle: {fileID: 5511588606872374984}
+  Player: {fileID: 0}
+  InspectorEnemy: {fileID: 0}
+  PromptEnemy: {fileID: 9146201628404208696}
+  RadiusArea: 2.3
 --- !u!1 &9146201629087192639
 GameObject:
   m_ObjectHideFlags: 0
@@ -30680,8 +30709,6 @@ GameObject:
   - component: {fileID: 9146201629709627926}
   - component: {fileID: 9146201629709627925}
   - component: {fileID: 9146201629709627924}
-  - component: {fileID: 9146201629709627923}
-  - component: {fileID: 9146201629709627922}
   - component: {fileID: 9146201629709627921}
   m_Layer: 8
   m_Name: PlayerThief
@@ -30856,7 +30883,7 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 5
-  ResetTimerStaggered: 12462.094
+  ResetTimerStaggered: 12480.781
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1
@@ -30892,99 +30919,6 @@ MonoBehaviour:
   ValuePoiseLight: 1
   ValuePoiseHeavy: 1
   ValuePoiseSpecial: 1
---- !u!114 &9146201629709627923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9146201629709627920}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657fb864419858f43bdb80d43a07813e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RadiusArea: 2.3
-  PromptCommand: {fileID: 9146201628404208696}
-  PlayerDetect: {fileID: 0}
-  CC2D: {fileID: 0}
-  isPlayer: 0
-  PlayerDetectArrayInspector: []
-  TimeDestroyLastPlayer: 5
-  MaterialNoFriction: {fileID: 6200000, guid: 8199ed652c9e2744088b4fdf110e3aaa, type: 2}
-  MaterialYesFriction: {fileID: 6200000, guid: 0cd5cc7973424184baeea2930c4b4744, type: 2}
-  PlayerColor: {r: 1, g: 1, b: 1, a: 1}
-  EnemyColor: {r: 1, g: 1, b: 1, a: 1}
-  PlayerAnimator: {fileID: 22100000, guid: 5f6d22e1af8147a48a3effd6269a51fa, type: 2}
-  EnemyAnimator: {fileID: 22100000, guid: 2d1a6e161c3c8d040adecf332432c22f, type: 2}
-  EnemyParticle: {fileID: 3835576874616780144}
-  PlayerParticle: {fileID: 5511588606872374984}
-  FatKnightEnemyAnimator: {fileID: 22100000, guid: 42d4f845aa3315f42b508a022ca750c9, type: 2}
-  BoriousEnemyAnimator: {fileID: 22100000, guid: 673427aa7bae9ff4381c39e0bd7ad646, type: 2}
-  BabushkaEnemyAnimator: {fileID: 22100000, guid: 0a0384612ad7da640899fbe6c57809f0, type: 2}
-  ThiefEnemyAnimator: {fileID: 22100000, guid: 2d1a6e161c3c8d040adecf332432c22f, type: 2}
-  FatKnightPlayerAnimator: {fileID: 22100000, guid: df27faab894cd3c429a432429ca75a56, type: 2}
-  BoriousKnightPlayerAnimator: {fileID: 22100000, guid: 602810e5f5c37594ba6bec8ec92b9a00, type: 2}
-  BabushkaPlayerAnimator: {fileID: 22100000, guid: b883c4e2c916971459deaa72ca62446a, type: 2}
-  ThiefPlayerAnimator: {fileID: 22100000, guid: 5f6d22e1af8147a48a3effd6269a51fa, type: 2}
---- !u!114 &9146201629709627922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9146201629709627920}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TypeEnemy: 3
-  Life: 100
-  timerStun: 0
-  DurationStun: 5
-  CountHit: 0
-  MaxCountHit: 10
-  isStun: 0
-  isPossessed: 0
-  CountPoiseEnemy: 0
-  MaxCountPoiseEnemy: 1
-  Speed: 5
-  WaypointEnemy: []
-  WaypointIndex: 0
-  CanMove: 1
-  PlayerEnemy: {fileID: 0}
-  CanVisible: 0
-  LightAttackCollider: {fileID: 3967979325279415277}
-  HeavyAttackCollider: {fileID: 6327829420132728870}
-  PercentuageAttack: 0
-  random: 0
-  CanAttack: 1
-  LightDamage: 15
-  HeavyDamage: 20
-  SpecialDamage: 6
-  CanReset: 0
-  IdleAnimClipSpeed: 10
-  PatrolAnimClipSpeed: 1
-  FollowAnimClipSpeed: 1
-  LightAttackAnimClipSpeed: 4
-  LightRecoveryAnimClipSpeed: 1
-  HeavyAttackAnimClipSpeed: 2
-  HeavyRecoveryAnimClipSpeed: 1
-  DamageAnimClipSpeed: 1
-  StunAnimClipSpeed: 1
-  StaggerAnimClipSpeed: 1
-  PossessionAnimClipSpeed: 1
-  DeathAnimClipSpeed: 1
-  Aggro: {fileID: 0}
-  IsTriggerAttack: 0
-  RangeMelee: {fileID: 9146201628002937996}
-  RangeRanged: {fileID: 9146201629087192639}
-  AreaPossession: {fileID: 9146201628535353787}
-  ArrowThief: {fileID: 7682607842086701567, guid: d898c5e8a65dd994695e189b7950d527, type: 3}
-  SpawnArrow: {fileID: 1495379520188465476}
-  ValuePoiseLight: 1
-  ValuePoiseHeavy: 1
 --- !u!95 &9146201629709627921
 Animator:
   serializedVersion: 3

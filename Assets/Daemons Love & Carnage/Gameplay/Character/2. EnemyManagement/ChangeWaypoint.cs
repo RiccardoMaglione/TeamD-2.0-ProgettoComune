@@ -67,7 +67,7 @@ public class ChangeWaypoint : MonoBehaviour
         if (collision.tag == "Enemy" && collision.tag != "Player")
         {
             collision.GetComponent<EnemyData>().PlayerEnemy = PlayerAggro;
-            collision.GetComponent<PossessionV2>().PlayerDetect = PlayerAggro;
+            //collision.GetComponent<PossessionV2>().PlayerDetect = PlayerAggro;
             if(PlayerSee == false)
             {
                 for (int i = 0; i < EnemyAggro.Count; i++)
