@@ -12,7 +12,7 @@ public class DistanceState : StateMachineBehaviour
         if (animator.GetComponent<EnemyData>().PlayerEnemy != null)
         {
             float Distance = Vector2.Distance(animator.gameObject.transform.position, animator.GetComponent<EnemyData>().PlayerEnemy.transform.position);
-            if (Distance >= 1.5f)
+            if (Distance >= animator.GetComponent<EnemyData>().DistanceFollow + 0.5f)
             {
                 animator.SetBool("Distance", true);
             }

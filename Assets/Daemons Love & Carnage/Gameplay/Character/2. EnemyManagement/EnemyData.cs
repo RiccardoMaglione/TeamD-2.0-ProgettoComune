@@ -126,6 +126,8 @@ public class EnemyData : MonoBehaviour
     public int ValuePoiseLight = 1;
     public int ValuePoiseHeavy = 1;
 
+    public float DistanceFollow = 1f;
+    
     private void Start()
     {
         GetComponent<Animator>().SetInteger("Life", Life);

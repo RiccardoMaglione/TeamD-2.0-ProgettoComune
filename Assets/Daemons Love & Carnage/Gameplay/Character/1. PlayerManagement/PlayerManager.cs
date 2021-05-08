@@ -22,7 +22,7 @@ namespace SwordGame
         [Tooltip("Valore massimo della vita del player")]
         public int MaxHealth;
         [Tooltip("Valore corrente della vita del player, si setta al cambio della MaxHealth in inspector")]
-        [ReadOnly] public int CurrentHealth;
+        /*[ReadOnly]*/ public int CurrentHealth;
         [Tooltip("Booleano che indica quando il player non può prendere danni")]
         [ReadOnly] public bool Invulnerability = false;
         #endregion
