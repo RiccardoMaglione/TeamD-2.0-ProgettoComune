@@ -55,7 +55,7 @@ namespace SwordGame
         /// </summary>
         public void OnValidatePlayerManager()
         {
-            CurrentHealth = MaxHealth;
+            //CurrentHealth = MaxHealth;
         }
 
         /// <summary>
