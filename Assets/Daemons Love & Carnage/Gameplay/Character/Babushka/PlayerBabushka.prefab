@@ -25720,7 +25720,7 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 3
-  ResetTimerStaggered: 13437.246
+  ResetTimerStaggered: 13438.705
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1
@@ -25814,6 +25814,7 @@ MonoBehaviour:
   SpawnArrow: {fileID: 0}
   ValuePoiseLight: 1
   ValuePoiseHeavy: 2
+  DistanceFollow: 1
 --- !u!95 &6596650215088342562
 Animator:
   serializedVersion: 3
@@ -25959,6 +25960,7 @@ GameObject:
   - component: {fileID: 6596650216258416869}
   - component: {fileID: 6596650216258416870}
   - component: {fileID: 6596650216258416871}
+  - component: {fileID: 5641779344018578348}
   m_Layer: 0
   m_Name: RangeRanged
   m_TagString: RangeRanged
@@ -26073,6 +26075,19 @@ MonoBehaviour:
   isRanged: 0
   OverridePercetuageMelee: 100
   OverridePercetuageRanged: 0
+--- !u!114 &5641779344018578348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596650216258416872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e78f5337a4e234c98d3de5a171fb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerAggroPortable: {fileID: 0}
 --- !u!1 &6596650216570387012
 GameObject:
   m_ObjectHideFlags: 0
@@ -26161,6 +26176,7 @@ GameObject:
   - component: {fileID: 6596650216592395562}
   - component: {fileID: 6596650216592395563}
   - component: {fileID: 6596650216592395564}
+  - component: {fileID: 7148563294899716077}
   m_Layer: 0
   m_Name: RangeMelee
   m_TagString: RangeMelee
@@ -26275,6 +26291,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &7148563294899716077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596650216592395565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e78f5337a4e234c98d3de5a171fb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerAggroPortable: {fileID: 0}
 --- !u!1 &6596650217002611221
 GameObject:
   m_ObjectHideFlags: 0

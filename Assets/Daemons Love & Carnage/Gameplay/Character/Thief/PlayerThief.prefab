@@ -30251,6 +30251,7 @@ GameObject:
   - component: {fileID: 9146201628002937999}
   - component: {fileID: 9146201628002937998}
   - component: {fileID: 9146201628002937997}
+  - component: {fileID: 5508200095573304368}
   m_Layer: 0
   m_Name: RangeMelee
   m_TagString: RangeMelee
@@ -30365,6 +30366,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &5508200095573304368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146201628002937996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e78f5337a4e234c98d3de5a171fb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerAggroPortable: {fileID: 0}
 --- !u!1 &9146201628404208696
 GameObject:
   m_ObjectHideFlags: 0
@@ -30535,6 +30549,7 @@ GameObject:
   - component: {fileID: 9146201629087192626}
   - component: {fileID: 9146201629087192625}
   - component: {fileID: 9146201629087192624}
+  - component: {fileID: 4699432491208308710}
   m_Layer: 0
   m_Name: RangeRanged
   m_TagString: RangeRanged
@@ -30649,6 +30664,19 @@ MonoBehaviour:
   isRanged: 0
   OverridePercetuageMelee: 100
   OverridePercetuageRanged: 0
+--- !u!114 &4699432491208308710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146201629087192639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e78f5337a4e234c98d3de5a171fb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerAggroPortable: {fileID: 0}
 --- !u!1 &9146201629410347632
 GameObject:
   m_ObjectHideFlags: 0
@@ -30883,7 +30911,7 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 5
-  ResetTimerStaggered: 12480.781
+  ResetTimerStaggered: 12482.275
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1

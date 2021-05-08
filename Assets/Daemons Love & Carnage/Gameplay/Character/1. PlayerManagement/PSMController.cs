@@ -403,7 +403,7 @@ namespace SwordGame
             if (PoisePlayer >= MaxPoisePlayer)
             {
                 GetComponent<Animator>().SetBool("PSM-IsStagger", true);
-                print("PSM-Trigger: Entra nello stagger");
+                //print("PSM-Trigger: Entra nello stagger");
             }
         }
         private void OnTriggerExit2D(Collider2D collision)

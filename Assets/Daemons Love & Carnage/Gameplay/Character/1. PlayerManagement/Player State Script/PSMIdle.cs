@@ -63,7 +63,7 @@ public class PSMIdle : StateMachineBehaviour
             animator.SetTrigger("PSM-IsInFall");                                                                                            //Setto la seconda condizione, un trigger, attivo, per entrare in "Player Fall State" da "Player Idle State"
         }
         #endregion
-        Debug.Log(animator.gameObject.transform.rotation.y);
+
         #region Dash Zone - Da "Player Idle State" da "Player Dash State"
         if ((animator.gameObject.transform.rotation.y == 1 && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) || (Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0) && (Input.GetKey(KeyCode.Joystick1Button5))) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
         {
