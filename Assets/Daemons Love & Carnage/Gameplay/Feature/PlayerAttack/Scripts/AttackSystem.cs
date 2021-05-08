@@ -59,7 +59,7 @@ public class AttackSystem : MonoBehaviour
                     //StartCoroutine(FeedbackManager.instance.StopTimeLight());
                 }
                 //GetComponentInParent<PSMController>().IsLightAttack = false;
-                collision.GetComponent<EnemyData>().Life -= LightDamage;
+                collision.GetComponent<EnemyData>().Life -= LightDamage * collision.GetComponent<EnemyData>().EnemyCoeffReduceDamageLight;
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy += GetComponentInParent<PSMController>().ValuePoiseLight;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
@@ -81,7 +81,7 @@ public class AttackSystem : MonoBehaviour
 
                 //GetComponentInParent<PSMController>().IsHeavyAttack = false;
                 collision.GetComponent<EnemyData>().Life -= HeavyDamage;
-                collision.GetComponent<EnemyData>().CountHit += GetComponentInParent<PSMController>().ValuePoiseHeavy;
+                collision.GetComponent<EnemyData>().CountHit += GetComponentInParent<PSMController>().ValuePoiseHeavy * collision.GetComponent<EnemyData>().EnemyCoeffReduceDamageHeavy;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
@@ -96,7 +96,7 @@ public class AttackSystem : MonoBehaviour
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
             {
                 //GetComponentInParent<PSMController>().IsSpecialAttack = false;
-                collision.GetComponent<EnemyData>().Life -= SpecialDamage;
+                collision.GetComponent<EnemyData>().Life -= SpecialDamage * collision.GetComponent<EnemyData>().EnemyCoeffReduceDamageSpecial;
                 if (collision.GetComponent<EnemyData>().Life <= 0)
                 {
                     FindObjectOfType<ScoreSystem>(true).SpecialType = true;
