@@ -24,6 +24,10 @@ namespace SwordGame
                 }
                 Destroy(ArrowParent);
             }
+            else if(collision.tag == "Floor")
+            {
+                Destroy(ArrowParent);
+            }
 
         }
     }
