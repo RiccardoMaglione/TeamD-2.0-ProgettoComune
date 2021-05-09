@@ -64,4 +64,5 @@ public class SliderManager : MonoBehaviour
             AudioManager.instance.ChangeMusicVolume();
         }
     }
+
 }

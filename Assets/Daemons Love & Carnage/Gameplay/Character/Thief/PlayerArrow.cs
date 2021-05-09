@@ -42,6 +42,10 @@ namespace SwordGame
                 Destroy(ArrowParent);
                 /*Manca aggiungere energia alla barra del player*/
             }
+            else
+            {
+                Destroy(ArrowParent);
+            }
         }
     }
 }
