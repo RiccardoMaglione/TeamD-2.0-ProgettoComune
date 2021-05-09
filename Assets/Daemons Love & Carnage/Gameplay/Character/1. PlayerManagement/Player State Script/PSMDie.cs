@@ -10,6 +10,7 @@ public class PSMDie : StateMachineBehaviour
     {
         animator.GetComponent<PSMController>().LightAttackCollider.SetActive(false);
         animator.GetComponent<PSMController>().HeavyAttackCollider.SetActive(false);
+        animator.GetComponent<PSMController>().RB2D.velocity = Vector2.zero;
         //Destroy(animator.gameObject);
     }
 
