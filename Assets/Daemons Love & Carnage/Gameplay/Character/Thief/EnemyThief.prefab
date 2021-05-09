@@ -132,7 +132,7 @@ MonoBehaviour:
   isMelee: 0
   isRanged: 0
   OverridePercetuageMelee: 100
-  OverridePercetuageRanged: 0
+  OverridePercetuageRanged: 1
 --- !u!61 &235645251959410299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10667,7 +10667,10 @@ MonoBehaviour:
   SpawnArrow: {fileID: 8971205160196388050}
   ValuePoiseLight: 1
   ValuePoiseHeavy: 1
-  DistanceFollow: 1
+  DistanceFollow: 5
+  EnemyCoeffReduceDamageLight: 1
+  EnemyCoeffReduceDamageHeavy: 1
+  EnemyCoeffReduceDamageSpecial: 1
 --- !u!95 &235645252897678835
 Animator:
   serializedVersion: 3
