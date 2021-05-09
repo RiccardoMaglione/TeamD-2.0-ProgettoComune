@@ -241,6 +241,7 @@ namespace SwordGame
         {
             if ((Input.GetKeyDown(KeyboardLightlAttack) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))
             {
+                print("vau qya");
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
                 GetComponent<Animator>().SetBool("PSM-LightAttack", true);

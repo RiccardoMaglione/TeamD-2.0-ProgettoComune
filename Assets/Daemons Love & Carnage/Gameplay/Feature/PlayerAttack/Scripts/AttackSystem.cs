@@ -22,7 +22,6 @@ public class AttackSystem : MonoBehaviour
 
         }
 
-
         if (collision.gameObject.tag == "Boss") //16/04
         {
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
@@ -39,7 +38,6 @@ public class AttackSystem : MonoBehaviour
             }
         }
 
-
         //Debug.Log("Passa qui HIT" + collision.name);
         if (collision.gameObject.tag == "Enemy")
         {
@@ -52,6 +50,8 @@ public class AttackSystem : MonoBehaviour
             collision.GetComponentInChildren<EnemyParticleController>().PlayBlood();
             
             Knockback.ActiveKnockback = true;
+
+
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
                 if (FeedbackManager.instance.isTimeStopped == false)
@@ -68,7 +68,6 @@ public class AttackSystem : MonoBehaviour
                 {
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
-                //print("Light");
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
                 //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
@@ -113,6 +112,7 @@ public class AttackSystem : MonoBehaviour
                 GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().SpecialEnergyAmount;
                 print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
+
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -120,7 +120,6 @@ public class AttackSystem : MonoBehaviour
         GetComponentInParent<PSMController>().IsLightAttack = false;
         GetComponentInParent<PSMController>().IsHeavyAttack = false;
         GetComponentInParent<PSMController>().IsSpecialAttack = false;
-
         if (hitAnimation != null)    //27/03/21
             hitAnimation.SetActive(false); //25/03/21
     }

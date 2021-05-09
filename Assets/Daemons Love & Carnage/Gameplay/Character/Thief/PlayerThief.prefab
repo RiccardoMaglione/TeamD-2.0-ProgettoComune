@@ -30737,6 +30737,7 @@ GameObject:
   - component: {fileID: 9146201629709627926}
   - component: {fileID: 9146201629709627925}
   - component: {fileID: 9146201629709627924}
+  - component: {fileID: -2547379719804468641}
   - component: {fileID: 9146201629709627921}
   m_Layer: 8
   m_Name: PlayerThief
@@ -30947,6 +30948,68 @@ MonoBehaviour:
   ValuePoiseLight: 1
   ValuePoiseHeavy: 1
   ValuePoiseSpecial: 1
+--- !u!114 &-2547379719804468641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146201629709627920}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba25bcd6b6809a4f87b61d840e4436f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeEnemy: 0
+  Life: 100
+  timerStun: 0
+  DurationStun: 5
+  CountHit: 0
+  MaxCountHit: 0
+  isStun: 0
+  isPossessed: 0
+  CountPoiseEnemy: 0
+  MaxCountPoiseEnemy: 5
+  Speed: 0
+  WaypointEnemy: []
+  WaypointIndex: 0
+  CanMove: 1
+  PlayerEnemy: {fileID: 0}
+  CanVisible: 0
+  LightAttackCollider: {fileID: 0}
+  HeavyAttackCollider: {fileID: 0}
+  PercentuageAttack: 0
+  random: 0
+  CanAttack: 1
+  LightDamage: 0
+  HeavyDamage: 0
+  SpecialDamage: 0
+  CanReset: 0
+  IdleAnimClipSpeed: 10
+  PatrolAnimClipSpeed: 1
+  FollowAnimClipSpeed: 1
+  LightAttackAnimClipSpeed: 1
+  LightRecoveryAnimClipSpeed: 1
+  HeavyAttackAnimClipSpeed: 1
+  HeavyRecoveryAnimClipSpeed: 1
+  DamageAnimClipSpeed: 1
+  StunAnimClipSpeed: 1
+  StaggerAnimClipSpeed: 1
+  PossessionAnimClipSpeed: 1
+  DeathAnimClipSpeed: 1
+  Aggro: {fileID: 0}
+  IsTriggerAttack: 0
+  RangeMelee: {fileID: 0}
+  RangeRanged: {fileID: 0}
+  AreaPossession: {fileID: 0}
+  ArrowThief: {fileID: 0}
+  SpawnArrow: {fileID: 0}
+  ValuePoiseLight: 1
+  ValuePoiseHeavy: 1
+  DistanceFollow: 1
+  EnemyCoeffReduceDamageLight: 1
+  EnemyCoeffReduceDamageHeavy: 1
+  EnemyCoeffReduceDamageSpecial: 1
 --- !u!95 &9146201629709627921
 Animator:
   serializedVersion: 3

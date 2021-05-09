@@ -40,7 +40,6 @@ namespace SwordGame
                         RB2DList.Add(collision.GetComponent<Rigidbody2D>());
                     }
                 }
-
             }
             else
             {

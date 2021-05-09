@@ -58,7 +58,10 @@ public class SliderManager : MonoBehaviour
         ChangeMusicSlider();
         ChangeSfxSlider();
 
-        AudioManager.instance.ChangeSfxVolume();
-        AudioManager.instance.ChangeMusicVolume();
+        if(AudioManager.instance != null)
+        {
+            AudioManager.instance.ChangeSfxVolume();
+            AudioManager.instance.ChangeMusicVolume();
+        }
     }
 }

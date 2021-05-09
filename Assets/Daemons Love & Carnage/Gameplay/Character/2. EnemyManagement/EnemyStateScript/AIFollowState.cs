@@ -64,6 +64,9 @@ public class AIFollowState : StateMachineBehaviour
             //Debug.Log("aaarandom2" + animator.GetComponent<EnemyData>().isStun);
         
         }
+
+        Debug.Log("Ranged: " + animator.GetComponentInChildren<RangeAttack>().isRanged + "e Melee: " + animator.GetComponentInChildren<RangeAttack>().isMelee);
+
         if (animator.GetComponent<EnemyData>().CanVisible == true && animator.GetComponent<EnemyData>().isStun == false)
         {
             //Debug.Log("aaaprova");
@@ -71,7 +74,7 @@ public class AIFollowState : StateMachineBehaviour
             {
                 if (animator.GetComponentInChildren<RangeAttack>().isMelee == true)
                 {
-                    //Debug.Log("aaaleggero");
+                    Debug.Log("aaaleggero");
                     animator.SetTrigger("LightAttack");
                     animator.SetBool("CanAttack", true);
                 }
@@ -80,7 +83,7 @@ public class AIFollowState : StateMachineBehaviour
             {
                 if (animator.GetComponentInChildren<RangeAttack>().isRanged == true)
                 {
-                    //Debug.Log("aaaPesante");
+                    Debug.Log("aaaPesante");
                     animator.SetTrigger("HeavyAttack");
                     animator.SetBool("CanAttack", true);
                 }

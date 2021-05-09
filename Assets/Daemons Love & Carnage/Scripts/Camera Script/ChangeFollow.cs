@@ -9,6 +9,15 @@ public class ChangeFollow : MonoBehaviour
     public List<CinemachineVirtualCamera> CamList = new List<CinemachineVirtualCamera>();
     public GameObject NewPlayer;
     public static GameObject StaticPlayerTemp;
+
+    private void Start()
+    {
+        if(NewPlayer != null)
+        {
+            StaticPlayerTemp = NewPlayer;
+        }
+    }
+
     void Update()
     {
         for (int i = 0; i < CamList.Count; i++)

@@ -35,6 +35,7 @@ public class DistanceState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         
+        Debug.Log("Ranged: " + animator.GetComponentInChildren<RangeAttack>().isRanged + "e Melee: " + animator.GetComponentInChildren<RangeAttack>().isMelee);
       //  Debug.Log("aaaAttack" + animator.GetComponent<EnemyData>().CanAttack);
         if (animator.GetComponent<EnemyData>().CanAttack == true && (animator.GetComponentInChildren<RangeAttack>().isMelee == true || animator.GetComponentInChildren<RangeAttack>().isRanged == true))
         {
@@ -44,6 +45,8 @@ public class DistanceState : StateMachineBehaviour
             //Debug.Log("aaaCiao2" + animator.GetComponent<EnemyData>().isStun);
 
         }
+
+
         if (animator.GetComponent<EnemyData>().CanVisible == true && animator.GetComponent<EnemyData>().isStun == false && (animator.GetComponentInChildren<RangeAttack>().isMelee == true || animator.GetComponentInChildren<RangeAttack>().isRanged == true))
         {
             //Debug.Log("aaaprova");
@@ -51,7 +54,7 @@ public class DistanceState : StateMachineBehaviour
             {
                 //if (animator.GetComponentInChildren<RangeAttack>().isMelee == true)
                 //{
-                    //Debug.Log("aaaleggero");
+                    Debug.Log("aaaleggero");
                     animator.SetTrigger("LightAttack");
                     animator.SetBool("CanAttack", true);
                 //}
@@ -60,7 +63,7 @@ public class DistanceState : StateMachineBehaviour
             {
                 //if (animator.GetComponentInChildren<RangeAttack>().isRanged == true)
                 //{
-                    //Debug.Log("aaaPesante");
+                    Debug.Log("aaaPesante");
                     animator.SetTrigger("HeavyAttack");
                     animator.SetBool("CanAttack", true);
                 //}
@@ -83,11 +86,11 @@ public class DistanceState : StateMachineBehaviour
             animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);         //Sinistra
         }
 
-        if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + 1)
+        if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + animator.GetComponent<EnemyData>().DistanceFollow)
         {
             animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
         }
-        if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - 1)
+        if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - animator.GetComponent<EnemyData>().DistanceFollow)
         {
             animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
         }
