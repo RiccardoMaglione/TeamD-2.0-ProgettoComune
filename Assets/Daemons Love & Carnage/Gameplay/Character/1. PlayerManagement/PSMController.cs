@@ -448,7 +448,7 @@ namespace SwordGame
                 }
             }
 
-            if ((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxisRaw("Vertical") < 0) || (Input.GetAxisRaw("DPad Y") < 0)) && (DialogueType1.StaticTutorial != -1))
+            if (((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxisRaw("Vertical") < 0) || (Input.GetAxisRaw("DPad Y") < 0)) && (DialogueType1.StaticTutorial != -1)) &! GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
             {
                 if (collision.gameObject.GetComponent<PlatformEffector2D>() != null && this.gameObject.tag == "Player")
                 {
