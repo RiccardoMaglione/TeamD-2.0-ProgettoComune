@@ -29,7 +29,7 @@ public class TriggerPossession : Possession
             PromptEnemy.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.H) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
+        if ((Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
         {
             Possession(Player, Enemy);
         }

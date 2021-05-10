@@ -77,7 +77,7 @@ namespace SwordGame
             #region Action of Possession
             if (isPlayer == true)
             {
-                if ((Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && PlayerDetectArray[PlayerDetectArray.Count - 1] == this.gameObject && PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().isStun == true && Can == false)
+                /*if ((Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && PlayerDetectArray[PlayerDetectArray.Count - 1] == this.gameObject && PlayerDetectArray[PlayerDetectArray.Count - 1].GetComponent<EnemyData>().isStun == true && Can == false)
                 {
                     Can = true;
                     PlayerPlayerPlayer = PlayerDetect;
@@ -261,7 +261,7 @@ namespace SwordGame
                     PlayerPlayerPlayer.GetComponent<PossessionV2>().enabled = true;                                                       //Attuale Player
                     //PlayerDetect.GetComponent<PossessionV2>().enabled = true;
                     #endregion
-                }
+                }*/
             }
             #endregion
 
