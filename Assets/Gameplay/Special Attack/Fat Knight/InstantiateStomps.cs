@@ -2,11 +2,11 @@
 
 public class InstantiateStomps : StateMachineBehaviour
 {
-    SpecialAttack specialAttack;
+    FatKnightSpecialAttack specialAttack;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        specialAttack = animator.GetComponent<SpecialAttack>();
+        specialAttack = animator.GetComponent<FatKnightSpecialAttack>();
         if (specialAttack.i < specialAttack.enemyList.Count)
         {
             specialAttack.InstantiateStomps();

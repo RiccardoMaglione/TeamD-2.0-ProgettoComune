@@ -2,7 +2,7 @@
 
 public class MoveStomp : MonoBehaviour
 {
-    SpecialAttack specialAttack;
+    FatKnightSpecialAttack specialAttack;
     [SerializeField] float speed;
     [SerializeField] int damage;
     Vector2 direction;
@@ -17,7 +17,7 @@ public class MoveStomp : MonoBehaviour
     private void Awake()
     {
         direction = new Vector2(0, -1);
-        specialAttack = FindObjectOfType<SpecialAttack>();
+        specialAttack = FindObjectOfType<FatKnightSpecialAttack>();
     }
 
     void Update()
