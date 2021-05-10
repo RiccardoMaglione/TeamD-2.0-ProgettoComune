@@ -21,7 +21,7 @@ public class WaveController : MonoBehaviour
             if (i == waves.Length)
             {
                 UIManager.instance.arrow.SetActive(true);
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
             }
 
         }
