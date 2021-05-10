@@ -7,7 +7,7 @@ public class InstantiateStomps : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         specialAttack = animator.GetComponent<SpecialAttack>();
-        if (specialAttack.i < specialAttack.obj.Length)
+        if (specialAttack.i < specialAttack.enemyList.Count)
         {
             specialAttack.InstantiateStomps();
             animator.SetTrigger("Move");
@@ -16,9 +16,10 @@ public class InstantiateStomps : StateMachineBehaviour
         else
         {
             animator.SetTrigger("Stop");
+            specialAttack.enemyList.Clear();
             specialAttack.i = 0;
         }
-            
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

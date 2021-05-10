@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SpecialAttack : MonoBehaviour
 {
+    public List<GameObject> enemyList = new List<GameObject>();
     public GameObject[] obj;
     public int i = 0;
     [SerializeField] GameObject stompPrefab;
@@ -11,10 +12,17 @@ public class SpecialAttack : MonoBehaviour
     public void Findenemy()
     {
         obj = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject go in obj)
+        {
+            if (go.layer == 9)
+            {
+                enemyList.Add(go);
+            }
+        }
     }
 
     public void InstantiateStomps()
     {
-        Instantiate(stompPrefab, new Vector2(obj[i].transform.position.x, obj[i].transform.position.y + 8), transform.rotation);
+        Instantiate(stompPrefab, new Vector2(enemyList[i].transform.position.x, enemyList[i].transform.position.y + 8), transform.rotation);
     }
 }
