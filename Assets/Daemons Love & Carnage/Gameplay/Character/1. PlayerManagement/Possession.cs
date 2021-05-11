@@ -263,7 +263,8 @@ public class Possession : MonoBehaviour
 
         PlayerToEnemy.GetComponent<EnemyData>().Life = 0;
 
-        PlayerToEnemy.GetComponent<Animator>().SetInteger("Life", PlayerToEnemy.GetComponent<EnemyData>().Life);    //Viene uguagliato lo stesso in un altro script, controllare dove e togliere questo
+        //PlayerToEnemy.GetComponent<Animator>().SetInteger("Life", PlayerToEnemy.GetComponent<EnemyData>().Life);    //Viene uguagliato lo stesso in un altro script, controllare dove e togliere questo
+        PlayerToEnemy.GetComponent<Animator>().SetFloat("Life", PlayerToEnemy.GetComponent<EnemyData>().Life);    //Viene uguagliato lo stesso in un altro script, controllare dove e togliere questo
     }
 
     /// <summary>

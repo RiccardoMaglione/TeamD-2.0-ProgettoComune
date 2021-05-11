@@ -12,7 +12,8 @@ public class AIDamageState : StateMachineBehaviour
             //animator.GetComponent<EnemyManager>().isStaggeredEnemy = true;
             animator.SetBool("IsStagger", true);
         }
-        animator.SetInteger("Life",animator.GetComponent<EnemyData>().Life);
+        //animator.SetInteger("Life",animator.GetComponent<EnemyData>().Life);
+        animator.SetFloat("Life", animator.GetComponent<EnemyData>().Life);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

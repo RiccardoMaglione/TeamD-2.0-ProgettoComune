@@ -7,9 +7,9 @@ public class AttackSystem : MonoBehaviour
 
     //PlayerInput playerInput;
 
-    [SerializeField] int LightDamage;
-    [SerializeField] int HeavyDamage;
-    [SerializeField] int SpecialDamage;
+    [SerializeField] float LightDamage;
+    [SerializeField] float HeavyDamage;
+    [SerializeField] float SpecialDamage;
 
     [SerializeField] GameObject hitAnimation; //25/03/21
 
@@ -63,7 +63,8 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy += GetComponentInParent<PSMController>().ValuePoiseLight;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
-                collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                //collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                collision.GetComponentInParent<Animator>().SetFloat("Life", collision.GetComponent<EnemyData>().Life);
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
@@ -79,11 +80,12 @@ public class AttackSystem : MonoBehaviour
                 }
 
                 //GetComponentInParent<PSMController>().IsHeavyAttack = false;
-                collision.GetComponent<EnemyData>().Life -= HeavyDamage;
-                collision.GetComponent<EnemyData>().CountHit += GetComponentInParent<PSMController>().ValuePoiseHeavy * collision.GetComponent<EnemyData>().EnemyCoeffReduceDamageHeavy;
+                collision.GetComponent<EnemyData>().Life -= HeavyDamage * collision.GetComponent<EnemyData>().EnemyCoeffReduceDamageHeavy;
+                collision.GetComponent<EnemyData>().CountHit += GetComponentInParent<PSMController>().ValuePoiseHeavy;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy++;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
-                collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                //collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                collision.GetComponentInParent<Animator>().SetFloat("Life", collision.GetComponent<EnemyData>().Life);
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
@@ -103,7 +105,8 @@ public class AttackSystem : MonoBehaviour
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy += GetComponentInParent<PSMController>().ValuePoiseSpecial;
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
-                collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                //collision.GetComponentInParent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                collision.GetComponentInParent<Animator>().SetFloat("Life", collision.GetComponent<EnemyData>().Life);
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);

@@ -12,7 +12,7 @@ public class EnemyData : MonoBehaviour
     [Space(10)]
     [Header("------------------------ Life Behaviour -----------------------------------------------------------------------------------------------------------------------------")]
     [Tooltip("Indica la vita del player")]
-    public int Life;                                                     //life behaviour, indica la vita del player
+    public float Life;                                                     //life behaviour, indica la vita del player
 
     [Header("   ►  First Method - From stun to destoy")]
     [Header("~~~ Stun Sub-Behaviour ~~~ Value Management")]
@@ -84,9 +84,9 @@ public class EnemyData : MonoBehaviour
 
     [Space(10)]
     [Header("►  Value of damage of typology of attack - Value Management")]
-    public int LightDamage;
-    public int HeavyDamage;
-    public int SpecialDamage;
+    public float LightDamage;
+    public float HeavyDamage;
+    public float SpecialDamage;
 
     [Space(10)]
     [Header("►  Reset Cycle Attack - Value Management - ReadOnly")]
@@ -128,13 +128,15 @@ public class EnemyData : MonoBehaviour
 
     public float DistanceFollow = 1f;
 
-    public int EnemyCoeffReduceDamageLight = 1;
-    public int EnemyCoeffReduceDamageHeavy = 1;
-    public int EnemyCoeffReduceDamageSpecial = 1;
+    public float EnemyCoeffReduceDamageLight = 1;
+    public float EnemyCoeffReduceDamageHeavy = 1;
+    public float EnemyCoeffReduceDamageSpecial = 1;
 
     private void Start()
     {
-        GetComponent<Animator>().SetInteger("Life", Life);
+        //GetComponent<Animator>().SetInteger("Life", Life);
+        GetComponent<Animator>().SetFloat("Life", Life);
+        print("Vita del nemico" + Life + "Vita animator nemico" + GetComponent<Animator>().GetFloat("Life"));
         timerStun = 0;
         InitializeSpeedAnimation();
     }

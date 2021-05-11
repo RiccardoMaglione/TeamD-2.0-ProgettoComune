@@ -31,7 +31,8 @@ namespace SwordGame
                 collision.GetComponent<EnemyData>().Life -= DamageArrow * collision.GetComponent<EnemyData>().EnemyCoeffReduceDamageLight;
                 collision.GetComponent<EnemyData>().CountHit++;
                 collision.GetComponent<EnemyData>().CountPoiseEnemy += ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().ValuePoiseLight;
-                collision.GetComponent<EnemyData>().GetComponent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                //collision.GetComponent<EnemyData>().GetComponent<Animator>().SetInteger("Life", collision.GetComponent<EnemyData>().Life);
+                collision.GetComponent<EnemyData>().GetComponent<Animator>().SetFloat("Life", collision.GetComponent<EnemyData>().Life);
                 collision.GetComponent<Animator>().SetTrigger("DamageReceived");
                 if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
                 {

@@ -241,7 +241,6 @@ namespace SwordGame
         {
             if ((Input.GetKeyDown(KeyboardLightlAttack) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))
             {
-                print("vau qya");
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
                 GetComponent<Animator>().SetBool("PSM-LightAttack", true);
@@ -373,7 +372,7 @@ namespace SwordGame
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseLight;
-                        CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().LightDamage * CoeffReduceDamageLight);
+                        CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage * CoeffReduceDamageLight;
                         Knockback.ActiveKnockback = true;
                         //print("PSM-Trigger: Entra nel light attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
@@ -388,7 +387,7 @@ namespace SwordGame
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseHeavy;
-                        CurrentHealth -= (int)(collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy);
+                        CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy;
                         Knockback.ActiveKnockback = true;
                         //print("PSM-Trigger: Entra nel heavy attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());

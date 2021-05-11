@@ -14,7 +14,8 @@ public class AIIdleState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponentInParent<Animator>().SetInteger("Life", animator.GetComponent<EnemyData>().Life);
+        //animator.GetComponentInParent<Animator>().SetInteger("Life", animator.GetComponent<EnemyData>().Life);
+        animator.GetComponentInParent<Animator>().SetFloat("Life", animator.GetComponent<EnemyData>().Life);
         if (animator.GetComponent<EnemyData>().WaypointEnemy.Count != 0)
         {
             animator.SetBool("IsPatroling", true);
