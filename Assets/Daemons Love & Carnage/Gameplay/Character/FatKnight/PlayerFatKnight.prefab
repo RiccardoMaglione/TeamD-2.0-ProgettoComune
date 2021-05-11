@@ -10171,7 +10171,7 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 2
-  ResetTimerStaggered: 362.79364
+  ResetTimerStaggered: 369.87354
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1
@@ -10266,6 +10266,9 @@ MonoBehaviour:
   ValuePoiseLight: 2
   ValuePoiseHeavy: 3
   DistanceFollow: 1
+  EnemyCoeffReduceDamageLight: 1
+  EnemyCoeffReduceDamageHeavy: 1
+  EnemyCoeffReduceDamageSpecial: 1
 --- !u!95 &731326220143514074
 Animator:
   serializedVersion: 3
@@ -30295,9 +30298,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3996490801065198196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7358bcc0e8ab5b4eada380257cfd589, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d88e19c599a7a643bddadf5b5d53bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyList: []
   obj: []
   i: 0
   stompPrefab: {fileID: 5269674836100724338, guid: ec5115d79cff38547909ec758152fd98, type: 3}
