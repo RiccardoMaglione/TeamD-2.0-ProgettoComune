@@ -15,6 +15,7 @@ public class TornPage : MonoBehaviour
     [SerializeField] GameObject Quit;
     [SerializeField] GameObject SkullPage;
     [SerializeField] GameObject newGame;
+    [SerializeField] GameObject Controls;
     private PageFlipper pageFlipper;
 
 
@@ -60,6 +61,7 @@ public class TornPage : MonoBehaviour
             Quit.SetActive(false);
             SkullPage.SetActive(false);
             newGame.SetActive(false);
+            Controls.SetActive(false);
 
 
             StopAllCoroutines();
@@ -77,6 +79,7 @@ public class TornPage : MonoBehaviour
             Quit.SetActive(false);
             SkullPage.SetActive(false);
             newGame.SetActive(false);
+            Controls.SetActive(false);
 
 
             StopAllCoroutines();
@@ -95,13 +98,31 @@ public class TornPage : MonoBehaviour
             Quit.SetActive(false);
             SkullPage.SetActive(false);
             newGame.SetActive(false);
+            Controls.SetActive(false);
 
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
         }
     }
+    public void ControlsButton()
+    {
+        if (tornPageOpen == false && tornPageIsMoving == false)
+        {
 
+            Options.SetActive(false);
+            RateUs.SetActive(false);
+            Credits.SetActive(false);
+            Quit.SetActive(false);
+            SkullPage.SetActive(false);
+            newGame.SetActive(false);
+            Controls.SetActive(true);
+
+
+            StopAllCoroutines();
+            StartCoroutine(MoveInTornPage());
+        }
+    }
     public void NewGameButton()
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
@@ -114,6 +135,7 @@ public class TornPage : MonoBehaviour
                 Quit.SetActive(false);
                 SkullPage.SetActive(false);
                 newGame.SetActive(true);
+                Controls.SetActive(false);
 
                 StopAllCoroutines();
                 StartCoroutine(MoveInTornPage());
