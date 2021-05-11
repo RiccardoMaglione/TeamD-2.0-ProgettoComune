@@ -15173,8 +15173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 16
-  HeavyDamage: 60
+  LightDamage: 13
+  HeavyDamage: 70
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
 --- !u!114 &997448192961839102
@@ -30739,8 +30739,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 16
-  HeavyDamage: 60
+  LightDamage: 13
+  HeavyDamage: 70
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
 --- !u!114 &7884497982009952480
@@ -36044,8 +36044,8 @@ MonoBehaviour:
   IsHeavyAttack: 0
   IsSpecialAttack: 0
   JumpFollow: 0
-  CoeffReduceDamageLight: 0.6
-  CoeffReduceDamageHeavy: 0.6
+  CoeffReduceDamageLight: 1
+  CoeffReduceDamageHeavy: 1
   ArrowThief: {fileID: 0}
   SpawnArrow: {fileID: 0}
   ValuePoiseLight: 1
@@ -36084,8 +36084,8 @@ MonoBehaviour:
   PercentuageAttack: 75
   random: 0
   CanAttack: 1
-  LightDamage: 16
-  HeavyDamage: 60
+  LightDamage: 13
+  HeavyDamage: 70
   SpecialDamage: 100
   CanReset: 0
   IdleAnimClipSpeed: 10
@@ -36110,6 +36110,9 @@ MonoBehaviour:
   ValuePoiseLight: 1
   ValuePoiseHeavy: 2
   DistanceFollow: 1
+  EnemyCoeffReduceDamageLight: 1.3
+  EnemyCoeffReduceDamageHeavy: 1.3
+  EnemyCoeffReduceDamageSpecial: 1.3
 --- !u!95 &5720831098887579348
 Animator:
   serializedVersion: 3

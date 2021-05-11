@@ -5034,8 +5034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 15
-  HeavyDamage: 20
+  LightDamage: 30
+  HeavyDamage: 30
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
 --- !u!114 &6499724383688552231
@@ -5236,8 +5236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 15
-  HeavyDamage: 20
+  LightDamage: 30
+  HeavyDamage: 30
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
 --- !u!61 &3339721141238583705
@@ -30912,7 +30912,7 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 5
-  ResetTimerStaggered: 12486.195
+  ResetTimerStaggered: 12495.288
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1
@@ -30941,8 +30941,8 @@ MonoBehaviour:
   IsHeavyAttack: 1
   IsSpecialAttack: 0
   JumpFollow: 0
-  CoeffReduceDamageLight: 1
-  CoeffReduceDamageHeavy: 1
+  CoeffReduceDamageLight: 1.1
+  CoeffReduceDamageHeavy: 1.1
   ArrowThief: {fileID: 7682607842086701567, guid: d898c5e8a65dd994695e189b7950d527, type: 3}
   SpawnArrow: {fileID: 1495379520188465476}
   ValuePoiseLight: 1
@@ -30970,7 +30970,7 @@ MonoBehaviour:
   isPossessed: 0
   CountPoiseEnemy: 0
   MaxCountPoiseEnemy: 5
-  Speed: 0
+  Speed: 5.7
   WaypointEnemy: []
   WaypointIndex: 0
   CanMove: 1
@@ -30981,8 +30981,8 @@ MonoBehaviour:
   PercentuageAttack: 0
   random: 0
   CanAttack: 1
-  LightDamage: 0
-  HeavyDamage: 0
+  LightDamage: 30
+  HeavyDamage: 30
   SpecialDamage: 0
   CanReset: 0
   IdleAnimClipSpeed: 10
@@ -31007,9 +31007,9 @@ MonoBehaviour:
   ValuePoiseLight: 1
   ValuePoiseHeavy: 1
   DistanceFollow: 200
-  EnemyCoeffReduceDamageLight: 1
-  EnemyCoeffReduceDamageHeavy: 1
-  EnemyCoeffReduceDamageSpecial: 1
+  EnemyCoeffReduceDamageLight: 1.4
+  EnemyCoeffReduceDamageHeavy: 1.4
+  EnemyCoeffReduceDamageSpecial: 1.4
 --- !u!95 &9146201629709627921
 Animator:
   serializedVersion: 3

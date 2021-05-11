@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightDamage: 20
-  HeavyDamage: 60
+  HeavyDamage: 67
   SpecialDamage: 200
   hitAnimation: {fileID: 0}
 --- !u!114 &2097687867400718077
@@ -14983,7 +14983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightDamage: 20
-  HeavyDamage: 60
+  HeavyDamage: 67
   SpecialDamage: 200
   hitAnimation: {fileID: 0}
 --- !u!114 &1941892510567874275
@@ -30146,7 +30146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightDamage: 20
-  HeavyDamage: 60
+  HeavyDamage: 67
   SpecialDamage: 200
   hitAnimation: {fileID: 0}
 --- !u!114 &8812985987220572669
@@ -40908,7 +40908,7 @@ MonoBehaviour:
   isPossessed: 0
   CountPoiseEnemy: 0
   MaxCountPoiseEnemy: 3
-  Speed: 4.5
+  Speed: 4.9
   WaypointEnemy: []
   WaypointIndex: 0
   CanMove: 1
@@ -40920,7 +40920,7 @@ MonoBehaviour:
   random: 0
   CanAttack: 1
   LightDamage: 20
-  HeavyDamage: 60
+  HeavyDamage: 67
   SpecialDamage: 200
   CanReset: 0
   IdleAnimClipSpeed: 10
@@ -40945,6 +40945,9 @@ MonoBehaviour:
   ValuePoiseLight: 2
   ValuePoiseHeavy: 3
   DistanceFollow: 1
+  EnemyCoeffReduceDamageLight: 0.5
+  EnemyCoeffReduceDamageHeavy: 0.5
+  EnemyCoeffReduceDamageSpecial: 0.5
 --- !u!95 &6359400128268756937
 Animator:
   serializedVersion: 3

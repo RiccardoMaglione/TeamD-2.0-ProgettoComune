@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightDamage: 21
-  HeavyDamage: 70
+  HeavyDamage: 75
   SpecialDamage: 0
   hitAnimation: {fileID: 0}
 --- !u!114 &1544971435251322180
@@ -15120,7 +15120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightDamage: 21
-  HeavyDamage: 70
+  HeavyDamage: 75
   SpecialDamage: 0
   hitAnimation: {fileID: 0}
 --- !u!114 &1341606112905229658
@@ -25317,7 +25317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightDamage: 21
-  HeavyDamage: 70
+  HeavyDamage: 75
   SpecialDamage: 0
   hitAnimation: {fileID: 0}
 --- !u!114 &8224328670656971332
@@ -41048,8 +41048,8 @@ MonoBehaviour:
   PlayerJumpSpeed: 1
   PlayerDieSpeed: 1
   PlayerStaggerSpeed: 2
-  PlayerLightAttackSpeed: 4.3
-  PlayerHeavyAttackSpeed: 2
+  PlayerLightAttackSpeed: 3.8
+  PlayerHeavyAttackSpeed: 3
   PlayerSpecialAttackSpeed: 1
   DashColliderBabushka: {fileID: 0}
   LightAttackCollider: {fileID: 5067484921354591702}
@@ -41103,15 +41103,15 @@ MonoBehaviour:
   random: 0
   CanAttack: 1
   LightDamage: 21
-  HeavyDamage: 70
+  HeavyDamage: 75
   SpecialDamage: 0
   CanReset: 0
   IdleAnimClipSpeed: 10
   PatrolAnimClipSpeed: 1
   FollowAnimClipSpeed: 1
-  LightAttackAnimClipSpeed: 4.3
+  LightAttackAnimClipSpeed: 3.8
   LightRecoveryAnimClipSpeed: 1
-  HeavyAttackAnimClipSpeed: 2
+  HeavyAttackAnimClipSpeed: 3
   HeavyRecoveryAnimClipSpeed: 1
   DamageAnimClipSpeed: 1
   StunAnimClipSpeed: 1
@@ -41128,6 +41128,9 @@ MonoBehaviour:
   ValuePoiseLight: 1
   ValuePoiseHeavy: 2
   DistanceFollow: 1
+  EnemyCoeffReduceDamageLight: 0.65
+  EnemyCoeffReduceDamageHeavy: 0.65
+  EnemyCoeffReduceDamageSpecial: 0.65
 --- !u!95 &5777427746848156784
 Animator:
   serializedVersion: 3

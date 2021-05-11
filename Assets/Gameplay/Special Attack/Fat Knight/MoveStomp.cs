@@ -10,7 +10,11 @@ public class MoveStomp : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
+        {
             collision.GetComponent<EnemyData>().Life -= damage;
+            collision.GetComponent<Animator>().SetTrigger("DamageReceived");
+        }
+            
         //direction = new Vector2(0, 1);
 
     }

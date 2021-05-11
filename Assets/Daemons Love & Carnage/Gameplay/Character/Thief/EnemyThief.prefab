@@ -157,7 +157,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20, y: 2.066318}
+  m_Size: {x: 50, y: 2.066318}
   m_EdgeRadius: 0
 --- !u!114 &6331777078196596174
 MonoBehaviour:
@@ -506,7 +506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138091432363427324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 36.7, y: -2.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4433979978392154933}
@@ -10602,8 +10602,8 @@ MonoBehaviour:
   IsHeavyAttack: 0
   IsSpecialAttack: 0
   JumpFollow: 0
-  CoeffReduceDamageLight: 1
-  CoeffReduceDamageHeavy: 1
+  CoeffReduceDamageLight: 1.1
+  CoeffReduceDamageHeavy: 1.1
   ArrowThief: {fileID: 7682607842086701567, guid: d898c5e8a65dd994695e189b7950d527, type: 3}
   SpawnArrow: {fileID: 8971205160196388050}
   ValuePoiseLight: 1
@@ -10631,7 +10631,7 @@ MonoBehaviour:
   isPossessed: 0
   CountPoiseEnemy: 0
   MaxCountPoiseEnemy: 1
-  Speed: 3.7
+  Speed: 5.7
   WaypointEnemy: []
   WaypointIndex: 0
   CanMove: 1
@@ -10642,8 +10642,8 @@ MonoBehaviour:
   PercentuageAttack: 75
   random: 0
   CanAttack: 1
-  LightDamage: 15
-  HeavyDamage: 20
+  LightDamage: 30
+  HeavyDamage: 30
   SpecialDamage: 6
   CanReset: 0
   IdleAnimClipSpeed: 10
@@ -10668,9 +10668,9 @@ MonoBehaviour:
   ValuePoiseLight: 1
   ValuePoiseHeavy: 1
   DistanceFollow: 200
-  EnemyCoeffReduceDamageLight: 1
-  EnemyCoeffReduceDamageHeavy: 1
-  EnemyCoeffReduceDamageSpecial: 1
+  EnemyCoeffReduceDamageLight: 1.4
+  EnemyCoeffReduceDamageHeavy: 1.4
+  EnemyCoeffReduceDamageSpecial: 1.4
 --- !u!95 &235645252897678835
 Animator:
   serializedVersion: 3
@@ -15862,7 +15862,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6225647630813883699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 36.7, y: -2.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4433979978392154933}
@@ -20907,8 +20907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 15
-  HeavyDamage: 20
+  LightDamage: 30
+  HeavyDamage: 30
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
 --- !u!61 &3074489971813817712
@@ -21177,7 +21177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8186633801868968670}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.05, y: 2.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 4433979978392154933}
@@ -26068,8 +26068,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 15
-  HeavyDamage: 20
+  LightDamage: 30
+  HeavyDamage: 30
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
 --- !u!114 &4753252890159807705
