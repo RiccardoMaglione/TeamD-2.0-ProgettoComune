@@ -39,6 +39,8 @@ public class PageFlipper : MonoBehaviour
     public int introPageCounter;
     public int pageCounter;
 
+    public bool movingBack = false;
+
     private float flipTime = 10;
     [SerializeField]
     private float flipSpeed;
@@ -55,7 +57,7 @@ public class PageFlipper : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return) && introCutscene == true && aPageIsFlipping == false || Input.GetMouseButtonDown(0) && introCutscene == true && aPageIsFlipping == false)
         {
-            CutsceneFlipForward();
+            Invoke("CheckBackwardBeforeForward", 0.15f);
         }
         if (Input.GetKeyDown(KeyCode.Escape) && introCutscene == true && aPageIsFlipping == false)
         {
@@ -63,6 +65,14 @@ public class PageFlipper : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && introCutscene == false && aPageIsFlipping == false)
+        {
+            BackToMenuOrLevelSelection();
+        }
+
+    }
+    public void BackToMenuOrLevelSelection()
+    {
+        if (aPageIsFlipping == false)
         {
             if (pageCounter == 1)
             {
@@ -77,10 +87,10 @@ public class PageFlipper : MonoBehaviour
                     StartCoroutine(BackToLevelSelectionCoroutine());
                 }
             }
+
         }
 
     }
-
     public void NewGame()
     {
         if (aPageIsFlipping == false)
@@ -132,6 +142,12 @@ public class PageFlipper : MonoBehaviour
             pageCounter = 2;
             StartCoroutine(ToLevel3Coroutine());
         }
+    }
+
+    public void CheckBackwardBeforeForward()
+    {
+        if (movingBack == false && aPageIsFlipping == false)
+            CutsceneFlipForward();
     }
     public void CutsceneFlipForward()
     {
@@ -185,6 +201,7 @@ public class PageFlipper : MonoBehaviour
     {
         if (aPageIsFlipping == false)
         {
+            movingBack = true;
             if (introPageCounter == 0)
             {
             }
@@ -315,6 +332,7 @@ public class PageFlipper : MonoBehaviour
                 page2Pivot.SetActive(false);
                 introPageCounter = 0;
                 aPageIsFlipping = false;
+                movingBack = false;
             }
             yield return new WaitForEndOfFrame();
             yield return null;
@@ -352,6 +370,7 @@ public class PageFlipper : MonoBehaviour
                 page3Pivot.SetActive(false);
                 introPageCounter = 1;
                 aPageIsFlipping = false;
+                movingBack = false;
             }
             yield return new WaitForEndOfFrame();
             yield return null;
@@ -389,6 +408,7 @@ public class PageFlipper : MonoBehaviour
                 page4Pivot.SetActive(false);
                 introPageCounter = 2;
                 aPageIsFlipping = false;
+                movingBack = false;
             }
             yield return new WaitForEndOfFrame();
             yield return null;
@@ -426,6 +446,7 @@ public class PageFlipper : MonoBehaviour
                 page5Pivot.SetActive(false);
                 introPageCounter = 3;
                 aPageIsFlipping = false;
+                movingBack = false;
             }
             yield return new WaitForEndOfFrame();
             yield return null;
@@ -463,6 +484,7 @@ public class PageFlipper : MonoBehaviour
                 page6Pivot.SetActive(false);
                 introPageCounter = 4;
                 aPageIsFlipping = false;
+                movingBack = false;
             }
             yield return new WaitForEndOfFrame();
             yield return null;
@@ -501,6 +523,7 @@ public class PageFlipper : MonoBehaviour
                 page7Pivot.SetActive(false);
                 introPageCounter = 5;
                 aPageIsFlipping = false;
+                movingBack = false;
             }
             yield return new WaitForEndOfFrame();
             yield return null;
