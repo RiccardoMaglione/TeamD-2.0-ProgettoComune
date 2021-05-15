@@ -42,7 +42,7 @@ public class SwitchCamera : MonoBehaviour
 
             if (deactivatingGraphics != null)
             {
-                deactivatingGraphics.SetActive(false);
+                Invoke("DeactivatePreviousGraphics", 0.3f);
             }
 
             if (activatingGraphics != null)
@@ -75,7 +75,7 @@ public class SwitchCamera : MonoBehaviour
 
             if (deactivatingGraphics != null)
             {
-                deactivatingGraphics.SetActive(false);
+                Invoke("DeactivatePreviousGraphics", 0.3f);
             }
 
             if (activatingGraphics != null)
@@ -96,7 +96,10 @@ public class SwitchCamera : MonoBehaviour
         }
     }
 
-
+    public void DeactivatePreviousGraphics()
+    {
+        deactivatingGraphics.SetActive(false);
+    }
     public void DeactivatePreviousConfiner()
     {
         currentConfiner.SetActive(false);
