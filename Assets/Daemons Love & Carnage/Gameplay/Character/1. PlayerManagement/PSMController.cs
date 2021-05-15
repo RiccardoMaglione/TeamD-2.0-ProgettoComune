@@ -159,6 +159,7 @@ namespace SwordGame
                     TimerDash = 0;                          //Resetta il timer della durata del dash
                     TimerDashCooldown = 0;                  //Resetta il timer del cooldown
                     CooldownDashDirectional = false;        //Mi permette di ritornare in dash
+                    gameObject.layer = 8;
                     Invulnerability = false;
                     isBoriousDash = false;
                     if (DashColliderBabushka != null)
