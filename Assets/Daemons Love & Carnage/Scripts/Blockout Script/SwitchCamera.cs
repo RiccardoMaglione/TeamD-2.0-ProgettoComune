@@ -15,6 +15,9 @@ public class SwitchCamera : MonoBehaviour
 
     public GameObject Enemies1;
 
+    public GameObject deactivatingGraphics;
+    public GameObject activatingGraphics;
+
     private void Update()
     {
         if (2 == FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
@@ -36,6 +39,17 @@ public class SwitchCamera : MonoBehaviour
             this.gameObject.SetActive(false);
             currentCamera.SetActive(false);
             nextConfiner.SetActive(true);
+
+            if (deactivatingGraphics != null)
+            {
+                Invoke("DeactivatePreviousGraphics", 0.3f);
+            }
+
+            if (activatingGraphics != null)
+            {
+                activatingGraphics.SetActive(true);
+            }
+
             if (previousConfinerBarrier != null)
             {
                 previousConfinerBarrier.SetActive(false);
@@ -58,6 +72,17 @@ public class SwitchCamera : MonoBehaviour
             this.gameObject.SetActive(false);
             currentCamera.SetActive(false);
             nextConfiner.SetActive(true);
+
+            if (deactivatingGraphics != null)
+            {
+                Invoke("DeactivatePreviousGraphics", 0.3f);
+            }
+
+            if (activatingGraphics != null)
+            {
+                activatingGraphics.SetActive(true);
+            }
+
             if (previousConfinerBarrier != null)
             {
                 previousConfinerBarrier.SetActive(false);
@@ -71,7 +96,10 @@ public class SwitchCamera : MonoBehaviour
         }
     }
 
-
+    public void DeactivatePreviousGraphics()
+    {
+        deactivatingGraphics.SetActive(false);
+    }
     public void DeactivatePreviousConfiner()
     {
         currentConfiner.SetActive(false);
