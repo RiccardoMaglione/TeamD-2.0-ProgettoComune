@@ -105,6 +105,7 @@ namespace SwordGame
         public int ValuePoiseLight = 1;
         public int ValuePoiseHeavy = 1;
         public int ValuePoiseSpecial = 1;
+        public GameObject DashKnockbackFatKnight;
 
         private void OnValidate()
         {
@@ -151,6 +152,12 @@ namespace SwordGame
             {
                 //Debug.Log("PlayerState - E' nel cooldown dash");
                 TimerDashCooldown += Time.deltaTime;
+                if(DashKnockbackFatKnight != null)
+                    DashKnockbackFatKnight.SetActive(false);
+                Invulnerability = false;
+                isBoriousDash = false;
+                if (DashColliderBabushka != null)
+                    DashColliderBabushka.SetActive(false);
                 if (TimerDashCooldown >= LimiTimerDashCooldown)
                 {
                     //Resetta cose ma devo essere già fuori dallo stato
@@ -159,13 +166,7 @@ namespace SwordGame
                     TimerDash = 0;                          //Resetta il timer della durata del dash
                     TimerDashCooldown = 0;                  //Resetta il timer del cooldown
                     CooldownDashDirectional = false;        //Mi permette di ritornare in dash
-                    gameObject.layer = 8;
-                    Invulnerability = false;
-                    isBoriousDash = false;
-                    if (DashColliderBabushka != null)
-                        DashColliderBabushka.SetActive(false);
                 }
-
             }
         }
 
@@ -219,7 +220,8 @@ namespace SwordGame
             switch (TypeCharacter)
             {
                 case TypePlayer.FatKnight:
-                    gameObject.layer = 0;
+                    DashKnockbackFatKnight.SetActive(true);
+                    Knockback.ActiveKnockback = true;
                     break;
                 case TypePlayer.BoriousKnight:
                     isBoriousDash = true;
