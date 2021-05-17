@@ -105,6 +105,7 @@ namespace SwordGame
         public int ValuePoiseLight = 1;
         public int ValuePoiseHeavy = 1;
         public int ValuePoiseSpecial = 1;
+        public GameObject DashKnockbackFatKnight;
 
         private void OnValidate()
         {
@@ -151,6 +152,12 @@ namespace SwordGame
             {
                 //Debug.Log("PlayerState - E' nel cooldown dash");
                 TimerDashCooldown += Time.deltaTime;
+                if(DashKnockbackFatKnight != null)
+                    DashKnockbackFatKnight.SetActive(false);
+                Invulnerability = false;
+                isBoriousDash = false;
+                if (DashColliderBabushka != null)
+                    DashColliderBabushka.SetActive(false);
                 if (TimerDashCooldown >= LimiTimerDashCooldown)
                 {
                     //Resetta cose ma devo essere già fuori dallo stato
@@ -159,12 +166,7 @@ namespace SwordGame
                     TimerDash = 0;                          //Resetta il timer della durata del dash
                     TimerDashCooldown = 0;                  //Resetta il timer del cooldown
                     CooldownDashDirectional = false;        //Mi permette di ritornare in dash
-                    Invulnerability = false;
-                    isBoriousDash = false;
-                    if (DashColliderBabushka != null)
-                        DashColliderBabushka.SetActive(false);
                 }
-
             }
         }
 
@@ -218,7 +220,8 @@ namespace SwordGame
             switch (TypeCharacter)
             {
                 case TypePlayer.FatKnight:
-                    gameObject.layer = 0;
+                    DashKnockbackFatKnight.SetActive(true);
+                    Knockback.ActiveKnockback = true;
                     break;
                 case TypePlayer.BoriousKnight:
                     isBoriousDash = true;
@@ -447,7 +450,7 @@ namespace SwordGame
                 }
             }
 
-            if (((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxisRaw("Vertical") < 0) || (Input.GetAxisRaw("DPad Y") < 0)) && (DialogueType1.StaticTutorial != -1)) &! GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
+            if (((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxisRaw("Vertical") < -0.5f) || (Input.GetAxisRaw("DPad Y") < -0.5f)) && (DialogueType1.StaticTutorial != -1)) &! GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
             {
                 if (collision.gameObject.GetComponent<PlatformEffector2D>() != null && this.gameObject.tag == "Player")
                 {

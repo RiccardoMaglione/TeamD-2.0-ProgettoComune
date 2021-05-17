@@ -132,6 +132,8 @@ public class EnemyData : MonoBehaviour
     public float EnemyCoeffReduceDamageHeavy = 1;
     public float EnemyCoeffReduceDamageSpecial = 1;
 
+    public int ValuePoiseKnockbackFatKnight;
+    public bool DashFatKnightEffect;
     private void Start()
     {
         //GetComponent<Animator>().SetInteger("Life", Life);
@@ -267,14 +269,19 @@ public class EnemyData : MonoBehaviour
 
     #region Trigger Zone
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(collision.tag == "Player")
-    //    {
-    //        CanVisible = true;
-    //        GetComponent<Animator>().SetBool("IsFollowing", true);
-    //    }
-    //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 14 && DashFatKnightEffect == false)
+        {
+            DashFatKnightEffect = true;
+            CountPoiseEnemy += ValuePoiseKnockbackFatKnight;
+            GetComponent<Animator>().SetTrigger("DamageReceived");
+            if (CountPoiseEnemy >= MaxCountPoiseEnemy)
+            {
+                GetComponent<Animator>().SetBool("IsStagger", true);
+            }
+        }
+    }
     //
     //private void OnTriggerStay2D(Collider2D collision)
     //{
@@ -286,12 +293,13 @@ public class EnemyData : MonoBehaviour
     //    }
     //}
     //
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //
-    //    //CanVisible = false;
-    //    //GetComponent<Animator>().SetBool("IsFollowing", false);
-    //}
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 14 && DashFatKnightEffect == true)
+        {
+            DashFatKnightEffect = false;
+        }
+    }
 
     #endregion
 

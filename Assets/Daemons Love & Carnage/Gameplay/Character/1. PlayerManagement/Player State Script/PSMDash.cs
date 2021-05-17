@@ -37,7 +37,7 @@ public class PSMDash : StateMachineBehaviour
                 //Debug.Log("PlayerState - Dash sinistro");                                                                               //Debuggo in console cosa fa e il punto in cui è arrivato
                 animator.GetComponent<PSMController>().CanDashLeft = true;                                                              //Setto a vero la direzione Sinistra
                 animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);       //Setto la rotazione del player verso sinistra
-                //animator.GetComponent<PlayerController>().EffectDash();
+                animator.GetComponent<PSMController>().EffectDash();
             }
             if (animator.GetComponent<PSMController>().CanDashLeft == true && animator.GetComponent<PSMController>().TimerDash <= animator.GetComponent<PSMController>().LimitTimerDash && animator.GetBool("PSM-CanDash") == true)    //Se può dashare a sinistra e il timer non è ancora terminato e la condizione di poter dashare è vera
             {
@@ -63,7 +63,7 @@ public class PSMDash : StateMachineBehaviour
                 //Debug.Log("PlayerState - Dash Destro");                                                                                 //Debuggo in console cosa fa e il punto in cui è arrivato
                 animator.GetComponent<PSMController>().CanDashRight = true;                                                             //Setto a vero la direzione destra
                 animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);              //Setto la rotazione del player verso destra
-                //animator.GetComponent<PlayerController>().EffectDash();
+                animator.GetComponent<PSMController>().EffectDash();
             }
             if (animator.GetComponent<PSMController>().CanDashRight == true && animator.GetComponent<PSMController>().TimerDash <= animator.GetComponent<PSMController>().LimitTimerDash && animator.GetBool("PSM-CanDash") == true)    //Se può dashare a destra e il timer non è ancora terminato e la condizione di poter dashare è vera
             {
