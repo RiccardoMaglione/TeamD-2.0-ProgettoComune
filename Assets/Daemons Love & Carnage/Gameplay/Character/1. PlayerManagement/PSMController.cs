@@ -450,7 +450,7 @@ namespace SwordGame
                 }
             }
 
-            if (((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxisRaw("Vertical") < 0.5f) || (Input.GetAxisRaw("DPad Y") < 0.5f)) && (DialogueType1.StaticTutorial != -1)) &! GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
+            if (((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxisRaw("Vertical") < -0.5f) || (Input.GetAxisRaw("DPad Y") < -0.5f)) && (DialogueType1.StaticTutorial != -1)) &! GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
             {
                 if (collision.gameObject.GetComponent<PlatformEffector2D>() != null && this.gameObject.tag == "Player")
                 {
