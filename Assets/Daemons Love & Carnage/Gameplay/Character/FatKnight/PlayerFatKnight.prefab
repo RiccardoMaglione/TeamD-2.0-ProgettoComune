@@ -45,18 +45,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.05, y: -0.06}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6387755, y: 2.0244899}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.8}
   m_EdgeRadius: 0
 --- !u!114 &3041672285885097027
 MonoBehaviour:
@@ -70,9 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 10
+  thrust: 1.2
   RB2DList: []
-  KnockbackDirection: {x: 10, y: 10, z: 0}
+  KnockbackDirection: {x: 0, y: 1.13, z: 0}
 --- !u!1 &198769690120306322
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 0.011921406, a: 1}
+      maxColor: {r: 0, g: 1, b: 0.00002193451, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9818,7 +9818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6089246363782402167
 Transform:
   m_ObjectHideFlags: 0
@@ -10071,6 +10071,7 @@ GameObject:
   - component: {fileID: 109703935094458302}
   - component: {fileID: 4529155594793230523}
   - component: {fileID: 731326220143514074}
+  - component: {fileID: 492368328}
   m_Layer: 8
   m_Name: PlayerFatKnight
   m_TagString: Player
@@ -10245,7 +10246,7 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 2
-  ResetTimerStaggered: 400.01318
+  ResetTimerStaggered: 282.8053
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1
@@ -10319,7 +10320,7 @@ MonoBehaviour:
   HeavyDamage: 67
   SpecialDamage: 200
   CanReset: 0
-  IdleAnimClipSpeed: 10
+  IdleAnimClipSpeed: 1
   PatrolAnimClipSpeed: 1
   FollowAnimClipSpeed: 1
   LightAttackAnimClipSpeed: 6
@@ -10344,7 +10345,7 @@ MonoBehaviour:
   EnemyCoeffReduceDamageLight: 0.5
   EnemyCoeffReduceDamageHeavy: 0.5
   EnemyCoeffReduceDamageSpecial: 0.5
-  ValuePoiseKnockbackFatKnight: 1
+  ValuePoiseKnockbackFatKnight: 3
   DashFatKnightEffect: 0
 --- !u!95 &731326220143514074
 Animator:
@@ -10365,6 +10366,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &492368328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731326220143514073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2498b04f1dc93e94f85af3c4a3f290d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacked: 0
+  colorChangeDuration: 0.08
+  newMaterial: {fileID: 2100000, guid: fc44fba7d820b8d498fd97d8f59331c9, type: 2}
+  originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1089823786997786603
 GameObject:
   m_ObjectHideFlags: 0
@@ -36567,7 +36584,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.008930683, b: 1, a: 1}
+      maxColor: {r: 0.0048570633, g: 0, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

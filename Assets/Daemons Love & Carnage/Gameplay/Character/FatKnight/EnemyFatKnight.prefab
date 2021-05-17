@@ -35496,7 +35496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7167297169542992569}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -57.029, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8277929296192245004}
@@ -35515,18 +35515,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.05, y: -0.06}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6387755, y: 2.0244899}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.8}
   m_EdgeRadius: 0
 --- !u!114 &5106846045956350700
 MonoBehaviour:
@@ -35540,9 +35540,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 10
+  thrust: 1.2
   RB2DList: []
-  KnockbackDirection: {x: 10, y: 10, z: 0}
+  KnockbackDirection: {x: 0, y: 1.13, z: 0}
 --- !u!1 &7367469659660872989
 GameObject:
   m_ObjectHideFlags: 0
@@ -41023,7 +41023,7 @@ MonoBehaviour:
   EnemyCoeffReduceDamageLight: 0.5
   EnemyCoeffReduceDamageHeavy: 0.5
   EnemyCoeffReduceDamageSpecial: 0.5
-  ValuePoiseKnockbackFatKnight: 1
+  ValuePoiseKnockbackFatKnight: 3
   DashFatKnightEffect: 0
 --- !u!95 &6359400128268756937
 Animator:
