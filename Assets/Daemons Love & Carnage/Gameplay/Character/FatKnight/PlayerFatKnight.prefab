@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7411846458555306426}
   - component: {fileID: 8912023711972364331}
   - component: {fileID: 3041672285885097027}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: DashCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,9 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 200
+  thrust: 10
   RB2DList: []
-  KnockbackDirection: {x: 200, y: 200, z: 20}
+  KnockbackDirection: {x: 10, y: 10, z: 0}
 --- !u!1 &198769690120306322
 GameObject:
   m_ObjectHideFlags: 0
@@ -10245,7 +10245,7 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 2
-  ResetTimerStaggered: 390.70285
+  ResetTimerStaggered: 400.01318
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1
@@ -10344,6 +10344,8 @@ MonoBehaviour:
   EnemyCoeffReduceDamageLight: 0.5
   EnemyCoeffReduceDamageHeavy: 0.5
   EnemyCoeffReduceDamageSpecial: 0.5
+  ValuePoiseKnockbackFatKnight: 1
+  DashFatKnightEffect: 0
 --- !u!95 &731326220143514074
 Animator:
   serializedVersion: 3
