@@ -263,7 +263,6 @@ namespace SwordGame
             }
             if ((Input.GetKeyDown(KeyboardSpecialAttack) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && MaxEnergy <= CurrentEnergy)
             {
-                CurrentEnergy = 0;
                 //GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 //GetComponent<Animator>().SetBool("PSM-Attack", true);
                 //GetComponent<Animator>().SetBool("PSM-SpecialAttack", true);
