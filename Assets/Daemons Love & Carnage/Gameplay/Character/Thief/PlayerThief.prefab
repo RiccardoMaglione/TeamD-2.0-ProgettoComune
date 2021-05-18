@@ -5400,6 +5400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 625657343970815359}
   - component: {fileID: 330495406017475122}
+  - component: {fileID: 8876207544311115353}
   m_Layer: 0
   m_Name: Special Attack
   m_TagString: Untagged
@@ -5440,6 +5441,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8876207544311115353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3990958204718609255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee682b8b3505ce441bacc3e093114977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 330495406017475122}
+  time: 1
 --- !u!1 &4658131750705555368
 GameObject:
   m_ObjectHideFlags: 0
@@ -30803,7 +30818,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9146201629709627920}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0.00000004371139}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -30820,7 +30835,7 @@ Transform:
   - {fileID: 625657343970815359}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &9146201629709627927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30964,7 +30979,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 5
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 12506.852
+  ResetTimerStaggered: 12514.884
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1
