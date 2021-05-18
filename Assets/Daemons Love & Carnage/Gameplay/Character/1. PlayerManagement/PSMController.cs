@@ -47,6 +47,7 @@ namespace SwordGame
         /*[HideInInspector]*/
         public bool OnceJump = false;
         public float VelocityDash = 5;
+        public float BoriousDashDMGMultiplier;
         #endregion
         #region Variables Poise
         /*[HideInInspector]*/
@@ -152,7 +153,7 @@ namespace SwordGame
             {
                 //Debug.Log("PlayerState - E' nel cooldown dash");
                 TimerDashCooldown += Time.deltaTime;
-                if(DashKnockbackFatKnight != null)
+                if (DashKnockbackFatKnight != null)
                     DashKnockbackFatKnight.SetActive(false);
                 Invulnerability = false;
                 isBoriousDash = false;
@@ -381,7 +382,7 @@ namespace SwordGame
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
                         {
-                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage;
+                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage * BoriousDashDMGMultiplier;
                         }
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                     }
@@ -396,7 +397,7 @@ namespace SwordGame
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
                         {
-                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage;
+                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().HeavyDamage * BoriousDashDMGMultiplier;
                         }
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                     }
@@ -450,7 +451,7 @@ namespace SwordGame
                 }
             }
 
-            if (((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxisRaw("Vertical") < -0.5f) || (Input.GetAxisRaw("DPad Y") < -0.5f)) && (DialogueType1.StaticTutorial != -1)) &! GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
+            if (((Input.GetKey(KeyCode.DownArrow) || (Input.GetAxisRaw("Vertical") < -0.5f) || (Input.GetAxisRaw("DPad Y") < -0.5f)) && (DialogueType1.StaticTutorial != -1)) & !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
             {
                 if (collision.gameObject.GetComponent<PlatformEffector2D>() != null && this.gameObject.tag == "Player")
                 {
