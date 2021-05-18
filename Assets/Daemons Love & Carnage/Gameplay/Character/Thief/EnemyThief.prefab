@@ -10573,6 +10573,7 @@ MonoBehaviour:
   CooldownDashDirectional: 0
   OnceJump: 0
   VelocityDash: 5
+  BoriousDashDMGMultiplier: 0
   ResetTimerStaggered: 109.36122
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
@@ -10666,14 +10667,17 @@ MonoBehaviour:
   AreaPossession: {fileID: 3018839418411100955}
   ArrowThief: {fileID: 4652056963382869427, guid: 3f38d2322cef2ea40a7c030621c69bff, type: 3}
   SpawnArrow: {fileID: 8971205160196388050}
-  ValuePoiseLight: 1
-  ValuePoiseHeavy: 1
+  ValuePoiseLight: 0
+  ValuePoiseHeavy: 0
   DistanceFollow: 200
   EnemyCoeffReduceDamageLight: 1.4
   EnemyCoeffReduceDamageHeavy: 1.4
   EnemyCoeffReduceDamageSpecial: 1.4
   ValuePoiseKnockbackFatKnight: 1
   DashFatKnightEffect: 0
+  ValuePoiseKnockbackBabushka: 0
+  DashBabushkaEffect: 0
+  DamageDashBabushka: 0
 --- !u!95 &235645252897678835
 Animator:
   serializedVersion: 3
