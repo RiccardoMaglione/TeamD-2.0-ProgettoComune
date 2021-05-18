@@ -134,6 +134,11 @@ public class EnemyData : MonoBehaviour
 
     public int ValuePoiseKnockbackFatKnight;
     public bool DashFatKnightEffect;
+
+    public int ValuePoiseKnockbackBabushka;
+    public bool DashBabushkaEffect;
+    public float DamageDashBabushka;
+
     private void Start()
     {
         //GetComponent<Animator>().SetInteger("Life", Life);
@@ -281,6 +286,18 @@ public class EnemyData : MonoBehaviour
                 GetComponent<Animator>().SetBool("IsStagger", true);
             }
         }
+
+        if (collision.gameObject.layer == 15 && DashBabushkaEffect == false)
+        {
+            DashBabushkaEffect = true;
+            Life -= DamageDashBabushka;
+            CountPoiseEnemy += ValuePoiseKnockbackBabushka;
+            GetComponent<Animator>().SetTrigger("DamageReceived");
+            if (CountPoiseEnemy >= MaxCountPoiseEnemy)
+            {
+                GetComponent<Animator>().SetBool("IsStagger", true);
+            }
+        }
     }
     //
     //private void OnTriggerStay2D(Collider2D collision)
@@ -298,6 +315,10 @@ public class EnemyData : MonoBehaviour
         if (collision.gameObject.layer == 14 && DashFatKnightEffect == true)
         {
             DashFatKnightEffect = false;
+        }
+        if (collision.gameObject.layer == 15 && DashBabushkaEffect == true)
+        {
+            DashBabushkaEffect = false;
         }
     }
 
