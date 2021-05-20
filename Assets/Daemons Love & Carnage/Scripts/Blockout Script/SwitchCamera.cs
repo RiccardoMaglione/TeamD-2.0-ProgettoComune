@@ -31,10 +31,10 @@ public class SwitchCamera : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        UIManager.instance.arrow.SetActive(false);
 
         if (collision.CompareTag("Player") && killedEnemyToProgress <= FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
         {
+            UIManager.instance.arrow.SetActive(false);
             nextCamera.SetActive(true);
             this.gameObject.SetActive(false);
             currentCamera.SetActive(false);
@@ -64,10 +64,10 @@ public class SwitchCamera : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        UIManager.instance.arrow.SetActive(false);
 
         if (collision.CompareTag("Player") && killedEnemyToProgress <= FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
         {
+            UIManager.instance.arrow.SetActive(false);
             nextCamera.SetActive(true);
             this.gameObject.SetActive(false);
             currentCamera.SetActive(false);
