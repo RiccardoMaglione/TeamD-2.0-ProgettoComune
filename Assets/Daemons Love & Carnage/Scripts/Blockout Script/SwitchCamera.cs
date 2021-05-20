@@ -16,6 +16,8 @@ public class SwitchCamera : MonoBehaviour
     public GameObject Enemies1;
 
     public GameObject deactivatingGraphics;
+    public GameObject deactivatingGraphics2;
+
     public GameObject activatingGraphics;
 
     private void Update()
@@ -43,6 +45,10 @@ public class SwitchCamera : MonoBehaviour
             if (deactivatingGraphics != null)
             {
                 Invoke("DeactivatePreviousGraphics", 0.3f);
+            }
+            if (deactivatingGraphics2 != null)
+            {
+                Invoke("DeactivatePreviousGraphics2", 0.3f);
             }
 
             if (activatingGraphics != null)
@@ -77,6 +83,10 @@ public class SwitchCamera : MonoBehaviour
             {
                 Invoke("DeactivatePreviousGraphics", 0.3f);
             }
+            if (deactivatingGraphics2 != null)
+            {
+                Invoke("DeactivatePreviousGraphics2", 0.3f);
+            }
 
             if (activatingGraphics != null)
             {
@@ -100,6 +110,11 @@ public class SwitchCamera : MonoBehaviour
     {
         deactivatingGraphics.SetActive(false);
     }
+    public void DeactivatePreviousGraphics2()
+    {
+        deactivatingGraphics2.SetActive(false);
+    }
+
     public void DeactivatePreviousConfiner()
     {
         currentConfiner.SetActive(false);
