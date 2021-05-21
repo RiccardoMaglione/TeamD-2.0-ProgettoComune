@@ -76,26 +76,26 @@ public class DistanceState : StateMachineBehaviour
 
 
 
-
-        if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + 0.5f > animator.GetComponent<EnemyData>().transform.position.x)
+        if(animator.GetComponent<EnemyData>().PlayerEnemy != null)
         {
-            animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
-        }
-        else if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - 0.5f < animator.GetComponent<EnemyData>().transform.position.x)
-        {
-            animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);         //Sinistra
-        }
+            if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + 0.5f > animator.GetComponent<EnemyData>().transform.position.x)
+            {
+                animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
+            }
+            else if (animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - 0.5f < animator.GetComponent<EnemyData>().transform.position.x)
+            {
+                animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);         //Sinistra
+            }
 
-        if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + animator.GetComponent<EnemyData>().DistanceFollow)
-        {
-            animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
+            if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x + animator.GetComponent<EnemyData>().DistanceFollow)
+            {
+                animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, -180, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
+            }
+            if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - animator.GetComponent<EnemyData>().DistanceFollow)
+            {
+                animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
+            }
         }
-        if (animator.GetComponent<EnemyData>().transform.position.x == animator.GetComponent<EnemyData>().PlayerEnemy.transform.position.x - animator.GetComponent<EnemyData>().DistanceFollow)
-        {
-            animator.GetComponent<EnemyData>().transform.rotation = Quaternion.Euler(animator.GetComponent<EnemyData>().transform.rotation.x, 0, animator.GetComponent<EnemyData>().transform.rotation.z);           //Destra
-        }
-
-
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

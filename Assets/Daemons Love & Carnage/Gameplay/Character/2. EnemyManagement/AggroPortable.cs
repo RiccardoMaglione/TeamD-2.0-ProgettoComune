@@ -20,9 +20,12 @@ namespace SwordGame
         /// <param name="CanReset"></param>
         public void SetFollowing(bool CanVisible, bool isFollowing, bool CanReset)
         {
-            GetComponentInParent<EnemyData>().CanVisible = CanVisible;                  //Setto la variabile CanVisible uguale alla variabile locale CanVisible
-            GetComponentInParent<Animator>().SetBool("IsFollowing", isFollowing);       //Setto il parametro IsFollowing uguale alla variabile locale IsFollowing
-            GetComponentInParent<EnemyData>().CanReset = CanReset;                      //Setto la variabile CanReset uguale alla variabile locale CanReset
+            if (GetComponentInParent<EnemyData>() != null)
+                GetComponentInParent<EnemyData>().CanVisible = CanVisible;                  //Setto la variabile CanVisible uguale alla variabile locale CanVisible
+            if (GetComponentInParent<Animator>() != null)
+                GetComponentInParent<Animator>().SetBool("IsFollowing", isFollowing);       //Setto il parametro IsFollowing uguale alla variabile locale IsFollowing
+            if (GetComponentInParent<EnemyData>() != null)
+                GetComponentInParent<EnemyData>().CanReset = CanReset;                      //Setto la variabile CanReset uguale alla variabile locale CanReset
         }
 
         /// <summary>
@@ -61,8 +64,11 @@ namespace SwordGame
             if (collision.tag == "Player")                                              //Se l'oggetto colliso è il player
             {
                 SetFollowing(false, false, true);                                       //Richiamo il metodo
-                GetComponentInParent<EnemyData>().PlayerEnemy = null;                   //Setto il PlayerEnemy uguale a null
-                GetComponentInParent<EnemyData>().CanMove = true;                       //Rendo vero CanMove per farlo ritornare a muovere normalmente
+                if (GetComponentInParent<EnemyData>() != null)
+                {
+                    GetComponentInParent<EnemyData>().PlayerEnemy = null;               //Setto il PlayerEnemy uguale a null
+                    GetComponentInParent<EnemyData>().CanMove = true;                   //Rendo vero CanMove per farlo ritornare a muovere normalmente
+                }
                 PlayerAggroPortable = null;                                             //Setto il PlayerAggroPortable uguale a null
             }
         }
