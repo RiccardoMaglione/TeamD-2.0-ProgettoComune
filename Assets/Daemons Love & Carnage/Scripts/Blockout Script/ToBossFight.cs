@@ -9,7 +9,9 @@ public class ToBossFight : MonoBehaviour
 
     public void ToBossFightButton()
     {
-        Enemies0.SetActive(false);
+        if (Enemies0 != null)
+            Enemies0.SetActive(false);
+
         for (int i = 0; i < cameraConfiners.Length; i++)
         {
             if (i < 22)
