@@ -7,7 +7,7 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float time;
-    [SerializeField] float damage;
+    public float damage;
     [SerializeField] Animator animator;
     [SerializeField] GameObject hitbox;
     [SerializeField] GameObject player;

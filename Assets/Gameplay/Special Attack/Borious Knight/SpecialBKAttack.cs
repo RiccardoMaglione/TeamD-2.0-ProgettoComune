@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SwordGame;
 
 public class SpecialBKAttack : StateMachineBehaviour
 {
@@ -20,5 +21,6 @@ public class SpecialBKAttack : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         SpecialBKIdle.BoriousMove = true;
+        animator.GetComponentInParent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
     }
 }

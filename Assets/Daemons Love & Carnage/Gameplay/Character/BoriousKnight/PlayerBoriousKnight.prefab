@@ -24648,7 +24648,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2299278531072046311}
   m_Father: {fileID: 8866432838277455787}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24827,6 +24828,7 @@ GameObject:
   - component: {fileID: 2299278531072046311}
   - component: {fileID: 1315372328458207184}
   - component: {fileID: 873216957806797064}
+  - component: {fileID: 6363227013297843868}
   m_Layer: 0
   m_Name: SpecialAttackCollider
   m_TagString: Untagged
@@ -24841,12 +24843,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4788068100922648241}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.99, y: -0.24, z: -0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9899998, y: -0.24000001, z: 0}
   m_LocalScale: {x: 14.08, y: 4.87, z: 1}
   m_Children: []
-  m_Father: {fileID: 8866432838277455787}
-  m_RootOrder: 10
+  m_Father: {fileID: 3238063317247652720}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1315372328458207184
 SpriteRenderer:
@@ -24925,6 +24927,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &6363227013297843868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788068100922648241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2b383bcd6566741bf9a06208591c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5252588558495618358
 GameObject:
   m_ObjectHideFlags: 0
@@ -30926,7 +30940,6 @@ Transform:
   - {fileID: 6062479923079898297}
   - {fileID: 452765435637329297}
   - {fileID: 3238063317247652720}
-  - {fileID: 2299278531072046311}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -31073,7 +31086,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 2.4
   BoriousDashDMGMultiplier: 3
-  ResetTimerStaggered: 12607.509
+  ResetTimerStaggered: 12611.826
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 1

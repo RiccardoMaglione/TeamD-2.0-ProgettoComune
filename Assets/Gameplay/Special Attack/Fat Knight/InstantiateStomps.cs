@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using SwordGame;
 
 public class InstantiateStomps : StateMachineBehaviour
 {
@@ -16,6 +17,7 @@ public class InstantiateStomps : StateMachineBehaviour
         else
         {
             animator.SetTrigger("Stop");
+            animator.GetComponentInParent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
             specialAttack.enemyList.Clear();
             specialAttack.i = 0;
         }
