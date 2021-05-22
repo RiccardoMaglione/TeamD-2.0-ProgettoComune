@@ -19,5 +19,6 @@ public class SpecialBKAttack : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        SpecialBKIdle.BoriousMove = true;
     }
 }

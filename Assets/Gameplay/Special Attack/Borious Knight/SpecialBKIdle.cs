@@ -6,6 +6,7 @@ using SwordGame;
 public class SpecialBKIdle : StateMachineBehaviour
 {
     PSMController psmController;
+    public static bool BoriousMove = true;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -18,6 +19,7 @@ public class SpecialBKIdle : StateMachineBehaviour
         {
             psmController.CurrentEnergy = 0;
             animator.SetBool("IsAttack", true);
+            BoriousMove = false;
         }     
     }
 
