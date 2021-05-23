@@ -10,8 +10,14 @@ public class SpecialBabushka : MonoBehaviour
     [SerializeField] GameObject attack1;
     [SerializeField] GameObject attack2;
 
+
+
+    public AnimatorOverrideController OriginalBabushkaOverride;
+    public AnimatorOverrideController SpecialBabushkaOverride;
     public IEnumerator Attack()
     {
+        GetComponentInParent<PSMController>().GetComponent<Animator>().runtimeAnimatorController = SpecialBabushkaOverride;
+
         GameObject originalLight;
         GameObject originalHeavy;
         originalLight = GetComponentInParent<PSMController>().LightAttackCollider;
@@ -23,5 +29,8 @@ public class SpecialBabushka : MonoBehaviour
         GetComponentInParent<PSMController>().LightAttackCollider = originalLight;
         GetComponentInParent<PSMController>().HeavyAttackCollider = originalHeavy;
         animator.SetBool("IsAttack", false);
+
+
+        GetComponentInParent<PSMController>().GetComponent<Animator>().runtimeAnimatorController = OriginalBabushkaOverride;
     }
 }
