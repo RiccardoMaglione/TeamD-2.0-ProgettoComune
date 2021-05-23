@@ -13,10 +13,8 @@ public class MoveStomp : MonoBehaviour
         {
             collision.GetComponent<EnemyData>().Life -= damage;
             collision.GetComponent<Animator>().SetTrigger("DamageReceived");
+            collision.GetComponent<Animator>().SetFloat("Life", collision.GetComponent<EnemyData>().Life);
         }
-            
-        //direction = new Vector2(0, 1);
-
     }
     private void Awake()
     {

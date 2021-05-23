@@ -7,7 +7,7 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float time;
-    [SerializeField] float damage;
+    public float damage;
     [SerializeField] Animator animator;
     [SerializeField] GameObject hitbox;
     [SerializeField] GameObject player;
@@ -18,6 +18,15 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
         yield return new WaitForSeconds(time);
         hitbox.SetActive(false);
         animator.SetBool("IsAttack", false);
+    }
+
+    private void Update()
+    {
+        if(GetComponentInParent<PSMController>().GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
+        {
+            hitbox.SetActive(false);
+            speed = 0;
+        }
     }
 
     public void Move()
