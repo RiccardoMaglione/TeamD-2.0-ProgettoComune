@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
+using System.Collections;
 using UnityEngine;
-using SwordGame;
 
 public class BoriousKnightSpecialAttack : MonoBehaviour
 {
@@ -11,10 +10,11 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] GameObject hitbox;
     [SerializeField] GameObject player;
+    public bool SpecialActivated = false;
 
     public IEnumerator Attack()
     {
-        hitbox.SetActive(true);      
+        hitbox.SetActive(true);
         yield return new WaitForSeconds(time);
         hitbox.SetActive(false);
         animator.SetBool("IsAttack", false);
@@ -22,7 +22,7 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
 
     private void Update()
     {
-        if(GetComponentInParent<PSMController>().GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
+        if (GetComponentInParent<PSMController>().GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
         {
             hitbox.SetActive(false);
             speed = 0;
@@ -31,6 +31,22 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
 
     public void Move()
     {
-        player.transform.Translate(Vector2.right * speed * Time.deltaTime);
+        if (SpecialActivated == true)
+        {
+            if (Input.GetKey(KeyCode.LeftArrow))
+                player.transform.rotation = Quaternion.Euler(0, 180, 0);
+
+            if (Input.GetKey(KeyCode.RightArrow))
+                player.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+
+            if (player.transform.rotation.eulerAngles.y == 180)
+                player.GetComponent<Rigidbody2D>().velocity = new Vector2(-(speed * Time.deltaTime), player.GetComponent<Rigidbody2D>().velocity.y);
+
+            if (player.transform.rotation.eulerAngles.y == 0)
+                player.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * Time.deltaTime, player.GetComponent<Rigidbody2D>().velocity.y);
+        }
+
+        //player.transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 }
