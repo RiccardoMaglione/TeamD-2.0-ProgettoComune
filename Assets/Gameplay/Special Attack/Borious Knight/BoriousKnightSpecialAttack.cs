@@ -26,6 +26,7 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
         {
             hitbox.SetActive(false);
             speed = 0;
+            SpecialActivated = false;
         }
     }
 
