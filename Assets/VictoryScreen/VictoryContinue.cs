@@ -1,0 +1,53 @@
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class VictoryContinue : MonoBehaviour
+{
+    [SerializeField] GameObject ContinueButton;
+    [SerializeField] Image iconIMG;
+    [SerializeField] TextMeshProUGUI textIMG;
+    FadeInOutTransition fadeInOutTransition;
+    VictoryScreen victoryScreen;
+
+    private void Awake()
+    {
+        fadeInOutTransition = FindObjectOfType<FadeInOutTransition>();
+        victoryScreen = FindObjectOfType<VictoryScreen>();
+    }
+
+    private void Update()
+    {
+        if (victoryScreen.win == true && victoryScreen.winChecked == false)
+        {
+            Invoke("EnableContinueButton", 4f);
+        }
+    }
+
+    private void EnableContinueButton()
+    {
+        ContinueButton.SetActive(true);
+        ContinueFadeIn();
+    }
+    public void ContinueFadeIn()
+    {
+        textIMG.canvasRenderer.SetAlpha(0f);
+        textIMG.CrossFadeAlpha(1, 0.5f, false);
+
+        iconIMG.canvasRenderer.SetAlpha(0f);
+        iconIMG.CrossFadeAlpha(1, 0.5f, false);
+    }
+
+    public void ContinueButtonPressed()
+    {
+        fadeInOutTransition.BlackPanelAppears();
+        fadeInOutTransition.FadeIn();
+        Invoke("ToMap", 1f);
+
+    }
+    public void ToMap()
+    {
+        SceneManager.LoadScene(1);
+    }
+}
