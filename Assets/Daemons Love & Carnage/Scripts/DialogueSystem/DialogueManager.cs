@@ -129,7 +129,7 @@ public class DialogueManager : MonoBehaviour
         isTalk = false;
         animator.SetBool("isOpen", false);
 
-        Time.timeScale = 1; //11/04/21
+        //Time.timeScale = 1; //11/04/21
         blackPanel.SetActive(false); //11/04/21
     }
 }
