@@ -23,6 +23,11 @@ public class VictoryContinue : MonoBehaviour
         {
             Invoke("EnableContinueButton", 4f);
         }
+
+        if (Input.GetMouseButtonDown(0) && ContinueButton.activeSelf)
+        {
+            ContinueButtonPressed();
+        }
     }
 
     private void EnableContinueButton()
