@@ -21,6 +21,9 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> names;
     private Queue<Position> positions;
 
+    [SerializeField] Animator impBossAnim;
+    [SerializeField] Animator cutsceneAnim;
+
     void Awake()
     {
         positions = new Queue<Position>();
@@ -129,7 +132,9 @@ public class DialogueManager : MonoBehaviour
         isTalk = false;
         animator.SetBool("isOpen", false);
 
-        //Time.timeScale = 1; //11/04/21
+        impBossAnim.SetTrigger("GoToJump");
+        cutsceneAnim.SetTrigger("GoToStomp");
+        Time.timeScale = 1; //11/04/21
         blackPanel.SetActive(false); //11/04/21
     }
 }
