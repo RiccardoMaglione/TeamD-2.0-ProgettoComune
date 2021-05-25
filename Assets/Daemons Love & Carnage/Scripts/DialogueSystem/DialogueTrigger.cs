@@ -3,11 +3,13 @@
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
+    [SerializeField] Animator animator;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            Invoke("TriggerDialogue", 0.1f);
+            //Invoke("TriggerDialogue", 0.1f);
+            animator.SetTrigger("EnterTrigger");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -17,8 +19,8 @@ public class DialogueTrigger : MonoBehaviour
     }
 
 
-    public void TriggerDialogue()
-    {
-        DialogueManager.instance.StartDialogue(dialogue);
-    }
+    //public void TriggerDialogue()
+    //{
+    //    DialogueManager.instance.StartDialogue(dialogue);
+    //}
 }
