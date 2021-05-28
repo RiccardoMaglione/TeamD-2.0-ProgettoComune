@@ -8,6 +8,8 @@ public class Attack1_Phase2State : StateMachineBehaviour
     float initialPosition;
     bool isUp = false;
 
+    public int checkArc;
+
     [SerializeField] float arcSpeed;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -18,7 +20,9 @@ public class Attack1_Phase2State : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (i < 6 && isMove == false)
+
+        checkArc = i;
+        if (i < 3 && isMove == false)
         {
             arcMovement.Arc();
             isMove = true;
@@ -27,6 +31,7 @@ public class Attack1_Phase2State : StateMachineBehaviour
         if (animator.transform.position.y >= arcMovement.height)
         {
             isUp = true;
+            i++;
         }
 
         if (isUp)
@@ -41,7 +46,7 @@ public class Attack1_Phase2State : StateMachineBehaviour
             isUp = false;
         }
 
-        if (i >= 6)
+        if (i >= 3)
             animator.SetTrigger("GoToIdle");
     }
 
