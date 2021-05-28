@@ -5,11 +5,19 @@ public class MoveRight : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float damage;
+    private bool alreadyDamaged;
+    private float canDamageTimerFloat;
+    public float canDamageTimer = 1;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && alreadyDamaged == false)
+        {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
+            alreadyDamaged = true;
+
+        }
 
         // Debug.LogWarning(damage+" WAVE DAMAGE");
 
@@ -17,8 +25,19 @@ public class MoveRight : MonoBehaviour
             Destroy(gameObject);
     }
 
+
     void Update()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
+        if (alreadyDamaged == true)
+        {
+            canDamageTimerFloat += Time.deltaTime;
+        }
+        if (canDamageTimerFloat >= canDamageTimer)
+        {
+            alreadyDamaged = false;
+            canDamageTimerFloat = 0;
+        }
+
     }
 }
