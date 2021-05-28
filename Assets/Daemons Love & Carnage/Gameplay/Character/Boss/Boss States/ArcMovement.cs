@@ -7,8 +7,12 @@ public class ArcMovement : MonoBehaviour
     public float height;
     public float parableRaiseSpeed;
 
+    private void Awake()
+    {
+    }
     public void Arc()
     {
+        Attack1_Phase2State.i++;
         if (transform.position.x < player.position.x)
         {
             transform.DOMoveX(transform.position.x + (-(transform.position.x - player.position.x)) + 2, parableRaiseSpeed);

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SwordGame;
+using UnityEngine;
 
 public class MoveRight : MonoBehaviour
 {
@@ -8,8 +9,10 @@ public class MoveRight : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
-            Debug.LogWarning(damage+" WAVE DAMAGE");
-        
+            collision.GetComponent<PSMController>().CurrentHealth -= damage;
+
+        // Debug.LogWarning(damage+" WAVE DAMAGE");
+
         if (collision.gameObject.tag == "Wall")
             Destroy(gameObject);
     }

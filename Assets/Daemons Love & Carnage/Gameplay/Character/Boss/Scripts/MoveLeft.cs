@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SwordGame;
+using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class MoveLeft : MonoBehaviour
             Destroy(gameObject);
 
         if (collision.gameObject.tag == "Player")
-            Debug.LogWarning(damage+" WAVE DAMAGE");
+            collision.GetComponent<PSMController>().CurrentHealth -= damage;
+        //Debug.LogWarning(damage+" WAVE DAMAGE");
     }
 
     void Update()
