@@ -10,15 +10,17 @@ public class SpawnState1 : StateMachineBehaviour
         spawnManager = FindObjectOfType<SpawnManager>();
         spawnManager.StartWave1();
         spawnMinion = animator.GetComponent<SpawnMinionWaypoint>();
+        spawnMinion.i = 0;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         spawnMinion.Move();
+        spawnManager.ControlWave();
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animator.SetBool("GoToSmash", false);
     }
 }

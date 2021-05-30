@@ -32,7 +32,7 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    void Update()
+    public void ControlWave()
     {
         if (EnemiesAreSpawning == true && waveCounter == 1)
         {
@@ -69,7 +69,7 @@ public class SpawnManager : MonoBehaviour
             {
                 //wave1.SetActive(false);
                 //wave2.SetActive(false);
-                animator.SetTrigger("GoToSmash");
+                animator.SetBool("GoToSmash", true);
             }
         }
     }
