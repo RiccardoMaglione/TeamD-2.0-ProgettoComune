@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnState1 : StateMachineBehaviour
 {
     SpawnManager spawnManager;
     SpawnMinionWaypoint spawnMinion;
-    
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         spawnManager = FindObjectOfType<SpawnManager>();
@@ -21,6 +19,6 @@ public class SpawnState1 : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+
     }
 }

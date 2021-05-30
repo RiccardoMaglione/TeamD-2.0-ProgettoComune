@@ -168,6 +168,8 @@ public class TornPage : MonoBehaviour
             Quit.SetActive(true);
             SkullPage.SetActive(false);
             newGame.SetActive(false);
+            Controls.SetActive(false);
+
 
 
             StopAllCoroutines();
