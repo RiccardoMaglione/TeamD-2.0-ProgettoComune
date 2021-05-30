@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour
         wave2.SetActive(true);
     }
 
-    void Update()
+    public void ControlWave()
     {
         if (wave1.activeSelf == true || wave2.activeSelf == true)
         {
@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
             {
                 //wave1.SetActive(false);
                 //wave2.SetActive(false);
-                animator.SetTrigger("GoToSmash");
+                animator.SetBool("GoToSmash", true);
             }
         }
     }
