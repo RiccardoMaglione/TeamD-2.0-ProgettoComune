@@ -14,9 +14,12 @@ public class PSMAttack : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.GetComponentInChildren<BoriousKnightSpecialAttack>().gameObject != null && animator.GetComponentInChildren<BoriousKnightSpecialAttack>().SpecialActivated == false)//.SpecialActivated == false)  //23/05
+        if (animator.gameObject.GetComponent<PSMController>().TypeCharacter == TypePlayer.BoriousKnight)
         {
-            animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);
+            if (animator.gameObject.GetComponentInChildren<BoriousKnightSpecialAttack>().gameObject != null && animator.GetComponentInChildren<BoriousKnightSpecialAttack>().SpecialActivated == false)//.SpecialActivated == false)  //23/05
+            {
+                animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);
+            }
         }
         //animator.GetComponent<PSMController>().RB2D.velocity = Vector2.zero;
 
