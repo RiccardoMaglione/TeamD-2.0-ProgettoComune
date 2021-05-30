@@ -22,7 +22,7 @@ public class FollowState : StateMachineBehaviour
         time += Time.deltaTime;
 
         if (time < chaseTime)
-            animator.transform.position = Vector2.MoveTowards(animator.transform.position, new Vector2(player.position.x, player.position.y + 6), bossChaseSpeed * Time.deltaTime);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, new Vector2(player.position.x, player.position.y + 6.5f), bossChaseSpeed * Time.deltaTime);
 
         else
         {
