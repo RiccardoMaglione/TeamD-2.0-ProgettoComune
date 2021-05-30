@@ -26,15 +26,15 @@ public class AttackSystem : MonoBehaviour
         {
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
-                collision.GetComponent<Boss>().life -= LightDamage;
+                collision.GetComponent<Boss>().life -= LightDamage * collision.GetComponent<Boss>().DMG_Reduction;
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
-                collision.GetComponent<Boss>().life -= HeavyDamage;
+                collision.GetComponent<Boss>().life -= HeavyDamage * collision.GetComponent<Boss>().DMG_Reduction;
             }
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
             {
-                collision.GetComponent<Boss>().life -= SpecialDamage;
+                collision.GetComponent<Boss>().life -= SpecialDamage * collision.GetComponent<Boss>().DMG_Reduction;
             }
         }
 
@@ -46,9 +46,9 @@ public class AttackSystem : MonoBehaviour
 
             if (hitAnimation != null) //27/03/21
                 hitAnimation.SetActive(true); //25/03/21
-                                              
+
             collision.GetComponentInChildren<EnemyParticleController>().PlayBlood();
-            
+
             Knockback.ActiveKnockback = true;
 
 

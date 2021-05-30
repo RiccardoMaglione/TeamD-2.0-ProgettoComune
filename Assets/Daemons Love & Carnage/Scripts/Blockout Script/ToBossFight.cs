@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ToBossFight : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class ToBossFight : MonoBehaviour
 
     public void ToBossFightButton()
     {
-        if (Enemies0 != null)
+        /*if (Enemies0 != null)
             Enemies0.SetActive(false);
 
         for (int i = 0; i < cameraConfiners.Length; i++)
@@ -31,7 +32,11 @@ public class ToBossFight : MonoBehaviour
             }
         }
 
-        player.transform.position = new Vector2(528, 27);
+        player.transform.position = new Vector2(528, 27);*/
+
+        SceneManager.LoadScene(3);
+        Time.timeScale = 1;
+
     }
 
 

@@ -21,8 +21,8 @@ public class SpawnManager : MonoBehaviour
         {
             if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 1)
             {
-                wave1.SetActive(false);
-                wave2.SetActive(false);
+                //wave1.SetActive(false);
+                //wave2.SetActive(false);
                 animator.SetTrigger("GoToSmash");
             }
         }

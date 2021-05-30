@@ -1,23 +1,54 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class WaveController : MonoBehaviour
 {
     [SerializeField] GameObject[] waves;
+    public bool EnemiesAreSpawning = false;
+    public float timerFloat;
+    private float timer = 2;
 
-    int i = 0;
+    EnemySpawner enemySpawner;
+
+    public int i = 0;
     private void OnEnable()
     {
         waves[i].SetActive(true);
     }
 
+    private void Start()
+    {
+        enemySpawner = this.gameObject.GetComponent<EnemySpawner>();
+    }
     void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 1)
+        if (EnemiesAreSpawning == true)
         {
-            i++;
-            if (i < waves.Length)
-                waves[i].SetActive(true);
+            timerFloat += Time.deltaTime;
+        }
+        if (timerFloat >= timer)
+        {
+            waves[i].SetActive(true);
+            EnemiesAreSpawning = false;
+            timerFloat = 0;
+        }
 
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 1 && EnemiesAreSpawning == false)
+        {
+            if (EnemiesAreSpawning == false)
+                i++;
+            if (i < waves.Length)
+            {
+                if (timerFloat <= timer)
+                {
+                    EnemiesAreSpawning = true;
+                    enemySpawner.SpawnEnemies();
+                }
+
+
+                //StopCoroutine("Spawn");
+                //StartCoroutine("Spawn");
+            }
             if (i == waves.Length)
             {
                 UIManager.instance.arrow.SetActive(true);
@@ -26,4 +57,13 @@ public class WaveController : MonoBehaviour
 
         }
     }
+
+    IEnumerator Spawn()
+    {
+        EnemiesAreSpawning = true;
+        yield return new WaitForSeconds(5);
+        waves[i].SetActive(true);
+        EnemiesAreSpawning = false;
+    }
+
 }
