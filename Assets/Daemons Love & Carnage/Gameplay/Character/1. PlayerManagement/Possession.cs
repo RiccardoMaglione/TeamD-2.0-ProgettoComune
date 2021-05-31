@@ -36,6 +36,8 @@ public class Possession : MonoBehaviour
 
     public GameObject EnemyParticle;
     public GameObject PlayerParticle;
+
+    public static int CountPossession;
     #endregion
 
     #region Method Zone
@@ -306,6 +308,16 @@ public class Possession : MonoBehaviour
     public void SetVelocityPlayer(GameObject PlayerToEnemy)
     {
         PlayerToEnemy.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+    }
+
+    /*-------------------------------------------------------------*/
+    /// <summary>
+    /// Incrementa un contatore che indica quante volte è stata effettuata la possessione
+    /// </summary>
+    public void IncrementCount()
+    {
+        CountPossession++;
+        PlayerPrefs.SetInt("CountPossession", CountPossession);
     }
     #endregion
 }

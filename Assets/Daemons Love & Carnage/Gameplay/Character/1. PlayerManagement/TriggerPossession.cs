@@ -54,7 +54,8 @@ public class TriggerPossession : Possession
         ReturnPlayer.timerDestroy = 0;
 
         FindObjectOfType<ChangeFollow>().NewPlayer = EnemyToPlayer;
-
+        
+        IncrementCount();
         SetParametersEnemyToPlayer(EnemyToPlayer);
         ChangeTagArea(PlayerToEnemy, EnemyToPlayer);
         ChangeTagObject(PlayerToEnemy, EnemyToPlayer);
