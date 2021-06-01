@@ -8,7 +8,7 @@ public class CameraShake : MonoBehaviour
     public float ShakeAmplitude = 1.2f;         // Cinemachine Noise Profile Parameter
     public float ShakeFrequency = 2.0f;         // Cinemachine Noise Profile Parameter
 
-    private float ShakeElapsedTime = 0f;
+    public float ShakeElapsedTime = 0f;
 
     // Cinemachine Shake
     public CinemachineVirtualCamera VirtualCamera;
@@ -24,16 +24,11 @@ public class CameraShake : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        // TODO: Replace with your trigger
-        if (Input.GetKey(KeyCode.S))
-        {
-            ShakeElapsedTime = ShakeDuration;
-        }
-
+    {      
         // If the Cinemachine componet is not set, avoid update
         if (VirtualCamera != null && virtualCameraNoise != null)
         {
+            
             // If Camera Shake effect is still playing
             if (ShakeElapsedTime > 0)
             {

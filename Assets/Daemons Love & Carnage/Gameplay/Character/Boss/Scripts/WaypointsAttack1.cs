@@ -6,6 +6,8 @@ public class WaypointsAttack1 : MonoBehaviour
     [HideInInspector] public int i = 0;
     public float[] speed;
     float WPradius = 0.1f;
+
+    [SerializeField] CameraShake cameraShake;
     
     public void Attack1()
     {
@@ -16,6 +18,9 @@ public class WaypointsAttack1 : MonoBehaviour
             if ((Vector3.Distance(waypoints[i].transform.position, transform.position) < WPradius) && i < waypoints.Length)
             {
                 i++;
+
+                if (i < waypoints.Length)
+                    cameraShake.ShakeElapsedTime = cameraShake.ShakeDuration;
 
                 if (i == waypoints.Length - 1)
                     Boss.canDamage = false;
