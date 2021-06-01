@@ -7,6 +7,9 @@ public class CutsceneController : MonoBehaviour
     [SerializeField] Animator bossImpAnim;
     [SerializeField] Animator cutscene;
     [SerializeField] GameObject ballBoss;
+
+    [SerializeField] GameObject bossfightImage;
+    [SerializeField] float bossfightImageTime;
     public Dialogue dialogue;
 
     public void EnterTrigger()
@@ -24,5 +27,14 @@ public class CutsceneController : MonoBehaviour
     public void InstantiateBoss()
     {
         ballBoss.SetActive(true);
+    }
+
+    public IEnumerator ShowBossfightImage()
+    {
+        Time.timeScale = 0;
+        bossfightImage.SetActive(true);
+        yield return new WaitForSecondsRealtime(bossfightImageTime);
+        bossfightImage.SetActive(false);
+        Time.timeScale = 1;
     }
 }
