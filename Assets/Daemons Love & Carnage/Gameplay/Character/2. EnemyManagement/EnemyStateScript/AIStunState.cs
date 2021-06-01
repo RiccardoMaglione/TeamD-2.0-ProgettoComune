@@ -5,7 +5,10 @@ public class AIStunState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter++; //1/06/21
+        if (animator.GetComponent<EnemyData>().timerStun == 0 && animator.name != "PlayerFatKnight")
+        {
+            FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter++; //1/06/21
+        }
 
         animator.GetComponentInChildren<EnemyParticleController>().PlayStun();
 
