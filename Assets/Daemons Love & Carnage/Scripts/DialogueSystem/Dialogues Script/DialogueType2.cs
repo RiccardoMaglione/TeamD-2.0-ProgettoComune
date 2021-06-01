@@ -33,7 +33,7 @@ public class DialogueType2 : MonoBehaviour
         {
             dialogueStarted = true;
 
-            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, -240);
+            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, -140);
             bossDialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(2020, -240);
 
             bossDialogueText.text = insertBossText;
@@ -55,8 +55,8 @@ public class DialogueType2 : MonoBehaviour
     {
         while (playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x != endPos.position.x)
         {
-            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(30, -240), speedTransition * Time.unscaledDeltaTime);
-            if (playerDialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(30, -240))
+            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(30, -140), speedTransition * Time.unscaledDeltaTime);
+            if (playerDialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(30, -140))
             {
                 yield return new WaitForSecondsRealtime(dialogueUpTime);
                 StopCoroutine("PlayerDialogueIn");
@@ -71,7 +71,7 @@ public class DialogueType2 : MonoBehaviour
     {
         while (playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x != startPos.position.x)
         {
-            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-600, -240), speedTransition * Time.unscaledDeltaTime);
+            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-600, -140), speedTransition * Time.unscaledDeltaTime);
             yield return null;
         }
     }

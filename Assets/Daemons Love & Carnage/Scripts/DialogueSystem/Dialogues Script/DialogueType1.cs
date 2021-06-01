@@ -15,6 +15,7 @@ public class DialogueType1 : MonoBehaviour
     [SerializeField] public KeyCode buttonToSkip1;
     [SerializeField] public KeyCode buttonToSkip2;
     [SerializeField] public KeyCode buttonToSkip3;
+    [SerializeField] public KeyCode buttonToSkip4;
 
     public bool dialogueActive = false;
 
@@ -35,7 +36,7 @@ public class DialogueType1 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, 260);
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, -140);
 
             blackPanel.SetActive(true);
             dialogueText.text = insertTutorialText;
@@ -60,7 +61,7 @@ public class DialogueType1 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(buttonToSkip1) && dialogueActive == true || Input.GetKeyDown(buttonToSkip2) && dialogueActive == true || Input.GetKeyDown(buttonToSkip3) && dialogueActive == true)
+        if (Input.GetKeyDown(buttonToSkip1) && dialogueActive == true || Input.GetKeyDown(buttonToSkip2) && dialogueActive == true || Input.GetKeyDown(buttonToSkip3) && dialogueActive == true || Input.GetKeyDown(buttonToSkip4) && dialogueActive == true)
         {
             dialogueActive = false;
             StopCoroutine("DialogueIn");
