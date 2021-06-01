@@ -29,7 +29,7 @@ public class WaveController : MonoBehaviour
     }
     void Update()
     {
-        if (wave1EnemiesNumber == killedEnemyCounterScript.killedEnemyCounter || wave2EnemiesNumber == killedEnemyCounterScript.killedEnemyCounter)
+        if (wave1EnemiesNumber == killedEnemyCounterScript.killedEnemyCounter && allEnemiesAreStunned == false || wave2EnemiesNumber == killedEnemyCounterScript.killedEnemyCounter && allEnemiesAreStunned == false)
         {
             allEnemiesAreStunned = true;
         }
