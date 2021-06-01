@@ -38,6 +38,8 @@ public class Possession : MonoBehaviour
     public GameObject PlayerParticle;
 
     public static int CountPossession;
+
+    public static TypePlayer TypologyPlayer;
     #endregion
 
     #region Method Zone
@@ -318,6 +320,11 @@ public class Possession : MonoBehaviour
     {
         CountPossession++;
         PlayerPrefs.SetInt("CountPossession", CountPossession);
+    }
+
+    public void CheckTypePlayer(GameObject EnemyToPlayer)
+    {
+        TypologyPlayer = EnemyToPlayer.GetComponent<PSMController>().TypeCharacter;
     }
     #endregion
 }

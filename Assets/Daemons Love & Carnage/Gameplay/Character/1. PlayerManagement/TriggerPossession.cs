@@ -76,6 +76,7 @@ public class TriggerPossession : Possession
         SetLife(PlayerToEnemy, EnemyToPlayer);
         SetVelocityAnimator(PlayerToEnemy, EnemyToPlayer);
         SetVelocityPlayer(PlayerToEnemy);
+        CheckTypePlayer(EnemyToPlayer);
 
         ReturnPlayer.PlayerNow = EnemyToPlayer;
         ReturnPlayer.LastDetectList.Add(PlayerToEnemy);
