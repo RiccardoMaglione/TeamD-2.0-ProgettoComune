@@ -41,7 +41,7 @@ public class TimerGameplay : MonoBehaviour
             HoursZero = "";
         }
 
-        print(HoursZero + Hours + ":" + Minutes.ToString("00") + ":" + Seconds.ToString("00"));
+        //print(HoursZero + Hours + ":" + Minutes.ToString("00") + ":" + Seconds.ToString("00"));
 
         PlayerPrefs.SetString("StringTimerGameplay", HoursZero + Hours + ":" + Minutes.ToString("00") + ":" + Seconds.ToString("00"));
 

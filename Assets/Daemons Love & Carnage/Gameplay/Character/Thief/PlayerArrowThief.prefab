@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7051149582175466936}
   - component: {fileID: 6544625962388539339}
-  - component: {fileID: 8096487585822256654}
+  - component: {fileID: 5602656622067400805}
   - component: {fileID: 9021673413658001549}
   m_Layer: 11
   m_Name: LogicArrow
@@ -49,7 +49,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &8096487585822256654
+--- !u!114 &5602656622067400805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,11 +58,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459522725985375242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5708d0f6b1dd77d4697e62ff5b0cc0cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a4d8402e020cdf47853418f15ffb7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 5
   RB2DList: []
+  ActiveKnockback: 0
   KnockbackDirection: {x: 0, y: 0.5, z: 0}
 --- !u!114 &9021673413658001549
 MonoBehaviour:

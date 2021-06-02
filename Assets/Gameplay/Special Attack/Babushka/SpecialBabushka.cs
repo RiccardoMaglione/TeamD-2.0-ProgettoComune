@@ -32,5 +32,6 @@ public class SpecialBabushka : MonoBehaviour
 
 
         GetComponentInParent<PSMController>().GetComponent<Animator>().runtimeAnimatorController = OriginalBabushkaOverride;
+        GetComponentInParent<PSMController>().InitializeSpeedAnimation();
     }
 }

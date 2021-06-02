@@ -40,6 +40,11 @@ public class Possession : MonoBehaviour
     public static int CountPossession;
 
     public static TypePlayer TypologyPlayer;
+
+    public GameObject LightAttackBabushka;
+    public GameObject HeavyAttackBabushka;
+
+    public float ValueIncreaseLife;
     #endregion
 
     #region Method Zone
@@ -263,6 +268,12 @@ public class Possession : MonoBehaviour
         if (EnemyToPlayer.GetComponent<PSMController>().HealthSlider != null)
         {
             EnemyToPlayer.GetComponent<PSMController>().HealthSlider.MaxHealth(EnemyToPlayer.GetComponent<PSMController>().MaxHealth);
+            /* New */if(EnemyToPlayer.GetComponent<PSMController>().ControllerPossession == false)
+            /* New */{
+            /* New */    EnemyToPlayer.GetComponent<PSMController>().CurrentHealth += ValueIncreaseLife;
+            /* New */    EnemyToPlayer.GetComponent<PSMController>().HealthSlider.SetHealth(EnemyToPlayer.GetComponent<PSMController>().CurrentHealth);
+            /* New */    EnemyToPlayer.GetComponent<PSMController>().ControllerPossession = true;
+            /* New */}
         }
 
         PlayerToEnemy.GetComponent<EnemyData>().Life = 0;
@@ -325,6 +336,47 @@ public class Possession : MonoBehaviour
     public void CheckTypePlayer(GameObject EnemyToPlayer)
     {
         TypologyPlayer = EnemyToPlayer.GetComponent<PSMController>().TypeCharacter;
+    }
+
+    public void SetEnergy(GameObject PlayerToEnemy, GameObject EnemyToPlayer)
+    {
+        EnemyToPlayer.GetComponent<PSMController>().CurrentEnergy = PlayerToEnemy.GetComponent<PSMController>().CurrentEnergy;
+        EnemyToPlayer.GetComponent<PSMController>().EnergySliderPM.SetEnergy(EnemyToPlayer.GetComponent<PSMController>().CurrentEnergy);
+    }
+
+    public void EnableDisableSpecialAttack(GameObject PlayerToEnemy, GameObject EnemyToPlayer)
+    {
+        if (LightAttackBabushka != null && EnemyToPlayer.GetComponent<PSMController>().TypeCharacter == TypePlayer.Babushka)
+        {
+            EnemyToPlayer.GetComponent<PSMController>().LightAttackCollider = LightAttackBabushka;
+        }
+        if (HeavyAttackBabushka != null && EnemyToPlayer.GetComponent<PSMController>().TypeCharacter == TypePlayer.Babushka)
+        {
+            EnemyToPlayer.GetComponent<PSMController>().HeavyAttackCollider = HeavyAttackBabushka;
+        }
+
+        if (EnemyToPlayer.GetComponent<PSMController>().TypeCharacter == TypePlayer.BoriousKnight)
+        {
+            SpecialBKIdle.BoriousMove = true;
+
+            BoriousKnightSpecialAttack BKSA = EnemyToPlayer.GetComponentInChildren<BoriousKnightSpecialAttack>();
+            BKSA.SpecialActivated = false;
+            BKSA.hitbox.SetActive(false);
+
+            EnemyToPlayer.GetComponent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
+            EnemyToPlayer.GetComponent<PSMController>().GetComponent<Animator>().SetBool("IsAttack", false);
+        }
+        if (PlayerToEnemy.GetComponent<PSMController>().TypeCharacter == TypePlayer.BoriousKnight)
+        {
+            SpecialBKIdle.BoriousMove = true;
+
+            BoriousKnightSpecialAttack BKSA = PlayerToEnemy.GetComponentInChildren<BoriousKnightSpecialAttack>();
+            BKSA.SpecialActivated = false;
+            BKSA.hitbox.SetActive(false);
+
+            PlayerToEnemy.GetComponent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
+            PlayerToEnemy.GetComponent<PSMController>().GetComponent<Animator>().SetBool("IsAttack", false);
+        }
     }
     #endregion
 }

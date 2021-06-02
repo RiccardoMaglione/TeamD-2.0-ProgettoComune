@@ -74,9 +74,11 @@ public class TriggerPossession : Possession
         EnableDisablePSMController(PlayerToEnemy, EnemyToPlayer);
         SetOriginalMaterial(EnemyToPlayer);
         SetLife(PlayerToEnemy, EnemyToPlayer);
+        SetEnergy(PlayerToEnemy, EnemyToPlayer);
         SetVelocityAnimator(PlayerToEnemy, EnemyToPlayer);
         SetVelocityPlayer(PlayerToEnemy);
         CheckTypePlayer(EnemyToPlayer);
+        /**/EnableDisableSpecialAttack(PlayerToEnemy, EnemyToPlayer);
 
         ReturnPlayer.PlayerNow = EnemyToPlayer;
         ReturnPlayer.LastDetectList.Add(PlayerToEnemy);
