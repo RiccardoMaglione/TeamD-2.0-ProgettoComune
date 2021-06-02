@@ -15,6 +15,7 @@ public class DialogueType1 : MonoBehaviour
     [SerializeField] public KeyCode buttonToSkip1;
     [SerializeField] public KeyCode buttonToSkip2;
     [SerializeField] public KeyCode buttonToSkip3;
+    [SerializeField] public KeyCode buttonToSkip4;
 
     public bool dialogueActive = false;
 
@@ -35,7 +36,7 @@ public class DialogueType1 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, -240);
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, -140);
 
             blackPanel.SetActive(true);
             dialogueText.text = insertTutorialText;
@@ -60,7 +61,7 @@ public class DialogueType1 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(buttonToSkip1) && dialogueActive == true || Input.GetKeyDown(buttonToSkip2) && dialogueActive == true || Input.GetKeyDown(buttonToSkip3) && dialogueActive == true)
+        if (Input.GetKeyDown(buttonToSkip1) && dialogueActive == true || Input.GetKeyDown(buttonToSkip2) && dialogueActive == true || Input.GetKeyDown(buttonToSkip3) && dialogueActive == true || Input.GetKeyDown(buttonToSkip4) && dialogueActive == true)
         {
             dialogueActive = false;
             StopCoroutine("DialogueIn");
@@ -74,8 +75,8 @@ public class DialogueType1 : MonoBehaviour
     {
         while (dialogueBox.GetComponent<RectTransform>().anchoredPosition.x != endPos.position.x)
         {
-            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(30, -240), speedTransition * Time.unscaledDeltaTime);
-            if (dialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(30, -240))
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(30, -140), speedTransition * Time.unscaledDeltaTime);
+            if (dialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(30, -140))
             {
                 dialogueActive = true;
             }
@@ -86,8 +87,8 @@ public class DialogueType1 : MonoBehaviour
     {
         while (dialogueBox.GetComponent<RectTransform>().anchoredPosition.x != startPos.position.x)
         {
-            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-600, -240), speedTransition * Time.unscaledDeltaTime);
-            if (dialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(-600, -240))
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-600, -140), speedTransition * Time.unscaledDeltaTime);
+            if (dialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(-600, -140))
             {
                 Time.timeScale = 1;
                 blackPanel.SetActive(false);
