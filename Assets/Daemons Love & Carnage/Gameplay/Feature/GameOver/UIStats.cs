@@ -22,5 +22,8 @@ public class UIStats : MonoBehaviour
         }
 
         BestTime.text = PlayerPrefs.GetString("StringTimerGameplay", "00:00:00");
+
+
+        NumberPossession.text = PlayerPrefs.GetInt("CountPossession").ToString();
     }
 }
