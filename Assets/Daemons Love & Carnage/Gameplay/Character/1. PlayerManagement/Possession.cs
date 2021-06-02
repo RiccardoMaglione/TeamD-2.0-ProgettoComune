@@ -268,12 +268,16 @@ public class Possession : MonoBehaviour
         if (EnemyToPlayer.GetComponent<PSMController>().HealthSlider != null)
         {
             EnemyToPlayer.GetComponent<PSMController>().HealthSlider.MaxHealth(EnemyToPlayer.GetComponent<PSMController>().MaxHealth);
-            /* New */if(EnemyToPlayer.GetComponent<PSMController>().ControllerPossession == false)
-            /* New */{
-            /* New */    EnemyToPlayer.GetComponent<PSMController>().CurrentHealth += ValueIncreaseLife;
-            /* New */    EnemyToPlayer.GetComponent<PSMController>().HealthSlider.SetHealth(EnemyToPlayer.GetComponent<PSMController>().CurrentHealth);
-            /* New */    EnemyToPlayer.GetComponent<PSMController>().ControllerPossession = true;
-            /* New */}
+            if(EnemyToPlayer.GetComponent<PSMController>().ControllerPossession == false)
+            {
+                EnemyToPlayer.GetComponent<PSMController>().CurrentHealth += ValueIncreaseLife;
+                if(EnemyToPlayer.GetComponent<PSMController>().CurrentHealth + ValueIncreaseLife > 100)
+                {
+                    EnemyToPlayer.GetComponent<PSMController>().CurrentHealth = 100;
+                }
+                EnemyToPlayer.GetComponent<PSMController>().HealthSlider.SetHealth(EnemyToPlayer.GetComponent<PSMController>().CurrentHealth);
+                EnemyToPlayer.GetComponent<PSMController>().ControllerPossession = true;
+            }
         }
 
         PlayerToEnemy.GetComponent<EnemyData>().Life = 0;
