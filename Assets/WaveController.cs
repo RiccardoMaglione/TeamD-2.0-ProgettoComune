@@ -7,10 +7,17 @@ public class WaveController : MonoBehaviour
     public bool EnemiesAreSpawning = false;
     public float timerFloat;
     private float timer = 2;
+    [SerializeField] KilledEnemyCounter killedEnemyCounterScript;
+    [SerializeField] int killedEnemyCounterToProgress;
+    public bool allEnemiesAreStunned = false;
+    public int wave1EnemiesNumber;
+    public int wave2EnemiesNumber;
+
 
     EnemySpawner enemySpawner;
 
     public int i = 0;
+
     private void OnEnable()
     {
         waves[i].SetActive(true);
@@ -22,6 +29,17 @@ public class WaveController : MonoBehaviour
     }
     void Update()
     {
+        if (wave1EnemiesNumber == killedEnemyCounterScript.killedEnemyCounter && allEnemiesAreStunned == false || wave2EnemiesNumber == killedEnemyCounterScript.killedEnemyCounter && allEnemiesAreStunned == false)
+        {
+            allEnemiesAreStunned = true;
+        }
+        else
+        {
+            allEnemiesAreStunned = false;
+        }
+
+
+
         if (EnemiesAreSpawning == true)
         {
             timerFloat += Time.deltaTime;
@@ -33,7 +51,7 @@ public class WaveController : MonoBehaviour
             timerFloat = 0;
         }
 
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 1 && EnemiesAreSpawning == false)
+        if (EnemiesAreSpawning == false && allEnemiesAreStunned)
         {
             if (EnemiesAreSpawning == false)
                 i++;
@@ -49,13 +67,14 @@ public class WaveController : MonoBehaviour
                 //StopCoroutine("Spawn");
                 //StartCoroutine("Spawn");
             }
-            if (i == waves.Length)
-            {
-                UIManager.instance.arrow.SetActive(true);
-                //gameObject.SetActive(false);
-            }
 
         }
+        if (killedEnemyCounterScript.killedEnemyCounter == killedEnemyCounterToProgress && EnemiesAreSpawning == false)
+        {
+            UIManager.instance.arrow.SetActive(true);
+            //gameObject.SetActive(false);
+        }
+
     }
 
     IEnumerator Spawn()

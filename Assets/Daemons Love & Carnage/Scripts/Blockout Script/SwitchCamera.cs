@@ -20,6 +20,8 @@ public class SwitchCamera : MonoBehaviour
 
     public GameObject activatingGraphics;
 
+    public GameObject deactivatingEnemiesZone;
+
     private void Update()
     {
         if (2 == FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
@@ -37,6 +39,10 @@ public class SwitchCamera : MonoBehaviour
         if (collision.CompareTag("Player") && killedEnemyToProgress <= FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
         {
             UIManager.instance.arrow.SetActive(false);
+            if (deactivatingEnemiesZone != null)
+            {
+                deactivatingEnemiesZone.GetComponent<WaveController>().enabled = false;
+            }
             nextCamera.SetActive(true);
             this.gameObject.SetActive(false);
             currentCamera.SetActive(false);
@@ -74,6 +80,10 @@ public class SwitchCamera : MonoBehaviour
         if (collision.CompareTag("Player") && killedEnemyToProgress <= FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
         {
             UIManager.instance.arrow.SetActive(false);
+            if (deactivatingEnemiesZone != null)
+            {
+                deactivatingEnemiesZone.GetComponent<WaveController>().enabled = false;
+            }
             nextCamera.SetActive(true);
             this.gameObject.SetActive(false);
             currentCamera.SetActive(false);
