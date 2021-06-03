@@ -7,7 +7,7 @@ public class WaypointsAttack1 : MonoBehaviour
     public float[] speed;
     float WPradius = 0.1f;
 
-    [SerializeField] CameraShake cameraShake;
+    [SerializeField] CameraShake cameraShake; 
     
     public void Attack1()
     {

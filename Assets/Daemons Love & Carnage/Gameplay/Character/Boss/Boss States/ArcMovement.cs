@@ -7,6 +7,8 @@ public class ArcMovement : MonoBehaviour
     public float height;
     public float parableRaiseSpeed;
 
+    public CameraShake cameraShake;
+
     public void Arc()
     {
         if (transform.position.x < player.position.x)

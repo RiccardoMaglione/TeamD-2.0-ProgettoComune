@@ -4,10 +4,12 @@ public class AttackState : StateMachineBehaviour
 {
     [SerializeField] float FallSpeed;
     Transform player;
+    ArcMovement shake;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        shake = animator.GetComponent<ArcMovement>();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -18,11 +20,16 @@ public class AttackState : StateMachineBehaviour
         }
 
         else
+        {
+            shake.cameraShake.ShakeElapsedTime = shake.cameraShake.ShakeDuration;
             animator.SetTrigger("GoToNext");
+        }
+            
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
         animator.ResetTrigger("GoToNext");
     }
 }
