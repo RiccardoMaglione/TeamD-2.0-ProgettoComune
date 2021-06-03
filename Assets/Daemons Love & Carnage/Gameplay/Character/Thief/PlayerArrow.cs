@@ -43,7 +43,7 @@ namespace SwordGame
                 Destroy(ArrowParent);
                 /*Manca aggiungere energia alla barra del player*/
             }
-            else
+            else if(collision.tag == "Floor")
             {
                 Destroy(ArrowParent);
             }
