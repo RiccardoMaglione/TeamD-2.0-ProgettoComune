@@ -382,5 +382,22 @@ public class Possession : MonoBehaviour
             PlayerToEnemy.GetComponent<PSMController>().GetComponent<Animator>().SetBool("IsAttack", false);
         }
     }
+
+    public void ResetPlatform(GameObject PlayerToEnemy)
+    {
+        for (int i = 0; i < PlayerToEnemy.GetComponent<PSMController>().ListWaitTime.Count; i++)
+        {
+            if (PlayerToEnemy.GetComponent<PSMController>().ListTempPlatform[i] != null)
+            {
+                //PlayerToEnemy.GetComponent<PSMController>().ListWaitTime[i] -= Time.deltaTime;
+                //if (PlayerToEnemy.GetComponent<PSMController>().ListWaitTime[i] <= 0)
+                //{
+                    PlayerToEnemy.GetComponent<PSMController>().ListTempPlatform[i].GetComponent<PlatformEffector2D>().rotationalOffset = 0;
+                    PlayerToEnemy.GetComponent<PSMController>().ListWaitTime.RemoveAt(i);
+                    PlayerToEnemy.GetComponent<PSMController>().ListTempPlatform.RemoveAt(i);
+                //}
+            }
+        }
+    }
     #endregion
 }

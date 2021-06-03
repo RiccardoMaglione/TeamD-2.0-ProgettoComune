@@ -79,6 +79,7 @@ public class TriggerPossession : Possession
         SetVelocityPlayer(PlayerToEnemy);
         CheckTypePlayer(EnemyToPlayer);
         /**/EnableDisableSpecialAttack(PlayerToEnemy, EnemyToPlayer);
+        /**/ResetPlatform(PlayerToEnemy);
 
         ReturnPlayer.PlayerNow = EnemyToPlayer;
         ReturnPlayer.LastDetectList.Add(PlayerToEnemy);
