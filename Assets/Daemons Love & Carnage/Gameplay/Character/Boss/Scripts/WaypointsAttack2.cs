@@ -7,6 +7,8 @@ public class WaypointsAttack2 : MonoBehaviour
     public float[] speed;
     float WPradius = 0.1f;
 
+    [SerializeField] CameraShake cameraShake;
+
     public void Attack2()
     {
         if (i < waypoints.Length)
@@ -17,8 +19,13 @@ public class WaypointsAttack2 : MonoBehaviour
             {
                 i++;
 
+                if (i < waypoints.Length)
+                    cameraShake.ShakeElapsedTime = cameraShake.ShakeDuration;
+
                 if (i == waypoints.Length - 1)
+                {
                     Boss.canDamage = false;
+                }            
             }
         }
     }

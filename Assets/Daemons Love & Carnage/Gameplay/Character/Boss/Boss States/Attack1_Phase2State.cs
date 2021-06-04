@@ -15,7 +15,7 @@ public class Attack1_Phase2State : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         arcMovement = animator.GetComponent<ArcMovement>();
-        initialPosition = animator.transform.position.y;
+        initialPosition = animator.transform.position.y;     
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -44,9 +44,11 @@ public class Attack1_Phase2State : StateMachineBehaviour
         {
             isMove = false;
             isUp = false;
-        }
-
-        if (i >= 3)
+            if(i>2)
+                arcMovement.cameraShake.ShakeElapsedTime = arcMovement.cameraShake.ShakeDuration;
+        }      
+        
+        if(i == 6)
             animator.SetTrigger("GoToIdle");
     }
 

@@ -8,6 +8,7 @@ public class ArcMovement : MonoBehaviour
     public float height;
     public float parableRaiseSpeed;
 
+    public CameraShake cameraShake;
 
     private void Awake()
     {
