@@ -9,10 +9,15 @@ namespace SwordGame
         public int DamageArrow;
         public int ValuePoiseArrow;
         public GameObject ArrowParent;
+
+        public float thrust;
+        public Vector3 KnockbackDirection;
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.tag == "Player")
             {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce((transform.right + transform.InverseTransformDirection(KnockbackDirection)).normalized * thrust, ForceMode2D.Impulse);
                 collision.GetComponent<PSMController>().ResetTimerStaggered = 0;
                 collision.GetComponent<PSMController>().PoisePlayer += ValuePoiseArrow;
                 collision.GetComponent<PSMController>().CurrentHealth -= (int)(DamageArrow * collision.GetComponent<PSMController>().CoeffReduceDamageLight);

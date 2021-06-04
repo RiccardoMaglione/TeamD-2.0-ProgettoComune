@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1005928530781530630}
   - component: {fileID: 7485387760236431276}
-  - component: {fileID: 3750211956861412451}
   - component: {fileID: 3253240088613011324}
   m_Layer: 0
   m_Name: GameObject
@@ -59,22 +58,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.08, y: 0.11}
   m_EdgeRadius: 0
---- !u!114 &3750211956861412451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120874677277794405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a4d8402e020cdf47853418f15ffb7ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 3
-  RB2DList: []
-  ActiveKnockback: 0
-  KnockbackDirection: {x: 0, y: 0.5, z: 0}
 --- !u!114 &3253240088613011324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +73,8 @@ MonoBehaviour:
   DamageArrow: 30
   ValuePoiseArrow: 1
   ArrowParent: {fileID: 4652056963382869427}
+  thrust: 3
+  KnockbackDirection: {x: 0, y: 0.5, z: 0}
 --- !u!1 &4652056963382869427
 GameObject:
   m_ObjectHideFlags: 0

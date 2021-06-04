@@ -9,10 +9,14 @@ namespace SwordGame
         public int DamageArrow;
         public GameObject ArrowParent;
 
+        public float thrust;
+        public Vector3 KnockbackDirection;
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.tag == "Enemy")                                                                           //Aggiungere booleano per DummyScript, PiecesBehaviour, manca HitAnimation 
             {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce((transform.right + transform.InverseTransformDirection(KnockbackDirection)).normalized * thrust, ForceMode2D.Impulse);
                 ColorChangeController colorChangeController = collision.GetComponent<ColorChangeController>();
                 colorChangeController.isAttacked = true;
 

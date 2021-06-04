@@ -19,7 +19,6 @@ public class AttackSystem : MonoBehaviour
         if (collision.gameObject.tag == "Breakable") //10/04
         {
             Knockback.ActiveKnockback = true;//10/04
-
         }
 
         if (collision.gameObject.tag == "Boss") //16/04
