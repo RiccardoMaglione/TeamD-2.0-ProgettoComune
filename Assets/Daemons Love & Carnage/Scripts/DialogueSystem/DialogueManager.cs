@@ -24,6 +24,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Animator impBossAnim;
     [SerializeField] Animator cutsceneAnim;
 
+    GameObject player;
+
     void Awake()
     {
         positions = new Queue<Position>();
@@ -129,12 +131,14 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<Animator>().enabled = false;
+        
         isTalk = false;
         animator.SetBool("isOpen", false);
-
         impBossAnim.SetTrigger("GoToJump");
         cutsceneAnim.SetTrigger("GoToStomp");
-        //Time.timeScale = 1; //11/04/21
+        Time.timeScale = 1; //11/04/21
         blackPanel.SetActive(false); //11/04/21
     }
 }
