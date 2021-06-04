@@ -40,7 +40,8 @@ public class Attack1_Phase2State : StateMachineBehaviour
         {
             isMove = false;
             isUp = false;
-            arcMovement.cameraShake.ShakeElapsedTime = arcMovement.cameraShake.ShakeDuration;
+            if(i>2)
+                arcMovement.cameraShake.ShakeElapsedTime = arcMovement.cameraShake.ShakeDuration;
         }      
         
         if(i == 6)
