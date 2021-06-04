@@ -1,11 +1,10 @@
 ﻿using SwordGame;
 using UnityEngine;
 
-public class BreakableObjects : MonoBehaviour
+public class BreakableObject : MonoBehaviour
 {
     [SerializeField] private float HitCounter = 0;
-    [SerializeField] GameObject dummyPieces;
-    [SerializeField] GameObject tutorialTrigger4;
+    [SerializeField] GameObject Pieces;
 
     public bool enemyCounterIncreased = false;
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,9 +20,8 @@ public class BreakableObjects : MonoBehaviour
                     enemyCounterIncreased = true;
                 }
 
-                tutorialTrigger4.SetActive(false);
                 this.gameObject.SetActive(false);
-                dummyPieces.SetActive(true);
+                Pieces.SetActive(true);
                 this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
                 this.gameObject.AddComponent<Rigidbody2D>();
                 //Debug.Log("Manichino Mortucciso");
@@ -40,9 +38,8 @@ public class BreakableObjects : MonoBehaviour
                     enemyCounterIncreased = true;
                 }
 
-                tutorialTrigger4.SetActive(false);
                 this.gameObject.SetActive(false);
-                dummyPieces.SetActive(true);
+                Pieces.SetActive(true);
                 this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
                 this.gameObject.AddComponent<Rigidbody2D>();
                 //Debug.Log("ManichinoMortucciso");
@@ -59,9 +56,8 @@ public class BreakableObjects : MonoBehaviour
                     enemyCounterIncreased = true;
                 }
 
-                tutorialTrigger4.SetActive(false);
                 this.gameObject.SetActive(false);
-                dummyPieces.SetActive(true);
+                Pieces.SetActive(true);
                 this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
                 this.gameObject.AddComponent<Rigidbody2D>();
                 Debug.Log("ManichinoMortucciso");
