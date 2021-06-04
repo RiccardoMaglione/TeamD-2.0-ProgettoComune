@@ -134,7 +134,7 @@ public class DialogueManager : MonoBehaviour
 
         impBossAnim.SetTrigger("GoToJump");
         cutsceneAnim.SetTrigger("GoToStomp");
-        Time.timeScale = 1; //11/04/21
+        //Time.timeScale = 1; //11/04/21
         blackPanel.SetActive(false); //11/04/21
     }
 }

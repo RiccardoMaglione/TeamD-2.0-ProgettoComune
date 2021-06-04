@@ -44,11 +44,11 @@ public class Attack1_Phase2State : StateMachineBehaviour
         {
             isMove = false;
             isUp = false;
-            if(i>2)
+            if(i > 0)
                 arcMovement.cameraShake.ShakeElapsedTime = arcMovement.cameraShake.ShakeDuration;
         }      
         
-        if(i == 6)
+        if(i == 3)
             animator.SetTrigger("GoToIdle");
     }
 

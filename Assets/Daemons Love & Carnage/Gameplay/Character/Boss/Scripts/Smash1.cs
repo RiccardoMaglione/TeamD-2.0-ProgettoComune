@@ -16,7 +16,7 @@ public class Smash1 : MonoBehaviour
     {
         if (i < waypoints.Length)
         {
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[i].transform.position, Time.deltaTime * speed[i]);
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[i].transform.position, Time.unscaledDeltaTime * speed[i]);
 
             if ((Vector3.Distance(waypoints[i].transform.position, transform.position) < WPradius) && i < waypoints.Length)
             {
