@@ -13,7 +13,7 @@ public class PiecesBehavior : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponentInParent<PSMController>() != null)
+        if (collision.GetComponentInParent<PSMController>() != null && this.gameObject.GetComponent<Rigidbody2D>() != null)
         {
             var impulse = (Random.Range(-360, +360) * Mathf.Deg2Rad) * this.gameObject.GetComponent<Rigidbody2D>().inertia;
             if (collision.GetComponentInParent<PSMController>().IsLightAttack == true)
