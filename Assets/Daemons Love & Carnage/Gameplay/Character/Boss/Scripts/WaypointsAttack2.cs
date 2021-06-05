@@ -25,7 +25,17 @@ public class WaypointsAttack2 : MonoBehaviour
                 if (i == waypoints.Length - 1)
                 {
                     Boss.canDamage = false;
-                }            
+                }
+
+                if (i == 3)
+                {
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                }
+
+                if(i== 6)
+                {
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                }
             }
         }
     }
