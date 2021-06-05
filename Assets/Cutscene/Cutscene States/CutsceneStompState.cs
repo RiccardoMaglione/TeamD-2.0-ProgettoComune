@@ -9,7 +9,7 @@ public class CutsceneStompState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         cutsceneController = animator.GetComponent<CutsceneController>();
-        cutsceneController.InstantiateBoss();
+        cutsceneController.StartCoroutine(cutsceneController.InstantiateBoss());
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -12,6 +12,8 @@ public class CutsceneController : MonoBehaviour
     [SerializeField] float bossfightImageTime;
     public Dialogue dialogue;
 
+    [SerializeField] float bossDelayStomp;
+
     public void EnterTrigger()
     {
         Time.timeScale = 0;
@@ -24,8 +26,9 @@ public class CutsceneController : MonoBehaviour
         DialogueManager.instance.StartDialogue(dialogue);
     }
 
-    public void InstantiateBoss()
-    {
+    public IEnumerator InstantiateBoss()
+    {      
+        yield return new WaitForSecondsRealtime(bossDelayStomp);
         ballBoss.SetActive(true);
     }
 
