@@ -12,6 +12,8 @@ public class WaveController : MonoBehaviour
     public bool allEnemiesAreStunned = false;
     public int wave1EnemiesNumber;
     public int wave2EnemiesNumber;
+    bool waveCounterCheck = false;
+    bool boh;
 
 
     EnemySpawner enemySpawner;
@@ -29,14 +31,12 @@ public class WaveController : MonoBehaviour
     }
     void Update()
     {
-        if (wave1EnemiesNumber == killedEnemyCounterScript.killedEnemyCounter && allEnemiesAreStunned == false || wave2EnemiesNumber == killedEnemyCounterScript.killedEnemyCounter && allEnemiesAreStunned == false)
+        if (wave1EnemiesNumber == killedEnemyCounterScript.killedEnemyCounter && allEnemiesAreStunned == false && boh == false || wave2EnemiesNumber == killedEnemyCounterScript.killedEnemyCounter && allEnemiesAreStunned == false)
         {
             allEnemiesAreStunned = true;
+            boh = true;
         }
-        else
-        {
-            allEnemiesAreStunned = false;
-        }
+
 
 
 
@@ -44,17 +44,14 @@ public class WaveController : MonoBehaviour
         {
             timerFloat += Time.deltaTime;
         }
-        if (timerFloat >= timer)
-        {
-            waves[i].SetActive(true);
-            EnemiesAreSpawning = false;
-            timerFloat = 0;
-        }
 
         if (EnemiesAreSpawning == false && allEnemiesAreStunned)
         {
-            if (EnemiesAreSpawning == false)
+            if (EnemiesAreSpawning == false && waveCounterCheck == false)
+            {
+                waveCounterCheck = true;
                 i++;
+            }
             if (i < waves.Length)
             {
                 if (timerFloat <= timer)
@@ -68,6 +65,14 @@ public class WaveController : MonoBehaviour
                 //StartCoroutine("Spawn");
             }
 
+        }
+        if (timerFloat >= timer)
+        {
+            waves[i].SetActive(true);
+            EnemiesAreSpawning = false;
+            allEnemiesAreStunned = false;
+            waveCounterCheck = false;
+            timerFloat = 0;
         }
         if (killedEnemyCounterScript.killedEnemyCounter == killedEnemyCounterToProgress && EnemiesAreSpawning == false)
         {
