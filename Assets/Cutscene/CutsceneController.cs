@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CutsceneController : MonoBehaviour
@@ -27,7 +26,7 @@ public class CutsceneController : MonoBehaviour
     }
 
     public IEnumerator InstantiateBoss()
-    {      
+    {
         yield return new WaitForSecondsRealtime(bossDelayStomp);
         ballBoss.SetActive(true);
     }
@@ -35,6 +34,7 @@ public class CutsceneController : MonoBehaviour
     public IEnumerator ShowBossfightImage()
     {
         Time.timeScale = 0;
+        FindObjectOfType<BossEnabler>().ActiveBoss();
         bossfightImage.SetActive(true);
         yield return new WaitForSecondsRealtime(bossfightImageTime);
         bossfightImage.SetActive(false);

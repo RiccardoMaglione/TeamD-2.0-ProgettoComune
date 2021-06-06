@@ -132,8 +132,9 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<Animator>().enabled = false;
-        
+        if (player.GetComponent<Animator>() != null)
+            player.GetComponent<Animator>().enabled = false;
+
         isTalk = false;
         animator.SetBool("isOpen", false);
         impBossAnim.SetTrigger("GoToJump");
