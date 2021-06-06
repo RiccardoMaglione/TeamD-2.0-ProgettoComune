@@ -184,7 +184,7 @@ public class TornPage : MonoBehaviour
 
     public void SkullCollectionButton()
     {
-        if (tornPageOpen == false && tornPageIsMoving == false)
+        if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
         {
 
             Options.SetActive(false);
