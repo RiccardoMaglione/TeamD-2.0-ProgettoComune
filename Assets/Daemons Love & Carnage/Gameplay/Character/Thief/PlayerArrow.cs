@@ -52,5 +52,21 @@ namespace SwordGame
                 Destroy(ArrowParent);
             }
         }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.tag == "Floor")
+            {
+                Destroy(ArrowParent);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.tag == "Floor")
+            {
+                Destroy(ArrowParent);
+            }
+        }
     }
 }
