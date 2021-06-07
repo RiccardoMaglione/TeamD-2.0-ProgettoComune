@@ -47,7 +47,6 @@ public class Possession : MonoBehaviour
 
     public float ValueIncreaseLife;
 
-    public Image IconPlayer;
     public Sprite FatKnightIconPlayer;
     public Sprite BoriusKnightIconPlayer;
     public Sprite BabushkaIconPlayer;
@@ -407,32 +406,32 @@ public class Possession : MonoBehaviour
         }
     }
 
-    public void ChangeIconPlayer(GameObject EnemyToPlayer)
+    public void ChangeIconPlayer(GameObject EnemyToPlayer, Image IconPortrait)
     {
         switch (EnemyToPlayer.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
-                if(IconPlayer != null && FatKnightIconPlayer != null)
+                if(IconPortrait != null && FatKnightIconPlayer != null)
                 {
-                    IconPlayer.sprite = FatKnightIconPlayer;
+                    IconPortrait.sprite = FatKnightIconPlayer;
                 }
                 break;
             case TypePlayer.BoriousKnight:
-                if (IconPlayer != null && BoriusKnightIconPlayer != null)
+                if (IconPortrait != null && BoriusKnightIconPlayer != null)
                 {
-                    IconPlayer.sprite = BoriusKnightIconPlayer;
+                    IconPortrait.sprite = BoriusKnightIconPlayer;
                 }
                 break;
             case TypePlayer.Babushka:
-                if (IconPlayer != null && BabushkaIconPlayer != null)
+                if (IconPortrait != null && BabushkaIconPlayer != null)
                 {
-                    IconPlayer.sprite = BabushkaIconPlayer;
+                    IconPortrait.sprite = BabushkaIconPlayer;
                 }
                 break;
             case TypePlayer.Thief:
-                if (IconPlayer != null && ThiefIconPlayer != null)
+                if (IconPortrait != null && ThiefIconPlayer != null)
                 {
-                    IconPlayer.sprite = ThiefIconPlayer;
+                    IconPortrait.sprite = ThiefIconPlayer;
                 }
                 break;
             default:
