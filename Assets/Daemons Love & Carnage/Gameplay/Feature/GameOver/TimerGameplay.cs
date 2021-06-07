@@ -36,14 +36,14 @@ public class TimerGameplay : MonoBehaviour
 
         if (Seconds > 60)
         {
-            Debug.Log(DateTime.Now.ToString());
+            //Debug.Log(DateTime.Now.ToString());
             Seconds = 0;
             Minutes++;
         }
         
         if(Minutes > 60)
         {
-            Debug.Log("E' passata 1 ora " + DateTime.Now.ToString());
+            //Debug.Log("E' passata 1 ora " + DateTime.Now.ToString());
             Minutes = 0;
             Hours++;
         }
@@ -56,11 +56,6 @@ public class TimerGameplay : MonoBehaviour
         {
             HoursZero = "";
         }
-
-
-        // /10 = 6 sec per fare 1 minuto = 6x20+6x4=120+24=144 per 1 ora
-
-
 
         //print(HoursZero + Hours + ":" + Minutes.ToString("00") + ":" + Seconds.ToString("00"));
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CircleWipe : MonoBehaviour
 {
     public RectTransform RT;
@@ -21,7 +21,7 @@ public class CircleWipe : MonoBehaviour
     public void InitializeScaleCircle()
     {
         RT = GetComponent<RectTransform>();
-        RT.sizeDelta = new Vector2(1100, 1100);
+        RT.sizeDelta = new Vector2(2850, 2850);
     }
 
     public void ScaleCircle()
@@ -29,7 +29,11 @@ public class CircleWipe : MonoBehaviour
         if(RT.sizeDelta.x >= 0 && RT.sizeDelta.y >= 0)
         {
             timer += Time.deltaTime;
-            RT.sizeDelta = new Vector2(1100 - timer * speed, 1100 - timer * speed);
+            RT.sizeDelta = new Vector2(2850 - timer * speed, 2850 - timer * speed);
+        }
+        if (RT.sizeDelta.x <= 0 && RT.sizeDelta.y <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 }

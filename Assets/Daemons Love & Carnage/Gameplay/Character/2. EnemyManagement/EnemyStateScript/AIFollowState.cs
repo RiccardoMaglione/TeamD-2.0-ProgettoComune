@@ -74,7 +74,7 @@ public class AIFollowState : StateMachineBehaviour
             {
                 if (animator.GetComponentInChildren<RangeAttack>().isMelee == true)
                 {
-                    Debug.Log("aaaleggero");
+                    //Debug.Log("aaaleggero");
                     animator.SetTrigger("LightAttack");
                     animator.SetBool("CanAttack", true);
                 }
@@ -83,7 +83,7 @@ public class AIFollowState : StateMachineBehaviour
             {
                 if (animator.GetComponentInChildren<RangeAttack>().isRanged == true)
                 {
-                    Debug.Log("aaaPesante");
+                    //Debug.Log("aaaPesante");
                     animator.SetTrigger("HeavyAttack");
                     animator.SetBool("CanAttack", true);
                 }

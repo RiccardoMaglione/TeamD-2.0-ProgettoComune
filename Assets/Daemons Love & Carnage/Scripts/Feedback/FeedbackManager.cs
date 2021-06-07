@@ -3,6 +3,7 @@ using UnityEngine;
 using XInputDotNetPure;
 using Cinemachine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FeedbackManager : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class FeedbackManager : MonoBehaviour
     [HideInInspector]
     public bool isTimeStopped = false;
 
+    public GameObject CircleWipeGameObject;
+    [HideInInspector]
+    public bool PlayerDieZoom = false;
 
     public IEnumerator StopTimeLight()
     {
@@ -124,6 +128,10 @@ public class FeedbackManager : MonoBehaviour
         {
             cam[i].GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
             cam[i].m_Lens.OrthographicSize = Mathf.Lerp(cam[i].m_Lens.OrthographicSize, endPosition, speed);
+            if((int)cam[i].m_Lens.OrthographicSize == endPosition)
+            {
+                PlayerDieZoom = true;
+            }
         }
     }
 

@@ -35,7 +35,7 @@ public class DistanceState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         
-        Debug.Log("Ranged: " + animator.GetComponentInChildren<RangeAttack>().isRanged + "e Melee: " + animator.GetComponentInChildren<RangeAttack>().isMelee);
+        //Debug.Log("Ranged: " + animator.GetComponentInChildren<RangeAttack>().isRanged + "e Melee: " + animator.GetComponentInChildren<RangeAttack>().isMelee);
       //  Debug.Log("aaaAttack" + animator.GetComponent<EnemyData>().CanAttack);
         if (animator.GetComponent<EnemyData>().CanAttack == true && (animator.GetComponentInChildren<RangeAttack>().isMelee == true || animator.GetComponentInChildren<RangeAttack>().isRanged == true))
         {
@@ -54,7 +54,7 @@ public class DistanceState : StateMachineBehaviour
             {
                 //if (animator.GetComponentInChildren<RangeAttack>().isMelee == true)
                 //{
-                    Debug.Log("aaaleggero");
+                    //Debug.Log("aaaleggero");
                     animator.SetTrigger("LightAttack");
                     animator.SetBool("CanAttack", true);
                 //}
@@ -63,7 +63,7 @@ public class DistanceState : StateMachineBehaviour
             {
                 //if (animator.GetComponentInChildren<RangeAttack>().isRanged == true)
                 //{
-                    Debug.Log("aaaPesante");
+                    //Debug.Log("aaaPesante");
                     animator.SetTrigger("HeavyAttack");
                     animator.SetBool("CanAttack", true);
                 //}

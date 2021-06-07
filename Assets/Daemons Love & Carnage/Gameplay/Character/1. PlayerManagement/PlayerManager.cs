@@ -90,6 +90,10 @@ namespace SwordGame
             {
                 FeedbackManager.instance.StopVibration();
                 FeedbackManager.instance.Zoom();
+                if(FeedbackManager.instance.PlayerDieZoom == true)
+                {
+                    FeedbackManager.instance.CircleWipeGameObject.SetActive(true);
+                }
                 GetComponent<Animator>().SetTrigger("PSM-IsDie");
                 print("Hai Perso");
             }
