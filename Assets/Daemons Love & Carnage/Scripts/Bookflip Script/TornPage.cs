@@ -53,7 +53,7 @@ public class TornPage : MonoBehaviour
 
     public void OptionsButton()
     {
-        if (tornPageOpen == false && tornPageIsMoving == false)
+        if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
         {
             Options.SetActive(true);
             RateUs.SetActive(false);
@@ -71,7 +71,7 @@ public class TornPage : MonoBehaviour
 
     public void RateUsButton()
     {
-        if (tornPageOpen == false && tornPageIsMoving == false)
+        if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
         {
             Options.SetActive(false);
             RateUs.SetActive(true);
@@ -89,7 +89,7 @@ public class TornPage : MonoBehaviour
 
     public void CreditsButton()
     {
-        if (tornPageOpen == false && tornPageIsMoving == false)
+        if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
         {
 
             Options.SetActive(false);
@@ -107,7 +107,7 @@ public class TornPage : MonoBehaviour
     }
     public void ControlsButton()
     {
-        if (tornPageOpen == false && tornPageIsMoving == false)
+        if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
         {
 
             Options.SetActive(false);
@@ -125,7 +125,7 @@ public class TornPage : MonoBehaviour
     }
     public void NewGameButton()
     {
-        if (tornPageOpen == false && tornPageIsMoving == false)
+        if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
         {
             if (thereAreSavedData == true)
             {
@@ -159,7 +159,7 @@ public class TornPage : MonoBehaviour
 
     public void QuitButton()
     {
-        if (tornPageOpen == false && tornPageIsMoving == false)
+        if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
         {
 
             Options.SetActive(false);
