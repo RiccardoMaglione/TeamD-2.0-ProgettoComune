@@ -80,6 +80,7 @@ public class TriggerPossession : Possession
         CheckTypePlayer(EnemyToPlayer);
         /**/EnableDisableSpecialAttack(PlayerToEnemy, EnemyToPlayer);
         /**/ResetPlatform(PlayerToEnemy);
+        ChangeIconPlayer(EnemyToPlayer);
 
         ReturnPlayer.PlayerNow = EnemyToPlayer;
         ReturnPlayer.LastDetectList.Add(PlayerToEnemy);

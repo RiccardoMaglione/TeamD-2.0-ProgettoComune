@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SwordGame;
+using UnityEngine.UI;
 
 public class Possession : MonoBehaviour
 {
@@ -45,6 +46,12 @@ public class Possession : MonoBehaviour
     public GameObject HeavyAttackBabushka;
 
     public float ValueIncreaseLife;
+
+    public Image IconPlayer;
+    public Sprite FatKnightIconPlayer;
+    public Sprite BoriusKnightIconPlayer;
+    public Sprite BabushkaIconPlayer;
+    public Sprite ThiefIconPlayer;
     #endregion
 
     #region Method Zone
@@ -397,6 +404,39 @@ public class Possession : MonoBehaviour
                     PlayerToEnemy.GetComponent<PSMController>().ListTempPlatform.RemoveAt(i);
                 //}
             }
+        }
+    }
+
+    public void ChangeIconPlayer(GameObject EnemyToPlayer)
+    {
+        switch (EnemyToPlayer.GetComponent<PSMController>().TypeCharacter)
+        {
+            case TypePlayer.FatKnight:
+                if(IconPlayer != null && FatKnightIconPlayer != null)
+                {
+                    IconPlayer.sprite = FatKnightIconPlayer;
+                }
+                break;
+            case TypePlayer.BoriousKnight:
+                if (IconPlayer != null && BoriusKnightIconPlayer != null)
+                {
+                    IconPlayer.sprite = BoriusKnightIconPlayer;
+                }
+                break;
+            case TypePlayer.Babushka:
+                if (IconPlayer != null && BabushkaIconPlayer != null)
+                {
+                    IconPlayer.sprite = BabushkaIconPlayer;
+                }
+                break;
+            case TypePlayer.Thief:
+                if (IconPlayer != null && ThiefIconPlayer != null)
+                {
+                    IconPlayer.sprite = ThiefIconPlayer;
+                }
+                break;
+            default:
+                break;
         }
     }
     #endregion
