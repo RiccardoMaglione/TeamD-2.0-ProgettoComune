@@ -30523,7 +30523,7 @@ GameObject:
   - component: {fileID: 9146201628002937998}
   - component: {fileID: 9146201628002937997}
   - component: {fileID: 5508200095573304368}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: RangeMelee
   m_TagString: RangeMelee
   m_Icon: {fileID: 0}
@@ -30804,6 +30804,13 @@ MonoBehaviour:
   MaterialYesFriction: {fileID: 6200000, guid: 0cd5cc7973424184baeea2930c4b4744, type: 2}
   EnemyParticle: {fileID: 3835576874616780144}
   PlayerParticle: {fileID: 5511588606872374984}
+  LightAttackBabushka: {fileID: 0}
+  HeavyAttackBabushka: {fileID: 0}
+  ValueIncreaseLife: 0
+  FatKnightIconPlayer: {fileID: 0}
+  BoriusKnightIconPlayer: {fileID: 0}
+  BabushkaIconPlayer: {fileID: 0}
+  ThiefIconPlayer: {fileID: 0}
   Player: {fileID: 0}
   InspectorEnemy: {fileID: 0}
   PromptEnemy: {fileID: 9146201628404208696}
@@ -30821,7 +30828,7 @@ GameObject:
   - component: {fileID: 9146201629087192625}
   - component: {fileID: 9146201629087192624}
   - component: {fileID: 4699432491208308710}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: RangeRanged
   m_TagString: RangeRanged
   m_Icon: {fileID: 0}
@@ -31185,7 +31192,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 5
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 13398.61
+  ResetTimerStaggered: 13400.439
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -31222,6 +31229,8 @@ MonoBehaviour:
   ValuePoiseHeavy: 1
   ValuePoiseSpecial: 1
   DashKnockbackFatKnight: {fileID: 0}
+  ControllerPossession: 1
+  SpecialAttackGameObject: {fileID: 0}
 --- !u!114 &-2547379719804468641
 MonoBehaviour:
   m_ObjectHideFlags: 0
