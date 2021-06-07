@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 235645251959410298}
   - component: {fileID: 235645251959410299}
   - component: {fileID: 6331777078196596174}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: RangeRanged
   m_TagString: RangeMelee
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 235645253032658865}
   - component: {fileID: 235645253032658894}
   - component: {fileID: 6586035480429896409}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: RangeMelee
   m_TagString: RangeRanged
   m_Icon: {fileID: 0}
@@ -10714,6 +10714,8 @@ MonoBehaviour:
   ValuePoiseHeavy: 1
   ValuePoiseSpecial: 1
   DashKnockbackFatKnight: {fileID: 0}
+  ControllerPossession: 0
+  SpecialAttackGameObject: {fileID: 0}
 --- !u!114 &3018839418382831408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10888,6 +10890,9 @@ MonoBehaviour:
   MaterialYesFriction: {fileID: 6200000, guid: 0cd5cc7973424184baeea2930c4b4744, type: 2}
   EnemyParticle: {fileID: 7555671557457291872}
   PlayerParticle: {fileID: 3709339972193511318}
+  LightAttackBabushka: {fileID: 0}
+  HeavyAttackBabushka: {fileID: 0}
+  ValueIncreaseLife: 20
   Player: {fileID: 0}
   InspectorEnemy: {fileID: 0}
   PromptEnemy: {fileID: 3018839418302130834}

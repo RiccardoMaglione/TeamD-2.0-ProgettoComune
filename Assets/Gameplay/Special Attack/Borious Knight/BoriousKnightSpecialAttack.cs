@@ -8,7 +8,7 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
     [SerializeField] float time;
     public float damage;
     [SerializeField] Animator animator;
-    [SerializeField] GameObject hitbox;
+    [SerializeField] public GameObject hitbox;
     [SerializeField] GameObject player;
     public bool SpecialActivated = false;
 

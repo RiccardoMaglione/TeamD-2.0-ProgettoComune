@@ -107,7 +107,9 @@ namespace SwordGame
         public int ValuePoiseHeavy = 1;
         public int ValuePoiseSpecial = 1;
         public GameObject DashKnockbackFatKnight;
+        public bool ControllerPossession;
 
+        public GameObject SpecialAttackGameObject;
         private void OnValidate()
         {
             OnValidatePlayerManager();

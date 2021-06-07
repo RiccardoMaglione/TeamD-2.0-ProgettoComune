@@ -21,7 +21,6 @@ public class SpecialBKAttack : StateMachineBehaviour
     {
         SpecialBKIdle.BoriousMove = true;
         boriousKnight.SpecialActivated = false;
-
         animator.GetComponentInParent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
     }
 }

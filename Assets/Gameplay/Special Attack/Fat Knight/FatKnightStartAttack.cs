@@ -14,7 +14,7 @@ public class FatKnightStartAttack : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Input.GetKeyDown(KeyCode.C) && psmController.CurrentEnergy >= psmController.MaxEnergy)
+        if (Input.GetKeyDown(KeyCode.C) && psmController.CurrentEnergy >= psmController.MaxEnergy && animator.GetComponentInParent<PSMController>().enabled == true)
         {
             animator.SetTrigger("Start");
         }          

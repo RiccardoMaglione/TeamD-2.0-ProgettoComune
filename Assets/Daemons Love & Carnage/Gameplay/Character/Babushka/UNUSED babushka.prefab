@@ -25548,7 +25548,7 @@ GameObject:
   - component: {fileID: 6596650215088342561}
   - component: {fileID: 6596650215088342562}
   m_Layer: 8
-  m_Name: PlayerBabushka Special
+  m_Name: UNUSED babushka
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25721,7 +25721,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 3
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 13447.5205
+  ResetTimerStaggered: 13448.236
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -25758,6 +25758,8 @@ MonoBehaviour:
   ValuePoiseHeavy: 2
   ValuePoiseSpecial: 1
   DashKnockbackFatKnight: {fileID: 0}
+  ControllerPossession: 0
+  SpecialAttackGameObject: {fileID: 0}
 --- !u!114 &6596650215088342561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26170,6 +26172,9 @@ MonoBehaviour:
   MaterialYesFriction: {fileID: 6200000, guid: 0cd5cc7973424184baeea2930c4b4744, type: 2}
   EnemyParticle: {fileID: 1733174385875989456}
   PlayerParticle: {fileID: 3415148527904064979}
+  LightAttackBabushka: {fileID: 0}
+  HeavyAttackBabushka: {fileID: 0}
+  ValueIncreaseLife: 20
   Player: {fileID: 0}
   InspectorEnemy: {fileID: 0}
   PromptEnemy: {fileID: 6596650215555548570}

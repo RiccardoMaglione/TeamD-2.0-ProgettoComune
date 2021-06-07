@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SwordGame;
+using UnityEngine.UI;
 
 public class Possession : MonoBehaviour
 {
@@ -36,6 +37,21 @@ public class Possession : MonoBehaviour
 
     public GameObject EnemyParticle;
     public GameObject PlayerParticle;
+
+    public static int CountPossession;
+
+    public static TypePlayer TypologyPlayer;
+
+    public GameObject LightAttackBabushka;
+    public GameObject HeavyAttackBabushka;
+
+    public float ValueIncreaseLife;
+
+    public Image IconPlayer;
+    public Sprite FatKnightIconPlayer;
+    public Sprite BoriusKnightIconPlayer;
+    public Sprite BabushkaIconPlayer;
+    public Sprite ThiefIconPlayer;
     #endregion
 
     #region Method Zone
@@ -259,6 +275,16 @@ public class Possession : MonoBehaviour
         if (EnemyToPlayer.GetComponent<PSMController>().HealthSlider != null)
         {
             EnemyToPlayer.GetComponent<PSMController>().HealthSlider.MaxHealth(EnemyToPlayer.GetComponent<PSMController>().MaxHealth);
+            if(EnemyToPlayer.GetComponent<PSMController>().ControllerPossession == false)
+            {
+                EnemyToPlayer.GetComponent<PSMController>().CurrentHealth += ValueIncreaseLife;
+                if(EnemyToPlayer.GetComponent<PSMController>().CurrentHealth + ValueIncreaseLife > 100)
+                {
+                    EnemyToPlayer.GetComponent<PSMController>().CurrentHealth = 100;
+                }
+                EnemyToPlayer.GetComponent<PSMController>().HealthSlider.SetHealth(EnemyToPlayer.GetComponent<PSMController>().CurrentHealth);
+                EnemyToPlayer.GetComponent<PSMController>().ControllerPossession = true;
+            }
         }
 
         PlayerToEnemy.GetComponent<EnemyData>().Life = 0;
@@ -306,6 +332,112 @@ public class Possession : MonoBehaviour
     public void SetVelocityPlayer(GameObject PlayerToEnemy)
     {
         PlayerToEnemy.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+    }
+
+    /*-------------------------------------------------------------*/
+    /// <summary>
+    /// Incrementa un contatore che indica quante volte è stata effettuata la possessione
+    /// </summary>
+    public void IncrementCount()
+    {
+        CountPossession++;
+        PlayerPrefs.SetInt("CountPossession", CountPossession);
+    }
+
+    public void CheckTypePlayer(GameObject EnemyToPlayer)
+    {
+        TypologyPlayer = EnemyToPlayer.GetComponent<PSMController>().TypeCharacter;
+    }
+
+    public void SetEnergy(GameObject PlayerToEnemy, GameObject EnemyToPlayer)
+    {
+        EnemyToPlayer.GetComponent<PSMController>().CurrentEnergy = PlayerToEnemy.GetComponent<PSMController>().CurrentEnergy;
+        EnemyToPlayer.GetComponent<PSMController>().EnergySliderPM.SetEnergy(EnemyToPlayer.GetComponent<PSMController>().CurrentEnergy);
+    }
+
+    public void EnableDisableSpecialAttack(GameObject PlayerToEnemy, GameObject EnemyToPlayer)
+    {
+        if (LightAttackBabushka != null && EnemyToPlayer.GetComponent<PSMController>().TypeCharacter == TypePlayer.Babushka)
+        {
+            EnemyToPlayer.GetComponent<PSMController>().LightAttackCollider = LightAttackBabushka;
+        }
+        if (HeavyAttackBabushka != null && EnemyToPlayer.GetComponent<PSMController>().TypeCharacter == TypePlayer.Babushka)
+        {
+            EnemyToPlayer.GetComponent<PSMController>().HeavyAttackCollider = HeavyAttackBabushka;
+        }
+
+        if (EnemyToPlayer.GetComponent<PSMController>().TypeCharacter == TypePlayer.BoriousKnight)
+        {
+            SpecialBKIdle.BoriousMove = true;
+
+            BoriousKnightSpecialAttack BKSA = EnemyToPlayer.GetComponentInChildren<BoriousKnightSpecialAttack>();
+            BKSA.SpecialActivated = false;
+            BKSA.hitbox.SetActive(false);
+
+            EnemyToPlayer.GetComponent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
+            EnemyToPlayer.GetComponent<PSMController>().GetComponent<Animator>().SetBool("IsAttack", false);
+        }
+        if (PlayerToEnemy.GetComponent<PSMController>().TypeCharacter == TypePlayer.BoriousKnight)
+        {
+            SpecialBKIdle.BoriousMove = true;
+
+            BoriousKnightSpecialAttack BKSA = PlayerToEnemy.GetComponentInChildren<BoriousKnightSpecialAttack>();
+            BKSA.SpecialActivated = false;
+            BKSA.hitbox.SetActive(false);
+
+            PlayerToEnemy.GetComponent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
+            PlayerToEnemy.GetComponent<PSMController>().GetComponent<Animator>().SetBool("IsAttack", false);
+        }
+    }
+
+    public void ResetPlatform(GameObject PlayerToEnemy)
+    {
+        for (int i = 0; i < PlayerToEnemy.GetComponent<PSMController>().ListWaitTime.Count; i++)
+        {
+            if (PlayerToEnemy.GetComponent<PSMController>().ListTempPlatform[i] != null)
+            {
+                //PlayerToEnemy.GetComponent<PSMController>().ListWaitTime[i] -= Time.deltaTime;
+                //if (PlayerToEnemy.GetComponent<PSMController>().ListWaitTime[i] <= 0)
+                //{
+                    PlayerToEnemy.GetComponent<PSMController>().ListTempPlatform[i].GetComponent<PlatformEffector2D>().rotationalOffset = 0;
+                    PlayerToEnemy.GetComponent<PSMController>().ListWaitTime.RemoveAt(i);
+                    PlayerToEnemy.GetComponent<PSMController>().ListTempPlatform.RemoveAt(i);
+                //}
+            }
+        }
+    }
+
+    public void ChangeIconPlayer(GameObject EnemyToPlayer)
+    {
+        switch (EnemyToPlayer.GetComponent<PSMController>().TypeCharacter)
+        {
+            case TypePlayer.FatKnight:
+                if(IconPlayer != null && FatKnightIconPlayer != null)
+                {
+                    IconPlayer.sprite = FatKnightIconPlayer;
+                }
+                break;
+            case TypePlayer.BoriousKnight:
+                if (IconPlayer != null && BoriusKnightIconPlayer != null)
+                {
+                    IconPlayer.sprite = BoriusKnightIconPlayer;
+                }
+                break;
+            case TypePlayer.Babushka:
+                if (IconPlayer != null && BabushkaIconPlayer != null)
+                {
+                    IconPlayer.sprite = BabushkaIconPlayer;
+                }
+                break;
+            case TypePlayer.Thief:
+                if (IconPlayer != null && ThiefIconPlayer != null)
+                {
+                    IconPlayer.sprite = ThiefIconPlayer;
+                }
+                break;
+            default:
+                break;
+        }
     }
     #endregion
 }
