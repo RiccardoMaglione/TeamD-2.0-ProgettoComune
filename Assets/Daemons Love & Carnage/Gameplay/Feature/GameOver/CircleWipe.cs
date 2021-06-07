@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Cinemachine;
+using SwordGame;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class CircleWipe : MonoBehaviour
@@ -7,7 +7,14 @@ public class CircleWipe : MonoBehaviour
     public RectTransform RT;
     public float timer;
     public float speed;
+    public GameObject deathCam;
+    public GameObject mainCamera;
+    public static CircleWipe CW;
 
+    private void Awake()
+    {
+        CW = this;
+    }
     void Start()
     {
         InitializeScaleCircle();
@@ -26,7 +33,7 @@ public class CircleWipe : MonoBehaviour
 
     public void ScaleCircle()
     {
-        if(RT.sizeDelta.x >= 0 && RT.sizeDelta.y >= 0)
+        if (RT.sizeDelta.x >= 0 && RT.sizeDelta.y >= 0)
         {
             timer += Time.deltaTime;
             RT.sizeDelta = new Vector2(2850 - timer * speed, 2850 - timer * speed);
@@ -35,5 +42,12 @@ public class CircleWipe : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    public void DeathCamera()
+    {
+        mainCamera.GetComponent<CinemachineBrain>().m_DefaultBlend.m_Time = 1f;
+        deathCam.transform.position = FindObjectOfType<PSMController>().transform.position;
+        deathCam.SetActive(true);
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace SwordGame
@@ -22,7 +20,8 @@ namespace SwordGame
         [Tooltip("Valore massimo della vita del player")]
         public float MaxHealth;
         [Tooltip("Valore corrente della vita del player, si setta al cambio della MaxHealth in inspector")]
-        /*[ReadOnly]*/ public float CurrentHealth;
+        /*[ReadOnly]*/
+        public float CurrentHealth;
         [Tooltip("Booleano che indica quando il player non può prendere danni")]
         [ReadOnly] public bool Invulnerability = false;
         #endregion
@@ -34,7 +33,8 @@ namespace SwordGame
         public EnergyBar EnergySliderPM;
         public int MaxEnergy;
         public static int MaxEnergyStatic;
-        /* [ReadOnly] */ public int CurrentEnergy;
+        /* [ReadOnly] */
+        public int CurrentEnergy;
         #endregion
         #region Variables - Attack System
         [Space(10)]
@@ -45,6 +45,7 @@ namespace SwordGame
         public int SpecialEnergyAmount;
         #endregion
         [ReadOnly] public bool isTriggerOnlyOnce = false;
+        public AllParallaxArray allParallaxArray;
         #endregion
 
 
@@ -63,16 +64,18 @@ namespace SwordGame
         /// </summary>
         public void InitializePlayerManager()
         {
+            allParallaxArray = FindObjectOfType<AllParallaxArray>();
+
             if (HealthSlider != null)
             {
                 HealthSlider.SetHealth(CurrentHealth); //prendo il metodo dell'altro script e imposto sulla salute corrente
             }
-            if(EnergySliderPM != null)
+            if (EnergySliderPM != null)
             {
                 EnergySliderPM.MaxEnergy(MaxEnergy);
             }
         }
-        
+
         /// <summary>
         /// Metodo attivabile dall'update inerente al PlayerManager, dove viene aggiornata la vita, l'energia
         /// </summary>
@@ -88,16 +91,22 @@ namespace SwordGame
             }
             if (CurrentHealth <= 0)
             {
+                for (int i = 0; i < allParallaxArray.parallaxArray.Length; i++)
+                {
+                    allParallaxArray.parallaxArray[i].enabled = false;
+                }
+
                 FeedbackManager.instance.StopVibration();
                 FeedbackManager.instance.Zoom();
-                if(FeedbackManager.instance.PlayerDieZoom == true)
+                if (FeedbackManager.instance.PlayerDieZoom == true)
                 {
                     FeedbackManager.instance.CircleWipeGameObject.SetActive(true);
+                    CircleWipe.CW.DeathCamera();
                 }
                 GetComponent<Animator>().SetTrigger("PSM-IsDie");
                 print("Hai Perso");
             }
-           //print("4. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
+            //print("4. Current Life is" + CurrentHealth + "Nome " + gameObject.name);
         }
 
         #endregion

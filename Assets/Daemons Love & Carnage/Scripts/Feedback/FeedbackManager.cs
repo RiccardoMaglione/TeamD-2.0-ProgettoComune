@@ -1,9 +1,7 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using UnityEngine;
 using XInputDotNetPure;
-using Cinemachine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class FeedbackManager : MonoBehaviour
 {
@@ -20,7 +18,7 @@ public class FeedbackManager : MonoBehaviour
     public float rightMotor;
     public float vibrationDuration;
 
-    
+
     [Header("TIME STOP")]
     public float stopTimeLightDuration;
     public float stopTimeHeavyDuration;
@@ -71,7 +69,7 @@ public class FeedbackManager : MonoBehaviour
         cutInFatImage.SetActive(false);
         isCutIn = false;
     }
-    
+
     public IEnumerator CutInBabushka()
     {
         isCutIn = true;
@@ -124,7 +122,8 @@ public class FeedbackManager : MonoBehaviour
 
     public void Zoom()
     {
-        for (int i = 0; i < cam.Length; i++)
+        PlayerDieZoom = true;
+        /*for (int i = 0; i < cam.Length; i++)
         {
             cam[i].GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
             cam[i].m_Lens.OrthographicSize = Mathf.Lerp(cam[i].m_Lens.OrthographicSize, endPosition, speed);
@@ -132,12 +131,12 @@ public class FeedbackManager : MonoBehaviour
             {
                 PlayerDieZoom = true;
             }
-        }
+        }*/
     }
 
     void Awake()
     {
         if (instance == null)
-            instance = this;    
+            instance = this;
     }
 }
