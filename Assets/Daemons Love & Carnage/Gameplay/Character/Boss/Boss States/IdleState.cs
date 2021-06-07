@@ -8,12 +8,13 @@ public class IdleState : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        boss = animator.GetComponent<Boss>();           
-        
+        boss = animator.GetComponent<Boss>();
+
         Boss.canDamage = false;
 
         if (boss.life <= 0)
         {
+            VictoryScreen.win = true;
             animator.SetBool("GoToDeath", true);
             animator.SetBool("GoToPhase2", false);
             animator.SetBool("GoToPhase3", false);
@@ -21,7 +22,7 @@ public class IdleState : StateMachineBehaviour
         }
 
         if (boss.life < threshold2 && boss.life > 0)
-        {          
+        {
             animator.SetBool("GoToPhase2", false);
             animator.SetBool("GoToPhase3", true);
         }

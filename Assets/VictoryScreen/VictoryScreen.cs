@@ -10,8 +10,8 @@ public class VictoryScreen : MonoBehaviour
     [SerializeField] Image whitePanelIMG;
     public bool tornPageIsMoving;
     public float dropSpeed;
-    public bool win;
-    public bool winChecked = false;
+    public static bool win;
+    public static bool winChecked = false;
 
     private void Start()
     {

@@ -9,17 +9,15 @@ public class VictoryContinue : MonoBehaviour
     [SerializeField] Image iconIMG;
     [SerializeField] TextMeshProUGUI textIMG;
     FadeInOutTransition fadeInOutTransition;
-    VictoryScreen victoryScreen;
 
     private void Awake()
     {
         fadeInOutTransition = FindObjectOfType<FadeInOutTransition>();
-        victoryScreen = FindObjectOfType<VictoryScreen>();
     }
 
     private void Update()
     {
-        if (victoryScreen.win == true && victoryScreen.winChecked == false)
+        if (VictoryScreen.win == true && VictoryScreen.winChecked == false)
         {
             Invoke("EnableContinueButton", 4f);
         }
