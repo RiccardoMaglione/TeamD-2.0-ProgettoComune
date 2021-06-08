@@ -21,7 +21,7 @@ public class AttackSystem : MonoBehaviour
             Knockback.ActiveKnockback = true;//10/04
         }
 
-        if (collision.gameObject.tag == "Boss") //16/04
+        if (collision.gameObject.tag == "Boss" && Boss.instance.canGetDamage == true) //16/04
         {
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {

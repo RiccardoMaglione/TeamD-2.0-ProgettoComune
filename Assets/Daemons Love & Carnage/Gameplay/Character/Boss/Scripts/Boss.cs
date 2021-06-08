@@ -13,6 +13,10 @@ public class Boss : MonoBehaviour
     private float canDamageTimerFloat;
     public float canDamageTimer = 1;
 
+    public bool canGetDamage = true;
+
+    public static Boss instance;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -51,5 +55,7 @@ public class Boss : MonoBehaviour
     private void Awake()
     {
         maxLife = life;
+        if (instance == null)
+            instance = this;
     }
 }
