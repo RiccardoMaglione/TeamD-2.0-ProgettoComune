@@ -24959,7 +24959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5295054930391649335
 Transform:
   m_ObjectHideFlags: 0
@@ -24981,7 +24981,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3937518695927452724}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -25805,6 +25805,7 @@ MonoBehaviour:
   HeavyEnergyAmount: 10
   SpecialEnergyAmount: 20
   isTriggerOnlyOnce: 0
+  allParallaxArray: {fileID: 0}
   RB2D: {fileID: 6596650215088342590}
   ValueMovement:
     Acceleration: 3
@@ -25825,7 +25826,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 3
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 13922.888
+  ResetTimerStaggered: 14244.24
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -25941,7 +25942,7 @@ Animator:
   m_GameObject: {fileID: 6596650215088342563}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: b883c4e2c916971459deaa72ca62446a, type: 2}
+  m_Controller: {fileID: 22100000, guid: 3c9927131311c864c91d46f6ec1c6ca7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -26759,6 +26760,17 @@ MonoBehaviour:
   animator: {fileID: 6626616328978461611}
   attack1: {fileID: 4721058249796726788}
   attack2: {fileID: 3418344265108742205}
+  SpecialPlayerIdleSpeed: 1000
+  SpecialPlayerMoveSpeed: 1
+  SpecialPlayerDashSpeed: 1
+  SpecialPlayerFallSpeed: 1
+  SpecialPlayerDashFallSpeed: 1
+  SpecialPlayerJumpSpeed: 1
+  SpecialPlayerDieSpeed: 1
+  SpecialPlayerStaggerSpeed: 1
+  SpecialPlayerLightAttackSpeed: 1
+  SpecialPlayerHeavyAttackSpeed: 1
+  SpecialPlayerSpecialAttackSpeed: 1
   OriginalBabushkaOverride: {fileID: 22100000, guid: b883c4e2c916971459deaa72ca62446a, type: 2}
   SpecialBabushkaOverride: {fileID: 22100000, guid: 3c9927131311c864c91d46f6ec1c6ca7, type: 2}
 --- !u!1 &8397096924773391342
