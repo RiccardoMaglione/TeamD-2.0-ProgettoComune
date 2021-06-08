@@ -59,7 +59,7 @@ public class PageFlipper : MonoBehaviour
         {
             Invoke("CheckBackwardBeforeForward", 0.15f);
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && introCutscene == true && aPageIsFlipping == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && introCutscene == true && aPageIsFlipping == false && introPageCounter != 0)
         {
             CutsceneFlipBackward();
         }
