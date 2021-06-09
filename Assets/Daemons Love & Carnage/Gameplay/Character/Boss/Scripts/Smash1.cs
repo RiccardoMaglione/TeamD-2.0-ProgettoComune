@@ -45,6 +45,7 @@ public class Smash1 : MonoBehaviour
             }
 
             GroundManager.instance.Smash();
+            EnviromentManager.instance.ActiveSimulated(true);
         }
     }
 }

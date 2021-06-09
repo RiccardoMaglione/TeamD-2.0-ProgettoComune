@@ -29,8 +29,6 @@ public class Boss : MonoBehaviour
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
             playerDamaged = true;
-
-            Debug.LogWarning(damage + " BOSS DAMAGE");
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
