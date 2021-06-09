@@ -15,6 +15,8 @@ public class WaveController : MonoBehaviour
     bool waveCounterCheck = false;
     bool boh;
 
+    GameObject boss;
+
 
     EnemySpawner enemySpawner;
 
@@ -23,6 +25,8 @@ public class WaveController : MonoBehaviour
     private void OnEnable()
     {
         waves[i].SetActive(true);
+        boss = FindObjectOfType<Boss>(true).gameObject;
+
     }
 
     private void Start()
@@ -74,7 +78,7 @@ public class WaveController : MonoBehaviour
             waveCounterCheck = false;
             timerFloat = 0;
         }
-        if (killedEnemyCounterScript.killedEnemyCounter == killedEnemyCounterToProgress && EnemiesAreSpawning == false)
+        if (killedEnemyCounterScript.killedEnemyCounter == killedEnemyCounterToProgress && EnemiesAreSpawning == false && boss.activeInHierarchy == false)
         {
             UIManager.instance.arrow.SetActive(true);
             //gameObject.SetActive(false);
