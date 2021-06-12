@@ -17,6 +17,6 @@ public class Smash3State : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        smash3.cameraShake.ShakeElapsedTime = smash3.cameraShake.ShakeDuration;
     }
 }

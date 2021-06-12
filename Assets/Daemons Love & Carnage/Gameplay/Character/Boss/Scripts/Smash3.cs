@@ -7,6 +7,8 @@ public class Smash3 : MonoBehaviour
     public float[] speed;
     float WPradius = 0.1f;
 
+    public CameraShake cameraShake;
+
     public void Smash()
     {
         if (i < waypoints.Length)
@@ -16,6 +18,11 @@ public class Smash3 : MonoBehaviour
             if ((Vector3.Distance(waypoints[i].transform.position, transform.position) < WPradius) && i < waypoints.Length)
             {
                 i++;
+            }
+
+            if(i == waypoints.Length - 1)
+            {
+                cameraShake.ShakeElapsedTime = cameraShake.ShakeDuration;
             }
         }
     }
