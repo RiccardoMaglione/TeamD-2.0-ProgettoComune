@@ -17,6 +17,11 @@ public class Boss : MonoBehaviour
 
     public static Boss instance;
 
+    [SerializeField] float threshold1;
+    [SerializeField] float threshold2;
+
+    [SerializeField] Animator animator;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,8 +29,6 @@ public class Boss : MonoBehaviour
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
             playerDamaged = true;
-
-            Debug.LogWarning(damage + " BOSS DAMAGE");
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -49,6 +52,26 @@ public class Boss : MonoBehaviour
         {
             playerDamaged = false;
             canDamageTimerFloat = 0;
+        }
+
+        if (life <= 0)
+        {
+            VictoryScreen.win = true;
+            animator.SetBool("GoToDeath", true);
+            animator.SetBool("GoToPhase2", false);
+            animator.SetBool("GoToPhase3", false);
+            animator.SetBool("Laser", false);
+        }
+
+        if (life < threshold2 && life > 0)
+        {
+            animator.SetBool("GoToPhase2", false);
+            animator.SetBool("GoToPhase3", true);
+        }
+
+        if (life < threshold1 && life > threshold2 - 1)
+        {
+            animator.SetBool("GoToPhase2", true);
         }
     }
 

@@ -23,6 +23,9 @@ public class AttackSystem : MonoBehaviour
 
         if (collision.gameObject.tag == "Boss" && Boss.instance.canGetDamage == true) //16/04
         {
+            ColorChangeController colorChangeController = collision.GetComponent<ColorChangeController>();
+            colorChangeController.isAttacked = true;
+
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
                 collision.GetComponent<Boss>().life -= LightDamage * collision.GetComponent<Boss>().DMG_Reduction;

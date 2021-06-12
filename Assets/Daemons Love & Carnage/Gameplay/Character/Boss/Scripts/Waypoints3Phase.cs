@@ -11,6 +11,8 @@ public class Waypoints3Phase : MonoBehaviour
     [SerializeField] GameObject prefab1;
     [SerializeField] GameObject prefab2;
 
+    [SerializeField] CameraShake cameraShake;
+
     public void Attack3()
     {
         if (i < waypoints.Length)
@@ -28,6 +30,7 @@ public class Waypoints3Phase : MonoBehaviour
                 Instantiate(prefab1, new Vector2(transform.position.x - 2.7f, transform.position.y - 1.8f), transform.rotation);
                 Instantiate(prefab2, new Vector2(transform.position.x + 2.7f, transform.position.y - 1.8f), transform.rotation);
                 ground++;
+                cameraShake.ShakeElapsedTime = cameraShake.ShakeDuration;
             }
         }
     }
