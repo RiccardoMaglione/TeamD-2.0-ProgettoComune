@@ -20,7 +20,7 @@ public class Smash3 : MonoBehaviour
                 i++;
             }
 
-            if(i == waypoints.Length - 1)
+            if(i == waypoints.Length)
             {
                 cameraShake.ShakeElapsedTime = cameraShake.ShakeDuration;
             }
