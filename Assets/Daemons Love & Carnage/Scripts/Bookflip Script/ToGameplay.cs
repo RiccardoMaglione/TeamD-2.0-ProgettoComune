@@ -5,6 +5,7 @@ public class ToGameplay : MonoBehaviour
 {
     public void ToGameplayButton()
     {
+        AudioManager.instance.Play("Sfx_play_button");
         Cursor.visible = false;
         FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
         FindObjectOfType<FadeInOutTransition>().FadeIn();
@@ -13,7 +14,6 @@ public class ToGameplay : MonoBehaviour
     }
     public void ToGameplayScene()
     {
-        SceneManager.LoadScene(2);
-
+        SceneManager.LoadScene(2);      
     }
 }

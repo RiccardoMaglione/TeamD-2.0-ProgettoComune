@@ -50,7 +50,6 @@ public class TornPage : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(MoveOutTornPageCoroutine());
     }
-
     public void OptionsButton()
     {
         if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
@@ -67,8 +66,9 @@ public class TornPage : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
         }
-    }
 
+        AudioManager.instance.Play("Sfx_mouse_on_button");
+    }
     public void RateUsButton()
     {
         if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
@@ -84,9 +84,10 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
+
+            AudioManager.instance.Play("Sfx_mouse_on_button");
         }
     }
-
     public void CreditsButton()
     {
         if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
@@ -103,6 +104,8 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
+
+            AudioManager.instance.Play("Sfx_mouse_on_button");
         }
     }
     public void ControlsButton()
@@ -121,6 +124,8 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
+
+            AudioManager.instance.Play("Sfx_mouse_on_button");
         }
     }
     public void NewGameButton()
@@ -145,9 +150,10 @@ public class TornPage : MonoBehaviour
             {
                 pageFlipper.NewGame();
             }
+
+            AudioManager.instance.Play("Sfx_mouse_on_button");
         }
     }
-
     public void newGameConfirm()
     {
         //script che resetta i dati di gioco
@@ -156,7 +162,6 @@ public class TornPage : MonoBehaviour
 
         pageFlipper.NewGame();
     }
-
     public void QuitButton()
     {
         if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
@@ -174,14 +179,14 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
+
+            AudioManager.instance.Play("Sfx_mouse_on_button");
         }
     }
-
     public void ConfirmQuit()
     {
         Application.Quit();
     }
-
     public void SkullCollectionButton()
     {
         if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
@@ -198,9 +203,10 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
+
+            AudioManager.instance.Play("Sfx_mouse_on_button");
         }
     }
-
     public IEnumerator MoveInTornPage()
     {
         shadowPanel.SetActive(true);
@@ -220,7 +226,6 @@ public class TornPage : MonoBehaviour
         }
 
     }
-
     public IEnumerator MoveOutTornPageCoroutine()
     {
         shadowPanel.SetActive(false);

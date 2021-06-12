@@ -33,9 +33,10 @@ public class SkullUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         skullDescription.text = "Move on an unlocked skull to read its description";
     }
     public void ActivateSkull()
-    {
+    { 
         if (skullActive == false)
         {
+            AudioManager.instance.Play("Sfx_skull_activate");
             skullActive = true;
             skullCounter++;
             this.GetComponent<Button>().Select();
@@ -44,6 +45,7 @@ public class SkullUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         else
         {
+            AudioManager.instance.Play("Sfx_skull_deactivate");
             skullActive = false;
             skullCounter--;
             EventSystem.current.SetSelectedGameObject(null);
