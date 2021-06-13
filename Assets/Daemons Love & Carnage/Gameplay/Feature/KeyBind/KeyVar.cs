@@ -71,4 +71,21 @@ public class KeyVar : MonoBehaviour
         StringKeyHeavyAttack = PlayerPrefs.GetString(KeyHeavyAttack.name.ToString());
         StringKeySpecialAttack = PlayerPrefs.GetString(KeySpecialAttack.name.ToString());
     }
+    
+    public void AssignButton(Button KeyButton, string KeyString)
+    {
+        KeyButton.GetComponentInChildren<Text>().text = KeyString;
+    }
+    public void AssignButtonContainer()
+    {
+        AssignButton(KeyUp, StringKeyUp);
+        AssignButton(KeyDown, StringKeyDown);
+        AssignButton(KeyLeft, StringKeyLeft);
+        AssignButton(KeyRight, StringKeyRight);
+        AssignButton(KeyDash, StringKeyDash);
+        AssignButton(KeyPossession, StringKeyPossession);
+        AssignButton(KeyLightAttack, StringKeyLightAttack);
+        AssignButton(KeyHeavyAttack, StringKeyHeavyAttack);
+        AssignButton(KeySpecialAttack, StringKeySpecialAttack);
+    }
 }

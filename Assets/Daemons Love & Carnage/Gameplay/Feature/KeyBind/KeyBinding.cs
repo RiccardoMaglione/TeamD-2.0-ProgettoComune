@@ -19,6 +19,7 @@ public class KeyBinding : KeyVar
     private void Awake()
     {
         GetStringKeyPrefs();
+        AssignButtonContainer();
 
         KeyBindInstance = this;
 
