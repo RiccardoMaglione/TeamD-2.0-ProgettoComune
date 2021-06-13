@@ -27,13 +27,16 @@ namespace SwordGame
                 {
                     collision.GetComponent<PSMController>().GetComponent<Animator>().SetBool("PSM-IsStagger", true);
                 }
-                Destroy(ArrowParent);
+                Destroy(ArrowParent, 0.2f);
+                GetComponentInParent<SpriteRenderer>().enabled = false;
+                GetComponent<BoxCollider2D>().enabled = false;
             }
             else if(collision.tag == "Floor")
             {
                 Destroy(ArrowParent);
             }
 
+            
         }
     }
 }

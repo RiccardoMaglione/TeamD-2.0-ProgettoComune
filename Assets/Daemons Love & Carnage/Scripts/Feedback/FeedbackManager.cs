@@ -123,15 +123,6 @@ public class FeedbackManager : MonoBehaviour
     public void Zoom()
     {
         PlayerDieZoom = true;
-        /*for (int i = 0; i < cam.Length; i++)
-        {
-            cam[i].GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
-            cam[i].m_Lens.OrthographicSize = Mathf.Lerp(cam[i].m_Lens.OrthographicSize, endPosition, speed);
-            if((int)cam[i].m_Lens.OrthographicSize == endPosition)
-            {
-                PlayerDieZoom = true;
-            }
-        }*/
     }
 
     void Awake()
