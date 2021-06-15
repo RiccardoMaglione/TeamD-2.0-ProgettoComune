@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FatKnightSpecialAttack : MonoBehaviour
@@ -11,6 +12,9 @@ public class FatKnightSpecialAttack : MonoBehaviour
 
     public void Findenemy()
     {
+        Array.Clear(obj, 0, obj.Length);
+        enemyList.Clear();
+        enemyList.TrimExcess();
         i = 0;
         obj = FindObjectsOfType<EnemyData>();
         foreach (EnemyData go in obj)
