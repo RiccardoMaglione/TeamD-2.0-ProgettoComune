@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using SwordGame;
+﻿using SwordGame;
+using UnityEngine;
 
 public class InstantiateStomps : StateMachineBehaviour
 {

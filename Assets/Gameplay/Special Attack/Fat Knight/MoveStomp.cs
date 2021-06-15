@@ -5,7 +5,7 @@ public class MoveStomp : MonoBehaviour
     FatKnightSpecialAttack specialAttack;
     [SerializeField] float speed;
     [SerializeField] int damage;
-    Vector2 direction;
+    //Vector2 direction;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,24 +18,16 @@ public class MoveStomp : MonoBehaviour
     }
     private void Awake()
     {
-        direction = new Vector2(0, -1);
         specialAttack = FindObjectOfType<FatKnightSpecialAttack>();
     }
 
     void Update()
     {
-        if (transform.position.y < specialAttack.enemyList[specialAttack.i].transform.position.y - 1 + 4 && specialAttack.enemyList[specialAttack.i] != null)
-            direction = new Vector2(0, 1);
-        transform.position = new Vector2(specialAttack.enemyList[specialAttack.i].transform.position.x, transform.position.y);
-
-
-        transform.Translate(direction * speed * Time.deltaTime);
-        if (transform.position.y >= 30)
+        this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, specialAttack.enemyList[specialAttack.i].transform.position, speed * Time.deltaTime);
+        if (this.gameObject.transform.position == specialAttack.enemyList[specialAttack.i].transform.position)
         {
-            Destroy(gameObject);
-            specialAttack.i++;
+            //Destroy(this.gameObject);
             specialAttack.animator.SetTrigger("Repeat");
         }
-
     }
 }

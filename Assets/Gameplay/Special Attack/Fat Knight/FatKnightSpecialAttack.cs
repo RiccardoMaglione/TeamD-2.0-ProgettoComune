@@ -4,19 +4,21 @@ using UnityEngine;
 public class FatKnightSpecialAttack : MonoBehaviour
 {
     public List<GameObject> enemyList = new List<GameObject>();
-    public GameObject[] obj;
+    public EnemyData[] obj;
     public int i = 0;
     [SerializeField] GameObject stompPrefab;
     public Animator animator;
+    public bool allAdded;
 
     public void Findenemy()
     {
-        obj = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject go in obj)
+        allAdded = false;
+        obj = FindObjectsOfType<EnemyData>();
+        foreach (EnemyData go in obj)
         {
-            if (go.layer == 9)
+            if (go.isActiveAndEnabled)
             {
-                enemyList.Add(go);
+                enemyList.Add(go.gameObject);
             }
         }
     }

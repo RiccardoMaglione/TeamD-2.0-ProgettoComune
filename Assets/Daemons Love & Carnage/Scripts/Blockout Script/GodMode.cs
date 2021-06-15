@@ -12,14 +12,15 @@ namespace SwordGame
 
         private void Update()
         {
-            if(TempPlayer != ChangeFollow.StaticPlayerTemp)
-            player = ChangeFollow.StaticPlayerTemp;
+            if (TempPlayer != ChangeFollow.StaticPlayerTemp)
+                player = ChangeFollow.StaticPlayerTemp;
         }
 
         public void SetGodMode()
         {
             player.GetComponent<PSMController>().MaxHealth = 1000000;
             player.GetComponent<PSMController>().CurrentHealth = 1000000;
+            player.GetComponent<PSMController>().CurrentEnergy = 100;
 
         }
     }
