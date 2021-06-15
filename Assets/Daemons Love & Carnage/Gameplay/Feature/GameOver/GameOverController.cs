@@ -9,46 +9,48 @@ public class GameOverController : MonoBehaviour
     public List<Sprite> ListEye = new List<Sprite>();
     public Image ImageEye;
 
-    
-    public List<Sprite> ListImageBoss = new List<Sprite>();
-    public List<Image> ImageBoss = new List<Image>();
-    
-    public List<string> ListDialogue = new List<string>();
-    public List<Text> TextDialogue = new List<Text>();
+    public List<GameObject> ListScreen = new List<GameObject>();
+    public int RndScreen;
+    public GameObject ButtonScreen;
+    public float TimerInvokeButton;
+    public float TimerEye;
 
-    
-    // Start is called before the first frame update
     void Start()
     {
-        RandomGameOver();
+        StartCoroutine(AnimationEye());
+        RandomScreenGameOver();
+        Invoke("ButtonScreenGameOver", TimerInvokeButton);
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator AnimationEye()
     {
-        
+        while (true)
+        {
+            for (int i = 0; i < ListEye.Count; i++)
+            {
+                ImageEye.sprite = ListEye[i];
+                yield return new WaitForSeconds(TimerEye);
+            }
+        }
     }
 
-    public void RandomGameOver()
+    public void RandomScreenGameOver()
     {
-        int RndEye = Random.Range(0, ListEye.Count);
-        ImageEye.sprite = ListEye[RndEye];
+        RndScreen = Random.Range(0, ListScreen.Count);
+        ListScreen[RndScreen].SetActive(true);
+    }
 
-        int RndListBoss = Random.Range(0, ListImageBoss.Count);
-        int RndImageBoss = Random.Range(0, ImageBoss.Count);
-        ImageBoss[RndImageBoss].gameObject.SetActive(true);
-        ImageBoss[RndImageBoss].sprite = ListImageBoss[RndListBoss];
-
-        int RndListDialogue = Random.Range(0, ListDialogue.Count);
-        int RndTextDialouge = Random.Range(0, TextDialogue.Count);
-        TextDialogue[RndTextDialouge].gameObject.SetActive(true);
-        TextDialogue[RndTextDialouge].text = ListDialogue[RndListDialogue];
+    public void ButtonScreenGameOver()
+    {
+        ListScreen[RndScreen].SetActive(false);
+        ButtonScreen.SetActive(true);
     }
 
     public void ReturnMenu(string NameScene)
     {
         SceneManager.LoadScene(NameScene);
     }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene("GameOver");
