@@ -7,6 +7,11 @@ namespace SwordGame
 {
     public class DebugMenu : MonoBehaviour
     {
+        private void Start()
+        {
+            EnableTutorial();
+        }
+
         #region Scene
         public void ReloadScene(string NameScene)
         {
@@ -20,7 +25,7 @@ namespace SwordGame
         {
             GameObject Player = ChangeFollow.StaticPlayerTemp;
             Player.GetComponent<PSMController>().MaxHealth = float.MaxValue;
-            Player.GetComponent<PSMController>().MaxHealth = float.MaxValue;
+            Player.GetComponent<PSMController>().CurrentHealth = float.MaxValue;
         }
         #endregion
 
@@ -92,6 +97,28 @@ namespace SwordGame
                 PlayerPrefs.SetInt("DisableTutorial", 0);
             }
 
+        }
+        #endregion
+
+        #region Energy
+        public void Energy()
+        {
+            GameObject Player = ChangeFollow.StaticPlayerTemp;
+            Player.GetComponent<PSMController>().CurrentEnergy = int.MaxValue;
+        }
+        #endregion
+
+        #region Enemy
+        public void CountEnemy()
+        {
+            FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter = int.MaxValue;
+        }
+
+        public GameObject EnemyContainer;
+
+        public void KilledEnemy()
+        {
+            Destroy(EnemyContainer);
         }
         #endregion
     }

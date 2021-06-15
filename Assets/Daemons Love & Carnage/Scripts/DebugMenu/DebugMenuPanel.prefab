@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5107419506253918134}
   - component: {fileID: 5107419506253918135}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: EnergyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5107419506253918134}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4228958171561238424}
+        m_TargetAssemblyTypeName: SwordGame.DebugMenu, Assembly-CSharp
+        m_MethodName: Energy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5107419506271393501
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +364,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Null
+  m_Text: Set Count Killed Enemy
 --- !u!1 &5107419506363049833
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +563,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Null
+  m_Text: Energy
 --- !u!1 &5107419506422582256
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +721,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Null
+  m_Text: Delete Enemy
 --- !u!1 &5107419506464444652
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +779,7 @@ GameObject:
   - component: {fileID: 5107419506652324195}
   - component: {fileID: 5107419506652324204}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: TutorialButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,7 +885,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5107419506652324195}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4228958171561238424}
+        m_TargetAssemblyTypeName: SwordGame.DebugMenu, Assembly-CSharp
+        m_MethodName: DisableTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5107419506818523449
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +911,7 @@ GameObject:
   - component: {fileID: 5107419506818523454}
   - component: {fileID: 5107419506818523455}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: CountKilledEnemyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -993,7 +1017,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5107419506818523454}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4228958171561238424}
+        m_TargetAssemblyTypeName: SwordGame.DebugMenu, Assembly-CSharp
+        m_MethodName: CountEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5107419506905809263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1410,7 @@ MonoBehaviour:
   graphicsToEnable1: {fileID: 0}
   graphicsToEnable2: {fileID: 0}
   tutorialTrigger: {fileID: 0}
+  EnemyContainer: {fileID: 0}
 --- !u!1 &5107419507163129509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,7 +1700,7 @@ GameObject:
   - component: {fileID: 5107419507305131128}
   - component: {fileID: 5107419507305131129}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: InvulnerabilityButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1769,7 +1806,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5107419507305131128}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4228958171561238424}
+        m_TargetAssemblyTypeName: SwordGame.DebugMenu, Assembly-CSharp
+        m_MethodName: Invulnerability
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5107419507429163674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,7 +1832,7 @@ GameObject:
   - component: {fileID: 5107419507429163679}
   - component: {fileID: 5107419507429163672}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: GoToBossButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1889,7 +1938,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5107419507429163679}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4228958171561238424}
+        m_TargetAssemblyTypeName: SwordGame.DebugMenu, Assembly-CSharp
+        m_MethodName: GoToBoss
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5107419507437834783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,7 +2084,7 @@ GameObject:
   - component: {fileID: 5107419507767945127}
   - component: {fileID: 5107419507767945120}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: DeleteEnemyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2129,7 +2190,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5107419507767945127}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4228958171561238424}
+        m_TargetAssemblyTypeName: SwordGame.DebugMenu, Assembly-CSharp
+        m_MethodName: KilledEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4228958171561238424}
+        m_TargetAssemblyTypeName: SwordGame.DebugMenu, Assembly-CSharp
+        m_MethodName: CountEnemy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5107419507894394166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,7 +2422,7 @@ GameObject:
   - component: {fileID: 5107419508135778457}
   - component: {fileID: 5107419508135778458}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ReloadSceneButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2443,4 +2528,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5107419508135778457}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4228958171561238424}
+        m_TargetAssemblyTypeName: SwordGame.DebugMenu, Assembly-CSharp
+        m_MethodName: ReloadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LevelScene
+          m_BoolArgument: 0
+        m_CallState: 2
