@@ -8,11 +8,10 @@ public class FatKnightSpecialAttack : MonoBehaviour
     public int i = 0;
     [SerializeField] GameObject stompPrefab;
     public Animator animator;
-    public bool allAdded;
 
     public void Findenemy()
     {
-        allAdded = false;
+        i = 0;
         obj = FindObjectsOfType<EnemyData>();
         foreach (EnemyData go in obj)
         {

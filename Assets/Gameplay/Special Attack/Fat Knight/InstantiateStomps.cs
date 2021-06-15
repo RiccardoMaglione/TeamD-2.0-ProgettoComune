@@ -1,5 +1,4 @@
-﻿using SwordGame;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InstantiateStomps : StateMachineBehaviour
 {
@@ -8,20 +7,8 @@ public class InstantiateStomps : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         specialAttack = animator.GetComponent<FatKnightSpecialAttack>();
-        if (specialAttack.i < specialAttack.enemyList.Count)
-        {
-            specialAttack.InstantiateStomps();
-            animator.SetTrigger("Move");
-        }
-
-        else
-        {
-            animator.SetTrigger("Stop");
-            animator.GetComponentInParent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
-            specialAttack.enemyList.Clear();
-            specialAttack.i = 0;
-        }
-
+        specialAttack.InstantiateStomps();
+        animator.SetTrigger("Move");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

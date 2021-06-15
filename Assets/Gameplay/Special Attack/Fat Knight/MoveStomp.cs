@@ -5,7 +5,8 @@ public class MoveStomp : MonoBehaviour
     FatKnightSpecialAttack specialAttack;
     [SerializeField] float speed;
     [SerializeField] int damage;
-    //Vector2 direction;
+
+    bool isUp = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,11 +24,32 @@ public class MoveStomp : MonoBehaviour
 
     void Update()
     {
-        this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, specialAttack.enemyList[specialAttack.i].transform.position, speed * Time.deltaTime);
-        if (this.gameObject.transform.position == specialAttack.enemyList[specialAttack.i].transform.position)
+        if(isUp == false)
+            transform.position = Vector3.MoveTowards(transform.position, specialAttack.enemyList[specialAttack.i].transform.position, speed * Time.deltaTime);
+        else
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 30, transform.position.z), speed * Time.deltaTime);
+
+        if (gameObject.transform.position == specialAttack.enemyList[specialAttack.i].transform.position)
         {
-            //Destroy(this.gameObject);
-            specialAttack.animator.SetTrigger("Repeat");
+            isUp = true;      
         }
+
+        if (transform.position.y == 30)
+        {
+            if (specialAttack.i < specialAttack.enemyList.Count - 1)
+            {
+                specialAttack.i++;
+                specialAttack.animator.SetTrigger("Repeat");
+            }
+
+            else
+            {
+                specialAttack.i = 0;                
+                specialAttack.animator.SetTrigger("Stop");
+            }
+            
+             Destroy(gameObject);
+        }
+            
     }
 }

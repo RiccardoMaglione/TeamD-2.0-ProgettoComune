@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using SwordGame;
 
 public class FatKnightStartAttack : StateMachineBehaviour
@@ -17,7 +15,8 @@ public class FatKnightStartAttack : StateMachineBehaviour
         if ((Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && psmController.CurrentEnergy >= psmController.MaxEnergy && animator.GetComponentInParent<PSMController>().enabled == true)
         {
             animator.SetTrigger("Start");
-        }          
+            psmController.GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
+        }        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
