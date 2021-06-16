@@ -16,10 +16,23 @@ public class KeyBinding : KeyVar
 
     Button TempButton;
 
+    public Sprite SpriteStandardKeyUp;
+    public Sprite SpriteStandardKeyDown;
+    public Sprite SpriteStandardKeyLeft;
+    public Sprite SpriteStandardKeyRight;
+    public Sprite SpriteStandardKeyDash;
+    public Sprite SpriteStandardKeyPossession;
+    public Sprite SpriteStandardKeyLightAttack;
+    public Sprite SpriteStandardKeyHeavyAttack;
+    public Sprite SpriteStandardKeySpecialAttack;
+
+    public Sprite SpriteEmpty;
+
     private void Awake()
     {
         GetStringKeyPrefs();
         AssignButtonContainer();
+        AssignSpriteStringContainer();
 
         KeyBindInstance = this;
 
@@ -39,7 +52,7 @@ public class KeyBinding : KeyVar
         ActivateGetKey = true;
         KeyText = ButtonKey.GetComponentInChildren<Text>();
         TempButton = ButtonKey;
-        KeyText.text = "None";
+        KeyText.text = "";
     }
     public void SetAddListener()
     {
@@ -73,6 +86,8 @@ public class KeyBinding : KeyVar
                     ActivateGetKey = false;
                     KeyText.text = vKey.ToString();
                     PlayerPrefs.SetString(TempButton.name.ToString(), KeyText.text);
+                    TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                    AssignSpriteStandardContainer(vKey);
                 }
             }
         }
@@ -86,5 +101,38 @@ public class KeyBinding : KeyVar
             return NewKey;
         }
         return KeyCode.None;
+    }
+
+    public void AssingSpriteStandard(KeyCode vKey, KeyCode StandardKeyCode, Sprite SpriteKey, Button ButtonKey)
+    {
+        if (vKey == StandardKeyCode && SpriteKey != null)
+        {
+            ButtonKey.GetComponent<Image>().sprite = SpriteKey;
+            KeyText.text = "";
+        }
+    }
+
+    public void AssignSpriteStandardContainer(KeyCode vKey)
+    {
+        AssingSpriteStandard(vKey, KeyCode.UpArrow, SpriteStandardKeyUp, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.DownArrow, SpriteStandardKeyDown, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.RightArrow, SpriteStandardKeyRight, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.LeftArrow, SpriteStandardKeyLeft, TempButton);
+    }
+
+    public void AssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
+    {
+        if (KeyName == Keystring)
+        {
+            ButtonKey.GetComponent<Image>().sprite = SpriteKey;
+            ButtonKey.GetComponentInChildren<Text>().text = "";
+        }
+    }
+    public void AssignSpriteStringContainer()
+    {
+        AssingSpriteStringStandard("UpArrow", PlayerPrefs.GetString(KeyUp.name.ToString()), KeyUp, SpriteStandardKeyUp);
+        AssingSpriteStringStandard("DownArrow", PlayerPrefs.GetString(KeyDown.name.ToString()), KeyDown, SpriteStandardKeyDown);
+        AssingSpriteStringStandard("RightArrow", PlayerPrefs.GetString(KeyRight.name.ToString()), KeyRight, SpriteStandardKeyRight);
+        AssingSpriteStringStandard("LeftArrow", PlayerPrefs.GetString(KeyLeft.name.ToString()), KeyLeft, SpriteStandardKeyLeft);
     }
 }
