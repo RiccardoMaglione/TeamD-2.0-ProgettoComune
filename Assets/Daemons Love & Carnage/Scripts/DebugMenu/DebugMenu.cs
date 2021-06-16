@@ -7,9 +7,16 @@ namespace SwordGame
 {
     public class DebugMenu : MonoBehaviour
     {
+        public KeyCode KeyDebugMenu;
+
         private void Start()
         {
             EnableTutorial();
+        }
+
+        private void Update()
+        {
+            OpenCloseMenu();
         }
 
         #region Scene
@@ -20,8 +27,8 @@ namespace SwordGame
         }
         #endregion
 
-        #region Invulnerability
-        public void Invulnerability()
+        #region GodMode
+        public void GodMode()
         {
             GameObject Player = ChangeFollow.StaticPlayerTemp;
             Player.GetComponent<PSMController>().MaxHealth = float.MaxValue;
@@ -111,7 +118,7 @@ namespace SwordGame
         #region Enemy
         public void CountEnemy()
         {
-            FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter = int.MaxValue;
+            FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter = 10000;
         }
 
         public GameObject EnemyContainer;
@@ -121,5 +128,21 @@ namespace SwordGame
             Destroy(EnemyContainer);
         }
         #endregion
+
+        public GameObject DebugMenuPanel;
+
+        public void OpenCloseMenu()
+        {
+            if (Input.GetKeyDown(KeyDebugMenu) && DebugMenuPanel.activeSelf == false)
+            {
+                DebugMenuPanel.SetActive(true);
+                Cursor.visible = true;
+            }
+            else if (Input.GetKeyDown(KeyDebugMenu) && DebugMenuPanel.activeSelf == true)
+            {
+                DebugMenuPanel.SetActive(false);
+                Cursor.visible = false;
+            }
+        }
     }
 }
