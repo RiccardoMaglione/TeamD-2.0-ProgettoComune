@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
 
 public class PSMMove : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        switch (animator.GetComponent<PSMController>().TypeCharacter)
+        /*switch (animator.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
                 animator.GetComponentInChildren<FatKnightParticleController>().PlayRun();
@@ -21,12 +19,12 @@ public class PSMMove : StateMachineBehaviour
             case TypePlayer.Thief:
                 animator.GetComponentInChildren<ThiefParticlesController>().PlayRun();
                 break;
-        }
+        }*/
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {  
+    {
         #region Move Zone - Compito principale dello script di movimento
         if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                        //Se schiaccio A vado a sinistra
         {
@@ -38,7 +36,7 @@ public class PSMMove : StateMachineBehaviour
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);   //Ruoto il player
             //Debug.Log("PlayerState - Vai a sinistra");
         }
-        else if ((Input.GetKey(KeyCode.RightArrow)|| Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                   //Se schiaccio D vado a destra
+        else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                   //Se schiaccio D vado a destra
         {
             if (SpecialBKIdle.BoriousMove == true)
             {
@@ -58,7 +56,7 @@ public class PSMMove : StateMachineBehaviour
         #endregion
 
         #region Jump Zone - Da "Player Move State" da "Player Jump State"
-        if ((Input.GetKeyDown(KeyCode.UpArrow)|| Input.GetKeyDown(KeyCode.Joystick1Button0)) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6)                                                                                                                                //Se schiaccio spazio
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6)                                                                                                                                //Se schiaccio spazio
         {
             //Debug.Log("PlayerState - Vai nello stato 'PSMJump'");                                                                                                           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                                                                                                                             //Setto attivo il trigger - Prima condizione per il cambio stato in "Player Jump State"

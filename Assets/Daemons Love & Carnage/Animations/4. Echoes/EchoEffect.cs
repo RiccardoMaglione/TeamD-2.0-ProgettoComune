@@ -18,7 +18,8 @@ public class EchoEffect : MonoBehaviour
         {
             if (timeBetweenSpawn <= 0)
             {
-                Instantiate(echo, transform.position, transform.rotation);
+                GameObject tempEcho = Instantiate(echo, transform.position, transform.rotation);
+                Destroy(tempEcho, 0.3f);
                 timeBetweenSpawn = StartTimeBetweenSpawn;
             }
             else

@@ -7,7 +7,7 @@ public class PSMDash : StateMachineBehaviour
     {
         animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation; //30/04/21
 
-        switch (animator.GetComponent<PSMController>().TypeCharacter)
+        /*switch (animator.GetComponent<PSMController>().TypeCharacter)
         {
             case TypePlayer.FatKnight:
                 animator.GetComponentInChildren<FatKnightParticleController>().PlayDash();
@@ -21,7 +21,7 @@ public class PSMDash : StateMachineBehaviour
             case TypePlayer.Thief:
                 animator.GetComponentInChildren<ThiefParticlesController>().PlayDash();
                 break;
-        }
+        }*/
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
