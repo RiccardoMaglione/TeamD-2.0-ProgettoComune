@@ -20,11 +20,16 @@ public class KeyBinding : KeyVar
     public Sprite SpriteStandardKeyDown;
     public Sprite SpriteStandardKeyLeft;
     public Sprite SpriteStandardKeyRight;
-    public Sprite SpriteStandardKeyDash;
+    public Sprite SpriteStandardKeyDashShift;
+    public Sprite SpriteStandardKeyDashCtrl;
     public Sprite SpriteStandardKeyPossession;
     public Sprite SpriteStandardKeyLightAttack;
     public Sprite SpriteStandardKeyHeavyAttack;
     public Sprite SpriteStandardKeySpecialAttack;
+
+    public Sprite SpriteStandardKeyEsc;
+    public Sprite SpriteStandardKeySpace;
+    public Sprite SpriteStandardKeyLeftClick;
 
     public Sprite SpriteEmpty;
 
@@ -52,6 +57,7 @@ public class KeyBinding : KeyVar
         ActivateGetKey = true;
         KeyText = ButtonKey.GetComponentInChildren<Text>();
         TempButton = ButtonKey;
+        //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
         KeyText.text = "";
     }
     public void SetAddListener()
@@ -118,6 +124,18 @@ public class KeyBinding : KeyVar
         AssingSpriteStandard(vKey, KeyCode.DownArrow, SpriteStandardKeyDown, TempButton);
         AssingSpriteStandard(vKey, KeyCode.RightArrow, SpriteStandardKeyRight, TempButton);
         AssingSpriteStandard(vKey, KeyCode.LeftArrow, SpriteStandardKeyLeft, TempButton);
+
+        AssingSpriteStandard(vKey, KeyCode.LeftShift, SpriteStandardKeyDashShift, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.LeftControl, SpriteStandardKeyDashCtrl, TempButton);
+        
+        AssingSpriteStandard(vKey, KeyCode.Z, SpriteStandardKeyLightAttack, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.X, SpriteStandardKeyHeavyAttack, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.C, SpriteStandardKeySpecialAttack, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.V, SpriteStandardKeyPossession, TempButton);
+
+        AssingSpriteStandard(vKey, KeyCode.Mouse0, SpriteStandardKeyLeftClick, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Space, SpriteStandardKeySpace, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Escape, SpriteStandardKeyEsc, TempButton);
     }
 
     public void AssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
@@ -128,11 +146,33 @@ public class KeyBinding : KeyVar
             ButtonKey.GetComponentInChildren<Text>().text = "";
         }
     }
+
+    public void AssignAllSpriteButton(string KeyName, Sprite SpriteStandard)
+    {
+        AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeyUp.name.ToString()), KeyUp, SpriteStandard);
+        AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeyDown.name.ToString()), KeyDown, SpriteStandard);
+        AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeyLeft.name.ToString()), KeyLeft, SpriteStandard);
+        AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeyRight.name.ToString()), KeyRight, SpriteStandard);
+        AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeyDash.name.ToString()), KeyDash, SpriteStandard);
+        AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeyPossession.name.ToString()), KeyPossession, SpriteStandard);
+        AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeyLightAttack.name.ToString()), KeyLightAttack, SpriteStandard);
+        AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeyHeavyAttack.name.ToString()), KeyHeavyAttack, SpriteStandard);
+        AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeySpecialAttack.name.ToString()), KeySpecialAttack, SpriteStandard);
+    }
     public void AssignSpriteStringContainer()
     {
-        AssingSpriteStringStandard("UpArrow", PlayerPrefs.GetString(KeyUp.name.ToString()), KeyUp, SpriteStandardKeyUp);
-        AssingSpriteStringStandard("DownArrow", PlayerPrefs.GetString(KeyDown.name.ToString()), KeyDown, SpriteStandardKeyDown);
-        AssingSpriteStringStandard("RightArrow", PlayerPrefs.GetString(KeyRight.name.ToString()), KeyRight, SpriteStandardKeyRight);
-        AssingSpriteStringStandard("LeftArrow", PlayerPrefs.GetString(KeyLeft.name.ToString()), KeyLeft, SpriteStandardKeyLeft);
+        AssignAllSpriteButton("UpArrow", SpriteStandardKeyUp);
+        AssignAllSpriteButton("DownArrow", SpriteStandardKeyDown);
+        AssignAllSpriteButton("RightArrow", SpriteStandardKeyRight);
+        AssignAllSpriteButton("LeftArrow", SpriteStandardKeyLeft);
+        AssignAllSpriteButton("LeftShift", SpriteStandardKeyDashShift);
+        AssignAllSpriteButton("LeftControl", SpriteStandardKeyDashCtrl);
+        AssignAllSpriteButton("Z", SpriteStandardKeyLightAttack);
+        AssignAllSpriteButton("X", SpriteStandardKeyHeavyAttack);
+        AssignAllSpriteButton("C", SpriteStandardKeySpecialAttack);
+        AssignAllSpriteButton("V", SpriteStandardKeyPossession);
+        AssignAllSpriteButton("Mouse0", SpriteStandardKeyLeftClick);
+        AssignAllSpriteButton("Space", SpriteStandardKeySpace);
+        AssignAllSpriteButton("Escape", SpriteStandardKeyEsc);
     }
 }
