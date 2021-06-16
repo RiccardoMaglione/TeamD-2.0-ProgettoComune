@@ -36596,6 +36596,7 @@ GameObject:
   - component: {fileID: 8830916221084911283}
   - component: {fileID: 5777427746848156784}
   - component: {fileID: 8830916221084911275}
+  - component: {fileID: 2088619581}
   m_Layer: 9
   m_Name: EnemyBoriousKnight
   m_TagString: Enemy
@@ -36610,7 +36611,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8830916221084911272}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -36912,6 +36913,20 @@ MonoBehaviour:
   colorChangeDuration: 0.08
   newMaterial: {fileID: 2100000, guid: fc44fba7d820b8d498fd97d8f59331c9, type: 2}
   originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &2088619581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8830916221084911272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ce1fcce263d5e459b444d63aec3509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartTimeBetweenSpawn: 0.04
+  echo: {fileID: 6270588468222683675, guid: ae145efdd2b7e454ebf96e646c5ca854, type: 3}
 --- !u!1 &8830916221671088792
 GameObject:
   m_ObjectHideFlags: 0
