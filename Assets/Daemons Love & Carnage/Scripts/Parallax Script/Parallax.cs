@@ -17,7 +17,18 @@ public class Parallax : MonoBehaviour
 
     void Update()
     {
-        cam = FindObjectOfType<CinemachineVirtualCamera>();
+        //cam = FindObjectOfType<CinemachineVirtualCamera>();
+
+        foreach (CinemachineVirtualCamera CamItem in ChangeFollow.CFInstance.CamList)
+        {
+            if(CamItem.isActiveAndEnabled == true)
+            {
+                cam = CamItem;
+            }
+        }
+        
+        
+        
         cam.transform.position = new Vector3(FixParallax.position.x, FixParallax.position.y, FixParallax.position.z);
         float temp = (cam.transform.position.x * (1 - parallaxEffect));
         float dist = (cam.transform.position.x * parallaxEffect);
