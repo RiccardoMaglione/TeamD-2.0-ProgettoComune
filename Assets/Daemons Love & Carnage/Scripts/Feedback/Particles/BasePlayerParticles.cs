@@ -8,6 +8,8 @@ public class BasePlayerParticles : MonoBehaviour
     public ParticleSystem dashParticle;
     public ParticleSystem possessionParticle;
 
+    public GameObject player;
+
     #region Run Particles
     public void PlayRun()
     {
@@ -22,12 +24,20 @@ public class BasePlayerParticles : MonoBehaviour
 
     public void PlayJump()
     {
-        jumpParticle.Play();
+        //jumpParticle.Play();
+        GameObject tempJumpEffect = Instantiate(landingParticle.gameObject, new Vector2(transform.position.x, transform.position.y - 1), Quaternion.identity);
+        tempJumpEffect.GetComponent<ParticleSystem>().Play();
+        Destroy(tempJumpEffect, 1);
+
     }
 
     public void PlayLanding()
     {
-        landingParticle.Play();
+        //landingParticle.Play();
+        GameObject tempLandingEffect = Instantiate(landingParticle.gameObject, new Vector2(transform.position.x, transform.position.y - 1), Quaternion.identity);
+        tempLandingEffect.GetComponent<ParticleSystem>().Play();
+        Destroy(tempLandingEffect, 1);
+
     }
 
     public void PlayDash()
