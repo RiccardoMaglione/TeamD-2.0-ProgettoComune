@@ -36,7 +36,10 @@ public class SkullUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     { 
         if (skullActive == false)
         {
-            AudioManager.instance.Play("Sfx_skull_activate");
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_skull_activate");
+            }
             skullActive = true;
             skullCounter++;
             this.GetComponent<Button>().Select();
@@ -45,7 +48,10 @@ public class SkullUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         else
         {
-            AudioManager.instance.Play("Sfx_skull_deactivate");
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_skull_deactivate");
+            }
             skullActive = false;
             skullCounter--;
             EventSystem.current.SetSelectedGameObject(null);

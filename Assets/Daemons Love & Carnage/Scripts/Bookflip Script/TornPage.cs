@@ -67,7 +67,10 @@ public class TornPage : MonoBehaviour
             StartCoroutine(MoveInTornPage());
         }
 
-        AudioManager.instance.Play("Sfx_mouse_on_button");
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
     }
     public void RateUsButton()
     {
@@ -85,7 +88,10 @@ public class TornPage : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
 
-            AudioManager.instance.Play("Sfx_mouse_on_button");
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_mouse_on_button");
+            }
         }
     }
     public void CreditsButton()
@@ -105,7 +111,10 @@ public class TornPage : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
 
-            AudioManager.instance.Play("Sfx_mouse_on_button");
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_mouse_on_button");
+            }
         }
     }
     public void ControlsButton()
@@ -124,8 +133,11 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
-
-            AudioManager.instance.Play("Sfx_mouse_on_button");
+            
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_mouse_on_button");
+            }
         }
     }
     public void NewGameButton()
@@ -151,7 +163,10 @@ public class TornPage : MonoBehaviour
                 pageFlipper.NewGame();
             }
 
-            AudioManager.instance.Play("Sfx_mouse_on_button");
+            if(AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_mouse_on_button");
+            }
         }
     }
     public void newGameConfirm()
@@ -180,7 +195,10 @@ public class TornPage : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
 
-            AudioManager.instance.Play("Sfx_mouse_on_button");
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_mouse_on_button");
+            }
         }
     }
     public void ConfirmQuit()
@@ -203,8 +221,11 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
-
-            AudioManager.instance.Play("Sfx_mouse_on_button");
+            
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_mouse_on_button");
+            }
         }
     }
     public IEnumerator MoveInTornPage()
