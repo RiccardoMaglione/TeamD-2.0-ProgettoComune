@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 public class TornPage : MonoBehaviour
 {
     [SerializeField] GameObject tornPage;
@@ -39,9 +39,10 @@ public class TornPage : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             MoveOutTornPage();
+            EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);     //Controller - sistemare
         }
     }
 

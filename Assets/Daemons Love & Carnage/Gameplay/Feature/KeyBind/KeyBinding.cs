@@ -32,6 +32,7 @@ public class KeyBinding : KeyVar
     public Sprite SpriteStandardKeyLeftClick;
 
     public Sprite SpriteEmpty;
+    public bool ActivateCondition;
 
     private void Awake()
     {
@@ -50,6 +51,7 @@ public class KeyBinding : KeyVar
     {
         ButtonKeyListener();
         AssignStringContainer();
+        GetKeyUp();
     }
 
     public void ListenerOnClik(Button ButtonKey)
@@ -60,6 +62,7 @@ public class KeyBinding : KeyVar
         //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
         KeyText.text = "";
     }
+
     public void SetAddListener()
     {
         if (KeyUp != null)
@@ -81,15 +84,17 @@ public class KeyBinding : KeyVar
         if (KeySpecialAttack != null)
             KeySpecialAttack.onClick.AddListener(delegate { ListenerOnClik(KeySpecialAttack); });
     }
+
     public void ButtonKeyListener()
     {
-        if (ActivateGetKey == true)
+        if (ActivateGetKey == true && ActivateCondition == true)
         {
             foreach (KeyCode vKey in Enum.GetValues(typeof(KeyCode)))
             {
                 if (Input.GetKey(vKey))
                 {
                     ActivateGetKey = false;
+                    ActivateCondition = false;
                     KeyText.text = vKey.ToString();
                     PlayerPrefs.SetString(TempButton.name.ToString(), KeyText.text);
                     TempButton.GetComponent<Image>().sprite = SpriteEmpty;
@@ -98,6 +103,7 @@ public class KeyBinding : KeyVar
             }
         }
     }
+
     public KeyCode SetKeyBind(string KeyValue)
     {
         if(ActivateGetKey == false)
@@ -159,6 +165,7 @@ public class KeyBinding : KeyVar
         AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeyHeavyAttack.name.ToString()), KeyHeavyAttack, SpriteStandard);
         AssingSpriteStringStandard(KeyName, PlayerPrefs.GetString(KeySpecialAttack.name.ToString()), KeySpecialAttack, SpriteStandard);
     }
+
     public void AssignSpriteStringContainer()
     {
         AssignAllSpriteButton("UpArrow", SpriteStandardKeyUp);
@@ -174,5 +181,19 @@ public class KeyBinding : KeyVar
         AssignAllSpriteButton("Mouse0", SpriteStandardKeyLeftClick);
         AssignAllSpriteButton("Space", SpriteStandardKeySpace);
         AssignAllSpriteButton("Escape", SpriteStandardKeyEsc);
+    }
+
+    public void GetKeyUp()
+    {
+        if (ActivateGetKey == true)
+        {
+            foreach (KeyCode vKey in Enum.GetValues(typeof(KeyCode)))
+            {
+                if (Input.GetKeyUp(vKey))
+                {
+                    ActivateCondition = true;
+                }
+            }
+        }
     }
 }
