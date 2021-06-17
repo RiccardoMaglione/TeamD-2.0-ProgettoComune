@@ -21,6 +21,7 @@ public class AttackState : StateMachineBehaviour
 
         else
         {
+            AudioManager.instance.Play("Sfx_boss_stomp");
             shake.cameraShake.ShakeElapsedTime = shake.cameraShake.ShakeDuration;
             animator.SetTrigger("GoToNext");
         }

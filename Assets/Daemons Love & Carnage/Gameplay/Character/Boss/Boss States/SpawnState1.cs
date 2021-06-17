@@ -14,6 +14,8 @@ public class SpawnState1 : StateMachineBehaviour
         spawnMinion.i = 0;
         boss = animator.GetComponent<Boss>();
         boss.canGetDamage = false;
+
+        AudioManager.instance.Stop("Sfx_boss_recovery");
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

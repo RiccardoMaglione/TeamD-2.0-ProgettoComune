@@ -19,6 +19,9 @@ public class WaypointsAttack1 : MonoBehaviour
             {
                 i++;
 
+                if (i != waypoints.Length)
+                    AudioManager.instance.Play("Sfx_boss_stomp");
+
                 if (i < waypoints.Length)
                     cameraShake.ShakeElapsedTime = cameraShake.ShakeDuration;
 

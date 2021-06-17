@@ -6,6 +6,7 @@ public class ShowParticlesState : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        AudioManager.instance.Play("Sfx_boss_geyser_anticipation");
         laserManager = animator.GetComponent<LaserManager>();
         laserManager.DoRandom();
         animator.SetTrigger("GoToLaser");

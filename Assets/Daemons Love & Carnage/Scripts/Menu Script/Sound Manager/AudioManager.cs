@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
         foreach (Sound s in sounds)
         {
             if(s.type == Type.SFX)
-                s.source.volume = PlayerPrefs.GetFloat("SfxVolume") * PlayerPrefs.GetFloat("MasterVolume");
+                s.source.volume = s.volume *  PlayerPrefs.GetFloat("SfxVolume") * PlayerPrefs.GetFloat("MasterVolume");
         }  
     }
 
@@ -55,7 +55,7 @@ public class AudioManager : MonoBehaviour
         foreach (Sound s in sounds)
         {
             if (s.type == Type.Music)
-                s.source.volume = PlayerPrefs.GetFloat("MusicVolume") * PlayerPrefs.GetFloat("MasterVolume");
+                s.source.volume = s.volume * PlayerPrefs.GetFloat("MusicVolume") * PlayerPrefs.GetFloat("MasterVolume");
         }
     }
 
@@ -76,6 +76,8 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.loop = s.loop;
+            s.source.priority = s.priority;
+            s.source.volume = s.volume;
         }
 
         Play("MainMenuMusic");

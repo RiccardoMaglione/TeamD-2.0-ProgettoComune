@@ -23,6 +23,7 @@ public class Smash3 : MonoBehaviour
             if(i == waypoints.Length)
             {
                 cameraShake.ShakeElapsedTime = cameraShake.ShakeDuration;
+                AudioManager.instance.Play("Sfx_boss_smash");
             }
         }
     }

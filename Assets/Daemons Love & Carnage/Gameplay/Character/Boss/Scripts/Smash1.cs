@@ -46,6 +46,8 @@ public class Smash1 : MonoBehaviour
 
             GroundManager.instance.Smash();
             EnviromentManager.instance.ActiveSimulated(true);
+
+            AudioManager.instance.Play("Sfx_boss_smash");
         }
     }
 }
