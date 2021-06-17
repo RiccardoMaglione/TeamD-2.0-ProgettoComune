@@ -7,6 +7,7 @@ public class BasePlayerParticles : MonoBehaviour
     public ParticleSystem landingParticle;
     public ParticleSystem dashParticle;
     public ParticleSystem possessionParticle;
+    public float landingParticleOffsetSX;
 
     public Rigidbody2D player;
 
@@ -64,7 +65,7 @@ public class BasePlayerParticles : MonoBehaviour
         if (player.gameObject.GetComponent<Animator>().GetBool("PSM-IsGrounded") == true)
         {
             //landingParticle.Play();
-            GameObject tempLandingEffect = Instantiate(landingParticle.gameObject, new Vector2(transform.position.x - 0f, transform.position.y - 1), Quaternion.identity);
+            GameObject tempLandingEffect = Instantiate(landingParticle.gameObject, new Vector2(transform.position.x - landingParticleOffsetSX, transform.position.y - 1), Quaternion.identity);
             tempLandingEffect.GetComponent<ParticleSystem>().Play();
             Destroy(tempLandingEffect, 1);
 
