@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using SwordGame;
+﻿using SwordGame;
+using UnityEngine;
 
 public class FindEnemy : StateMachineBehaviour
 {
@@ -12,6 +12,7 @@ public class FindEnemy : StateMachineBehaviour
         specialAttack.Findenemy();
         psmController = animator.GetComponentInParent<PSMController>();
         psmController.CurrentEnergy = 0;
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

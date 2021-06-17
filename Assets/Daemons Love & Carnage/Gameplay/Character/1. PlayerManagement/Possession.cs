@@ -51,6 +51,8 @@ public class Possession : MonoBehaviour
     public Sprite BoriusKnightIconPlayer;
     public Sprite BabushkaIconPlayer;
     public Sprite ThiefIconPlayer;
+
+    public GameObject SpecialAttackFatKnight;
     #endregion
 
     #region Method Zone
@@ -386,6 +388,15 @@ public class Possession : MonoBehaviour
 
             PlayerToEnemy.GetComponent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
             PlayerToEnemy.GetComponent<PSMController>().GetComponent<Animator>().SetBool("IsAttack", false);
+        }
+
+        if(EnemyToPlayer.GetComponentInChildren<TriggerPossession>().SpecialAttackFatKnight != null)
+        {
+            EnemyToPlayer.GetComponentInChildren<TriggerPossession>().SpecialAttackFatKnight.SetActive(true);
+        }
+        if(PlayerToEnemy.GetComponentInChildren<TriggerPossession>().SpecialAttackFatKnight != null)
+        {
+            PlayerToEnemy.GetComponentInChildren<TriggerPossession>().SpecialAttackFatKnight.SetActive(false);
         }
     }
 

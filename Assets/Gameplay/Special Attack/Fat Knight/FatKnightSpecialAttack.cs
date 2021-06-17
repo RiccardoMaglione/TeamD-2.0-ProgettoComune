@@ -1,22 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FatKnightSpecialAttack : MonoBehaviour
 {
     public List<GameObject> enemyList = new List<GameObject>();
-    public GameObject[] obj;
+    public EnemyData[] obj;
     public int i = 0;
     [SerializeField] GameObject stompPrefab;
     public Animator animator;
 
     public void Findenemy()
     {
-        obj = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject go in obj)
+        Array.Clear(obj, 0, obj.Length);
+        enemyList.Clear();
+        enemyList.TrimExcess();
+        i = 0;
+        obj = FindObjectsOfType<EnemyData>();
+        foreach (EnemyData go in obj)
         {
-            if (go.layer == 9)
+            if (go.isActiveAndEnabled)
             {
-                enemyList.Add(go);
+                enemyList.Add(go.gameObject);
             }
         }
     }

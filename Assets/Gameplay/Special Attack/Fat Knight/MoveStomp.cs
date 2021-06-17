@@ -5,7 +5,8 @@ public class MoveStomp : MonoBehaviour
     FatKnightSpecialAttack specialAttack;
     [SerializeField] float speed;
     [SerializeField] int damage;
-    Vector2 direction;
+
+    bool isUp = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,24 +19,37 @@ public class MoveStomp : MonoBehaviour
     }
     private void Awake()
     {
-        direction = new Vector2(0, -1);
         specialAttack = FindObjectOfType<FatKnightSpecialAttack>();
     }
 
     void Update()
     {
-        if (transform.position.y < specialAttack.enemyList[specialAttack.i].transform.position.y - 1 + 4 && specialAttack.enemyList[specialAttack.i] != null)
-            direction = new Vector2(0, 1);
-        transform.position = new Vector2(specialAttack.enemyList[specialAttack.i].transform.position.x, transform.position.y);
+        if(isUp == false)
+            transform.position = Vector3.MoveTowards(transform.position, specialAttack.enemyList[specialAttack.i].transform.position, speed * Time.deltaTime);
+        else
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 30, transform.position.z), speed * Time.deltaTime);
 
-
-        transform.Translate(direction * speed * Time.deltaTime);
-        if (transform.position.y >= 30)
+        if (gameObject.transform.position == specialAttack.enemyList[specialAttack.i].transform.position)
         {
-            Destroy(gameObject);
-            specialAttack.i++;
-            specialAttack.animator.SetTrigger("Repeat");
+            isUp = true;      
         }
 
+        if (transform.position.y == 30)
+        {
+            if (specialAttack.i < specialAttack.enemyList.Count - 1)
+            {
+                specialAttack.i++;
+                specialAttack.animator.SetTrigger("Repeat");
+            }
+
+            else
+            {
+                specialAttack.i = 0;                
+                specialAttack.animator.SetTrigger("Stop");
+            }
+            
+             Destroy(gameObject);
+        }
+            
     }
 }
