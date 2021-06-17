@@ -22,6 +22,8 @@ public class Boss : MonoBehaviour
 
     [SerializeField] Animator animator;
 
+    public GameObject laserManager;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -56,6 +58,7 @@ public class Boss : MonoBehaviour
 
         if (life <= 0)
         {
+            laserManager.SetActive(false);
             VictoryScreen.win = true;
             animator.SetBool("GoToDeath", true);
             animator.SetBool("GoToPhase2", false);
