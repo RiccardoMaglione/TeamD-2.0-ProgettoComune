@@ -31,6 +31,7 @@ public class Waypoints3Phase : MonoBehaviour
                 Instantiate(prefab2, new Vector2(transform.position.x + 2.7f, transform.position.y - 1.8f), transform.rotation);
                 ground++;
                 cameraShake.ShakeElapsedTime = cameraShake.ShakeDuration;
+                AudioManager.instance.Play("Sfx_boss_stomp");
             }
         }
     }

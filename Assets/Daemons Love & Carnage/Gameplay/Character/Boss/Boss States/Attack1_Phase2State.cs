@@ -45,7 +45,11 @@ public class Attack1_Phase2State : StateMachineBehaviour
             isMove = false;
             isUp = false;
             if(i > 0)
+            {
+                AudioManager.instance.Play("Sfx_boss_stomp");
                 arcMovement.cameraShake.ShakeElapsedTime = arcMovement.cameraShake.ShakeDuration;
+            }
+                
         }      
         
         if(i == 3)

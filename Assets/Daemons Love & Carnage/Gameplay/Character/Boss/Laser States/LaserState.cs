@@ -18,6 +18,8 @@ public class LaserState : StateMachineBehaviour
             laserManager.laser3.SetActive(true);
 
         animator.SetTrigger("GoToParticle");
+
+        AudioManager.instance.Play("Sfx_boss_geyser_active");
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

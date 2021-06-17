@@ -18,6 +18,7 @@ public class WaypointsAttack2 : MonoBehaviour
             if ((Vector3.Distance(waypoints[i].transform.position, transform.position) < WPradius) && i < waypoints.Length)
             {
                 i++;
+                AudioManager.instance.Play("Sfx_boss_stomp");
 
                 if (i < waypoints.Length)
                     cameraShake.ShakeElapsedTime = cameraShake.ShakeDuration;
