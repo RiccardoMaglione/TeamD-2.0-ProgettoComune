@@ -32,6 +32,9 @@ public class Sound
     [Range(0,256)]
     public int priority = 128;
 
+    [Range(0, 1)]
+    public float volume = 1;
+
     /// <summary>
     /// AudioSource of the clip
     /// </summary>
