@@ -9,13 +9,19 @@ public class FixParallax : MonoBehaviour
 
     private void Start()
     {
-        position = FindObjectOfType<CinemachineVirtualCameraBase>().transform.position;
-        cam = FindObjectOfType<CinemachineVirtualCameraBase>();
+        //position = FindObjectOfType<CinemachineVirtualCameraBase>().transform.position;
+        //cam = FindObjectOfType<CinemachineVirtualCameraBase>();
+
+        cam = GetComponent<CinemachineVirtualCameraBase>();
+        position = cam.transform.position;
     }
     private void Update()
     {
-        cam = FindObjectOfType<CinemachineVirtualCameraBase>();
-        position = FindObjectOfType<CinemachineVirtualCameraBase>().transform.position;
+        //cam = FindObjectOfType<CinemachineVirtualCameraBase>();
+        //position = FindObjectOfType<CinemachineVirtualCameraBase>().transform.position;
+        //position = cam.State.FinalPosition;
+
+        position = cam.transform.position;
         position = cam.State.FinalPosition;
     }
 }

@@ -6,9 +6,16 @@ using SwordGame;
 
 public class ChangeFollow : MonoBehaviour
 {
+    public static ChangeFollow CFInstance;
+
     public List<CinemachineVirtualCamera> CamList = new List<CinemachineVirtualCamera>();
     public GameObject NewPlayer;
     public static GameObject StaticPlayerTemp;
+
+    private void Awake()
+    {
+        CFInstance = this;
+    }
 
     private void Start()
     {

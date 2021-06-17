@@ -24,7 +24,7 @@ public class SwitchCamera : MonoBehaviour
 
     private void Update()
     {
-        if (2 == FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
+        if (2 == KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter)
         {
             if (Enemies1 != null)
             {
@@ -36,7 +36,7 @@ public class SwitchCamera : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Player") && killedEnemyToProgress <= FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
+        if (collision.CompareTag("Player") && killedEnemyToProgress <= KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter)
         {
             UIManager.instance.arrow.SetActive(false);
             if (deactivatingEnemiesZone != null)
@@ -77,7 +77,7 @@ public class SwitchCamera : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Player") && killedEnemyToProgress <= FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
+        if (collision.CompareTag("Player") && killedEnemyToProgress <= KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter)
         {
             UIManager.instance.arrow.SetActive(false);
             if (deactivatingEnemiesZone != null)
