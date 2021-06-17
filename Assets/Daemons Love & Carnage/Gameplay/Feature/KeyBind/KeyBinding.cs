@@ -40,7 +40,10 @@ public class KeyBinding : KeyVar
     public Sprite SpriteStandardX;
     public Sprite SpriteStandardY;
 
-
+    public Sprite SpriteStandardPSSquare;
+    public Sprite SpriteStandardPSX;
+    public Sprite SpriteStandardPSCircle;
+    public Sprite SpriteStandardPSTriangle;
 
     private void Awake()
     {
@@ -49,6 +52,7 @@ public class KeyBinding : KeyVar
         AssignSpriteStringContainer();
 
         ControllerGetStringKeyPrefs();
+        PlaystationControllerGetStringKeyPrefs();
         //ControllerAssignSpriteStringContainer();
 
         KeyBindInstance = this;
@@ -71,7 +75,14 @@ public class KeyBinding : KeyVar
         }
         else if (CheckInput.Controller == true)
         {
-            ControllerAssignSpriteStringContainer();
+            if (CheckInput.XboxController == true)
+            {
+                ControllerAssignSpriteStringContainer();
+            }
+            else if(CheckInput.PlaystationController == true)
+            {
+                PlaystationControllerAssignSpriteStringContainer();
+            }
         }
         
         GetKeyUp();
@@ -123,7 +134,7 @@ public class KeyBinding : KeyVar
                     TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                     AssignSpriteStandardContainer(vKey);
                 }
-                else if (Input.GetKey(vKey) && CheckInput.Controller == true)
+                else if (Input.GetKey(vKey) && CheckInput.Controller == true && CheckInput.XboxController == true)
                 {
                     ActivateGetKey = false;
                     ActivateCondition = false;
@@ -131,6 +142,15 @@ public class KeyBinding : KeyVar
                     PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                     TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                     ControllerAssignSpriteStandardContainer(vKey);
+                }
+                else if (Input.GetKey(vKey) && CheckInput.Controller == true && CheckInput.PlaystationController == true)
+                {
+                    ActivateGetKey = false;
+                    ActivateCondition = false;
+                    KeyText.text = vKey.ToString();
+                    PlayerPrefs.SetString(("PlaystationController" + TempButton.name.ToString()), KeyText.text);
+                    TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                    PlaystationControllerAssignSpriteStandardContainer(vKey);
                 }
             }
         }
@@ -289,6 +309,55 @@ public class KeyBinding : KeyVar
         ControllerAssignAllSpriteButton("Joystick1Button1", SpriteStandardB);
         ControllerAssignAllSpriteButton("Joystick1Button2", SpriteStandardX);
         ControllerAssignAllSpriteButton("Joystick1Button3", SpriteStandardY);
+    }
+    #endregion
+
+    #region Playstation Controller
+    public void PlaystationControllerAssingSpriteStandard(KeyCode vKey, KeyCode StandardKeyCode, Sprite SpriteKey, Button ButtonKey)
+    {
+        if (vKey == StandardKeyCode && SpriteKey != null)
+        {
+            ButtonKey.GetComponent<Image>().sprite = SpriteKey;
+            KeyText.text = "";
+        }
+    }
+
+    public void PlaystationControllerAssignSpriteStandardContainer(KeyCode vKey)
+    {
+        PlaystationControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button0, SpriteStandardPSSquare, TempButton);
+        PlaystationControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button1, SpriteStandardPSX, TempButton);
+        PlaystationControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button2, SpriteStandardPSCircle, TempButton);
+        PlaystationControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button3, SpriteStandardPSTriangle, TempButton);
+    }
+
+    public void PlaystationControllerAssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
+    {
+        if (KeyName == Keystring)
+        {
+            ButtonKey.GetComponent<Image>().sprite = SpriteKey;
+            ButtonKey.GetComponentInChildren<Text>().text = "";
+        }
+    }
+
+    public void PlaystationControllerAssignAllSpriteButton(string KeyName, Sprite SpriteStandard)
+    {
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("PlaystationController" + KeyUp.name.ToString()), KeyUp, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("PlaystationController" + KeyDown.name.ToString()), KeyDown, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("PlaystationController" + KeyLeft.name.ToString()), KeyLeft, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("PlaystationController" + KeyRight.name.ToString()), KeyRight, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("PlaystationController" + KeyDash.name.ToString()), KeyDash, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("PlaystationController" + KeyPossession.name.ToString()), KeyPossession, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("PlaystationController" + KeyLightAttack.name.ToString()), KeyLightAttack, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("PlaystationController" + KeySpecialAttack.name.ToString()), KeySpecialAttack, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("PlaystationController" + KeyHeavyAttack.name.ToString()), KeyHeavyAttack, SpriteStandard);
+    }
+
+    public void PlaystationControllerAssignSpriteStringContainer()
+    {
+        PlaystationControllerAssignAllSpriteButton("Joystick1Button0", SpriteStandardPSSquare);
+        PlaystationControllerAssignAllSpriteButton("Joystick1Button1", SpriteStandardPSX);
+        PlaystationControllerAssignAllSpriteButton("Joystick1Button2", SpriteStandardPSCircle);
+        PlaystationControllerAssignAllSpriteButton("Joystick1Button3", SpriteStandardPSTriangle);
     }
     #endregion
 }
