@@ -68,12 +68,10 @@ public class KeyBinding : KeyVar
         if (CheckInput.Controller == false)
         {
             AssignSpriteStringContainer();
-            print("metti sprite tastiera");
         }
         else if (CheckInput.Controller == true)
         {
             ControllerAssignSpriteStringContainer();
-            print("metti sprite joystick");
         }
         
         GetKeyUp();

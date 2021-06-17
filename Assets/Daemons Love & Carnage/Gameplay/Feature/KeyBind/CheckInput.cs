@@ -35,5 +35,27 @@ public class CheckInput : MonoBehaviour
                 print("Joystick Axis");
             }
         }
+
+        CheckController();
+    }
+
+    public void CheckController()
+    {
+        string NameController;
+        string[] names = Input.GetJoystickNames();
+
+        for (int i = 0; i < names.Length; i++)
+        {
+            Debug.Log(names[i]);
+            NameController = names[i];
+            if (NameController.Contains("Xbox"))
+            {
+                Debug.Log("E' il controller dell'xbox");
+            }
+            else if (NameController.Contains("Playstation"))
+            {
+                Debug.Log("E' il controller della playstation");
+            }
+        }
     }
 }
