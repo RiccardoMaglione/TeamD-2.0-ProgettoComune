@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using SwordGame;
+using UnityEngine;
 public class BasePlayerParticles : MonoBehaviour
 {
     public ParticleSystem runParticle;
     public ParticleSystem jumpParticle;
     public ParticleSystem landingParticle;
-    //public ParticleSystem dashParticle;
+    public ParticleSystem dashParticle;
     public ParticleSystem possessionParticle;
 
     public Rigidbody2D player;
@@ -17,6 +18,10 @@ public class BasePlayerParticles : MonoBehaviour
 
     private void Update()
     {
+        if (player.gameObject.GetComponent<PSMController>().TimerDash >= player.gameObject.GetComponent<PSMController>().LimitTimerDash - 0.2f && player.gameObject.GetComponent<PSMController>().TimerDash != 0)
+            StopDash();
+
+
         if (player.velocity.x != 0 && player.gameObject.GetComponent<Animator>().GetBool("PSM-IsGrounded") == true)
         {
             if (timeBetweenSpawn <= 0)
@@ -66,13 +71,18 @@ public class BasePlayerParticles : MonoBehaviour
         }
     }
 
-    /*public void PlayDash()
+    public void PlayDash()
     {
         dashParticle.Play();
-    }*/
+    }
+    public void StopDash()
+    {
+        dashParticle.Stop();
+    }
 
     public void PlayPossession()
     {
         possessionParticle.Play();
     }
+
 }

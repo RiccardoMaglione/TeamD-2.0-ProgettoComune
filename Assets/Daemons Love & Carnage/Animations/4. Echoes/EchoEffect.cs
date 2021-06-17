@@ -18,8 +18,9 @@ public class EchoEffect : MonoBehaviour
         {
             if (timeBetweenSpawn <= 0)
             {
-                GameObject tempEcho = Instantiate(echo, transform.position, transform.rotation);
-                Destroy(tempEcho, 0.3f);
+                GameObject tempEcho = Instantiate(echo, transform.position, Quaternion.Euler(0, 0, 90));
+                tempEcho.GetComponent<ParticleSystem>().Play();
+                Destroy(tempEcho, 1f);
                 timeBetweenSpawn = StartTimeBetweenSpawn;
             }
             else
