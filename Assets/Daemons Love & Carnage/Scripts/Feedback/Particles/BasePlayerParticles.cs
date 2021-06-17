@@ -22,7 +22,7 @@ public class BasePlayerParticles : MonoBehaviour
             if (timeBetweenSpawn <= 0)
             {
                 //PlayRun();
-                GameObject tempRunEffect = Instantiate(landingParticle.gameObject, new Vector2(transform.position.x, transform.position.y - 1), Quaternion.identity);
+                GameObject tempRunEffect = Instantiate(runParticle.gameObject, new Vector2(transform.position.x, transform.position.y - 1), Quaternion.identity);
                 tempRunEffect.GetComponent<ParticleSystem>().Play();
                 Destroy(tempRunEffect, 0.5f);
                 timeBetweenSpawn = StartTimeBetweenSpawn;
@@ -48,7 +48,7 @@ public class BasePlayerParticles : MonoBehaviour
     public void PlayJump()
     {
         //jumpParticle.Play();
-        GameObject tempJumpEffect = Instantiate(landingParticle.gameObject, new Vector2(transform.position.x, transform.position.y - 1), Quaternion.identity);
+        GameObject tempJumpEffect = Instantiate(jumpParticle.gameObject, new Vector2(transform.position.x, transform.position.y - 1), Quaternion.identity);
         tempJumpEffect.GetComponent<ParticleSystem>().Play();
         Destroy(tempJumpEffect, 1);
 
@@ -59,7 +59,7 @@ public class BasePlayerParticles : MonoBehaviour
         if (player.gameObject.GetComponent<Animator>().GetBool("PSM-IsGrounded") == true)
         {
             //landingParticle.Play();
-            GameObject tempLandingEffect = Instantiate(landingParticle.gameObject, new Vector2(transform.position.x, transform.position.y - 1), Quaternion.identity);
+            GameObject tempLandingEffect = Instantiate(landingParticle.gameObject, new Vector2(transform.position.x - 0f, transform.position.y - 1), Quaternion.identity);
             tempLandingEffect.GetComponent<ParticleSystem>().Play();
             Destroy(tempLandingEffect, 1);
 
