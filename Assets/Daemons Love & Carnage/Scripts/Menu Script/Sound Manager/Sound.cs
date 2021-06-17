@@ -19,7 +19,6 @@ public class Sound
     /// </summary>
     public AudioClip clip;
 
-
     /// <summary>
     /// Check for the loop of the Clip
     /// </summary>
@@ -29,6 +28,9 @@ public class Sound
     /// Type of the clip
     /// </summary>
     public Type type;
+
+    [Range(0,256)]
+    public int priority = 128;
 
     /// <summary>
     /// AudioSource of the clip
