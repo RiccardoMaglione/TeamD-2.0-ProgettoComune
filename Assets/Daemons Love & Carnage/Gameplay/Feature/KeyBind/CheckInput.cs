@@ -1,0 +1,39 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+public class CheckInput : MonoBehaviour
+{
+    public static bool Controller = false;
+
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    void Update()
+    {
+        foreach (KeyCode vKey in Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKeyUp(vKey))
+            {
+                if (vKey >= KeyCode.JoystickButton0)
+                {
+                    Controller = true;
+                    print("Joystick");
+                }
+                else
+                {
+                    Controller = false;
+                    print("Mouse and keyboard");
+                }
+            }
+            else if(Input.GetAxisRaw("DPad X") > 0 || Input.GetAxisRaw("DPad X") < 0 || Input.GetAxisRaw("DPad Y") > 0 || Input.GetAxisRaw("DPad Y") < 0)
+            {
+                Controller = true;
+                print("Joystick Axis");
+            }
+        }
+    }
+}
