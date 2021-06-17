@@ -3,7 +3,7 @@
 public class EnemySpawner : MonoBehaviour
 {
     WaveController waveController;
-    [SerializeField] ParticleSystem ps;
+    [SerializeField] GameObject portal;
     [SerializeField] Transform[] wave2Enemies;
     [SerializeField] Transform[] wave3Enemies;
 
@@ -17,14 +17,17 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int i = 0; i < wave2Enemies.Length; i++)
             {
-                Instantiate(ps, wave2Enemies[i].position, wave2Enemies[i].rotation);
+                GameObject tempPortal = Instantiate(portal, wave2Enemies[i].position, Quaternion.Euler(90, 0, 0));
+                Destroy(tempPortal, 3f);
             }
         }
         if (waveController.i == 2 && waveController.EnemiesAreSpawning == true)
         {
             for (int i2 = 0; i2 < wave3Enemies.Length; i2++)
             {
-                Instantiate(ps, wave3Enemies[i2].position, wave2Enemies[i2].rotation);
+                GameObject tempPortal2 = Instantiate(portal, wave3Enemies[i2].position, Quaternion.Euler(90, 0, 0));
+                Destroy(tempPortal2, 3f);
+
             }
         }
 

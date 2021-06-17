@@ -90,6 +90,23 @@ public class PSMDash : StateMachineBehaviour
     {
         animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None; //30/04/21
         animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation; //30/04/21
+
+        /*switch (animator.GetComponent<PSMController>().TypeCharacter)
+        {
+            case TypePlayer.FatKnight:
+                animator.GetComponentInChildren<FatKnightParticleController>().StopDash();
+                break;
+            case TypePlayer.BoriousKnight:
+                animator.GetComponentInChildren<BoriousKnightParticlesController>().StopDash();
+                break;
+            case TypePlayer.Babushka:
+                animator.GetComponentInChildren<BabushkaParticleController>().StopDash();
+                break;
+            case TypePlayer.Thief:
+                animator.GetComponentInChildren<ThiefParticlesController>().StopDash();
+                break;
+
+        }*/
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
