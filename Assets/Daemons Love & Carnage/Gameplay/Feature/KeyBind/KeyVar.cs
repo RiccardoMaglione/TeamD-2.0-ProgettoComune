@@ -15,6 +15,17 @@ public class KeyVar : MonoBehaviour
     /*[HideInInspector]*/ public string StringKeyHeavyAttack;
     /*[HideInInspector]*/ public string StringKeySpecialAttack;
 
+    /*[HideInInspector]*/ public string ControllerStringKeyUp;
+    /*[HideInInspector]*/ public string ControllerStringKeyDown;
+    /*[HideInInspector]*/ public string ControllerStringKeyLeft;
+    /*[HideInInspector]*/ public string ControllerStringKeyRight;
+    /*[HideInInspector]*/ public string ControllerStringKeyDash;
+    /*[HideInInspector]*/ public string ControllerStringKeyPossession;
+    /*[HideInInspector]*/ public string ControllerStringKeyLightAttack;
+    /*[HideInInspector]*/ public string ControllerStringKeyHeavyAttack;
+    /*[HideInInspector]*/ public string ControllerStringKeySpecialAttack;
+
+
     public Button KeyUp;
     public Button KeyDown;
     public Button KeyLeft;
@@ -88,4 +99,71 @@ public class KeyVar : MonoBehaviour
         AssignButton(KeyHeavyAttack, StringKeyHeavyAttack);
         AssignButton(KeySpecialAttack, StringKeySpecialAttack);
     }
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    #region Controller
+    /// <summary>
+    /// Funzione generalizzata che assegna a una variabile la stringa di testo corrispondente del pulsante
+    /// </summary>
+    /// <param name="KeyString"></param>
+    /// <param name="KeyButton"></param>
+    /// <returns></returns>
+    public string ControllerAssignString(string ControllerKeyString, Button KeyButton)
+    {
+        if (ControllerKeyString == null)
+        {
+            return ControllerKeyString = KeyButton.GetComponentInChildren<Text>().text.ToString();
+        }
+        else
+        {
+            return ControllerKeyString = PlayerPrefs.GetString(("Controller" + KeyButton.name.ToString()));
+        }
+    }
+
+    /// <summary>
+    /// Metodo contenitore di tutte le assegnazioni di AssignString
+    /// </summary>
+    public void ControllerAssignStringContainer()
+    {
+        ControllerStringKeyUp = ControllerAssignString(ControllerStringKeyUp, KeyUp);
+        ControllerStringKeyDown = ControllerAssignString(ControllerStringKeyDown, KeyDown);
+        ControllerStringKeyLeft = ControllerAssignString(ControllerStringKeyLeft, KeyLeft);
+        ControllerStringKeyRight = ControllerAssignString(ControllerStringKeyRight, KeyRight);
+        ControllerStringKeyDash = ControllerAssignString(ControllerStringKeyDash, KeyDash);
+        ControllerStringKeyPossession = ControllerAssignString(ControllerStringKeyPossession, KeyPossession);
+        ControllerStringKeyLightAttack = ControllerAssignString(ControllerStringKeyLightAttack, KeyLightAttack);
+        ControllerStringKeyHeavyAttack = ControllerAssignString(ControllerStringKeyHeavyAttack, KeyHeavyAttack);
+        ControllerStringKeySpecialAttack = ControllerAssignString(ControllerStringKeySpecialAttack, KeySpecialAttack);
+    }
+
+    public void ControllerGetStringKeyPrefs()
+    {
+        ControllerStringKeyUp = PlayerPrefs.GetString(("Controller" + KeyUp.name.ToString()));
+        ControllerStringKeyDown = PlayerPrefs.GetString(("Controller" + KeyDown.name.ToString()));
+        ControllerStringKeyLeft = PlayerPrefs.GetString(("Controller" + KeyLeft.name.ToString()));
+        ControllerStringKeyRight = PlayerPrefs.GetString(("Controller" + KeyRight.name.ToString()));
+        ControllerStringKeyDash = PlayerPrefs.GetString(("Controller" + KeyDash.name.ToString()));
+        ControllerStringKeyPossession = PlayerPrefs.GetString(("Controller" + KeyPossession.name.ToString()));
+        ControllerStringKeyLightAttack = PlayerPrefs.GetString(("Controller" + KeyLightAttack.name.ToString()));
+        ControllerStringKeyHeavyAttack = PlayerPrefs.GetString(("Controller" + KeyHeavyAttack.name.ToString()));
+        ControllerStringKeySpecialAttack = PlayerPrefs.GetString(("Controller" + KeySpecialAttack.name.ToString()));
+    }
+
+    public void ControllerAssignButton(Button KeyButton, string ControllerKeyString)
+    {
+        KeyButton.GetComponentInChildren<Text>().text = ControllerKeyString;
+    }
+    public void ControllerAssignButtonContainer()
+    {
+        ControllerAssignButton(KeyUp, ControllerStringKeyUp);
+        ControllerAssignButton(KeyDown, ControllerStringKeyDown);
+        ControllerAssignButton(KeyLeft, ControllerStringKeyLeft);
+        ControllerAssignButton(KeyRight, ControllerStringKeyRight);
+        ControllerAssignButton(KeyDash, ControllerStringKeyDash);
+        ControllerAssignButton(KeyPossession, ControllerStringKeyPossession);
+        ControllerAssignButton(KeyLightAttack, ControllerStringKeyLightAttack);
+        ControllerAssignButton(KeyHeavyAttack, ControllerStringKeyHeavyAttack);
+        ControllerAssignButton(KeySpecialAttack, ControllerStringKeySpecialAttack);
+    }
+    #endregion
 }

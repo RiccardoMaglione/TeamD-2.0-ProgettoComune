@@ -34,11 +34,22 @@ public class KeyBinding : KeyVar
     public Sprite SpriteEmpty;
     public bool ActivateCondition;
 
+
+    public Sprite SpriteStandardA;
+    public Sprite SpriteStandardB;
+    public Sprite SpriteStandardX;
+    public Sprite SpriteStandardY;
+
+
+
     private void Awake()
     {
         GetStringKeyPrefs();
         AssignButtonContainer();
         AssignSpriteStringContainer();
+
+        ControllerGetStringKeyPrefs();
+        //ControllerAssignSpriteStringContainer();
 
         KeyBindInstance = this;
 
@@ -50,7 +61,21 @@ public class KeyBinding : KeyVar
     private void Update()
     {
         ButtonKeyListener();
+
         AssignStringContainer();
+        ControllerAssignStringContainer();
+
+        if (CheckInput.Controller == false)
+        {
+            AssignSpriteStringContainer();
+            print("metti sprite tastiera");
+        }
+        else if (CheckInput.Controller == true)
+        {
+            ControllerAssignSpriteStringContainer();
+            print("metti sprite joystick");
+        }
+        
         GetKeyUp();
     }
 
@@ -91,7 +116,7 @@ public class KeyBinding : KeyVar
         {
             foreach (KeyCode vKey in Enum.GetValues(typeof(KeyCode)))
             {
-                if (Input.GetKey(vKey))
+                if (Input.GetKey(vKey) && CheckInput.Controller == false)
                 {
                     ActivateGetKey = false;
                     ActivateCondition = false;
@@ -99,6 +124,15 @@ public class KeyBinding : KeyVar
                     PlayerPrefs.SetString(TempButton.name.ToString(), KeyText.text);
                     TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                     AssignSpriteStandardContainer(vKey);
+                }
+                else if (Input.GetKey(vKey) && CheckInput.Controller == true)
+                {
+                    ActivateGetKey = false;
+                    ActivateCondition = false;
+                    KeyText.text = vKey.ToString();
+                    PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                    TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                    ControllerAssignSpriteStandardContainer(vKey);
                 }
             }
         }
@@ -114,7 +148,16 @@ public class KeyBinding : KeyVar
         }
         return KeyCode.None;
     }
-
+    public KeyCode SetKeyBindController(string KeyValue)
+    {
+        if (ActivateGetKey == false)
+        {
+            KeyCode NewKey = (KeyCode)Enum.Parse(typeof(KeyCode), KeyValue);
+            print(NewKey.ToString());
+            return NewKey;
+        }
+        return KeyCode.None;
+    }
     public void AssingSpriteStandard(KeyCode vKey, KeyCode StandardKeyCode, Sprite SpriteKey, Button ButtonKey)
     {
         if (vKey == StandardKeyCode && SpriteKey != null)
@@ -196,4 +239,58 @@ public class KeyBinding : KeyVar
             }
         }
     }
+
+
+
+
+
+
+    #region Controller
+    public void ControllerAssingSpriteStandard(KeyCode vKey, KeyCode StandardKeyCode, Sprite SpriteKey, Button ButtonKey)
+    {
+        if (vKey == StandardKeyCode && SpriteKey != null)
+        {
+            ButtonKey.GetComponent<Image>().sprite = SpriteKey;
+            KeyText.text = "";
+        }
+    }
+
+    public void ControllerAssignSpriteStandardContainer(KeyCode vKey)
+    {
+        ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button0, SpriteStandardA, TempButton);
+        ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button1, SpriteStandardB, TempButton);
+        ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button2, SpriteStandardX, TempButton);
+        ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button3, SpriteStandardY, TempButton);
+    }
+
+    public void ControllerAssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
+    {
+        if (KeyName == Keystring)
+        {
+            ButtonKey.GetComponent<Image>().sprite = SpriteKey;
+            ButtonKey.GetComponentInChildren<Text>().text = "";
+        }
+    }
+
+    public void ControllerAssignAllSpriteButton(string KeyName, Sprite SpriteStandard)
+    {
+        ControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyUp.name.ToString()), KeyUp, SpriteStandard);
+        ControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyDown.name.ToString()), KeyDown, SpriteStandard);
+        ControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyLeft.name.ToString()), KeyLeft, SpriteStandard);
+        ControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyRight.name.ToString()), KeyRight, SpriteStandard);
+        ControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyDash.name.ToString()), KeyDash, SpriteStandard);
+        ControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyPossession.name.ToString()), KeyPossession, SpriteStandard);
+        ControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyLightAttack.name.ToString()), KeyLightAttack, SpriteStandard);
+        ControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeySpecialAttack.name.ToString()), KeySpecialAttack, SpriteStandard);
+        ControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyHeavyAttack.name.ToString()), KeyHeavyAttack, SpriteStandard);
+    }
+
+    public void ControllerAssignSpriteStringContainer()
+    {
+        ControllerAssignAllSpriteButton("Joystick1Button0", SpriteStandardA);
+        ControllerAssignAllSpriteButton("Joystick1Button1", SpriteStandardB);
+        ControllerAssignAllSpriteButton("Joystick1Button2", SpriteStandardX);
+        ControllerAssignAllSpriteButton("Joystick1Button3", SpriteStandardY);
+    }
+    #endregion
 }
