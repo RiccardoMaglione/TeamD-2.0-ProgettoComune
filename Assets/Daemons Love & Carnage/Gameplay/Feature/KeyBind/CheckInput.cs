@@ -7,6 +7,9 @@ public class CheckInput : MonoBehaviour
 {
     public static bool Controller = false;
 
+    public static bool XboxController = false;
+    public static bool PlaystationController = false;
+
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -51,10 +54,12 @@ public class CheckInput : MonoBehaviour
             if (NameController.Contains("Xbox"))
             {
                 Debug.Log("E' il controller dell'xbox");
+                XboxController = true;
             }
             else if (NameController.Contains("Playstation"))
             {
                 Debug.Log("E' il controller della playstation");
+                PlaystationController = true;
             }
         }
     }
