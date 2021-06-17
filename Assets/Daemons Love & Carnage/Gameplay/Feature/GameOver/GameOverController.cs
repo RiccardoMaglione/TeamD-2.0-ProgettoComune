@@ -4,53 +4,106 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameOverController : MonoBehaviour
+namespace SwordGame
 {
-    public List<Sprite> ListEye = new List<Sprite>();
-    public Image ImageEye;
-
-    
-    public List<Sprite> ListImageBoss = new List<Sprite>();
-    public List<Image> ImageBoss = new List<Image>();
-    
-    public List<string> ListDialogue = new List<string>();
-    public List<Text> TextDialogue = new List<Text>();
-
-    
-    // Start is called before the first frame update
-    void Start()
+    public class GameOverController : MonoBehaviour
     {
-        RandomGameOver();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        #region Variables
+        int RndScreen;                                                                                  //Valore che verrà definito nel random
         
-    }
+        [Space(5)]
+        [Header("-------------------------- Gestione dei pannelli del Game Over -------------------------------------")]
+        [Tooltip("Lista delle possibili varianti del pannello di gameover")]
+        public List<GameObject> ListScreen = new List<GameObject>();                                    //Lista delle possibili varianti del pannello di gameover
 
-    public void RandomGameOver()
-    {
-        int RndEye = Random.Range(0, ListEye.Count);
-        ImageEye.sprite = ListEye[RndEye];
+        [Space(5)]
+        [Header("-------------------------- Gestione dei pulsanti ---------------------------------------------------")]
+        [Tooltip("Pannello contenente i bottoni")]
+        public GameObject ButtonScreen;                                                                 //Pannello contenente i bottoni
+        [Tooltip("Tempo di attesa per il richiamo del pannello dei bottoni")]
+        public float TimerInvokeButton;                                                                 //Tempo di attesa per il richiamo del pannello dei bottoni, senza contare il fade
 
-        int RndListBoss = Random.Range(0, ListImageBoss.Count);
-        int RndImageBoss = Random.Range(0, ImageBoss.Count);
-        ImageBoss[RndImageBoss].gameObject.SetActive(true);
-        ImageBoss[RndImageBoss].sprite = ListImageBoss[RndListBoss];
+        [Space(5)]
+        [Header("-------------------------- Temp - Variabili inerenti il caricamento --------------------------------")]
+        [Tooltip("Lista degli sprite del caricamento")]
+        public List<Sprite> ListEye = new List<Sprite>();                                               //Lista degli sprite del caricamento
+        [Tooltip("Lista delle immagini base da sostituire la sprite")] 
+        public List<Image> ImageEye;                                                                    //Lista delle immagini base da sostituire la sprite
+        [Tooltip("Tempo di attesa tra una sprite e l'altra")]
+        public float TimerEye;                                                                          //Tempo di attesa tra una sprite e l'altra
+        #endregion
 
-        int RndListDialogue = Random.Range(0, ListDialogue.Count);
-        int RndTextDialouge = Random.Range(0, TextDialogue.Count);
-        TextDialogue[RndTextDialouge].gameObject.SetActive(true);
-        TextDialogue[RndTextDialouge].text = ListDialogue[RndListDialogue];
-    }
+        void Start()
+        {
+            StartCoroutine(AnimationEye());                                                             //Parte la coroutine dell'animazione dell'occhio
+            RandomScreenGameOver();                                                                     //Richiama il metodo per scegliere il random della schermata del gameover
+            StartCoroutine(ScreenDeactive());                                                           //Parte la coroutine del fade
+        }
 
-    public void ReturnMenu(string NameScene)
-    {
-        SceneManager.LoadScene(NameScene);
-    }
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene("GameOver");
+        #region Method
+        
+        /// <summary>
+        /// Viene attivata tramite un random un pannello casuale del gameover
+        /// </summary>
+        public void RandomScreenGameOver()
+        {
+            RndScreen = Random.Range(0, ListScreen.Count);                                              //Estraggo un numero random tra 0 e il massimo della lista dei pannelli del gameover
+            ListScreen[RndScreen].SetActive(true);                                                      //Attivo il pannello che ha come indice il random
+        }
+    
+        /// <summary>
+        /// Carica la scena in base al nome
+        /// </summary>
+        /// <param name="NameScene">Nome della scena</param>
+        public void ReturnMenu(string NameScene)
+        {
+            SceneManager.LoadScene(NameScene);                                                          //Carica la scena definita dal nome nella stringa NameScene
+        }
+    
+        /// <summary>
+        /// Viene ricaricata la scena di gameover
+        /// </summary>
+        public void ReloadScene()
+        {
+            SceneManager.LoadScene("GameOver");                                                         //Ricarica la scena di gameover
+        }
+
+        #endregion
+
+        #region Coroutine
+
+        /// <summary>
+        /// Coroutine temporanea per l'animazione dell'occhio per il caricamento
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator AnimationEye()
+        {
+            while (true)                                                                                //Mentre è attivo
+            {
+                for (int i = 0; i < ListEye.Count; i++)                                                 //Per la lungezza della lista ListEye
+                {
+                    ImageEye[RndScreen].sprite = ListEye[i];                                            //Sostituisco lo sprite
+                    yield return new WaitForSeconds(TimerEye);                                          //Aspetto il tempo TimerEye per passare allo sprite successivo
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Coroutine per il processo di fade tra il gameover e il button screen
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator ScreenDeactive()
+        {
+            yield return new WaitForSeconds(Fade.FadeInstance.FadeOutTime + TimerInvokeButton);         //Aspetto il tempo di fade out più il tempo di invoke del button screen
+            Fade.FadeInstance.FadeIn();                                                                 //Richiamo il fade in
+            yield return new WaitForSeconds(Fade.FadeInstance.FadeInTime);                              //Aspetto il tempo di fade in
+            ListScreen[RndScreen].SetActive(false);                                                     //Disattivo il pannello random di gameover
+            Fade.FadeInstance.FadeOut();                                                                //Richiamo il fade out
+            ButtonScreen.SetActive(true);                                                               //Attivo il button screen
+            yield return new WaitForSeconds(Fade.FadeInstance.FadeOutTime);                             //Aspetto il tempo di fade out
+            Fade.FadeInstance.DeactiveFadePanel();                                                      //Richiamo la disattivazione del pannello di fade
+        }
+
+        #endregion
     }
 }
