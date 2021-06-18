@@ -5035,8 +5035,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53aef90d2a3b0e4a96b5c439e786edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightDamage: 30
-  HeavyDamage: 30
+  LightDamage: 25
+  HeavyDamage: 25
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
 --- !u!114 &6499724383688552231
@@ -5340,7 +5340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightDamage: 30
-  HeavyDamage: 30
+  HeavyDamage: 25
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
 --- !u!61 &3339721141238583705
@@ -5917,6 +5917,9 @@ MonoBehaviour:
   landingParticle: {fileID: 7003054931130179205}
   dashParticle: {fileID: 6683266469002756698}
   possessionParticle: {fileID: 3812077629827783388}
+  landingParticleOffsetSX: 0
+  player: {fileID: 0}
+  StartTimeBetweenSpawn: 0
 --- !u!1 &5585428351267301821
 GameObject:
   m_ObjectHideFlags: 0
@@ -30811,6 +30814,7 @@ MonoBehaviour:
   BoriusKnightIconPlayer: {fileID: 0}
   BabushkaIconPlayer: {fileID: 0}
   ThiefIconPlayer: {fileID: 0}
+  SpecialAttackFatKnight: {fileID: 0}
   Player: {fileID: 0}
   InspectorEnemy: {fileID: 0}
   PromptEnemy: {fileID: 9146201628404208696}
@@ -31193,7 +31197,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 5
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 13401.622
+  ResetTimerStaggered: 13404.083
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
