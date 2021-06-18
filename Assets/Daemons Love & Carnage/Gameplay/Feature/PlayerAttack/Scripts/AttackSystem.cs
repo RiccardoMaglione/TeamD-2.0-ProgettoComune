@@ -56,6 +56,27 @@ public class AttackSystem : MonoBehaviour
 
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
+                if (AudioManager.instance != null)
+                {
+                    switch (GetComponentInParent<PSMController>().TypeCharacter)
+                    {
+                        case TypePlayer.FatKnight:
+                            AudioManager.instance.Play("Sfx_FK_p_L_atk");
+                            break;
+
+                        case TypePlayer.BoriousKnight:
+                            AudioManager.instance.Play("Sfx_BK_p_L_atk");
+                            break;
+
+                        case TypePlayer.Babushka:
+                            AudioManager.instance.Play("Sfx_B_L_atk");
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
                 if (FeedbackManager.instance.isTimeStopped == false)
                 {
                     //StartCoroutine(FeedbackManager.instance.StopTimeLight());
@@ -76,6 +97,31 @@ public class AttackSystem : MonoBehaviour
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
+                if (AudioManager.instance != null)
+                {
+                    switch (GetComponentInParent<PSMController>().TypeCharacter)
+                    {
+                        case TypePlayer.FatKnight:
+                            AudioManager.instance.Play("Sfx_FK_p_H_atk");
+                            break;
+
+                        case TypePlayer.BoriousKnight:
+                            AudioManager.instance.Play("Sfx_BK_p_H_atk");
+                            break;
+
+                        case TypePlayer.Babushka:
+                            AudioManager.instance.Play("Sfx_B_H_atk");
+                            break;
+
+                        case TypePlayer.Thief:
+                            AudioManager.instance.Play("Sfx_T_p_H_atk");
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
                 if (FeedbackManager.instance.isTimeStopped == false)
                 {
                     //StartCoroutine(FeedbackManager.instance.StopTimeHeavy());
@@ -122,9 +168,12 @@ public class AttackSystem : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        GetComponentInParent<PSMController>().IsLightAttack = false;
-        GetComponentInParent<PSMController>().IsHeavyAttack = false;
-        GetComponentInParent<PSMController>().IsSpecialAttack = false;
+        if (collision.tag == "Enemy" || collision.tag == "Boss")
+        {
+            GetComponentInParent<PSMController>().IsLightAttack = false;
+            GetComponentInParent<PSMController>().IsHeavyAttack = false;
+            GetComponentInParent<PSMController>().IsSpecialAttack = false;
+        }
         if (hitAnimation != null)    //27/03/21
             hitAnimation.SetActive(false); //25/03/21
     }

@@ -139,7 +139,7 @@ public class Possession : MonoBehaviour
             case TypeEnemies.FatKnight:
                 PlayerToEnemy.GetComponent<Animator>().runtimeAnimatorController = FatKnightEnemyAnimator;
                 break;
-            case TypeEnemies.BoriusKnight:
+            case TypeEnemies.BoriousKnight:
                 PlayerToEnemy.GetComponent<Animator>().runtimeAnimatorController = BoriousEnemyAnimator;
                 break;
             case TypeEnemies.Babushka:

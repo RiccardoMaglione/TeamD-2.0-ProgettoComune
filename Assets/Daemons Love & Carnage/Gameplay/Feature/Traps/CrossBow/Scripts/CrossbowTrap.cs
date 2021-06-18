@@ -41,18 +41,17 @@ public class CrossbowTrap : MonoBehaviour
 
     IEnumerator Shoot()
     {
+        AudioManager.instance.Play("Sfx_ballista_shots");
 
+        while (playerInRange)
+        {
+            canShot = false;
+            yield return new WaitForSeconds(timeBetweenShot);
+            canShot = true;
 
-            while (playerInRange)
-            {
-                canShot = false;
-                yield return new WaitForSeconds(timeBetweenShot);
-                canShot = true;
+            GameObject go = Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+            Destroy(go, destroyBulletTime);
 
-                GameObject go = Instantiate(bullet, shotPoint.transform.position, transform.rotation);
-                Destroy(go, destroyBulletTime);
-
-            }
-       
+        }      
     }
 }

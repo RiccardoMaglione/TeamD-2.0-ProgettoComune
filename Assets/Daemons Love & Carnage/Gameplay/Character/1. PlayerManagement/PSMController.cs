@@ -308,12 +308,64 @@ namespace SwordGame
             if (GetComponent<Animator>().GetBool("PSM-LightAttack") == true)
             {
                 LightAttackCollider.SetActive(true);
+
+                if (AudioManager.instance != null)
+                {
+                    switch (TypeCharacter)
+                    {
+                        case TypePlayer.FatKnight:
+                            AudioManager.instance.Play("Sfx_FK_L_atk_swing");
+                            break;
+
+                        case TypePlayer.BoriousKnight:
+                            AudioManager.instance.Play("Sfx_BK_p_L_atk_swing");
+                            break;
+
+                        case TypePlayer.Babushka:
+                            AudioManager.instance.Play("Sfx_B_L_atk_swing");
+                            break;
+
+                        case TypePlayer.Thief:
+                            //AudioManager.instance.Play("");
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
             }
+
             if (GetComponent<Animator>().GetBool("PSM-HeavyAttack") == true)
             {
                 StartCoroutine(FeedbackManager.instance.Vibration());
                 HeavyAttackCollider.SetActive(true);
+
+                if (AudioManager.instance != null)
+                {
+                    switch (TypeCharacter)
+                    {
+                        case TypePlayer.FatKnight:
+                            AudioManager.instance.Play("Sfx_FK_H_atk_swing");
+                            break;
+
+                        case TypePlayer.BoriousKnight:
+                            AudioManager.instance.Play("Sfx_BK_p_H_atk_swing");
+                            break;
+
+                        case TypePlayer.Babushka:
+                            AudioManager.instance.Play("Sfx_B_H_atk_swing");
+                            break;
+
+                        case TypePlayer.Thief:
+                            AudioManager.instance.Play("Sfx_T_H_atk_swing");
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
             }
+
             if (GetComponent<Animator>().GetBool("PSM-SpecialAttack") == true)
             {
                 SpecialAttackCollider.SetActive(true);
@@ -375,6 +427,24 @@ namespace SwordGame
                 {
                     if (collision.tag == "LightAttack")
                     {
+                        switch (collision.GetComponentInParent<EnemyData>().TypeEnemy)
+                        {
+                            case TypeEnemies.FatKnight:
+                                AudioManager.instance.Play("Sfx_FK_L_atk");
+                                break;
+
+                            case TypeEnemies.BoriousKnight:
+                                AudioManager.instance.Play("Sfx_BK_L_atk");
+                                break;
+
+                            case TypeEnemies.Babushka:
+                                AudioManager.instance.Play("Sfx_B_L_atk");
+                                break;
+
+                            default:
+                                break;
+                        }
+
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseLight;
@@ -390,6 +460,28 @@ namespace SwordGame
                     }
                     if (collision.tag == "HeavyAttack")
                     {
+                        switch (collision.GetComponentInParent<EnemyData>().TypeEnemy)
+                        {
+                            case TypeEnemies.FatKnight:
+                                AudioManager.instance.Play("Sfx_FK_H_atk");
+                                break;
+
+                            case TypeEnemies.BoriousKnight:
+                                AudioManager.instance.Play("Sfx_BK_H_atk");
+                                break;
+
+                            case TypeEnemies.Babushka:
+                                AudioManager.instance.Play("Sfx_B_H_atk");
+                                break;
+
+                            case TypeEnemies.Thief:
+                                AudioManager.instance.Play("Sfx_T_H_atk");
+                                break;
+
+                            default:
+                                break;
+                        }
+
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseHeavy;
@@ -438,6 +530,7 @@ namespace SwordGame
             {
                 if (isActiveAndEnabled == true)
                 {
+                    AudioManager.instance.Play("Sfx_player_fell_ground");
                     GetComponent<Animator>().SetBool("PSM-IsGrounded", true);   //Setto PSM-IsGrounded = true quando tocca il pavimento
                 }
             }
