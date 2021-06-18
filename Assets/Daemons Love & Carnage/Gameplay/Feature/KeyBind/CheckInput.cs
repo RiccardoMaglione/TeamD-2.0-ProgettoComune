@@ -59,7 +59,7 @@ public class CheckInput : MonoBehaviour
                 XboxController = true;
                 PlaystationController = false;
             }
-            else if (NameController.Contains("Playstation"))
+            else if (NameController.Contains("Wireless") &! NameController.Contains("Xbox"))
             {
                 Debug.Log("E' il controller della playstation");
                 PlaystationController = true;
