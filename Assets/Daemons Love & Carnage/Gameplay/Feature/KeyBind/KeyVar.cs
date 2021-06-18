@@ -25,15 +25,15 @@ public class KeyVar : MonoBehaviour
     /*[HideInInspector]*/ public string ControllerStringKeyHeavyAttack;
     /*[HideInInspector]*/ public string ControllerStringKeySpecialAttack;
 
-    /*[HideInInspector]*/ public string PlaystationControllerStringKeyUp;
-    /*[HideInInspector]*/ public string PlaystationControllerStringKeyDown;
-    /*[HideInInspector]*/ public string PlaystationControllerStringKeyLeft;
-    /*[HideInInspector]*/ public string PlaystationControllerStringKeyRight;
-    /*[HideInInspector]*/ public string PlaystationControllerStringKeyDash;
-    /*[HideInInspector]*/ public string PlaystationControllerStringKeyPossession;
-    /*[HideInInspector]*/ public string PlaystationControllerStringKeyLightAttack;
-    /*[HideInInspector]*/ public string PlaystationControllerStringKeyHeavyAttack;
-    /*[HideInInspector]*/ public string PlaystationControllerStringKeySpecialAttack;
+    ///*[HideInInspector]*/ public string PlaystationControllerStringKeyUp;
+    ///*[HideInInspector]*/ public string PlaystationControllerStringKeyDown;
+    ///*[HideInInspector]*/ public string PlaystationControllerStringKeyLeft;
+    ///*[HideInInspector]*/ public string PlaystationControllerStringKeyRight;
+    ///*[HideInInspector]*/ public string PlaystationControllerStringKeyDash;
+    ///*[HideInInspector]*/ public string PlaystationControllerStringKeyPossession;
+    ///*[HideInInspector]*/ public string PlaystationControllerStringKeyLightAttack;
+    ///*[HideInInspector]*/ public string PlaystationControllerStringKeyHeavyAttack;
+    ///*[HideInInspector]*/ public string PlaystationControllerStringKeySpecialAttack;
 
     public Button KeyUp;
     public Button KeyDown;
@@ -198,47 +198,47 @@ public class KeyVar : MonoBehaviour
     /// <summary>
     /// Metodo contenitore di tutte le assegnazioni di AssignString
     /// </summary>
-    public void PlaystationControllerAssignStringContainer()
-    {
-        PlaystationControllerStringKeyUp = PlaystationControllerAssignString(PlaystationControllerStringKeyUp, KeyUp);
-        PlaystationControllerStringKeyDown = PlaystationControllerAssignString(PlaystationControllerStringKeyDown, KeyDown);
-        PlaystationControllerStringKeyLeft = PlaystationControllerAssignString(PlaystationControllerStringKeyLeft, KeyLeft);
-        PlaystationControllerStringKeyRight = PlaystationControllerAssignString(PlaystationControllerStringKeyRight, KeyRight);
-        PlaystationControllerStringKeyDash = PlaystationControllerAssignString(PlaystationControllerStringKeyDash, KeyDash);
-        PlaystationControllerStringKeyPossession = PlaystationControllerAssignString(PlaystationControllerStringKeyPossession, KeyPossession);
-        PlaystationControllerStringKeyLightAttack = PlaystationControllerAssignString(PlaystationControllerStringKeyLightAttack, KeyLightAttack);
-        PlaystationControllerStringKeyHeavyAttack = PlaystationControllerAssignString(PlaystationControllerStringKeyHeavyAttack, KeyHeavyAttack);
-        PlaystationControllerStringKeySpecialAttack = PlaystationControllerAssignString(PlaystationControllerStringKeySpecialAttack, KeySpecialAttack);
-    }
-
-    public void PlaystationControllerGetStringKeyPrefs()
-    {
-        PlaystationControllerStringKeyUp = PlayerPrefs.GetString(("PlaystationController" + KeyUp.name.ToString()));
-        PlaystationControllerStringKeyDown = PlayerPrefs.GetString(("PlaystationController" + KeyDown.name.ToString()));
-        PlaystationControllerStringKeyLeft = PlayerPrefs.GetString(("PlaystationController" + KeyLeft.name.ToString()));
-        PlaystationControllerStringKeyRight = PlayerPrefs.GetString(("PlaystationController" + KeyRight.name.ToString()));
-        PlaystationControllerStringKeyDash = PlayerPrefs.GetString(("PlaystationController" + KeyDash.name.ToString()));
-        PlaystationControllerStringKeyPossession = PlayerPrefs.GetString(("PlaystationController" + KeyPossession.name.ToString()));
-        PlaystationControllerStringKeyLightAttack = PlayerPrefs.GetString(("PlaystationController" + KeyLightAttack.name.ToString()));
-        PlaystationControllerStringKeyHeavyAttack = PlayerPrefs.GetString(("PlaystationController" + KeyHeavyAttack.name.ToString()));
-        PlaystationControllerStringKeySpecialAttack = PlayerPrefs.GetString(("PlaystationController" + KeySpecialAttack.name.ToString()));
-    }
-
-    public void PlaystationControllerAssignButton(Button KeyButton, string ControllerKeyString)
-    {
-        KeyButton.GetComponentInChildren<Text>().text = ControllerKeyString;
-    }
-    public void PlaystationControllerAssignButtonContainer()
-    {
-        PlaystationControllerAssignButton(KeyUp, PlaystationControllerStringKeyUp);
-        PlaystationControllerAssignButton(KeyDown, PlaystationControllerStringKeyDown);
-        PlaystationControllerAssignButton(KeyLeft, PlaystationControllerStringKeyLeft);
-        PlaystationControllerAssignButton(KeyRight, PlaystationControllerStringKeyRight);
-        PlaystationControllerAssignButton(KeyDash, PlaystationControllerStringKeyDash);
-        PlaystationControllerAssignButton(KeyPossession, PlaystationControllerStringKeyPossession);
-        PlaystationControllerAssignButton(KeyLightAttack, PlaystationControllerStringKeyLightAttack);
-        PlaystationControllerAssignButton(KeyHeavyAttack, PlaystationControllerStringKeyHeavyAttack);
-        PlaystationControllerAssignButton(KeySpecialAttack, PlaystationControllerStringKeySpecialAttack);
-    }
+    //public void PlaystationControllerAssignStringContainer()
+    //{
+    //    PlaystationControllerStringKeyUp = PlaystationControllerAssignString(PlaystationControllerStringKeyUp, KeyUp);
+    //    PlaystationControllerStringKeyDown = PlaystationControllerAssignString(PlaystationControllerStringKeyDown, KeyDown);
+    //    PlaystationControllerStringKeyLeft = PlaystationControllerAssignString(PlaystationControllerStringKeyLeft, KeyLeft);
+    //    PlaystationControllerStringKeyRight = PlaystationControllerAssignString(PlaystationControllerStringKeyRight, KeyRight);
+    //    PlaystationControllerStringKeyDash = PlaystationControllerAssignString(PlaystationControllerStringKeyDash, KeyDash);
+    //    PlaystationControllerStringKeyPossession = PlaystationControllerAssignString(PlaystationControllerStringKeyPossession, KeyPossession);
+    //    PlaystationControllerStringKeyLightAttack = PlaystationControllerAssignString(PlaystationControllerStringKeyLightAttack, KeyLightAttack);
+    //    PlaystationControllerStringKeyHeavyAttack = PlaystationControllerAssignString(PlaystationControllerStringKeyHeavyAttack, KeyHeavyAttack);
+    //    PlaystationControllerStringKeySpecialAttack = PlaystationControllerAssignString(PlaystationControllerStringKeySpecialAttack, KeySpecialAttack);
+    //}
+    //
+    //public void PlaystationControllerGetStringKeyPrefs()
+    //{
+    //    PlaystationControllerStringKeyUp = PlayerPrefs.GetString(("PlaystationController" + KeyUp.name.ToString()));
+    //    PlaystationControllerStringKeyDown = PlayerPrefs.GetString(("PlaystationController" + KeyDown.name.ToString()));
+    //    PlaystationControllerStringKeyLeft = PlayerPrefs.GetString(("PlaystationController" + KeyLeft.name.ToString()));
+    //    PlaystationControllerStringKeyRight = PlayerPrefs.GetString(("PlaystationController" + KeyRight.name.ToString()));
+    //    PlaystationControllerStringKeyDash = PlayerPrefs.GetString(("PlaystationController" + KeyDash.name.ToString()));
+    //    PlaystationControllerStringKeyPossession = PlayerPrefs.GetString(("PlaystationController" + KeyPossession.name.ToString()));
+    //    PlaystationControllerStringKeyLightAttack = PlayerPrefs.GetString(("PlaystationController" + KeyLightAttack.name.ToString()));
+    //    PlaystationControllerStringKeyHeavyAttack = PlayerPrefs.GetString(("PlaystationController" + KeyHeavyAttack.name.ToString()));
+    //    PlaystationControllerStringKeySpecialAttack = PlayerPrefs.GetString(("PlaystationController" + KeySpecialAttack.name.ToString()));
+    //}
+    //
+    //public void PlaystationControllerAssignButton(Button KeyButton, string ControllerKeyString)
+    //{
+    //    KeyButton.GetComponentInChildren<Text>().text = ControllerKeyString;
+    //}
+    //public void PlaystationControllerAssignButtonContainer()
+    //{
+    //    PlaystationControllerAssignButton(KeyUp, PlaystationControllerStringKeyUp);
+    //    PlaystationControllerAssignButton(KeyDown, PlaystationControllerStringKeyDown);
+    //    PlaystationControllerAssignButton(KeyLeft, PlaystationControllerStringKeyLeft);
+    //    PlaystationControllerAssignButton(KeyRight, PlaystationControllerStringKeyRight);
+    //    PlaystationControllerAssignButton(KeyDash, PlaystationControllerStringKeyDash);
+    //    PlaystationControllerAssignButton(KeyPossession, PlaystationControllerStringKeyPossession);
+    //    PlaystationControllerAssignButton(KeyLightAttack, PlaystationControllerStringKeyLightAttack);
+    //    PlaystationControllerAssignButton(KeyHeavyAttack, PlaystationControllerStringKeyHeavyAttack);
+    //    PlaystationControllerAssignButton(KeySpecialAttack, PlaystationControllerStringKeySpecialAttack);
+    //}
     #endregion
 }

@@ -28,6 +28,8 @@ public class CheckInput : MonoBehaviour
                 }
                 else
                 {
+                    XboxController = false;
+                    PlaystationController = false;
                     Controller = false;
                     print("Mouse and keyboard");
                 }
@@ -55,11 +57,13 @@ public class CheckInput : MonoBehaviour
             {
                 Debug.Log("E' il controller dell'xbox");
                 XboxController = true;
+                PlaystationController = false;
             }
             else if (NameController.Contains("Playstation"))
             {
                 Debug.Log("E' il controller della playstation");
                 PlaystationController = true;
+                XboxController = false;
             }
         }
     }
