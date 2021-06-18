@@ -52,7 +52,7 @@ public class KeyBinding : KeyVar
         AssignSpriteStringContainer();
 
         ControllerGetStringKeyPrefs();
-        PlaystationControllerGetStringKeyPrefs();
+        //PlaystationControllerGetStringKeyPrefs();
         //ControllerAssignSpriteStringContainer();
 
         KeyBindInstance = this;
@@ -134,7 +134,7 @@ public class KeyBinding : KeyVar
                     TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                     AssignSpriteStandardContainer(vKey);
                 }
-                else if (Input.GetKey(vKey) && CheckInput.Controller == true && CheckInput.XboxController == true)
+                else if (Input.GetKey(vKey) && CheckInput.Controller == true/* && CheckInput.XboxController == true*/)
                 {
                     ActivateGetKey = false;
                     ActivateCondition = false;
@@ -143,15 +143,15 @@ public class KeyBinding : KeyVar
                     TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                     ControllerAssignSpriteStandardContainer(vKey);
                 }
-                else if (Input.GetKey(vKey) && CheckInput.Controller == true && CheckInput.PlaystationController == true)
-                {
-                    ActivateGetKey = false;
-                    ActivateCondition = false;
-                    KeyText.text = vKey.ToString();
-                    PlayerPrefs.SetString(("PlaystationController" + TempButton.name.ToString()), KeyText.text);
-                    TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                    PlaystationControllerAssignSpriteStandardContainer(vKey);
-                }
+                //else if (Input.GetKey(vKey) && CheckInput.Controller == true && CheckInput.PlaystationController == true)
+                //{
+                //    ActivateGetKey = false;
+                //    ActivateCondition = false;
+                //    KeyText.text = vKey.ToString();
+                //    PlayerPrefs.SetString(("PlaystationController" + TempButton.name.ToString()), KeyText.text);
+                //    TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //    PlaystationControllerAssignSpriteStandardContainer(vKey);
+                //}
             }
         }
     }
