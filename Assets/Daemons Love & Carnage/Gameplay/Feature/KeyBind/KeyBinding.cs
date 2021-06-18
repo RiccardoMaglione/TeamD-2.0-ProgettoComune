@@ -367,9 +367,9 @@ public class KeyBinding : KeyVar
 
     public void PlaystationControllerAssignSpriteStringContainer()
     {
-        PlaystationControllerAssignAllSpriteButton("Joystick1Button0", SpriteStandardPSX);
-        PlaystationControllerAssignAllSpriteButton("Joystick1Button1", SpriteStandardPSCircle);
-        PlaystationControllerAssignAllSpriteButton("Joystick1Button2", SpriteStandardPSSquare);
+        PlaystationControllerAssignAllSpriteButton("Joystick1Button0", SpriteStandardPSSquare);
+        PlaystationControllerAssignAllSpriteButton("Joystick1Button1", SpriteStandardPSX);
+        PlaystationControllerAssignAllSpriteButton("Joystick1Button2", SpriteStandardPSCircle);
         PlaystationControllerAssignAllSpriteButton("Joystick1Button3", SpriteStandardPSTriangle);
     }
     #endregion

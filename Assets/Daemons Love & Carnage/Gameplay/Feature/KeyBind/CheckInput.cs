@@ -34,7 +34,7 @@ public class CheckInput : MonoBehaviour
                     print("Mouse and keyboard");
                 }
             }
-            else if(Input.GetAxisRaw("DPad X") > 0 || Input.GetAxisRaw("DPad X") < 0 || Input.GetAxisRaw("DPad Y") > 0 || Input.GetAxisRaw("DPad Y") < 0)
+            else if((Input.GetAxisRaw("DPad X") > 0 || Input.GetAxisRaw("DPad X") < 0 || Input.GetAxisRaw("DPad Y") > 0 || Input.GetAxisRaw("DPad Y") < 0) && XboxController == true)   //joystick 6th axis
             {
                 Controller = true;
                 print("Joystick Axis");
@@ -51,7 +51,7 @@ public class CheckInput : MonoBehaviour
 
         for (int i = 0; i < names.Length; i++)
         {
-            Debug.Log(names[i]);
+            Debug.LogWarning(names[i]);
             NameController = names[i];
             if (NameController.Contains("Xbox"))
             {
