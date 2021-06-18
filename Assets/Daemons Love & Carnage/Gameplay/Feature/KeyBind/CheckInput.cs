@@ -51,7 +51,7 @@ public class CheckInput : MonoBehaviour
 
         for (int i = 0; i < names.Length; i++)
         {
-            Debug.LogWarning(names[i]);
+            Debug.LogError(names[i]);
             NameController = names[i];
             if (NameController.Contains("Xbox"))
             {
