@@ -2,7 +2,7 @@
 
 public class PortalForBossMinions : MonoBehaviour
 {
-    [SerializeField] ParticleSystem ps;
+    [SerializeField] GameObject portal;
     [SerializeField] Transform[] waveEnemies1;
     [SerializeField] Transform[] waveEnemies2;
 
@@ -10,14 +10,17 @@ public class PortalForBossMinions : MonoBehaviour
     {
         for (int i = 0; i < waveEnemies1.Length; i++)
         {
-            Instantiate(ps, waveEnemies1[i].position, waveEnemies1[i].rotation);
+            GameObject tempPortal = Instantiate(portal, waveEnemies1[i].position, Quaternion.Euler(90, 0, 0));
+            Destroy(tempPortal, 3f);
+
         }
     }
     public void SpawnEnemies2()
     {
         for (int i = 0; i < waveEnemies2.Length; i++)
         {
-            Instantiate(ps, waveEnemies2[i].position, waveEnemies2[i].rotation);
+            GameObject tempPortal = Instantiate(portal, waveEnemies2[i].position, Quaternion.Euler(90, 0, 0));
+            Destroy(tempPortal, 3f);
         }
     }
 
