@@ -132,11 +132,11 @@ namespace SwordGame
             UpdatePlayerManager();
             AttackPlayer();
 
-            if (CurrentHealth <= 25 && LowHPScript.lowHPScript.gameObject.activeSelf == false)
+            if (LowHPScript.lowHPScript != null && CurrentHealth <= 25 && LowHPScript.lowHPScript.gameObject.activeSelf == false)
             {
                 LowHPScript.lowHPScript.gameObject.SetActive(true);
             }
-            if (CurrentHealth > 25 && LowHPScript.lowHPScript.gameObject.activeSelf == true)
+            if (LowHPScript.lowHPScript != null && CurrentHealth > 25 && LowHPScript.lowHPScript.gameObject.activeSelf == true)
             {
                 LowHPScript.lowHPScript.gameObject.SetActive(false);
             }
