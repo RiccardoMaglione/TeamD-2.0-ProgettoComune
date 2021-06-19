@@ -91,11 +91,22 @@ public class KeyBinding : KeyVar
 
     public void ListenerOnClik(Button ButtonKey)
     {
-        ActivateGetKey = true;
-        KeyText = ButtonKey.GetComponentInChildren<Text>();
-        TempButton = ButtonKey;
-        //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-        KeyText.text = "";
+        if (CheckInput.PlaystationController == true && Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {
+            ActivateGetKey = true;
+            KeyText = ButtonKey.GetComponentInChildren<Text>();
+            TempButton = ButtonKey;
+            //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+            KeyText.text = "";
+        }
+        else if(CheckInput.PlaystationController == false)
+        {
+            ActivateGetKey = true;
+            KeyText = ButtonKey.GetComponentInChildren<Text>();
+            TempButton = ButtonKey;
+            //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+            KeyText.text = "";
+        }
     }
 
     public void SetAddListener()

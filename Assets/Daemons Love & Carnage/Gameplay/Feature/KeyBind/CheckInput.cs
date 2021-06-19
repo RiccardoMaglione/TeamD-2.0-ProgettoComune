@@ -13,6 +13,7 @@ public class CheckInput : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        Debug.LogError("Apri console");
     }
 
     void Update()
@@ -53,6 +54,7 @@ public class CheckInput : MonoBehaviour
         {
             Debug.LogError(names[i]);
             NameController = names[i];
+            Debug.LogError("Il nome del controller è: "+ NameController);
             if (NameController.Contains("Xbox"))
             {
                 Debug.Log("E' il controller dell'xbox");

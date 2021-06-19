@@ -12,6 +12,10 @@ public class SkullUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public bool skullActive = false;
 
+    public Sprite SkulNormal;
+    public Sprite SkullOvered;
+    public Sprite SkullPressed;
+    public Sprite SkullSelected;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -24,7 +28,7 @@ public class SkullUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         skullCounterText.text = skullCounter.ToString();
         if (skullActive)
         {
-            this.GetComponent<Button>().Select();
+            //this.GetComponent<Button>().Select();
         }
 
     }
@@ -38,7 +42,8 @@ public class SkullUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             skullActive = true;
             skullCounter++;
-            this.GetComponent<Button>().Select();
+            GetComponent<Image>().sprite = SkullSelected;
+            //this.GetComponent<Button>().Select();
             SkullEffect();
         }
 
@@ -46,7 +51,7 @@ public class SkullUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             skullActive = false;
             skullCounter--;
-            EventSystem.current.SetSelectedGameObject(null);
+            GetComponent<Image>().sprite = SkulNormal;
             SkullEffect();
         }
     }
@@ -61,5 +66,24 @@ public class SkullUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             //Disattivazione dell'effetto
         }
+    }
+
+    public void HoverSkull()
+    {
+        if(GetComponent<Image>().sprite != SkullSelected)
+        {
+            GetComponent<Image>().sprite = SkullOvered;
+        }
+    }
+    public void DeHoverSkull()
+    {
+        if (GetComponent<Image>().sprite != SkullSelected)
+        {
+            GetComponent<Image>().sprite = SkulNormal;
+        }
+    }
+    public void PressedSkull()
+    {
+        GetComponent<Image>().sprite = SkullPressed;
     }
 }
