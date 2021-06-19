@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using SwordGame;
+﻿using SwordGame;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
@@ -17,6 +17,9 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PSMController>().CurrentHealth -= damage;
+            GetHitScript.getHitScript.gameObject.SetActive(false);
+            GetHitScript.getHitScript.gameObject.SetActive(true);
+
             Destroy(this.gameObject);
         }
         /*if (collision.gameObject.tag == "Floor")

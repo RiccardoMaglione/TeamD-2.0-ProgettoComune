@@ -7,6 +7,7 @@ public class BasePlayerParticles : MonoBehaviour
     public ParticleSystem landingParticle;
     public ParticleSystem dashParticle;
     public ParticleSystem possessionParticle;
+    public ParticleSystem hit;
     public float landingParticleOffsetSX;
 
     public Rigidbody2D player;
@@ -84,6 +85,15 @@ public class BasePlayerParticles : MonoBehaviour
     public void PlayPossession()
     {
         possessionParticle.Play();
+    }
+
+    public void PlayHit(GameObject targetTransform)
+    {
+        GameObject tempHitEffect = Instantiate(hit.gameObject, targetTransform.transform.position, Quaternion.identity);
+        tempHitEffect.GetComponent<ParticleSystem>().Play();
+
+        Destroy(tempHitEffect, 0.5f);
+
     }
 
 }

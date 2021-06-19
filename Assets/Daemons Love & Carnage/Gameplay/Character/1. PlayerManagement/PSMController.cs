@@ -110,6 +110,8 @@ namespace SwordGame
         public bool ControllerPossession;
 
         public GameObject SpecialAttackGameObject;
+
+
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -129,6 +131,17 @@ namespace SwordGame
             ResetPlatform();
             UpdatePlayerManager();
             AttackPlayer();
+
+            if (CurrentHealth <= 25 && LowHPScript.lowHPScript.gameObject.activeSelf == false)
+            {
+                LowHPScript.lowHPScript.gameObject.SetActive(true);
+            }
+            if (CurrentHealth > 25 && LowHPScript.lowHPScript.gameObject.activeSelf == true)
+            {
+                LowHPScript.lowHPScript.gameObject.SetActive(false);
+            }
+
+
         }
 
         public void InitializeSpeedAnimation()
@@ -375,6 +388,9 @@ namespace SwordGame
                 {
                     if (collision.tag == "LightAttack")
                     {
+                        GetHitScript.getHitScript.gameObject.SetActive(false);
+                        GetHitScript.getHitScript.gameObject.SetActive(true);
+
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseLight;
@@ -390,6 +406,9 @@ namespace SwordGame
                     }
                     if (collision.tag == "HeavyAttack")
                     {
+                        GetHitScript.getHitScript.gameObject.SetActive(false);
+                        GetHitScript.getHitScript.gameObject.SetActive(true);
+
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = true;
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseHeavy;
