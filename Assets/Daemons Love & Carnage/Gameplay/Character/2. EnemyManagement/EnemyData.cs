@@ -228,10 +228,57 @@ public class EnemyData : MonoBehaviour
         if (GetComponent<Animator>().GetBool("AI-LightAttack") == true)
         {
             LightAttackCollider .SetActive(true);
+
+            if (AudioManager.instance != null)
+            {
+                switch (TypeEnemy)
+                {
+                    case TypeEnemies.FatKnight:
+                        AudioManager.instance.Play("Sfx_FK_L_atk_swing");
+                        break;
+
+                    case TypeEnemies.BoriousKnight:
+                        AudioManager.instance.Play("Sfx_BK_p_L_atk_swing");
+                        break;
+
+                    case TypeEnemies.Babushka:
+                        AudioManager.instance.Play("Sfx_B_L_atk_swing");
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
+        
         if (GetComponent<Animator>().GetBool("AI-HeavyAttack") == true)
         {
             HeavyAttackCollider.SetActive(true);
+
+            if (AudioManager.instance != null)
+            {
+                switch (TypeEnemy)
+                {
+                    case TypeEnemies.FatKnight:
+                        AudioManager.instance.Play("Sfx_FK_H_atk_swing");
+                        break;
+
+                    case TypeEnemies.BoriousKnight:
+                        //AudioManager.instance.Play("");
+                        break;
+
+                    case TypeEnemies.Babushka:
+                        AudioManager.instance.Play("Sfx_B_H_atk_swing");
+                        break;
+
+                    case TypeEnemies.Thief:
+                        AudioManager.instance.Play("Sfx_T_H_atk_swing");
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
     }
 
@@ -269,6 +316,7 @@ public class EnemyData : MonoBehaviour
     public void EventEnemyArrowThief()
     {
         GameObject GoArrow = Instantiate(ArrowThief, SpawnArrow.transform.position, transform.rotation);
+        AudioManager.instance.Play("Sfx_T_L_atk");
     }
     #endregion
 
@@ -332,7 +380,7 @@ public class EnemyData : MonoBehaviour
 public enum TypeEnemies
 {
     FatKnight,
-    BoriusKnight,
+    BoriousKnight,
     Babushka,
     Thief
 }
