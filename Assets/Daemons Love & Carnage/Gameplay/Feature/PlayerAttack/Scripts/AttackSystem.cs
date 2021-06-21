@@ -13,16 +13,30 @@ public class AttackSystem : MonoBehaviour
 
     [SerializeField] GameObject hitAnimation; //25/03/21
 
+    BasePlayerParticles playerParticles;
+
+    Transform enemyHitTransform;
+
+    private void Awake()
+    {
+        playerParticles = this.gameObject.transform.root.GetComponentInChildren<BasePlayerParticles>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Breakable") //10/04
         {
             Knockback.ActiveKnockback = true;//10/04
+
+            GameObject go = collision.gameObject;
+            playerParticles.PlayHit(go);
         }
 
         if (collision.gameObject.tag == "Boss" && Boss.instance.canGetDamage == true) //16/04
         {
+            GameObject go = collision.gameObject;
+            playerParticles.PlayHit(go);
+
             ColorChangeController colorChangeController = collision.GetComponent<ColorChangeController>();
             colorChangeController.isAttacked = true;
 
@@ -52,6 +66,9 @@ public class AttackSystem : MonoBehaviour
             collision.GetComponentInChildren<EnemyParticleController>().PlayBlood();
 
             Knockback.ActiveKnockback = true;
+
+            GameObject go = collision.gameObject;
+            playerParticles.PlayHit(go);
 
 
             if (GetComponentInParent<PSMController>().IsLightAttack == true)

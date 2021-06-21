@@ -30,6 +30,9 @@ public class Boss : MonoBehaviour
         if (collision.gameObject.tag == "Player" && playerDamaged == false && canDamage == true)
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
+            GetHitScript.getHitScript.gameObject.SetActive(false);
+            GetHitScript.getHitScript.gameObject.SetActive(true);
+
             playerDamaged = true;
         }
     }
@@ -38,7 +41,12 @@ public class Boss : MonoBehaviour
         if (collision.gameObject.tag == "Player" && playerDamaged == false && canDamage == true)
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
-            playerDamaged = true;            
+            GetHitScript.getHitScript.gameObject.SetActive(false);
+            GetHitScript.getHitScript.gameObject.SetActive(true);
+
+            playerDamaged = true;
+
+            Debug.LogWarning(damage + " BOSS DAMAGE");
         }
     }
 

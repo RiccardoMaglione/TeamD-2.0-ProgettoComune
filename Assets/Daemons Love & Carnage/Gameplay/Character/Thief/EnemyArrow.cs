@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SwordGame
 {
@@ -17,6 +15,9 @@ namespace SwordGame
         {
             if (collision.tag == "Player")
             {
+                GetHitScript.getHitScript.gameObject.SetActive(false);
+                GetHitScript.getHitScript.gameObject.SetActive(true);
+
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce((transform.right + transform.InverseTransformDirection(KnockbackDirection)).normalized * thrust, ForceMode2D.Impulse);
                 collision.GetComponent<PSMController>().ResetTimerStaggered = 0;
                 collision.GetComponent<PSMController>().PoisePlayer += ValuePoiseArrow;
@@ -31,12 +32,12 @@ namespace SwordGame
                 GetComponentInParent<SpriteRenderer>().enabled = false;
                 GetComponent<BoxCollider2D>().enabled = false;
             }
-            else if(collision.tag == "Floor")
+            else if (collision.tag == "Floor")
             {
                 Destroy(ArrowParent);
             }
 
-            
+
         }
     }
 }

@@ -25,6 +25,9 @@ public class TrapSpike : MonoBehaviour
         if (collision.gameObject.tag == "Player" && cooldownIsActive == false && cooldownTrap <= 0f)
         {
             collision.gameObject.GetComponent<PSMController>().CurrentHealth -= damageToPlayer;
+            GetHitScript.getHitScript.gameObject.SetActive(false);
+            GetHitScript.getHitScript.gameObject.SetActive(true);
+
             cooldownIsActive = true;
         }
         if (collision.gameObject.tag == "Enemy" && cooldownIsActive == false && cooldownTrap <= 0f)
