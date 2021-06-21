@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+using UnityEngine;
 
 public class CrossbowTrap : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class CrossbowTrap : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-                playerInRange = true;
+            playerInRange = true;
 
             if (canShot)
             {
@@ -35,13 +34,14 @@ public class CrossbowTrap : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-           playerInRange = false;
+            playerInRange = false;
         }
     }
 
     IEnumerator Shoot()
     {
-        AudioManager.instance.Play("Sfx_ballista_shots");
+        if (AudioManager.instance != null)
+            AudioManager.instance.Play("Sfx_ballista_shots");
 
         while (playerInRange)
         {
@@ -52,6 +52,6 @@ public class CrossbowTrap : MonoBehaviour
             GameObject go = Instantiate(bullet, shotPoint.transform.position, transform.rotation);
             Destroy(go, destroyBulletTime);
 
-        }      
+        }
     }
 }
