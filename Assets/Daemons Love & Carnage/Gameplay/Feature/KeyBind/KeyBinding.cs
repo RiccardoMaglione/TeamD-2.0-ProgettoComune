@@ -113,7 +113,7 @@ public class KeyBinding : KeyVar
 
     public void ListenerOnClik(Button ButtonKey)
     {
-        if (CheckInput.PlaystationController == true && Input.GetKeyDown(KeyCode.Joystick1Button1))
+        if (CheckInput.PlaystationController == true /*&& Input.GetKeyDown(KeyCode.Joystick1Button1)*/)
         {
             ActivateGetKey = true;
             KeyText = ButtonKey.GetComponentInChildren<Text>();

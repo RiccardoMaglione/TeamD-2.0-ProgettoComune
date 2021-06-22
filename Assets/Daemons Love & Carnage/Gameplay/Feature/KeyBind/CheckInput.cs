@@ -40,6 +40,11 @@ public class CheckInput : MonoBehaviour
                 Controller = true;
                 print("Joystick Axis");
             }
+            else if ((Input.GetAxisRaw("PS DPad X") > 0 || Input.GetAxisRaw("PS DPad X") < 0 || Input.GetAxisRaw("PS DPad Y") > 0 || Input.GetAxisRaw("PS DPad Y") < 0) && PlaystationController == true)
+            {
+                Controller = true;
+                print("Joystick Axis");
+            }
         }
 
         CheckController();
