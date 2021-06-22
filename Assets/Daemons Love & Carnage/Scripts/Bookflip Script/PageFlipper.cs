@@ -131,10 +131,6 @@ public class PageFlipper : MonoBehaviour
             levelSelectionPage1.SetActive(true);
             illustration0.SetActive(false);
         }
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
     }
 
     public void ToLevel3()

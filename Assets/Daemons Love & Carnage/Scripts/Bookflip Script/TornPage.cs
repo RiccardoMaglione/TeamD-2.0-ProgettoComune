@@ -39,7 +39,7 @@ public class TornPage : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && tornPageOpen == true)
         {
             MoveOutTornPage();
         }
@@ -66,11 +66,6 @@ public class TornPage : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
         }
-
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
     }
     public void RateUsButton()
     {
@@ -87,11 +82,6 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
-
-            if (AudioManager.instance != null)
-            {
-                AudioManager.instance.Play("Sfx_mouse_on_button");
-            }
         }
     }
     public void CreditsButton()
@@ -110,11 +100,6 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
-
-            if (AudioManager.instance != null)
-            {
-                AudioManager.instance.Play("Sfx_mouse_on_button");
-            }
         }
     }
     public void ControlsButton()
@@ -133,11 +118,6 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
-            
-            if (AudioManager.instance != null)
-            {
-                AudioManager.instance.Play("Sfx_mouse_on_button");
-            }
         }
     }
     public void NewGameButton()
@@ -161,11 +141,6 @@ public class TornPage : MonoBehaviour
             if (thereAreSavedData == false)
             {
                 pageFlipper.NewGame();
-            }
-
-            if(AudioManager.instance != null)
-            {
-                AudioManager.instance.Play("Sfx_mouse_on_button");
             }
         }
     }
@@ -194,11 +169,6 @@ public class TornPage : MonoBehaviour
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
-
-            if (AudioManager.instance != null)
-            {
-                AudioManager.instance.Play("Sfx_mouse_on_button");
-            }
         }
     }
     public void ConfirmQuit()
@@ -218,18 +188,17 @@ public class TornPage : MonoBehaviour
             newGame.SetActive(false);
             Controls.SetActive(false);
 
-
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
-            
-            if (AudioManager.instance != null)
-            {
-                AudioManager.instance.Play("Sfx_mouse_on_button");
-            }
         }
     }
     public IEnumerator MoveInTornPage()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_book_torn_page");
+        }
+
         shadowPanel.SetActive(true);
 
         float progress = 0;
@@ -249,6 +218,11 @@ public class TornPage : MonoBehaviour
     }
     public IEnumerator MoveOutTornPageCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_book_torn_page");
+        }
+
         shadowPanel.SetActive(false);
         float progress = 0;
         while (progress < transitionTime)
@@ -263,6 +237,5 @@ public class TornPage : MonoBehaviour
             }
             yield return null;
         }
-
     }
 }

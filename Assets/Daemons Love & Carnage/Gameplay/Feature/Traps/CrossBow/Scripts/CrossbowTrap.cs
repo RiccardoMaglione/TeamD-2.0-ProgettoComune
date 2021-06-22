@@ -40,9 +40,6 @@ public class CrossbowTrap : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        if (AudioManager.instance != null)
-            AudioManager.instance.Play("Sfx_ballista_shots");
-
         while (playerInRange)
         {
             canShot = false;
@@ -50,6 +47,8 @@ public class CrossbowTrap : MonoBehaviour
             canShot = true;
 
             GameObject go = Instantiate(bullet, shotPoint.transform.position, transform.rotation);
+            if (AudioManager.instance != null)
+                AudioManager.instance.Play("Sfx_ballista_shots");
             Destroy(go, destroyBulletTime);
 
         }
