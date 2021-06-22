@@ -22,6 +22,7 @@ public class FeedbackManager : MonoBehaviour
     [Header("TIME STOP")]
     public float stopTimeLightDuration;
     public float stopTimeHeavyDuration;
+    public float playerStopTimeDuration;
 
     [Header("CUT IN")]
     public float cutInDuration;
@@ -55,6 +56,15 @@ public class FeedbackManager : MonoBehaviour
         Time.timeScale = 0;
         isTimeStopped = true;
         yield return new WaitForSecondsRealtime(stopTimeHeavyDuration);
+        Time.timeScale = 1;
+        isTimeStopped = false;
+    }
+
+    public IEnumerator StopTimePlayer()
+    {
+        Time.timeScale = 0;
+        isTimeStopped = true;
+        yield return new WaitForSecondsRealtime(playerStopTimeDuration);
         Time.timeScale = 1;
         isTimeStopped = false;
     }

@@ -465,6 +465,12 @@ namespace SwordGame
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseLight;
                         CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage * CoeffReduceDamageLight;
+                        
+                        if (FeedbackManager.instance.isTimeStopped == false)
+                        {
+                            StartCoroutine(FeedbackManager.instance.StopTimePlayer());
+                        }
+                        
                         Knockback.ActiveKnockback = true;
                         //print("PSM-Trigger: Entra nel light attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
@@ -505,6 +511,12 @@ namespace SwordGame
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseHeavy;
                         CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy;
+                        
+                        if (FeedbackManager.instance.isTimeStopped == false)
+                        {
+                            StartCoroutine(FeedbackManager.instance.StopTimePlayer());
+                        }
+                        
                         Knockback.ActiveKnockback = true;
                         //print("PSM-Trigger: Entra nel heavy attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
