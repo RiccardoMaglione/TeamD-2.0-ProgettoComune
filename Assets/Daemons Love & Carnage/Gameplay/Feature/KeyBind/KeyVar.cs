@@ -15,18 +15,6 @@ public class KeyVar : MonoBehaviour
     /*[HideInInspector]*/ public string StringKeyHeavyAttack;
     /*[HideInInspector]*/ public string StringKeySpecialAttack;
 
-
-    /*[HideInInspector]*/ public string a;
-    /*[HideInInspector]*/ public string b;
-    /*[HideInInspector]*/ public string c;
-    /*[HideInInspector]*/ public string d;
-    /*[HideInInspector]*/ public string e;
-    /*[HideInInspector]*/ public string f;
-    /*[HideInInspector]*/ public string g;
-    /*[HideInInspector]*/ public string h;
-    /*[HideInInspector]*/ public string i;
-
-
     /*[HideInInspector]*/ public string ControllerStringKeyUp;
     /*[HideInInspector]*/ public string ControllerStringKeyDown;
     /*[HideInInspector]*/ public string ControllerStringKeyLeft;
@@ -93,15 +81,15 @@ public class KeyVar : MonoBehaviour
 
     public void GetStringKeyPrefs()
     {
-        PlayerPrefs.DeleteKey(KeyUp.name.ToString());
-        PlayerPrefs.DeleteKey(KeyDown.name.ToString());
-        PlayerPrefs.DeleteKey(KeyLeft.name.ToString());
-        PlayerPrefs.DeleteKey(KeyRight.name.ToString());
-        PlayerPrefs.DeleteKey(KeyDash.name.ToString());
-        PlayerPrefs.DeleteKey(KeyPossession.name.ToString());
-        PlayerPrefs.DeleteKey(KeyLightAttack.name.ToString());
-        PlayerPrefs.DeleteKey(KeyHeavyAttack.name.ToString());
-        PlayerPrefs.DeleteKey(KeySpecialAttack.name.ToString());
+        //PlayerPrefs.DeleteKey(KeyUp.name.ToString());
+        //PlayerPrefs.DeleteKey(KeyDown.name.ToString());
+        //PlayerPrefs.DeleteKey(KeyLeft.name.ToString());
+        //PlayerPrefs.DeleteKey(KeyRight.name.ToString());
+        //PlayerPrefs.DeleteKey(KeyDash.name.ToString());
+        //PlayerPrefs.DeleteKey(KeyPossession.name.ToString());
+        //PlayerPrefs.DeleteKey(KeyLightAttack.name.ToString());
+        //PlayerPrefs.DeleteKey(KeyHeavyAttack.name.ToString());
+        //PlayerPrefs.DeleteKey(KeySpecialAttack.name.ToString());
 
         StringKeyUp = PlayerPrefs.GetString(KeyUp.name.ToString(),"UpArrow");
         StringKeyDown = PlayerPrefs.GetString(KeyDown.name.ToString(), "DownArrow");
@@ -179,15 +167,56 @@ public class KeyVar : MonoBehaviour
 
     public void ControllerGetStringKeyPrefs()
     {
-        ControllerStringKeyUp = PlayerPrefs.GetString(("Controller" + KeyUp.name.ToString()));
-        ControllerStringKeyDown = PlayerPrefs.GetString(("Controller" + KeyDown.name.ToString()));
-        ControllerStringKeyLeft = PlayerPrefs.GetString(("Controller" + KeyLeft.name.ToString()));
-        ControllerStringKeyRight = PlayerPrefs.GetString(("Controller" + KeyRight.name.ToString()));
-        ControllerStringKeyDash = PlayerPrefs.GetString(("Controller" + KeyDash.name.ToString()));
-        ControllerStringKeyPossession = PlayerPrefs.GetString(("Controller" + KeyPossession.name.ToString()));
-        ControllerStringKeyLightAttack = PlayerPrefs.GetString(("Controller" + KeyLightAttack.name.ToString()));
-        ControllerStringKeyHeavyAttack = PlayerPrefs.GetString(("Controller" + KeyHeavyAttack.name.ToString()));
-        ControllerStringKeySpecialAttack = PlayerPrefs.GetString(("Controller" + KeySpecialAttack.name.ToString()));
+        //PlayerPrefs.DeleteKey("Controller" + KeyUp.name.ToString());
+        //PlayerPrefs.DeleteKey("Controller" + KeyDown.name.ToString());
+        //PlayerPrefs.DeleteKey("Controller" + KeyLeft.name.ToString());
+        //PlayerPrefs.DeleteKey("Controller" + KeyRight.name.ToString());
+        //PlayerPrefs.DeleteKey("Controller" + KeyDash.name.ToString());
+        //PlayerPrefs.DeleteKey("Controller" + KeyPossession.name.ToString());
+        //PlayerPrefs.DeleteKey("Controller" + KeyLightAttack.name.ToString());
+        //PlayerPrefs.DeleteKey("Controller" + KeyHeavyAttack.name.ToString());
+        //PlayerPrefs.DeleteKey("Controller" + KeySpecialAttack.name.ToString());
+
+
+        ControllerStringKeyUp = PlayerPrefs.GetString(("Controller" + KeyUp.name.ToString()), "Joystick1Button0");
+        ControllerStringKeyDown = PlayerPrefs.GetString(("Controller" + KeyDown.name.ToString()), "");
+        ControllerStringKeyLeft = PlayerPrefs.GetString(("Controller" + KeyLeft.name.ToString()), "");
+        ControllerStringKeyRight = PlayerPrefs.GetString(("Controller" + KeyRight.name.ToString()), "");
+        ControllerStringKeyDash = PlayerPrefs.GetString(("Controller" + KeyDash.name.ToString()), "Joystick1Button4");
+        ControllerStringKeyPossession = PlayerPrefs.GetString(("Controller" + KeyPossession.name.ToString()), "Joystick1Button5");
+        ControllerStringKeyLightAttack = PlayerPrefs.GetString(("Controller" + KeyLightAttack.name.ToString()), "Joystick1Button2");
+        ControllerStringKeyHeavyAttack = PlayerPrefs.GetString(("Controller" + KeyHeavyAttack.name.ToString()), "Joystick1Button1");
+        ControllerStringKeySpecialAttack = PlayerPrefs.GetString(("Controller" + KeySpecialAttack.name.ToString()), "Joystick1Button3");
+
+        Debug.LogError(ControllerStringKeyUp);
+        Debug.LogError(ControllerStringKeyDown);
+        Debug.LogError(ControllerStringKeyLeft);
+        Debug.LogError(ControllerStringKeyRight);
+        Debug.LogError(ControllerStringKeyDash);
+        Debug.LogError(ControllerStringKeyPossession);
+        Debug.LogError(ControllerStringKeyLightAttack);
+        Debug.LogError(ControllerStringKeyHeavyAttack);
+        Debug.LogError(ControllerStringKeySpecialAttack);
+
+        PlayerPrefs.SetString("Controller" + KeyUp.name.ToString(), ControllerStringKeyUp);
+        PlayerPrefs.SetString("Controller" + KeyDown.name.ToString(), ControllerStringKeyDown);
+        PlayerPrefs.SetString("Controller" + KeyLeft.name.ToString(), ControllerStringKeyLeft);
+        PlayerPrefs.SetString("Controller" + KeyRight.name.ToString(), ControllerStringKeyRight);
+        PlayerPrefs.SetString("Controller" + KeyDash.name.ToString(), ControllerStringKeyDash);
+        PlayerPrefs.SetString("Controller" + KeyPossession.name.ToString(), ControllerStringKeyPossession);
+        PlayerPrefs.SetString("Controller" + KeyLightAttack.name.ToString(), ControllerStringKeyLightAttack);
+        PlayerPrefs.SetString("Controller" + KeyHeavyAttack.name.ToString(), ControllerStringKeyHeavyAttack);
+        PlayerPrefs.SetString("Controller" + KeySpecialAttack.name.ToString(), ControllerStringKeySpecialAttack);
+
+        Debug.LogError("1. "+ControllerStringKeyUp);
+        Debug.LogError("1. "+ControllerStringKeyDown);
+        Debug.LogError("1. "+ControllerStringKeyLeft);
+        Debug.LogError("1. "+ControllerStringKeyRight);
+        Debug.LogError("1. "+ControllerStringKeyDash);
+        Debug.LogError("1. "+ControllerStringKeyPossession);
+        Debug.LogError("1. "+ControllerStringKeyLightAttack);
+        Debug.LogError("1. "+ControllerStringKeyHeavyAttack);
+        Debug.LogError("1. "+ControllerStringKeySpecialAttack);
     }
 
     public void ControllerAssignButton(Button KeyButton, string ControllerKeyString)

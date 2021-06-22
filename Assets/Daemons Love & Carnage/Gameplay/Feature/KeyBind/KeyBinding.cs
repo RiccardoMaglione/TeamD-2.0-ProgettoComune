@@ -39,11 +39,21 @@ public class KeyBinding : KeyVar
     public Sprite SpriteStandardB;
     public Sprite SpriteStandardX;
     public Sprite SpriteStandardY;
+    public Sprite SpriteStandardRB;
+    public Sprite SpriteStandardLB;
+    public Sprite SpriteStandardLeftLeftJoystick;
+    public Sprite SpriteStandardLeftRightJoystick;
+    public Sprite SpriteStandardLeftDownJoystick;
 
     public Sprite SpriteStandardPSSquare;
     public Sprite SpriteStandardPSX;
     public Sprite SpriteStandardPSCircle;
     public Sprite SpriteStandardPSTriangle;
+    public Sprite SpriteStandardR1;
+    public Sprite SpriteStandardL1;
+    public Sprite SpriteStandardLeftLeftJoystickPlaystation;
+    public Sprite SpriteStandardLeftRightJoystickPlaystation;
+    public Sprite SpriteStandardLeftDownJoystickPlaystation;
 
     private void Awake()
     {
@@ -79,14 +89,26 @@ public class KeyBinding : KeyVar
             if (CheckInput.XboxController == true)
             {
                 ControllerAssignSpriteStringContainer();
+                AxisControllerAssignSpriteStringContainer();
             }
             else if(CheckInput.PlaystationController == true)
             {
                 PlaystationControllerAssignSpriteStringContainer();
+                AxisPlaystationControllerAssignSpriteStringContainer();
             }
         }
         
         GetKeyUp();
+
+        Debug.LogError("2. " + ControllerStringKeyUp);
+        Debug.LogError("2. " + ControllerStringKeyDown);
+        Debug.LogError("2. " + ControllerStringKeyLeft);
+        Debug.LogError("2. " + ControllerStringKeyRight);
+        Debug.LogError("2. " + ControllerStringKeyDash);
+        Debug.LogError("2. " + ControllerStringKeyPossession);
+        Debug.LogError("2. " + ControllerStringKeyLightAttack);
+        Debug.LogError("2. " + ControllerStringKeyHeavyAttack);
+        Debug.LogError("2. " + ControllerStringKeySpecialAttack);
     }
 
     public void ListenerOnClik(Button ButtonKey)
@@ -165,6 +187,210 @@ public class KeyBinding : KeyVar
                 //    PlaystationControllerAssignSpriteStandardContainer(vKey);
                 //}
             }
+            #region Axis xbox
+            if (Input.GetAxisRaw("Horizontal") < -0.5f && CheckInput.Controller == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Left Left Joystick";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("Horizontal") > 0.5f && CheckInput.Controller == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Left right Joystick";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("Vertical") < -0.5f && CheckInput.Controller == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Left Down Joystick";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("Vertical") > 0.5f && CheckInput.Controller == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Left Up";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+
+            if (Input.GetAxisRaw("DPad X") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "DPad Left";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //ControllerAssignSpriteStandardContainer(vKey);
+            }
+            if (Input.GetAxisRaw("DPad X") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "DPad right";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //ControllerAssignSpriteStandardContainer(vKey);
+            }
+            if (Input.GetAxisRaw("DPad Y") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "DPad Down";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //ControllerAssignSpriteStandardContainer(vKey);
+            }
+            if (Input.GetAxisRaw("DPad Y") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "DPad Up";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //ControllerAssignSpriteStandardContainer(vKey);
+            }
+            if (Input.GetAxisRaw("Left Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Left Trigger";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //ControllerAssignSpriteStandardContainer(vKey);
+            }
+            if (Input.GetAxisRaw("Right Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Right Trigger";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //ControllerAssignSpriteStandardContainer(vKey);
+            }
+            if (Input.GetAxisRaw("Right Stick X Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Left HRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //ControllerAssignSpriteStandardContainer(vKey);
+            }
+            if (Input.GetAxisRaw("Right Stick X Axis") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Right HRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //ControllerAssignSpriteStandardContainer(vKey);
+            }
+            if (Input.GetAxisRaw("Right Stick Y Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Up VRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //ControllerAssignSpriteStandardContainer(vKey);
+            }
+            if (Input.GetAxisRaw("Right Stick Y Axis") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Down VRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                //ControllerAssignSpriteStandardContainer(vKey);
+            }
+            #endregion
+
+            #region Axis Playstation
+            if (Input.GetAxisRaw("PS DPad X") > 0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "PS DPad Left";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }                    //7
+            if (Input.GetAxisRaw("PS DPad X") < -0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "PS DPad right";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }                   //7
+            if (Input.GetAxisRaw("PS DPad Y") > 0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "PS DPad Down";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }                    //8
+            if (Input.GetAxisRaw("PS DPad Y") < -0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "PS DPad Up";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }                   //8
+            if (Input.GetAxisRaw("PS Right Stick X Axis") < -0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "PS Left HRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }       //3
+            if (Input.GetAxisRaw("PS Right Stick X Axis") > 0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "PS Right HRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }        //3
+            if (Input.GetAxisRaw("PS Right Stick Y Axis") < -0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "PS Up VRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }       //6
+            if (Input.GetAxisRaw("PS Right Stick Y Axis") > 0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "PS Down VRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }        //6
+            #endregion
         }
     }
 
@@ -303,6 +529,9 @@ public class KeyBinding : KeyVar
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button1, SpriteStandardB, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button2, SpriteStandardX, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button3, SpriteStandardY, TempButton);
+
+        ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button4, SpriteStandardLB, TempButton);
+        ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button5, SpriteStandardRB, TempButton);
     }
 
     public void ControllerAssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
@@ -333,6 +562,69 @@ public class KeyBinding : KeyVar
         ControllerAssignAllSpriteButton("Joystick1Button1", SpriteStandardB);
         ControllerAssignAllSpriteButton("Joystick1Button2", SpriteStandardX);
         ControllerAssignAllSpriteButton("Joystick1Button3", SpriteStandardY);
+        ControllerAssignAllSpriteButton("Joystick1Button4", SpriteStandardLB);
+        ControllerAssignAllSpriteButton("Joystick1Button5", SpriteStandardRB);
+
+        //ControllerAssignAllSpriteButton("Horizontal", SpriteStandardLeftLeftJoystick);
+        //ControllerAssignAllSpriteButton("Horizontal", SpriteStandardLeftRightJoystick);
+        //ControllerAssignAllSpriteButton("Vertical", SpriteStandardLeftDownJoystick);
+    }
+
+    public void AxisControllerAssingSpriteStandard(string Axis, string StandardAxis, Sprite SpriteKey, Button ButtonKey)
+    {
+        if (Axis == StandardAxis && SpriteKey != null)
+        {
+            ButtonKey.GetComponent<Image>().sprite = SpriteKey;
+            KeyText.text = "";
+        }
+    }
+    public void ControllerAssignSpriteStandardContainer(string Axis)
+    {
+        AxisControllerAssingSpriteStandard(Axis, "Left Left Joystick", SpriteStandardA, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Left right Joystick", SpriteStandardB, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Left Down Joystick", SpriteStandardX, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Left Up", SpriteStandardY, TempButton);
+
+        //AxisControllerAssingSpriteStandard(Axis, "", SpriteStandardLB, TempButton);
+        //AxisControllerAssingSpriteStandard(Axis, "", SpriteStandardRB, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS DPad Left", SpriteStandardA, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS DPad right", SpriteStandardB, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS DPad Down", SpriteStandardX, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS DPad Up", SpriteStandardY, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS Left HRJ", SpriteStandardA, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS Right HRJ", SpriteStandardB, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS Up VRJ", SpriteStandardX, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS Down VRJ", SpriteStandardY, TempButton);
+    }
+
+    public void AxisControllerAssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
+    {
+        if (KeyName == Keystring)
+        {
+            ButtonKey.GetComponent<Image>().sprite = SpriteKey;
+            ButtonKey.GetComponentInChildren<Text>().text = "";
+        }
+    }
+
+    public void AxisControllerAssignAllSpriteButton(string KeyName, Sprite SpriteStandard)
+    {
+        AxisControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyUp.name.ToString()), KeyUp, SpriteStandard);
+        AxisControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyDown.name.ToString()), KeyDown, SpriteStandard);
+        AxisControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyLeft.name.ToString()), KeyLeft, SpriteStandard);
+        AxisControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyRight.name.ToString()), KeyRight, SpriteStandard);
+        AxisControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyDash.name.ToString()), KeyDash, SpriteStandard);
+        AxisControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyPossession.name.ToString()), KeyPossession, SpriteStandard);
+        AxisControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyLightAttack.name.ToString()), KeyLightAttack, SpriteStandard);
+        AxisControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeySpecialAttack.name.ToString()), KeySpecialAttack, SpriteStandard);
+        AxisControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyHeavyAttack.name.ToString()), KeyHeavyAttack, SpriteStandard);
+    }
+
+    public void AxisControllerAssignSpriteStringContainer()
+    {
+        AxisControllerAssignAllSpriteButton("Left Left Joystick", SpriteStandardA);
+        AxisControllerAssignAllSpriteButton("Left right Joystick", SpriteStandardB);
+        AxisControllerAssignAllSpriteButton("Left Down Joystick", SpriteStandardX);
+        AxisControllerAssignAllSpriteButton("Left Up", SpriteStandardY);
     }
     #endregion
 
@@ -382,6 +674,42 @@ public class KeyBinding : KeyVar
         PlaystationControllerAssignAllSpriteButton("Joystick1Button1", SpriteStandardPSX);
         PlaystationControllerAssignAllSpriteButton("Joystick1Button2", SpriteStandardPSCircle);
         PlaystationControllerAssignAllSpriteButton("Joystick1Button3", SpriteStandardPSTriangle);
+        PlaystationControllerAssignAllSpriteButton("Joystick1Button4", SpriteStandardL1);
+        PlaystationControllerAssignAllSpriteButton("Joystick1Button5", SpriteStandardR1);
     }
+
+
+
+   public void AxisPlaystationControllerAssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
+    {
+        if (KeyName == Keystring)
+        {
+            ButtonKey.GetComponent<Image>().sprite = SpriteKey;
+            ButtonKey.GetComponentInChildren<Text>().text = "";
+        }
+    }
+
+    public void AxisPlaystationControllerAssignAllSpriteButton(string KeyName, Sprite SpriteStandard)
+    {
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyUp.name.ToString()), KeyUp, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyDown.name.ToString()), KeyDown, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyLeft.name.ToString()), KeyLeft, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyRight.name.ToString()), KeyRight, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyDash.name.ToString()), KeyDash, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyPossession.name.ToString()), KeyPossession, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyLightAttack.name.ToString()), KeyLightAttack, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeySpecialAttack.name.ToString()), KeySpecialAttack, SpriteStandard);
+        PlaystationControllerAssingSpriteStringStandard(KeyName, PlayerPrefs.GetString("Controller" + KeyHeavyAttack.name.ToString()), KeyHeavyAttack, SpriteStandard);
+    }
+
+    public void AxisPlaystationControllerAssignSpriteStringContainer()
+    {
+        PlaystationControllerAssignAllSpriteButton("", SpriteStandardPSSquare);
+        PlaystationControllerAssignAllSpriteButton("", SpriteStandardPSX);
+        PlaystationControllerAssignAllSpriteButton("", SpriteStandardPSCircle);
+        PlaystationControllerAssignAllSpriteButton("", SpriteStandardPSTriangle);
+        PlaystationControllerAssignAllSpriteButton("", SpriteStandardL1);
+        PlaystationControllerAssignAllSpriteButton("", SpriteStandardR1);
+    }/**/
     #endregion
 }
