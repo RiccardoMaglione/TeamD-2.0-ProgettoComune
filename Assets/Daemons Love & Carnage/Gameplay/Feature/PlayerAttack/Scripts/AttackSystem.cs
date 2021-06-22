@@ -96,7 +96,7 @@ public class AttackSystem : MonoBehaviour
 
                 if (FeedbackManager.instance.isTimeStopped == false)
                 {
-                    //StartCoroutine(FeedbackManager.instance.StopTimeLight());
+                    StartCoroutine(FeedbackManager.instance.StopTimeLight());
                 }
                 //GetComponentInParent<PSMController>().IsLightAttack = false;
                 collision.GetComponent<EnemyData>().Life -= LightDamage * collision.GetComponent<EnemyData>().EnemyCoeffReduceDamageLight;
@@ -141,7 +141,7 @@ public class AttackSystem : MonoBehaviour
 
                 if (FeedbackManager.instance.isTimeStopped == false)
                 {
-                    //StartCoroutine(FeedbackManager.instance.StopTimeHeavy());
+                    StartCoroutine(FeedbackManager.instance.StopTimeHeavy());
                 }
 
                 //GetComponentInParent<PSMController>().IsHeavyAttack = false;
