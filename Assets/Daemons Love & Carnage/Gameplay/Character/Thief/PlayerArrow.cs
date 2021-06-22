@@ -43,7 +43,8 @@ namespace SwordGame
                     collision.GetComponent<EnemyData>().GetComponent<Animator>().SetBool("IsStagger", true);
                 }
                 #endregion
-                ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy += ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount;
+                if(ThiefSpecialAttack.instance.isSpecialActive == false)
+                    ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy += ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount;
                 Destroy(ArrowParent);
                 /*Manca aggiungere energia alla barra del player*/
             }
@@ -54,7 +55,12 @@ namespace SwordGame
             }
 
             if(collision.tag == "Boss")
+            {
                 collision.GetComponent<Boss>().life -= DamageArrow * collision.GetComponent<Boss>().DMG_Reduction;
+                if (ThiefSpecialAttack.instance.isSpecialActive == false)
+                    ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy += ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount;
+            }
+                
         }
 
         private void OnTriggerStay2D(Collider2D collision)
