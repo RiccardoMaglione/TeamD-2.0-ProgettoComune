@@ -47,10 +47,14 @@ namespace SwordGame
                 Destroy(ArrowParent);
                 /*Manca aggiungere energia alla barra del player*/
             }
+
             else if(collision.tag == "Floor")
             {
                 Destroy(ArrowParent);
             }
+
+            if(collision.tag == "Boss")
+                collision.GetComponent<Boss>().life -= DamageArrow * collision.GetComponent<Boss>().DMG_Reduction;
         }
 
         private void OnTriggerStay2D(Collider2D collision)
