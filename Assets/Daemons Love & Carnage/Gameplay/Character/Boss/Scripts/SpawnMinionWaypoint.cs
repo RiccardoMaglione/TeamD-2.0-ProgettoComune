@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnMinionWaypoint : MonoBehaviour
 {
@@ -8,7 +6,12 @@ public class SpawnMinionWaypoint : MonoBehaviour
     [HideInInspector] public int i = 0;
     public float[] speed;
     float WPradius = 0.1f;
+    Color32 invulnerableColor;
 
+    private void Awake()
+    {
+        invulnerableColor = new Color32(121, 121, 121, 255);
+    }
     public void Move()
     {
         if (i < waypoints.Length)
@@ -21,4 +24,16 @@ public class SpawnMinionWaypoint : MonoBehaviour
             }
         }
     }
+
+    public void ChangeColor()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.Lerp(this.gameObject.GetComponent<SpriteRenderer>().color, invulnerableColor, 1f * Time.deltaTime);
+    }
+
+    public void ReturnNormalColor()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.Lerp(this.gameObject.GetComponent<SpriteRenderer>().color, Color.white, 1f * Time.deltaTime);
+
+    }
+
 }
