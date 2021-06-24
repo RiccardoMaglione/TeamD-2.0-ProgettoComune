@@ -52,9 +52,6 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && paused == false && menuOpen == false)
         {
-            if(AudioManager.instance != null)
-                AudioManager.instance.Play("Sfx_book_drop");
-
             Cursor.visible = true;
             shadowPanel.SetActive(false);
             tornPage.GetComponent<RectTransform>().anchoredPosition = startPos;
@@ -94,9 +91,6 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartLevelButton()
     {
-        if (AudioManager.instance != null)
-            AudioManager.instance.Play("Sfx_book_torn_page");
-
         if (tornPageOpen == false && tornPageIsMoving == false)
         {
             Resume.SetActive(false);
@@ -114,8 +108,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
         {
-            if (AudioManager.instance != null)
-                AudioManager.instance.Play("Sfx_book_torn_page");
 
             Resume.SetActive(false);
             RestartLevel.SetActive(false);
@@ -132,8 +124,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
         {
-            if (AudioManager.instance != null)
-                AudioManager.instance.Play("Sfx_book_torn_page");
 
             Resume.SetActive(false);
             RestartLevel.SetActive(false);
@@ -149,8 +139,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
         {
-            if (AudioManager.instance != null)
-                AudioManager.instance.Play("Sfx_book_torn_page");
 
             Resume.SetActive(false);
             RestartLevel.SetActive(false);
@@ -219,9 +207,6 @@ public class PauseMenu : MonoBehaviour
 
     public IEnumerator MoveOutTornPageCoroutine()
     {
-        if (AudioManager.instance != null)
-            AudioManager.instance.Play("Sfx_book_torn_page");
-
         shadowPanel.SetActive(false);
 
         while (tornPage.GetComponent<RectTransform>().anchoredPosition.x != startPos.x)

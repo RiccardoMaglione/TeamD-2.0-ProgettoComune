@@ -33,14 +33,10 @@ public class VictoryScreen : MonoBehaviour
     }
     public void Dropdown()
     {
-        if (AudioManager.instance != null)
-            AudioManager.instance.Play("Sfx_book_drop");
-
         StartCoroutine("BookDropCoroutine");
     }
-
     public IEnumerator BookDropCoroutine()
-    {        
+    {
         book.SetActive(true);
 
         float elapsedTime = 0;
