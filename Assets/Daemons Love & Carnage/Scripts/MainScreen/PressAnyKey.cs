@@ -26,6 +26,8 @@ public class PressAnyKey : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
+            AudioManager.instance.Play("Sfx_spess_any_key");
+            
             FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
             FindObjectOfType<FadeInOutTransition>().FadeIn();
             Invoke("ToMainMenu", 0.5f);

@@ -37,6 +37,9 @@ public class VictoryScreen : MonoBehaviour
     }
     public IEnumerator BookDropCoroutine()
     {
+        if (AudioManager.instance != null)
+            AudioManager.instance.Play("Sfx_book_drop");
+
         book.SetActive(true);
 
         float elapsedTime = 0;
