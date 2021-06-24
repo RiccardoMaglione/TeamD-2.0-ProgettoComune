@@ -15,6 +15,12 @@ public class CrossbowTrap : MonoBehaviour
     public GameObject bullet;
     public GameObject shotPoint;
 
+    private Animator anim;
+
+    private void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,6 +31,7 @@ public class CrossbowTrap : MonoBehaviour
 
             if (canShot)
             {
+                anim.SetBool("Shooting", true);
                 StartCoroutine("Shoot");
             }
         }
@@ -35,6 +42,8 @@ public class CrossbowTrap : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerInRange = false;
+            anim.SetBool("Shooting", false);
+
         }
     }
 
@@ -53,5 +62,6 @@ public class CrossbowTrap : MonoBehaviour
             Destroy(go, destroyBulletTime);
 
         }
+
     }
 }
