@@ -33,8 +33,8 @@ public class DialogueType2 : MonoBehaviour
         {
             dialogueStarted = true;
 
-            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, -140);
-            bossDialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(2020, -240);
+            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-700, -140);
+            bossDialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(2020, -750);
 
             bossDialogueText.text = insertBossText;
             playerDialogueText.text = insertPlayerText;
@@ -55,8 +55,8 @@ public class DialogueType2 : MonoBehaviour
     {
         while (playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x != endPos.position.x)
         {
-            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(30, -140), speedTransition * Time.unscaledDeltaTime);
-            if (playerDialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(30, -140))
+            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-130, -140), speedTransition * Time.unscaledDeltaTime);
+            if (playerDialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(-130, -140))
             {
                 yield return new WaitForSecondsRealtime(dialogueUpTime);
                 StopCoroutine("PlayerDialogueIn");
@@ -71,7 +71,7 @@ public class DialogueType2 : MonoBehaviour
     {
         while (playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x != startPos.position.x)
         {
-            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-600, -140), speedTransition * Time.unscaledDeltaTime);
+            playerDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, playerDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-700, -140), speedTransition * Time.unscaledDeltaTime);
             yield return null;
         }
     }
@@ -79,8 +79,8 @@ public class DialogueType2 : MonoBehaviour
     {
         while (bossDialogueBox.GetComponent<RectTransform>().anchoredPosition.x != bossEndPos.position.x)
         {
-            bossDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(bossDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, bossDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(1390, -240), speedTransition * Time.unscaledDeltaTime);
-            if (bossDialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(1390, -240))
+            bossDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(bossDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, bossDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(1390, -750), speedTransition * Time.unscaledDeltaTime);
+            if (bossDialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(1390, -750))
             {
                 yield return new WaitForSecondsRealtime(dialogueUpTime);
                 StopCoroutine("BossDialogueIn");
@@ -94,8 +94,8 @@ public class DialogueType2 : MonoBehaviour
     {
         while (bossDialogueBox.GetComponent<RectTransform>().anchoredPosition.x != bossStartPos.position.x)
         {
-            bossDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(bossDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, bossDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(2020, -240), speedTransition * Time.unscaledDeltaTime);
-            if (bossDialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(2020, -240))
+            bossDialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(bossDialogueBox.GetComponent<RectTransform>().anchoredPosition.x, bossDialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(2020, -750), speedTransition * Time.unscaledDeltaTime);
+            if (bossDialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(2020, -750))
             {
                 yield return new WaitForSeconds(1);
                 StartCoroutine("PlayerDialogueIn");

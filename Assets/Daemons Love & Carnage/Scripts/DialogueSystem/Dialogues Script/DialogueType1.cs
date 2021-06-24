@@ -41,7 +41,7 @@ public class DialogueType1 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-600, -140);
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-700, -140);
 
             blackPanel.SetActive(true);
             dialogueText.text = insertTutorialText;
@@ -80,8 +80,8 @@ public class DialogueType1 : MonoBehaviour
     {
         while (dialogueBox.GetComponent<RectTransform>().anchoredPosition.x != endPos.position.x)
         {
-            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(30, -140), speedTransition * Time.unscaledDeltaTime);
-            if (dialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(30, -140))
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-130, -140), speedTransition * Time.unscaledDeltaTime);
+            if (dialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(-130, -140))
             {
                 dialogueActive = true;
             }
@@ -92,8 +92,8 @@ public class DialogueType1 : MonoBehaviour
     {
         while (dialogueBox.GetComponent<RectTransform>().anchoredPosition.x != startPos.position.x)
         {
-            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-600, -140), speedTransition * Time.unscaledDeltaTime);
-            if (dialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(-600, -140))
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(new Vector2(dialogueBox.GetComponent<RectTransform>().anchoredPosition.x, dialogueBox.GetComponent<RectTransform>().anchoredPosition.y), new Vector2(-630, -140), speedTransition * Time.unscaledDeltaTime);
+            if (dialogueBox.GetComponent<RectTransform>().anchoredPosition == new Vector2(-630, -140))
             {
                 Time.timeScale = 1;
                 blackPanel.SetActive(false);
