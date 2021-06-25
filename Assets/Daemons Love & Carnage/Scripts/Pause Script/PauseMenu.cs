@@ -52,6 +52,9 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && paused == false && menuOpen == false)
         {
+            if (AudioManager.instance != null)
+                AudioManager.instance.Play("Sfx_book_drop");
+
             Cursor.visible = true;
             shadowPanel.SetActive(false);
             tornPage.GetComponent<RectTransform>().anchoredPosition = startPos;
@@ -108,7 +111,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
         {
-
             Resume.SetActive(false);
             RestartLevel.SetActive(false);
             Controls.SetActive(true);
@@ -124,7 +126,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
         {
-
             Resume.SetActive(false);
             RestartLevel.SetActive(false);
             Controls.SetActive(false);
@@ -139,7 +140,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (tornPageOpen == false && tornPageIsMoving == false)
         {
-
             Resume.SetActive(false);
             RestartLevel.SetActive(false);
             Controls.SetActive(false);
@@ -189,6 +189,9 @@ public class PauseMenu : MonoBehaviour
     }
     public IEnumerator MoveInTornPageCoroutine()
     {
+        if (AudioManager.instance != null)
+            AudioManager.instance.Play("Sfx_book_torn_page");
+
         shadowPanel.SetActive(true);
 
         while (tornPage.GetComponent<RectTransform>().anchoredPosition.x != endPos.x)
@@ -207,6 +210,9 @@ public class PauseMenu : MonoBehaviour
 
     public IEnumerator MoveOutTornPageCoroutine()
     {
+        if (AudioManager.instance != null)
+            AudioManager.instance.Play("Sfx_book_torn_page");
+
         shadowPanel.SetActive(false);
 
         while (tornPage.GetComponent<RectTransform>().anchoredPosition.x != startPos.x)

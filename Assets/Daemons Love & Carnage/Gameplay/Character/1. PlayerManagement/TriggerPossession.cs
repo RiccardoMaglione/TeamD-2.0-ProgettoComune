@@ -31,6 +31,9 @@ public class TriggerPossession : Possession
 
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
         {
+            if (AudioManager.instance != null)
+                AudioManager.instance.Play("Sfx_possesion");
+
             Possession(Player, Enemy);
         }
     }

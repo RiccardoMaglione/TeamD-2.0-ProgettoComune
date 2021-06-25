@@ -100,6 +100,8 @@ namespace SwordGame
             ListScreen[RndScreen].SetActive(false);                                                     //Disattivo il pannello random di gameover
             Fade.FadeInstance.FadeOut();                                                                //Richiamo il fade out
             ButtonScreen.SetActive(true);                                                               //Attivo il button screen
+            if (AudioManager.instance != null)
+                AudioManager.instance.Play("Sfx_You_Died");
             yield return new WaitForSeconds(Fade.FadeInstance.FadeOutTime);                             //Aspetto il tempo di fade out
             Fade.FadeInstance.DeactiveFadePanel();                                                      //Richiamo la disattivazione del pannello di fade
         }
