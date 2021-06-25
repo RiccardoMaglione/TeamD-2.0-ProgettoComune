@@ -14,19 +14,27 @@ public class CrossbowTrap : MonoBehaviour
 
     public GameObject bullet;
     public GameObject shotPoint;
+    public GameObject shotPoint2;
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private Animator anim;
+    public bool aiming;
+
+    private void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
 
         if (collision.gameObject.tag == "Player")
         {
             playerInRange = true;
-
-            if (canShot)
-            {
+            if (aiming == false)
                 StartCoroutine("Shoot");
-            }
+
+
         }
     }
 
@@ -34,23 +42,24 @@ public class CrossbowTrap : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            //StopCoroutine("Shoot");
             playerInRange = false;
+            anim.SetBool("Shooting", false);
+
         }
     }
 
-    IEnumerator Shoot()
+    public IEnumerator Shoot()
     {
-        while (playerInRange)
-        {
-            canShot = false;
-            yield return new WaitForSeconds(timeBetweenShot);
-            canShot = true;
 
-            GameObject go = Instantiate(bullet, shotPoint.transform.position, transform.rotation);
-            if (AudioManager.instance != null)
-                AudioManager.instance.Play("Sfx_ballista_shots");
-            Destroy(go, destroyBulletTime);
+        aiming = true;
+        yield return new WaitForSeconds(timeBetweenShot);
+        aiming = false;
+        anim.SetBool("Shooting", true);
 
-        }
+
+        //Destroy(go, destroyBulletTime);
+
     }
+
 }
