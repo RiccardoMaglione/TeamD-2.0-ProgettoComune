@@ -13,6 +13,9 @@ namespace SwordGame
 
         [HideInInspector] public GameObject InitialPlayer;
 
+        public List<GameObject> ActivateGameObject = new List<GameObject>();
+        public List<GameObject> DeactivateGameObject = new List<GameObject>();
+
         private void Start()
         {
             InitialiRespawn();
@@ -29,6 +32,21 @@ namespace SwordGame
             {
                 Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
                 ChangeFollow.CFInstance.NewPlayer.transform.position = CheckpointController.LastCheckpoint.transform.position;
+
+                for (int i = 0; i < DeactivateGameObject.Count; i++)
+                {
+                    if(DeactivateGameObject[i] != null)
+                    {
+                        DeactivateGameObject[i].SetActive(false);
+                    }
+                }
+                for (int i = 0; i < ActivateGameObject.Count; i++)
+                {
+                    if (ActivateGameObject[i] != null)
+                    {
+                        ActivateGameObject[i].SetActive(false);
+                    }
+                }
             }
         }
 
@@ -62,6 +80,21 @@ namespace SwordGame
 
                 ChangeFollow.CFInstance.NewPlayer.GetComponent<PSMController>().HealthSlider = HealthBar.HBInstance;
                 ChangeFollow.CFInstance.NewPlayer.GetComponent<PSMController>().EnergySliderPM = EnergyBar.EBInstance;
+
+                for (int i = 0; i < DeactivateGameObject.Count; i++)
+                {
+                    if (DeactivateGameObject[i] != null)
+                    {
+                        DeactivateGameObject[i].SetActive(false);
+                    }
+                }
+                for (int i = 0; i < ActivateGameObject.Count; i++)
+                {
+                    if (ActivateGameObject[i] != null)
+                    {
+                        ActivateGameObject[i].SetActive(false);
+                    }
+                }
             }
         }
     }
