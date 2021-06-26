@@ -24,13 +24,19 @@ public class LaserState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-            laserManager.laser1.SetActive(false);
-            laserManager.laser2.SetActive(false);
-            laserManager.laser3.SetActive(false);
+        laserManager.laser1.SetActive(false);
+        laserManager.laser2.SetActive(false);
+        laserManager.laser3.SetActive(false);
+
+        laserManager.openedCrack1.SetActive(false);
+        laserManager.openedCrack2.SetActive(false);
+        laserManager.openedCrack3.SetActive(false);
+
+
     }
 }

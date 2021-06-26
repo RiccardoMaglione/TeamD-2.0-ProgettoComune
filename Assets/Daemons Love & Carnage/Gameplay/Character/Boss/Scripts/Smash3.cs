@@ -7,6 +7,11 @@ public class Smash3 : MonoBehaviour
     public float[] speed;
     float WPradius = 0.1f;
 
+    public GameObject crack1;
+    public GameObject crack2;
+    public GameObject crack3;
+
+
     public CameraShake cameraShake;
 
     public void Smash()
@@ -20,9 +25,14 @@ public class Smash3 : MonoBehaviour
                 i++;
             }
 
-            if(i == waypoints.Length)
+            if (i == waypoints.Length)
             {
                 cameraShake.ShakeElapsedTime = cameraShake.ShakeDuration;
+                crack1.SetActive(true);
+                crack2.SetActive(true);
+                crack3.SetActive(true);
+
+
                 AudioManager.instance.Play("Sfx_boss_smash");
             }
         }
