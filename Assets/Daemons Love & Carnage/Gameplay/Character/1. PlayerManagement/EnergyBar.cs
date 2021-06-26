@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class EnergyBar : MonoBehaviour
 {
+    public static EnergyBar EBInstance;
     public Slider EnergySlider;
+
+    private void Awake()
+    {
+        EBInstance = this;
+    }
 
     public void MaxEnergy(int Energy) //setta il valore massimo 
     {
