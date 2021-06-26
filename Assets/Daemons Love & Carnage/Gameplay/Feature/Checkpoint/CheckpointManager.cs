@@ -20,10 +20,10 @@ namespace SwordGame
 
         private void Start()
         {
-            if (PlayerPrefs.GetInt("IDCheckpoint", -1) > -1 && ContinueGame == true)
+            if (PlayerPrefs.GetInt("IDCheckpoint", -1) > -1/* && ContinueGame == true*/)
             {
                 ContinueGame = false;
-                ChangeFollow.CFInstance.NewPlayer.transform.position = ListCheckpoint[PlayerPrefs.GetInt("IDCheckpoint", 0)].transform.position;
+                ChangeFollow.CFInstance.NewPlayer.transform.position = ListCheckpoint[PlayerPrefs.GetInt("IDCheckpoint", -1)].transform.position;
             }
         }
     }
