@@ -44,7 +44,7 @@ namespace SwordGame
                 {
                     if (ActivateGameObject[i] != null)
                     {
-                        ActivateGameObject[i].SetActive(false);
+                        ActivateGameObject[i].SetActive(true);
                     }
                 }
             }
@@ -92,7 +92,7 @@ namespace SwordGame
                 {
                     if (ActivateGameObject[i] != null)
                     {
-                        ActivateGameObject[i].SetActive(false);
+                        ActivateGameObject[i].SetActive(true);
                     }
                 }
             }
