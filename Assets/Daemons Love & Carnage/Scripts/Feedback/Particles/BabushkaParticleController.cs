@@ -6,11 +6,7 @@ public class BabushkaParticleController : BasePlayerParticles
 
     public void PlayRageAura()
     {
-        //rageAuraParticle.Play();
-    }
-
-    public void StopRageAura()
-    {
         rageAuraParticle.Play();
     }
+
 }
