@@ -667,8 +667,15 @@ MonoBehaviour:
     priority: 128
     volume: 1
     source: {fileID: 0}
-  - name: Sfx_B_S_berserk
+  - name: Sfx_special_activate
     clip: {fileID: 8300000, guid: e0d2c3b15e19d16489cab9735b0d0bb8, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Sfx_heartbeat
+    clip: {fileID: 0}
     loop: 0
     type: 1
     priority: 128
@@ -690,6 +697,20 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Sfx_enemy_spawn
     clip: {fileID: 8300000, guid: 5c49d49daf0322d47a70be224b196352, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Sfx_player_walk
+    clip: {fileID: 0}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Sfx_player_Jump
+    clip: {fileID: 0}
     loop: 0
     type: 1
     priority: 128
@@ -753,6 +774,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Sfx_you_died_no
     clip: {fileID: 8300000, guid: b2c54dc7d23ac9f45a9f58536315bc70, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Sfx_you_died_yes
+    clip: {fileID: 0}
     loop: 0
     type: 1
     priority: 128
@@ -982,14 +1010,14 @@ MonoBehaviour:
     priority: 128
     volume: 1
     source: {fileID: 0}
-  - name: Sfx_boss_damage_H
+  - name: Sfx_boss_damage_EP
     clip: {fileID: 8300000, guid: 80523ce28372a324d82f220d5399aa35, type: 3}
     loop: 0
     type: 1
     priority: 128
     volume: 1
     source: {fileID: 0}
-  - name: Sfx_boss_damage_L
+  - name: Sfx_boss_damage_DP
     clip: {fileID: 8300000, guid: 5e87873df39dc414f9ddf8a4e04fea2b, type: 3}
     loop: 0
     type: 1
@@ -998,6 +1026,20 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Sfx_boss_death
     clip: {fileID: 8300000, guid: c014d98fdce7b114f8e95705ffd46829, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Sfx_boss_cut_in
+    clip: {fileID: 0}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Sfx_boss_jump
+    clip: {fileID: 0}
     loop: 0
     type: 1
     priority: 128
@@ -1029,7 +1071,7 @@ MonoBehaviour:
     loop: 0
     type: 1
     priority: 128
-    volume: 1
+    volume: 0.629
     source: {fileID: 0}
   - name: Sfx_boss_stomp
     clip: {fileID: 8300000, guid: a116a9a1019209c4b9c133718bf40292, type: 3}
