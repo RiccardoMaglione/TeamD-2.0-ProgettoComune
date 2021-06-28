@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SwordGame;
+
 public class DialogueManagerDeathBoss : MonoBehaviour
 {
     public static DialogueManagerDeathBoss instance;
@@ -35,8 +37,6 @@ public class DialogueManagerDeathBoss : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         blackPanel.SetActive(true); //11/04/21
-
-        Time.timeScale = 0;
 
         animator.SetBool("isOpen", true);
 
@@ -127,8 +127,7 @@ public class DialogueManagerDeathBoss : MonoBehaviour
 
     void EndDialogue()
     {
-        Time.timeScale = 1;
-
+        FindObjectOfType<PSMController>().enabled = true;
         player = GameObject.FindGameObjectWithTag("Player");
         isTalk = false;
         animator.SetBool("isOpen", false);
