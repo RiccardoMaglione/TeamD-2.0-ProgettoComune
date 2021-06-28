@@ -4,6 +4,11 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public GameObject playerObscured;
+    public GameObject playerIlluminated;
+    public GameObject bossObscured;
+    public GameObject bossIlluminated;
+
     public static DialogueManager instance;
     public Text leftNameText;
     public Text rightNameText;
@@ -108,6 +113,11 @@ public class DialogueManager : MonoBehaviour
     {
         if (position == Position.Left)
         {
+            playerIlluminated.SetActive(true);
+            playerObscured.SetActive(false);
+            bossIlluminated.SetActive(false);
+            bossObscured.SetActive(true);
+
             leftPanel.SetActive(true);
             rightPanel.SetActive(false);
             leftNameText.text = "";
@@ -119,6 +129,11 @@ public class DialogueManager : MonoBehaviour
 
         else
         {
+            playerIlluminated.SetActive(false);
+            playerObscured.SetActive(true);
+            bossIlluminated.SetActive(true);
+            bossObscured.SetActive(false);
+
             leftPanel.SetActive(false);
             rightPanel.SetActive(true);
             rightNameText.text = "";
@@ -131,6 +146,11 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        playerIlluminated.SetActive(false);
+        playerObscured.SetActive(false);
+        bossIlluminated.SetActive(false);
+        bossObscured.SetActive(false);
+
         player = GameObject.FindGameObjectWithTag("Player");
         if (player.GetComponent<Animator>() != null)
             player.GetComponent<Animator>().enabled = false;

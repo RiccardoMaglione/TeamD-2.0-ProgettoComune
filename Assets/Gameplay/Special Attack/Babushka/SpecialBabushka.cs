@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
+using System.Collections;
 using UnityEngine;
-using SwordGame;
 
 public class SpecialBabushka : MonoBehaviour
 {
+    public ParticleSystem rageAuraParticle;
     [SerializeField] float time;
     [SerializeField] Animator animator;
     [SerializeField] GameObject attack1;
@@ -40,6 +40,7 @@ public class SpecialBabushka : MonoBehaviour
         animator.GetComponentInParent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
         InitializeSpeedAnimationSpecial();
         yield return new WaitForSeconds(time);
+        StopRageAura();
         GetComponentInParent<PSMController>().LightAttackCollider = originalLight;
         GetComponentInParent<PSMController>().HeavyAttackCollider = originalHeavy;
         animator.SetBool("IsAttack", false);
@@ -62,4 +63,9 @@ public class SpecialBabushka : MonoBehaviour
         GetComponentInParent<PSMController>().GetComponent<Animator>().SetFloat("PlayerHeavyAttackSpeed", SpecialPlayerHeavyAttackSpeed);
         GetComponentInParent<PSMController>().GetComponent<Animator>().SetFloat("PlayerSpecialAttackSpeed", SpecialPlayerSpecialAttackSpeed);
     }
+    public void StopRageAura()
+    {
+        rageAuraParticle.Stop();
+    }
+
 }
