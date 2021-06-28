@@ -17,5 +17,6 @@ public class CutsceneControllerDeathBoss : MonoBehaviour
     {
         FindObjectOfType<PSMController>().enabled = false;
         isCutsceneEnabled = true;
+        AudioManager.instance.Stop("MainMenuMusic");
     }
 }

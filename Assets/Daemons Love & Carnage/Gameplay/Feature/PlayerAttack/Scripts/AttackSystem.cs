@@ -182,6 +182,61 @@ public class AttackSystem : MonoBehaviour
             }
 
         }
+
+        if(collision.gameObject.tag == "ImpBoss")
+        {
+            if (GetComponentInParent<PSMController>().IsLightAttack == true)
+            {
+                if (AudioManager.instance != null)
+                {
+                    switch (GetComponentInParent<PSMController>().TypeCharacter)
+                    {
+                        case TypePlayer.FatKnight:
+                            AudioManager.instance.Play("Sfx_FK_p_L_atk");
+                            break;
+
+                        case TypePlayer.BoriousKnight:
+                            AudioManager.instance.Play("Sfx_BK_p_L_atk");
+                            break;
+
+                        case TypePlayer.Babushka:
+                            AudioManager.instance.Play("Sfx_B_L_atk");
+                            break;
+
+                        default:
+                            break;
+                    }
+                }             
+            }
+
+            if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
+            {
+                if (AudioManager.instance != null)
+                {
+                    switch (GetComponentInParent<PSMController>().TypeCharacter)
+                    {
+                        case TypePlayer.FatKnight:
+                            AudioManager.instance.Play("Sfx_FK_p_H_atk");
+                            break;
+
+                        case TypePlayer.BoriousKnight:
+                            AudioManager.instance.Play("Sfx_BK_p_H_atk");
+                            break;
+
+                        case TypePlayer.Babushka:
+                            AudioManager.instance.Play("Sfx_B_H_atk");
+                            break;
+
+                        case TypePlayer.Thief:
+                            AudioManager.instance.Play("Sfx_T_p_H_atk");
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

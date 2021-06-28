@@ -152,7 +152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3678963
 MonoBehaviour:
@@ -1417,6 +1417,13 @@ MonoBehaviour:
     priority: 128
     volume: 1
     source: {fileID: 0}
+  - name: FinalCutsceneOST
+    clip: {fileID: 8300000, guid: c5d2aac53245ecf4382570e2d149029b, type: 3}
+    loop: 1
+    type: 0
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
 --- !u!4 &120062031
 Transform:
   m_ObjectHideFlags: 0
@@ -1429,7 +1436,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &133488810
 GameObject:
@@ -5557,12 +5564,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name:
-    - uhgifdsv
-    - piuhuFEDS
-    position: 0000000001000000
+    - JUSTIN CREDIBLE
+    - VALMAEL
+    - JUSTIN CREDIBLE
+    position: 010000000000000001000000
     sentences:
-    - kjulnb fojuDSVFHOUI
-    - fupovMN EMRYPIeuhgf pug
+    - "Ho\u2026 mukatta kuruno ka? Nigetsu ni kono DIO ni chikazuite kuruno ka? Sekkaku
+      sofu no Josefu ga watashi no Za Warudo no shotai wo. Shiken shuryu chaimu chokuzen
+      made mondai yo toitte iru jukensee ne you na? Kisshi koita kibun de wo shietekure
+      ta to yuu no ni?"
+    - Chikadzu kanaka teme wo buchi no me tenain de na
+    - Hoho! Dewa juubun chikazukanai youi
 --- !u!1 &705590746
 GameObject:
   m_ObjectHideFlags: 0
@@ -6617,7 +6629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc1f4a1cffae4844bb4bd7e07b798e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1725191607}
+  animator: {fileID: 0}
 --- !u!61 &752510513
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7728,7 +7740,7 @@ Transform:
   m_Children:
   - {fileID: 2087224819}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &842624434
 MonoBehaviour:
@@ -15097,9 +15109,11 @@ GameObject:
   - component: {fileID: 1629749146}
   - component: {fileID: 1629749148}
   - component: {fileID: 1629749147}
-  m_Layer: 0
+  - component: {fileID: 1629749149}
+  - component: {fileID: 1629749150}
+  m_Layer: 9
   m_Name: Imp Boss
-  m_TagString: Untagged
+  m_TagString: ImpBoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15188,6 +15202,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1629749149
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629749145}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.061121076, y: -0.15712976}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6338462, y: 2.1898673}
+    newSize: {x: 1.76, y: 2.2086275}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1043458, y: 1.875608}
+  m_EdgeRadius: 0
+--- !u!114 &1629749150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629749145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab2244da6f3be745a89e90803bcacdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1629749147}
 --- !u!1 &1649571696
 GameObject:
   m_ObjectHideFlags: 0
@@ -16134,77 +16187,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718042984}
   m_CullTransparentMesh: 0
---- !u!1 &1725191604
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1725191605}
-  - component: {fileID: 1725191607}
-  - component: {fileID: 1725191606}
-  m_Layer: 0
-  m_Name: Cutscene
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1725191605
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725191604}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1725191606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725191604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 807083fd43f600c46bdbcf5886a1e19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name:
-    - asd
-    - fasfaf
-    position: 0100000000000000
-    sentences:
-    - asfadfgGS
-    - dsgfSDFsdfgdgsfdgs
---- !u!95 &1725191607
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725191604}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ec5dbf9c170d5ae43a729a712befc46b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1737888847
 GameObject:
   m_ObjectHideFlags: 0
@@ -19871,7 +19853,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 2
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 4412.5835
+  ResetTimerStaggered: 4617.031
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -85322,7 +85304,7 @@ MonoBehaviour:
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 11400000, guid: e90574c1b514efe4da5fc0967b615edd, type: 2}
-    m_AmplitudeGain: 0.05
+    m_AmplitudeGain: 0.4
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 0
@@ -85340,7 +85322,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_AttackTime: 0
-      m_SustainTime: 0.2
+      m_SustainTime: 0.1
       m_DecayTime: 0.05
       m_ScaleWithImpact: 0
       m_HoldForever: 0
@@ -85575,7 +85557,7 @@ MonoBehaviour:
   m_ImpulseDefinition:
     m_ImpulseChannel: -1
     m_RawSignal: {fileID: 11400000, guid: e90574c1b514efe4da5fc0967b615edd, type: 2}
-    m_AmplitudeGain: 0.02
+    m_AmplitudeGain: 0.3
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 0

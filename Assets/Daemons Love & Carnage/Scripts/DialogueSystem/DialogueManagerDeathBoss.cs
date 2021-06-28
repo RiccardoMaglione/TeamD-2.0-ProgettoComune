@@ -132,5 +132,6 @@ public class DialogueManagerDeathBoss : MonoBehaviour
         isTalk = false;
         animator.SetBool("isOpen", false);
         blackPanel.SetActive(false); //11/04/21
+        AudioManager.instance.Play("FinalCutsceneOST");
     }
 }
