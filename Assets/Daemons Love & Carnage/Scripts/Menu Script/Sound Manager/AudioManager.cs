@@ -80,6 +80,6 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
         }
 
-        Play("MainMenuMusic");
+        //Play("MainMenuMusic");
     }
 }

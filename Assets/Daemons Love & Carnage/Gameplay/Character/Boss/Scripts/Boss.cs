@@ -1,5 +1,6 @@
 ﻿using SwordGame;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 
@@ -65,11 +66,14 @@ public class Boss : MonoBehaviour
         if (life <= 0)
         {
             laserManager.SetActive(false);
-            VictoryScreen.win = true;
+            //VictoryScreen.win = true;
+            SceneManager.LoadScene("FinalScene");
             animator.SetBool("GoToDeath", true);
             animator.SetBool("GoToPhase2", false);
             animator.SetBool("GoToPhase3", false);
             animator.SetBool("Laser", false);
+
+
         }
 
         if (life < threshold2 && life > 0)
