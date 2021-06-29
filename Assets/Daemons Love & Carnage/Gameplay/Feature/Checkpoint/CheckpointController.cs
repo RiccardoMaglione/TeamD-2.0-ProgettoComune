@@ -16,9 +16,7 @@ namespace SwordGame
         public static TypePlayer PlayerCheckpoint;
         [HideInInspector] public TypePlayer InspectorPlayerCheckpoint;
 
-        public int KilledEnemy;
-
-        public int KilledEnemyDebug;
+        [Tooltip("Numeri di nemici uccisi")] public int KilledEnemy;
 
         public List<GameObject> ActivateGameObject = new List<GameObject>();
         public List<GameObject> DeactivateGameObject = new List<GameObject>();
@@ -40,7 +38,6 @@ namespace SwordGame
         {
             if (StartRespawn == true)
             {
-                StartRespawn = false;
                 InitialiRespawn();
             }
             
@@ -54,6 +51,7 @@ namespace SwordGame
         {
             if (Input.GetKeyDown(KeyCode.R) && LastCheckpoint == gameObject)
             {
+
                 Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
                 ChangeFollow.CFInstance.NewPlayer.transform.position = LastCheckpoint.transform.position;
 
@@ -71,32 +69,32 @@ namespace SwordGame
                         ActivateGameObject[i].SetActive(true);
                     }
                 }
-
-                KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter = KilledEnemyDebug;
             }
         }
         public void InitialiRespawn()
         {
+            print(LastCheckpoint);
             if (LastCheckpoint != null && LastCheckpoint == gameObject)
             {
+                StartRespawn = false;
                 Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
                 Destroy(ChangeFollow.CFInstance.NewPlayer);
-                switch (CheckpointController.PlayerCheckpoint)
+                switch (PlayerCheckpoint)
                 {
                     case TypePlayer.FatKnight:
-                        GameObject NewFatKnight = Instantiate(FatKnight, CheckpointController.LastCheckpoint.transform.position, Quaternion.identity);
+                        GameObject NewFatKnight = Instantiate(FatKnight, LastCheckpoint.transform.position, Quaternion.identity);
                         ChangeFollow.CFInstance.NewPlayer = NewFatKnight;
                         break;
                     case TypePlayer.BoriousKnight:
-                        GameObject NewBoriousKnight = Instantiate(FatKnight, CheckpointController.LastCheckpoint.transform.position, Quaternion.identity);
+                        GameObject NewBoriousKnight = Instantiate(FatKnight, LastCheckpoint.transform.position, Quaternion.identity);
                         ChangeFollow.CFInstance.NewPlayer = NewBoriousKnight;
                         break;
                     case TypePlayer.Babushka:
-                        GameObject NewBabushka = Instantiate(FatKnight, CheckpointController.LastCheckpoint.transform.position, Quaternion.identity);
+                        GameObject NewBabushka = Instantiate(FatKnight, LastCheckpoint.transform.position, Quaternion.identity);
                         ChangeFollow.CFInstance.NewPlayer = NewBabushka;
                         break;
                     case TypePlayer.Thief:
-                        GameObject NewThief = Instantiate(FatKnight, CheckpointController.LastCheckpoint.transform.position, Quaternion.identity);
+                        GameObject NewThief = Instantiate(FatKnight, LastCheckpoint.transform.position, Quaternion.identity);
                         ChangeFollow.CFInstance.NewPlayer = NewThief;
                         break;
                     default:
@@ -121,7 +119,7 @@ namespace SwordGame
                     }
                 }
 
-                KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter = CheckpointController.CCInstance.KilledEnemy;
+                KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter = KilledEnemy;
             }
         }
         private void OnTriggerEnter2D(Collider2D collision)
