@@ -18,7 +18,21 @@ public class TriggerPossession : Possession
     public GameObject PromptEnemy;
 
     public float RadiusArea = 1;            //Inutilizzato - Modalità di utilizzo = Settare la circonferenza del collider e richiamarlo nello stato stun
+
+    public float DelayPossession;
+    [ReadOnly] public float TimerDelay;
+    [ReadOnly] public bool DelayBool;
     #endregion
+
+    private void Start()
+    {
+        DelayBool = true;
+        if (GetComponentInParent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession"))
+        {
+            TimerDelay = 0;
+            DelayBool = false;
+        }
+    }
 
     void Update()
     {
@@ -28,9 +42,19 @@ public class TriggerPossession : Possession
         {
             PromptEnemy.SetActive(false);
         }
-
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
+        if(GetComponentInParent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession"))
         {
+            TimerDelay += Time.deltaTime;
+            if(TimerDelay >= DelayPossession)
+            {
+                DelayBool = true;
+            }
+        }
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State") && DelayBool == true)
+        {
+            DelayBool = false;
+            TimerDelay = 0;
+
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Sfx_possesion");
 
