@@ -6,18 +6,124 @@ namespace SwordGame
 {
     public class CheckpointController : MonoBehaviour
     {
+        public static CheckpointController CCInstance;
+
+        [HideInInspector] public int ID;
+        
         public static GameObject LastCheckpoint;
         [HideInInspector] public GameObject InspectorLastCheckpoint;
+
         public static TypePlayer PlayerCheckpoint;
         [HideInInspector] public TypePlayer InspectorPlayerCheckpoint;
-        [HideInInspector] public int ID;
+
+        public int KilledEnemy;
+
+        public int KilledEnemyDebug;
+
+        public List<GameObject> ActivateGameObject = new List<GameObject>();
+        public List<GameObject> DeactivateGameObject = new List<GameObject>();
+
+        public GameObject FatKnight;
+        public GameObject BoriousKnight;
+        public GameObject Babushka;
+        public GameObject Thief;
+
+        public static bool StartRespawn = false;
+
+        private void Awake()
+        {
+            CCInstance = this;
+            StartRespawn = true;
+        }
 
         private void Update()
         {
+            if (StartRespawn == true)
+            {
+                StartRespawn = false;
+                InitialiRespawn();
+            }
+            
             InspectorPlayerCheckpoint = PlayerCheckpoint;
             InspectorLastCheckpoint = LastCheckpoint;
+
+            RespawnInScene();
         }
 
+        public void RespawnInScene()
+        {
+            if (Input.GetKeyDown(KeyCode.R) && LastCheckpoint == gameObject)
+            {
+                Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
+                ChangeFollow.CFInstance.NewPlayer.transform.position = LastCheckpoint.transform.position;
+
+                for (int i = 0; i < DeactivateGameObject.Count; i++)
+                {
+                    if (DeactivateGameObject[i] != null)
+                    {
+                        DeactivateGameObject[i].SetActive(false);
+                    }
+                }
+                for (int i = 0; i < ActivateGameObject.Count; i++)
+                {
+                    if (ActivateGameObject[i] != null)
+                    {
+                        ActivateGameObject[i].SetActive(true);
+                    }
+                }
+
+                KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter = KilledEnemyDebug;
+            }
+        }
+        public void InitialiRespawn()
+        {
+            if (LastCheckpoint != null && LastCheckpoint == gameObject)
+            {
+                Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
+                Destroy(ChangeFollow.CFInstance.NewPlayer);
+                switch (CheckpointController.PlayerCheckpoint)
+                {
+                    case TypePlayer.FatKnight:
+                        GameObject NewFatKnight = Instantiate(FatKnight, CheckpointController.LastCheckpoint.transform.position, Quaternion.identity);
+                        ChangeFollow.CFInstance.NewPlayer = NewFatKnight;
+                        break;
+                    case TypePlayer.BoriousKnight:
+                        GameObject NewBoriousKnight = Instantiate(FatKnight, CheckpointController.LastCheckpoint.transform.position, Quaternion.identity);
+                        ChangeFollow.CFInstance.NewPlayer = NewBoriousKnight;
+                        break;
+                    case TypePlayer.Babushka:
+                        GameObject NewBabushka = Instantiate(FatKnight, CheckpointController.LastCheckpoint.transform.position, Quaternion.identity);
+                        ChangeFollow.CFInstance.NewPlayer = NewBabushka;
+                        break;
+                    case TypePlayer.Thief:
+                        GameObject NewThief = Instantiate(FatKnight, CheckpointController.LastCheckpoint.transform.position, Quaternion.identity);
+                        ChangeFollow.CFInstance.NewPlayer = NewThief;
+                        break;
+                    default:
+                        break;
+                }
+
+                ChangeFollow.CFInstance.NewPlayer.GetComponent<PSMController>().HealthSlider = HealthBar.HBInstance;
+                ChangeFollow.CFInstance.NewPlayer.GetComponent<PSMController>().EnergySliderPM = EnergyBar.EBInstance;
+
+                for (int i = 0; i < DeactivateGameObject.Count; i++)
+                {
+                    if (DeactivateGameObject[i] != null)
+                    {
+                        DeactivateGameObject[i].SetActive(false);
+                    }
+                }
+                for (int i = 0; i < ActivateGameObject.Count; i++)
+                {
+                    if (ActivateGameObject[i] != null)
+                    {
+                        ActivateGameObject[i].SetActive(true);
+                    }
+                }
+
+                KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter = CheckpointController.CCInstance.KilledEnemy;
+            }
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if(collision.tag == "Player")
