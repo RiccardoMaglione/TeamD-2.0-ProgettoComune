@@ -34,6 +34,11 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
     {
         if (SpecialActivated == true)
         {
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_BK_S_walk");
+            }
+
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0)
                 player.transform.rotation = Quaternion.Euler(0, 180, 0);
 

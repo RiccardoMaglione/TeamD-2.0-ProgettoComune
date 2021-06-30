@@ -10,6 +10,10 @@ public class BoriousKnightSpecialCollider : MonoBehaviour
         {
             collision.GetComponentInParent<EnemyData>().Life -= GetComponentInParent<BoriousKnightSpecialAttack>().damage;
             collision.GetComponentInParent<Animator>().SetFloat("Life", collision.GetComponentInParent<EnemyData>().Life);
+            if(AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_BK_S_atk");
+            }
         }
     }
 }
