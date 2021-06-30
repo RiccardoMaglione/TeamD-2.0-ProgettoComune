@@ -39,6 +39,7 @@ public class SwitchCamera : MonoBehaviour
         if (collision.CompareTag("Player") && killedEnemyToProgress <= KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter)
         {
             UIManager.instance.arrow.SetActive(false);
+            UIManager.instance.go.SetActive(false);
             if (deactivatingEnemiesZone != null)
             {
                 deactivatingEnemiesZone.GetComponent<WaveController>().enabled = false;
@@ -80,6 +81,7 @@ public class SwitchCamera : MonoBehaviour
         if (collision.CompareTag("Player") && killedEnemyToProgress <= KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter)
         {
             UIManager.instance.arrow.SetActive(false);
+            UIManager.instance.go.SetActive(false);
             if (deactivatingEnemiesZone != null)
             {
                 deactivatingEnemiesZone.GetComponent<WaveController>().enabled = false;
