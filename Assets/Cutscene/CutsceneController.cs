@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using SwordGame;
 
 public class CutsceneController : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class CutsceneController : MonoBehaviour
 
     public void EnterTrigger()
     {
-        Time.timeScale = 0;
+        PSMController.disableAllInput = true;
         bossImpAnim.SetTrigger("GoToSurprise");
         cutscene.SetTrigger("GoToTalk");
     }
@@ -37,6 +38,7 @@ public class CutsceneController : MonoBehaviour
         FindObjectOfType<BossEnabler>().ActiveBoss();
         bossfightImage.SetActive(true);
         yield return new WaitForSecondsRealtime(bossfightImageTime);
+        PSMController.disableAllInput = false;
         bossfightImage.SetActive(false);
         Time.timeScale = 1;
     }
