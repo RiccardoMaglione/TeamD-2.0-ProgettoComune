@@ -47,6 +47,7 @@ public class PSMAttack : StateMachineBehaviour
                     animator.SetBool("PSM-CanAttack", true);                                                                                                                                                              //Debug.Log("PlayerState - Primo passaggio del salto'");                                                                      //Debuggo in console il numero del passaggio
                     animator.SetBool("PSM-HeavyAttack", false);
                     animator.GetComponent<PSMController>().IsHeavyAttack = false;
+                    animator.GetComponent<PSMController>().HeavyAttackCollider.SetActive(false);
                 }
             }
             #endregion
@@ -59,6 +60,7 @@ public class PSMAttack : StateMachineBehaviour
                 animator.SetBool("PSM-CanAttack", true);                                                                                                                                                              //Debug.Log("PlayerState - Primo passaggio del salto'");                                                                      //Debuggo in console il numero del passaggio
                 animator.SetBool("PSM-HeavyAttack", false);
                 animator.GetComponent<PSMController>().IsHeavyAttack = false;
+                animator.GetComponent<PSMController>().HeavyAttackCollider.SetActive(false);
             }
             if ((animator.gameObject.transform.rotation.y == 0 && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) || (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (Input.GetKey(KeyCode.Joystick1Button5))) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && CutsceneControllerDeathBoss.isCutsceneEnabled == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
             {
@@ -67,6 +69,7 @@ public class PSMAttack : StateMachineBehaviour
                 animator.SetBool("PSM-CanAttack", true);                                                                                                                                                              //Debug.Log("PlayerState - Primo passaggio del salto'");                                                                      //Debuggo in console il numero del passaggio
                 animator.SetBool("PSM-HeavyAttack", false);
                 animator.GetComponent<PSMController>().IsHeavyAttack = false;
+                animator.GetComponent<PSMController>().HeavyAttackCollider.SetActive(false);
             }
             #endregion
         }
