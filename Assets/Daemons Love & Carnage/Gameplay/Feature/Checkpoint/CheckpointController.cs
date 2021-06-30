@@ -28,6 +28,8 @@ namespace SwordGame
 
         public static bool StartRespawn = false;
 
+        public GameObject SpawnPointCheck;
+
         private void Awake()
         {
             CCInstance = this;
@@ -53,7 +55,7 @@ namespace SwordGame
             {
 
                 Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
-                ChangeFollow.CFInstance.NewPlayer.transform.position = LastCheckpoint.transform.position;
+                ChangeFollow.CFInstance.NewPlayer.transform.position = SpawnPointCheck.transform.position;
 
                 for (int i = 0; i < DeactivateGameObject.Count; i++)
                 {
@@ -82,19 +84,19 @@ namespace SwordGame
                 switch (PlayerCheckpoint)
                 {
                     case TypePlayer.FatKnight:
-                        GameObject NewFatKnight = Instantiate(FatKnight, LastCheckpoint.transform.position, Quaternion.identity);
+                        GameObject NewFatKnight = Instantiate(FatKnight, SpawnPointCheck.transform.position, Quaternion.identity);
                         ChangeFollow.CFInstance.NewPlayer = NewFatKnight;
                         break;
                     case TypePlayer.BoriousKnight:
-                        GameObject NewBoriousKnight = Instantiate(FatKnight, LastCheckpoint.transform.position, Quaternion.identity);
+                        GameObject NewBoriousKnight = Instantiate(FatKnight, SpawnPointCheck.transform.position, Quaternion.identity);
                         ChangeFollow.CFInstance.NewPlayer = NewBoriousKnight;
                         break;
                     case TypePlayer.Babushka:
-                        GameObject NewBabushka = Instantiate(FatKnight, LastCheckpoint.transform.position, Quaternion.identity);
+                        GameObject NewBabushka = Instantiate(FatKnight, SpawnPointCheck.transform.position, Quaternion.identity);
                         ChangeFollow.CFInstance.NewPlayer = NewBabushka;
                         break;
                     case TypePlayer.Thief:
-                        GameObject NewThief = Instantiate(FatKnight, LastCheckpoint.transform.position, Quaternion.identity);
+                        GameObject NewThief = Instantiate(FatKnight, SpawnPointCheck.transform.position, Quaternion.identity);
                         ChangeFollow.CFInstance.NewPlayer = NewThief;
                         break;
                     default:
