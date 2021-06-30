@@ -111,7 +111,7 @@ namespace SwordGame
         public void Energy()
         {
             GameObject Player = ChangeFollow.StaticPlayerTemp;
-            Player.GetComponent<PSMController>().CurrentEnergy = int.MaxValue;
+            Player.GetComponent<PSMController>().CurrentEnergy = Player.GetComponent<PSMController>().MaxEnergy;
         }
         #endregion
 

@@ -18,7 +18,7 @@ public class SpecialBabushkaIdle : StateMachineBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && psmController.CurrentEnergy >= psmController.MaxEnergy && animator.GetComponentInParent<PSMController>().enabled == true)
         {
-            psmController.CurrentEnergy = 0;
+            //psmController.CurrentEnergy = 0;
             animator.SetBool("IsAttack", true);
             specialBabushka.StartCoroutine(specialBabushka.Attack());
         }

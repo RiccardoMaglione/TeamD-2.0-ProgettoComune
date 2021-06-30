@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using SwordGame;
 
 public class FatKnightSpecialAttack : MonoBehaviour
 {
@@ -10,8 +11,35 @@ public class FatKnightSpecialAttack : MonoBehaviour
     [SerializeField] GameObject stompPrefab;
     public Animator animator;
 
+    public float time;
+    public bool DecreaseEnergy;
+    public bool ResetDecrease;
+
+    private void Update()
+    {
+        if (DecreaseEnergy == true)
+        {
+            GetComponentInParent<PSMController>().CurrentEnergy -= Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time));
+            ResetDecrease = false;
+        }
+        if (DecreaseEnergy == true && ResetDecrease == false && GetComponentInParent<PSMController>().CurrentEnergy <= 0)
+        {
+            DecreaseEnergy = false;
+            ResetDecrease = true;
+            if (GetComponentInParent<PSMController>().CurrentEnergy < 0)
+            {
+                GetComponentInParent<PSMController>().CurrentEnergy = 0;
+            }
+            else
+            {
+                GetComponentInParent<PSMController>().CurrentEnergy = (int)GetComponentInParent<PSMController>().CurrentEnergy;
+            }
+        }
+    }
+
     public void Findenemy()
     {
+        DecreaseEnergy = true;
         Array.Clear(obj, 0, obj.Length);
         enemyList.Clear();
         enemyList.TrimExcess();

@@ -27,8 +27,21 @@ public class SpecialBabushka : MonoBehaviour
 
     public AnimatorOverrideController OriginalBabushkaOverride;
     public AnimatorOverrideController SpecialBabushkaOverride;
+
+    public bool DecreaseEnergy;
+
+    private void Update()
+    {
+        if (DecreaseEnergy == true)
+        {
+            GetComponentInParent<PSMController>().CurrentEnergy -= Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time));
+        }
+    }
+
     public IEnumerator Attack()
     {
+        DecreaseEnergy = true;
+
         GetComponentInParent<PSMController>().GetComponent<Animator>().runtimeAnimatorController = SpecialBabushkaOverride;
 
         GameObject originalLight;
@@ -40,6 +53,8 @@ public class SpecialBabushka : MonoBehaviour
         animator.GetComponentInParent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
         InitializeSpeedAnimationSpecial();
         yield return new WaitForSeconds(time);
+        DecreaseEnergy = false;
+        GetComponentInParent<PSMController>().CurrentEnergy = (int)GetComponentInParent<PSMController>().CurrentEnergy;
         StopRageAura();
         GetComponentInParent<PSMController>().LightAttackCollider = originalLight;
         GetComponentInParent<PSMController>().HeavyAttackCollider = originalHeavy;
