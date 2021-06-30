@@ -24871,6 +24871,10 @@ MonoBehaviour:
   landingParticle: {fileID: 9029666598861913044}
   dashParticle: {fileID: 1975724302941613873}
   possessionParticle: {fileID: 2198702047481415689}
+  hit: {fileID: 0}
+  landingParticleOffsetSX: 0
+  player: {fileID: 0}
+  StartTimeBetweenSpawn: 0
   rageAuraParticle: {fileID: 8294034649937110041}
 --- !u!1 &3418344265108742205
 GameObject:
@@ -25929,7 +25933,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 3
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 17276.814
+  ResetTimerStaggered: 17278.893
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -26387,10 +26391,14 @@ MonoBehaviour:
   BoriusKnightIconPlayer: {fileID: 21300000, guid: 327031f5c1fbe4a498d9974a99e17545, type: 3}
   BabushkaIconPlayer: {fileID: 21300000, guid: 37effc3ab2449af4b8762b5a9b5c83bf, type: 3}
   ThiefIconPlayer: {fileID: 21300000, guid: 5cdf59e0de056424d996aa041c8bfb3e, type: 3}
+  SpecialAttackFatKnight: {fileID: 0}
   Player: {fileID: 0}
   InspectorEnemy: {fileID: 0}
   PromptEnemy: {fileID: 6596650215555548570}
   RadiusArea: 2.3
+  DelayPossession: 0.5
+  TimerDelay: 0
+  DelayBool: 0
 --- !u!1 &6596650216592395565
 GameObject:
   m_ObjectHideFlags: 0
@@ -26859,6 +26867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27a5779632c40442aee57492f86e942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rageAuraParticle: {fileID: 0}
   time: 15
   animator: {fileID: 6626616328978461611}
   attack1: {fileID: 4721058249796726788}
