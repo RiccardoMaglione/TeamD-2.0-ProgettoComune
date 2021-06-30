@@ -14694,7 +14694,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 21300000, guid: 268c114c03d2b8648a9cbb087904a753, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1931242c1d5b65c4b9bcfeca4c71c8ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14744,6 +14744,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1629749147}
+  blood: {fileID: 8431986320104276142, guid: 82b001061dd04fa4db1ff670b7f50b63, type: 3}
+  hit: {fileID: 3425944649617307627, guid: 2788a7c4d06aa6a4e80864e3535c7b40, type: 3}
 --- !u!114 &1629749151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14757,7 +14759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 0
-  target: 3
+  target: 25
 --- !u!1 &1649571696
 GameObject:
   m_ObjectHideFlags: 0
@@ -19370,7 +19372,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 2
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 4630.084
+  ResetTimerStaggered: 4744.873
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
