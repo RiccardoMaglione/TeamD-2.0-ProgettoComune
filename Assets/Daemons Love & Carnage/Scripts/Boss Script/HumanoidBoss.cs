@@ -14,5 +14,7 @@ public class HumanoidBoss : MonoBehaviour
 
         if (rand == 2)
             animator.SetTrigger("GoToStagger2");
+
+        GetComponent<ButtonMashCounter>().attack++;
     }
 }

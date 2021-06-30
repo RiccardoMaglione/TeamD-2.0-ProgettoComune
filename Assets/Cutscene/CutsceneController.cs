@@ -34,10 +34,12 @@ public class CutsceneController : MonoBehaviour
 
     public IEnumerator ShowBossfightImage()
     {
+        Time.timeScale = 0;
         FindObjectOfType<BossEnabler>().ActiveBoss();
         bossfightImage.SetActive(true);
         yield return new WaitForSecondsRealtime(bossfightImageTime);
         PSMController.disableAllInput = false;
         bossfightImage.SetActive(false);
+        Time.timeScale = 1;
     }
 }
