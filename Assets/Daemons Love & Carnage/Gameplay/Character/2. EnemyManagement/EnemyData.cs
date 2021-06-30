@@ -260,19 +260,31 @@ public class EnemyData : MonoBehaviour
                 switch (TypeEnemy)
                 {
                     case TypeEnemies.FatKnight:
-                        AudioManager.instance.Play("Sfx_FK_H_atk_swing");
+                        if(AudioManager.instance != null)
+                        {
+                            AudioManager.instance.Play("Sfx_FK_H_atk_swing");
+                        }
                         break;
 
                     case TypeEnemies.BoriousKnight:
-                        //AudioManager.instance.Play("");
+                        if (AudioManager.instance != null)
+                        {
+                            AudioManager.instance.Play("Sfx_BK_H_atk_swing");
+                        }
                         break;
 
                     case TypeEnemies.Babushka:
-                        AudioManager.instance.Play("Sfx_B_H_atk_swing");
+                        if (AudioManager.instance != null)
+                        {
+                            AudioManager.instance.Play("Sfx_B_H_atk_swing");
+                        }
                         break;
 
                     case TypeEnemies.Thief:
-                        AudioManager.instance.Play("Sfx_T_H_atk_swing");
+                        if (AudioManager.instance != null)
+                        {
+                            AudioManager.instance.Play("Sfx_T_H_atk_swing");
+                        }
                         break;
 
                     default:

@@ -6,6 +6,10 @@ public class PSMAttack : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Stop("Sfx_player_walk");
+        }
         animator.SetBool("PSM-Attack", false);
         //animator.GetComponent<PSMController>().RB2D.velocity = Vector2.zero;
         animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);
@@ -39,6 +43,13 @@ public class PSMAttack : StateMachineBehaviour
             {
                 if (animator.GetBool("PSM-IsGrounded") == true && animator.GetComponent<PSMController>().OnceJump == false)                     //Se tocca terra ed è il primo ciclo (OnceJump non dovrebbe servire ma è stato messo per sicurezza)
                 {
+                    if(animator.GetComponent<PSMController>().TypeCharacter == TypePlayer.Thief)
+                    {
+                        if (AudioManager.instance != null)
+                        {
+                            AudioManager.instance.Play("Sfx_player_Jump");
+                        }
+                    }
                     animator.GetComponent<PSMController>().OnceJump = true;                                                                                                             //Controllo di sicurezza per eseguirlo solo una volta
                     animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);          //Spinta iniziale per evitare un salto non visibile
                 }

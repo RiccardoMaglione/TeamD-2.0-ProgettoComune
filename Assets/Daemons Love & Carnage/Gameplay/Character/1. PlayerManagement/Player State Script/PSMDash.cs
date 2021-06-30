@@ -11,15 +11,31 @@ public class PSMDash : StateMachineBehaviour
         {
             case TypePlayer.FatKnight:
                 animator.GetComponentInChildren<FatKnightParticleController>().PlayDash();
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_FK_dash");
+                }
                 break;
             case TypePlayer.BoriousKnight:
                 animator.GetComponentInChildren<BoriousKnightParticlesController>().PlayDash();
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_BK_dash");
+                }
                 break;
             case TypePlayer.Babushka:
                 animator.GetComponentInChildren<BabushkaParticleController>().PlayDash();
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_B_dash");
+                }
                 break;
             case TypePlayer.Thief:
                 animator.GetComponentInChildren<ThiefParticlesController>().PlayDash();
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_T_dash");
+                }
                 break;
         }
     }

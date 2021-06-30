@@ -20,6 +20,10 @@ public class PSMMove : StateMachineBehaviour
                 animator.GetComponentInChildren<ThiefParticlesController>().PlayRun();
                 break;
         }*/
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_player_walk");
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -34,7 +38,7 @@ public class PSMMove : StateMachineBehaviour
                 animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(-animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                        //Aumento la velocità
             }
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);   //Ruoto il player
-            //Debug.Log("PlayerState - Vai a sinistra");
+                                                                                                                                                                                                                            //Debug.Log("PlayerState - Vai a sinistra");
         }
         else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                   //Se schiaccio D vado a destra
         {
@@ -44,11 +48,15 @@ public class PSMMove : StateMachineBehaviour
                 animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().ValueMovement.Speed, animator.GetComponent<PSMController>().RB2D.velocity.y);                         //Aumento la velocità
             }
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);      //Ruoto il player
-            //Debug.Log("PlayerState - Vai a destra");
+                                                                                                                                                                                                                            //Debug.Log("PlayerState - Vai a destra");
         }
         else                                                                                                                                                                                                                //Se non premo A e D
         {
             #region - Da "Player Idle State" da "Player Fall State"
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Stop("Sfx_player_walk");
+            }
             animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);                                                                                  //Setto a 0 la velocità sulla x (Orizzontale)
             animator.SetBool("PSM-CanMove", false);                                                                                                                                                                    //Ritorno in "Player Idle State" da "Player Move State"
             #endregion
@@ -65,6 +73,10 @@ public class PSMMove : StateMachineBehaviour
                 //animator.GetComponent<PSMController>().InitialPos = animator.transform.position;
                 animator.GetComponent<PSMController>().OnceJump = true;                                                                                                     //Controllo di sicurezza per eseguirlo solo una volta
                 animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);  //Spinta iniziale per evitare un salto non visibili
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Stop("Sfx_player_walk");
+                }
             }
         }
         #endregion
@@ -75,6 +87,10 @@ public class PSMMove : StateMachineBehaviour
             //Debug.Log("PlayerState - Vai in 'Player Fall State'");                                              //Debuggo in console cosa fa
             animator.SetBool("PSM-IsGrounded", false);                                                          //Setto la prima condizione del tocco del terreno a falso, per entrare in "Player Fall State" da "Player Move State"
             animator.SetTrigger("PSM-IsInFall");                                                                //Setto la seconda condizione, un trigger, attivo, per entrare in "Player Fall State" da "Player Move State"
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Stop("Sfx_player_walk");
+            }
         }
         #endregion
 
@@ -83,9 +99,17 @@ public class PSMMove : StateMachineBehaviour
         {
             animator.SetBool("PSM-CanDash", true);                                      //Setto la prima condizione per il dash a vero, mi sposto da "Player Move State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashLeft = true;                  //Setto la direzione del dash a sinistra
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Stop("Sfx_player_walk");
+            }
         }
         if ((Input.GetKey(KeyCode.RightArrow) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) || (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (Input.GetKey(KeyCode.Joystick1Button5))) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
         {
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Stop("Sfx_player_walk");
+            }
             animator.SetBool("PSM-CanDash", true);                                      //Setto la prima condizione per il dash a vero, mi sposto da "Player Move State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashRight = true;                 //Setto la direzione del dash a destra
         }
