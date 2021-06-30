@@ -32,12 +32,12 @@ public class WaypointsAttack2 : MonoBehaviour
 
                 if (i == 3)
                 {
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 }
 
                 if (i == 6)
                 {
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 }
             }
         }
