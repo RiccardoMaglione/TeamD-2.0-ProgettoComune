@@ -36,7 +36,7 @@ namespace SwordGame
 
         private void Update()
         {
-            if (StartRespawn == true)
+            if (StartRespawn == true && CheckpointManager.ContinueGame == true)
             {
                 InitialiRespawn();
             }
