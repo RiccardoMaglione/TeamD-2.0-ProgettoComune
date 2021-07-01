@@ -11,7 +11,7 @@ public class FindEnemy : StateMachineBehaviour
         specialAttack = animator.GetComponent<FatKnightSpecialAttack>();
         specialAttack.Findenemy();
         psmController = animator.GetComponentInParent<PSMController>();
-        psmController.CurrentEnergy = 0;
+        //psmController.CurrentEnergy = 0;
 
     }
 

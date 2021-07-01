@@ -12,7 +12,7 @@ public class EnergyBar : MonoBehaviour
         EnergySlider.maxValue = Energy;
     }
 
-    public void SetEnergy(int Energy) //setta il valore della barra con la variabile intera
+    public void SetEnergy(float Energy) //setta il valore della barra con la variabile intera
     {
         EnergySlider.value = Energy;
     }

@@ -109,7 +109,14 @@ public class AttackSystem : MonoBehaviour
                 {
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
-                GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
+                if(GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().LightEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                {
+                    GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                }
+                else
+                {
+                    GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
+                }
                 //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
@@ -156,7 +163,14 @@ public class AttackSystem : MonoBehaviour
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
                 //print("Heavy");
-                GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
+                if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().HeavyEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                {
+                    GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                }
+                else
+                {
+                    GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
+                }
                 //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
@@ -177,7 +191,14 @@ public class AttackSystem : MonoBehaviour
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
                 print("Special");
-                GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().SpecialEnergyAmount;
+                if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().SpecialEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                {
+                    GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                }
+                else
+                {
+                    GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().SpecialEnergyAmount;
+                }
                 print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
 

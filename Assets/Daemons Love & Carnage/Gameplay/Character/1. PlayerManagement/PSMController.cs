@@ -549,7 +549,10 @@ namespace SwordGame
             {
                 if (isActiveAndEnabled == true)
                 {
-                    AudioManager.instance.Play("Sfx_player_fell_ground");
+                    if(AudioManager.instance != null)
+                    {
+                        AudioManager.instance.Play("Sfx_player_fell_ground");
+                    }
                     GetComponent<Animator>().SetBool("PSM-IsGrounded", true);   //Setto PSM-IsGrounded = true quando tocca il pavimento
                 }
             }

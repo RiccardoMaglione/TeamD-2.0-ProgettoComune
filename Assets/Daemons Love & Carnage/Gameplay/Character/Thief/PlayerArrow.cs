@@ -44,7 +44,16 @@ namespace SwordGame
                 }
                 #endregion
                 if(ThiefSpecialAttack.instance.isSpecialActive == false)
-                    ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy += ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount;
+                {
+                    if (ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy + ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount > ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy)
+                    {
+                        ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy = ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy;
+                    }
+                    else
+                    {
+                        ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy += ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount;
+                    }
+                }
                 Destroy(ArrowParent);
                 /*Manca aggiungere energia alla barra del player*/
             }
@@ -58,7 +67,16 @@ namespace SwordGame
             {
                 collision.GetComponent<Boss>().life -= DamageArrow * collision.GetComponent<Boss>().DMG_Reduction;
                 if (ThiefSpecialAttack.instance.isSpecialActive == false)
-                    ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy += ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount;
+                {
+                    if (ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy + ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount > ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy)
+                    {
+                        ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy = ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy;
+                    }
+                    else
+                    {
+                        ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy += ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount;
+                    }
+                }
             }
                 
         }

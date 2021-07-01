@@ -12,10 +12,15 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
     [SerializeField] GameObject player;
     public bool SpecialActivated = false;
 
+    public bool DecreaseEnergy;
+
     public IEnumerator Attack()
     {
+        DecreaseEnergy = true;
         hitbox.SetActive(true);
         yield return new WaitForSeconds(time);
+        DecreaseEnergy = false;
+        GetComponentInParent<PSMController>().CurrentEnergy = (int)GetComponentInParent<PSMController>().CurrentEnergy;
         hitbox.SetActive(false);
         animator.SetBool("IsAttack", false);
     }
@@ -27,6 +32,10 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
             hitbox.SetActive(false);
             speed = 0;
             SpecialActivated = false;
+        }
+        if (DecreaseEnergy == true)
+        {
+            GetComponentInParent<PSMController>().CurrentEnergy -= Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time));
         }
     }
 
