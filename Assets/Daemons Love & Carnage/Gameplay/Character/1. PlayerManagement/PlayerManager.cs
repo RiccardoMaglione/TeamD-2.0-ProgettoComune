@@ -46,6 +46,7 @@ namespace SwordGame
         #endregion
         [ReadOnly] public bool isTriggerOnlyOnce = false;
         public AllParallaxArray allParallaxArray;
+        public bool OnlyOnceDeath;
         #endregion
 
 
@@ -89,8 +90,9 @@ namespace SwordGame
             {
                 EnergySliderPM.EnergySlider.value = CurrentEnergy;
             }
-            if (CurrentHealth <= 0)
+            if (CurrentHealth <= 0 && OnlyOnceDeath == false)
             {
+                OnlyOnceDeath = true;
                 for (int i = 0; i < allParallaxArray.parallaxArray.Length; i++)
                 {
                     allParallaxArray.parallaxArray[i].enabled = false;
