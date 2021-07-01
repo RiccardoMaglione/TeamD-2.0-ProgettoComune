@@ -107,5 +107,14 @@ namespace SwordGame
         }
 
         #endregion
+
+        public void ContinueCheckpointYes()
+        {
+            CheckpointManager.ContinueGame = true;
+        }
+        public void ContinueCheckpointNo()
+        {
+            CheckpointManager.ContinueGame = false;
+        }
     }
 }
