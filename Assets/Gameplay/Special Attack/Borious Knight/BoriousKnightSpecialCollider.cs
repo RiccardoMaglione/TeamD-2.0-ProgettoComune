@@ -28,9 +28,12 @@ public class BoriousKnightSpecialCollider : MonoBehaviour
             ColorChangeController colorChangeController = collision.GetComponent<ColorChangeController>();
             colorChangeController.isAttacked = true;
             collision.GetComponentInChildren<EnemyParticleController>().PlayBlood();
-            AudioManager.instance.Play("Sfx_BK_p_H_atk");
             GameObject go = collision.gameObject;
             basePlayerParticles.PlayHit(go);
+            if(AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_BK_S_atk");
+            }
         }
     }
 }

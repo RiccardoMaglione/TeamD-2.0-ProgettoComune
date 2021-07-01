@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using SwordGame;
 
 public class MoveStomp : MonoBehaviour
 {
@@ -15,6 +16,13 @@ public class MoveStomp : MonoBehaviour
             collision.GetComponent<EnemyData>().Life -= damage;
             collision.GetComponent<Animator>().SetTrigger("DamageReceived");
             collision.GetComponent<Animator>().SetFloat("Life", collision.GetComponent<EnemyData>().Life);
+            if (specialAttack.GetComponentInParent<PSMController>().TypeCharacter == TypePlayer.FatKnight)
+            {
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_FK_S_atk");
+                }
+            }
         }
     }
     private void Awake()

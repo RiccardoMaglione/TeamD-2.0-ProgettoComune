@@ -278,6 +278,11 @@ namespace SwordGame
             }
             if ((Input.GetKeyDown(KeyboardSpecialAttack) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && MaxEnergy <= CurrentEnergy)
             {
+                if(AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_special_activate");
+                }
+
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
                 GetComponent<Animator>().SetBool("PSM-SpecialAttack", true);
@@ -428,6 +433,10 @@ namespace SwordGame
 
         public void EventArrowThief()
         {
+            if(AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_T_p_L_atk");
+            }
             GameObject GoArrow = Instantiate(ArrowThief, SpawnArrow.transform.position, transform.rotation);
         }
 
@@ -465,6 +474,38 @@ namespace SwordGame
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseLight;
                         CurrentHealth -= collision.GetComponentInParent<EnemyData>().LightDamage * CoeffReduceDamageLight;
+                        if (CurrentHealth - collision.GetComponentInParent<EnemyData>().LightDamage * CoeffReduceDamageLight > 0)
+                        {
+                            switch (TypeCharacter)
+                            {
+                                case TypePlayer.FatKnight:
+                                    if (AudioManager.instance != null)
+                                    {
+                                        AudioManager.instance.Play("Sfx_FK_hit");
+                                    }
+                                    break;
+                                case TypePlayer.BoriousKnight:
+                                    if (AudioManager.instance != null)
+                                    {
+                                        AudioManager.instance.Play("Sfx_BK_hit");
+                                    }
+                                    break;
+                                case TypePlayer.Babushka:
+                                    if (AudioManager.instance != null)
+                                    {
+                                        AudioManager.instance.Play("Sfx_B_hit");
+                                    }
+                                    break;
+                                case TypePlayer.Thief:
+                                    if (AudioManager.instance != null)
+                                    {
+                                        AudioManager.instance.Play("Sfx_T_hit");
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
                         Knockback.ActiveKnockback = true;
                         //print("PSM-Trigger: Entra nel light attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
@@ -517,6 +558,40 @@ namespace SwordGame
                         ResetTimerStaggered = 0;
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseHeavy;
                         CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy;
+
+                        if(CurrentHealth - collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy > 0)
+                        {
+                            switch (TypeCharacter)
+                            {
+                                case TypePlayer.FatKnight:
+                                    if (AudioManager.instance != null)
+                                    {
+                                        AudioManager.instance.Play("Sfx_FK_hit");
+                                    }
+                                    break;
+                                case TypePlayer.BoriousKnight:
+                                    if (AudioManager.instance != null)
+                                    {
+                                        AudioManager.instance.Play("Sfx_BK_hit");
+                                    }
+                                    break;
+                                case TypePlayer.Babushka:
+                                    if (AudioManager.instance != null)
+                                    {
+                                        AudioManager.instance.Play("Sfx_B_hit");
+                                    }
+                                    break;
+                                case TypePlayer.Thief:
+                                    if (AudioManager.instance != null)
+                                    {
+                                        AudioManager.instance.Play("Sfx_T_hit");
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                       
                         Knockback.ActiveKnockback = true;
                         //print("PSM-Trigger: Entra nel heavy attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());

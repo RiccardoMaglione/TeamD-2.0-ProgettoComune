@@ -17,11 +17,19 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
     public IEnumerator Attack()
     {
         DecreaseEnergy = true;
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_BK_S_walk");
+        }
         hitbox.SetActive(true);
         yield return new WaitForSeconds(time);
         DecreaseEnergy = false;
         GetComponentInParent<PSMController>().CurrentEnergy = (int)GetComponentInParent<PSMController>().CurrentEnergy;
         hitbox.SetActive(false);
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Stop("Sfx_BK_S_walk");
+        }
         animator.SetBool("IsAttack", false);
     }
 
@@ -43,6 +51,7 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
     {
         if (SpecialActivated == true)
         {
+
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0)
                 player.transform.rotation = Quaternion.Euler(0, 180, 0);
 

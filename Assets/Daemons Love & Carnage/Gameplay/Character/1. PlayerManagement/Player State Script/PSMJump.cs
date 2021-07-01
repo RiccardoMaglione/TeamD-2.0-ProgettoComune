@@ -26,6 +26,10 @@ public class PSMJump : StateMachineBehaviour
                 animator.GetComponentInChildren<ThiefParticlesController>().PlayJump();
                 break;
         }
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_player_Jump");
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -591,11 +591,11 @@ MonoBehaviour:
     volume: 1
     source: {fileID: 0}
   - name: Sfx_B_dash
-    clip: {fileID: 8300000, guid: b2cde9c05a41fe74a9d96cd00f41a792, type: 3}
+    clip: {fileID: 8300000, guid: f22dc37da95c0404883a9652d2206d71, type: 3}
     loop: 0
     type: 1
     priority: 128
-    volume: 1
+    volume: 0.717
     source: {fileID: 0}
   - name: Sfx_B_death
     clip: {fileID: 8300000, guid: 66d72af19553aa64c8cfcacd01cd54bd, type: 3}
@@ -623,7 +623,7 @@ MonoBehaviour:
     loop: 0
     type: 1
     priority: 128
-    volume: 1
+    volume: 0.761
     source: {fileID: 0}
   - name: Sfx_B_HV_atk
     clip: {fileID: 8300000, guid: 20fa1ba6798160744818d1963b881202, type: 3}
@@ -667,8 +667,15 @@ MonoBehaviour:
     priority: 128
     volume: 1
     source: {fileID: 0}
-  - name: Sfx_B_S_berserk
+  - name: Sfx_special_activate
     clip: {fileID: 8300000, guid: e0d2c3b15e19d16489cab9735b0d0bb8, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Sfx_heartbeat
+    clip: {fileID: 8300000, guid: 531915fbad919674c95d624dc73c7e07, type: 3}
     loop: 0
     type: 1
     priority: 128
@@ -679,7 +686,7 @@ MonoBehaviour:
     loop: 0
     type: 1
     priority: 128
-    volume: 0.805
+    volume: 0.727
     source: {fileID: 0}
   - name: Sfx_dialogue_pop_up
     clip: {fileID: 8300000, guid: ee434efc446265b44a146b7e0ec4a5a0, type: 3}
@@ -694,6 +701,20 @@ MonoBehaviour:
     type: 1
     priority: 128
     volume: 1
+    source: {fileID: 0}
+  - name: Sfx_player_walk
+    clip: {fileID: 8300000, guid: 7ea1aaf887de0d34ab7c74c95ae988b2, type: 3}
+    loop: 1
+    type: 1
+    priority: 128
+    volume: 0.415
+    source: {fileID: 0}
+  - name: Sfx_player_Jump
+    clip: {fileID: 8300000, guid: c7dfa02443e0c9d498c3421722b8f836, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 0.382
     source: {fileID: 0}
   - name: Sfx_player_fell_ground
     clip: {fileID: 8300000, guid: affb9b833419c7049bbf8c158fefc985, type: 3}
@@ -721,7 +742,7 @@ MonoBehaviour:
     loop: 0
     type: 1
     priority: 128
-    volume: 1
+    volume: 0.273
     source: {fileID: 0}
   - name: Sfx_stunned
     clip: {fileID: 8300000, guid: 3773fa13b5d6ce942a0e5c59270769e5, type: 3}
@@ -757,6 +778,13 @@ MonoBehaviour:
     type: 1
     priority: 128
     volume: 1
+    source: {fileID: 0}
+  - name: Sfx_you_died_yes
+    clip: {fileID: 8300000, guid: 8b8404aba1ac0fd4b910aa2297d82ef2, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 0.688
     source: {fileID: 0}
   - name: Sfx_book_page
     clip: {fileID: 8300000, guid: 5d7771d97f209ee41b85a6d83abd8c09, type: 3}
@@ -899,25 +927,25 @@ MonoBehaviour:
     volume: 1
     source: {fileID: 0}
   - name: Sfx_BK_S_atk
-    clip: {fileID: 8300000, guid: 5ec1a946051ce0f44b38474bf96e1225, type: 3}
+    clip: {fileID: 0}
     loop: 0
     type: 1
     priority: 128
-    volume: 1
+    volume: 0.273
     source: {fileID: 0}
   - name: Sfx_BK_S_walk
     clip: {fileID: 8300000, guid: a39724b521c5bd64db558c19a9240a1f, type: 3}
     loop: 1
     type: 1
     priority: 128
-    volume: 1
+    volume: 0.706
     source: {fileID: 0}
   - name: Sfx_FK_dash
-    clip: {fileID: 8300000, guid: 1252074760801f548bdfcbd45298fe3e, type: 3}
+    clip: {fileID: 8300000, guid: 2254f71e4c837934bbb496f7e2320f05, type: 3}
     loop: 0
     type: 1
     priority: 128
-    volume: 1
+    volume: 0.378
     source: {fileID: 0}
   - name: Sfx_FK_death
     clip: {fileID: 8300000, guid: 8ea1debcfd0eef245a15f68aabe635d0, type: 3}
@@ -945,7 +973,7 @@ MonoBehaviour:
     loop: 0
     type: 1
     priority: 128
-    volume: 1
+    volume: 0.917
     source: {fileID: 0}
   - name: Sfx_FK_L_atk
     clip: {fileID: 8300000, guid: 78884a9cab5fdee479a2d6054b189a82, type: 3}
@@ -982,14 +1010,14 @@ MonoBehaviour:
     priority: 128
     volume: 1
     source: {fileID: 0}
-  - name: Sfx_boss_damage_H
+  - name: Sfx_boss_damage_EP
     clip: {fileID: 8300000, guid: 80523ce28372a324d82f220d5399aa35, type: 3}
     loop: 0
     type: 1
     priority: 128
     volume: 1
     source: {fileID: 0}
-  - name: Sfx_boss_damage_L
+  - name: Sfx_boss_damage_DP
     clip: {fileID: 8300000, guid: 5e87873df39dc414f9ddf8a4e04fea2b, type: 3}
     loop: 0
     type: 1
@@ -998,6 +1026,27 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Sfx_boss_death
     clip: {fileID: 8300000, guid: c014d98fdce7b114f8e95705ffd46829, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Sfx_boss_cut_in
+    clip: {fileID: 8300000, guid: 811986505d2012f4eaee5aa57e953e18, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 0.827
+    source: {fileID: 0}
+  - name: Sfx_boss_jump
+    clip: {fileID: 8300000, guid: a91589232f060e04dbfa76eb73d4d6cd, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 0.638
+    source: {fileID: 0}
+  - name: Sfx_boss_oh_yeah
+    clip: {fileID: 8300000, guid: 66c8aabb88fb3eb4da1576a9f2b98916, type: 3}
     loop: 0
     type: 1
     priority: 128
@@ -1029,7 +1078,7 @@ MonoBehaviour:
     loop: 0
     type: 1
     priority: 128
-    volume: 1
+    volume: 0.629
     source: {fileID: 0}
   - name: Sfx_boss_stomp
     clip: {fileID: 8300000, guid: a116a9a1019209c4b9c133718bf40292, type: 3}
@@ -1046,11 +1095,11 @@ MonoBehaviour:
     volume: 1
     source: {fileID: 0}
   - name: Sfx_T_dash
-    clip: {fileID: 8300000, guid: 40ce66e76e7f39b4d81220b6bd7706c6, type: 3}
+    clip: {fileID: 8300000, guid: 09dca655e6887dc42aeaf718d0cad150, type: 3}
     loop: 0
     type: 1
     priority: 128
-    volume: 1
+    volume: 0.689
     source: {fileID: 0}
   - name: Sfx_T_death
     clip: {fileID: 8300000, guid: c15f6e625d250624180dae5f18dd997c, type: 3}
@@ -1094,12 +1143,12 @@ MonoBehaviour:
     priority: 128
     volume: 1
     source: {fileID: 0}
-  - name: FinalCutsceneOST
-    clip: {fileID: 8300000, guid: c5d2aac53245ecf4382570e2d149029b, type: 3}
+  - name: Sfx_T_p_L_atk
+    clip: {fileID: 8300000, guid: 7c0a2601da8c92648970e765ed016ad6, type: 3}
     loop: 0
-    type: 0
+    type: 1
     priority: 128
-    volume: 1
+    volume: 0.722
     source: {fileID: 0}
 --- !u!4 &1216793588
 Transform:
