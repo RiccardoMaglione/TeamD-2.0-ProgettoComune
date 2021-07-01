@@ -141,7 +141,7 @@ namespace SwordGame
                 LowHPScript.lowHPScript.gameObject.SetActive(false);
             }
 
-
+            GetComponent<SpriteRenderer>().sortingOrder = 9;
         }
 
         public void InitializeSpeedAnimation()
