@@ -482,19 +482,31 @@ namespace SwordGame
                         switch (collision.GetComponentInParent<EnemyData>().TypeEnemy)
                         {
                             case TypeEnemies.FatKnight:
-                                AudioManager.instance.Play("Sfx_FK_H_atk");
+                                if(AudioManager.instance != null)
+                                {
+                                    AudioManager.instance.Play("Sfx_FK_H_atk");
+                                }
                                 break;
 
                             case TypeEnemies.BoriousKnight:
-                                AudioManager.instance.Play("Sfx_BK_H_atk");
+                                if (AudioManager.instance != null)
+                                {
+                                    AudioManager.instance.Play("Sfx_BK_H_atk");
+                                }
                                 break;
 
                             case TypeEnemies.Babushka:
-                                AudioManager.instance.Play("Sfx_B_H_atk");
+                                if (AudioManager.instance != null)
+                                {
+                                    AudioManager.instance.Play("Sfx_B_H_atk");
+                                }
                                 break;
 
                             case TypeEnemies.Thief:
-                                AudioManager.instance.Play("Sfx_T_H_atk");
+                                if (AudioManager.instance != null)
+                                {
+                                    AudioManager.instance.Play("Sfx_T_H_atk");
+                                }
                                 break;
 
                             default:

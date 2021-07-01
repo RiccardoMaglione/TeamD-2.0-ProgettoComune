@@ -30,6 +30,8 @@ public class DialogueType1 : MonoBehaviour
     public int NumTutorial2;
     public static int StaticTutorial2;
 
+    public int NumSkip;
+    public bool IsEnableSkip;
     //0 default
     //1 ad          Se è 0 o 1 o 2 o 3 o 4 o 5
     //2 jump        Se è 0 o 2 o 3 o 4 o 5
@@ -39,7 +41,7 @@ public class DialogueType1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && PlayerPrefs.GetInt("TutorialSkip") < NumSkip)
         {
             dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-630, -150);
 
@@ -71,7 +73,10 @@ public class DialogueType1 : MonoBehaviour
             dialogueActive = false;
             StopCoroutine("DialogueIn");
             StartCoroutine("DialogueOut");
-
+            if(IsEnableSkip == true)
+            {
+                PlayerPrefs.SetInt("TutorialSkip", NumSkip);
+            }
             Invoke("DestroyCollider", 0.1f);
 
         }

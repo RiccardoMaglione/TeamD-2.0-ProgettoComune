@@ -16,7 +16,7 @@ public class AttackSystem : MonoBehaviour
     BasePlayerParticles playerParticles;
 
     Transform enemyHitTransform;
-
+    public bool OnlyOnce;
     private void Awake()
     {
         playerParticles = this.gameObject.transform.root.GetComponentInChildren<BasePlayerParticles>();
@@ -27,7 +27,12 @@ public class AttackSystem : MonoBehaviour
         if (collision.gameObject.tag == "Breakable") //10/04
         {
             Knockback.ActiveKnockback = true;//10/04
-
+            if(OnlyOnce == true)
+            {
+                OnlyOnce = false;
+                PlayerPrefs.SetInt("TutorialSkip", 3);
+            }
+            
             GameObject go = collision.gameObject;
             playerParticles.PlayHit(go);
         }
