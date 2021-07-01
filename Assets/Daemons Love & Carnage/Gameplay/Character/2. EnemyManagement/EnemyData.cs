@@ -316,7 +316,10 @@ public class EnemyData : MonoBehaviour
     public void EventEnemyArrowThief()
     {
         GameObject GoArrow = Instantiate(ArrowThief, SpawnArrow.transform.position, transform.rotation);
-        AudioManager.instance.Play("Sfx_T_L_atk");
+        if(AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_T_L_atk");
+        }
     }
     #endregion
 

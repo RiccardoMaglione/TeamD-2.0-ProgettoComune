@@ -105,6 +105,11 @@ namespace SwordGame
             }
 
         }
+
+        public void ResetTutorial()
+        {
+            PlayerPrefs.SetInt("TutorialSkip", 0);
+        }
         #endregion
 
         #region Energy
