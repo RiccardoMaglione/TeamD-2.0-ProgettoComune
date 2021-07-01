@@ -32,6 +32,48 @@ public class PSMAttack : StateMachineBehaviour
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);      //Ruoto il player
         }
 
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player Heavy Attack State"))
+        {
+            #region Jump Zone - Da "Player Heavy State" da "Player Jump State"
+            if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6 && CutsceneControllerDeathBoss.isCutsceneEnabled == false)                                                             //Se schiaccio spazio una volta
+            {
+                //Debug.Log("PlayerState - Vai nello stato 'PSMJump'");                                                                           //Debuggo in console cosa fa
+                animator.SetTrigger("PSM-CanJump");                                                                                             //Setto attivo il trigger - Prima condizione per il cambio stato da "Player Idle State" in "Player Jump State"
+                if (animator.GetBool("PSM-IsGrounded") == true && animator.GetComponent<PSMController>().OnceJump == false)                     //Se tocca terra ed è il primo ciclo (OnceJump non dovrebbe servire ma è stato messo per sicurezza)
+                {
+                    //animator.GetComponent<PSMController>().InitialPos = animator.transform.position;
+                    animator.GetComponent<PSMController>().OnceJump = true;                                                                                                             //Controllo di sicurezza per eseguirlo solo una volta
+                    animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.InitialJumpForce, ForceMode2D.Impulse);          //Spinta iniziale per evitare un salto non visibile
+                    animator.SetBool("PSM-CanAttack", true);                                                                                                                                                              //Debug.Log("PlayerState - Primo passaggio del salto'");                                                                      //Debuggo in console il numero del passaggio
+                    animator.SetBool("PSM-HeavyAttack", false);
+                    animator.GetComponent<PSMController>().IsHeavyAttack = false;
+                    animator.GetComponent<PSMController>().HeavyAttackCollider.SetActive(false);
+                }
+            }
+            #endregion
+
+            #region Dash Zone - Da "Player Heavy State" da "Player Dash State"
+            if ((animator.gameObject.transform.rotation.y == 1 && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) || (Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0) && (Input.GetKey(KeyCode.Joystick1Button5))) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && CutsceneControllerDeathBoss.isCutsceneEnabled == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
+            {
+                animator.SetBool("PSM-CanDash", true);                                      //Setto la prima condizione per il dash a vero, mi sposto da "Player Move State" a "Player Dash State"
+                animator.GetComponent<PSMController>().CanDashLeft = true;                  //Setto la direzione del dash a sinistra
+                animator.SetBool("PSM-CanAttack", true);                                                                                                                                                              //Debug.Log("PlayerState - Primo passaggio del salto'");                                                                      //Debuggo in console il numero del passaggio
+                animator.SetBool("PSM-HeavyAttack", false);
+                animator.GetComponent<PSMController>().IsHeavyAttack = false;
+                animator.GetComponent<PSMController>().HeavyAttackCollider.SetActive(false);
+            }
+            if ((animator.gameObject.transform.rotation.y == 0 && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) || (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (Input.GetKey(KeyCode.Joystick1Button5))) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && CutsceneControllerDeathBoss.isCutsceneEnabled == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
+            {
+                animator.SetBool("PSM-CanDash", true);                                      //Setto la prima condizione per il dash a vero, mi sposto da "Player Move State" a "Player Dash State"
+                animator.GetComponent<PSMController>().CanDashRight = true;                 //Setto la direzione del dash a destra
+                animator.SetBool("PSM-CanAttack", true);                                                                                                                                                              //Debug.Log("PlayerState - Primo passaggio del salto'");                                                                      //Debuggo in console il numero del passaggio
+                animator.SetBool("PSM-HeavyAttack", false);
+                animator.GetComponent<PSMController>().IsHeavyAttack = false;
+                animator.GetComponent<PSMController>().HeavyAttackCollider.SetActive(false);
+            }
+            #endregion
+        }
+
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player Special Attack State"))
         {
             #region Jump
