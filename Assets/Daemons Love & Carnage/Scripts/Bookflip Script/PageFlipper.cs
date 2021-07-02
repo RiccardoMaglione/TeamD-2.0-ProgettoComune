@@ -314,12 +314,17 @@ public class PageFlipper : MonoBehaviour
             {
                 av.GetComponent<Image>().enabled = false;
                 bv.GetComponent<Image>().enabled = false;
-                cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 0);
-                cvtext.SetActive(false);
 
+                cv.GetComponent<Image>().enabled = false;
+                cv1.GetComponent<Image>().enabled = false;
+                cv2.GetComponent<Image>().enabled = false;
+
+                cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 0);
                 cv1.GetComponent<Image>().color = new Color(cv1.GetComponent<Image>().color.r, cv1.GetComponent<Image>().color.g, cv1.GetComponent<Image>().color.b, 0);
-                cvtext1.SetActive(false);
                 cv2.GetComponent<Image>().color = new Color(cv2.GetComponent<Image>().color.r, cv2.GetComponent<Image>().color.g, cv2.GetComponent<Image>().color.b, 0);
+                
+                cvtext.SetActive(false);
+                cvtext1.SetActive(false);
                 cvtext2.SetActive(false);
 
                 boola = true;
@@ -329,12 +334,17 @@ public class PageFlipper : MonoBehaviour
             {
                 av.GetComponent<Image>().enabled = true;
                 bv.GetComponent<Image>().enabled = true;
-                cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 1);
-                cvtext.SetActive(true);
 
+                cv.GetComponent<Image>().enabled = true;
+                cv1.GetComponent<Image>().enabled = true;
+                cv2.GetComponent<Image>().enabled = true;
+
+                cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 1);
                 cv1.GetComponent<Image>().color = new Color(cv1.GetComponent<Image>().color.r, cv1.GetComponent<Image>().color.g, cv1.GetComponent<Image>().color.b, 1);
-                cvtext1.SetActive(true);
                 cv2.GetComponent<Image>().color = new Color(cv2.GetComponent<Image>().color.r, cv2.GetComponent<Image>().color.g, cv2.GetComponent<Image>().color.b, 1);
+
+                cvtext.SetActive(true);
+                cvtext1.SetActive(true);
                 cvtext2.SetActive(true);
             }
             yield return null;
@@ -666,6 +676,11 @@ public class PageFlipper : MonoBehaviour
             {
                 av.GetComponent<Image>().enabled = false;
                 bv.GetComponent<Image>().enabled = false;
+
+                cv.GetComponent<Image>().enabled = false;
+                cv1.GetComponent<Image>().enabled = false;
+                cv2.GetComponent<Image>().enabled = false;
+
                 EventSystem.current.SetSelectedGameObject(cv);
                 cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 0);
                 cvtext.SetActive(false);
@@ -682,6 +697,11 @@ public class PageFlipper : MonoBehaviour
             {
                 av.GetComponent<Image>().enabled = true;
                 bv.GetComponent<Image>().enabled = true;
+
+                cv.GetComponent<Image>().enabled = true;
+                cv1.GetComponent<Image>().enabled = true;
+                cv2.GetComponent<Image>().enabled = true;
+
                 cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 1);
                 cvtext.SetActive(true);
 
@@ -708,6 +728,11 @@ public class PageFlipper : MonoBehaviour
             if (page0Pivot.transform.rotation.eulerAngles.y == 180)
             {
                 aPageIsFlipping = false;
+                av.GetComponent<Image>().enabled = false;
+                bv.GetComponent<Image>().enabled = false;
+                cv.GetComponent<Image>().enabled = false;
+                cv1.GetComponent<Image>().enabled = false;
+                cv2.GetComponent<Image>().enabled = false;
                 page8Pivot.SetActive(false);
             }
             yield return new WaitForEndOfFrame();
