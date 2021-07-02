@@ -273,6 +273,10 @@ public class PageFlipper : MonoBehaviour
 
     IEnumerator EnterCutsceneCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -290,6 +294,10 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator EnterLevelSelectionCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -336,6 +344,10 @@ public class PageFlipper : MonoBehaviour
 
     IEnumerator ToLevel3Coroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -356,6 +368,10 @@ public class PageFlipper : MonoBehaviour
 
     IEnumerator Page1FlipForwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -374,6 +390,10 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page2FlipBackwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -394,6 +414,10 @@ public class PageFlipper : MonoBehaviour
 
     IEnumerator Page2FlipForwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -412,6 +436,10 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page3FlipBackwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -432,6 +460,10 @@ public class PageFlipper : MonoBehaviour
 
     IEnumerator Page3FlipForwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -450,6 +482,10 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page4FlipBackwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -470,6 +506,10 @@ public class PageFlipper : MonoBehaviour
 
     IEnumerator Page4FlipForwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -488,6 +528,10 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page5FlipBackwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -508,6 +552,10 @@ public class PageFlipper : MonoBehaviour
 
     IEnumerator Page5FlipForwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -526,6 +574,10 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page6FlipBackwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -546,6 +598,10 @@ public class PageFlipper : MonoBehaviour
 
     IEnumerator Page6FlipForwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -565,6 +621,10 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page7FlipBackwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -585,6 +645,10 @@ public class PageFlipper : MonoBehaviour
 
     IEnumerator Page7FlipForwardCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -631,6 +695,10 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator BackToMenuCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -659,6 +727,10 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator BackToLevelSelectionCoroutine()
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         float progress = 0;
         while (progress < flipTime)
         {
