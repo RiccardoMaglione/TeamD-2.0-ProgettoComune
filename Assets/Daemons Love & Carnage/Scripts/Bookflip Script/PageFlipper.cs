@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class PageFlipper : MonoBehaviour
 {
     [SerializeField]
@@ -44,7 +45,12 @@ public class PageFlipper : MonoBehaviour
     private float flipTime = 10;
     [SerializeField]
     private float flipSpeed;
-
+    public GameObject page8button;
+    public GameObject av;
+    public GameObject bv;
+    public GameObject cv;
+    public GameObject cvtext;
+    public bool boola;
     private void Start()
     {
         introPageCounter = 0;
@@ -55,16 +61,31 @@ public class PageFlipper : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && introCutscene == true && aPageIsFlipping == false || Input.GetMouseButtonDown(0) && introCutscene == true && aPageIsFlipping == false)
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && introCutscene == true && aPageIsFlipping == false || Input.GetMouseButtonDown(0) && introCutscene == true && aPageIsFlipping == false)
         {
+            EventSystem.current.SetSelectedGameObject(null);
             Invoke("CheckBackwardBeforeForward", 0.15f);
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && introCutscene == true && aPageIsFlipping == false && introPageCounter != 0)
+        if(Input.GetKeyDown(KeyCode.Joystick1Button1) && introCutscene == true && aPageIsFlipping == false && introPageCounter == 0)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && introCutscene == true && aPageIsFlipping == false)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            CutsceneFlipBackward();
+        }
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && introCutscene == true && aPageIsFlipping == true)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && introCutscene == true && aPageIsFlipping == false)
         {
             CutsceneFlipBackward();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && introCutscene == false && aPageIsFlipping == false)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && introCutscene == false && aPageIsFlipping == false)
         {
             BackToMenuOrLevelSelection();
         }
@@ -196,6 +217,7 @@ public class PageFlipper : MonoBehaviour
 
         }
     }
+
     public void CutsceneFlipBackward()
     {
         if (aPageIsFlipping == false)
@@ -245,10 +267,6 @@ public class PageFlipper : MonoBehaviour
 
     IEnumerator EnterCutsceneCoroutine()
     {
-        if(AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -266,10 +284,6 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator EnterLevelSelectionCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -281,17 +295,30 @@ public class PageFlipper : MonoBehaviour
                 pageCounter = 1;
                 aPageIsFlipping = false;
             }
-            yield return new WaitForEndOfFrame();
             page8Pivot.SetActive(true);
+            if(boola == false)
+            {
+                av.GetComponent<Image>().enabled = false;
+                bv.GetComponent<Image>().enabled = false;
+                cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 0);
+                cvtext.SetActive(false);
+                boola = true;
+            }
+            yield return new WaitForEndOfFrame();
+            if(boola == true)
+            {
+                av.GetComponent<Image>().enabled = true;
+                bv.GetComponent<Image>().enabled = true;
+                cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 1);
+                cvtext.SetActive(true);
+            }
             yield return null;
         }
     }
+
+
     IEnumerator ToLevel3Coroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -303,17 +330,15 @@ public class PageFlipper : MonoBehaviour
                 introPageCounter = 1;
                 aPageIsFlipping = false;
             }
-            yield return new WaitForEndOfFrame();
             page9Pivot.SetActive(true);
+            yield return new WaitForEndOfFrame();
             yield return null;
         }
     }
+
+
     IEnumerator Page1FlipForwardCoroutine()
     {
-        if(AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -332,10 +357,6 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page2FlipBackwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -353,12 +374,9 @@ public class PageFlipper : MonoBehaviour
             yield return null;
         }
     }
+
     IEnumerator Page2FlipForwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -377,10 +395,6 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page3FlipBackwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -398,12 +412,9 @@ public class PageFlipper : MonoBehaviour
             yield return null;
         }
     }
+
     IEnumerator Page3FlipForwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -422,10 +433,6 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page4FlipBackwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -443,12 +450,9 @@ public class PageFlipper : MonoBehaviour
             yield return null;
         }
     }
+
     IEnumerator Page4FlipForwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -467,10 +471,6 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page5FlipBackwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -488,12 +488,9 @@ public class PageFlipper : MonoBehaviour
             yield return null;
         }
     }
+
     IEnumerator Page5FlipForwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -512,10 +509,6 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page6FlipBackwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -533,12 +526,9 @@ public class PageFlipper : MonoBehaviour
             yield return null;
         }
     }
+
     IEnumerator Page6FlipForwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -558,10 +548,6 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator Page7FlipBackwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -579,12 +565,9 @@ public class PageFlipper : MonoBehaviour
             yield return null;
         }
     }
+
     IEnumerator Page7FlipForwardCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -597,17 +580,29 @@ public class PageFlipper : MonoBehaviour
                 pageCounter = 1;
                 aPageIsFlipping = false;
             }
-            yield return new WaitForEndOfFrame();
             page8Pivot.SetActive(true);
+            if (boola == false)
+            {
+                av.GetComponent<Image>().enabled = false;
+                bv.GetComponent<Image>().enabled = false;
+                EventSystem.current.SetSelectedGameObject(cv);
+                cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 0);
+                cvtext.SetActive(false);
+                boola = true;
+            }
+            yield return new WaitForEndOfFrame();
+            if (boola == true)
+            {
+                av.GetComponent<Image>().enabled = true;
+                bv.GetComponent<Image>().enabled = true;
+                cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 1);
+                cvtext.SetActive(true);
+            }
             yield return null;
         }
     }
     IEnumerator BackToMenuCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {
@@ -636,10 +631,6 @@ public class PageFlipper : MonoBehaviour
     }
     IEnumerator BackToLevelSelectionCoroutine()
     {
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.Play("Sfx_mouse_on_button");
-        }
         float progress = 0;
         while (progress < flipTime)
         {

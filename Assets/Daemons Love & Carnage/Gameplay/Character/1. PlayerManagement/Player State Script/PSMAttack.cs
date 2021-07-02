@@ -27,11 +27,11 @@ public class PSMAttack : StateMachineBehaviour
         }
         //animator.GetComponent<PSMController>().RB2D.velocity = Vector2.zero;
 
-        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                        //Se schiaccio A vado a sinistra
+        if ((Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyLeft)) || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                        //Se schiaccio A vado a sinistra
         {
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);   //Ruoto il player
         }
-        else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                   //Se schiaccio D vado a destra
+        else if ((Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyRight)) || Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                   //Se schiaccio D vado a destra
         {
             animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);      //Ruoto il player
         }
@@ -81,7 +81,7 @@ public class PSMAttack : StateMachineBehaviour
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player Special Attack State"))
         {
             #region Jump
-            if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6)     //Se schiaccio spazio una volta
+            if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyUp)) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6)     //Se schiaccio spazio una volta
             {
                 if (animator.GetBool("PSM-IsGrounded") == true && animator.GetComponent<PSMController>().OnceJump == false)                     //Se tocca terra ed è il primo ciclo (OnceJump non dovrebbe servire ma è stato messo per sicurezza)
                 {
@@ -99,7 +99,7 @@ public class PSMAttack : StateMachineBehaviour
             #endregion
 
             #region Jump - Compito principale dello script di movimento
-            if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && animator.GetBool("PSM-IsGrounded") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4))                                                                                                                  //Se Schiaccio spazio (è un getkey e non un getkeydown perché altrimenti non avrebbe preso l'input) e verifico grounded
+            if ((Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyUp)) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && animator.GetBool("PSM-IsGrounded") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4))                                                                                                                  //Se Schiaccio spazio (è un getkey e non un getkeydown perché altrimenti non avrebbe preso l'input) e verifico grounded
             {
                 //animator.GetComponent<PSMController>().RB2D.AddForce(Vector2.up * animator.GetComponent<PSMController>().ValueJump.jumpForce, ForceMode2D.Impulse);                                         //Applico una forza di tipo impulso con un direzione precisa (UP) e moltiplico per una determinata forza
                 animator.SetBool("PSM-IsGrounded", false);                                                                                                                                                  //Setto grounded a falso per due motivi - 1. Il player non tocca più il terreno - 2. Blocco l'entrata al'if precedente per evitare salti infiniti/multipli
@@ -125,7 +125,7 @@ public class PSMAttack : StateMachineBehaviour
             if (animator.GetComponent<PSMController>().TypeCharacter == TypePlayer.Thief)
             {
                 #region Move Zone - Compito principale dello script di movimento
-                if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                        //Se schiaccio A vado a sinistra
+                if ((Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyLeft)) || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                        //Se schiaccio A vado a sinistra
                 {
                     if (SpecialBKIdle.BoriousMove == true)
                     {
@@ -135,7 +135,7 @@ public class PSMAttack : StateMachineBehaviour
                     animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);   //Ruoto il player
                                                                                                                                                                                                                                     //Debug.Log("PlayerState - Vai a sinistra");
                 }
-                else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                   //Se schiaccio D vado a destra
+                else if ((Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyRight)) || Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))                                                                                                                                                                                   //Se schiaccio D vado a destra
                 {
                     if (SpecialBKIdle.BoriousMove == true)
                     {
