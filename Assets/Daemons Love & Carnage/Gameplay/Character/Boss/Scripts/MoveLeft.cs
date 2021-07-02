@@ -16,8 +16,6 @@ public class MoveLeft : MonoBehaviour
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
             alreadyDamaged = true;
-            GetHitScript.getHitScript.gameObject.SetActive(false);
-            GetHitScript.getHitScript.gameObject.SetActive(true);
 
         }
 

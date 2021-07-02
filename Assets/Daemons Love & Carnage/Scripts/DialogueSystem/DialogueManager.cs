@@ -44,6 +44,8 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         blackPanel.SetActive(true); //11/04/21
+        Time.timeScale = 0; //11/04/21
+
 
         animator.SetBool("isOpen", true);
 
@@ -150,11 +152,14 @@ public class DialogueManager : MonoBehaviour
         bossObscured.SetActive(false);
 
         player = GameObject.FindGameObjectWithTag("Player");
+        if (player.GetComponent<Animator>() != null)
+            player.GetComponent<Animator>().enabled = false;
 
         isTalk = false;
         animator.SetBool("isOpen", false);
         impBossAnim.SetTrigger("GoToJump");
         cutsceneAnim.SetTrigger("GoToStomp");
+        Time.timeScale = 1; //11/04/21
         blackPanel.SetActive(false); //11/04/21
     }
 }

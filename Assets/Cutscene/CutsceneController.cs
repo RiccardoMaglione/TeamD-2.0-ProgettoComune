@@ -1,5 +1,4 @@
-﻿using SwordGame;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class CutsceneController : MonoBehaviour
@@ -13,12 +12,10 @@ public class CutsceneController : MonoBehaviour
     public Dialogue dialogue;
 
     [SerializeField] float bossDelayStomp;
-    [SerializeField] GameObject bossBar;
-    [SerializeField] GameObject playerBar;
 
     public void EnterTrigger()
     {
-        PSMController.disableAllInput = true;
+        Time.timeScale = 0;
         bossImpAnim.SetTrigger("GoToSurprise");
         cutscene.SetTrigger("GoToTalk");
     }
@@ -37,14 +34,10 @@ public class CutsceneController : MonoBehaviour
     public IEnumerator ShowBossfightImage()
     {
         Time.timeScale = 0;
-        playerBar.SetActive(false);
         FindObjectOfType<BossEnabler>().ActiveBoss();
         bossfightImage.SetActive(true);
         yield return new WaitForSecondsRealtime(bossfightImageTime);
-        PSMController.disableAllInput = false;
         bossfightImage.SetActive(false);
-        bossBar.SetActive(true);
-        playerBar.SetActive(true);
         Time.timeScale = 1;
     }
 }

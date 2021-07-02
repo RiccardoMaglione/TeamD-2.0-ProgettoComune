@@ -89,7 +89,7 @@ public class BasePlayerParticles : MonoBehaviour
 
     public void PlayHit(GameObject targetTransform)
     {
-        GameObject tempHitEffect = Instantiate(hit.gameObject, targetTransform.gameObject.GetComponent<Collider2D>().ClosestPoint(transform.position), Quaternion.identity);
+        GameObject tempHitEffect = Instantiate(hit.gameObject, targetTransform.transform.position, Quaternion.identity);
         tempHitEffect.GetComponent<ParticleSystem>().Play();
 
         Destroy(tempHitEffect, 0.5f);

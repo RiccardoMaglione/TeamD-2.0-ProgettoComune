@@ -26,7 +26,6 @@ namespace SwordGame
         [Tooltip("It's a value for progressive jump")]
         public float lowJumpMultiplier;
     }
-
     public class PSMController : PlayerManager
     {
         [HideInInspector] public Rigidbody2D RB2D;
@@ -112,7 +111,6 @@ namespace SwordGame
 
         public GameObject SpecialAttackGameObject;
 
-        public static bool disableAllInput = false;
 
         private void OnValidate()
         {
@@ -260,7 +258,7 @@ namespace SwordGame
         /// </summary>
         public void AttackPlayer()
         {
-            if ((Input.GetKeyDown(KeyboardLightlAttack) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && disableAllInput == false)
+            if ((Input.GetKeyDown(KeyboardLightlAttack) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))
             {
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
@@ -269,7 +267,7 @@ namespace SwordGame
                 IsHeavyAttack = false;
                 IsSpecialAttack = false;
             }
-            if ((Input.GetKeyDown(KeyboardHeavyAttack) || Input.GetKeyDown(KeyCode.Joystick1Button3)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && disableAllInput == false)
+            if ((Input.GetKeyDown(KeyboardHeavyAttack) || Input.GetKeyDown(KeyCode.Joystick1Button3)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6))
             {
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
@@ -278,7 +276,7 @@ namespace SwordGame
                 IsHeavyAttack = true;
                 IsSpecialAttack = false;
             }
-            if ((Input.GetKeyDown(KeyboardSpecialAttack) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && MaxEnergy <= CurrentEnergy && disableAllInput == false)
+            if ((Input.GetKeyDown(KeyboardSpecialAttack) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && MaxEnergy <= CurrentEnergy)
             {
                 if(AudioManager.instance != null)
                 {

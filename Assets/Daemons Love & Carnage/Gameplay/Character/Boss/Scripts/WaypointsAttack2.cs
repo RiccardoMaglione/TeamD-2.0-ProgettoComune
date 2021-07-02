@@ -19,7 +19,7 @@ public class WaypointsAttack2 : MonoBehaviour
             {
                 i++;
 
-                if (i != waypoints.Length && i != 3 && i != 6 && i != 1)
+                if(i != waypoints.Length && i != 3 && i != 6 && i != 1)
                     AudioManager.instance.Play("Sfx_boss_stomp");
 
                 if (i < waypoints.Length)
@@ -32,12 +32,12 @@ public class WaypointsAttack2 : MonoBehaviour
 
                 if (i == 3)
                 {
-                    this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                 }
 
-                if (i == 6)
+                if(i== 6)
                 {
-                    this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                 }
             }
         }

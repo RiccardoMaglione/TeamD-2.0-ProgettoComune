@@ -81,8 +81,6 @@ public class WaveController : MonoBehaviour
         if (killedEnemyCounterScript.killedEnemyCounter == killedEnemyCounterToProgress && EnemiesAreSpawning == false && boss.activeInHierarchy == false)
         {
             UIManager.instance.arrow.SetActive(true);
-            UIManager.instance.go.SetActive(true);
-
             //gameObject.SetActive(false);
         }
 

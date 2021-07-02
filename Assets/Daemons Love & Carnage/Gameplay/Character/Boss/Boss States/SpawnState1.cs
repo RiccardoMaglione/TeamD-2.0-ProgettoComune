@@ -9,7 +9,6 @@ public class SpawnState1 : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<SpriteRenderer>().flipX = false;
         bossHPBar = GameObject.Find("Boss Life Slider");
         bossHPBar.SetActive(false);
         spawnManager = FindObjectOfType<SpawnManager>();

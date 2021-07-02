@@ -2599,70 +2599,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287488201}
   m_CullTransparentMesh: 0
---- !u!1 &290839660
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 290839663}
-  - component: {fileID: 290839662}
-  - component: {fileID: 290839661}
-  m_Layer: 0
-  m_Name: WinManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &290839661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290839660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b656b8f10ee9e4a8943698819d51c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ContinueButton: {fileID: 854809894}
-  iconIMG: {fileID: 854809896}
-  textIMG: {fileID: 1814609975}
---- !u!114 &290839662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290839660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f396f388bf1da614f934d62429999140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  book: {fileID: 1368953403}
-  whitePanel: {fileID: 1118486482}
-  whitePanelIMG: {fileID: 1118486484}
-  tornPageIsMoving: 0
-  dropSpeed: 0.2
---- !u!4 &290839663
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290839660}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299087082
 GameObject:
   m_ObjectHideFlags: 0
@@ -14613,7 +14549,6 @@ GameObject:
   - component: {fileID: 1629749147}
   - component: {fileID: 1629749149}
   - component: {fileID: 1629749150}
-  - component: {fileID: 1629749151}
   m_Layer: 9
   m_Name: Imp Boss
   m_TagString: ImpBoss
@@ -14694,7 +14629,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 21300000, guid: 1931242c1d5b65c4b9bcfeca4c71c8ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 268c114c03d2b8648a9cbb087904a753, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14744,22 +14679,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1629749147}
-  blood: {fileID: 8431986320104276142, guid: 82b001061dd04fa4db1ff670b7f50b63, type: 3}
-  hit: {fileID: 3425944649617307627, guid: 2788a7c4d06aa6a4e80864e3535c7b40, type: 3}
---- !u!114 &1629749151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629749145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 808f0b22ab9aed14184d26fd321e03a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: 0
-  target: 25
 --- !u!1 &1649571696
 GameObject:
   m_ObjectHideFlags: 0
@@ -19372,7 +19291,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 2
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 4744.873
+  ResetTimerStaggered: 4617.52
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
