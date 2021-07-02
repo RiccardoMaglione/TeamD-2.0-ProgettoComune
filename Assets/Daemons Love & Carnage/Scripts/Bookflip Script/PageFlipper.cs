@@ -50,6 +50,12 @@ public class PageFlipper : MonoBehaviour
     public GameObject bv;
     public GameObject cv;
     public GameObject cvtext;
+
+    public GameObject cv1;
+    public GameObject cvtext1;
+    public GameObject cv2;
+    public GameObject cvtext2;
+
     public bool boola;
     private void Start()
     {
@@ -302,6 +308,12 @@ public class PageFlipper : MonoBehaviour
                 bv.GetComponent<Image>().enabled = false;
                 cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 0);
                 cvtext.SetActive(false);
+
+                cv1.GetComponent<Image>().color = new Color(cv1.GetComponent<Image>().color.r, cv1.GetComponent<Image>().color.g, cv1.GetComponent<Image>().color.b, 0);
+                cvtext1.SetActive(false);
+                cv2.GetComponent<Image>().color = new Color(cv2.GetComponent<Image>().color.r, cv2.GetComponent<Image>().color.g, cv2.GetComponent<Image>().color.b, 0);
+                cvtext2.SetActive(false);
+
                 boola = true;
             }
             yield return new WaitForEndOfFrame();
@@ -311,6 +323,11 @@ public class PageFlipper : MonoBehaviour
                 bv.GetComponent<Image>().enabled = true;
                 cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 1);
                 cvtext.SetActive(true);
+
+                cv1.GetComponent<Image>().color = new Color(cv1.GetComponent<Image>().color.r, cv1.GetComponent<Image>().color.g, cv1.GetComponent<Image>().color.b, 1);
+                cvtext1.SetActive(true);
+                cv2.GetComponent<Image>().color = new Color(cv2.GetComponent<Image>().color.r, cv2.GetComponent<Image>().color.g, cv2.GetComponent<Image>().color.b, 1);
+                cvtext2.SetActive(true);
             }
             yield return null;
         }
@@ -588,6 +605,12 @@ public class PageFlipper : MonoBehaviour
                 EventSystem.current.SetSelectedGameObject(cv);
                 cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 0);
                 cvtext.SetActive(false);
+
+                cv1.GetComponent<Image>().color = new Color(cv1.GetComponent<Image>().color.r, cv1.GetComponent<Image>().color.g, cv1.GetComponent<Image>().color.b, 0);
+                cvtext1.SetActive(false);
+                cv2.GetComponent<Image>().color = new Color(cv2.GetComponent<Image>().color.r, cv2.GetComponent<Image>().color.g, cv2.GetComponent<Image>().color.b, 0);
+                cvtext2.SetActive(false);
+
                 boola = true;
             }
             yield return new WaitForEndOfFrame();
@@ -597,6 +620,11 @@ public class PageFlipper : MonoBehaviour
                 bv.GetComponent<Image>().enabled = true;
                 cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 1);
                 cvtext.SetActive(true);
+
+                cv1.GetComponent<Image>().color = new Color(cv1.GetComponent<Image>().color.r, cv1.GetComponent<Image>().color.g, cv1.GetComponent<Image>().color.b, 1);
+                cvtext1.SetActive(true);
+                cv2.GetComponent<Image>().color = new Color(cv2.GetComponent<Image>().color.r, cv2.GetComponent<Image>().color.g, cv2.GetComponent<Image>().color.b, 1);
+                cvtext2.SetActive(true);
             }
             yield return null;
         }
