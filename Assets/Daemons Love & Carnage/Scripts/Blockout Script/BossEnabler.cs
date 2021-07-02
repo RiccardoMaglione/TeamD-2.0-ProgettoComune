@@ -10,6 +10,5 @@ public class BossEnabler : MonoBehaviour
     public void ActiveBoss()
     {
         boss.SetActive(true);
-        bossSlider.SetActive(true);
     }
 }

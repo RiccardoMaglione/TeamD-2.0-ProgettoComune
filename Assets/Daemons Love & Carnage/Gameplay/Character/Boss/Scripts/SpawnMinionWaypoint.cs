@@ -32,7 +32,7 @@ public class SpawnMinionWaypoint : MonoBehaviour
 
     public void ReturnNormalColor()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.Lerp(this.gameObject.GetComponent<SpriteRenderer>().color, Color.white, 1f * Time.deltaTime);
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.Lerp(this.gameObject.GetComponent<SpriteRenderer>().color, Color.white, 1f * Time.deltaTime * 2);
 
     }
 
