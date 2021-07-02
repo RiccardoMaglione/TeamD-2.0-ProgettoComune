@@ -22,6 +22,8 @@ namespace SwordGame
         #region Scene
         public void ReloadScene(string NameScene)
         {
+            PlayerPrefs.GetInt("IDCheckpoint", -1);
+            CheckpointManager.ContinueGame = false;
             Time.timeScale = 1;
             SceneManager.LoadScene(NameScene);
         }

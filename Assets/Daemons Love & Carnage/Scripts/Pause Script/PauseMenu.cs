@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using SwordGame;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject book;
@@ -184,8 +184,9 @@ public class PauseMenu : MonoBehaviour
     }
     public void Reload()
     {
+        PlayerPrefs.GetInt("IDCheckpoint", -1);
+        CheckpointManager.ContinueGame = false;
         SceneManager.LoadScene(2);
-
     }
     public IEnumerator MoveInTornPageCoroutine()
     {
