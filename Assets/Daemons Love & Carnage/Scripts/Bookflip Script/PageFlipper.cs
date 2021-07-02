@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
+
 public class PageFlipper : MonoBehaviour
 {
     [SerializeField]
@@ -55,6 +57,11 @@ public class PageFlipper : MonoBehaviour
     public GameObject cvtext1;
     public GameObject cv2;
     public GameObject cvtext2;
+
+    public GameObject SelectImg;
+    public GameObject BackImg;
+    public GameObject SelectText;
+    public GameObject BackText;
 
     public bool boola;
     private void Start()
@@ -327,6 +334,12 @@ public class PageFlipper : MonoBehaviour
                 cvtext1.SetActive(false);
                 cvtext2.SetActive(false);
 
+                SelectImg.GetComponent<Image>().enabled = false;
+                BackImg.GetComponent<Image>().enabled = false;
+                
+                SelectText.GetComponent<TextMeshProUGUI>().enabled = false;
+                BackText.GetComponent<TextMeshProUGUI>().enabled = false;
+
                 boola = true;
             }
             yield return new WaitForEndOfFrame();
@@ -336,16 +349,22 @@ public class PageFlipper : MonoBehaviour
                 bv.GetComponent<Image>().enabled = true;
 
                 cv.GetComponent<Image>().enabled = true;
-                cv1.GetComponent<Image>().enabled = true;
-                cv2.GetComponent<Image>().enabled = true;
-
                 cv.GetComponent<Image>().color = new Color(cv.GetComponent<Image>().color.r, cv.GetComponent<Image>().color.g, cv.GetComponent<Image>().color.b, 1);
-                cv1.GetComponent<Image>().color = new Color(cv1.GetComponent<Image>().color.r, cv1.GetComponent<Image>().color.g, cv1.GetComponent<Image>().color.b, 1);
-                cv2.GetComponent<Image>().color = new Color(cv2.GetComponent<Image>().color.r, cv2.GetComponent<Image>().color.g, cv2.GetComponent<Image>().color.b, 1);
-
                 cvtext.SetActive(true);
+                
+                cv1.GetComponent<Image>().enabled = true;
                 cvtext1.SetActive(true);
+                cv1.GetComponent<Image>().color = new Color(cv1.GetComponent<Image>().color.r, cv1.GetComponent<Image>().color.g, cv1.GetComponent<Image>().color.b, 1);
+                
+                cv2.GetComponent<Image>().enabled = true;
+                cv2.GetComponent<Image>().color = new Color(cv2.GetComponent<Image>().color.r, cv2.GetComponent<Image>().color.g, cv2.GetComponent<Image>().color.b, 1);
                 cvtext2.SetActive(true);
+
+                SelectImg.GetComponent<Image>().enabled = true;
+                BackImg.GetComponent<Image>().enabled = true;
+
+                SelectText.GetComponent<TextMeshProUGUI>().enabled = true;
+                BackText.GetComponent<TextMeshProUGUI>().enabled = true;
             }
             yield return null;
         }
@@ -689,7 +708,11 @@ public class PageFlipper : MonoBehaviour
                 cvtext1.SetActive(false);
                 cv2.GetComponent<Image>().color = new Color(cv2.GetComponent<Image>().color.r, cv2.GetComponent<Image>().color.g, cv2.GetComponent<Image>().color.b, 0);
                 cvtext2.SetActive(false);
-
+                SelectImg.GetComponent<Image>().enabled = false;
+                BackImg.GetComponent<Image>().enabled = false;
+                
+                SelectText.GetComponent<TextMeshProUGUI>().enabled = false;
+                BackText.GetComponent<TextMeshProUGUI>().enabled = false;
                 boola = true;
             }
             yield return new WaitForEndOfFrame();
@@ -709,6 +732,12 @@ public class PageFlipper : MonoBehaviour
                 cvtext1.SetActive(true);
                 cv2.GetComponent<Image>().color = new Color(cv2.GetComponent<Image>().color.r, cv2.GetComponent<Image>().color.g, cv2.GetComponent<Image>().color.b, 1);
                 cvtext2.SetActive(true);
+
+                SelectImg.GetComponent<Image>().enabled = true;
+                BackImg.GetComponent<Image>().enabled = true;
+                
+                SelectText.GetComponent<TextMeshProUGUI>().enabled = true;
+                BackText.GetComponent<TextMeshProUGUI>().enabled = true;
             }
             yield return null;
         }
@@ -733,6 +762,12 @@ public class PageFlipper : MonoBehaviour
                 cv.GetComponent<Image>().enabled = false;
                 cv1.GetComponent<Image>().enabled = false;
                 cv2.GetComponent<Image>().enabled = false;
+
+                SelectImg.GetComponent<Image>().enabled = false;
+                BackImg.GetComponent<Image>().enabled = false;
+
+                SelectText.GetComponent<TextMeshProUGUI>().enabled = false;
+                BackText.GetComponent<TextMeshProUGUI>().enabled = false;
                 page8Pivot.SetActive(false);
             }
             yield return new WaitForEndOfFrame();

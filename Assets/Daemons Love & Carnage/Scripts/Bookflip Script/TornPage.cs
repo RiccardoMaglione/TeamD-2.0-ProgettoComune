@@ -29,7 +29,6 @@ public class TornPage : MonoBehaviour
 
     public bool thereAreSavedData; //bool da integrare con sistema di salvataggio
 
-
     private void Start()
     {
         startPos = tornPage.transform.position;
