@@ -8,7 +8,7 @@ namespace SwordGame
     {
         public void CheckNewGame()
         {
-            PlayerPrefs.GetInt("IDCheckpoint", -1);
+            PlayerPrefs.SetInt("IDCheckpoint", -1);
             CheckpointManager.ContinueGame = false;
         }
     }

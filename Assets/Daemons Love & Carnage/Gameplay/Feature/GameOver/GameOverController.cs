@@ -110,7 +110,15 @@ namespace SwordGame
 
         public void ContinueCheckpointYes()
         {
-            CheckpointManager.ContinueGame = true;
+            if (PlayerPrefs.GetInt("IDCheckpoint", -1) > -1)
+            {
+                CheckpointManager.ContinueGame = true;
+            }
+            else
+            {
+                CheckpointManager.ContinueGame = false;
+                PlayerPrefs.SetInt("IDCheckpoint", -1);
+            }
         }
         public void ContinueCheckpointNo()
         {

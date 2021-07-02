@@ -27,7 +27,8 @@ public class PressAnyKey : MonoBehaviour
         if (Input.anyKeyDown)
         {
             AudioManager.instance.Play("Sfx_spess_any_key");
-            
+            //PlayerPrefs.DeleteKey("IDCheckpoint");
+            //PlayerPrefs.SetInt("IDCheckpoint", -1);
             FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
             FindObjectOfType<FadeInOutTransition>().FadeIn();
             Invoke("ToMainMenu", 0.5f);

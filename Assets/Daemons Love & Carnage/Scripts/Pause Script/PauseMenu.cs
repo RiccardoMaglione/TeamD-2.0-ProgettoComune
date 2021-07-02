@@ -184,7 +184,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Reload()
     {
-        PlayerPrefs.GetInt("IDCheckpoint", -1);
+        PlayerPrefs.SetInt("IDCheckpoint", -1);
         CheckpointManager.ContinueGame = false;
         SceneManager.LoadScene(2);
     }
