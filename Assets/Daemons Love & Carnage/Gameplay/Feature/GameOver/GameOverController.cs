@@ -10,7 +10,7 @@ namespace SwordGame
     {
         #region Variables
         int RndScreen;                                                                                  //Valore che verrà definito nel random
-        
+
         [Space(5)]
         [Header("-------------------------- Gestione dei pannelli del Game Over -------------------------------------")]
         [Tooltip("Lista delle possibili varianti del pannello di gameover")]
@@ -27,7 +27,7 @@ namespace SwordGame
         [Header("-------------------------- Temp - Variabili inerenti il caricamento --------------------------------")]
         [Tooltip("Lista degli sprite del caricamento")]
         public List<Sprite> ListEye = new List<Sprite>();                                               //Lista degli sprite del caricamento
-        [Tooltip("Lista delle immagini base da sostituire la sprite")] 
+        [Tooltip("Lista delle immagini base da sostituire la sprite")]
         public List<Image> ImageEye;                                                                    //Lista delle immagini base da sostituire la sprite
         [Tooltip("Tempo di attesa tra una sprite e l'altra")]
         public float TimerEye;                                                                          //Tempo di attesa tra una sprite e l'altra
@@ -41,7 +41,7 @@ namespace SwordGame
         }
 
         #region Method
-        
+
         /// <summary>
         /// Viene attivata tramite un random un pannello casuale del gameover
         /// </summary>
@@ -50,7 +50,7 @@ namespace SwordGame
             RndScreen = Random.Range(0, ListScreen.Count);                                              //Estraggo un numero random tra 0 e il massimo della lista dei pannelli del gameover
             ListScreen[RndScreen].SetActive(true);                                                      //Attivo il pannello che ha come indice il random
         }
-    
+
         /// <summary>
         /// Carica la scena in base al nome
         /// </summary>
@@ -59,7 +59,7 @@ namespace SwordGame
         {
             SceneManager.LoadScene(NameScene);                                                          //Carica la scena definita dal nome nella stringa NameScene
         }
-    
+
         /// <summary>
         /// Viene ricaricata la scena di gameover
         /// </summary>
@@ -87,7 +87,7 @@ namespace SwordGame
                 }
             }
         }
-        
+
         /// <summary>
         /// Coroutine per il processo di fade tra il gameover e il button screen
         /// </summary>
@@ -115,6 +115,7 @@ namespace SwordGame
         public void ContinueCheckpointNo()
         {
             CheckpointManager.ContinueGame = false;
+            PlayerPrefs.SetInt("IDCheckpoint", -1);
         }
     }
 }
