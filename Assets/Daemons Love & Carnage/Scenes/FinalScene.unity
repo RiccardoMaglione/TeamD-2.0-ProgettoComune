@@ -1040,6 +1040,8 @@ MonoBehaviour:
   dialogueActive: 0
   NumTutorial: 4
   NumTutorial2: 4
+  NumSkip: 0
+  IsEnableSkip: 0
 --- !u!1 &148780947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,6 +2121,8 @@ MonoBehaviour:
   dialogueActive: 0
   NumTutorial: 2
   NumTutorial2: 2
+  NumSkip: 0
+  IsEnableSkip: 0
 --- !u!61 &262196751
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4176,6 +4180,8 @@ MonoBehaviour:
   dialogueActive: 0
   NumTutorial: -1
   NumTutorial2: 3
+  NumSkip: 0
+  IsEnableSkip: 0
 --- !u!61 &551545412
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5068,15 +5074,43 @@ MonoBehaviour:
     name:
     - JUSTIN CREDIBLE
     - VALMAEL
+    - VALMAEL
     - JUSTIN CREDIBLE
-    position: 010000000000000001000000
+    - VALMAEL
+    - JUSTIN CREDIBLE
+    - VALMAEL
+    - JUSTIN CREDIBLE
+    - VALMAEL
+    - JUSTIN CREDIBLE
+    - VALMAEL
+    - VALMAEL
+    position: 010000000000000000000000010000000000000001000000000000000100000000000000010000000000000000000000
     sentences:
-    - "Ho\u2026 mukatta kuruno ka? Nigetsu ni kono DIO ni chikazuite kuruno ka? Sekkaku
-      sofu no Josefu ga watashi no Za Warudo no shotai wo. Shiken shuryu chaimu chokuzen
-      made mondai yo toitte iru jukensee ne you na? Kisshi koita kibun de wo shietekure
-      ta to yuu no ni?"
-    - Chikadzu kanaka teme wo buchi no me tenain de na
-    - Hoho! Dewa juubun chikazukanai youi
+    - "NOO! don\u2019t RUIN my mask,\nHIT my face rather!"
+    - 'Whahahah !!!
+
+      With that face you don''t need to be hit any further'
+    - 'Oh, now I remember !
+
+      You are that loser AESHMA !!!'
+    - Buhu!..You are really bad, just like a millennium ago when you kidded me and
+      my physical appearance!
+    - 'It''s obvious!
+
+      It''s our nature to annihilate weak people!'
+    - 'One boor as you will NEVER have
+
+      the shine and sweet Norahmi!'
+    - "Hey sweetie I\u2019m a true demon.\nI repeat, where is Norahmi?"
+    - "Hit me as you prefer, I\u2019ll take every pain for her\nbut you will NEVER
+      know where she is!"
+    - "Mmh\u2026 and if I\u2019ll vest you as nursling,\nas I did many years ago?"
+    - "No! I can\u2019t! All things but never the beb\xE8\u2026\nYour concubine is
+      not in this castle\u2026"
+    - 'Did you see!? It wasn''t so hard,
+
+      nursling with a macho head!'
+    - NOW GO BACK TO HELL !!!
 --- !u!1 &705590746
 GameObject:
   m_ObjectHideFlags: 0
@@ -8860,7 +8894,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sentence
+  m_Text: NOW GO BACK TO HELL !!!
 --- !u!1 &1029467915
 GameObject:
   m_ObjectHideFlags: 0
@@ -8950,6 +8984,8 @@ MonoBehaviour:
   dialogueActive: 0
   NumTutorial: 1
   NumTutorial2: 2
+  NumSkip: 0
+  IsEnableSkip: 0
 --- !u!1 &1034561152
 GameObject:
   m_ObjectHideFlags: 0
@@ -9271,6 +9307,8 @@ MonoBehaviour:
   dialogueActive: 0
   NumTutorial: 6
   NumTutorial2: 6
+  NumSkip: 0
+  IsEnableSkip: 0
 --- !u!61 &1043260739
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13537,6 +13575,8 @@ MonoBehaviour:
   dialogueActive: 0
   NumTutorial: 6
   NumTutorial2: 6
+  NumSkip: 0
+  IsEnableSkip: 0
 --- !u!1 &1522172758
 GameObject:
   m_ObjectHideFlags: 0
@@ -13906,6 +13946,8 @@ MonoBehaviour:
   dialogueActive: 0
   NumTutorial: 6
   NumTutorial2: 6
+  NumSkip: 0
+  IsEnableSkip: 0
 --- !u!61 &1547195692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19191,6 +19233,8 @@ MonoBehaviour:
   dialogueActive: 0
   NumTutorial: 2
   NumTutorial2: 2
+  NumSkip: 0
+  IsEnableSkip: 0
 --- !u!1 &2142967078
 GameObject:
   m_ObjectHideFlags: 0
@@ -19281,6 +19325,8 @@ MonoBehaviour:
   dialogueActive: 0
   NumTutorial: -1
   NumTutorial2: 3
+  NumSkip: 0
+  IsEnableSkip: 0
 --- !u!114 &2142967082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19352,6 +19398,7 @@ MonoBehaviour:
   SpecialEnergyAmount: 0
   isTriggerOnlyOnce: 0
   allParallaxArray: {fileID: 0}
+  OnlyOnceDeath: 0
   RB2D: {fileID: 7904243603210495671}
   ValueMovement:
     Acceleration: 3
@@ -19372,7 +19419,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 2
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 4744.873
+  ResetTimerStaggered: 5034.6978
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -19906,6 +19953,7 @@ MonoBehaviour:
   HeavyDamage: 67
   SpecialDamage: 200
   hitAnimation: {fileID: 8551755996803580861}
+  OnlyOnce: 0
 --- !u!114 &1721114572968831772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19923,6 +19971,9 @@ MonoBehaviour:
   i: 0
   stompPrefab: {fileID: 5269674836100724338, guid: ec5115d79cff38547909ec758152fd98, type: 3}
   animator: {fileID: 4404370315310911924}
+  time: 0
+  DecreaseEnergy: 0
+  ResetDecrease: 0
 --- !u!199 &1924449367143580221
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -35488,6 +35539,7 @@ MonoBehaviour:
   HeavyDamage: 67
   SpecialDamage: 200
   hitAnimation: {fileID: 8551755997715262608}
+  OnlyOnce: 0
 --- !u!1 &4921954262404042237
 GameObject:
   m_ObjectHideFlags: 0
@@ -65109,6 +65161,9 @@ MonoBehaviour:
   InspectorEnemy: {fileID: 0}
   PromptEnemy: {fileID: 4921954262404042237}
   RadiusArea: 2.3
+  DelayPossession: 0
+  TimerDelay: 0
+  DelayBool: 0
 --- !u!95 &6388349518643438787
 Animator:
   serializedVersion: 3
@@ -79687,6 +79742,7 @@ MonoBehaviour:
   HeavyDamage: 67
   SpecialDamage: 200
   hitAnimation: {fileID: 0}
+  OnlyOnce: 0
 --- !u!4 &7133940779377868239
 Transform:
   m_ObjectHideFlags: 0
