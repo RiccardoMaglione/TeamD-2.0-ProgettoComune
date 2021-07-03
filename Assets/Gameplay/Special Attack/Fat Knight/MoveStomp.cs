@@ -27,7 +27,8 @@ public class MoveStomp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Boss"))
         {
-            collision.GetComponentInParent<Boss>().life -= damage;
+            if(collision.GetComponentInParent<Boss>().canGetDamage == true)
+                collision.GetComponentInParent<Boss>().life -= damage;
         }
     }
 
