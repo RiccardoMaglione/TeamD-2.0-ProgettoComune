@@ -49,15 +49,19 @@ public class AttackSystem : MonoBehaviour
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
                 collision.GetComponent<Boss>().life -= LightDamage * collision.GetComponent<Boss>().DMG_Reduction;
+                AudioManager.instance.Play("Sfx_boss_damage_light");
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
                 collision.GetComponent<Boss>().life -= HeavyDamage * collision.GetComponent<Boss>().DMG_Reduction;
+                AudioManager.instance.Play("Sfx_boss_damage_heavy");
             }
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
             {
                 collision.GetComponent<Boss>().life -= SpecialDamage * collision.GetComponent<Boss>().DMG_Reduction;
             }
+
+            
         }
 
         //Debug.Log("Passa qui HIT" + collision.name);
