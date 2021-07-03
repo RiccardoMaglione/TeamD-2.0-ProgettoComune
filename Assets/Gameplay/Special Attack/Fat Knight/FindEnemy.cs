@@ -4,15 +4,17 @@ using UnityEngine;
 public class FindEnemy : StateMachineBehaviour
 {
     FatKnightSpecialAttack specialAttack;
-    PSMController psmController;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         specialAttack = animator.GetComponent<FatKnightSpecialAttack>();
         specialAttack.Findenemy();
-        psmController = animator.GetComponentInParent<PSMController>();
-        //psmController.CurrentEnergy = 0;
 
+        if (specialAttack.enemyList.Count != 0)
+            animator.SetTrigger("Next");
+
+        else
+            animator.SetTrigger("Stop");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

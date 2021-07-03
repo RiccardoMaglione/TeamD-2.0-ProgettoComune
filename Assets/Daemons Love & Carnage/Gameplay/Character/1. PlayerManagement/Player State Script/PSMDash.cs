@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PSMDash : StateMachineBehaviour
 {
+    [SerializeField] [Range(0, 1)] float dashThiefAlpha;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation; //30/04/21
@@ -16,6 +18,7 @@ public class PSMDash : StateMachineBehaviour
                     AudioManager.instance.Play("Sfx_FK_dash");
                 }
                 break;
+
             case TypePlayer.BoriousKnight:
                 animator.GetComponentInChildren<BoriousKnightParticlesController>().PlayDash();
                 if (AudioManager.instance != null)
@@ -23,6 +26,7 @@ public class PSMDash : StateMachineBehaviour
                     AudioManager.instance.Play("Sfx_BK_dash");
                 }
                 break;
+
             case TypePlayer.Babushka:
                 animator.GetComponentInChildren<BabushkaParticleController>().PlayDash();
                 if (AudioManager.instance != null)
@@ -30,10 +34,14 @@ public class PSMDash : StateMachineBehaviour
                     AudioManager.instance.Play("Sfx_B_dash");
                 }
                 break;
+
             case TypePlayer.Thief:
                 animator.GetComponentInChildren<ThiefParticlesController>().PlayDash();
                 if (AudioManager.instance != null)
                 {
+                    Color tmp = animator.GetComponent<SpriteRenderer>().color;
+                    tmp.a = dashThiefAlpha;
+                    animator.GetComponent<SpriteRenderer>().color = tmp;
                     AudioManager.instance.Play("Sfx_T_dash");
                 }
                 break;
@@ -106,6 +114,9 @@ public class PSMDash : StateMachineBehaviour
     {
         animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None; //30/04/21
         animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation; //30/04/21
+        Color tmp = animator.GetComponent<SpriteRenderer>().color;
+        tmp.a = 1;
+        animator.GetComponent<SpriteRenderer>().color = tmp;
 
         /*switch (animator.GetComponent<PSMController>().TypeCharacter)
         {

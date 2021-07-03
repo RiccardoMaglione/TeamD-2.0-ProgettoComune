@@ -24,7 +24,14 @@ public class MoveStomp : MonoBehaviour
                 }
             }
         }
+
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            collision.GetComponentInParent<Boss>().life -= damage;
+        }
     }
+
+
     private void Awake()
     {
         specialAttack = FindObjectOfType<FatKnightSpecialAttack>();

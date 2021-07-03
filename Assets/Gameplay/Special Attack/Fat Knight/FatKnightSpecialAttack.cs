@@ -7,6 +7,7 @@ public class FatKnightSpecialAttack : MonoBehaviour
 {
     public List<GameObject> enemyList = new List<GameObject>();
     public EnemyData[] obj;
+    Boss boss;
     public int i = 0;
     [SerializeField] GameObject stompPrefab;
     public Animator animator;
@@ -45,11 +46,19 @@ public class FatKnightSpecialAttack : MonoBehaviour
         enemyList.TrimExcess();
         i = 0;
         obj = FindObjectsOfType<EnemyData>();
-        foreach (EnemyData go in obj)
+        boss = FindObjectOfType<Boss>();
+
+        if(boss != null)
+            enemyList.Add(boss.gameObject);
+
+        if (obj.Length != 0)
         {
-            if (go.isActiveAndEnabled)
+            foreach (EnemyData go in obj)
             {
-                enemyList.Add(go.gameObject);
+                if (go.isActiveAndEnabled)
+                {
+                    enemyList.Add(go.gameObject);
+                }
             }
         }
     }
