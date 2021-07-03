@@ -280,7 +280,8 @@ namespace SwordGame
             }
             if ((Input.GetKeyDown(KeyboardSpecialAttack) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && MaxEnergy <= CurrentEnergy && disableAllInput == false)
             {
-                if(AudioManager.instance != null)
+                AttackSystem.SoundOnlyOnceEnergy = false;
+                if (AudioManager.instance != null)
                 {
                     AudioManager.instance.Play("Sfx_special_activate");
                 }

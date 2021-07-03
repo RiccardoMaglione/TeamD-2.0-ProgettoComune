@@ -110,6 +110,10 @@ namespace SwordGame
 
         public void ContinueCheckpointYes()
         {
+            if(AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_you_died_yes");
+            }
             if (PlayerPrefs.GetInt("IDCheckpoint", -1) > -1)
             {
                 CheckpointManager.ContinueGame = true;
@@ -122,6 +126,10 @@ namespace SwordGame
         }
         public void ContinueCheckpointNo()
         {
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_you_died_no");
+            }
             CheckpointManager.ContinueGame = false;
             PlayerPrefs.SetInt("IDCheckpoint", -1);
         }

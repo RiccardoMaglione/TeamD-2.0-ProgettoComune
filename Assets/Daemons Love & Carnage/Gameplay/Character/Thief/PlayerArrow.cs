@@ -48,6 +48,11 @@ namespace SwordGame
                     if (ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy + ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount > ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy)
                     {
                         ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy = ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy;
+                        if (AudioManager.instance != null && AttackSystem.SoundOnlyOnceEnergy == false)
+                        {
+                            AudioManager.instance.Play("Sfx_special_bar_fill");
+                            AttackSystem.SoundOnlyOnceEnergy = true;
+                        }
                     }
                     else
                     {
@@ -71,6 +76,11 @@ namespace SwordGame
                     if (ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy + ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount > ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy)
                     {
                         ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy = ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy;
+                        if (AudioManager.instance != null && AttackSystem.SoundOnlyOnceEnergy == false)
+                        {
+                            AudioManager.instance.Play("Sfx_special_bar_fill");
+                            AttackSystem.SoundOnlyOnceEnergy = true;
+                        }
                     }
                     else
                     {
