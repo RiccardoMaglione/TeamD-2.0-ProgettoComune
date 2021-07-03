@@ -65,7 +65,7 @@ namespace SwordGame
 
             if(collision.tag == "Boss")
             {
-                collision.GetComponent<Boss>().life -= DamageArrow * collision.GetComponent<Boss>().DMG_Reduction;
+                collision.GetComponentInParent<Boss>().life -= DamageArrow * collision.GetComponentInParent<Boss>().DMG_Reduction;
                 if (ThiefSpecialAttack.instance.isSpecialActive == false)
                 {
                     if (ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy + ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount > ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy)
