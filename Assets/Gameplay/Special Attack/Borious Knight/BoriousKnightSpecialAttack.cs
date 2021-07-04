@@ -52,10 +52,10 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
         if (SpecialActivated == true)
         {
 
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0)
+            if (Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyLeft)) || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("DPad X") < 0)
                 player.transform.rotation = Quaternion.Euler(0, 180, 0);
 
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0)
+            if (Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyRight)) || Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("DPad X") > 0)
                 player.transform.rotation = Quaternion.Euler(0, 0, 0);
 
 

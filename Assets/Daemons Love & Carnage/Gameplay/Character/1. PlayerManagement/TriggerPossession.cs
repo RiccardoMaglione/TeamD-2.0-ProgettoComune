@@ -50,7 +50,7 @@ public class TriggerPossession : Possession
                 DelayBool = true;
             }
         }
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State") && DelayBool == true)
+        if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyPossession)) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State") && DelayBool == true)
         {
             DelayBool = false;
             TimerDelay = 0;

@@ -12,7 +12,7 @@ public class FatKnightStartAttack : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if ((Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && psmController.CurrentEnergy >= psmController.MaxEnergy && animator.GetComponentInParent<PSMController>().enabled == true && animator.GetComponentInParent<PSMController>().IsSpecialAttack == true)
+        if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeySpecialAttack)) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && psmController.CurrentEnergy >= psmController.MaxEnergy && animator.GetComponentInParent<PSMController>().enabled == true && animator.GetComponentInParent<PSMController>().IsSpecialAttack == true)
         {
             animator.SetTrigger("Start");
             psmController.GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
