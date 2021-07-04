@@ -4,7 +4,7 @@ public class CursorNotVisible : MonoBehaviour
 {
     void Start()
     {
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
 
