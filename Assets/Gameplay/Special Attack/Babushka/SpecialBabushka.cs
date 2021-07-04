@@ -60,8 +60,10 @@ public class SpecialBabushka : MonoBehaviour
         GetComponentInParent<PSMController>().HeavyAttackCollider = originalHeavy;
         animator.SetBool("IsAttack", false);
 
-
-        GetComponentInParent<PSMController>().GetComponent<Animator>().runtimeAnimatorController = OriginalBabushkaOverride;
+        if(GetComponentInParent<PSMController>().isActiveAndEnabled)
+        {
+            GetComponentInParent<PSMController>().GetComponent<Animator>().runtimeAnimatorController = OriginalBabushkaOverride;
+        }
         GetComponentInParent<PSMController>().InitializeSpeedAnimation();
     }
     public void InitializeSpeedAnimationSpecial()
