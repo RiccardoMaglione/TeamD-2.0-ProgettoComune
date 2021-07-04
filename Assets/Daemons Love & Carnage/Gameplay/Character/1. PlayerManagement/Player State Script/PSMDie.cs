@@ -10,6 +10,11 @@ public class PSMDie : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Stop("Sfx_player_walk");
+        }
+
         animator.GetComponent<PSMController>().LightAttackCollider.SetActive(false);
         animator.GetComponent<PSMController>().HeavyAttackCollider.SetActive(false);
         animator.GetComponent<PSMController>().RB2D.velocity = Vector2.zero;
