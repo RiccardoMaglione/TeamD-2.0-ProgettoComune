@@ -77,6 +77,7 @@ namespace SwordGame
                         ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy += ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount;
                     }
                 }
+                Destroy(ArrowParent);
             }
                 
         }

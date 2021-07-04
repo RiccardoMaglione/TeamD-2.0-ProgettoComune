@@ -41,7 +41,7 @@ public class Boss : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && playerDamaged == false && canDamage == true)
         {
-            collision.GetComponent<PSMController>().CurrentHealth -= damage;
+            collision.GetComponent<PSMController>().CurrentHealth -= damage * collision.GetComponent<PSMController>().CoeffReduceDamageLight;
             GetHitScript.getHitScript.gameObject.SetActive(false);
             GetHitScript.getHitScript.gameObject.SetActive(true);
 
