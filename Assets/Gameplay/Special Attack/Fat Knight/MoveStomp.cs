@@ -29,6 +29,13 @@ public class MoveStomp : MonoBehaviour
         {
             if(collision.GetComponentInParent<Boss>().canGetDamage == true)
                 collision.GetComponentInParent<Boss>().life -= damage;
+            if (specialAttack.GetComponentInParent<PSMController>().TypeCharacter == TypePlayer.FatKnight)
+            {
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_FK_S_atk");
+                }
+            }
         }
     }
 
