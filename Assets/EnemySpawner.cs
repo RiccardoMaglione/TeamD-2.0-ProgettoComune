@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
 
             for (int i = 0; i < wave2Enemies.Length; i++)
             {
-                GameObject tempPortal = Instantiate(portal, wave2Enemies[i].position, Quaternion.Euler(90, 0, 0));
+                GameObject tempPortal = Instantiate(portal, wave2Enemies[i].position, Quaternion.Euler(0, 0, 0));
                 Destroy(tempPortal, 3f);
             }
         }
@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
 
             for (int i2 = 0; i2 < wave3Enemies.Length; i2++)
             {
-                GameObject tempPortal2 = Instantiate(portal, wave3Enemies[i2].position, Quaternion.Euler(90, 0, 0));
+                GameObject tempPortal2 = Instantiate(portal, wave3Enemies[i2].position, Quaternion.Euler(0, 0, 0));
                 Destroy(tempPortal2, 3f);
 
             }
