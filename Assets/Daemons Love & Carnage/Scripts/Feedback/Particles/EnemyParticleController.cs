@@ -3,7 +3,7 @@
 public class EnemyParticleController : MonoBehaviour
 {
     public ParticleSystem bloodParticle;
-    public ParticleSystem stunParticle;
+    public GameObject stunParticle;
     public ParticleSystem deathParticle;
 
     public void PlayBlood()
@@ -13,7 +13,7 @@ public class EnemyParticleController : MonoBehaviour
 
     public void PlayStun()
     {
-        stunParticle.Play();
+        stunParticle.SetActive(true);
     }
 
     public void PlayDeath()

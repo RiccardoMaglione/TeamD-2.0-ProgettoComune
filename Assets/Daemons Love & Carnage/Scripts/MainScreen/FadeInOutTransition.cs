@@ -10,10 +10,17 @@ public class FadeInOutTransition : MonoBehaviour
     [SerializeField]
     public GameObject blackPanelObject;
 
+    [SerializeField]
+    public GameObject blackPanelObject2;
+
+
     private void Start()
     {
-        FadeOut();
-        Invoke("BlackPanelDisappears", 0.5f);
+        //FadeOut();
+        if (blackPanelObject2 != null)
+        {
+            Invoke("BlackPanel2Disappears", 0.5f);
+        }
     }
     public void FadeIn()
     {
@@ -37,4 +44,10 @@ public class FadeInOutTransition : MonoBehaviour
         //attiva il gameobject del pannello nero
         blackPanelObject.SetActive(false);
     }
+    public void BlackPanel2Disappears()
+    {
+        //attiva il gameobject del pannello nero
+        blackPanelObject2.SetActive(false);
+    }
+
 }

@@ -25,6 +25,8 @@ public class Boss : MonoBehaviour
 
     public GameObject laserManager;
 
+    public GameObject whitePanel;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -65,9 +67,10 @@ public class Boss : MonoBehaviour
 
         if (life <= 0)
         {
+            whitePanel.SetActive(true);
             laserManager.SetActive(false);
             //VictoryScreen.win = true;
-            SceneManager.LoadScene("FinalScene");
+            Invoke("ChangeScene", 0.5f);
             animator.SetBool("GoToDeath", true);
             animator.SetBool("GoToPhase2", false);
             animator.SetBool("GoToPhase3", false);
@@ -87,7 +90,10 @@ public class Boss : MonoBehaviour
             animator.SetBool("GoToPhase2", true);
         }
     }
-
+    private void ChangeScene()
+    {
+        SceneManager.LoadScene("FinalScene");
+    }
     private void Awake()
     {
         maxLife = life;
