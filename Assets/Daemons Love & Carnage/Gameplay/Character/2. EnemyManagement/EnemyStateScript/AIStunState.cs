@@ -25,6 +25,11 @@ public class AIStunState : StateMachineBehaviour
         animator.GetComponent<EnemyData>().HeavyAttackCollider.SetActive(false);//1/06/21
 
         animator.GetComponentInChildren<EnemyParticleController>().PlayStun();
+
+        if(animator.GetComponent<EnemyData>().TypeEnemy == TypeEnemies.Thief)
+        {
+            animator.GetComponent<EnemyData>().GetComponent<BoxCollider2D>().offset = new Vector2(animator.GetComponent<EnemyData>().GetComponent<BoxCollider2D>().offset.x, -0.5f);
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
