@@ -35,5 +35,10 @@ public class BoriousKnightSpecialCollider : MonoBehaviour
                 AudioManager.instance.Play("Sfx_BK_S_atk");
             }
         }
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            if (collision.GetComponentInParent<Boss>().canGetDamage == true)
+                collision.GetComponentInParent<Boss>().life -= GetComponentInParent<BoriousKnightSpecialAttack>().damage;
+        }
     }
 }
