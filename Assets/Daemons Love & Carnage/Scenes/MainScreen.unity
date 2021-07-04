@@ -590,6 +590,34 @@ MonoBehaviour:
     priority: 128
     volume: 1
     source: {fileID: 0}
+  - name: Music_Boss
+    clip: {fileID: 8300000, guid: f5b7e113a07a194468d92fb1c696e015, type: 3}
+    loop: 1
+    type: 0
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Music_Level_P1
+    clip: {fileID: 8300000, guid: 59305c1d9965fa645840c6e07a4040c4, type: 3}
+    loop: 1
+    type: 0
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Music_Level_P2
+    clip: {fileID: 8300000, guid: 1c9e741c2a2283049a15f2c6f697d740, type: 3}
+    loop: 1
+    type: 0
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
+  - name: Music_Main_Menu
+    clip: {fileID: 8300000, guid: f99c4dab74975f649aad9609399116ce, type: 3}
+    loop: 1
+    type: 0
+    priority: 128
+    volume: 1
+    source: {fileID: 0}
   - name: Sfx_B_dash
     clip: {fileID: 8300000, guid: f22dc37da95c0404883a9652d2206d71, type: 3}
     loop: 0
@@ -745,11 +773,11 @@ MonoBehaviour:
     volume: 0.273
     source: {fileID: 0}
   - name: Sfx_stunned
-    clip: {fileID: 8300000, guid: 3773fa13b5d6ce942a0e5c59270769e5, type: 3}
+    clip: {fileID: 8300000, guid: 955b74fdd48f64e4da523569e1579056, type: 3}
     loop: 0
     type: 1
     priority: 128
-    volume: 0.067
+    volume: 0.489
     source: {fileID: 0}
   - name: Sfx_stunned2
     clip: {fileID: 8300000, guid: 7ac867f645d1112489ef864cf6774132, type: 3}
@@ -876,6 +904,13 @@ MonoBehaviour:
     type: 1
     priority: 128
     volume: 1
+    source: {fileID: 0}
+  - name: Sfx_BK_H_atk_swing
+    clip: {fileID: 8300000, guid: 5b61b138a73b01e498aa8dd2f32b737c, type: 3}
+    loop: 0
+    type: 1
+    priority: 128
+    volume: 0.749
     source: {fileID: 0}
   - name: Sfx_BK_hit
     clip: {fileID: 8300000, guid: 272d267df0f5cbe499461ac1f388c577, type: 3}
@@ -1010,14 +1045,14 @@ MonoBehaviour:
     priority: 128
     volume: 1
     source: {fileID: 0}
-  - name: Sfx_boss_damage_EP
+  - name: Sfx_boss_damage_heavy
     clip: {fileID: 8300000, guid: 80523ce28372a324d82f220d5399aa35, type: 3}
     loop: 0
     type: 1
     priority: 128
     volume: 1
     source: {fileID: 0}
-  - name: Sfx_boss_damage_DP
+  - name: Sfx_boss_damage_light
     clip: {fileID: 8300000, guid: 5e87873df39dc414f9ddf8a4e04fea2b, type: 3}
     loop: 0
     type: 1
@@ -1039,7 +1074,7 @@ MonoBehaviour:
     volume: 0.827
     source: {fileID: 0}
   - name: Sfx_boss_jump
-    clip: {fileID: 8300000, guid: a91589232f060e04dbfa76eb73d4d6cd, type: 3}
+    clip: {fileID: 0}
     loop: 0
     type: 1
     priority: 128
@@ -1157,6 +1192,10 @@ MonoBehaviour:
     priority: 128
     volume: 1
     source: {fileID: 0}
+  - name: Sfx_boss_imp_hit
+    clip: {fileID: 0}
+    loop: 0
+    type: 1
   - name: GameplayOST1
     clip: {fileID: 8300000, guid: f0e113c180a06864b929c80598490108, type: 3}
     loop: 1

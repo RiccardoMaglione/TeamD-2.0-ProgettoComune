@@ -36,6 +36,7 @@ public class CutsceneController : MonoBehaviour
 
     public IEnumerator ShowBossfightImage()
     {
+        AudioManager.instance.Play("Sfx_boss_cut_in");
         Time.timeScale = 0;
         playerBar.SetActive(false);
         FindObjectOfType<BossEnabler>().ActiveBoss();

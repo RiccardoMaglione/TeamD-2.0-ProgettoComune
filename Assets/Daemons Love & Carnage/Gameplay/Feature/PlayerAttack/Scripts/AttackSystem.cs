@@ -17,6 +17,7 @@ public class AttackSystem : MonoBehaviour
 
     Transform enemyHitTransform;
     public bool OnlyOnce;
+    public static bool SoundOnlyOnceEnergy;
     private void Awake()
     {
         playerParticles = this.gameObject.transform.root.GetComponentInChildren<BasePlayerParticles>();
@@ -48,15 +49,19 @@ public class AttackSystem : MonoBehaviour
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
                 collision.GetComponent<Boss>().life -= LightDamage * collision.GetComponent<Boss>().DMG_Reduction;
+                AudioManager.instance.Play("Sfx_boss_damage_light");
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
                 collision.GetComponent<Boss>().life -= HeavyDamage * collision.GetComponent<Boss>().DMG_Reduction;
+                AudioManager.instance.Play("Sfx_boss_damage_heavy");
             }
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
             {
                 collision.GetComponent<Boss>().life -= SpecialDamage * collision.GetComponent<Boss>().DMG_Reduction;
             }
+
+            
         }
 
         //Debug.Log("Passa qui HIT" + collision.name);
@@ -91,7 +96,14 @@ public class AttackSystem : MonoBehaviour
                             break;
 
                         case TypePlayer.Babushka:
-                            AudioManager.instance.Play("Sfx_B_L_atk");
+                            if (AudioManager.instance != null && SpecialBabushka.BabuskaSpecial == false)
+                            {
+                                AudioManager.instance.Play("Sfx_B_L_atk");
+                            }
+                            else if(AudioManager.instance != null && SpecialBabushka.BabuskaSpecial == true)
+                            {
+                                AudioManager.instance.Play("Sfx_B_LV_atk");
+                            }
                             break;
 
                         default:
@@ -117,6 +129,11 @@ public class AttackSystem : MonoBehaviour
                 if(GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().LightEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
                 {
                     GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                    if(AudioManager.instance != null && SoundOnlyOnceEnergy == false)
+                    {
+                        AudioManager.instance.Play("Sfx_special_bar_fill");
+                        SoundOnlyOnceEnergy = true;
+                    }
                 }
                 else
                 {
@@ -171,6 +188,11 @@ public class AttackSystem : MonoBehaviour
                 if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().HeavyEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
                 {
                     GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                    if (AudioManager.instance != null && SoundOnlyOnceEnergy == false)
+                    {
+                        AudioManager.instance.Play("Sfx_special_bar_fill");
+                        SoundOnlyOnceEnergy = true;
+                    }
                 }
                 else
                 {
@@ -199,6 +221,11 @@ public class AttackSystem : MonoBehaviour
                 if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().SpecialEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
                 {
                     GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                    if (AudioManager.instance != null && SoundOnlyOnceEnergy == false)
+                    {
+                        AudioManager.instance.Play("Sfx_special_bar_fill");
+                        SoundOnlyOnceEnergy = true;
+                    }
                 }
                 else
                 {
