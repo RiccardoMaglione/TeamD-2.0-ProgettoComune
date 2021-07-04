@@ -45,6 +45,10 @@ public class CheckInput : MonoBehaviour
                 Controller = true;
                 print("Joystick Axis");
             }
+            else if ((Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Vertical") > 0 || Input.GetAxisRaw("Vertical") < 0) && (XboxController == true || PlaystationController == true))
+            {
+                Controller = true;
+            }
         }
 
         CheckController();
