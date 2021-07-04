@@ -48,10 +48,26 @@ public class AttackSystem : MonoBehaviour
             if (GetComponentInParent<PSMController>().IsLightAttack == true)
             {
                 collision.GetComponent<Boss>().life -= LightDamage * collision.GetComponent<Boss>().DMG_Reduction;
+                if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().LightEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                {
+                    GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                }
+                else
+                {
+                    GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
+                }
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
                 collision.GetComponent<Boss>().life -= HeavyDamage * collision.GetComponent<Boss>().DMG_Reduction;
+                if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().HeavyEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                {
+                    GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                }
+                else
+                {
+                    GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
+                }
             }
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
             {
