@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace SwordGame
@@ -9,7 +8,7 @@ namespace SwordGame
         public static CheckpointController CCInstance;
 
         [HideInInspector] public int ID;
-        
+
         public static GameObject LastCheckpoint;
         [HideInInspector] public GameObject InspectorLastCheckpoint;
 
@@ -42,7 +41,7 @@ namespace SwordGame
             {
                 InitialiRespawn();
             }
-            
+
             InspectorPlayerCheckpoint = PlayerCheckpoint;
             InspectorLastCheckpoint = LastCheckpoint;
 
@@ -71,6 +70,9 @@ namespace SwordGame
                         ActivateGameObject[i].SetActive(true);
                     }
                 }
+
+                KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter = KilledEnemy;
+
             }
         }
         public void InitialiRespawn()
@@ -126,7 +128,7 @@ namespace SwordGame
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.tag == "Player")
+            if (collision.tag == "Player")
             {
                 Debug.Log("<color=fuchsia> Checkpoint Attivato </color>");
                 PlayerCheckpoint = collision.gameObject.GetComponent<PSMController>().TypeCharacter;
@@ -137,4 +139,3 @@ namespace SwordGame
         }
     }
 }
-

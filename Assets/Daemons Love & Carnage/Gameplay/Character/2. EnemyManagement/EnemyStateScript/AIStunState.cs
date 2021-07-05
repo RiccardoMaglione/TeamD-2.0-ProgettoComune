@@ -5,12 +5,12 @@ public class AIStunState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(AudioManager.instance != null)
+        if (AudioManager.instance != null)
         {
             AudioManager.instance.Play("Sfx_stunned");
         }
 
-        if (animator.GetComponent<EnemyData>().timerStun == 0 && animator.name != "PlayerFatKnight")
+        if (animator.GetComponent<EnemyData>().timerStun == 0 && animator.name != "PlayerFatKnight" && animator.name != "PlayerFatKnight(Clone)") // Da aggiornare quando si puo spawnare con pg diversi
         {
             FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter++; //1/06/21
         }
@@ -26,7 +26,7 @@ public class AIStunState : StateMachineBehaviour
 
         animator.GetComponentInChildren<EnemyParticleController>().PlayStun();
 
-        if(animator.GetComponent<EnemyData>().TypeEnemy == TypeEnemies.Thief)
+        if (animator.GetComponent<EnemyData>().TypeEnemy == TypeEnemies.Thief)
         {
             animator.GetComponent<EnemyData>().GetComponent<BoxCollider2D>().offset = new Vector2(animator.GetComponent<EnemyData>().GetComponent<BoxCollider2D>().offset.x, -0.5f);
         }
