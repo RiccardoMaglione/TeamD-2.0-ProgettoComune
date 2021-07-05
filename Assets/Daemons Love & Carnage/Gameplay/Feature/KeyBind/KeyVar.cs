@@ -96,7 +96,7 @@ public class KeyVar : MonoBehaviour
         StringKeyLeft = PlayerPrefs.GetString(KeyLeft.name.ToString(), "LeftArrow");
         StringKeyRight = PlayerPrefs.GetString(KeyRight.name.ToString(), "RightArrow");
         StringKeyDash = PlayerPrefs.GetString(KeyDash.name.ToString(), "LeftControl");
-        StringKeyPossession = PlayerPrefs.GetString(KeyPossession.name.ToString(), "V");
+        StringKeyPossession = PlayerPrefs.GetString(KeyPossession.name.ToString(), "Space");
         StringKeyLightAttack = PlayerPrefs.GetString(KeyLightAttack.name.ToString(), "Z");
         StringKeyHeavyAttack = PlayerPrefs.GetString(KeyHeavyAttack.name.ToString(), "X");
         StringKeySpecialAttack = PlayerPrefs.GetString(KeySpecialAttack.name.ToString(), "C");
