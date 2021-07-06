@@ -30,10 +30,12 @@ public class TrapSpike : MonoBehaviour
 
             cooldownIsActive = true;
         }
-        if (collision.gameObject.tag == "Enemy" && cooldownIsActive == false && cooldownTrap <= 0f)
+        if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyData>().Life -= damageToEnemy;
-            cooldownIsActive = true;
+            collision.GetComponent<Animator>().SetTrigger("DamageReceived");
+            collision.GetComponentInParent<Animator>().SetFloat("Life", collision.GetComponent<EnemyData>().Life);
+
         }
 
     }
