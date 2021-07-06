@@ -114,16 +114,24 @@ namespace SwordGame
 
         public static bool disableAllInput = false;
 
+        public bool particlePossessionActivation = true;
+
         private void OnValidate()
         {
             OnValidatePlayerManager();
         }
+
 
         void Start()
         {
             RB2D = GetComponent<Rigidbody2D>();
             InitializePlayerManager();
             InitializeSpeedAnimation();
+            if (particlePossessionActivation == true)
+            {
+                GetComponentInChildren<BasePlayerParticles>().PlayPossession();
+            }
+            particlePossessionActivation = true;
         }
 
         void Update()
@@ -436,7 +444,7 @@ namespace SwordGame
 
         public void EventArrowThief()
         {
-            if(AudioManager.instance != null)
+            if (AudioManager.instance != null)
             {
                 AudioManager.instance.Play("Sfx_T_p_L_atk");
             }
@@ -526,7 +534,7 @@ namespace SwordGame
                         switch (collision.GetComponentInParent<EnemyData>().TypeEnemy)
                         {
                             case TypeEnemies.FatKnight:
-                                if(AudioManager.instance != null)
+                                if (AudioManager.instance != null)
                                 {
                                     AudioManager.instance.Play("Sfx_FK_H_atk");
                                 }
@@ -562,7 +570,7 @@ namespace SwordGame
                         PoisePlayer += collision.GetComponentInParent<EnemyData>().ValuePoiseHeavy;
                         CurrentHealth -= collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy;
 
-                        if(CurrentHealth - collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy > 0)
+                        if (CurrentHealth - collision.GetComponentInParent<EnemyData>().HeavyDamage * CoeffReduceDamageHeavy > 0)
                         {
                             switch (TypeCharacter)
                             {
@@ -594,7 +602,7 @@ namespace SwordGame
                                     break;
                             }
                         }
-                       
+
                         Knockback.ActiveKnockback = true;
                         //print("PSM-Trigger: Entra nel heavy attack - Colpito");
                         StartCoroutine(FeedbackManager.instance.Vibration());
@@ -639,7 +647,7 @@ namespace SwordGame
             {
                 if (isActiveAndEnabled == true)
                 {
-                    if(AudioManager.instance != null)
+                    if (AudioManager.instance != null)
                     {
                         AudioManager.instance.Play("Sfx_player_fell_ground");
                     }

@@ -568,7 +568,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 2
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 4116.063
+  ResetTimerStaggered: 4122.391
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -607,6 +607,7 @@ MonoBehaviour:
   DashKnockbackFatKnight: {fileID: 46850320735598219}
   ControllerPossession: 1
   SpecialAttackGameObject: {fileID: 0}
+  particlePossessionActivation: 0
 --- !u!114 &4529155594793230523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3112,6 +3113,10 @@ PrefabInstance:
     - target: {fileID: 1140490639170391809, guid: 3597c9ea234bfce4591f42f9ed929b8c, type: 3}
       propertyPath: m_Name
       value: Particle Possesion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140490639170391811, guid: 3597c9ea234bfce4591f42f9ed929b8c, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1140490639170391812, guid: 3597c9ea234bfce4591f42f9ed929b8c, type: 3}
       propertyPath: m_RootOrder
