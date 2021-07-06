@@ -3094,6 +3094,7 @@ MonoBehaviour:
   DashKnockbackFatKnight: {fileID: 0}
   ControllerPossession: 0
   SpecialAttackGameObject: {fileID: 0}
+  particlePossessionActivation: 1
 --- !u!114 &8830916221084911283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3372,6 +3373,10 @@ PrefabInstance:
     - target: {fileID: 1140490639170391809, guid: 3597c9ea234bfce4591f42f9ed929b8c, type: 3}
       propertyPath: m_Name
       value: Particle Possesion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140490639170391811, guid: 3597c9ea234bfce4591f42f9ed929b8c, type: 3}
+      propertyPath: playOnAwake
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1140490639170391812, guid: 3597c9ea234bfce4591f42f9ed929b8c, type: 3}
       propertyPath: m_RootOrder

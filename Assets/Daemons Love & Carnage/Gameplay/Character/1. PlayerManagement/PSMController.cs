@@ -127,15 +127,16 @@ namespace SwordGame
             RB2D = GetComponent<Rigidbody2D>();
             InitializePlayerManager();
             InitializeSpeedAnimation();
-            if (particlePossessionActivation == true)
-            {
-                GetComponentInChildren<BasePlayerParticles>().PlayPossession();
-            }
-            particlePossessionActivation = true;
         }
 
         void Update()
         {
+            if (particlePossessionActivation == true)
+            {
+                GetComponentInChildren<BasePlayerParticles>().possessionParticle.playOnAwake = true;
+            }
+            particlePossessionActivation = true;
+
             DashCooldownState();
             ResetStaggered();
             ResetPlatform();
