@@ -35,6 +35,10 @@ public class Sound
     [Range(0, 1)]
     public float volume = 1;
 
+    public float fadeInTime = 1;
+
+    public float fadeOutTime = 1;
+
     /// <summary>
     /// AudioSource of the clip
     /// </summary>

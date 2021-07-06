@@ -6,7 +6,7 @@ public class ChangeMusicManager : MonoBehaviour
 {
     void Start()
     {
-        AudioManager.instance.Stop("MainMenuMusic");
-        AudioManager.instance.Play("GameplayOST1");
+        AudioManager.instance.FadeOut("MainMenuMusic");
+        AudioManager.instance.FadeIn("GameplayOST1");
     }
 }

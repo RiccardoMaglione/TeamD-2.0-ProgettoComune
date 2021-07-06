@@ -48,7 +48,7 @@ public class CutsceneController : MonoBehaviour
         playerBar.SetActive(true);
         Time.timeScale = 1;
         AudioManager.instance.Stop("GameplayOST1");
-        AudioManager.instance.Stop("GameplayOST2");
-        AudioManager.instance.Play("BossOST");
+        AudioManager.instance.FadeOut("GameplayOST2");
+        AudioManager.instance.FadeIn("BossOST");     
     }
 }

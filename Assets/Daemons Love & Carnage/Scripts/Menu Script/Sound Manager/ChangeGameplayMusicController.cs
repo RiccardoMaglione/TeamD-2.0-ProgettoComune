@@ -11,8 +11,8 @@ public class ChangeGameplayMusicController : MonoBehaviour
         if (isEntered == false && collision.gameObject.CompareTag("Player"))
         {
             isEntered = true;
-            AudioManager.instance.Stop("GameplayOST1");
-            AudioManager.instance.Play("GameplayOST2");
+            AudioManager.instance.FadeOut("GameplayOST1");
+            AudioManager.instance.FadeIn("GameplayOST2");
         }       
     }
 }

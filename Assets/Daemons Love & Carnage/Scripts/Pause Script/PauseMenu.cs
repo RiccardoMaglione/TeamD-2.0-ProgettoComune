@@ -101,7 +101,6 @@ public class PauseMenu : MonoBehaviour
             Controls.SetActive(false);
             Options.SetActive(false);
             MainMenu.SetActive(false);
-
             StopCoroutine("MoveOutTornPageCoroutine");
             StartCoroutine("MoveInTornPageCoroutine");
         }
@@ -147,7 +146,7 @@ public class PauseMenu : MonoBehaviour
             MainMenu.SetActive(true);
 
             StopCoroutine("MoveOutTornPageCoroutine");
-            StartCoroutine("MoveInTornPageCoroutine");
+            StartCoroutine("MoveInTornPageCoroutine");           
         }
     }
 
@@ -176,6 +175,9 @@ public class PauseMenu : MonoBehaviour
         FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
         FindObjectOfType<FadeInOutTransition>().FadeIn();
         Invoke("ToMainMenu", 0.5f);
+
+        AudioManager.instance.StopAllMusics();
+        AudioManager.instance.Play("MainMenuMusic");
     }
 
     public void ToMainMenu()
