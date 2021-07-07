@@ -28,9 +28,9 @@ public class Laser : MonoBehaviour
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
             playerDamaged = true;
+            GetHitScript.getHitScript.gameObject.SetActive(false);
+            GetHitScript.getHitScript.gameObject.SetActive(true);
         }
-        GetHitScript.getHitScript.gameObject.SetActive(false);
-        GetHitScript.getHitScript.gameObject.SetActive(true);
 
     }
 
@@ -40,9 +40,9 @@ public class Laser : MonoBehaviour
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
             playerDamaged = true;
+            GetHitScript.getHitScript.gameObject.SetActive(false);
+            GetHitScript.getHitScript.gameObject.SetActive(true);
         }
-        GetHitScript.getHitScript.gameObject.SetActive(false);
-        GetHitScript.getHitScript.gameObject.SetActive(true);
 
     }
 }
