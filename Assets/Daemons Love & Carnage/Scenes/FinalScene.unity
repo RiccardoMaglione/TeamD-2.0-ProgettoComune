@@ -14778,7 +14778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 0
-  target: 25
+  target: 40
 --- !u!1 &1649571696
 GameObject:
   m_ObjectHideFlags: 0
@@ -19396,7 +19396,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 2
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 5059.827
+  ResetTimerStaggered: 5067.991
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -19435,6 +19435,7 @@ MonoBehaviour:
   DashKnockbackFatKnight: {fileID: 46850320269620200}
   ControllerPossession: 1
   SpecialAttackGameObject: {fileID: 0}
+  particlePossessionActivation: 1
 --- !u!1 &198769688715099121
 GameObject:
   m_ObjectHideFlags: 0
@@ -79765,7 +79766,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
