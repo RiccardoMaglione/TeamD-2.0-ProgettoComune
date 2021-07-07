@@ -52,5 +52,6 @@ public class VictoryContinue : MonoBehaviour
     public void ToMap()
     {
         SceneManager.LoadScene(1);
+        AudioManager.instance.FadeOut("FinalCutsceneOST");
     }
 }
