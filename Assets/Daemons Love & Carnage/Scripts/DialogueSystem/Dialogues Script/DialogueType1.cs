@@ -73,7 +73,7 @@ public class DialogueType1 : MonoBehaviour
             dialogueActive = false;
             StopCoroutine("DialogueIn");
             StartCoroutine("DialogueOut");
-            if(IsEnableSkip == true)
+            if (IsEnableSkip == true)
             {
                 PlayerPrefs.SetInt("TutorialSkip", NumSkip);
             }
