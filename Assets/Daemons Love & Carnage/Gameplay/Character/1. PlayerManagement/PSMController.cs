@@ -79,6 +79,8 @@ namespace SwordGame
         #endregion
         #region Dash Effect
         public GameObject DashColliderBabushka;
+        public GameObject DashColliderBorious;
+
         public static bool isBoriousDash = false;
         #endregion
         //[HideInInspector] public Vector3 InitialPos;
@@ -185,6 +187,9 @@ namespace SwordGame
                 isBoriousDash = false;
                 if (DashColliderBabushka != null)
                     DashColliderBabushka.SetActive(false);
+                if (DashColliderBorious != null)
+                    DashColliderBorious.SetActive(false);
+
                 if (TimerDashCooldown >= LimiTimerDashCooldown)
                 {
                     //Resetta cose ma devo essere già fuori dallo stato
@@ -251,7 +256,9 @@ namespace SwordGame
                     Knockback.ActiveKnockback = true;
                     break;
                 case TypePlayer.BoriousKnight:
+                    DashColliderBorious.SetActive(true);
                     isBoriousDash = true;
+
                     break;
                 case TypePlayer.Babushka:
                     DashColliderBabushka.SetActive(true);
