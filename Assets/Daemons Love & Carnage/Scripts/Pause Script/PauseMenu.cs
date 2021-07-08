@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using SwordGame;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using SwordGame;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject book;
@@ -30,8 +30,11 @@ public class PauseMenu : MonoBehaviour
 
     public float dropSpeed;
 
+    PlayerManager PM;
+
     private void Start()
     {
+        PM = FindObjectOfType<PlayerManager>();
         paused = false;
         menuOpen = false;
         startPos = tornPage.GetComponent<RectTransform>().anchoredPosition;
@@ -50,7 +53,7 @@ public class PauseMenu : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Escape) && paused == false && menuOpen == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && paused == false && menuOpen == false && PM.CurrentHealth > 0)
         {
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Sfx_book_drop");
