@@ -166,6 +166,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
         FindObjectOfType<FadeInOutTransition>().FadeIn();
+        AudioManager.instance.FadeOut("GameplayOST2");
+        AudioManager.instance.FadeOut("BossOST");
         Invoke("Reload", 0.5f);
     }
 
