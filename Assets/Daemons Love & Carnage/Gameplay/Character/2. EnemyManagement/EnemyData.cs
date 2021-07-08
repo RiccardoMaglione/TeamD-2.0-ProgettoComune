@@ -360,6 +360,10 @@ public class EnemyData : MonoBehaviour
             {
                 GetComponent<Animator>().SetBool("IsStagger", true);
             }
+
+            ColorChangeController colorChangeController = GetComponent<ColorChangeController>();
+            colorChangeController.isAttacked = true;
+            GetComponentInChildren<EnemyParticleController>().PlayBlood();
         }
     }
     //

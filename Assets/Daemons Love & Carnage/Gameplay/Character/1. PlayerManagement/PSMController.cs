@@ -523,7 +523,7 @@ namespace SwordGame
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
                         {
-                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage * BoriousDashDMGMultiplier;
+                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage * BoriousDashDMGMultiplier;                          
                         }
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                     }
