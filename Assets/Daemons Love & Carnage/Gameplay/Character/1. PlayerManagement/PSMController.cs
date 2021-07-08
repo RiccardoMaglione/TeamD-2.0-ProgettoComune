@@ -116,6 +116,8 @@ namespace SwordGame
 
         public bool particlePossessionActivation = true;
 
+        public GameObject Tornado;
+
         private void OnValidate()
         {
             OnValidatePlayerManager();
@@ -451,6 +453,17 @@ namespace SwordGame
             }
             GameObject GoArrow = Instantiate(ArrowThief, SpawnArrow.transform.position, transform.rotation);
         }
+        
+        public void EventActivateTornado()
+        {
+            Tornado.SetActive(true);
+        }
+
+        public void EventDeactivateTornado()
+        {
+            Tornado.SetActive(false);
+        }
+
 
         #region Trigger Zone
         private void OnTriggerEnter2D(Collider2D collision)
