@@ -93,7 +93,7 @@ public class Boss : MonoBehaviour
     private void ChangeScene()
     {
         SceneManager.LoadScene("FinalScene");
-        AudioManager.instance.Stop("BossOST");
+        AudioManager.instance.FadeOut("BossOST");
     }
     private void Awake()
     {

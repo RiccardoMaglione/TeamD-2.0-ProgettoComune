@@ -14,6 +14,9 @@ public class CircleWipe : MonoBehaviour
     private void Awake()
     {
         CW = this;
+        AudioManager.instance.FadeOut("GameplayOST1");
+        AudioManager.instance.FadeOut("GameplayOST2");
+        AudioManager.instance.FadeOut("BossOST");
     }
     void Start()
     {

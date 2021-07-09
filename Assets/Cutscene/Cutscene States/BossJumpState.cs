@@ -6,7 +6,7 @@ public class BossJumpState : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        AudioManager.instance.Play("Sfx_boss_jump ");
+        AudioManager.instance.Play("Sfx_boss_jump");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -31,13 +31,32 @@ namespace SwordGame
                 Destroy(ArrowParent, 0.2f);
                 GetComponentInParent<SpriteRenderer>().enabled = false;
                 GetComponent<BoxCollider2D>().enabled = false;
+
+                if(collision.GetComponent<PSMController>().TypeCharacter == TypePlayer.Babushka)
+                {
+                    AudioManager.instance.Play("Sfx_B_hit");
+                }
+
+                if (collision.GetComponent<PSMController>().TypeCharacter == TypePlayer.BoriousKnight)
+                {
+                    AudioManager.instance.Play("Sfx_BK_hit");
+                }
+
+                if (collision.GetComponent<PSMController>().TypeCharacter == TypePlayer.FatKnight)
+                {
+                    AudioManager.instance.Play("Sfx_FK_hit");
+                }
+
+                if (collision.GetComponent<PSMController>().TypeCharacter == TypePlayer.Thief)
+                {
+                    AudioManager.instance.Play("Sfx_T_hit");
+                }
             }
+            
             else if (collision.tag == "Floor")
             {
                 Destroy(ArrowParent);
             }
-
-
         }
     }
 }
