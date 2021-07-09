@@ -8,7 +8,7 @@ public class LateralForce : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PSMController.disableAllInput = true;
-            Invoke("RegaingControls", 1.5f);
+            Invoke("RegaingControls", 1.2f);
             collision.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
             if (lateralLeft)
