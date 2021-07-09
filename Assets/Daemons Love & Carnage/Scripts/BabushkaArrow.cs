@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
 public class BabushkaArrow : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,7 +19,7 @@ public class BabushkaArrow : MonoBehaviour
             collision.gameObject.GetComponent<PlayerArrow>().ArrowParent = collision.gameObject.GetComponentInParent<MoveArrowEnemy>().gameObject;
             collision.gameObject.GetComponent<PlayerArrow>().ArrowParent.layer = 11;
             collision.gameObject.GetComponent<PlayerArrow>().gameObject.layer = 11;
-            collision.gameObject.GetComponent<PlayerArrow>().DamageArrow = 20;
+            collision.gameObject.GetComponent<PlayerArrow>().DamageArrow = 200;
         }
     }
 }

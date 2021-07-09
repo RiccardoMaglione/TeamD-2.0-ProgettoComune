@@ -1,10 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using SwordGame;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using SwordGame;
 
 public class DialogueManagerDeathBoss : MonoBehaviour
 {
+    public GameObject playerObscured;
+    public GameObject playerIlluminated;
+    public GameObject bossObscured;
+    public GameObject bossIlluminated;
+
     public static DialogueManagerDeathBoss instance;
     public Text leftNameText;
     public Text rightNameText;
@@ -104,6 +109,11 @@ public class DialogueManagerDeathBoss : MonoBehaviour
     {
         if (position == Position.Left)
         {
+            playerIlluminated.SetActive(true);
+            playerObscured.SetActive(false);
+            bossIlluminated.SetActive(false);
+            bossObscured.SetActive(true);
+
             leftPanel.SetActive(true);
             rightPanel.SetActive(false);
             leftNameText.text = "";
@@ -115,6 +125,11 @@ public class DialogueManagerDeathBoss : MonoBehaviour
 
         else
         {
+            playerIlluminated.SetActive(false);
+            playerObscured.SetActive(true);
+            bossIlluminated.SetActive(true);
+            bossObscured.SetActive(false);
+
             leftPanel.SetActive(false);
             rightPanel.SetActive(true);
             rightNameText.text = "";
@@ -127,6 +142,11 @@ public class DialogueManagerDeathBoss : MonoBehaviour
 
     void EndDialogue()
     {
+        playerIlluminated.SetActive(false);
+        playerObscured.SetActive(false);
+        bossIlluminated.SetActive(false);
+        bossObscured.SetActive(false);
+
         FindObjectOfType<PSMController>().enabled = true;
         player = GameObject.FindGameObjectWithTag("Player");
         isTalk = false;

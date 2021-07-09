@@ -10,7 +10,7 @@ public class PortalForBossMinions : MonoBehaviour
     {
         for (int i = 0; i < waveEnemies1.Length; i++)
         {
-            GameObject tempPortal = Instantiate(portal, waveEnemies1[i].position, Quaternion.Euler(90, 0, 0));
+            GameObject tempPortal = Instantiate(portal, waveEnemies1[i].position, Quaternion.Euler(0, 0, 0));
             Destroy(tempPortal, 3f);
 
         }
@@ -19,7 +19,7 @@ public class PortalForBossMinions : MonoBehaviour
     {
         for (int i = 0; i < waveEnemies2.Length; i++)
         {
-            GameObject tempPortal = Instantiate(portal, waveEnemies2[i].position, Quaternion.Euler(90, 0, 0));
+            GameObject tempPortal = Instantiate(portal, waveEnemies2[i].position, Quaternion.Euler(0, 0, 0));
             Destroy(tempPortal, 3f);
         }
     }

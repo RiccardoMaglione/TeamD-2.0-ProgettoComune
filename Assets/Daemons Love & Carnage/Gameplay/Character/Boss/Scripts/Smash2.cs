@@ -12,6 +12,10 @@ public class Smash2 : MonoBehaviour
     public GameObject[] cameraConfiners;
     public GameObject[] cameras;
 
+    public GameObject lateralForces;
+
+    public static bool crumblingPlatforms = false;
+
     public void Smash()
     {
         if (i < waypoints.Length)
@@ -48,6 +52,9 @@ public class Smash2 : MonoBehaviour
             GroundManager.instance.Smash();
 
             AudioManager.instance.Play("Sfx_boss_smash");
+
+            lateralForces.SetActive(true);
+            crumblingPlatforms = true;
         }
     }
 }

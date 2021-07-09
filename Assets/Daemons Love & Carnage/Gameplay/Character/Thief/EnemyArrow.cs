@@ -13,7 +13,7 @@ namespace SwordGame
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == "Player")
+            if (collision.tag == "Player" && PSMController.isBoriousDash == false)
             {
                 GetHitScript.getHitScript.gameObject.SetActive(false);
                 GetHitScript.getHitScript.gameObject.SetActive(true);
