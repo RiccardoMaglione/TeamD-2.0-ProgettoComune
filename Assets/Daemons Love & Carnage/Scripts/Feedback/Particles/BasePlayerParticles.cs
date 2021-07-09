@@ -93,7 +93,6 @@ public class BasePlayerParticles : MonoBehaviour
         tempHitEffect.GetComponent<ParticleSystem>().Play();
 
         Destroy(tempHitEffect, 0.5f);
-
     }
 
 }
