@@ -16,7 +16,6 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && reflected)
         {
-
             ColorChangeController colorChangeController = collision.gameObject.GetComponent<ColorChangeController>();
             colorChangeController.isAttacked = true;
 
@@ -34,6 +33,31 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<PSMController>().CurrentHealth -= damage;
             GetHitScript.getHitScript.gameObject.SetActive(false);
             GetHitScript.getHitScript.gameObject.SetActive(true);
+
+            if (AudioManager.instance != null)
+            {
+                switch (collision.gameObject.GetComponent<PSMController>().TypeCharacter)
+                {
+                    case TypePlayer.FatKnight:
+                        AudioManager.instance.Play("Sfx_FK_hit");
+                        break;
+
+                    case TypePlayer.BoriousKnight:
+                        AudioManager.instance.Play("Sfx_BK_hit");
+                        break;
+
+                    case TypePlayer.Babushka:
+                        AudioManager.instance.Play("Sfx_B_hit");
+                        break;
+
+                    case TypePlayer.Thief:
+                        AudioManager.instance.Play("Sfx_T_hit");
+                        break;
+
+                    default:
+                        break;
+                }
+            }
 
             Destroy(this.gameObject);
         }

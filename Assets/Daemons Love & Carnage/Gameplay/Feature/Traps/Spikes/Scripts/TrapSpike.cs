@@ -28,8 +28,34 @@ public class TrapSpike : MonoBehaviour
             GetHitScript.getHitScript.gameObject.SetActive(false);
             GetHitScript.getHitScript.gameObject.SetActive(true);
 
-            cooldownIsActive = true;
+            if (AudioManager.instance != null)
+            {
+                switch (collision.gameObject.GetComponent<PSMController>().TypeCharacter)
+                {
+                    case TypePlayer.FatKnight:
+                        AudioManager.instance.Play("Sfx_FK_hit");
+                        break;
+
+                    case TypePlayer.BoriousKnight:
+                        AudioManager.instance.Play("Sfx_BK_hit");
+                        break;
+
+                    case TypePlayer.Babushka:
+                        AudioManager.instance.Play("Sfx_B_hit");
+                        break;
+
+                    case TypePlayer.Thief:
+                        AudioManager.instance.Play("Sfx_T_hit");
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+                cooldownIsActive = true;
         }
+
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyData>().Life -= damageToEnemy;

@@ -14,7 +14,7 @@ namespace SwordGame
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == "Enemy")                                                                           //Aggiungere booleano per DummyScript, PiecesBehaviour, manca HitAnimation 
+            if (collision.tag == "Enemy")                                          //Aggiungere booleano per DummyScript, PiecesBehaviour, manca HitAnimation 
             {
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce((transform.right + transform.InverseTransformDirection(KnockbackDirection)).normalized * thrust, ForceMode2D.Impulse);
                 ColorChangeController colorChangeController = collision.GetComponent<ColorChangeController>();
@@ -70,6 +70,9 @@ namespace SwordGame
 
             if(collision.tag == "Boss")
             {
+                ColorChangeController colorChangeController = collision.GetComponentInParent<ColorChangeController>();
+                colorChangeController.isAttacked = true;
+                AudioManager.instance.Play("Sfx_boss_damage_light");
                 collision.GetComponentInParent<Boss>().life -= DamageArrow * collision.GetComponentInParent<Boss>().DMG_Reduction;
                 if (ThiefSpecialAttack.instance.isSpecialActive == false)
                 {
