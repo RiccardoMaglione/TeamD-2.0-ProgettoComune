@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using SwordGame;
 
 public class VictoryContinue : MonoBehaviour
 {
@@ -51,7 +52,10 @@ public class VictoryContinue : MonoBehaviour
     }
     public void ToMap()
     {
+        PSMController.disableAllInput = false;
+        CutsceneControllerDeathBoss.isCutsceneEnabled = false;
         SceneManager.LoadScene(1);
         AudioManager.instance.FadeOut("FinalCutsceneOST");
+        AudioManager.instance.FadeIn("MainMenuMusic");
     }
 }
