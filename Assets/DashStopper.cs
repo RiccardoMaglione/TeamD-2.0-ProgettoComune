@@ -26,6 +26,18 @@ public class DashStopper : MonoBehaviour
             collision.GetComponent<PSMController>().TimerDash = 0;                          //Resetta il timer della durata del dash
             collision.GetComponent<PSMController>().TimerDashCooldown = 0;                  //Resetta il timer del cooldown
             collision.GetComponent<PSMController>().CooldownDashDirectional = false;        //Mi permette di ritornare in dash
+
+            if (collision.GetComponent<PSMController>().DashKnockbackFatKnight != null)
+                collision.GetComponent<PSMController>().DashKnockbackFatKnight.SetActive(false);
+
+            collision.GetComponent<PSMController>().Invulnerability = false;
+            PSMController.isBoriousDash = false;
+
+            if (collision.GetComponent<PSMController>().DashColliderBabushka != null)
+                collision.GetComponent<PSMController>().DashColliderBabushka.SetActive(false);
+
+            if (collision.GetComponent<PSMController>().DashColliderBorious != null)
+                collision.GetComponent<PSMController>().DashColliderBorious.SetActive(false);
         }
         else if (collision.CompareTag("Player") && PlayerPrefs.GetInt("TutorialSkip") < GetComponentInParent<DialogueType1>().NumSkip) //|| collision.CompareTag("Player") && DialogueTrigger.bossDialogueTrigger == true)
         {
