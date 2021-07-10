@@ -14,7 +14,11 @@ public class Smash2 : MonoBehaviour
 
     public GameObject lateralForces;
 
-    public static bool crumblingPlatforms = false;
+    public bool crumblingPlatforms = false;
+    private void Start()
+    {
+        crumblingPlatforms = false;
+    }
 
     public void Smash()
     {

@@ -27,7 +27,16 @@ public class Boss : MonoBehaviour
 
     public GameObject whitePanel;
 
+    public GameObject platform1;
+    public GameObject platform2;
+    public Smash2 smash2;
 
+    private void Start()
+    {
+        smash2.crumblingPlatforms = false;
+        platform1.SetActive(true);
+        platform2.SetActive(true);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player" && playerDamaged == false && canDamage == true)
