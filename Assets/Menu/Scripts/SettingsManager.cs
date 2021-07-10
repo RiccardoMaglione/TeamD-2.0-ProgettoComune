@@ -22,7 +22,7 @@ public class SettingsManager : MonoBehaviour
 
     void Awake()
     {
-        if (PlayerPrefs.GetInt("Fullscreen") == 0)
+        if (PlayerPrefs.GetInt("Fullscreen", 1) == 0)
             toggle.isOn = true;
         else
             toggle.isOn = false;
