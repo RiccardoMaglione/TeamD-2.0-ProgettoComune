@@ -109,7 +109,7 @@ public class PSMAttack : StateMachineBehaviour
             {
                 animator.GetComponent<PSMController>().RB2D.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PSMController>().ValueJump.lowJumpMultiplier - 1) * Time.deltaTime;       //Calcola la velocità definendo una direzione iniziale (UP) e moltiplicando per una gravitò maggiorata minore è il tempo di pressione del tasto
             }
-            else if (animator.GetComponent<PSMController>().RB2D.velocity.y > 1 && !Input.GetKey(KeyCode.Joystick1Button0) && CheckInput.Controller == false)                                                                                                //Altrimenti se la velocità è maggiore di 1 e non sto più schiacciando il pulsante spazio - Da un minimo di velocà di salto minimo - Permette di fare salti graduali
+            else if (animator.GetComponent<PSMController>().RB2D.velocity.y > 1 && !Input.GetKey(KeyCode.Joystick1Button0) && CheckInput.Controller == true)                                                                                                //Altrimenti se la velocità è maggiore di 1 e non sto più schiacciando il pulsante spazio - Da un minimo di velocà di salto minimo - Permette di fare salti graduali
             {
                 animator.GetComponent<PSMController>().RB2D.velocity += Vector2.up * Physics2D.gravity.y * (animator.GetComponent<PSMController>().ValueJump.lowJumpMultiplier - 1) * Time.deltaTime;       //Calcola la velocità definendo una direzione iniziale (UP) e moltiplicando per una gravitò maggiorata minore è il tempo di pressione del tasto
             }
