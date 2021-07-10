@@ -5039,6 +5039,7 @@ MonoBehaviour:
   HeavyDamage: 25
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
+  OnlyOnce: 0
 --- !u!114 &6499724383688552231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5343,6 +5344,7 @@ MonoBehaviour:
   HeavyDamage: 25
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
+  OnlyOnce: 0
 --- !u!61 &3339721141238583705
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5560,6 +5562,7 @@ MonoBehaviour:
   animator: {fileID: 330495406017475122}
   time: 5
   isSpecialActive: 0
+  DecreaseEnergy: 0
 --- !u!1 &4172022976496524787
 GameObject:
   m_ObjectHideFlags: 0
@@ -5794,6 +5797,7 @@ MonoBehaviour:
   HeavyDamage: 20
   SpecialDamage: 6
   hitAnimation: {fileID: 0}
+  OnlyOnce: 0
 --- !u!114 &3252718520382131968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31182,6 +31186,7 @@ MonoBehaviour:
   SpecialEnergyAmount: 0
   isTriggerOnlyOnce: 0
   allParallaxArray: {fileID: 0}
+  OnlyOnceDeath: 0
   RB2D: {fileID: 9146201629709627925}
   ValueMovement:
     Acceleration: 3
@@ -31202,7 +31207,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 5
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 13405.812
+  ResetTimerStaggered: 13406.528
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -31221,6 +31226,7 @@ MonoBehaviour:
   PlayerHeavyAttackSpeed: 2
   PlayerSpecialAttackSpeed: 1
   DashColliderBabushka: {fileID: 0}
+  DashColliderBorious: {fileID: 0}
   LightAttackCollider: {fileID: 3149736119122084190}
   HeavyAttackCollider: {fileID: 2507875640756651206}
   SpecialAttackCollider: {fileID: 5286142528459670333}
@@ -31241,6 +31247,8 @@ MonoBehaviour:
   DashKnockbackFatKnight: {fileID: 0}
   ControllerPossession: 1
   SpecialAttackGameObject: {fileID: 0}
+  particlePossessionActivation: 0
+  Tornado: {fileID: 0}
 --- !u!114 &-2547379719804468641
 MonoBehaviour:
   m_ObjectHideFlags: 0

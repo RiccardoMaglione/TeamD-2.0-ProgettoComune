@@ -135,12 +135,6 @@ namespace SwordGame
 
         void Update()
         {
-            if (particlePossessionActivation == true)
-            {
-                GetComponentInChildren<BasePlayerParticles>().possessionParticle.playOnAwake = true;
-            }
-            particlePossessionActivation = true;
-
             DashCooldownState();
             ResetStaggered();
             ResetPlatform();
@@ -157,6 +151,12 @@ namespace SwordGame
             }
 
             GetComponent<SpriteRenderer>().sortingOrder = 9;
+            
+            if (particlePossessionActivation == true)
+            {
+                GetComponentInChildren<BasePlayerParticles>().possessionParticle.playOnAwake = true;
+            }
+            particlePossessionActivation = true;
         }
 
         public void InitializeSpeedAnimation()
