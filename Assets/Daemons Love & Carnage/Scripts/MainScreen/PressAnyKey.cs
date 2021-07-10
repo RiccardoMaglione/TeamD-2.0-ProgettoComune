@@ -8,6 +8,7 @@ public class PressAnyKey : MonoBehaviour
     public float flickerSpeed = 1f;
     public Image pressAnyKey;
     public Image sfumatura;
+    bool OnlyOnce;
     void Start()
     {
         StartCoroutine("Flickering");
@@ -36,8 +37,9 @@ public class PressAnyKey : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && OnlyOnce == false)
         {
+            OnlyOnce = true;
             AudioManager.instance.Play("Sfx_spess_any_key");
             //PlayerPrefs.DeleteKey("IDCheckpoint");
             //PlayerPrefs.SetInt("IDCheckpoint", -1);
