@@ -22,6 +22,7 @@ public class SkullScript : MonoBehaviour
                 Instantiate(ps, this.gameObject.transform.position, this.gameObject.transform.rotation);
 
                 //inserire nelle playerpref modifica alla pagina di conferma livello + impostare il teschio come ottenuto e attivabile nel menu teschi
+                PlayerPrefs.SetInt("ObtainSkull", 1);
             }
         }
 
@@ -33,6 +34,5 @@ public class SkullScript : MonoBehaviour
         {
             interactionButtonIcon.SetActive(false);
         }
-
     }
 }

@@ -165,6 +165,10 @@ public class PauseMenu : MonoBehaviour
 
     public void ConfirmRestart()
     {
+        if (PlayerPrefs.GetInt("CompletedLevel") != 1)
+        {
+            PlayerPrefs.SetInt("ObtainSkull", 0);
+        }
         Cursor.visible = false;
         Time.timeScale = 1;
         FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
@@ -176,6 +180,10 @@ public class PauseMenu : MonoBehaviour
 
     public void ConfirmBackToMenu()
     {
+        if (PlayerPrefs.GetInt("CompletedLevel") != 1)
+        {
+            PlayerPrefs.SetInt("ObtainSkull", 0);
+        }
         Time.timeScale = 1;
         FindObjectOfType<FadeInOutTransition>().BlackPanelAppears();
         FindObjectOfType<FadeInOutTransition>().FadeIn();

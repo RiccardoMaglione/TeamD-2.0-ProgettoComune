@@ -10,6 +10,9 @@ public class ButtonMashCounter : MonoBehaviour
     void Update()
     {
         if (attack >= target)
+        {
             VictoryScreen.win = true;
+            PlayerPrefs.SetInt("CompletedLevel", 1);
+        }
     }
 }
