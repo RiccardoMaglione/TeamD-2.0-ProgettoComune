@@ -696,6 +696,8 @@ MonoBehaviour:
   NormalSelectedColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
   ControllerSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &36644707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,6 +1427,8 @@ MonoBehaviour:
   NormalSelectedColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
   ControllerSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &70424715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,6 +1735,8 @@ MonoBehaviour:
   NormalSelectedColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
   ControllerSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &74535874
 GameObject:
   m_ObjectHideFlags: 0
@@ -4971,6 +4977,8 @@ MonoBehaviour:
   NormalSelectedColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
   ControllerSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &288595984
 GameObject:
   m_ObjectHideFlags: 0
@@ -5548,6 +5556,8 @@ MonoBehaviour:
   NormalSelectedColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
   ControllerSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &318248437
 GameObject:
   m_ObjectHideFlags: 0
@@ -7693,6 +7703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467743813}
   - component: {fileID: 467743814}
+  - component: {fileID: 467743815}
   m_Layer: 5
   m_Name: Music Slider
   m_TagString: Untagged
@@ -7743,9 +7754,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
+    m_PressedColor: {r: 0.5647059, g: 0.10980392, b: 0.10980392, a: 1}
+    m_SelectedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7772,6 +7783,23 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &467743815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467743812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bb6540a5d158f47ab3cc64127c5056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NormalSelectedColor: {r: 1, g: 1, b: 1, a: 1}
+  ControllerSelectedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
+  ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &475349936
 GameObject:
   m_ObjectHideFlags: 0
@@ -9551,6 +9579,8 @@ MonoBehaviour:
   NormalSelectedColor: {r: 1, g: 1, b: 1, a: 1}
   ControllerSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!114 &554182661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15055,6 +15085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 936244914}
   - component: {fileID: 936244915}
+  - component: {fileID: 936244916}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -15103,9 +15134,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
+    m_PressedColor: {r: 0.5647059, g: 0.10980392, b: 0.10980392, a: 1}
+    m_SelectedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -15141,6 +15172,23 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &936244916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936244913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bb6540a5d158f47ab3cc64127c5056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NormalSelectedColor: {r: 1, g: 1, b: 1, a: 1}
+  ControllerSelectedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
+  ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &936460232
 GameObject:
   m_ObjectHideFlags: 0
@@ -20999,6 +21047,8 @@ MonoBehaviour:
   NormalSelectedColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
   ControllerSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &1288957035
 GameObject:
   m_ObjectHideFlags: 0
@@ -21577,6 +21627,8 @@ MonoBehaviour:
   NormalSelectedColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
   ControllerSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &1301168061
 GameObject:
   m_ObjectHideFlags: 0
@@ -23814,6 +23866,8 @@ MonoBehaviour:
   NormalSelectedColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
   ControllerSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &1419595058
 GameObject:
   m_ObjectHideFlags: 0
@@ -23929,6 +23983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1424611400}
   - component: {fileID: 1424611401}
+  - component: {fileID: 1424611402}
   m_Layer: 5
   m_Name: General Audio Slider
   m_TagString: Untagged
@@ -23979,9 +24034,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
+    m_PressedColor: {r: 0.5647059, g: 0.10980392, b: 0.10980392, a: 1}
+    m_SelectedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -24008,6 +24063,23 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1424611402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424611399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bb6540a5d158f47ab3cc64127c5056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NormalSelectedColor: {r: 1, g: 1, b: 1, a: 1}
+  ControllerSelectedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
+  ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &1431211812
 GameObject:
   m_ObjectHideFlags: 0
@@ -28768,6 +28840,8 @@ MonoBehaviour:
   NormalSelectedColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
   ControllerSelectedColor: {r: 1, g: 0, b: 0, a: 1}
   ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &1708688064
 GameObject:
   m_ObjectHideFlags: 0
@@ -29443,6 +29517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1785661020}
   - component: {fileID: 1785661021}
+  - component: {fileID: 1785661022}
   m_Layer: 5
   m_Name: SFX Slider
   m_TagString: Untagged
@@ -29493,9 +29568,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
+    m_PressedColor: {r: 0.5647059, g: 0.10980392, b: 0.10980392, a: 1}
+    m_SelectedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -29522,6 +29597,23 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1785661022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785661019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bb6540a5d158f47ab3cc64127c5056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NormalSelectedColor: {r: 1, g: 1, b: 1, a: 1}
+  ControllerSelectedColor: {r: 0.7176471, g: 0.105882354, b: 0.105882354, a: 1}
+  ThisButton: {fileID: 0}
+  ThisToggle: {fileID: 0}
+  ThisSlider: {fileID: 0}
 --- !u!1 &1795950006
 GameObject:
   m_ObjectHideFlags: 0
