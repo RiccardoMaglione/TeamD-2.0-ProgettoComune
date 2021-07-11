@@ -119,6 +119,7 @@ namespace SwordGame
         public bool particlePossessionActivation = true;
 
         public GameObject Tornado;
+        public bool OnlyOneParticles = false;
 
         private void OnValidate()
         {
@@ -151,10 +152,16 @@ namespace SwordGame
             }
 
             GetComponent<SpriteRenderer>().sortingOrder = 9;
-            
-            if (particlePossessionActivation == true)
+
+            ParticlePossessionActivate();
+        }
+
+        public void ParticlePossessionActivate()
+        {
+            if (particlePossessionActivation == true && OnlyOneParticles == true)
             {
-                GetComponentInChildren<BasePlayerParticles>().possessionParticle.playOnAwake = true;
+                OnlyOneParticles = false;
+                GetComponentInChildren<BasePlayerParticles>().possessionParticle.Play();
             }
             particlePossessionActivation = true;
         }

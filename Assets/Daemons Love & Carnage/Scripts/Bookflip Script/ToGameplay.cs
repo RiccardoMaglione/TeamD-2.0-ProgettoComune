@@ -17,6 +17,7 @@ public class ToGameplay : MonoBehaviour
     }
     public void ToGameplayScene()
     {
-        SceneManager.LoadScene(2);      
+        //SceneManager.LoadScene(2);
+        LoadAsyncLevel3.thisinstance.asyncOperation.allowSceneActivation = true;
     }
 }

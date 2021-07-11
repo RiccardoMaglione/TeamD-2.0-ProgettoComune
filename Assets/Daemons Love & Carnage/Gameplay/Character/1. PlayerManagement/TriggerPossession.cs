@@ -81,7 +81,6 @@ public class TriggerPossession : Possession
         ReturnPlayer.timerDestroy = 0;
 
         FindObjectOfType<ChangeFollow>().NewPlayer = EnemyToPlayer;
-        
         IncrementCount();
         SetParametersEnemyToPlayer(EnemyToPlayer);
         ChangeTagArea(PlayerToEnemy, EnemyToPlayer);
@@ -108,6 +107,7 @@ public class TriggerPossession : Possession
         /**/EnableDisableSpecialAttack(PlayerToEnemy, EnemyToPlayer);
         /**/ResetPlatform(PlayerToEnemy);
         ChangeIconPlayer(EnemyToPlayer, UIPortrait.StaticPortrait);
+        EnemyToPlayer.GetComponent<PSMController>().OnlyOneParticles = true;
 
         ReturnPlayer.PlayerNow = EnemyToPlayer;
         ReturnPlayer.LastDetectList.Add(PlayerToEnemy);
