@@ -5,6 +5,7 @@ public class AIStunState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.GetComponent<EnemyData>().GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         if (AudioManager.instance != null)
         {
             AudioManager.instance.Play("Sfx_stunned");
