@@ -133,7 +133,7 @@ public class TornPage : MonoBehaviour
     {
         if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
         {
-            if (thereAreSavedData == true)
+            if (PlayerPrefs.GetInt("NewGameFirst") == 1)
             {
                 Options.SetActive(false);
                 RateUs.SetActive(false);
@@ -147,7 +147,7 @@ public class TornPage : MonoBehaviour
                 StartCoroutine(MoveInTornPage());
 
             }
-            if (thereAreSavedData == false)
+            if (PlayerPrefs.GetInt("NewGameFirst") == 0)
             {
                 pageFlipper.NewGame();
             }

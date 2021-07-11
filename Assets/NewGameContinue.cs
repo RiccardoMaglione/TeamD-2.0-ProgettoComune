@@ -22,6 +22,9 @@ public class NewGameContinue : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Si può cancellare
+    /// </summary>
     public void ConfirmNewGame()
     {
         if (PlayerPrefs.GetInt("NewGameFirst") == 1)
