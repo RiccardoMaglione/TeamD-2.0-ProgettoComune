@@ -58,6 +58,9 @@ public class TriggerPossession : Possession
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Sfx_possesion");
 
+            if (AudioManager.instance != null)
+                AudioManager.instance.Stop("Sfx_BK_S_walk");
+
             Possession(Player, Enemy);
         }
     }
