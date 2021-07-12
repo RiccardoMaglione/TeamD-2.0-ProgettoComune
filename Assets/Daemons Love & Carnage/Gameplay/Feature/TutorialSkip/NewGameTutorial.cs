@@ -8,6 +8,6 @@ public class NewGameTutorial : MonoBehaviour
     {
         PlayerPrefs.SetInt("TutorialSkip", 0);
         PlayerPrefs.SetInt("TutorialSkipEnergy", 0);
-        TutorialEnergy.TutorialEnergyBool = false;
+        TutorialEnergy.TutorialEnergyInstance.TutorialEnergyBool = false;
     }
 }

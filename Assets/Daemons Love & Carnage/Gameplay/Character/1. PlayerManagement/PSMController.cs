@@ -303,7 +303,7 @@ namespace SwordGame
                 IsHeavyAttack = true;
                 IsSpecialAttack = false;
             }
-            if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeySpecialAttack)) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && MaxEnergy <= CurrentEnergy && disableAllInput == false && TutorialEnergy.TutorialEnergyBool == true)
+            if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeySpecialAttack)) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && MaxEnergy <= CurrentEnergy && disableAllInput == false && TutorialEnergy.TutorialEnergyInstance.TutorialEnergyBool == true)
             {
                 AttackSystem.SoundOnlyOnceEnergy = false;
                 if (AudioManager.instance != null)

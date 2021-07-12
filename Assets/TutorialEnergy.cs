@@ -6,8 +6,6 @@ using TMPro;
 
 public class TutorialEnergy : MonoBehaviour
 {
-    public static bool TutorialEnergyBool;
-
     public static TutorialEnergy TutorialEnergyInstance;
 
     public GameObject DialogueBox;
@@ -18,43 +16,63 @@ public class TutorialEnergy : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     [TextArea] public string insertTutorialText;
 
+    public bool TutorialEnergyBool;
     public bool DialogueActive;
 
     public int NumSkip;
     public int TutSkip;
+
+    [SerializeField] public KeyCode buttonToSkip1;
+    [SerializeField] public KeyCode buttonToSkip2;
     private void Update()
     {
-        EnableTutorialEnergy();
+        //EnableTutorialEnergy();
         TutSkip = PlayerPrefs.GetInt("TutorialSkipEnergy");
+
+        EnergyTrue();
+        StartIn();
+        StopInStartOut();
     }
 
-    public void EnableTutorialEnergy()
+    public void EnergyTrue()
     {
-        if(TutorialEnergyBool == false && ChangeFollow.StaticPlayerTemp.GetComponent<PSMController>().CurrentEnergy == 100 && PlayerPrefs.GetInt("TutorialSkipEnergy") < NumSkip)
+        if (PlayerPrefs.GetInt("TutorialSkipEnergy") >= NumSkip)
         {
+            TutorialEnergyBool = true;
+        }
+    }
+
+    public void StartIn()
+    {
+        if (TutorialEnergyBool == false && ChangeFollow.StaticPlayerTemp.GetComponent<PSMController>().CurrentEnergy == 100 && PlayerPrefs.GetInt("TutorialSkipEnergy") < NumSkip)
+        {
+            DialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-630, -150);
+
             BlackPanel.SetActive(true);
             dialogueText.text = insertTutorialText;
             Time.timeScale = 0;
             DialogueBox.SetActive(true);
-            StartCoroutine(DialogueIn());
-            Debug.Log("Passa in dialogue in");
+            StartCoroutine("DialogueIn");
         }
-        else if(PlayerPrefs.GetInt("TutorialSkipEnergy") >= NumSkip)
-        {
-            TutorialEnergyBool = true;
-        }
+    }
 
-        if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && DialogueActive == true && TutorialEnergyBool == false)
+    public void StopInStartOut()
+    {
+        if ((Input.GetKeyDown(buttonToSkip1) && DialogueActive == true || Input.GetKeyDown(buttonToSkip2) && DialogueActive == true) && TutorialEnergyBool == false)
         {
-            TutorialEnergyBool = true;
             PlayerPrefs.SetInt("TutorialSkipEnergy", NumSkip);
-
+            TutorialEnergyBool = true;
             DialogueActive = false;
             StopCoroutine("DialogueIn");
-            StartCoroutine(DialogueOut());
-            Debug.Log("Passa in dialogue out");
-            //PanelTutorial.SetActive(false);
+            StartCoroutine("DialogueOut");
+            Invoke("StopOut", 0.1f);
         }
+    }
+
+    private void StopOut()
+    {
+        StopCoroutine("DialogueOut");
+        //gameObject.SetActive(false);
     }
 
     public IEnumerator DialogueIn()
@@ -69,7 +87,7 @@ public class TutorialEnergy : MonoBehaviour
             yield return null;
         }
     }
-    private IEnumerator DialogueOut()
+    public IEnumerator DialogueOut()
     {
         while (DialogueBox.GetComponent<RectTransform>().anchoredPosition.x != StartPos.position.x)
         {
