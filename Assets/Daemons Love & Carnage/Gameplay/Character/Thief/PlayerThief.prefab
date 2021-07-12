@@ -30669,6 +30669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9146201628404208698}
   - component: {fileID: 9146201628404208697}
+  - component: {fileID: 4975331400362959720}
   m_Layer: 8
   m_Name: PrompCommand
   m_TagString: Untagged
@@ -30741,6 +30742,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4975331400362959720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146201628404208696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056ea81952a7897489915f2f8189c1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9146201628535353787
 GameObject:
   m_ObjectHideFlags: 0
@@ -31207,7 +31220,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 5
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 13406.528
+  ResetTimerStaggered: 13407.95
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -31249,6 +31262,7 @@ MonoBehaviour:
   SpecialAttackGameObject: {fileID: 0}
   particlePossessionActivation: 0
   Tornado: {fileID: 0}
+  OnlyOneParticles: 0
 --- !u!114 &-2547379719804468641
 MonoBehaviour:
   m_ObjectHideFlags: 0

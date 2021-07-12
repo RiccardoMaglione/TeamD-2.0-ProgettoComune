@@ -645,6 +645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3018839418302130845}
   - component: {fileID: 3018839418302130844}
+  - component: {fileID: 5358008779984281403}
   m_Layer: 9
   m_Name: PrompCommand
   m_TagString: Untagged
@@ -717,6 +718,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5358008779984281403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3018839418302130834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056ea81952a7897489915f2f8189c1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3018839418382831403
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +942,7 @@ MonoBehaviour:
   PlayerHeavyAttackSpeed: 2
   PlayerSpecialAttackSpeed: 15
   DashColliderBabushka: {fileID: 0}
+  DashColliderBorious: {fileID: 0}
   LightAttackCollider: {fileID: 7363431235516015271}
   HeavyAttackCollider: {fileID: 8620295220227186601}
   SpecialAttackCollider: {fileID: 1176922042619330270}
@@ -949,6 +963,9 @@ MonoBehaviour:
   DashKnockbackFatKnight: {fileID: 0}
   ControllerPossession: 0
   SpecialAttackGameObject: {fileID: 0}
+  particlePossessionActivation: 1
+  Tornado: {fileID: 0}
+  OnlyOneParticles: 0
 --- !u!114 &3018839418382831408
 MonoBehaviour:
   m_ObjectHideFlags: 0

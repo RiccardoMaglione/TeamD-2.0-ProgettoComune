@@ -56,8 +56,12 @@ public class KeyBinding : KeyVar
     public Sprite SpriteStandardLeftRightJoystickPlaystation;
     public Sprite SpriteStandardLeftDownJoystickPlaystation;
 
+    public static KeyBinding KeyBind;
+
     private void Awake()
     {
+        KeyBind = this;
+
         GetStringKeyPrefs();
         AssignButtonContainer();
         AssignSpriteStringContainer();
