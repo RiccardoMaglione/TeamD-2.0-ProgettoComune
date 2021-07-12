@@ -32,10 +32,14 @@ public class SpecialBabushka : MonoBehaviour
     public static bool BabuskaSpecial;
     private void Update()
     {
-        if (DecreaseEnergy == true)
+        if (DecreaseEnergy == true && BabuskaSpecial == true)
         {
             GetComponentInParent<PSMController>().CurrentEnergy -= Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time));
         }
+
+        if(BabuskaSpecial == false)
+            animator.SetBool("IsAttack", false);
+
     }
 
     public IEnumerator Attack()

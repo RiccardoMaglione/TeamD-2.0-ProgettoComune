@@ -54,6 +54,7 @@ public class TriggerPossession : Possession
         {
             DelayBool = false;
             TimerDelay = 0;
+            SpecialBabushka.BabuskaSpecial = false;
 
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Sfx_possesion");
