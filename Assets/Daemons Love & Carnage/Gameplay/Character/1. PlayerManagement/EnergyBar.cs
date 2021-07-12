@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class EnergyBar : MonoBehaviour
@@ -8,9 +6,23 @@ public class EnergyBar : MonoBehaviour
     public static EnergyBar EBInstance;
     public Slider EnergySlider;
 
+    public GameObject glowing;
+
     private void Awake()
     {
         EBInstance = this;
+    }
+
+    private void Update()
+    {
+        if (EnergySlider.value == EnergySlider.maxValue)
+        {
+            glowing.SetActive(true);
+        }
+        else
+        {
+            glowing.SetActive(false);
+        }
     }
 
     public void MaxEnergy(int Energy) //setta il valore massimo 
