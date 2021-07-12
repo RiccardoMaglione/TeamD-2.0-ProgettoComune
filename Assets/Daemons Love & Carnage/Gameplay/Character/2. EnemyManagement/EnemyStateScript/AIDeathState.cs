@@ -13,7 +13,7 @@ public class AIDeathState : StateMachineBehaviour
         //{
         //    FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)animator.GetComponent<EnemyData>().TypeEnemy, 3);
         //}
-        animator.GetComponent<EnemyData>().gameObject.SetActive(false);
+        //animator.GetComponent<EnemyData>().gameObject.SetActive(false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

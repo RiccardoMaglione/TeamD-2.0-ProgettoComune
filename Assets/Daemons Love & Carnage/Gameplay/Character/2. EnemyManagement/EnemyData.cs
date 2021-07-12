@@ -335,6 +335,11 @@ public class EnemyData : MonoBehaviour
     }
     #endregion
 
+    public void EventEnemyDeactiveGameObject()
+    {
+        gameObject.SetActive(false);
+    }
+
     #region Trigger Zone
 
     private void OnTriggerEnter2D(Collider2D collision)
