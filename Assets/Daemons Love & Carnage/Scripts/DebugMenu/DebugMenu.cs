@@ -112,7 +112,7 @@ namespace SwordGame
         {
             PlayerPrefs.SetInt("TutorialSkip", 0);
             PlayerPrefs.SetInt("TutorialSkipEnergy", 0);
-            TutorialEnergy.TutorialEnergyInstance.TutorialEnergyBool = false;
+            TutorialEnergy.TutorialEnergyBool = false;
         }
         #endregion
 

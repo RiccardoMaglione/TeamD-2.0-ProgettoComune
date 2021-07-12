@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.EventSystems;
 
 public class KeyBinding : KeyVar
 {
@@ -119,6 +120,7 @@ public class KeyBinding : KeyVar
             KeyText = ButtonKey.GetComponentInChildren<Text>();
             TempButton = ButtonKey;
             //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+            EventSystem.current.SetSelectedGameObject(TempButton.gameObject);
             PlayerPrefs.SetString(TempButton.name.ToString(), "");
             KeyText.text = "";
         }
@@ -127,6 +129,7 @@ public class KeyBinding : KeyVar
             ActivateGetKey = true;
             KeyText = ButtonKey.GetComponentInChildren<Text>();
             TempButton = ButtonKey;
+            EventSystem.current.SetSelectedGameObject(TempButton.gameObject);
             PlayerPrefs.SetString(TempButton.name.ToString(), "");
             //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
             KeyText.text = "";

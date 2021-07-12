@@ -16,7 +16,7 @@ public class TutorialEnergy : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     [TextArea] public string insertTutorialText;
 
-    public bool TutorialEnergyBool;
+    public static bool TutorialEnergyBool;
     public bool DialogueActive;
 
     public int NumSkip;
@@ -58,7 +58,7 @@ public class TutorialEnergy : MonoBehaviour
 
     public void StopInStartOut()
     {
-        if ((Input.GetKeyDown(buttonToSkip1) && DialogueActive == true || Input.GetKeyDown(buttonToSkip2) && DialogueActive == true) && TutorialEnergyBool == false)
+        if ((Input.GetKeyDown(buttonToSkip1) || Input.GetKeyDown(buttonToSkip2)) && DialogueActive == true && TutorialEnergyBool == false)
         {
             PlayerPrefs.SetInt("TutorialSkipEnergy", NumSkip);
             TutorialEnergyBool = true;
