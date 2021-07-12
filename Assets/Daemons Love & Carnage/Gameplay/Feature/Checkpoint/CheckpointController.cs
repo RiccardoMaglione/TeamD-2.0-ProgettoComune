@@ -29,6 +29,8 @@ namespace SwordGame
 
         public GameObject SpawnPointCheck;
 
+        public bool CheckpoinBoss;
+        [HideInInspector] public bool OnlyOnceMusic;
         private void Awake()
         {
             CCInstance = this;
@@ -135,6 +137,12 @@ namespace SwordGame
                 LastCheckpoint = gameObject;
                 PlayerPrefs.SetInt("IDCheckpoint", ID);
                 print(PlayerPrefs.GetInt("IDCheckpoint", 0));
+
+                if(CheckpoinBoss == true && AudioManager.instance != null && OnlyOnceMusic == false)
+                {
+                    OnlyOnceMusic = true;
+                    AudioManager.instance.Stop("GameplayOST2");
+                }
             }
         }
     }

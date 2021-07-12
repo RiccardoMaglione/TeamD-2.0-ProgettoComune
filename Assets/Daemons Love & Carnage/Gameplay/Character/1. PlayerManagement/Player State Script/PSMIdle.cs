@@ -34,6 +34,13 @@ public class PSMIdle : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (animator.GetComponent<PSMController>().DashKnockbackFatKnight != null)
+            animator.GetComponent<PSMController>().DashKnockbackFatKnight.SetActive(false);
+        if (animator.GetComponent<PSMController>().DashColliderBabushka != null)
+            animator.GetComponent<PSMController>().DashColliderBabushka.SetActive(false);
+        if (animator.GetComponent<PSMController>().DashColliderBorious != null)
+            animator.GetComponent<PSMController>().DashColliderBorious.SetActive(false);
+
         #region Move Zone - Da "Player Idle State" da "Player Move State"
         if ((Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyLeft)) || Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyRight)) || (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Horizontal") < 0) || (Input.GetAxisRaw("DPad X") > 0 || Input.GetAxisRaw("DPad X") < 0)) && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && PSMController.disableAllInput == false)                                                                             //Se schiaccio A o D
         {

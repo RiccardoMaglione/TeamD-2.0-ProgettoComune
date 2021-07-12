@@ -6,6 +6,13 @@ public class PSMAttack : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (animator.GetComponent<PSMController>().DashKnockbackFatKnight != null)
+            animator.GetComponent<PSMController>().DashKnockbackFatKnight.SetActive(false);
+        if (animator.GetComponent<PSMController>().DashColliderBabushka != null)
+            animator.GetComponent<PSMController>().DashColliderBabushka.SetActive(false);
+        if (animator.GetComponent<PSMController>().DashColliderBorious != null)
+            animator.GetComponent<PSMController>().DashColliderBorious.SetActive(false);
+
         if (AudioManager.instance != null)
         {
             AudioManager.instance.Stop("Sfx_player_walk");
