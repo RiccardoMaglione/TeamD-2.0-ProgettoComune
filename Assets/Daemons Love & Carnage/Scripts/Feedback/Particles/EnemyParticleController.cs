@@ -15,6 +15,10 @@ public class EnemyParticleController : MonoBehaviour
     {
         stunParticle.SetActive(true);
     }
+    public void StopStun()
+    {
+        stunParticle.SetActive(false);
+    }
 
     public void PlayDeath()
     {
