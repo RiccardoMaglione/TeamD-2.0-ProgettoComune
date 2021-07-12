@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using SwordGame;
 
 public class BossDialogueImageSwitch : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class BossDialogueImageSwitch : MonoBehaviour
     public Sprite BoriousKnightPlayerSprite;
     public Sprite BabushkaPlayerSprite;
     public Sprite ThiefPlayerSprite;
+
+    private void Start()
+    {
+        Possession.TypologyPlayer = ChangeFollow.StaticPlayerTemp.GetComponent<PSMController>().TypeCharacter;
+    }
 
     void Update()
     {

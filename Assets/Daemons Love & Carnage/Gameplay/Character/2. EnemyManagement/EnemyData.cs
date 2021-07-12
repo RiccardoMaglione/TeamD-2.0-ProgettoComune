@@ -359,6 +359,7 @@ public class EnemyData : MonoBehaviour
         {
             DashBabushkaEffect = true;
             Life -= DamageDashBabushka;
+            GetComponent<Animator>().SetFloat("Life", Life); 
             CountPoiseEnemy += ValuePoiseKnockbackBabushka;
             GetComponent<Animator>().SetTrigger("DamageReceived");
             if (CountPoiseEnemy >= MaxCountPoiseEnemy)
