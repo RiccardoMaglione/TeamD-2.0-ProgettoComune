@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using SwordGame;
 
 public class CutsceneControllerDeathBoss : MonoBehaviour
 {
@@ -14,9 +13,7 @@ public class CutsceneControllerDeathBoss : MonoBehaviour
     }
 
     void Awake()
-    {
-        FindObjectOfType<PSMController>().enabled = false;
-        isCutsceneEnabled = true;
+    {    
         AudioManager.instance.Stop("MainMenuMusic");
     }
 }
