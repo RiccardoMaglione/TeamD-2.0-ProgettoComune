@@ -30,6 +30,10 @@ public class PSMJump : StateMachineBehaviour
         {
             AudioManager.instance.Play("Sfx_player_Jump");
         }
+
+        animator.GetComponentInParent<PSMController>().LightAttackCollider.SetActive(false);
+        animator.GetComponentInParent<PSMController>().HeavyAttackCollider.SetActive(false);
+        animator.GetComponentInParent<PSMController>().EventDeactivateTornado();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

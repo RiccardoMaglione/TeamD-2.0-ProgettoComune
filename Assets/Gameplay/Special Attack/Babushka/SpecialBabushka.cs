@@ -53,6 +53,9 @@ public class SpecialBabushka : MonoBehaviour
         animator.GetComponentInParent<PSMController>().GetComponent<Animator>().SetBool("PSM-SpecialAttack", false);
         InitializeSpeedAnimationSpecial();
         yield return new WaitForSeconds(time);
+        GetComponentInParent<PSMController>().LightAttackCollider.SetActive(false);
+        GetComponentInParent<PSMController>().HeavyAttackCollider.SetActive(false);
+        GetComponentInParent<PSMController>().EventDeactivateTornado();
         DecreaseEnergy = false;
         BabuskaSpecial = false;
         GetComponentInParent<PSMController>().CurrentEnergy = (int)GetComponentInParent<PSMController>().CurrentEnergy;
