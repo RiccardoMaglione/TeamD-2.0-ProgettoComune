@@ -100,15 +100,15 @@ public class KeyBinding : KeyVar
         
         GetKeyUp();
 
-        Debug.LogError("2. " + ControllerStringKeyUp);
-        Debug.LogError("2. " + ControllerStringKeyDown);
-        Debug.LogError("2. " + ControllerStringKeyLeft);
-        Debug.LogError("2. " + ControllerStringKeyRight);
-        Debug.LogError("2. " + ControllerStringKeyDash);
-        Debug.LogError("2. " + ControllerStringKeyPossession);
-        Debug.LogError("2. " + ControllerStringKeyLightAttack);
-        Debug.LogError("2. " + ControllerStringKeyHeavyAttack);
-        Debug.LogError("2. " + ControllerStringKeySpecialAttack);
+        //Debug.LogError("2. " + ControllerStringKeyUp);
+        //Debug.LogError("2. " + ControllerStringKeyDown);
+        //Debug.LogError("2. " + ControllerStringKeyLeft);
+        //Debug.LogError("2. " + ControllerStringKeyRight);
+        //Debug.LogError("2. " + ControllerStringKeyDash);
+        //Debug.LogError("2. " + ControllerStringKeyPossession);
+        //Debug.LogError("2. " + ControllerStringKeyLightAttack);
+        //Debug.LogError("2. " + ControllerStringKeyHeavyAttack);
+        //Debug.LogError("2. " + ControllerStringKeySpecialAttack);
     }
 
     public void ListenerOnClik(Button ButtonKey)
@@ -119,6 +119,7 @@ public class KeyBinding : KeyVar
             KeyText = ButtonKey.GetComponentInChildren<Text>();
             TempButton = ButtonKey;
             //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+            PlayerPrefs.SetString(TempButton.name.ToString(), "");
             KeyText.text = "";
         }
         else if(CheckInput.PlaystationController == false)
@@ -126,6 +127,7 @@ public class KeyBinding : KeyVar
             ActivateGetKey = true;
             KeyText = ButtonKey.GetComponentInChildren<Text>();
             TempButton = ButtonKey;
+            PlayerPrefs.SetString(TempButton.name.ToString(), "");
             //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
             KeyText.text = "";
         }
@@ -492,6 +494,7 @@ public class KeyBinding : KeyVar
         AssignAllSpriteButton("Mouse0", SpriteStandardKeyLeftClick);
         AssignAllSpriteButton("Space", SpriteStandardKeySpace);
         AssignAllSpriteButton("Escape", SpriteStandardKeyEsc);
+        AssignAllSpriteButton("", SpriteEmpty);
     }
 
     public void GetKeyUp()
