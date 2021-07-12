@@ -15,5 +15,6 @@ public class CutsceneControllerDeathBoss : MonoBehaviour
     void Awake()
     {    
         AudioManager.instance.Stop("MainMenuMusic");
+        AudioManager.instance.StopAllSFX();
     }
 }
