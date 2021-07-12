@@ -10,6 +10,7 @@ public class KeyBinding : KeyVar
     public static KeyBinding KeyBindInstance;
 
     public static Func<string, KeyCode> KeyBindSet;
+    public static Func<string, KeyCode> KeyBindSetController;
     public static Action<Button> SetListener;
 
     [HideInInspector] public Text KeyText;
@@ -73,6 +74,7 @@ public class KeyBinding : KeyVar
         KeyBindInstance = this;
 
         KeyBindSet = SetKeyBind;
+        KeyBindSetController = SetKeyBindController;
         SetListener = ListenerOnClik;
 
         SetAddListener();
