@@ -27,29 +27,31 @@ public class TrapSpike : MonoBehaviour
             collision.gameObject.GetComponent<PSMController>().CurrentHealth -= damageToPlayer;
             GetHitScript.getHitScript.gameObject.SetActive(false);
             GetHitScript.getHitScript.gameObject.SetActive(true);
-
-            if (AudioManager.instance != null)
+            if (collision.GetComponent<PSMController>().CurrentHealth > 0)
             {
-                switch (collision.gameObject.GetComponent<PSMController>().TypeCharacter)
+                if (AudioManager.instance != null)
                 {
-                    case TypePlayer.FatKnight:
-                        AudioManager.instance.Play("Sfx_FK_hit");
-                        break;
+                    switch (collision.gameObject.GetComponent<PSMController>().TypeCharacter)
+                    {
+                        case TypePlayer.FatKnight:
+                            AudioManager.instance.Play("Sfx_FK_hit");
+                            break;
 
-                    case TypePlayer.BoriousKnight:
-                        AudioManager.instance.Play("Sfx_BK_hit");
-                        break;
+                        case TypePlayer.BoriousKnight:
+                            AudioManager.instance.Play("Sfx_BK_hit");
+                            break;
 
-                    case TypePlayer.Babushka:
-                        AudioManager.instance.Play("Sfx_B_hit");
-                        break;
+                        case TypePlayer.Babushka:
+                            AudioManager.instance.Play("Sfx_B_hit");
+                            break;
 
-                    case TypePlayer.Thief:
-                        AudioManager.instance.Play("Sfx_T_hit");
-                        break;
+                        case TypePlayer.Thief:
+                            AudioManager.instance.Play("Sfx_T_hit");
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
                 }
             }
 
