@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SwordGame;
 
 public class UICharacter : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class UICharacter : MonoBehaviour
     public Sprite BoriousKnightPlayerSprite;
     public Sprite BabushkaPlayerSprite;
     public Sprite ThiefPlayerSprite;
+
+    private void Start()
+    {
+        Possession.TypologyPlayer = ChangeFollow.StaticPlayerTemp.GetComponent<PSMController>().TypeCharacter;
+    }
 
     void Update()
     {
