@@ -1,7 +1,8 @@
-﻿using System;
+﻿using SwordGame;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using SwordGame;
+using UnityEngine.UI;
 
 public class FatKnightSpecialAttack : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class FatKnightSpecialAttack : MonoBehaviour
         if (DecreaseEnergy == true)
         {
             GetComponentInParent<PSMController>().CurrentEnergy -= Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time));
+            EnergyBar.EBInstance.glowing.GetComponent<Image>().fillAmount -= (Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time)) / 100);
+
             ResetDecrease = false;
         }
         if (DecreaseEnergy == true && ResetDecrease == false && GetComponentInParent<PSMController>().CurrentEnergy <= 0)
@@ -48,7 +51,7 @@ public class FatKnightSpecialAttack : MonoBehaviour
         obj = FindObjectsOfType<EnemyData>();
         boss = FindObjectOfType<Boss>();
 
-        if(boss != null)
+        if (boss != null)
             enemyList.Add(boss.gameObject);
 
         if (obj.Length != 0)

@@ -18,10 +18,13 @@ public class EnergyBar : MonoBehaviour
         if (EnergySlider.value == EnergySlider.maxValue)
         {
             glowing.SetActive(true);
+            glowing.GetComponent<Image>().fillAmount = 1;
+            GetComponentInChildren<Image>().enabled = false;
         }
-        else
+        else if (EnergySlider.value == 0)
         {
             glowing.SetActive(false);
+            GetComponentInChildren<Image>().enabled = true;
         }
     }
 

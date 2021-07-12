@@ -1,6 +1,7 @@
 ﻿using SwordGame;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpecialBabushka : MonoBehaviour
 {
@@ -35,9 +36,11 @@ public class SpecialBabushka : MonoBehaviour
         if (DecreaseEnergy == true && BabuskaSpecial == true)
         {
             GetComponentInParent<PSMController>().CurrentEnergy -= Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time));
+            EnergyBar.EBInstance.glowing.GetComponent<Image>().fillAmount -= (Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time)) / 100);
+
         }
 
-        if(BabuskaSpecial == false)
+        if (BabuskaSpecial == false)
             animator.SetBool("IsAttack", false);
 
     }
@@ -65,7 +68,7 @@ public class SpecialBabushka : MonoBehaviour
         GetComponentInParent<PSMController>().HeavyAttackCollider = originalHeavy;
         animator.SetBool("IsAttack", false);
 
-        if(GetComponentInParent<PSMController>().isActiveAndEnabled)
+        if (GetComponentInParent<PSMController>().isActiveAndEnabled)
         {
             GetComponentInParent<PSMController>().GetComponent<Animator>().runtimeAnimatorController = OriginalBabushkaOverride;
         }
