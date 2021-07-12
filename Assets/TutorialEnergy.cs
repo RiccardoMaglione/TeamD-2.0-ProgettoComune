@@ -47,7 +47,7 @@ public class TutorialEnergy : MonoBehaviour
         if (TutorialEnergyBool == false && ChangeFollow.StaticPlayerTemp.GetComponent<PSMController>().CurrentEnergy == 100 && PlayerPrefs.GetInt("TutorialSkipEnergy") < NumSkip)
         {
             DialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-630, -150);
-
+            PSMController.disableAllInput = true;
             BlackPanel.SetActive(true);
             dialogueText.text = insertTutorialText;
             Time.timeScale = 0;
@@ -65,6 +65,7 @@ public class TutorialEnergy : MonoBehaviour
             DialogueActive = false;
             StopCoroutine("DialogueIn");
             StartCoroutine("DialogueOut");
+            PSMController.disableAllInput = false;
             Invoke("StopOut", 0.1f);
         }
     }

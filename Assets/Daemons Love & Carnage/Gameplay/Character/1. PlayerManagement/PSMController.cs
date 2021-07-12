@@ -285,7 +285,7 @@ namespace SwordGame
         /// </summary>
         public void AttackPlayer()
         {
-            if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyLightAttack)) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && disableAllInput == false)
+            if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyLightAttack)) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && disableAllInput == false && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
             {
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
@@ -294,7 +294,7 @@ namespace SwordGame
                 IsHeavyAttack = false;
                 IsSpecialAttack = false;
             }
-            if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyHeavyAttack)) || Input.GetKeyDown(KeyCode.Joystick1Button3)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && disableAllInput == false)
+            if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyHeavyAttack)) || Input.GetKeyDown(KeyCode.Joystick1Button3)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && disableAllInput == false && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
             {
                 GetComponent<Animator>().SetBool("PSM-CanAttack", false);
                 GetComponent<Animator>().SetBool("PSM-Attack", true);
@@ -303,7 +303,7 @@ namespace SwordGame
                 IsHeavyAttack = true;
                 IsSpecialAttack = false;
             }
-            if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeySpecialAttack)) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && MaxEnergy <= CurrentEnergy && disableAllInput == false && TutorialEnergy.TutorialEnergyBool == true)
+            if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeySpecialAttack)) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && GetComponent<Animator>().GetBool("PSM-CanAttack") == true && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && MaxEnergy <= CurrentEnergy && disableAllInput == false && TutorialEnergy.TutorialEnergyBool == true && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
             {
                 AttackSystem.SoundOnlyOnceEnergy = false;
                 if (AudioManager.instance != null)
