@@ -27,6 +27,5 @@ public class HumanoidBoss : MonoBehaviour
         Destroy(tempHitEffect2, 0.5f);
 
         AudioManager.instance.Play("Sfx_boss_imp_hit");
-
     }
 }
