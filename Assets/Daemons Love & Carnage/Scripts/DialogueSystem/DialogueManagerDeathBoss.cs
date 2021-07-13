@@ -70,6 +70,8 @@ public class DialogueManagerDeathBoss : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        AudioManager.instance.Play("Sfx_skip_dialogue");
+
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -153,5 +155,6 @@ public class DialogueManagerDeathBoss : MonoBehaviour
         animator.SetBool("isOpen", false);
         blackPanel.SetActive(false); //11/04/21
         AudioManager.instance.Play("FinalCutsceneOST");
+        AudioManager.instance.Play("Sfx_boss_destroy_him");
     }
 }
