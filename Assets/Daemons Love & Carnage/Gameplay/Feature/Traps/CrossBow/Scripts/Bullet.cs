@@ -1,5 +1,6 @@
 ﻿using SwordGame;
 using UnityEngine;
+using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Bullet : MonoBehaviour
     public int damage;
     public Rigidbody2D rb;
     public bool reflected;
+
     private void Start()
     {
         rb = GetComponentInChildren<Rigidbody2D>();
@@ -28,7 +30,13 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (collision.gameObject.tag == "Player" && PSMController.isBoriousDash == false)
+        if (collision.gameObject.tag == "Player" && PSMController.isBoriousDash == false && collision.gameObject.GetComponent<PSMController>().Invulnerability == true)
+        {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+
+
+        if (collision.gameObject.tag == "Player" && PSMController.isBoriousDash == false && collision.gameObject.GetComponent<PSMController>().Invulnerability == false)
         {
             collision.gameObject.GetComponent<PSMController>().CurrentHealth -= damage;
             GetHitScript.getHitScript.gameObject.SetActive(false);

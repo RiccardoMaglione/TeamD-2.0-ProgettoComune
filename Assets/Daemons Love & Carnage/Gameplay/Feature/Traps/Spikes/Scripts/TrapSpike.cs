@@ -22,7 +22,7 @@ public class TrapSpike : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && cooldownIsActive == false && cooldownTrap <= 0f)
+        if (collision.gameObject.tag == "Player" && cooldownIsActive == false && cooldownTrap <= 0f && collision.gameObject.GetComponent<PSMController>().Invulnerability == false)
         {
             collision.gameObject.GetComponent<PSMController>().CurrentHealth -= damageToPlayer;
             GetHitScript.getHitScript.gameObject.SetActive(false);
