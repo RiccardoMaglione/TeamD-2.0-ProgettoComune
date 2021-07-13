@@ -72,6 +72,8 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        AudioManager.instance.Play("Sfx_skip_dialogue");
+
         if (sentences.Count == 0)
         {
             EndDialogue();
