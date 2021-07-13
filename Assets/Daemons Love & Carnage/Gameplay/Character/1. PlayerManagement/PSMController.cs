@@ -467,15 +467,17 @@ namespace SwordGame
             }
             GameObject GoArrow = Instantiate(ArrowThief, SpawnArrow.transform.position, transform.rotation);
         }
-        
+
         public void EventActivateTornado()
         {
-            Tornado.SetActive(true);
+            if (Tornado != null)
+                Tornado.SetActive(true);
         }
 
         public void EventDeactivateTornado()
         {
-            Tornado.SetActive(false);
+            if (Tornado != null)
+                Tornado.SetActive(false);
         }
 
 
@@ -550,7 +552,7 @@ namespace SwordGame
                         StartCoroutine(FeedbackManager.instance.Vibration());
                         if (isBoriousDash == true)
                         {
-                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage * BoriousDashDMGMultiplier;                          
+                            collision.GetComponentInParent<EnemyData>().Life -= collision.GetComponentInParent<EnemyData>().LightDamage * BoriousDashDMGMultiplier;
                         }
                         collision.GetComponentInParent<EnemyData>().IsTriggerAttack = false;
                     }
