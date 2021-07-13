@@ -51,7 +51,10 @@ public class ThiefSpecialAttack : MonoBehaviour
         isSpecialActive = true;
         InitializeSpeedAnimationSpecial();
         yield return new WaitForSeconds(time);
-        GetComponentInParent<PSMController>().GetComponent<Animator>().runtimeAnimatorController = OriginalThiefOverride;
+        if (GetComponentInParent<PSMController>().isActiveAndEnabled)
+        {
+            GetComponentInParent<PSMController>().GetComponent<Animator>().runtimeAnimatorController = OriginalThiefOverride;
+        }
         DecreaseEnergy = false;
         GetComponentInParent<PSMController>().CurrentEnergy = (int)GetComponentInParent<PSMController>().CurrentEnergy;
         isSpecialActive = false;
