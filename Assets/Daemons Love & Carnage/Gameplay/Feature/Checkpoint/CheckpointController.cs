@@ -29,8 +29,8 @@ namespace SwordGame
 
         public GameObject SpawnPointCheck;
 
-        public bool CheckpoinBoss;
-        [HideInInspector] public bool OnlyOnceMusic;
+        public bool CheckpointBoss;
+
         private void Awake()
         {
             CCInstance = this;
@@ -54,7 +54,11 @@ namespace SwordGame
         {
             if (Input.GetKeyDown(KeyCode.R) && LastCheckpoint == gameObject)
             {
-
+                if (CheckpointBoss == true && AudioManager.instance != null)
+                {
+                    AudioManager.instance.FadeOut("GameplayOST1");
+                    AudioManager.instance.FadeOut("GameplayOST2");
+                }
                 Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
                 ChangeFollow.CFInstance.NewPlayer.transform.position = SpawnPointCheck.transform.position;
 
@@ -74,7 +78,6 @@ namespace SwordGame
                 }
 
                 KilledEnemyCounter.KilledEnemyCounterInstance.killedEnemyCounter = KilledEnemy;
-
             }
         }
         public void InitialiRespawn()
@@ -82,6 +85,11 @@ namespace SwordGame
             print(LastCheckpoint);
             if (LastCheckpoint != null && LastCheckpoint == gameObject)
             {
+                if (CheckpointBoss == true && AudioManager.instance != null)
+                {
+                    AudioManager.instance.FadeOut("GameplayOST1");
+                    AudioManager.instance.FadeOut("GameplayOST2");
+                }
                 StartRespawn = false;
                 Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
                 Destroy(ChangeFollow.CFInstance.NewPlayer);
@@ -137,12 +145,6 @@ namespace SwordGame
                 LastCheckpoint = gameObject;
                 PlayerPrefs.SetInt("IDCheckpoint", ID);
                 print(PlayerPrefs.GetInt("IDCheckpoint", 0));
-
-                if(CheckpoinBoss == true && AudioManager.instance != null && OnlyOnceMusic == false)
-                {
-                    OnlyOnceMusic = true;
-                    AudioManager.instance.Stop("GameplayOST2");
-                }
             }
         }
     }
