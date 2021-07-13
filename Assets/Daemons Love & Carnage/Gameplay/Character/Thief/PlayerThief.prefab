@@ -5565,17 +5565,17 @@ MonoBehaviour:
   DecreaseEnergy: 0
   OriginalThiefOverride: {fileID: 22100000, guid: 5f6d22e1af8147a48a3effd6269a51fa, type: 2}
   SpecialThiefOverride: {fileID: 22100000, guid: 895a2df0e8fa0854d9b3f882538e8aed, type: 2}
-  SpecialPlayerIdleSpeed: 15
-  SpecialPlayerMoveSpeed: 15
-  SpecialPlayerDashSpeed: 15
-  SpecialPlayerFallSpeed: 15
-  SpecialPlayerDashFallSpeed: 15
-  SpecialPlayerJumpSpeed: 15
-  SpecialPlayerDieSpeed: 15
-  SpecialPlayerStaggerSpeed: 15
-  SpecialPlayerLightAttackSpeed: 15
-  SpecialPlayerHeavyAttackSpeed: 15
-  SpecialPlayerSpecialAttackSpeed: 15
+  SpecialPlayerIdleSpeed: 10
+  SpecialPlayerMoveSpeed: 4
+  SpecialPlayerDashSpeed: 1
+  SpecialPlayerFallSpeed: 10
+  SpecialPlayerDashFallSpeed: 1
+  SpecialPlayerJumpSpeed: 5
+  SpecialPlayerDieSpeed: 1
+  SpecialPlayerStaggerSpeed: 1
+  SpecialPlayerLightAttackSpeed: 1
+  SpecialPlayerHeavyAttackSpeed: 1
+  SpecialPlayerSpecialAttackSpeed: 1
 --- !u!1 &4172022976496524787
 GameObject:
   m_ObjectHideFlags: 0
@@ -31233,7 +31233,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 5
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 13416.12
+  ResetTimerStaggered: 13428.665
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -31273,7 +31273,7 @@ MonoBehaviour:
   DashKnockbackFatKnight: {fileID: 0}
   ControllerPossession: 1
   SpecialAttackGameObject: {fileID: 0}
-  particlePossessionActivation: 0
+  particlePossessionActivation: 1
   Tornado: {fileID: 0}
   OnlyOneParticles: 0
 --- !u!114 &-2547379719804468641
@@ -31343,6 +31343,7 @@ MonoBehaviour:
   ValuePoiseKnockbackBabushka: 0
   DashBabushkaEffect: 0
   DamageDashBabushka: 10
+  deathEffect: {fileID: 16020363213653551, guid: 6bad8cff2e9f7304dbb1f44d60b1f030, type: 3}
 --- !u!95 &8724932531995098332
 Animator:
   serializedVersion: 3

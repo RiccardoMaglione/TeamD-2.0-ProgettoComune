@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 
 public class EnemyData : MonoBehaviour
@@ -139,6 +138,8 @@ public class EnemyData : MonoBehaviour
     public bool DashBabushkaEffect;
     public float DamageDashBabushka;
 
+    public GameObject deathEffect;
+
     private void Start()
     {
         //GetComponent<Animator>().SetInteger("Life", Life);
@@ -227,7 +228,7 @@ public class EnemyData : MonoBehaviour
     {
         if (GetComponent<Animator>().GetBool("AI-LightAttack") == true)
         {
-            LightAttackCollider .SetActive(true);
+            LightAttackCollider.SetActive(true);
 
             if (AudioManager.instance != null)
             {
@@ -250,7 +251,7 @@ public class EnemyData : MonoBehaviour
                 }
             }
         }
-        
+
         if (GetComponent<Animator>().GetBool("AI-HeavyAttack") == true)
         {
             HeavyAttackCollider.SetActive(true);
@@ -260,7 +261,7 @@ public class EnemyData : MonoBehaviour
                 switch (TypeEnemy)
                 {
                     case TypeEnemies.FatKnight:
-                        if(AudioManager.instance != null)
+                        if (AudioManager.instance != null)
                         {
                             AudioManager.instance.Play("Sfx_FK_H_atk_swing");
                         }
@@ -328,7 +329,7 @@ public class EnemyData : MonoBehaviour
     public void EventEnemyArrowThief()
     {
         GameObject GoArrow = Instantiate(ArrowThief, SpawnArrow.transform.position, transform.rotation);
-        if(AudioManager.instance != null)
+        if (AudioManager.instance != null)
         {
             AudioManager.instance.Play("Sfx_T_L_atk");
         }
@@ -338,6 +339,37 @@ public class EnemyData : MonoBehaviour
     public void EventEnemyDeactiveGameObject()
     {
         gameObject.SetActive(false);
+
+        if (TypeEnemies.Thief == TypeEnemy)
+        {
+            if (transform.rotation.eulerAngles.y == 0)
+            {
+
+                GameObject tempDeathEffect = Instantiate(deathEffect, new Vector2(transform.position.x + 1.3f, transform.position.y - 1.3f), Quaternion.Euler(-90, 0, 0));
+                Destroy(tempDeathEffect, 2f);
+            }
+            else
+            {
+                GameObject tempDeathEffect = Instantiate(deathEffect, new Vector2(transform.position.x - 1.3f, transform.position.y - 1.3f), Quaternion.Euler(-90, 0, 0));
+                Destroy(tempDeathEffect, 2f);
+            }
+
+        }
+        else
+        {
+            if (transform.rotation.eulerAngles.y == 0)
+            {
+
+                GameObject tempDeathEffect = Instantiate(deathEffect, new Vector2(transform.position.x + 1.3f, transform.position.y - 1), Quaternion.Euler(-90, 0, 0));
+                Destroy(tempDeathEffect, 2f);
+            }
+            else
+            {
+                GameObject tempDeathEffect = Instantiate(deathEffect, new Vector2(transform.position.x - 1.3f, transform.position.y - 1), Quaternion.Euler(-90, 0, 0));
+                Destroy(tempDeathEffect, 2f);
+            }
+
+        }
     }
 
     #region Trigger Zone
@@ -359,7 +391,7 @@ public class EnemyData : MonoBehaviour
         {
             DashBabushkaEffect = true;
             Life -= DamageDashBabushka;
-            GetComponent<Animator>().SetFloat("Life", Life); 
+            GetComponent<Animator>().SetFloat("Life", Life);
             CountPoiseEnemy += ValuePoiseKnockbackBabushka;
             GetComponent<Animator>().SetTrigger("DamageReceived");
             if (CountPoiseEnemy >= MaxCountPoiseEnemy)
@@ -400,6 +432,7 @@ public class EnemyData : MonoBehaviour
     public void EventEnemyStaggerFinish()
     {
         GetComponent<Animator>().SetTrigger("AI-FromStaggerToIdle");
+
     }
 }
 public enum TypeEnemies

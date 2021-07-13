@@ -3237,7 +3237,7 @@ MonoBehaviour:
   PlayerFallSpeed: 1
   PlayerDashFallSpeed: 1
   PlayerJumpSpeed: 1
-  PlayerDieSpeed: 1
+  PlayerDieSpeed: 1.5
   PlayerStaggerSpeed: 2
   PlayerLightAttackSpeed: 7
   PlayerHeavyAttackSpeed: 3
@@ -3315,7 +3315,7 @@ MonoBehaviour:
   StunAnimClipSpeed: 1
   StaggerAnimClipSpeed: 0.1
   PossessionAnimClipSpeed: 1
-  DeathAnimClipSpeed: 1
+  DeathAnimClipSpeed: 2.5
   Aggro: {fileID: 5473536045363595480}
   IsTriggerAttack: 0
   RangeMelee: {fileID: 5720831097504714072}
@@ -3334,6 +3334,7 @@ MonoBehaviour:
   ValuePoiseKnockbackBabushka: 0
   DashBabushkaEffect: 0
   DamageDashBabushka: 10
+  deathEffect: {fileID: 16020363213653551, guid: 6bad8cff2e9f7304dbb1f44d60b1f030, type: 3}
 --- !u!95 &5720831098887579348
 Animator:
   serializedVersion: 3

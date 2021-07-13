@@ -31694,7 +31694,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 2.4
   BoriousDashDMGMultiplier: 3
-  ResetTimerStaggered: 14150.449
+  ResetTimerStaggered: 14173.905
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -31707,7 +31707,7 @@ MonoBehaviour:
   PlayerFallSpeed: 1
   PlayerDashFallSpeed: 1
   PlayerJumpSpeed: 1
-  PlayerDieSpeed: 1
+  PlayerDieSpeed: 0.8
   PlayerStaggerSpeed: 2
   PlayerLightAttackSpeed: 3.8
   PlayerHeavyAttackSpeed: 3
@@ -31734,7 +31734,7 @@ MonoBehaviour:
   DashKnockbackFatKnight: {fileID: 0}
   ControllerPossession: 1
   SpecialAttackGameObject: {fileID: 0}
-  particlePossessionActivation: 0
+  particlePossessionActivation: 1
   Tornado: {fileID: 0}
   OnlyOneParticles: 0
 --- !u!114 &8866432838277455761
@@ -31785,7 +31785,7 @@ MonoBehaviour:
   StunAnimClipSpeed: 1
   StaggerAnimClipSpeed: 1
   PossessionAnimClipSpeed: 1
-  DeathAnimClipSpeed: 1
+  DeathAnimClipSpeed: 0.8
   Aggro: {fileID: 0}
   IsTriggerAttack: 0
   RangeMelee: {fileID: 8866432838546801926}
@@ -31804,6 +31804,7 @@ MonoBehaviour:
   ValuePoiseKnockbackBabushka: 0
   DashBabushkaEffect: 0
   DamageDashBabushka: 10
+  deathEffect: {fileID: 16020363213653551, guid: 6bad8cff2e9f7304dbb1f44d60b1f030, type: 3}
 --- !u!95 &8866432838277455760
 Animator:
   serializedVersion: 3
