@@ -53,7 +53,7 @@ public class PauseMenu : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Escape) && paused == false && menuOpen == false && PM.CurrentHealth > 0)
+        if (Input.GetKeyDown(KeyCode.Escape) && paused == false && menuOpen == false && PM.CurrentHealth > 0 && VictoryScreen.win == false)
         {
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Sfx_book_drop");
@@ -149,7 +149,7 @@ public class PauseMenu : MonoBehaviour
             MainMenu.SetActive(true);
 
             StopCoroutine("MoveOutTornPageCoroutine");
-            StartCoroutine("MoveInTornPageCoroutine");           
+            StartCoroutine("MoveInTornPageCoroutine");
         }
     }
 

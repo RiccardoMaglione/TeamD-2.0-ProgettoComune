@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using SwordGame;
 using UnityEngine;
-using SwordGame;
+using UnityEngine.UI;
 
 public class TriggerPossession : Possession
 {
@@ -42,16 +41,19 @@ public class TriggerPossession : Possession
         {
             PromptEnemy.SetActive(false);
         }
-        if(GetComponentInParent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession"))
+        if (GetComponentInParent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession"))
         {
             TimerDelay += Time.deltaTime;
-            if(TimerDelay >= DelayPossession)
+            if (TimerDelay >= DelayPossession)
             {
                 DelayBool = true;
             }
         }
         if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyPossession)) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State") && DelayBool == true && PSMController.disableAllInput == false)
         {
+            EnergyBar.EBInstance.glowing.SetActive(false);
+            EnergyBar.EBInstance.gameObject.GetComponentInChildren<Image>().enabled = true;
+
             DelayBool = false;
             TimerDelay = 0;
             SpecialBabushka.BabuskaSpecial = false;
@@ -108,8 +110,10 @@ public class TriggerPossession : Possession
         SetVelocityAnimator(PlayerToEnemy, EnemyToPlayer);
         SetVelocityPlayer(PlayerToEnemy);
         CheckTypePlayer(EnemyToPlayer);
-        /**/EnableDisableSpecialAttack(PlayerToEnemy, EnemyToPlayer);
-        /**/ResetPlatform(PlayerToEnemy);
+        /**/
+        EnableDisableSpecialAttack(PlayerToEnemy, EnemyToPlayer);
+        /**/
+        ResetPlatform(PlayerToEnemy);
         ChangeIconPlayer(EnemyToPlayer, UIPortrait.StaticPortrait);
         EnemyToPlayer.GetComponent<PSMController>().OnlyOneParticles = true;
 
