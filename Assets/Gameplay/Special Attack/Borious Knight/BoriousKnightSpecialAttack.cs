@@ -15,8 +15,6 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
 
     public bool DecreaseEnergy;
 
-    public Coroutine AttackSpecial;
-
     public IEnumerator Attack()
     {
         DecreaseEnergy = true;

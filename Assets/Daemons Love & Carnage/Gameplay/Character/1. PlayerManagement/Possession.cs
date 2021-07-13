@@ -462,13 +462,13 @@ public class Possession : MonoBehaviour
                 PlayerToEnemy.GetComponentInChildren<FatKnightSpecialAttack>().DecreaseEnergy = false;
                 break;
             case TypeEnemies.BoriousKnight:
-                StopCoroutine(PlayerToEnemy.GetComponentInChildren<BoriousKnightSpecialAttack>().AttackSpecial);
+                PlayerToEnemy.GetComponentInChildren<BoriousKnightSpecialAttack>().DecreaseEnergy = false;
                 break;
             case TypeEnemies.Babushka:
-                StopCoroutine(PlayerToEnemy.GetComponentInChildren<SpecialBabushka>().AttackSpecial);
+                PlayerToEnemy.GetComponentInChildren<SpecialBabushka>().DecreaseEnergy = false;
                 break;
             case TypeEnemies.Thief:
-                StopCoroutine(PlayerToEnemy.GetComponentInChildren<ThiefSpecialAttack>().AttackSpecial);
+                PlayerToEnemy.GetComponentInChildren<ThiefSpecialAttack>().DecreaseEnergy = false;
                 break;
             default:
                 break;

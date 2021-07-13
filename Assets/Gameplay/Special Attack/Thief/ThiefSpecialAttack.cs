@@ -30,8 +30,6 @@ public class ThiefSpecialAttack : MonoBehaviour
     public float SpecialPlayerSpecialAttackSpeed = 15;
     #endregion
 
-    public Coroutine AttackSpecial;
-
     public void InitializeSpeedAnimationSpecial()
     {
         GetComponentInParent<PSMController>().GetComponent<Animator>().SetFloat("PlayerIdleSpeed", SpecialPlayerIdleSpeed);

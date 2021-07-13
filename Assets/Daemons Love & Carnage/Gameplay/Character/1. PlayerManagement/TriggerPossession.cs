@@ -88,6 +88,7 @@ public class TriggerPossession : Possession
 
         FindObjectOfType<ChangeFollow>().NewPlayer = EnemyToPlayer;
         IncrementCount();
+        StopSpecial(PlayerToEnemy);
         SetParametersEnemyToPlayer(EnemyToPlayer);
         ChangeTagArea(PlayerToEnemy, EnemyToPlayer);
         ChangeTagObject(PlayerToEnemy, EnemyToPlayer);
@@ -112,7 +113,6 @@ public class TriggerPossession : Possession
         CheckTypePlayer(EnemyToPlayer);
         /**/
         EnableDisableSpecialAttack(PlayerToEnemy, EnemyToPlayer);
-        StopSpecial(PlayerToEnemy);
         /**/
         ResetPlatform(PlayerToEnemy);
         ChangeIconPlayer(EnemyToPlayer, UIPortrait.StaticPortrait);

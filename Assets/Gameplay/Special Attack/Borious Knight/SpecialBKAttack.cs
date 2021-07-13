@@ -8,7 +8,7 @@ public class SpecialBKAttack : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         boriousKnight = animator.GetComponent<BoriousKnightSpecialAttack>();
-        boriousKnight.AttackSpecial = boriousKnight.StartCoroutine(boriousKnight.Attack());
+        boriousKnight.StartCoroutine(boriousKnight.Attack());
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
