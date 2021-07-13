@@ -340,16 +340,35 @@ public class EnemyData : MonoBehaviour
     {
         gameObject.SetActive(false);
 
-        if (transform.rotation.eulerAngles.y == 0)
+        if (TypeEnemies.Thief == TypeEnemy)
         {
+            if (transform.rotation.eulerAngles.y == 0)
+            {
 
-            GameObject tempDeathEffect = Instantiate(deathEffect, new Vector2(transform.position.x + 1.3f, transform.position.y - 1), Quaternion.Euler(-90, 0, 0));
-            Destroy(tempDeathEffect, 2f);
+                GameObject tempDeathEffect = Instantiate(deathEffect, new Vector2(transform.position.x + 1.3f, transform.position.y - 1.3f), Quaternion.Euler(-90, 0, 0));
+                Destroy(tempDeathEffect, 2f);
+            }
+            else
+            {
+                GameObject tempDeathEffect = Instantiate(deathEffect, new Vector2(transform.position.x - 1.3f, transform.position.y - 1.3f), Quaternion.Euler(-90, 0, 0));
+                Destroy(tempDeathEffect, 2f);
+            }
+
         }
         else
         {
-            GameObject tempDeathEffect = Instantiate(deathEffect, new Vector2(transform.position.x - 1.3f, transform.position.y - 1), Quaternion.Euler(-90, 0, 0));
-            Destroy(tempDeathEffect, 2f);
+            if (transform.rotation.eulerAngles.y == 0)
+            {
+
+                GameObject tempDeathEffect = Instantiate(deathEffect, new Vector2(transform.position.x + 1.3f, transform.position.y - 1), Quaternion.Euler(-90, 0, 0));
+                Destroy(tempDeathEffect, 2f);
+            }
+            else
+            {
+                GameObject tempDeathEffect = Instantiate(deathEffect, new Vector2(transform.position.x - 1.3f, transform.position.y - 1), Quaternion.Euler(-90, 0, 0));
+                Destroy(tempDeathEffect, 2f);
+            }
+
         }
     }
 
