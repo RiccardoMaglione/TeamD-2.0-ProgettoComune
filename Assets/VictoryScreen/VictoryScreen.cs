@@ -13,6 +13,12 @@ public class VictoryScreen : MonoBehaviour
     public static bool win;
     public static bool winChecked = false;
 
+    [SerializeField] GameObject player1;
+    [SerializeField] GameObject player2;
+    [SerializeField] GameObject player3;
+    [SerializeField] GameObject player4;
+    [SerializeField] GameObject boss;
+
     private void Start()
     {
 
@@ -27,11 +33,13 @@ public class VictoryScreen : MonoBehaviour
             Invoke("Dropdown", 1.5f);
             WhitePanelAppears();
             FadeIn();
+            Invoke("DeactivateAllEntities", 1.2f);
             //Invoke("FadeOut", 0.1f);
             //Invoke("WhitePanelDisappear", 0.2f);
             Cursor.visible = true;
-        }
+        }      
     }
+    
     public void Dropdown()
     {
         StartCoroutine("BookDropCoroutine");
@@ -61,10 +69,19 @@ public class VictoryScreen : MonoBehaviour
         }
     }
 
+    void DeactivateAllEntities()
+    {
+        player1.SetActive(false);
+        player2.SetActive(false);
+        player3.SetActive(false);
+        player4.SetActive(false);
+        boss.SetActive(false);
+    }
+
     public void FadeIn()
     {
         whitePanelIMG.canvasRenderer.SetAlpha(0f);
-        whitePanelIMG.CrossFadeAlpha(1, 1f, false);
+        whitePanelIMG.CrossFadeAlpha(1, 1f, false);       
     }
     /*public void FadeOut()
     {

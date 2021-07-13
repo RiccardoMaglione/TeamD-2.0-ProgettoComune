@@ -50,26 +50,34 @@ public class AttackSystem : MonoBehaviour
             {
                 collision.GetComponent<Boss>().life -= LightDamage * collision.GetComponent<Boss>().DMG_Reduction;
                 AudioManager.instance.Play("Sfx_boss_damage_light");
-                if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().LightEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                if (SpecialBabushka.BabuskaSpecial == false)
                 {
-                    GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
-                }
-                else
-                {
-                    GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
+                    if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().LightEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                    {
+                        GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                    }
+                    else
+                    {
+                        GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
+                    }
                 }
             }
+
+
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
                 collision.GetComponent<Boss>().life -= HeavyDamage * collision.GetComponent<Boss>().DMG_Reduction;
                 AudioManager.instance.Play("Sfx_boss_damage_heavy");
-                if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().HeavyEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                if (SpecialBabushka.BabuskaSpecial == false)
                 {
-                    GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
-                }
-                else
-                {
-                    GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
+                    if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().HeavyEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                    {
+                        GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                    }
+                    else
+                    {
+                        GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
+                    }
                 }
             }
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
@@ -142,20 +150,24 @@ public class AttackSystem : MonoBehaviour
                 {
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
-                if(GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().LightEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+
+                if (SpecialBabushka.BabuskaSpecial == false)
                 {
-                    GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
-                    if(AudioManager.instance != null && SoundOnlyOnceEnergy == false)
+                    if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().LightEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
                     {
-                        AudioManager.instance.Play("Sfx_special_bar_fill");
-                        SoundOnlyOnceEnergy = true;
+                        GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                        if (AudioManager.instance != null && SoundOnlyOnceEnergy == false)
+                        {
+                            AudioManager.instance.Play("Sfx_special_bar_fill");
+                            SoundOnlyOnceEnergy = true;
+                        }
                     }
+                    else
+                    {
+                        GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
+                    }
+                    //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
                 }
-                else
-                {
-                    GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().LightEnergyAmount;
-                }
-                //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
             if (GetComponentInParent<PSMController>().IsHeavyAttack == true)
             {
@@ -201,20 +213,23 @@ public class AttackSystem : MonoBehaviour
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
                 //print("Heavy");
-                if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().HeavyEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                if (SpecialBabushka.BabuskaSpecial == false)
                 {
-                    GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
-                    if (AudioManager.instance != null && SoundOnlyOnceEnergy == false)
+                    if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().HeavyEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
                     {
-                        AudioManager.instance.Play("Sfx_special_bar_fill");
-                        SoundOnlyOnceEnergy = true;
+                        GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
+                        if (AudioManager.instance != null && SoundOnlyOnceEnergy == false)
+                        {
+                            AudioManager.instance.Play("Sfx_special_bar_fill");
+                            SoundOnlyOnceEnergy = true;
+                        }
                     }
+                    else
+                    {
+                        GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
+                    }
+                    //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
                 }
-                else
-                {
-                    GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().HeavyEnergyAmount;
-                }
-                //print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
             {

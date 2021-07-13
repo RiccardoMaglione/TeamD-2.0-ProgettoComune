@@ -29,6 +29,8 @@ namespace SwordGame
 
         public GameObject SpawnPointCheck;
 
+        public GameObject sign;
+
         public bool CheckpointBoss;
 
         private void Awake()
@@ -145,6 +147,7 @@ namespace SwordGame
                 LastCheckpoint = gameObject;
                 PlayerPrefs.SetInt("IDCheckpoint", ID);
                 print(PlayerPrefs.GetInt("IDCheckpoint", 0));
+                sign.GetComponent<Animator>().SetTrigger("Saved");
             }
         }
     }

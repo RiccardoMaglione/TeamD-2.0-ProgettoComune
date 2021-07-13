@@ -69,7 +69,7 @@ public class Bullet : MonoBehaviour
             gameObject.layer = 11;
         }
 
-        else if (collision.gameObject)
+        else if (collision.gameObject.tag == "Floor")
         {
             Destroy(this.gameObject);
         }

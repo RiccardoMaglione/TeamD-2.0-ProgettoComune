@@ -76,6 +76,28 @@ public class Boss : MonoBehaviour
 
         if (life <= 0)
         {
+            switch (FindObjectOfType<PSMController>().TypeCharacter)
+            {
+                case TypePlayer.FatKnight:
+                    CharacterCutsceneManager.id = 1;
+                    break;
+
+                case TypePlayer.BoriousKnight:
+                    CharacterCutsceneManager.id = 3;
+                    break;
+
+                case TypePlayer.Babushka:
+                    CharacterCutsceneManager.id = 2;
+                    break;
+
+                case TypePlayer.Thief:
+                    CharacterCutsceneManager.id = 4;
+                    break;
+
+                default:
+                    break;
+            }
+
             whitePanel.SetActive(true);
             laserManager.SetActive(false);
             //VictoryScreen.win = true;
