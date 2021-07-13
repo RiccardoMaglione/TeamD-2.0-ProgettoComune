@@ -176,10 +176,12 @@ public class DialogueType1 : MonoBehaviour
     {
         if (collision.CompareTag("Player") && PlayerPrefs.GetInt("TutorialSkip") < NumSkip)
         {
+            TemplateScritta();
             dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-630, -150);
 
             blackPanel.SetActive(true);
             dialogueText.text = insertTutorialText;
+
             Time.timeScale = 0;
             dialogueBox.SetActive(true);
             StartCoroutine("DialogueIn");
@@ -201,8 +203,6 @@ public class DialogueType1 : MonoBehaviour
 
     private void Update()
     {
-        TemplateScritta();
-
         if (Input.GetKeyDown(buttonToSkip1) && dialogueActive == true || Input.GetKeyDown(buttonToSkip2) && dialogueActive == true || Input.GetKeyDown(buttonToSkip3) && dialogueActive == true || Input.GetKeyDown(buttonToSkip4) && dialogueActive == true || Input.GetKeyDown(ControllerButtonToSkip1) && dialogueActive == true || Input.GetKeyDown(ControllerButtonToSkip2) && dialogueActive == true || Input.GetKeyDown(ControllerButtonToSkip3) && dialogueActive == true || Input.GetKeyDown(ControllerButtonToSkip4) && dialogueActive == true)
         {
             dialogueActive = false;
