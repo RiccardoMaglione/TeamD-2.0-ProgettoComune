@@ -31,6 +31,8 @@ public class SpecialBabushka : MonoBehaviour
 
     public bool DecreaseEnergy;
     public static bool BabuskaSpecial;
+
+    public Coroutine AttackSpecial;
     private void Update()
     {
         if (DecreaseEnergy == true && BabuskaSpecial == true)

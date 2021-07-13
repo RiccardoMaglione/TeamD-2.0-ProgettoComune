@@ -89,6 +89,7 @@ namespace SwordGame
             if (EnergySliderPM != null)
             {
                 EnergySliderPM.EnergySlider.value = CurrentEnergy;
+                print("Parte visiva energia");
             }
             if (CurrentHealth <= 0 && OnlyOnceDeath == false)
             {

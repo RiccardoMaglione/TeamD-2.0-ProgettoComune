@@ -20,7 +20,7 @@ public class SpecialBabushkaIdle : StateMachineBehaviour
         {
             //psmController.CurrentEnergy = 0;
             animator.SetBool("IsAttack", true);
-            specialBabushka.StartCoroutine(specialBabushka.Attack());
+            specialBabushka.AttackSpecial = specialBabushka.StartCoroutine(specialBabushka.Attack());
         }
     }
 

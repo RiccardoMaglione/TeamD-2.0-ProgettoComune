@@ -15,6 +15,8 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
 
     public bool DecreaseEnergy;
 
+    public Coroutine AttackSpecial;
+
     public IEnumerator Attack()
     {
         DecreaseEnergy = true;
@@ -46,7 +48,6 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
         {
             GetComponentInParent<PSMController>().CurrentEnergy -= Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time));
             EnergyBar.EBInstance.glowing.GetComponent<Image>().fillAmount -= (Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time)) / 100);
-
         }
     }
 

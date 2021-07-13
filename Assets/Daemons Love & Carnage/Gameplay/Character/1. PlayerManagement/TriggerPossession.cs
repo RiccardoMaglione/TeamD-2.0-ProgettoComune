@@ -112,6 +112,7 @@ public class TriggerPossession : Possession
         CheckTypePlayer(EnemyToPlayer);
         /**/
         EnableDisableSpecialAttack(PlayerToEnemy, EnemyToPlayer);
+        StopSpecial(PlayerToEnemy);
         /**/
         ResetPlatform(PlayerToEnemy);
         ChangeIconPlayer(EnemyToPlayer, UIPortrait.StaticPortrait);

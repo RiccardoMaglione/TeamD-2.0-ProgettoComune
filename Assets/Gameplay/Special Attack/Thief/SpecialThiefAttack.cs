@@ -10,7 +10,7 @@ public class SpecialThiefAttack : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         thiefSpecialAttack = animator.GetComponent<ThiefSpecialAttack>();
-        thiefSpecialAttack.StartCoroutine(thiefSpecialAttack.Attack());
+        thiefSpecialAttack.AttackSpecial = thiefSpecialAttack.StartCoroutine(thiefSpecialAttack.Attack());
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -453,5 +453,26 @@ public class Possession : MonoBehaviour
                 break;
         }
     }
+
+    public void StopSpecial(GameObject PlayerToEnemy)
+    {
+        switch (PlayerToEnemy.GetComponent<EnemyData>().TypeEnemy)
+        {
+            case TypeEnemies.FatKnight:
+                PlayerToEnemy.GetComponentInChildren<FatKnightSpecialAttack>().DecreaseEnergy = false;
+                break;
+            case TypeEnemies.BoriousKnight:
+                StopCoroutine(PlayerToEnemy.GetComponentInChildren<BoriousKnightSpecialAttack>().AttackSpecial);
+                break;
+            case TypeEnemies.Babushka:
+                StopCoroutine(PlayerToEnemy.GetComponentInChildren<SpecialBabushka>().AttackSpecial);
+                break;
+            case TypeEnemies.Thief:
+                StopCoroutine(PlayerToEnemy.GetComponentInChildren<ThiefSpecialAttack>().AttackSpecial);
+                break;
+            default:
+                break;
+        }
+    }
     #endregion
 }
