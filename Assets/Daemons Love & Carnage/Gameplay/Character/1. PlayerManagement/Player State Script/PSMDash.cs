@@ -46,6 +46,9 @@ public class PSMDash : StateMachineBehaviour
                 }
                 break;
         }
+        animator.GetComponentInParent<PSMController>().LightAttackCollider.SetActive(false);
+        animator.GetComponentInParent<PSMController>().HeavyAttackCollider.SetActive(false);
+        animator.GetComponentInParent<PSMController>().EventDeactivateTornado();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -68,7 +68,7 @@ namespace SwordGame
                 Destroy(ArrowParent);
             }
 
-            if(collision.tag == "Boss")
+            if(collision.tag == "Boss" && Boss.instance.canGetDamage == true)
             {
                 ColorChangeController colorChangeController = collision.GetComponentInParent<ColorChangeController>();
                 colorChangeController.isAttacked = true;
