@@ -1,6 +1,5 @@
 ﻿using SwordGame;
 using UnityEngine;
-using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
@@ -33,6 +32,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Player" && PSMController.isBoriousDash == false && collision.gameObject.GetComponent<PSMController>().Invulnerability == true)
         {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            Invoke("DeactivateTrigger", 0.4f);
         }
 
 
@@ -82,6 +82,19 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
         Debug.Log("Preso");
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Floor")
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+    private void DeactivateTrigger()
+    {
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
     }
 
     private void Update()
