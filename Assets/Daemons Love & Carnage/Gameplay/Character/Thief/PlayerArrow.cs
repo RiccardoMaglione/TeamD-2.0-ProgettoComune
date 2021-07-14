@@ -43,7 +43,7 @@ namespace SwordGame
                     collision.GetComponent<EnemyData>().GetComponent<Animator>().SetBool("IsStagger", true);
                 }
                 #endregion
-                if(ThiefSpecialAttack.instance.isSpecialActive == false)
+                if ((ThiefSpecialAttack.instance.isSpecialActive == false) &! (collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Death")))
                 {
                     if (ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy + ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount > ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy)
                     {
@@ -74,7 +74,7 @@ namespace SwordGame
                 colorChangeController.isAttacked = true;
                 AudioManager.instance.Play("Sfx_boss_damage_light");
                 collision.GetComponentInParent<Boss>().life -= DamageArrow * collision.GetComponentInParent<Boss>().DMG_Reduction;
-                if (ThiefSpecialAttack.instance.isSpecialActive == false)
+                if ((ThiefSpecialAttack.instance.isSpecialActive == false) &! (collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Death")))
                 {
                     if (ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().CurrentEnergy + ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().LightEnergyAmount > ChangeFollow.StaticPlayerTemp.GetComponentInParent<PSMController>().MaxEnergy)
                     {

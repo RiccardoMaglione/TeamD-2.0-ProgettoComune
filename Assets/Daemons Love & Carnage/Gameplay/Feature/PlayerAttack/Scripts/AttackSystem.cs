@@ -50,7 +50,7 @@ public class AttackSystem : MonoBehaviour
             {
                 collision.GetComponent<Boss>().life -= LightDamage * collision.GetComponent<Boss>().DMG_Reduction;
                 AudioManager.instance.Play("Sfx_boss_damage_light");
-                if (SpecialBabushka.BabuskaSpecial == false)
+                if ((SpecialBabushka.BabuskaSpecial == false) &! (collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Death")))
                 {
                     if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().LightEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
                     {
@@ -68,7 +68,7 @@ public class AttackSystem : MonoBehaviour
             {
                 collision.GetComponent<Boss>().life -= HeavyDamage * collision.GetComponent<Boss>().DMG_Reduction;
                 AudioManager.instance.Play("Sfx_boss_damage_heavy");
-                if (SpecialBabushka.BabuskaSpecial == false)
+                if ((SpecialBabushka.BabuskaSpecial == false) &! (collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Death")))
                 {
                     if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().HeavyEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
                     {
@@ -151,7 +151,7 @@ public class AttackSystem : MonoBehaviour
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
 
-                if (SpecialBabushka.BabuskaSpecial == false)
+                if ((SpecialBabushka.BabuskaSpecial == false) &! (collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Death")))
                 {
                     if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().LightEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
                     {
@@ -213,7 +213,7 @@ public class AttackSystem : MonoBehaviour
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
                 //print("Heavy");
-                if (SpecialBabushka.BabuskaSpecial == false)
+                if ((SpecialBabushka.BabuskaSpecial == false) &! (collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession") || collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Death")))
                 {
                     if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().HeavyEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
                     {
@@ -249,20 +249,24 @@ public class AttackSystem : MonoBehaviour
                     collision.GetComponentInParent<Animator>().SetBool("IsStagger", true);
                 }
                 print("Special");
-                if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().SpecialEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+
+                if (!collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Stun") |! collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Possession") |! collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Death"))
                 {
+                    if (GetComponentInParent<PSMController>().CurrentEnergy + GetComponentInParent<PSMController>().SpecialEnergyAmount > GetComponentInParent<PSMController>().MaxEnergy)
+                    {
                     GetComponentInParent<PSMController>().CurrentEnergy = GetComponentInParent<PSMController>().MaxEnergy;
                     if (AudioManager.instance != null && SoundOnlyOnceEnergy == false)
-                    {
-                        AudioManager.instance.Play("Sfx_special_bar_fill");
-                        SoundOnlyOnceEnergy = true;
+                        {
+                            AudioManager.instance.Play("Sfx_special_bar_fill");
+                            SoundOnlyOnceEnergy = true;
+                        }
                     }
-                }
-                else
-                {
+                    else
+                    {
                     GetComponentInParent<PSMController>().CurrentEnergy += GetComponentInParent<PSMController>().SpecialEnergyAmount;
+                    }
+                    print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
                 }
-                print("Energy" + GetComponentInParent<PSMController>().CurrentEnergy);
             }
 
         }

@@ -13,7 +13,7 @@ public class EnergyBar : MonoBehaviour
         EBInstance = this;
     }
 
-    /*private void Update()
+    private void Update()
     {
         if (EnergySlider.value == EnergySlider.maxValue)
         {
@@ -26,7 +26,7 @@ public class EnergyBar : MonoBehaviour
             glowing.SetActive(false);
             GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
         }
-    } */
+    }
 
     public void MaxEnergy(int Energy) //setta il valore massimo 
     {
