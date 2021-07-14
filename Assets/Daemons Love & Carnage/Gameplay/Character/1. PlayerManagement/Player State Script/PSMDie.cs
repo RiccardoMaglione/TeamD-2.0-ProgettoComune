@@ -50,8 +50,22 @@ public class PSMDie : StateMachineBehaviour
                     break;
                 default:
                     break;
+
+
             }
         }
+
+        if (animator.GetComponent<PSMController>().DashColliderBabushka != null)
+            animator.GetComponent<PSMController>().DashColliderBabushka.SetActive(false);
+
+        if (animator.GetComponent<PSMController>().DashColliderBorious != null)
+            animator.GetComponent<PSMController>().DashColliderBorious.SetActive(false);
+
+        if (animator.GetComponent<PSMController>().DashKnockbackFatKnight != null)
+            animator.GetComponent<PSMController>().DashKnockbackFatKnight.SetActive(false);
+        
+        if(animator.GetComponent<PSMController>().TypeCharacter == TypePlayer.Thief)
+            animator.GetComponentInChildren<ThiefParticlesController>().StopDash();
 
         //Destroy(animator.gameObject);
     }
