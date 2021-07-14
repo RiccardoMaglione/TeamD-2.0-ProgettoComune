@@ -39,7 +39,14 @@ namespace SwordGame
             StartCoroutine(AnimationEye());                                                             //Parte la coroutine dell'animazione dell'occhio
             RandomScreenGameOver();                                                                     //Richiama il metodo per scegliere il random della schermata del gameover
             StartCoroutine(ScreenDeactive());                                                           //Parte la coroutine del fade
-            AudioManager.instance.FadeIn("Sfx_boss_imp_laugh");
+
+            if (RndScreen == 6)
+                AudioManager.instance.FadeIn("Sfx_Bruh");
+            else
+            {
+                AudioManager.instance.FadeIn("Sfx_boss_imp_laugh");
+            }
+
             if (PlayerPrefs.GetInt("CompletedLevel") != 1)
             {
                 PlayerPrefs.SetInt("ObtainSkull", 0);
@@ -116,7 +123,7 @@ namespace SwordGame
 
         public void ContinueCheckpointYes()
         {
-            if(AudioManager.instance != null)
+            if (AudioManager.instance != null)
             {
                 AudioManager.instance.Play("Sfx_you_died_yes");
             }
