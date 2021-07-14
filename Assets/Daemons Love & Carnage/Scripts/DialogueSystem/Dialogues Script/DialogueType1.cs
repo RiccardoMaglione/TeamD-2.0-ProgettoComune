@@ -28,14 +28,8 @@ public class DialogueType1 : MonoBehaviour
     public bool Heavy;
 
     [SerializeField] public KeyCode buttonToSkip1;
-    [SerializeField] public KeyCode buttonToSkip2;
-    [SerializeField] public KeyCode buttonToSkip3;
-    [SerializeField] public KeyCode buttonToSkip4;
     [SerializeField] public KeyCode ControllerButtonToSkip1;
     [SerializeField] public KeyCode ControllerButtonToSkip2;
-    [SerializeField] public KeyCode ControllerButtonToSkip3;
-    [SerializeField] public KeyCode ControllerButtonToSkip4;
-
 
     public bool dialogueActive = false;
 
@@ -44,6 +38,9 @@ public class DialogueType1 : MonoBehaviour
 
     public int NumTutorial2;
     public static int StaticTutorial2;
+
+    public GameObject skipKey;
+    public bool tutorialDialogue;
 
     public int NumSkip;
     public bool IsEnableSkip;
@@ -184,6 +181,14 @@ public class DialogueType1 : MonoBehaviour
 
             Time.timeScale = 0;
             dialogueBox.SetActive(true);
+
+            if (tutorialDialogue == true)
+            {
+                skipKey.SetActive(true);
+            }
+            else
+                skipKey.SetActive(false);
+
             StartCoroutine("DialogueIn");
             StaticTutorial = NumTutorial;
             StaticTutorial2 = NumTutorial2;
@@ -203,7 +208,7 @@ public class DialogueType1 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(buttonToSkip1) && dialogueActive == true || Input.GetKeyDown(buttonToSkip2) && dialogueActive == true || Input.GetKeyDown(buttonToSkip3) && dialogueActive == true || Input.GetKeyDown(buttonToSkip4) && dialogueActive == true || Input.GetKeyDown(ControllerButtonToSkip1) && dialogueActive == true || Input.GetKeyDown(ControllerButtonToSkip2) && dialogueActive == true || Input.GetKeyDown(ControllerButtonToSkip3) && dialogueActive == true || Input.GetKeyDown(ControllerButtonToSkip4) && dialogueActive == true)
+        if ((Input.GetKeyDown(buttonToSkip1) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == true) || (Input.GetKeyDown(ControllerButtonToSkip2) && CheckInput.PlaystationController == true)) && dialogueActive == true)
         {
             dialogueActive = false;
             StopCoroutine("DialogueIn");
@@ -213,7 +218,6 @@ public class DialogueType1 : MonoBehaviour
                 PlayerPrefs.SetInt("TutorialSkip", NumSkip);
             }
             Invoke("DestroyCollider", 0.1f);
-
         }
     }
     private IEnumerator DialogueIn()

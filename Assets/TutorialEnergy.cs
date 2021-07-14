@@ -22,8 +22,9 @@ public class TutorialEnergy : MonoBehaviour
     public int NumSkip;
     public int TutSkip;
 
-    [SerializeField] public KeyCode buttonToSkip1;
-    [SerializeField] public KeyCode buttonToSkip2;
+    public KeyCode buttonToSkip1;
+    public KeyCode buttonToSkip2;
+    public KeyCode buttonToSkip3;
     private void Update()
     {
         //EnableTutorialEnergy();
@@ -58,7 +59,7 @@ public class TutorialEnergy : MonoBehaviour
 
     public void StopInStartOut()
     {
-        if ((Input.GetKeyDown(buttonToSkip1) || Input.GetKeyDown(buttonToSkip2)) && DialogueActive == true && TutorialEnergyBool == false)
+        if ((Input.GetKeyDown(buttonToSkip1) || (Input.GetKeyDown(buttonToSkip2) && CheckInput.XboxController == true) || (Input.GetKeyDown(buttonToSkip3) && CheckInput.PlaystationController == true)) && DialogueActive == true && TutorialEnergyBool == false)
         {
             PlayerPrefs.SetInt("TutorialSkipEnergy", NumSkip);
             TutorialEnergyBool = true;

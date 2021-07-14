@@ -27,6 +27,9 @@ public class DialogueType2 : MonoBehaviour
 
     public int killToActivateDialogue;
 
+    public GameObject skipKey;
+    public bool tutorialDialogue;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && dialogueStarted == false && killToActivateDialogue <= FindObjectOfType<KilledEnemyCounter>().killedEnemyCounter)
@@ -40,6 +43,14 @@ public class DialogueType2 : MonoBehaviour
             playerDialogueText.text = insertPlayerText;
 
             playerDialogueBox.SetActive(true);
+
+            if (tutorialDialogue == true)
+            {
+                skipKey.SetActive(true);
+            }
+            else
+                skipKey.SetActive(false);
+
             StartCoroutine("BossDialogueIn");
         }
     }
