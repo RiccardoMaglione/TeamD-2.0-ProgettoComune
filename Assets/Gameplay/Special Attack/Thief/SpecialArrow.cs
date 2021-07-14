@@ -40,13 +40,13 @@ public class SpecialArrow : MonoBehaviour
             }
             #endregion
             
-            Destroy(gameObject.transform.root);
+            Destroy(gameObject.transform.root.gameObject);
             /*Manca aggiungere energia alla barra del player*/
         }
 
         else if (collision.tag == "Floor")
         {
-            Destroy(gameObject.transform.root);
+            Destroy(gameObject.transform.root.gameObject);
         }
 
         if (collision.tag == "Boss" && Boss.instance.canGetDamage == true)
@@ -55,7 +55,7 @@ public class SpecialArrow : MonoBehaviour
             colorChangeController.isAttacked = true;
             AudioManager.instance.Play("Sfx_boss_damage_light");
             collision.GetComponentInParent<Boss>().life -= DamageArrow * collision.GetComponentInParent<Boss>().DMG_Reduction;         
-            Destroy(gameObject);
+            Destroy(gameObject.transform.root.gameObject);
         }
     }
 
@@ -63,7 +63,7 @@ public class SpecialArrow : MonoBehaviour
     {
         if (collision.tag == "Floor")
         {
-            Destroy(gameObject.transform.root);
+            Destroy(gameObject.transform.root.gameObject);
         }
     }
 
@@ -71,7 +71,7 @@ public class SpecialArrow : MonoBehaviour
     {
         if (collision.tag == "Floor")
         {
-            Destroy(gameObject.transform.root);
+            Destroy(gameObject.transform.root.gameObject);
         }
     }
 }

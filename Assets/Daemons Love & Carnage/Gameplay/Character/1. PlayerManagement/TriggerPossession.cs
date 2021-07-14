@@ -51,8 +51,8 @@ public class TriggerPossession : Possession
         }
         if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyPossession)) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State") && DelayBool == true && PSMController.disableAllInput == false)
         {            
-            EnergyBar.EBInstance.glowing.SetActive(false);
-            EnergyBar.EBInstance.gameObject.GetComponentInChildren<Image>().enabled = true;
+            //EnergyBar.EBInstance.glowing.SetActive(false);
+            //EnergyBar.EBInstance.gameObject.GetComponentInChildren<Image>().enabled = true;
             
             ThiefSpecialAttack.specialOn = false;
             StopAllCoroutines();
