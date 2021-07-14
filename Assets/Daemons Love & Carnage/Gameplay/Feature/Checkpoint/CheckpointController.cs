@@ -32,6 +32,7 @@ namespace SwordGame
         public GameObject sign;
 
         public bool CheckpointBoss;
+        public bool SecondCheckpoint;
 
         private void Awake()
         {
@@ -61,7 +62,12 @@ namespace SwordGame
                     AudioManager.instance.FadeOut("GameplayOST1");
                     AudioManager.instance.FadeOut("GameplayOST2");
                 }
-                Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
+                if (SecondCheckpoint == true && AudioManager.instance != null)
+                {
+                    AudioManager.instance.Stop("GameplayOST1");
+                    AudioManager.instance.FadeIn("GameplayOST2");
+                }
+                    Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
                 ChangeFollow.CFInstance.NewPlayer.transform.position = SpawnPointCheck.transform.position;
 
                 for (int i = 0; i < DeactivateGameObject.Count; i++)
@@ -91,6 +97,11 @@ namespace SwordGame
                 {
                     AudioManager.instance.FadeOut("GameplayOST1");
                     AudioManager.instance.FadeOut("GameplayOST2");
+                }
+                if (SecondCheckpoint == true && AudioManager.instance != null)
+                {
+                    AudioManager.instance.Stop("GameplayOST1");
+                    AudioManager.instance.FadeIn("GameplayOST2");
                 }
                 StartRespawn = false;
                 Debug.Log("<color=lime> Respawn player all'ultimo checkpoint </color>");
