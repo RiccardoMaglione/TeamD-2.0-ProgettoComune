@@ -9,6 +9,7 @@ public class ThiefSpecialAttack : MonoBehaviour
     [SerializeField] float time;
     [SerializeField] GameObject arrow;
     public bool isSpecialActive = false;
+    public static bool specialOn = false;
 
     public static ThiefSpecialAttack instance;
 
@@ -55,6 +56,9 @@ public class ThiefSpecialAttack : MonoBehaviour
         isSpecialActive = true;
         InitializeSpeedAnimationSpecial();
         yield return new WaitForSeconds(time);
+        
+        specialOn = false;
+
         if (GetComponentInParent<PSMController>().isActiveAndEnabled)
         {
             GetComponentInParent<PSMController>().GetComponent<Animator>().runtimeAnimatorController = OriginalThiefOverride;
@@ -70,14 +74,16 @@ public class ThiefSpecialAttack : MonoBehaviour
     public IEnumerator InstantiateArrow()
     {
         isShot = true;
-        GameObject GoArrow = Instantiate(arrow, transform.position, GetComponentInParent<PSMController>().gameObject.transform.rotation);
+        GameObject ThiefArrow = Instantiate(arrow, transform.position, transform.rotation);
         yield return new WaitForSecondsRealtime(rateOfFire);
         isShot = false;
     }
 
     void Awake()
     {
+        specialOn = false;
         isShot = false;
+
         if (instance == null)
         {
             instance = this;

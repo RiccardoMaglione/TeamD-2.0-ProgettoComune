@@ -11,11 +11,12 @@ public class SpecialThiefAttack : StateMachineBehaviour
     {
         thiefSpecialAttack = animator.GetComponent<ThiefSpecialAttack>();
         thiefSpecialAttack.StartCoroutine(thiefSpecialAttack.Attack());
+        ThiefSpecialAttack.specialOn = true;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (thiefSpecialAttack.isShot == false)
+        if (thiefSpecialAttack.isShot == false && ThiefSpecialAttack.specialOn == true)
             thiefSpecialAttack.StartCoroutine(thiefSpecialAttack.InstantiateArrow());
     }
 
