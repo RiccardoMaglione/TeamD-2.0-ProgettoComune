@@ -16,6 +16,7 @@ public class TornPage : MonoBehaviour
     [SerializeField] GameObject SkullPage;
     [SerializeField] GameObject newGame;
     [SerializeField] GameObject Controls;
+    [SerializeField] GameObject SadPage;
     private PageFlipper pageFlipper;
 
 
@@ -34,6 +35,11 @@ public class TornPage : MonoBehaviour
         startPos = tornPage.transform.position;
         endPos = tornPageDestination.transform.position;
         pageFlipper = FindObjectOfType<PageFlipper>();
+
+        if (SadPage != null)
+        {
+            OpenSadPage();
+        }
     }
 
     private void Update()
@@ -70,6 +76,8 @@ public class TornPage : MonoBehaviour
             SkullPage.SetActive(false);
             newGame.SetActive(false);
             Controls.SetActive(false);
+            SadPage.SetActive(false);
+
 
 
             StopAllCoroutines();
@@ -87,6 +95,7 @@ public class TornPage : MonoBehaviour
             SkullPage.SetActive(false);
             newGame.SetActive(false);
             Controls.SetActive(false);
+            SadPage.SetActive(false);
 
 
             StopAllCoroutines();
@@ -105,6 +114,7 @@ public class TornPage : MonoBehaviour
             SkullPage.SetActive(false);
             newGame.SetActive(false);
             Controls.SetActive(false);
+            SadPage.SetActive(false);
 
 
             StopAllCoroutines();
@@ -123,6 +133,7 @@ public class TornPage : MonoBehaviour
             SkullPage.SetActive(false);
             newGame.SetActive(false);
             Controls.SetActive(true);
+            SadPage.SetActive(false);
 
 
             StopAllCoroutines();
@@ -142,6 +153,7 @@ public class TornPage : MonoBehaviour
                 SkullPage.SetActive(false);
                 newGame.SetActive(true);
                 Controls.SetActive(false);
+                SadPage.SetActive(false);
 
                 StopAllCoroutines();
                 StartCoroutine(MoveInTornPage());
@@ -173,6 +185,7 @@ public class TornPage : MonoBehaviour
             SkullPage.SetActive(false);
             newGame.SetActive(false);
             Controls.SetActive(false);
+            SadPage.SetActive(false);
 
 
 
@@ -196,11 +209,31 @@ public class TornPage : MonoBehaviour
             SkullPage.SetActive(true);
             newGame.SetActive(false);
             Controls.SetActive(false);
+            SadPage.SetActive(false);
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
         }
     }
+    public void OpenSadPage()
+    {
+        if (tornPageOpen == false && tornPageIsMoving == false && pageFlipper.aPageIsFlipping == false)
+        {
+
+            Options.SetActive(false);
+            RateUs.SetActive(false);
+            Credits.SetActive(false);
+            Quit.SetActive(false);
+            SkullPage.SetActive(false);
+            newGame.SetActive(false);
+            Controls.SetActive(false);
+
+
+            StopAllCoroutines();
+            StartCoroutine(MoveInTornPage());
+        }
+    }
+
     public IEnumerator MoveInTornPage()
     {
         if (AudioManager.instance != null)
