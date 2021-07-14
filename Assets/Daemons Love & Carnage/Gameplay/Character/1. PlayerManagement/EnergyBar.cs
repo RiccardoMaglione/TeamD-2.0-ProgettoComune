@@ -19,12 +19,12 @@ public class EnergyBar : MonoBehaviour
         {
             glowing.SetActive(true);
             glowing.GetComponent<Image>().fillAmount = 1;
-            GetComponentInChildren<Image>().enabled = false;
+            GetComponentInChildren<Image>().color = new Color(0, 0, 0, 0);
         }
         else if (EnergySlider.value == 0)
         {
             glowing.SetActive(false);
-            GetComponentInChildren<Image>().enabled = true;
+            GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
         }
     } */
 

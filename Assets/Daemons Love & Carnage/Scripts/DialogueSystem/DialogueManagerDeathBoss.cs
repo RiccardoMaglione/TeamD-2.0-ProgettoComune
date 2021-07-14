@@ -29,6 +29,8 @@ public class DialogueManagerDeathBoss : MonoBehaviour
 
     GameObject player;
 
+    public GameObject DestroyHim;
+
     void Awake()
     {
         positions = new Queue<Position>();
@@ -149,12 +151,27 @@ public class DialogueManagerDeathBoss : MonoBehaviour
         bossIlluminated.SetActive(false);
         bossObscured.SetActive(false);
 
-        FindObjectOfType<PSMController>().enabled = true;
-        player = GameObject.FindGameObjectWithTag("Player");
+        DestroyHim.SetActive(true);
+        Invoke("Finish", 1.8f);
+
         isTalk = false;
         animator.SetBool("isOpen", false);
-        blackPanel.SetActive(false); //11/04/21
+
         AudioManager.instance.Play("FinalCutsceneOST");
         AudioManager.instance.Play("Sfx_boss_destroy_him");
+    }
+
+    void Finish()
+    {
+        FindObjectOfType<PSMController>().enabled = true;
+        player = GameObject.FindGameObjectWithTag("Player");
+        blackPanel.GetComponent<Image>().CrossFadeAlpha(0, 0.5f, false);
+        Invoke("DeactivatePanel", 0.5f);
+    }
+
+    void DeactivatePanel()
+    {
+        DestroyHim.SetActive(false);
+        blackPanel.SetActive(false); //11/04/21
     }
 }
