@@ -35,6 +35,7 @@ namespace SwordGame
 
         void Start()
         {
+            AudioManager.instance.StopAllSFX();
             StartCoroutine(AnimationEye());                                                             //Parte la coroutine dell'animazione dell'occhio
             RandomScreenGameOver();                                                                     //Richiama il metodo per scegliere il random della schermata del gameover
             StartCoroutine(ScreenDeactive());                                                           //Parte la coroutine del fade
