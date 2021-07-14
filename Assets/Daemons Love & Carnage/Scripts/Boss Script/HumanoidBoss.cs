@@ -8,7 +8,7 @@ public class HumanoidBoss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.layer == 11)
         {
             int rand = Random.Range(1, 3);
             if (rand == 1)
