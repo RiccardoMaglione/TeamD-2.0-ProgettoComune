@@ -40,12 +40,6 @@ namespace SwordGame
             RandomScreenGameOver();                                                                     //Richiama il metodo per scegliere il random della schermata del gameover
             StartCoroutine(ScreenDeactive());                                                           //Parte la coroutine del fade
 
-            if (RndScreen == 6)
-                AudioManager.instance.FadeIn("Sfx_Bruh");
-            else
-            {
-                AudioManager.instance.FadeIn("Sfx_boss_imp_laugh");
-            }
 
             if (PlayerPrefs.GetInt("CompletedLevel") != 1)
             {
@@ -62,6 +56,13 @@ namespace SwordGame
         {
             RndScreen = Random.Range(0, ListScreen.Count);                                              //Estraggo un numero random tra 0 e il massimo della lista dei pannelli del gameover
             ListScreen[RndScreen].SetActive(true);                                                      //Attivo il pannello che ha come indice il random
+            if (RndScreen == 5)
+                AudioManager.instance.FadeIn("Sfx_Bruh");
+            else
+            {
+                AudioManager.instance.FadeIn("Sfx_boss_imp_laugh");
+            }
+
         }
 
         /// <summary>
