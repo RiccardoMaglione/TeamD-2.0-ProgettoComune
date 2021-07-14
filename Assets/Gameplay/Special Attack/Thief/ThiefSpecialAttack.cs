@@ -7,6 +7,7 @@ public class ThiefSpecialAttack : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] float time;
+    [SerializeField] GameObject arrow;
     public bool isSpecialActive = false;
 
     public static ThiefSpecialAttack instance;
@@ -15,6 +16,9 @@ public class ThiefSpecialAttack : MonoBehaviour
 
     public AnimatorOverrideController OriginalThiefOverride;
     public AnimatorOverrideController SpecialThiefOverride;
+
+    public bool isShot = false;
+    public float rateOfFire;
 
     #region Speed Animation Special
     public float SpecialPlayerIdleSpeed = 15;
@@ -63,8 +67,17 @@ public class ThiefSpecialAttack : MonoBehaviour
         GetComponentInParent<PSMController>().InitializeSpeedAnimation();
     }
 
+    public IEnumerator InstantiateArrow()
+    {
+        isShot = true;
+        GameObject GoArrow = Instantiate(arrow, transform.position, GetComponentInParent<PSMController>().gameObject.transform.rotation);
+        yield return new WaitForSecondsRealtime(rateOfFire);
+        isShot = false;
+    }
+
     void Awake()
     {
+        isShot = false;
         if (instance == null)
         {
             instance = this;
@@ -77,7 +90,6 @@ public class ThiefSpecialAttack : MonoBehaviour
         {
             GetComponentInParent<PSMController>().CurrentEnergy -= Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time));
             EnergyBar.EBInstance.glowing.GetComponent<Image>().fillAmount -= (Time.deltaTime * ((GetComponentInParent<PSMController>().MaxEnergy / time)) / 100);
-
         }
     }
 }
