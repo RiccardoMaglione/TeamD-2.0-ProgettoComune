@@ -152,7 +152,7 @@ public class DialogueManagerDeathBoss : MonoBehaviour
         bossObscured.SetActive(false);
 
         DestroyHim.SetActive(true);
-        Invoke("Finish", 2.4f);
+        Invoke("Finish", 1.8f);
 
         isTalk = false;
         animator.SetBool("isOpen", false);
@@ -165,7 +165,13 @@ public class DialogueManagerDeathBoss : MonoBehaviour
     {
         FindObjectOfType<PSMController>().enabled = true;
         player = GameObject.FindGameObjectWithTag("Player");
-        blackPanel.SetActive(false); //11/04/21
+        blackPanel.GetComponent<Image>().CrossFadeAlpha(0, 0.5f, false);
+        Invoke("DeactivatePanel", 0.5f);
+    }
+
+    void DeactivatePanel()
+    {
         DestroyHim.SetActive(false);
+        blackPanel.SetActive(false); //11/04/21
     }
 }
