@@ -39,7 +39,7 @@ public class Boss : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && playerDamaged == false && canDamage == true)
+        if (collision.gameObject.tag == "Player" && playerDamaged == false && canDamage == true && collision.GetComponent<PSMController>().Invulnerability == false)
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage * collision.GetComponent<PSMController>().CoeffReduceDamageLight;
             GetHitScript.getHitScript.gameObject.SetActive(false);
@@ -50,7 +50,7 @@ public class Boss : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && playerDamaged == false && canDamage == true)
+        if (collision.gameObject.tag == "Player" && playerDamaged == false && canDamage == true && collision.GetComponent<PSMController>().Invulnerability == false)
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage * collision.GetComponent<PSMController>().CoeffReduceDamageLight;
             GetHitScript.getHitScript.gameObject.SetActive(false);

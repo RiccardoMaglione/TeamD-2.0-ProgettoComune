@@ -24,7 +24,7 @@ public class Laser : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && playerDamaged == false)
+        if (collision.tag == "Player" && playerDamaged == false && collision.GetComponent<PSMController>().Invulnerability == false)
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
             playerDamaged = true;
@@ -36,7 +36,7 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && playerDamaged == false)
+        if (collision.tag == "Player" && playerDamaged == false && collision.GetComponent<PSMController>().Invulnerability == false)
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
             playerDamaged = true;

@@ -12,15 +12,12 @@ public class MoveRight : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && alreadyDamaged == false)
+        if (collision.gameObject.tag == "Player" && alreadyDamaged == false && collision.GetComponent<PSMController>().Invulnerability == false)
         {
             collision.GetComponent<PSMController>().CurrentHealth -= damage;
             alreadyDamaged = true;
             GetHitScript.getHitScript.gameObject.SetActive(false);
             GetHitScript.getHitScript.gameObject.SetActive(true);
-
-
-
         }
 
         // Debug.LogWarning(damage+" WAVE DAMAGE");
