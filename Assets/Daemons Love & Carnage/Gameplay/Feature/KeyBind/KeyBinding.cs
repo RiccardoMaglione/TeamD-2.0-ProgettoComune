@@ -32,7 +32,8 @@ public class KeyBinding : KeyVar
     public Sprite SpriteStandardKeyEsc;
     public Sprite SpriteStandardKeySpace;
     public Sprite SpriteStandardKeyLeftClick;
-
+    [Header("Numbers -----------------------------------")]
+    public Sprite SpriteStandardKeyZero;
     public Sprite SpriteStandardKeyOne;
     public Sprite SpriteStandardKeyTwo;
     public Sprite SpriteStandardKeyThree;
@@ -42,25 +43,68 @@ public class KeyBinding : KeyVar
     public Sprite SpriteStandardKeySeven;
     public Sprite SpriteStandardKeyEight;
     public Sprite SpriteStandardKeyNine;
-    public Sprite SpriteStandardKeyApostrophe;
-    public Sprite SpriteStandardKeyMinus;
-    public Sprite SpriteStandardKeyBackslash;
-    public Sprite SpriteStandardKeyDoubleDot;
-    public Sprite SpriteStandardKeyComma;
-    public Sprite SpriteStandardKeyDot;
-    public Sprite SpriteStandardKeyDotComma;
-    public Sprite SpriteStandardKeyUnderscore;
-    public Sprite SpriteStandardKeyPlus;
+    [Header("Symbols -----------------------------------")]
+    //public Sprite SpriteStandardKeyApostrophe;
+    //public Sprite SpriteStandardKeyMinus;
+    //public Sprite SpriteStandardKeyBackslash;
+    //public Sprite SpriteStandardKeyDoubleDot;
+    //public Sprite SpriteStandardKeyComma;
+    //public Sprite SpriteStandardKeyDot;
+    //public Sprite SpriteStandardKeyDotComma;
+    //public Sprite SpriteStandardKeyUnderscore;
+    //public Sprite SpriteStandardKeyPlus;
     public Sprite SpriteStandardKeyAlt;
-    public Sprite SpriteStandardCaps;
-    public Sprite SpriteStandardTab;
-    public Sprite SpriteStandardMouseDX;
-    public Sprite SpriteStandardMouseWheel;
-    public Sprite SpriteStandardà;
-    public Sprite SpriteStandardè;
-    public Sprite SpriteStandardì;
+    public Sprite SpriteStandardKeyCaps;
+    public Sprite SpriteStandardKeyTab;
+    public Sprite SpriteStandardKeyMouseDX;
+    public Sprite SpriteStandardKeyMouseWheel;
 
+    public Sprite SpriteStandardKeyBackQuote;
+    public Sprite SpriteStandardKeyBackslash;
+    public Sprite SpriteStandardKeyComma;
+    public Sprite SpriteStandardKeyEquals;
+    public Sprite SpriteStandardKeyRightBracket;
+    public Sprite SpriteStandardKeySemicolon;
+    public Sprite SpriteStandardKeyLeftBracket;
+    public Sprite SpriteStandardKeyMinus;
+    public Sprite SpriteStandardKeyPeriod;
+    public Sprite SpriteStandardKeyQuote;
+    public Sprite SpriteStandardKeySlash;
 
+    [Header("Special Alphabet -----------------------------------")]
+    public Sprite SpriteStandard_à;
+    public Sprite SpriteStandard_è;
+    public Sprite SpriteStandard_ì;
+    public Sprite SpriteStandard_ò;
+    public Sprite SpriteStandard_ù;
+    [Header("Alphabet -----------------------------------")]
+    public Sprite SpriteStandard_A;
+    public Sprite SpriteStandard_B;
+    //public Sprite SpriteStandard_C;
+    public Sprite SpriteStandard_D;
+    public Sprite SpriteStandard_E;
+    public Sprite SpriteStandard_F;
+    public Sprite SpriteStandard_G;
+    public Sprite SpriteStandard_H;
+    public Sprite SpriteStandard_I;
+    public Sprite SpriteStandard_J;
+    public Sprite SpriteStandard_K;
+    public Sprite SpriteStandard_L;
+    public Sprite SpriteStandard_M;
+    public Sprite SpriteStandard_N;
+    public Sprite SpriteStandard_O;
+    public Sprite SpriteStandard_P;
+    public Sprite SpriteStandard_Q;
+    public Sprite SpriteStandard_R;
+    public Sprite SpriteStandard_S;
+    public Sprite SpriteStandard_T;
+    public Sprite SpriteStandard_U;
+    //public Sprite SpriteStandard_V;
+    public Sprite SpriteStandard_W;
+    //public Sprite SpriteStandard_X;
+    public Sprite SpriteStandard_Y;
+    //public Sprite SpriteStandard_Z;
+    [Header("-----------------------------------")]
     public Sprite SpriteEmpty;
     public bool ActivateCondition;
 
@@ -480,6 +524,63 @@ public class KeyBinding : KeyVar
         AssingSpriteStandard(vKey, KeyCode.Mouse0, SpriteStandardKeyLeftClick, TempButton);
         AssingSpriteStandard(vKey, KeyCode.Space, SpriteStandardKeySpace, TempButton);
         AssingSpriteStandard(vKey, KeyCode.Escape, SpriteStandardKeyEsc, TempButton);
+
+
+
+        //Aggiungere righe qua per nuovi tasti
+
+
+        //Numbers
+        AssingSpriteStandard(vKey, KeyCode.Alpha0, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Alpha1, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Alpha2, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Alpha3, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Alpha4, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Alpha5, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Alpha6, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Alpha7, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Alpha8, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Alpha9, SpriteStandardKeyEsc, TempButton);
+
+        //Special Alphabet
+
+        //Alphabet
+        AssingSpriteStandard(vKey, KeyCode.A, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.B, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.D, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.E, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.F, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.G, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.H, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.I, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.J, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.K, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.L, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.M, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.N, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.O, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.P, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Q, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.R, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.S, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.T, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.U, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.V, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.W, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Y, SpriteStandardKeyEsc, TempButton);
+
+        //Special Symbols
+        AssingSpriteStandard(vKey, KeyCode.Semicolon, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Equals, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.BackQuote, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Quote, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Slash, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Comma, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Period, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Minus, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.LeftBracket, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.RightBracket, SpriteStandardKeyEsc, TempButton);
+        AssingSpriteStandard(vKey, KeyCode.Backslash, SpriteStandardKeyEsc, TempButton);
     }
 
     public void AssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
@@ -532,6 +633,54 @@ public class KeyBinding : KeyVar
         AssignAllSpriteButton("Space", SpriteStandardKeySpace);
         AssignAllSpriteButton("Escape", SpriteStandardKeyEsc);
         AssignAllSpriteButton("", SpriteEmpty);
+
+        //Aggiungere qui nuovi tasti
+
+        AssignAllSpriteButton("Alpha0", SpriteStandardKeyZero);
+        AssignAllSpriteButton("Alpha1", SpriteStandardKeyOne);
+        AssignAllSpriteButton("Alpha2", SpriteStandardKeyTwo);
+        AssignAllSpriteButton("Alpha3", SpriteStandardKeyThree);
+        AssignAllSpriteButton("Alpha4", SpriteStandardKeyFour);
+        AssignAllSpriteButton("Alpha5", SpriteStandardKeyFive);
+        AssignAllSpriteButton("Alpha6", SpriteStandardKeySix);
+        AssignAllSpriteButton("Alpha7", SpriteStandardKeySeven);
+        AssignAllSpriteButton("Alpha8", SpriteStandardKeyEight);
+        AssignAllSpriteButton("Alpha9", SpriteStandardKeyNine);
+
+        AssignAllSpriteButton("A", SpriteStandard_A);
+        AssignAllSpriteButton("B", SpriteStandard_B);
+        AssignAllSpriteButton("D", SpriteStandard_D);
+        AssignAllSpriteButton("E", SpriteStandard_E);
+        AssignAllSpriteButton("F", SpriteStandard_F);
+        AssignAllSpriteButton("G", SpriteStandard_G);
+        AssignAllSpriteButton("H", SpriteStandard_H);
+        AssignAllSpriteButton("I", SpriteStandard_I);
+        AssignAllSpriteButton("J", SpriteStandard_J);
+        AssignAllSpriteButton("K", SpriteStandard_K);
+        AssignAllSpriteButton("L", SpriteStandard_L);
+        AssignAllSpriteButton("M", SpriteStandard_M);
+        AssignAllSpriteButton("N", SpriteStandard_N);
+        AssignAllSpriteButton("O", SpriteStandard_O);
+        AssignAllSpriteButton("P", SpriteStandard_P);
+        AssignAllSpriteButton("Q", SpriteStandard_Q);
+        AssignAllSpriteButton("R", SpriteStandard_R);
+        AssignAllSpriteButton("S", SpriteStandard_S);
+        AssignAllSpriteButton("T", SpriteStandard_T);
+        AssignAllSpriteButton("U", SpriteStandard_U);
+        AssignAllSpriteButton("W", SpriteStandard_W);
+        AssignAllSpriteButton("Y", SpriteStandard_Y);
+
+        AssignAllSpriteButton("Semicolon", SpriteStandardKeySemicolon);
+        AssignAllSpriteButton("Equals", SpriteStandardKeyEquals);
+        AssignAllSpriteButton("BackQuote", SpriteStandardKeyBackQuote);
+        AssignAllSpriteButton("Quote", SpriteStandardKeyQuote);
+        AssignAllSpriteButton("Slash", SpriteStandardKeySlash);
+        AssignAllSpriteButton("Comma", SpriteStandardKeyComma);
+        AssignAllSpriteButton("Period", SpriteStandardKeyPeriod);
+        AssignAllSpriteButton("Minus", SpriteStandardKeyMinus);
+        AssignAllSpriteButton("LeftBracket", SpriteStandardKeyLeftBracket);
+        AssignAllSpriteButton("RightBracket", SpriteStandardKeyRightBracket);
+        AssignAllSpriteButton("Backslash", SpriteStandardKeyBackslash);
     }
 
     public void GetKeyUp()
@@ -572,6 +721,8 @@ public class KeyBinding : KeyVar
 
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button4, SpriteStandardLB, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button5, SpriteStandardRB, TempButton);
+
+        //Aggiungere qui nuovi tasti controller
     }
 
     public void ControllerAssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
@@ -608,6 +759,8 @@ public class KeyBinding : KeyVar
         //ControllerAssignAllSpriteButton("Horizontal", SpriteStandardLeftLeftJoystick);
         //ControllerAssignAllSpriteButton("Horizontal", SpriteStandardLeftRightJoystick);
         //ControllerAssignAllSpriteButton("Vertical", SpriteStandardLeftDownJoystick);
+
+        //Aggiungere nuovi tasti controller
     }
 
     public void AxisControllerAssingSpriteStandard(string Axis, string StandardAxis, Sprite SpriteKey, Button ButtonKey)
@@ -635,6 +788,8 @@ public class KeyBinding : KeyVar
         AxisControllerAssingSpriteStandard(Axis, "PS Right HRJ", SpriteStandardB, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "PS Up VRJ", SpriteStandardX, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "PS Down VRJ", SpriteStandardY, TempButton);
+
+        //Aggiungere tasti controller
     }
 
     public void AxisControllerAssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
@@ -665,6 +820,8 @@ public class KeyBinding : KeyVar
         AxisControllerAssignAllSpriteButton("Left right Joystick", SpriteStandardB);
         AxisControllerAssignAllSpriteButton("Left Down Joystick", SpriteStandardX);
         AxisControllerAssignAllSpriteButton("Left Up", SpriteStandardY);
+
+        //Aggiungere tasti qui controller
     }
     #endregion
 
@@ -716,6 +873,8 @@ public class KeyBinding : KeyVar
         PlaystationControllerAssignAllSpriteButton("Joystick1Button3", SpriteStandardPSTriangle);
         PlaystationControllerAssignAllSpriteButton("Joystick1Button4", SpriteStandardL1);
         PlaystationControllerAssignAllSpriteButton("Joystick1Button5", SpriteStandardR1);
+
+        //Aggiungere tasti qui controller
     }
 
 
@@ -750,6 +909,8 @@ public class KeyBinding : KeyVar
         PlaystationControllerAssignAllSpriteButton("", SpriteStandardPSTriangle);
         PlaystationControllerAssignAllSpriteButton("", SpriteStandardL1);
         PlaystationControllerAssignAllSpriteButton("", SpriteStandardR1);
+
+        //Aggiungere tasti qui controller
     }/**/
     #endregion
 }
