@@ -33,6 +33,34 @@ public class KeyBinding : KeyVar
     public Sprite SpriteStandardKeySpace;
     public Sprite SpriteStandardKeyLeftClick;
 
+    public Sprite SpriteStandardKeyOne;
+    public Sprite SpriteStandardKeyTwo;
+    public Sprite SpriteStandardKeyThree;
+    public Sprite SpriteStandardKeyFour;
+    public Sprite SpriteStandardKeyFive;
+    public Sprite SpriteStandardKeySix;
+    public Sprite SpriteStandardKeySeven;
+    public Sprite SpriteStandardKeyEight;
+    public Sprite SpriteStandardKeyNine;
+    public Sprite SpriteStandardKeyApostrophe;
+    public Sprite SpriteStandardKeyMinus;
+    public Sprite SpriteStandardKeyBackslash;
+    public Sprite SpriteStandardKeyDoubleDot;
+    public Sprite SpriteStandardKeyComma;
+    public Sprite SpriteStandardKeyDot;
+    public Sprite SpriteStandardKeyDotComma;
+    public Sprite SpriteStandardKeyUnderscore;
+    public Sprite SpriteStandardKeyPlus;
+    public Sprite SpriteStandardKeyAlt;
+    public Sprite SpriteStandardCaps;
+    public Sprite SpriteStandardTab;
+    public Sprite SpriteStandardMouseDX;
+    public Sprite SpriteStandardMouseWheel;
+    public Sprite SpriteStandardà;
+    public Sprite SpriteStandardè;
+    public Sprite SpriteStandardì;
+
+
     public Sprite SpriteEmpty;
     public bool ActivateCondition;
 
