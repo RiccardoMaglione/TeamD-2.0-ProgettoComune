@@ -164,6 +164,8 @@ public class TornPage : MonoBehaviour
             if (PlayerPrefs.GetInt("NewGameFirst") == 0)
             {
                 PlayerPrefs.SetInt("ObtainSkull", 0);
+                
+                PlayerPrefs.SetFloat("BestTimer", 0);
 
                 PlayerPrefs.SetString("StringTimerGameplay", "00:00:00");
 
@@ -180,6 +182,10 @@ public class TornPage : MonoBehaviour
         //script che resetta i dati di gioco
         StopAllCoroutines();
         StartCoroutine(MoveOutTornPageCoroutine());
+
+        PlayerPrefs.SetInt("ObtainSkull", 0);
+
+        PlayerPrefs.SetFloat("BestTimer", 0);
 
         PlayerPrefs.SetString("StringTimerGameplay", "00:00:00");
 
