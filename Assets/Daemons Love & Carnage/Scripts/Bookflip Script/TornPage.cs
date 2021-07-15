@@ -30,13 +30,14 @@ public class TornPage : MonoBehaviour
 
     public bool thereAreSavedData; //bool da integrare con sistema di salvataggio
 
+
     private void Start()
     {
         startPos = tornPage.transform.position;
         endPos = tornPageDestination.transform.position;
         pageFlipper = FindObjectOfType<PageFlipper>();
 
-        if (SadPage != null)
+        if (SadPage != null && FirstOpenGameCheck.firstOpening == true)
         {
             OpenSadPage();
         }
@@ -241,7 +242,7 @@ public class TornPage : MonoBehaviour
             SkullPage.SetActive(false);
             newGame.SetActive(false);
             Controls.SetActive(false);
-
+            FirstOpenGameCheck.firstOpening = false;
 
             StopAllCoroutines();
             StartCoroutine(MoveInTornPage());
