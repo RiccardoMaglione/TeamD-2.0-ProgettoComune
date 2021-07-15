@@ -161,6 +161,14 @@ public class TornPage : MonoBehaviour
             }
             if (PlayerPrefs.GetInt("NewGameFirst") == 0)
             {
+                PlayerPrefs.SetInt("ObtainSkull", 0);
+
+                PlayerPrefs.SetString("StringTimerGameplay", "00:00:00");
+
+                PlayerPrefs.SetFloat("TimerGameplay", 0);
+
+                PlayerPrefs.SetInt("CountPossession", 0);
+
                 pageFlipper.NewGame();
             }
         }
@@ -170,6 +178,12 @@ public class TornPage : MonoBehaviour
         //script che resetta i dati di gioco
         StopAllCoroutines();
         StartCoroutine(MoveOutTornPageCoroutine());
+
+        PlayerPrefs.SetString("StringTimerGameplay", "00:00:00");
+
+        PlayerPrefs.SetFloat("TimerGameplay", 0);
+
+        PlayerPrefs.SetInt("CountPossession", 0);
 
         pageFlipper.NewGame();
     }
