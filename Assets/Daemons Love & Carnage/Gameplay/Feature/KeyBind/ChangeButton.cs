@@ -16,30 +16,30 @@ public class ChangeButton : MonoBehaviour
 
     public void InteractableButtonGameObject(GameObject FirstSelectableObject)
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
-        {
+        //if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        //{
             //ThisButton.interactable = false;
             PrecedentButton = ThisButton;
             EventSystem.current.SetSelectedGameObject(FirstSelectableObject);
-        }
+        //}
     }
     public void InteractableButtonNull()
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
-        {
+        //if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        //{
             //ThisButton.interactable = false;
             PrecedentButton = ThisButton;
             EventSystem.current.SetSelectedGameObject(null);
-        }
+        //}
     }
 
     public void InteractableButtonsdfaaaaaaaaa(GameObject FirstSelectableObject)
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
-        {
+        //if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        //{
             PrecedentButton = ThisButton;
             FirstSelectableObject.SetActive(true);
             EventSystem.current.SetSelectedGameObject(FirstSelectableObject);
-        }
+        //}
     }
 }

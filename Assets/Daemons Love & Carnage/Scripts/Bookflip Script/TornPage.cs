@@ -47,6 +47,7 @@ public class TornPage : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && tornPageOpen == true)
         {
             MoveOutTornPage();
+            EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
         }
         else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && CheckInput.XboxController == true)
         {
