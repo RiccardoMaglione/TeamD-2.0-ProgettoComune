@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using SwordGame;
 
 public class DialogueType1 : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class DialogueType1 : MonoBehaviour
     public bool Possession;
     public bool Light;
     public bool Heavy;
+    public bool Special;
 
     [SerializeField] public KeyCode buttonToSkip1;
     [SerializeField] public KeyCode ControllerButtonToSkip1;
@@ -51,6 +53,9 @@ public class DialogueType1 : MonoBehaviour
     //4 s           Se è 0 o 4 o 5
     //5 shift       Se è 0 o 5
     int Count;
+
+    public static bool TutorialEnergyBool;
+    public bool isTutorialEnergy;
     public void TemplateScritta()
     {
         Count = 0;
@@ -154,6 +159,18 @@ public class DialogueType1 : MonoBehaviour
                 }
                 Count++;
             }
+            if (Special == true)
+            {
+                if (CheckInput.Controller == false)
+                {
+                    FinalString += ListInsertTutorialText[Count] + KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeySpecialAttack).ToString();
+                }
+                else
+                {
+                    FinalString += ListInsertTutorialText[Count] + KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeySpecialAttack);
+                }
+                Count++;
+            }
         }
         if(Count < ListInsertTutorialText.Count)
         {
@@ -195,7 +212,25 @@ public class DialogueType1 : MonoBehaviour
             print("Numero tutorial è " + StaticTutorial);
         }
     }
+    public void StartIn()
+    {
+        if (TutorialEnergyBool == false && ChangeFollow.StaticPlayerTemp.GetComponent<PSMController>().CurrentEnergy == 100 && PlayerPrefs.GetInt("TutorialSkipEnergy") < NumSkip && isTutorialEnergy == true)
+        {
+            TemplateScritta();
 
+            PSMController.disableAllInput = true;
+            
+            dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-630, -150);
+
+            blackPanel.SetActive(true);
+            dialogueText.text = insertTutorialText;
+            
+            Time.timeScale = 0;
+            dialogueBox.SetActive(true);
+            
+            StartCoroutine("DialogueIn");
+        }
+    }
     private void DestroyCollider()
     {
         StaticTutorial++;
@@ -208,7 +243,7 @@ public class DialogueType1 : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetKeyDown(buttonToSkip1) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == true) || (Input.GetKeyDown(ControllerButtonToSkip2) && CheckInput.PlaystationController == true)) && dialogueActive == true)
+        if ((Input.GetKeyDown(buttonToSkip1) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == true) || (Input.GetKeyDown(ControllerButtonToSkip2) && CheckInput.PlaystationController == true)) && dialogueActive == true && isTutorialEnergy == false)
         {
             dialogueActive = false;
             StopCoroutine("DialogueIn");
@@ -219,7 +254,24 @@ public class DialogueType1 : MonoBehaviour
             }
             Invoke("DestroyCollider", 0.1f);
         }
+        else if ((Input.GetKeyDown(buttonToSkip1) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == true) || (Input.GetKeyDown(ControllerButtonToSkip2) && CheckInput.PlaystationController == true)) && dialogueActive == true && TutorialEnergyBool == false && isTutorialEnergy == true)
+        {
+            PlayerPrefs.SetInt("TutorialSkipEnergy", NumSkip);
+            TutorialEnergyBool = true;
+            dialogueActive = false;
+            StopCoroutine("DialogueIn");
+            StartCoroutine("DialogueOut");
+            PSMController.disableAllInput = false;
+            Invoke("StopOut", 0.1f);
+        }
+
+        EnergyTrue();
+        if(isTutorialEnergy == true)
+        {
+            StartIn();
+        }
     }
+
     private IEnumerator DialogueIn()
     {
         while (dialogueBox.GetComponent<RectTransform>().anchoredPosition.x != endPos.position.x)
@@ -248,4 +300,22 @@ public class DialogueType1 : MonoBehaviour
         }
     }
 
+
+
+    #region Special Tutorial
+    public void EnergyTrue()
+    {
+        if (PlayerPrefs.GetInt("TutorialSkipEnergy") >= NumSkip)
+        {
+            TutorialEnergyBool = true;
+        }
+    }
+
+    private void StopOut()
+    {
+        StopCoroutine("DialogueOut");
+        Destroy(this);
+        //gameObject.SetActive(false);
+    }
+    #endregion
 }

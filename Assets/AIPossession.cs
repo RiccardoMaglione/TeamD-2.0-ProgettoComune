@@ -9,6 +9,8 @@ public class AIPossession : StateMachineBehaviour
     {
         animator.GetComponent<EnemyData>().timerStun = 0;
         animator.GetComponent<EnemyData>().CountHit = 0;
+        animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
+        animator.GetComponent<EnemyData>().HeavyAttackCollider.SetActive(false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

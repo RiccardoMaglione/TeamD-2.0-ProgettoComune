@@ -7,6 +7,9 @@ public class AIDeathState : StateMachineBehaviour
     {
         animator.GetComponentInChildren<EnemyParticleController>().StopStun();
 
+        animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
+        animator.GetComponent<EnemyData>().HeavyAttackCollider.SetActive(false);
+
         //if(FindObjectOfType<ScoreSystem>(true).SpecialType == true)
         //{
         //    FindObjectOfType<ScoreSystem>(true).ScoreAssignedEnemyDestroy((int)animator.GetComponent<EnemyData>().TypeEnemy,3);
