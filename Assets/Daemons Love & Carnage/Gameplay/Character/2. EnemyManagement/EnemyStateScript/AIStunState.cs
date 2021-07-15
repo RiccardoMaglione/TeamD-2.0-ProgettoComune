@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
+using SwordGame;
 
 public class AIStunState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if(animator.GetComponent<PSMController>().DashColliderBabushka != null)
+            animator.GetComponent<PSMController>().DashColliderBabushka.SetActive(false);
+
         animator.GetComponent<EnemyData>().GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         if (AudioManager.instance != null)
         {

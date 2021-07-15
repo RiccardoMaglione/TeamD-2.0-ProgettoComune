@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
+using SwordGame;
 
 public class AIDeathState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (animator.GetComponent<PSMController>().DashColliderBabushka != null)
+            animator.GetComponent<PSMController>().DashColliderBabushka.SetActive(false);
+
         animator.GetComponentInChildren<EnemyParticleController>().StopStun();
 
         animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);

@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SwordGame;
 
 public class AIPossession : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (animator.GetComponent<PSMController>().DashColliderBabushka != null)
+            animator.GetComponent<PSMController>().DashColliderBabushka.SetActive(false);
+
         animator.GetComponent<EnemyData>().timerStun = 0;
         animator.GetComponent<EnemyData>().CountHit = 0;
         animator.GetComponent<EnemyData>().LightAttackCollider.SetActive(false);
