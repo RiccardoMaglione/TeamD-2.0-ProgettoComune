@@ -56,6 +56,7 @@ public class DialogueType1 : MonoBehaviour
 
     public static bool TutorialEnergyBool;
     public bool isTutorialEnergy;
+    public static bool TutorialActive;
     public void TemplateScritta()
     {
         Count = 0;
@@ -190,9 +191,10 @@ public class DialogueType1 : MonoBehaviour
     {
         if (collision.CompareTag("Player") && PlayerPrefs.GetInt("TutorialSkip") < NumSkip)
         {
+            TutorialActive = true;
+
             TemplateScritta();
             dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-630, -150);
-
             blackPanel.SetActive(true);
             dialogueText.text = insertTutorialText;
 
@@ -217,7 +219,7 @@ public class DialogueType1 : MonoBehaviour
         if (TutorialEnergyBool == false && ChangeFollow.StaticPlayerTemp.GetComponent<PSMController>().CurrentEnergy == 100 && PlayerPrefs.GetInt("TutorialSkipEnergy") < NumSkip && isTutorialEnergy == true)
         {
             TemplateScritta();
-
+            TutorialActive = true;
             PSMController.disableAllInput = true;
             
             dialogueBox.GetComponent<RectTransform>().anchoredPosition = new Vector2(-630, -150);
@@ -252,6 +254,7 @@ public class DialogueType1 : MonoBehaviour
             {
                 PlayerPrefs.SetInt("TutorialSkip", NumSkip);
             }
+            TutorialActive = false;
             Invoke("DestroyCollider", 0.1f);
         }
         else if ((Input.GetKeyDown(buttonToSkip1) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == true) || (Input.GetKeyDown(ControllerButtonToSkip2) && CheckInput.PlaystationController == true)) && dialogueActive == true && TutorialEnergyBool == false && isTutorialEnergy == true)
@@ -262,6 +265,7 @@ public class DialogueType1 : MonoBehaviour
             StopCoroutine("DialogueIn");
             StartCoroutine("DialogueOut");
             PSMController.disableAllInput = false;
+            TutorialActive = false;
             Invoke("StopOut", 0.1f);
         }
 
