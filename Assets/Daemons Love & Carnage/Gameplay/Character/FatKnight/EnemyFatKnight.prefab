@@ -2499,6 +2499,7 @@ GameObject:
   - component: {fileID: 8277929296071829671}
   - component: {fileID: 8277929296071829670}
   - component: {fileID: 6535741833623615210}
+  - component: {fileID: 1177546091447964930}
   m_Layer: 9
   m_Name: PrompCommand
   m_TagString: Untagged
@@ -2583,6 +2584,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056ea81952a7897489915f2f8189c1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1177546091447964930
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277929296071829672}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e7f711df2cde21499335c9dcf7ae28d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8277929296192245009
 GameObject:
   m_ObjectHideFlags: 0
@@ -3475,14 +3495,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bab6bff43cd06f4e9bf59d1ffe58429, type: 3}
---- !u!198 &3606783347981580216 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7082030890822261074, guid: 0bab6bff43cd06f4e9bf59d1ffe58429, type: 3}
-  m_PrefabInstance: {fileID: 5784226979845877482}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3606783347981580219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7082030890822261073, guid: 0bab6bff43cd06f4e9bf59d1ffe58429, type: 3}
+  m_PrefabInstance: {fileID: 5784226979845877482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3606783347981580216 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7082030890822261074, guid: 0bab6bff43cd06f4e9bf59d1ffe58429, type: 3}
   m_PrefabInstance: {fileID: 5784226979845877482}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6761634859629549655

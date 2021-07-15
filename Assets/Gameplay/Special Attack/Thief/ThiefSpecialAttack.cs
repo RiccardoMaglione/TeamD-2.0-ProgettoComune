@@ -56,7 +56,7 @@ public class ThiefSpecialAttack : MonoBehaviour
         isSpecialActive = true;
         InitializeSpeedAnimationSpecial();
         yield return new WaitForSeconds(time);
-        
+
         specialOn = false;
 
         if (GetComponentInParent<PSMController>().isActiveAndEnabled)
@@ -81,7 +81,7 @@ public class ThiefSpecialAttack : MonoBehaviour
 
     void Awake()
     {
-        specialOn = false;
+        //specialOn = false;
         isShot = false;
 
         if (instance == null)

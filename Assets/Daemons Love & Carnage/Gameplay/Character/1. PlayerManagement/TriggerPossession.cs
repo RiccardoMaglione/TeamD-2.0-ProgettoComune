@@ -54,14 +54,14 @@ public class TriggerPossession : Possession
             EnergyBar.EBInstance.glowing.SetActive(false);
             EnergyBar.EBInstance.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
 
-            
+
             Player.GetComponentInParent<PSMController>().LightAttackCollider.SetActive(false);
             Player.GetComponentInParent<PSMController>().HeavyAttackCollider.SetActive(false);
             Player.GetComponentInParent<PSMController>().EventDeactivateTornado();
 
             ThiefSpecialAttack.specialOn = false;
             StopAllCoroutines();
-            
+
             DelayBool = false;
             TimerDelay = 0;
             SpecialBabushka.BabuskaSpecial = false;
