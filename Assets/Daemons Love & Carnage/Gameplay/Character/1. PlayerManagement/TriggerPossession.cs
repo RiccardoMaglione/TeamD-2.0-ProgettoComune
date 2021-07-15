@@ -49,7 +49,7 @@ public class TriggerPossession : Possession
                 DelayBool = true;
             }
         }
-        if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyPossession)) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State") && DelayBool == true && PSMController.disableAllInput == false)
+        if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyPossession)) || Input.GetKeyDown(KeyCode.Joystick1Button4)) && Enemy == GetComponentInParent<EnemyData>().gameObject & !Player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Player Die State") && DelayBool == true && PSMController.disableAllInput == false & !Enemy.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
             EnergyBar.EBInstance.glowing.SetActive(false);
             EnergyBar.EBInstance.GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
@@ -162,6 +162,12 @@ public class TriggerPossession : Possession
             Enemy = gameObject.GetComponentInParent<EnemyData>().gameObject;                                            //Definisco l'enemy come l'oggetto parent dello script EnemyData
             Enemy.GetComponentInChildren<TriggerPossession>().PromptEnemy.SetActive(true);                              //Attivo il prompt del tasto all'enemy
         }
+
+        if(Enemy.GetComponentInChildren<TriggerPossession>().PromptEnemy != null && Enemy != null && Enemy.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        {
+            Enemy.GetComponentInChildren<TriggerPossession>().PromptEnemy.SetActive(false);
+        }
+
     }
 
     /// <summary>
