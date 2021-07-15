@@ -560,7 +560,6 @@ namespace SwordGame
                     {
                         GetHitScript.getHitScript.gameObject.SetActive(false);
                         GetHitScript.getHitScript.gameObject.SetActive(true);
-
                         switch (collision.GetComponentInParent<EnemyData>().TypeEnemy)
                         {
                             case TypeEnemies.FatKnight:
