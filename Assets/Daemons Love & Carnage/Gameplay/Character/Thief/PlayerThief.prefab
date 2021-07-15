@@ -490,14 +490,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 330495406017475122}
-  time: 5
+  time: 8
   arrow: {fileID: 7682607842086701567, guid: 9476eed323ed35641b5f2386f4d6363e, type: 3}
   isSpecialActive: 0
   DecreaseEnergy: 0
   OriginalThiefOverride: {fileID: 22100000, guid: 5f6d22e1af8147a48a3effd6269a51fa, type: 2}
   SpecialThiefOverride: {fileID: 22100000, guid: 895a2df0e8fa0854d9b3f882538e8aed, type: 2}
   isShot: 0
-  rateOfFire: 0.15
+  rateOfFire: 0.12
   SpecialPlayerIdleSpeed: 10
   SpecialPlayerMoveSpeed: 4
   SpecialPlayerDashSpeed: 1
@@ -1830,6 +1830,7 @@ GameObject:
   - component: {fileID: 9146201628404208698}
   - component: {fileID: 9146201628404208697}
   - component: {fileID: 4975331400362959720}
+  - component: {fileID: 5644044447751207849}
   m_Layer: 8
   m_Name: PrompCommand
   m_TagString: Untagged
@@ -1914,6 +1915,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056ea81952a7897489915f2f8189c1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5644044447751207849
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146201628404208696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e7f711df2cde21499335c9dcf7ae28d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9146201629709627920
 GameObject:
   m_ObjectHideFlags: 0

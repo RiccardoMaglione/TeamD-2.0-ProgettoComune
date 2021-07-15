@@ -569,7 +569,7 @@ MonoBehaviour:
   OnceJump: 0
   VelocityDash: 2
   BoriousDashDMGMultiplier: 0
-  ResetTimerStaggered: 5428.164
+  ResetTimerStaggered: 5429.5654
   MaxResetTimerStaggered: 2
   PoisePlayer: 0
   MaxPoisePlayer: 10000000
@@ -1790,6 +1790,7 @@ GameObject:
   - component: {fileID: 8831338008277857073}
   - component: {fileID: 6509419706248256536}
   - component: {fileID: 6930381754559399138}
+  - component: {fileID: 8251454490723327534}
   m_Layer: 8
   m_Name: PrompCommand
   m_TagString: Untagged
@@ -1874,6 +1875,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056ea81952a7897489915f2f8189c1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &8251454490723327534
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921954260990970014}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e7f711df2cde21499335c9dcf7ae28d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5268682610785178028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,14 +3308,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3597c9ea234bfce4591f42f9ed929b8c, type: 3}
---- !u!198 &6253726353474905668 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1140490639170391811, guid: 3597c9ea234bfce4591f42f9ed929b8c, type: 3}
-  m_PrefabInstance: {fileID: 6420555052619278663}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6253726353474905667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1140490639170391812, guid: 3597c9ea234bfce4591f42f9ed929b8c, type: 3}
+  m_PrefabInstance: {fileID: 6420555052619278663}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6253726353474905668 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1140490639170391811, guid: 3597c9ea234bfce4591f42f9ed929b8c, type: 3}
   m_PrefabInstance: {fileID: 6420555052619278663}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7397758377304807105
@@ -3430,14 +3450,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48d7e662b23597c4ab6258bed4346bd2, type: 3}
---- !u!4 &2814469879578430661 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6851549869661084139, guid: 48d7e662b23597c4ab6258bed4346bd2, type: 3}
-  m_PrefabInstance: {fileID: 8654398132849399086}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8837121308248912289 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 196287279130272911, guid: 48d7e662b23597c4ab6258bed4346bd2, type: 3}
+  m_PrefabInstance: {fileID: 8654398132849399086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2814469879578430661 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6851549869661084139, guid: 48d7e662b23597c4ab6258bed4346bd2, type: 3}
   m_PrefabInstance: {fileID: 8654398132849399086}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8982358270873007671
@@ -3497,14 +3517,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2788a7c4d06aa6a4e80864e3535c7b40, type: 3}
---- !u!198 &5993404624260530654 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3425944649617307625, guid: 2788a7c4d06aa6a4e80864e3535c7b40, type: 3}
-  m_PrefabInstance: {fileID: 8982358270873007671}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5993404624260530641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3425944649617307622, guid: 2788a7c4d06aa6a4e80864e3535c7b40, type: 3}
+  m_PrefabInstance: {fileID: 8982358270873007671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5993404624260530654 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3425944649617307625, guid: 2788a7c4d06aa6a4e80864e3535c7b40, type: 3}
   m_PrefabInstance: {fileID: 8982358270873007671}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9025956730657732920
