@@ -7,12 +7,12 @@ On his wedding day, the demon Valmael is turned into a sword due to a conspiracy
 The demon will have to face countless challenges and fearsome opponents to save her bride... and maybe even return to his true form.
 
 Features:
-Possess the enemies and use them to your advantage
-Each enemy has unique movesets and stats
-Beat enemies to charge devastating special moves
-Destroy waves of enemies in frantic brawls
-Fight an epic battle against the boss
-An insane world with eccentric characters
+- Possess the enemies and use them to your advantage
+- Each enemy has unique movesets and stats
+- Beat enemies to charge devastating special moves
+- Destroy waves of enemies in frantic brawls
+- Fight an epic battle against the boss
+- An insane world with eccentric characters
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
