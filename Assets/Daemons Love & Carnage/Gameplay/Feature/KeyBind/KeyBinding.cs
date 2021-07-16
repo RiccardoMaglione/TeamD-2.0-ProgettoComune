@@ -214,17 +214,17 @@ public class KeyBinding : KeyVar
 
     public void ListenerOnClik(Button ButtonKey)
     {
-        if (CheckInput.PlaystationController == true /*&& Input.GetKeyDown(KeyCode.Joystick1Button1)*/)
+        if (CheckInput.Controller == true /*&& Input.GetKeyDown(KeyCode.Joystick1Button1)*/)     //Prima era CheckInput.PlaystationController == true
         {
             ActivateGetKey = true;
             KeyText = ButtonKey.GetComponentInChildren<Text>();
             TempButton = ButtonKey;
             //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
             EventSystem.current.SetSelectedGameObject(TempButton.gameObject);
-            PlayerPrefs.SetString(TempButton.name.ToString(), "");
+            PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), "");
             KeyText.text = "";
         }
-        else if(CheckInput.PlaystationController == false)
+        else if(CheckInput.Controller == false)      //Prima era CheckInput.PlaystationController == false
         {
             ActivateGetKey = true;
             KeyText = ButtonKey.GetComponentInChildren<Text>();
@@ -266,6 +266,7 @@ public class KeyBinding : KeyVar
             {
                 if (Input.GetKey(vKey) && CheckInput.Controller == false)
                 {
+                    print("Passi qua?");
                     ActivateGetKey = false;
                     ActivateCondition = false;
                     KeyText.text = vKey.ToString();
@@ -503,6 +504,7 @@ public class KeyBinding : KeyVar
         }
     }
 
+    #region Call Function in Another Scripts
     public KeyCode SetKeyBind(string KeyValue)
     {
         if(ActivateGetKey == false)
@@ -523,9 +525,11 @@ public class KeyBinding : KeyVar
         }
         return KeyCode.None;
     }
+    #endregion
+
     public void AssingSpriteStandard(KeyCode vKey, KeyCode StandardKeyCode, Sprite SpriteKey, Button ButtonKey)
     {
-        if (vKey == StandardKeyCode && SpriteKey != null)
+        if (vKey == StandardKeyCode && SpriteKey != null && ButtonKey != null)      //Aggiunto buttonkey != null
         {
             ButtonKey.GetComponent<Image>().sprite = SpriteKey;
             KeyText.text = "";
@@ -607,11 +611,13 @@ public class KeyBinding : KeyVar
         AssingSpriteStandard(vKey, KeyCode.LeftBracket, SpriteStandardKeyEsc, TempButton);
         AssingSpriteStandard(vKey, KeyCode.RightBracket, SpriteStandardKeyEsc, TempButton);
         AssingSpriteStandard(vKey, KeyCode.Backslash, SpriteStandardKeyEsc, TempButton);
+
+        AssingSpriteStandard(vKey, KeyCode.None, SpriteEmpty, TempButton);      //Aggiunto il 16/07/21
     }
 
     public void AssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
     {
-        if (KeyName == Keystring)
+        if (KeyName == Keystring && ButtonKey != null)      //Aggiunto il 16/07/21
         {
             ButtonKey.GetComponent<Image>().sprite = SpriteKey;
             ButtonKey.GetComponentInChildren<Text>().text = "";
@@ -658,7 +664,7 @@ public class KeyBinding : KeyVar
         AssignAllSpriteButton("Mouse0", SpriteStandardKeyLeftClick);
         AssignAllSpriteButton("Space", SpriteStandardKeySpace);
         AssignAllSpriteButton("Escape", SpriteStandardKeyEsc);
-        AssignAllSpriteButton("", SpriteEmpty);
+
 
         //Aggiungere qui nuovi tasti
 
@@ -707,6 +713,8 @@ public class KeyBinding : KeyVar
         AssignAllSpriteButton("LeftBracket", SpriteStandardKeyLeftBracket);
         AssignAllSpriteButton("RightBracket", SpriteStandardKeyRightBracket);
         AssignAllSpriteButton("Backslash", SpriteStandardKeyBackslash);
+
+        AssignAllSpriteButton("", SpriteEmpty);
     }
 
     public void GetKeyUp()
@@ -744,12 +752,9 @@ public class KeyBinding : KeyVar
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button1, SpriteStandardB, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button2, SpriteStandardX, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button3, SpriteStandardY, TempButton);
-
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button4, SpriteStandardLB, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button5, SpriteStandardRB, TempButton);
-
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button6, SpriteStandardXboxShare, TempButton);
-
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button7, SpriteStandardXboxStart, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button8, SpriteStandardLeftClickJoystick, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button9, SpriteStandardRightClickJoystick, TempButton);
@@ -831,10 +836,12 @@ public class KeyBinding : KeyVar
 
         //AxisControllerAssingSpriteStandard(Axis, "", SpriteStandardLB, TempButton);
         //AxisControllerAssingSpriteStandard(Axis, "", SpriteStandardRB, TempButton);
+
         AxisControllerAssingSpriteStandard(Axis, "PS DPad Left", SpriteStandardDPadLeft, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "PS DPad Right", SpriteStandardDPadRight, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "PS DPad Down", SpriteStandardDPadDown, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "PS DPad Up", SpriteStandardDPadUp, TempButton);
+
         AxisControllerAssingSpriteStandard(Axis, "PS Left HRJ", SpriteStandardLeftLeftJoystick, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "PS Right HRJ", SpriteStandardLeftRightJoystick, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "PS Up VRJ", SpriteStandardX, TempButton);
