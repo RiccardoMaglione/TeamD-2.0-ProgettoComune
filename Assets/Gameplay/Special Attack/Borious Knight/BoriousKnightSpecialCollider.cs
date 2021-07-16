@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using SwordGame;
+﻿using UnityEngine;
 
 public class BoriousKnightSpecialCollider : MonoBehaviour
 {
@@ -9,13 +6,13 @@ public class BoriousKnightSpecialCollider : MonoBehaviour
 
     void OnEnable()
     {
-        basePlayerParticles = gameObject.transform.root.GetComponentInChildren<BasePlayerParticles>();        
+        basePlayerParticles = gameObject.transform.root.GetComponentInChildren<BasePlayerParticles>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
-        {     
+        {
             collision.GetComponent<EnemyData>().CountPoiseEnemy += 50;
             collision.GetComponent<Animator>().SetTrigger("DamageReceived");
             if (collision.GetComponent<EnemyData>().CountPoiseEnemy >= collision.GetComponent<EnemyData>().MaxCountPoiseEnemy)
@@ -30,7 +27,7 @@ public class BoriousKnightSpecialCollider : MonoBehaviour
             collision.GetComponentInChildren<EnemyParticleController>().PlayBlood();
             GameObject go = collision.gameObject;
             basePlayerParticles.PlayHit(go);
-            if(AudioManager.instance != null)
+            if (AudioManager.instance != null)
             {
                 AudioManager.instance.Play("Sfx_BK_S_atk");
             }
@@ -38,7 +35,7 @@ public class BoriousKnightSpecialCollider : MonoBehaviour
         if (collision.gameObject.CompareTag("Boss"))
         {
             if (collision.GetComponentInParent<Boss>().canGetDamage == true)
-                collision.GetComponentInParent<Boss>().life -= GetComponentInParent<BoriousKnightSpecialAttack>().damage;
+                collision.GetComponentInParent<Boss>().life -= GetComponentInParent<BoriousKnightSpecialAttack>().damage * collision.GetComponent<Boss>().DMG_Reduction;
         }
     }
 }

@@ -82,12 +82,7 @@ public class AttackSystem : MonoBehaviour
             }
             if (GetComponentInParent<PSMController>().IsSpecialAttack == true)
             {
-                if (gameObject.transform.root.GetComponentInChildren<BoriousKnightSpecialAttack>() != null && gameObject.transform.root.GetComponentInChildren<BoriousKnightSpecialAttack>().SpecialActivated == true)
-                {
-                    collision.GetComponent<Boss>().life -= SpecialDamage * (collision.GetComponent<Boss>().DMG_Reduction / 2);
-                }
-                else
-                    collision.GetComponent<Boss>().life -= SpecialDamage * collision.GetComponent<Boss>().DMG_Reduction;
+                collision.GetComponent<Boss>().life -= SpecialDamage * collision.GetComponent<Boss>().DMG_Reduction;
             }
 
 
