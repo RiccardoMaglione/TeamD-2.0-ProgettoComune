@@ -45,17 +45,17 @@ public class TornPage : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && tornPageOpen == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && tornPageOpen == true && tornPageIsMoving == false)
         {
             MoveOutTornPage();
             EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
         }
-        else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && CheckInput.XboxController == true)
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && CheckInput.XboxController == true && tornPageIsMoving == false)
         {
             MoveOutTornPage();
             EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
         }
-        else if (Input.GetKeyDown(KeyCode.Joystick1Button2) && CheckInput.PlaystationController == true)
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button2) && CheckInput.PlaystationController == true && tornPageIsMoving == false)
         {
             MoveOutTornPage();
             EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
@@ -282,6 +282,7 @@ public class TornPage : MonoBehaviour
     }
     public IEnumerator MoveOutTornPageCoroutine()
     {
+       
         if (AudioManager.instance != null)
         {
             AudioManager.instance.Play("Sfx_book_torn_page");
