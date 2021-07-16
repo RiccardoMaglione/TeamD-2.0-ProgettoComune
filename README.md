@@ -14,6 +14,8 @@ Destroy waves of enemies in frantic brawls
 Fight an epic battle against the boss
 An insane world with eccentric characters
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 If you have a PS4 controller, it is advisable to follow these steps:
 
 1) Add the game to your Steam library (Steam> Library> Add a game> Add a non-Steam game> Browse> select the game> add selected programs);
