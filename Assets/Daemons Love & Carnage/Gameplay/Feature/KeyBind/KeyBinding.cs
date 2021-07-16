@@ -108,17 +108,32 @@ public class KeyBinding : KeyVar
     public Sprite SpriteEmpty;
     public bool ActivateCondition;
 
-
+    [Header("Xbox -----------------------------------")]
     public Sprite SpriteStandardA;
     public Sprite SpriteStandardB;
     public Sprite SpriteStandardX;
     public Sprite SpriteStandardY;
+
     public Sprite SpriteStandardRB;
     public Sprite SpriteStandardLB;
+    public Sprite SpriteStandardRT;
+    public Sprite SpriteStandardLT;
+
     public Sprite SpriteStandardLeftLeftJoystick;
     public Sprite SpriteStandardLeftRightJoystick;
     public Sprite SpriteStandardLeftDownJoystick;
 
+    public Sprite SpriteStandardLeftClickJoystick;
+    public Sprite SpriteStandardRightClickJoystick;
+
+    public Sprite SpriteStandardDPadLeft;
+    public Sprite SpriteStandardDPadRight;
+    public Sprite SpriteStandardDPadDown;
+    public Sprite SpriteStandardDPadUp;
+
+    public Sprite SpriteStandardXboxStart;
+
+    [Header("Playstation -----------------------------------")]
     public Sprite SpriteStandardPSSquare;
     public Sprite SpriteStandardPSX;
     public Sprite SpriteStandardPSCircle;
@@ -284,7 +299,7 @@ public class KeyBinding : KeyVar
             {
                 ActivateGetKey = false;
                 ActivateCondition = false;
-                KeyText.text = "Left right Joystick";
+                KeyText.text = "Left Right Joystick";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
@@ -302,7 +317,7 @@ public class KeyBinding : KeyVar
             {
                 ActivateGetKey = false;
                 ActivateCondition = false;
-                KeyText.text = "Left Up";
+                KeyText.text = "Left Up Joystick";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
@@ -315,16 +330,16 @@ public class KeyBinding : KeyVar
                 KeyText.text = "DPad Left";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                //ControllerAssignSpriteStandardContainer(vKey);
+                ControllerAssignSpriteStandardContainer(KeyText.text);
             }
             if (Input.GetAxisRaw("DPad X") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
                 ActivateGetKey = false;
                 ActivateCondition = false;
-                KeyText.text = "DPad right";
+                KeyText.text = "DPad Right";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                //ControllerAssignSpriteStandardContainer(vKey);
+                ControllerAssignSpriteStandardContainer(KeyText.text);
             }
             if (Input.GetAxisRaw("DPad Y") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -333,7 +348,7 @@ public class KeyBinding : KeyVar
                 KeyText.text = "DPad Down";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                //ControllerAssignSpriteStandardContainer(vKey);
+                ControllerAssignSpriteStandardContainer(KeyText.text);
             }
             if (Input.GetAxisRaw("DPad Y") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -342,7 +357,7 @@ public class KeyBinding : KeyVar
                 KeyText.text = "DPad Up";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                //ControllerAssignSpriteStandardContainer(vKey);
+                ControllerAssignSpriteStandardContainer(KeyText.text);
             }
             if (Input.GetAxisRaw("Left Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -351,7 +366,7 @@ public class KeyBinding : KeyVar
                 KeyText.text = "Left Trigger";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                //ControllerAssignSpriteStandardContainer(vKey);
+                ControllerAssignSpriteStandardContainer(KeyText.text);
             }
             if (Input.GetAxisRaw("Right Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -360,7 +375,7 @@ public class KeyBinding : KeyVar
                 KeyText.text = "Right Trigger";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                //ControllerAssignSpriteStandardContainer(vKey);
+                ControllerAssignSpriteStandardContainer(KeyText.text);
             }
             if (Input.GetAxisRaw("Right Stick X Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -369,7 +384,7 @@ public class KeyBinding : KeyVar
                 KeyText.text = "Left HRJ";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                //ControllerAssignSpriteStandardContainer(vKey);
+                ControllerAssignSpriteStandardContainer(KeyText.text);
             }
             if (Input.GetAxisRaw("Right Stick X Axis") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -378,7 +393,7 @@ public class KeyBinding : KeyVar
                 KeyText.text = "Right HRJ";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                //ControllerAssignSpriteStandardContainer(vKey);
+                ControllerAssignSpriteStandardContainer(KeyText.text);
             }
             if (Input.GetAxisRaw("Right Stick Y Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -387,7 +402,7 @@ public class KeyBinding : KeyVar
                 KeyText.text = "Up VRJ";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                //ControllerAssignSpriteStandardContainer(vKey);
+                ControllerAssignSpriteStandardContainer(KeyText.text);
             }
             if (Input.GetAxisRaw("Right Stick Y Axis") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -396,8 +411,10 @@ public class KeyBinding : KeyVar
                 KeyText.text = "Down VRJ";
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
-                //ControllerAssignSpriteStandardContainer(vKey);
+                ControllerAssignSpriteStandardContainer(KeyText.text);
             }
+
+            //Manca il tasto start = 7
             #endregion
 
             #region Axis Playstation
@@ -722,7 +739,12 @@ public class KeyBinding : KeyVar
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button4, SpriteStandardLB, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button5, SpriteStandardRB, TempButton);
 
-        //Aggiungere qui nuovi tasti controller
+        ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button7, SpriteStandardXboxStart, TempButton);
+        ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button8, SpriteStandardLeftClickJoystick, TempButton);
+        ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button9, SpriteStandardRightClickJoystick, TempButton);
+
+        //Aggiungere qui nuovi tasti controller che non siano assi
+
     }
 
     public void ControllerAssingSpriteStringStandard(string KeyName, string Keystring, Button ButtonKey, Sprite SpriteKey)
@@ -756,11 +778,14 @@ public class KeyBinding : KeyVar
         ControllerAssignAllSpriteButton("Joystick1Button4", SpriteStandardLB);
         ControllerAssignAllSpriteButton("Joystick1Button5", SpriteStandardRB);
 
+        ControllerAssignAllSpriteButton("Joystick1Button7", SpriteStandardXboxStart);
+        ControllerAssignAllSpriteButton("Joystick1Button8", SpriteStandardLeftClickJoystick);
+        ControllerAssignAllSpriteButton("Joystick1Button9", SpriteStandardRightClickJoystick);
         //ControllerAssignAllSpriteButton("Horizontal", SpriteStandardLeftLeftJoystick);
         //ControllerAssignAllSpriteButton("Horizontal", SpriteStandardLeftRightJoystick);
         //ControllerAssignAllSpriteButton("Vertical", SpriteStandardLeftDownJoystick);
 
-        //Aggiungere nuovi tasti controller
+        //Aggiungere nuovi tasti controller che non siano assi
     }
 
     public void AxisControllerAssingSpriteStandard(string Axis, string StandardAxis, Sprite SpriteKey, Button ButtonKey)
@@ -773,21 +798,36 @@ public class KeyBinding : KeyVar
     }
     public void ControllerAssignSpriteStandardContainer(string Axis)
     {
-        AxisControllerAssingSpriteStandard(Axis, "Left Left Joystick", SpriteStandardA, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "Left right Joystick", SpriteStandardB, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "Left Down Joystick", SpriteStandardX, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "Left Up", SpriteStandardY, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Left Left Joystick", SpriteStandardLeftLeftJoystick, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Left Right Joystick", SpriteStandardLeftRightJoystick, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Left Down Joystick", SpriteStandardLeftDownJoystick, TempButton);
+        //AxisControllerAssingSpriteStandard(Axis, "Left Up Joystick", SpriteStandardLeftUpJoystick, TempButton);
+
+        AxisControllerAssingSpriteStandard(Axis, "Left Trigger", SpriteStandardLT, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Right Trigger", SpriteStandardRT, TempButton);
+
+        AxisControllerAssingSpriteStandard(Axis, "DPad Left", SpriteStandardDPadLeft, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "DPad Right", SpriteStandardDPadRight, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "DPad Up", SpriteStandardDPadUp, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "DPad Down", SpriteStandardDPadDown, TempButton);
+
+        AxisControllerAssingSpriteStandard(Axis, "Left HRJ", SpriteStandardLeftLeftJoystick, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Right HRJ", SpriteStandardLeftRightJoystick, TempButton);
+        //AxisControllerAssingSpriteStandard(NameAxis, "Up VRJ", SpriteStandardLeftUpJoystick, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Down VRJ", SpriteStandardLeftDownJoystick, TempButton);
+
+
 
         //AxisControllerAssingSpriteStandard(Axis, "", SpriteStandardLB, TempButton);
         //AxisControllerAssingSpriteStandard(Axis, "", SpriteStandardRB, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "PS DPad Left", SpriteStandardA, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "PS DPad right", SpriteStandardB, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "PS DPad Down", SpriteStandardX, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "PS DPad Up", SpriteStandardY, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "PS Left HRJ", SpriteStandardA, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "PS Right HRJ", SpriteStandardB, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS DPad Left", SpriteStandardDPadLeft, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS DPad Right", SpriteStandardDPadRight, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS DPad Down", SpriteStandardDPadDown, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS DPad Up", SpriteStandardDPadUp, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS Left HRJ", SpriteStandardLeftLeftJoystick, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS Right HRJ", SpriteStandardLeftRightJoystick, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "PS Up VRJ", SpriteStandardX, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "PS Down VRJ", SpriteStandardY, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "PS Down VRJ", SpriteStandardLeftDownJoystick, TempButton);
 
         //Aggiungere tasti controller
     }
@@ -816,10 +856,24 @@ public class KeyBinding : KeyVar
 
     public void AxisControllerAssignSpriteStringContainer()
     {
-        AxisControllerAssignAllSpriteButton("Left Left Joystick", SpriteStandardA);
-        AxisControllerAssignAllSpriteButton("Left right Joystick", SpriteStandardB);
-        AxisControllerAssignAllSpriteButton("Left Down Joystick", SpriteStandardX);
-        AxisControllerAssignAllSpriteButton("Left Up", SpriteStandardY);
+        AxisControllerAssignAllSpriteButton("Left Left Joystick", SpriteStandardLeftLeftJoystick);
+        AxisControllerAssignAllSpriteButton("Left Right Joystick", SpriteStandardLeftRightJoystick);
+        AxisControllerAssignAllSpriteButton("Left Down Joystick", SpriteStandardLeftDownJoystick);
+        //AxisControllerAssignAllSpriteButton("Left Up", SpriteStandardLeftUpJoystick);
+
+        AxisControllerAssignAllSpriteButton("Left Trigger", SpriteStandardLT);
+        AxisControllerAssignAllSpriteButton("Right Trigger", SpriteStandardRT);
+
+        AxisControllerAssignAllSpriteButton("DPad Left", SpriteStandardDPadLeft);
+        AxisControllerAssignAllSpriteButton("DPad Right", SpriteStandardDPadRight);
+        AxisControllerAssignAllSpriteButton("DPad Up", SpriteStandardDPadUp);
+        AxisControllerAssignAllSpriteButton("DPad Down", SpriteStandardDPadDown);
+
+        AxisControllerAssignAllSpriteButton("Left HRJ", SpriteStandardLeftDownJoystick);
+        AxisControllerAssignAllSpriteButton("Right HRJ", SpriteStandardLeftRightJoystick);
+        //AxisControllerAssignAllSpriteButton("Up VRJ", SpriteStandardLeftUpJoystick);
+        AxisControllerAssignAllSpriteButton("Down VRJ", SpriteStandardLeftDownJoystick);
+
 
         //Aggiungere tasti qui controller
     }
