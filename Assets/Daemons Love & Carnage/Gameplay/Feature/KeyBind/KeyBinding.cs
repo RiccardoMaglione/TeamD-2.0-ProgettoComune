@@ -11,6 +11,7 @@ public class KeyBinding : KeyVar
 
     public static Func<string, KeyCode> KeyBindSet;
     public static Func<string, KeyCode> KeyBindSetController;
+    public static Func<string, string> KeyBindSetControllerAxis;
     public static Action<Button> SetListener;
 
     [HideInInspector] public Text KeyText;
@@ -169,6 +170,7 @@ public class KeyBinding : KeyVar
 
         KeyBindSet = SetKeyBind;
         KeyBindSetController = SetKeyBindController;
+        KeyBindSetControllerAxis = SetKeyBindControllerAxis;
         SetListener = ListenerOnClik;
 
         SetAddListener();
@@ -611,7 +613,7 @@ public class KeyBinding : KeyVar
     }
     public KeyCode SetKeyBindController(string KeyValue)
     {
-        if (ActivateGetKey == false)
+        if (ActivateGetKey == false && (KeyValue != "Left Left Joystick" && KeyValue != "Left Right Joystick" && KeyValue != "Left Up Joystick" && KeyValue != "Left Down Joystick" && KeyValue != "DPad Left" && KeyValue != "DPad Right" && KeyValue != "DPad Up" && KeyValue != "Left Trigger" && KeyValue != "Right Trigger" && KeyValue != "Left HRJ" && KeyValue != "Right HRJ" && KeyValue != "Up VRJ" && KeyValue != "Down VRJ"))
         {
             KeyCode NewKey = (KeyCode)Enum.Parse(typeof(KeyCode), KeyValue);
             print(NewKey.ToString());
@@ -625,19 +627,50 @@ public class KeyBinding : KeyVar
         {
             string DefAxis;
             string NewAxis = AxisValue;
-            if(NewAxis == "")
+
+            if(NewAxis == "Left Left Joystick" || NewAxis == "Left Right Joystick")
             {
                 DefAxis = "Horizontal";
+            }
+            else if (NewAxis == "Left Down Joystick" || NewAxis == "Left Up Joystick")
+            {
+                DefAxis = "Vertical";
+            }
+            else if (NewAxis == "DPad Left" || NewAxis == "DPad Right")
+            {
+                DefAxis = "DPad X";
+            }
+            else if (NewAxis == "DPad Down" || NewAxis == "DPad Up")
+            {
+                DefAxis = "DPad Y";
+            }
+            else if (NewAxis == "Left Trigger")
+            {
+                DefAxis = "Left Trigger";
+            }
+            else if (NewAxis == "Right Trigger")
+            {
+                DefAxis = "Right Trigger";
+            }
+            else if (NewAxis == "Left HRJ" || NewAxis == "Right HRJ")
+            {
+                DefAxis = "Right Stick X Axis";
+            }
+            else if (NewAxis == "Up VRJ" || NewAxis == "Down VRJ")
+            {
+                DefAxis = "Right Stick Y Axis";
             }
             else
             {
                 DefAxis = null;
             }
+            
             print(NewAxis.ToString());
             return DefAxis;
         }
         return null;
     }
+
     #endregion
 
     public void AssingSpriteStandard(KeyCode vKey, KeyCode StandardKeyCode, Sprite SpriteKey, Button ButtonKey)
