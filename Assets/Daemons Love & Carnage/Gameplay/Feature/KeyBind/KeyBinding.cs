@@ -200,7 +200,7 @@ public class KeyBinding : KeyVar
         }
         
         GetKeyUp();
-
+        print("Dovrebbe funzionare "+SetKeyBindControllerAxis(ControllerStringKeyLeft));//Funziona ma da il testo e non l'asse preciso
         //Debug.LogError("2. " + ControllerStringKeyUp);
         //Debug.LogError("2. " + ControllerStringKeyDown);
         //Debug.LogError("2. " + ControllerStringKeyLeft);
@@ -424,6 +424,100 @@ public class KeyBinding : KeyVar
                 ControllerAssignSpriteStandardContainer(KeyText.text);
             }
 
+
+            #region Playstation on Big Picture Steam
+            if (Input.GetAxisRaw("DPad X") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "DPad Left";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("DPad X") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "DPad Right";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("DPad Y") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "DPad Down";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("DPad Y") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "DPad Up";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("Left Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Left Trigger";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("Right Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Right Trigger";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("Right Stick X Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Left HRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("Right Stick X Axis") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Right HRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("Right Stick Y Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Up VRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            if (Input.GetAxisRaw("Right Stick Y Axis") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
+            {
+                ActivateGetKey = false;
+                ActivateCondition = false;
+                KeyText.text = "Down VRJ";
+                PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
+                TempButton.GetComponent<Image>().sprite = SpriteEmpty;
+                ControllerAssignSpriteStandardContainer(KeyText.text);
+            }
+            #endregion
+
             //Manca il tasto start = 7
             #endregion
 
@@ -524,6 +618,25 @@ public class KeyBinding : KeyVar
             return NewKey;
         }
         return KeyCode.None;
+    }
+    public string SetKeyBindControllerAxis(string AxisValue)
+    {
+        if (ActivateGetKey == false)
+        {
+            string DefAxis;
+            string NewAxis = AxisValue;
+            if(NewAxis == "")
+            {
+                DefAxis = "Horizontal";
+            }
+            else
+            {
+                DefAxis = null;
+            }
+            print(NewAxis.ToString());
+            return DefAxis;
+        }
+        return null;
     }
     #endregion
 
