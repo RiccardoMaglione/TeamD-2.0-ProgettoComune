@@ -122,6 +122,12 @@ public class KeyBinding : KeyVar
     public Sprite SpriteStandardLeftLeftJoystick;
     public Sprite SpriteStandardLeftRightJoystick;
     public Sprite SpriteStandardLeftDownJoystick;
+    public Sprite SpriteStandardLeftUpJoystick;
+
+    public Sprite SpriteStandardRightLeftJoystick;
+    public Sprite SpriteStandardRightRightJoystick;
+    public Sprite SpriteStandardRightDownJoystick;
+    public Sprite SpriteStandardRightUpJoystick;
 
     public Sprite SpriteStandardLeftClickJoystick;
     public Sprite SpriteStandardRightClickJoystick;
@@ -131,6 +137,7 @@ public class KeyBinding : KeyVar
     public Sprite SpriteStandardDPadDown;
     public Sprite SpriteStandardDPadUp;
 
+    public Sprite SpriteStandardXboxShare;
     public Sprite SpriteStandardXboxStart;
 
     [Header("Playstation -----------------------------------")]
@@ -359,6 +366,7 @@ public class KeyBinding : KeyVar
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
             }
+            
             if (Input.GetAxisRaw("Left Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
                 ActivateGetKey = false;
@@ -377,6 +385,7 @@ public class KeyBinding : KeyVar
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
             }
+
             if (Input.GetAxisRaw("Right Stick X Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
                 ActivateGetKey = false;
@@ -739,6 +748,8 @@ public class KeyBinding : KeyVar
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button4, SpriteStandardLB, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button5, SpriteStandardRB, TempButton);
 
+        ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button6, SpriteStandardXboxShare, TempButton);
+
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button7, SpriteStandardXboxStart, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button8, SpriteStandardLeftClickJoystick, TempButton);
         ControllerAssingSpriteStandard(vKey, KeyCode.Joystick1Button9, SpriteStandardRightClickJoystick, TempButton);
@@ -777,7 +788,7 @@ public class KeyBinding : KeyVar
         ControllerAssignAllSpriteButton("Joystick1Button3", SpriteStandardY);
         ControllerAssignAllSpriteButton("Joystick1Button4", SpriteStandardLB);
         ControllerAssignAllSpriteButton("Joystick1Button5", SpriteStandardRB);
-
+        ControllerAssignAllSpriteButton("Joystick1Button6", SpriteStandardXboxShare);
         ControllerAssignAllSpriteButton("Joystick1Button7", SpriteStandardXboxStart);
         ControllerAssignAllSpriteButton("Joystick1Button8", SpriteStandardLeftClickJoystick);
         ControllerAssignAllSpriteButton("Joystick1Button9", SpriteStandardRightClickJoystick);
@@ -801,7 +812,7 @@ public class KeyBinding : KeyVar
         AxisControllerAssingSpriteStandard(Axis, "Left Left Joystick", SpriteStandardLeftLeftJoystick, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "Left Right Joystick", SpriteStandardLeftRightJoystick, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "Left Down Joystick", SpriteStandardLeftDownJoystick, TempButton);
-        //AxisControllerAssingSpriteStandard(Axis, "Left Up Joystick", SpriteStandardLeftUpJoystick, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Left Up Joystick", SpriteStandardLeftUpJoystick, TempButton);
 
         AxisControllerAssingSpriteStandard(Axis, "Left Trigger", SpriteStandardLT, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "Right Trigger", SpriteStandardRT, TempButton);
@@ -811,10 +822,10 @@ public class KeyBinding : KeyVar
         AxisControllerAssingSpriteStandard(Axis, "DPad Up", SpriteStandardDPadUp, TempButton);
         AxisControllerAssingSpriteStandard(Axis, "DPad Down", SpriteStandardDPadDown, TempButton);
 
-        AxisControllerAssingSpriteStandard(Axis, "Left HRJ", SpriteStandardLeftLeftJoystick, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "Right HRJ", SpriteStandardLeftRightJoystick, TempButton);
-        //AxisControllerAssingSpriteStandard(NameAxis, "Up VRJ", SpriteStandardLeftUpJoystick, TempButton);
-        AxisControllerAssingSpriteStandard(Axis, "Down VRJ", SpriteStandardLeftDownJoystick, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Left HRJ", SpriteStandardRightLeftJoystick, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Right HRJ", SpriteStandardRightRightJoystick, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Up VRJ", SpriteStandardRightUpJoystick, TempButton);
+        AxisControllerAssingSpriteStandard(Axis, "Down VRJ", SpriteStandardRightDownJoystick, TempButton);
 
 
 
@@ -859,7 +870,7 @@ public class KeyBinding : KeyVar
         AxisControllerAssignAllSpriteButton("Left Left Joystick", SpriteStandardLeftLeftJoystick);
         AxisControllerAssignAllSpriteButton("Left Right Joystick", SpriteStandardLeftRightJoystick);
         AxisControllerAssignAllSpriteButton("Left Down Joystick", SpriteStandardLeftDownJoystick);
-        //AxisControllerAssignAllSpriteButton("Left Up", SpriteStandardLeftUpJoystick);
+        AxisControllerAssignAllSpriteButton("Left Up", SpriteStandardLeftUpJoystick);
 
         AxisControllerAssignAllSpriteButton("Left Trigger", SpriteStandardLT);
         AxisControllerAssignAllSpriteButton("Right Trigger", SpriteStandardRT);
@@ -869,10 +880,10 @@ public class KeyBinding : KeyVar
         AxisControllerAssignAllSpriteButton("DPad Up", SpriteStandardDPadUp);
         AxisControllerAssignAllSpriteButton("DPad Down", SpriteStandardDPadDown);
 
-        AxisControllerAssignAllSpriteButton("Left HRJ", SpriteStandardLeftDownJoystick);
-        AxisControllerAssignAllSpriteButton("Right HRJ", SpriteStandardLeftRightJoystick);
-        //AxisControllerAssignAllSpriteButton("Up VRJ", SpriteStandardLeftUpJoystick);
-        AxisControllerAssignAllSpriteButton("Down VRJ", SpriteStandardLeftDownJoystick);
+        AxisControllerAssignAllSpriteButton("Left HRJ", SpriteStandardRightDownJoystick);
+        AxisControllerAssignAllSpriteButton("Right HRJ", SpriteStandardRightRightJoystick);
+        AxisControllerAssignAllSpriteButton("Up VRJ", SpriteStandardRightUpJoystick);
+        AxisControllerAssignAllSpriteButton("Down VRJ", SpriteStandardRightDownJoystick);
 
 
         //Aggiungere tasti qui controller
