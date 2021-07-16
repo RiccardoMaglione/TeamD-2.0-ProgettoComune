@@ -6,8 +6,12 @@ public class AIStunState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(animator.GetComponent<PSMController>().DashColliderBabushka != null)
+        if (animator.GetComponent<PSMController>().DashColliderBabushka != null)
             animator.GetComponent<PSMController>().DashColliderBabushka.SetActive(false);
+        if (animator.GetComponent<PSMController>().DashKnockbackFatKnight != null)
+            animator.GetComponent<PSMController>().DashKnockbackFatKnight.SetActive(false);
+        if (animator.GetComponent<PSMController>().DashColliderBorious != null)
+            animator.GetComponent<PSMController>().DashColliderBorious.SetActive(false);
 
         animator.GetComponent<EnemyData>().GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         if (AudioManager.instance != null)

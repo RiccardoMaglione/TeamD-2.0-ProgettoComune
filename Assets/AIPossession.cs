@@ -10,6 +10,10 @@ public class AIPossession : StateMachineBehaviour
     {
         if (animator.GetComponent<PSMController>().DashColliderBabushka != null)
             animator.GetComponent<PSMController>().DashColliderBabushka.SetActive(false);
+        if (animator.GetComponent<PSMController>().DashKnockbackFatKnight != null)
+            animator.GetComponent<PSMController>().DashKnockbackFatKnight.SetActive(false);
+        if (animator.GetComponent<PSMController>().DashColliderBorious != null)
+            animator.GetComponent<PSMController>().DashColliderBorious.SetActive(false);
 
         animator.GetComponent<EnemyData>().timerStun = 0;
         animator.GetComponent<EnemyData>().CountHit = 0;
