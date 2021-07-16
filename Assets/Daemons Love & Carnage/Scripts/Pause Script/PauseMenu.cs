@@ -195,13 +195,13 @@ public class PauseMenu : MonoBehaviour
 
     public void ToMainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("BookFlip");
     }
     public void Reload()
     {
         PlayerPrefs.SetInt("IDCheckpoint", -1);
         CheckpointManager.ContinueGame = false;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("LevelScene");
     }
     public IEnumerator MoveInTornPageCoroutine()
     {
