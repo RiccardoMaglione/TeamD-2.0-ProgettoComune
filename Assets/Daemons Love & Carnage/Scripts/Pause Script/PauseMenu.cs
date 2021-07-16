@@ -77,8 +77,7 @@ public class PauseMenu : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && paused == true && menuOpen == true && tornPageOpen == true)
         {
-            StopCoroutine("MoveInTornPageCoroutine");
-            StartCoroutine("MoveOutTornPageCoroutine");
+            MoveOutTornPageVoid();
         }
 
     }
@@ -263,5 +262,11 @@ public class PauseMenu : MonoBehaviour
             elapsedTime += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    public void MoveOutTornPageVoid()
+    {
+        StopCoroutine("MoveInTornPageCoroutine");
+        StartCoroutine("MoveOutTornPageCoroutine");
     }
 }
