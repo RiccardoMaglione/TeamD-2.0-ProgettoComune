@@ -154,6 +154,8 @@ public class KeyBinding : KeyVar
 
     public static KeyBinding KeyBind;
 
+    public static bool LockBack;
+
     private void Awake()
     {
         KeyBind = this;
@@ -225,6 +227,7 @@ public class KeyBinding : KeyVar
             EventSystem.current.SetSelectedGameObject(TempButton.gameObject);
             PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), "");
             KeyText.text = "";
+            LockBack = true;
         }
         else if(CheckInput.Controller == false)      //Prima era CheckInput.PlaystationController == false
         {
@@ -235,6 +238,7 @@ public class KeyBinding : KeyVar
             PlayerPrefs.SetString(TempButton.name.ToString(), "");
             //TempButton.GetComponent<Image>().sprite = SpriteEmpty;
             KeyText.text = "";
+            LockBack = true;
         }
     }
 
@@ -275,6 +279,8 @@ public class KeyBinding : KeyVar
                     PlayerPrefs.SetString(TempButton.name.ToString(), KeyText.text);
                     TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                     AssignSpriteStandardContainer(vKey);
+
+                    StartCoroutine(ResetLockBack());
                 }
                 else if (Input.GetKey(vKey) && CheckInput.Controller == true/* && CheckInput.XboxController == true*/)
                 {
@@ -284,6 +290,8 @@ public class KeyBinding : KeyVar
                     PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                     TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                     ControllerAssignSpriteStandardContainer(vKey);
+
+                    StartCoroutine(ResetLockBack());
                 }
                 //else if (Input.GetKey(vKey) && CheckInput.Controller == true && CheckInput.PlaystationController == true)
                 //{
@@ -304,6 +312,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Horizontal") > 0.5f && CheckInput.Controller == true)
             {
@@ -313,6 +323,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Vertical") < -0.5f && CheckInput.Controller == true)
             {
@@ -322,6 +334,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Vertical") > 0.5f && CheckInput.Controller == true)
             {
@@ -331,6 +345,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
 
             if (Input.GetAxisRaw("DPad X") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
@@ -341,6 +357,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("DPad X") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -350,6 +368,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("DPad Y") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -359,6 +379,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("DPad Y") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -368,6 +390,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             
             if (Input.GetAxisRaw("Left Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
@@ -378,6 +402,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Right Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -387,6 +413,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
 
             if (Input.GetAxisRaw("Right Stick X Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
@@ -397,6 +425,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Right Stick X Axis") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -406,6 +436,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Right Stick Y Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == true)
             {
@@ -424,6 +456,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
 
 
@@ -436,6 +470,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("DPad X") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
             {
@@ -445,6 +481,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("DPad Y") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
             {
@@ -454,6 +492,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("DPad Y") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
             {
@@ -463,6 +503,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Left Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
             {
@@ -472,6 +514,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Right Trigger") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
             {
@@ -481,6 +525,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Right Stick X Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
             {
@@ -490,6 +536,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Right Stick X Axis") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
             {
@@ -499,6 +547,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Right Stick Y Axis") < -0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
             {
@@ -508,6 +558,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             if (Input.GetAxisRaw("Right Stick Y Axis") > 0.5f && CheckInput.Controller == true && CheckInput.XboxController == false && CheckInput.PlaystationController == false)
             {
@@ -517,6 +569,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }
             #endregion
 
@@ -532,6 +586,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }                    //7
             if (Input.GetAxisRaw("PS DPad X") < -0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
             {
@@ -541,6 +597,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }                   //7
             if (Input.GetAxisRaw("PS DPad Y") > 0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
             {
@@ -550,6 +608,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }                    //8
             if (Input.GetAxisRaw("PS DPad Y") < -0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
             {
@@ -559,6 +619,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }                   //8
             if (Input.GetAxisRaw("PS Right Stick X Axis") < -0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
             {
@@ -568,6 +630,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }       //3
             if (Input.GetAxisRaw("PS Right Stick X Axis") > 0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
             {
@@ -577,6 +641,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }        //3
             if (Input.GetAxisRaw("PS Right Stick Y Axis") < -0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
             {
@@ -586,6 +652,8 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }       //6
             if (Input.GetAxisRaw("PS Right Stick Y Axis") > 0.5f && CheckInput.Controller == true && CheckInput.PlaystationController == true)
             {
@@ -595,9 +663,17 @@ public class KeyBinding : KeyVar
                 PlayerPrefs.SetString(("Controller" + TempButton.name.ToString()), KeyText.text);
                 TempButton.GetComponent<Image>().sprite = SpriteEmpty;
                 ControllerAssignSpriteStandardContainer(KeyText.text);
+
+                StartCoroutine(ResetLockBack());
             }        //6
             #endregion
         }
+    }
+
+    public IEnumerator ResetLockBack()
+    {
+        yield return new WaitForEndOfFrame();
+        LockBack = false;
     }
 
     #region Call Function in Another Scripts

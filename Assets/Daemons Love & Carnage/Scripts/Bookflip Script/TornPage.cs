@@ -45,17 +45,17 @@ public class TornPage : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && tornPageOpen == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && tornPageOpen == true && KeyBinding.LockBack == false)
         {
             MoveOutTornPage();
             EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
         }
-        else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && CheckInput.XboxController == true)
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && CheckInput.XboxController == true && KeyBinding.LockBack == false)
         {
             MoveOutTornPage();
             EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
         }
-        else if (Input.GetKeyDown(KeyCode.Joystick1Button2) && CheckInput.PlaystationController == true)
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button2) && CheckInput.PlaystationController == true && KeyBinding.LockBack == false)
         {
             MoveOutTornPage();
             EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
