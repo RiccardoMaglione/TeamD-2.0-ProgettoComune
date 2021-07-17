@@ -282,6 +282,7 @@ public class TornPage : MonoBehaviour
     }
     public IEnumerator MoveOutTornPageCoroutine()
     {
+       
         if (AudioManager.instance != null)
         {
             AudioManager.instance.Play("Sfx_book_torn_page");

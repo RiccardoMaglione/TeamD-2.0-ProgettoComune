@@ -73,6 +73,7 @@ public class ThiefSpecialAttack : MonoBehaviour
 
     public IEnumerator InstantiateArrow()
     {
+        AudioManager.instance.Play("Sfx_T_p_L_atk");
         isShot = true;
         GameObject ThiefArrow = Instantiate(arrow, transform.position, transform.rotation);
         yield return new WaitForSecondsRealtime(rateOfFire);
