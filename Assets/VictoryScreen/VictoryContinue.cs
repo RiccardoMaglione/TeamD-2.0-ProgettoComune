@@ -54,7 +54,7 @@ public class VictoryContinue : MonoBehaviour
     {
         PSMController.disableAllInput = false;
         CutsceneControllerDeathBoss.isCutsceneEnabled = false;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("BookFlip");
         AudioManager.instance.FadeOut("FinalCutsceneOST");
         AudioManager.instance.FadeIn("MainMenuMusic");
     }

@@ -51,6 +51,6 @@ public class PressAnyKey : MonoBehaviour
 
     void ToMainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("BookFlip");
     }
 }
