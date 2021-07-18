@@ -166,6 +166,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ConfirmRestart()
     {
+        AudioManager.instance.StopAllSFX();
         if (PlayerPrefs.GetInt("CompletedLevel") != 1)
         {
             PlayerPrefs.SetInt("ObtainSkull", 0);
@@ -176,11 +177,12 @@ public class PauseMenu : MonoBehaviour
         FindObjectOfType<FadeInOutTransition>().FadeIn();
         AudioManager.instance.FadeOut("GameplayOST2");
         AudioManager.instance.FadeOut("BossOST");
-        Invoke("Reload", 0.5f);
+        Invoke("Reload", 0.5f);       
     }
 
     public void ConfirmBackToMenu()
     {
+        AudioManager.instance.StopAllSFX();
         if (PlayerPrefs.GetInt("CompletedLevel") != 1)
         {
             PlayerPrefs.SetInt("ObtainSkull", 0);
@@ -191,7 +193,7 @@ public class PauseMenu : MonoBehaviour
         Invoke("ToMainMenu", 0.5f);
 
         AudioManager.instance.StopAllMusics();
-        AudioManager.instance.Play("MainMenuMusic");
+        AudioManager.instance.Play("MainMenuMusic");      
     }
 
     public void ToMainMenu()
