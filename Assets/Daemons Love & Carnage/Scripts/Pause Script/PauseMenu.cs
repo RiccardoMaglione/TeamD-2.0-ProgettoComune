@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject book;
@@ -53,7 +54,7 @@ public class PauseMenu : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Escape) && paused == false && menuOpen == false && PM.CurrentHealth > 0 && VictoryScreen.win == false)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)) && paused == false && menuOpen == false && PM.CurrentHealth > 0 && VictoryScreen.win == false)
         {
             if (AudioManager.instance != null)
                 AudioManager.instance.Play("Sfx_book_drop");
@@ -67,15 +68,16 @@ public class PauseMenu : MonoBehaviour
             menuOpen = true;
             Time.timeScale = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && paused == true && menuOpen == true && tornPageOpen == false && tornPageIsMoving == false)
+        else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)) && paused == true && menuOpen == true && tornPageOpen == false && tornPageIsMoving == false)
         {
             Cursor.visible = false;
             book.SetActive(false);
             pausePanel.SetActive(false);
             menuOpen = false;
             Time.timeScale = 1;
+            EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && paused == true && menuOpen == true && tornPageOpen == true)
+        else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && paused == true && menuOpen == true && tornPageOpen == true)
         {
             MoveOutTornPageVoid();
         }
