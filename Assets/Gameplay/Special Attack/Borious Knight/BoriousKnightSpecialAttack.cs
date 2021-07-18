@@ -54,10 +54,10 @@ public class BoriousKnightSpecialAttack : MonoBehaviour
         if (SpecialActivated == true)
         {
 
-            if (Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyLeft)) || KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeyLeft) || Input.GetKey(KeyBinding.KeyBindInstance.ControllerStringKeyLeft)/*|| Input.GetAxisRaw("DPad X") < 0*/)
+            if (Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyLeft)) || KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeyLeft) || Input.GetKey(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeyLeft))/*|| Input.GetAxisRaw("DPad X") < 0*/)
                 player.transform.rotation = Quaternion.Euler(0, 180, 0);
 
-            if (Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyRight)) || KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeyRight) || Input.GetKey(KeyBinding.KeyBindInstance.ControllerStringKeyRight)/*|| Input.GetAxisRaw("DPad X") > 0*/)
+            if (Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyRight)) || KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeyRight) || Input.GetKey(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeyRight))/*|| Input.GetAxisRaw("DPad X") > 0*/)
                 player.transform.rotation = Quaternion.Euler(0, 0, 0);
 
 

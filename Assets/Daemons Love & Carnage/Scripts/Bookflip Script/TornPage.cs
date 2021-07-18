@@ -45,17 +45,22 @@ public class TornPage : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && tornPageOpen == true && KeyBinding.LockBack == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && tornPageOpen == true && KeyBinding.LockBack == false && tornPageIsMoving == false)
         {
             MoveOutTornPage();
             EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
         }
-        else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && CheckInput.XboxController == true && KeyBinding.LockBack == false)
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button1) && CheckInput.XboxController == true && KeyBinding.LockBack == false && tornPageIsMoving == false)
         {
             MoveOutTornPage();
             EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
         }
-        else if (Input.GetKeyDown(KeyCode.Joystick1Button2) && CheckInput.PlaystationController == true && KeyBinding.LockBack == false)
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button2) && CheckInput.PlaystationController == true && KeyBinding.LockBack == false && tornPageIsMoving == false)
+        {
+            MoveOutTornPage();
+            EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
+        }
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button2) && CheckInput.Controller == true &&CheckInput.PlaystationController == false && CheckInput.XboxController == false && KeyBinding.LockBack == false && tornPageIsMoving == false)
         {
             MoveOutTornPage();
             EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);     //Controller - sistemare
