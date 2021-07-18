@@ -689,7 +689,7 @@ public class KeyBinding : KeyVar
     }
     public KeyCode SetKeyBindController(string KeyValue)
     {
-        if (ActivateGetKey == false && (KeyValue != "Left Left Joystick" && KeyValue != "Left Right Joystick" && KeyValue != "Left Up Joystick" && KeyValue != "Left Down Joystick" && KeyValue != "DPad Left" && KeyValue != "DPad Right" && KeyValue != "DPad Up" && KeyValue != "Left Trigger" && KeyValue != "Right Trigger" && KeyValue != "Left HRJ" && KeyValue != "Right HRJ" && KeyValue != "Up VRJ" && KeyValue != "Down VRJ" && KeyValue != "PS DPad Left" && KeyValue != "PS DPad right" && KeyValue != "PS DPad Down" && KeyValue != "PS DPad Up" && KeyValue != "PS Left HRJ" && KeyValue != "PS Right HRJ" && KeyValue != "PS Up VRJ" && KeyValue != "PS Down VRJ"))
+        if (ActivateGetKey == false && (KeyValue != null && KeyValue != "Left Left Joystick" && KeyValue != "Left Right Joystick" && KeyValue != "Left Up Joystick" && KeyValue != "Left Down Joystick" && KeyValue != "DPad Left" && KeyValue != "DPad Right" && KeyValue != "DPad Up" && KeyValue != "Left Trigger" && KeyValue != "Right Trigger" && KeyValue != "Left HRJ" && KeyValue != "Right HRJ" && KeyValue != "Up VRJ" && KeyValue != "Down VRJ" && KeyValue != "PS DPad Left" && KeyValue != "PS DPad right" && KeyValue != "PS DPad Down" && KeyValue != "PS DPad Up" && KeyValue != "PS Left HRJ" && KeyValue != "PS Right HRJ" && KeyValue != "PS Up VRJ" && KeyValue != "PS Down VRJ"))
         {
             KeyCode NewKey = (KeyCode)Enum.Parse(typeof(KeyCode), KeyValue);
             print(NewKey.ToString());
