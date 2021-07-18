@@ -14,7 +14,7 @@ public class SpecialThiefIdle : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeySpecialAttack)) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && psmController.CurrentEnergy >= psmController.MaxEnergy && animator.GetComponentInParent<PSMController>().enabled == true && animator.GetComponentInParent<PSMController>().IsSpecialAttack == true && TutorialEnergy.TutorialEnergyBool == true & !animator.GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
+        if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeySpecialAttack)) || Input.GetKeyDown(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeySpecialAttack)) || KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeySpecialAttack)) && psmController.CurrentEnergy >= psmController.MaxEnergy && animator.GetComponentInParent<PSMController>().enabled == true && animator.GetComponentInParent<PSMController>().IsSpecialAttack == true && TutorialEnergy.TutorialEnergyBool == true & !animator.GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
         {
             //psmController.CurrentEnergy = 0;
             animator.SetBool("IsAttack", true);
