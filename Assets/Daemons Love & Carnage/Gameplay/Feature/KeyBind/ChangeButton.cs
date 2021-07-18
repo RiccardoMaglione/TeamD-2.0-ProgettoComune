@@ -33,7 +33,7 @@ public class ChangeButton : MonoBehaviour
         //}
     }
 
-    public void InteractableButtonsdfaaaaaaaaa(GameObject FirstSelectableObject)
+    public void InteractableButtonSelected(GameObject FirstSelectableObject)
     {
         //if (Input.GetKeyDown(KeyCode.Joystick1Button0))
         //{

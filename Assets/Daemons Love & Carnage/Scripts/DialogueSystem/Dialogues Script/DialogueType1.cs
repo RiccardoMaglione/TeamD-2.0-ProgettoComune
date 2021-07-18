@@ -245,7 +245,7 @@ public class DialogueType1 : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetKeyDown(buttonToSkip1) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == true) || (Input.GetKeyDown(ControllerButtonToSkip2) && CheckInput.PlaystationController == true)) && dialogueActive == true && isTutorialEnergy == false)
+        if ((Input.GetKeyDown(buttonToSkip1) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == true) || (Input.GetKeyDown(ControllerButtonToSkip2) && CheckInput.PlaystationController == true) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == false && CheckInput.PlaystationController == false)) && dialogueActive == true && isTutorialEnergy == false)
         {
             dialogueActive = false;
             StopCoroutine("DialogueIn");
@@ -257,7 +257,7 @@ public class DialogueType1 : MonoBehaviour
             TutorialActive = false;
             Invoke("DestroyCollider", 0.1f);
         }
-        else if ((Input.GetKeyDown(buttonToSkip1) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == true) || (Input.GetKeyDown(ControllerButtonToSkip2) && CheckInput.PlaystationController == true)) && dialogueActive == true && TutorialEnergyBool == false && isTutorialEnergy == true)
+        else if ((Input.GetKeyDown(buttonToSkip1) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == true) || (Input.GetKeyDown(ControllerButtonToSkip2) && CheckInput.PlaystationController == true) || (Input.GetKeyDown(ControllerButtonToSkip1) && CheckInput.XboxController == false && CheckInput.PlaystationController == false)) && dialogueActive == true && TutorialEnergyBool == false && isTutorialEnergy == true)
         {
             PlayerPrefs.SetInt("TutorialSkipEnergy", NumSkip);
             TutorialEnergyBool = true;

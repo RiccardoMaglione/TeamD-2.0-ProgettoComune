@@ -154,6 +154,15 @@ namespace SwordGame
             GetComponent<SpriteRenderer>().sortingOrder = 9;
 
             ParticlePossessionActivate();
+
+            if (KeyBinding.KeyBindInstance.ControllerStringKeyUp == "Left Left Joystick" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "Left Right Joystick" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "Left Up Joystick" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "Left Down Joystick" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "DPad Left" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "DPad Right" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "DPad Up" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "DPad Down" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "Left Trigger" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "Right Trigger" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "Left HRJ" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "Right HRJ" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "Up VRJ" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "Down VRJ" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "PS DPad Left" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "PS DPad right" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "PS DPad Down" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "PS DPad Up" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "PS Left HRJ" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "PS Right HRJ" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "PS Up VRJ" || KeyBinding.KeyBindInstance.ControllerStringKeyUp == "PS Down VRJ")
+            {
+                KeyBinding.isAxis = true;
+            }
+            else
+            {
+                KeyBinding.isAxis = false;
+            }
         }
 
         public void ParticlePossessionActivate()

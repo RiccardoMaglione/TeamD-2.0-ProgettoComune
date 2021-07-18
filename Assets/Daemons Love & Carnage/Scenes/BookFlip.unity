@@ -793,7 +793,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 26249068}
         m_TargetAssemblyTypeName: ChangeButton, Assembly-CSharp
-        m_MethodName: InteractableButtonGameObject
+        m_MethodName: InteractableButtonSelected
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 936244913}
@@ -3614,10 +3614,6 @@ MonoBehaviour:
   SpriteStandardLeftLeftJoystickPlaystation: {fileID: 21300000, guid: 1776d04f9ee4d1440ad73b2dd4a34a8f, type: 3}
   SpriteStandardLeftRightJoystickPlaystation: {fileID: 21300000, guid: 281ed0856e06f9e4eaa7e45fe7d87625, type: 3}
   SpriteStandardLeftDownJoystickPlaystation: {fileID: 21300000, guid: 4cd8d279c640e524d89cf3cc9afd5d18, type: 3}
-  isAxisMoveLeftLeft: 1
-  isAxisMoveLeftRight: 1
-  isAxisMoveLeftUp: 1
-  isAxisMoveLeftDown: 1
 --- !u!114 &169908059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5245,7 +5241,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 283470611}
         m_TargetAssemblyTypeName: ChangeButton, Assembly-CSharp
-        m_MethodName: InteractableButtonsdfaaaaaaaaa
+        m_MethodName: InteractableButtonSelected
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1189380563}
@@ -6040,8 +6036,8 @@ MonoBehaviour:
     m_Mode: 4
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 909509535}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 909509535}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
@@ -11436,7 +11432,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 680857042}
         m_TargetAssemblyTypeName: ChangeButton, Assembly-CSharp
-        m_MethodName: InteractableButtonsdfaaaaaaaaa
+        m_MethodName: InteractableButtonSelected
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 283470606}
@@ -14175,6 +14171,7 @@ GameObject:
   - component: {fileID: 871442247}
   - component: {fileID: 871442246}
   - component: {fileID: 871442245}
+  - component: {fileID: 871442248}
   m_Layer: 5
   m_Name: No
   m_TagString: Untagged
@@ -14251,6 +14248,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 871442248}
+        m_TargetAssemblyTypeName: ChangeButton, Assembly-CSharp
+        m_MethodName: InteractableButtonSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 308105667}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14353,6 +14362,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871442243}
   m_CullTransparentMesh: 0
+--- !u!114 &871442248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871442243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dd199f367e84e4593bb8118f526d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &883046950
 GameObject:
   m_ObjectHideFlags: 0
@@ -15237,6 +15258,7 @@ GameObject:
   - component: {fileID: 909509537}
   - component: {fileID: 909509536}
   - component: {fileID: 909509535}
+  - component: {fileID: 909509538}
   m_Layer: 5
   m_Name: No
   m_TagString: Untagged
@@ -15279,8 +15301,8 @@ MonoBehaviour:
     m_Mode: 4
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 318675796}
+    m_SelectOnLeft: {fileID: 318675796}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.34117648, g: 0.21176471, b: 0.16470589, a: 1}
@@ -15313,6 +15335,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 909509538}
+        m_TargetAssemblyTypeName: ChangeButton, Assembly-CSharp
+        m_MethodName: InteractableButtonSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1287380701}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15415,6 +15449,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909509533}
   m_CullTransparentMesh: 0
+--- !u!114 &909509538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909509533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dd199f367e84e4593bb8118f526d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &911067911
 GameObject:
   m_ObjectHideFlags: 0
@@ -30177,7 +30223,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1699863177}
         m_TargetAssemblyTypeName: ChangeButton, Assembly-CSharp
-        m_MethodName: InteractableButtonsdfaaaaaaaaa
+        m_MethodName: InteractableButtonSelected
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 554182654}

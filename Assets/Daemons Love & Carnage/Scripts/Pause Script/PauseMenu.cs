@@ -70,12 +70,12 @@ public class PauseMenu : MonoBehaviour
         }
         else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)) && paused == true && menuOpen == true && tornPageOpen == false && tornPageIsMoving == false)
         {
+            EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);
             Cursor.visible = false;
             book.SetActive(false);
             pausePanel.SetActive(false);
             menuOpen = false;
             Time.timeScale = 1;
-            EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);
         }
         else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && paused == true && menuOpen == true && tornPageOpen == true)
         {

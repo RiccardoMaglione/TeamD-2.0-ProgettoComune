@@ -155,7 +155,7 @@ public class KeyBinding : KeyVar
     public static KeyBinding KeyBind;
 
     public static bool LockBack;
-
+    public static bool isAxis;
     private void Awake()
     {
         KeyBind = this;
@@ -702,12 +702,12 @@ public class KeyBinding : KeyVar
     {
         if (KeyValue == "Left Right Joystick" || KeyValue == "Left Up Joystick" || KeyValue == "DPad Right" || KeyValue == "DPad Up" || KeyValue == "DPad Right" || KeyValue == "Left Trigger" || KeyValue == "Right Trigger" || KeyValue == "Right HRJ" || KeyValue == "Up VRJ" || KeyValue == "PS DPad right" || KeyValue == "PS DPad Up" || KeyValue == "PS Right HRJ" || KeyValue == "PS Up VRJ")
         {
-            Debug.Log("Maggiore");
+            //Debug.Log("Maggiore");
             return Input.GetAxisRaw(SetKeyBindControllerAxis(KeyValue)) > 0.5f;
         }
         if (KeyValue == "Left Left Joystick" || KeyValue == "Left Down Joystick" || KeyValue == "DPad Left" || KeyValue == "DPad Down" || KeyValue == "DPad Left" || KeyValue == "Left HRJ" || KeyValue == "Down VRJ" || KeyValue == "PS DPad Left" || KeyValue == "PS DPad Down" || KeyValue == "PS Left HRJ" || KeyValue == "PS Down VRJ")
         {
-            Debug.Log("Minore");
+            //Debug.Log("Minore");
             return Input.GetAxisRaw(SetKeyBindControllerAxis(KeyValue)) < -0.5f;
         }
         return false;
