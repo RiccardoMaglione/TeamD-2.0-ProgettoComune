@@ -10,6 +10,7 @@ public class PSMIdle : StateMachineBehaviour
         {
             AudioManager.instance.Stop("Sfx_player_walk");
         }
+
         animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(0, animator.GetComponent<PSMController>().RB2D.velocity.y);      //Per sicurezza blocca il movimento - non dovrebbe servire
 
         switch (animator.GetComponent<PSMController>().TypeCharacter)
@@ -34,15 +35,17 @@ public class PSMIdle : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        #region Deactivate Dash Collider
         if (animator.GetComponent<PSMController>().DashKnockbackFatKnight != null)
             animator.GetComponent<PSMController>().DashKnockbackFatKnight.SetActive(false);
         if (animator.GetComponent<PSMController>().DashColliderBabushka != null)
             animator.GetComponent<PSMController>().DashColliderBabushka.SetActive(false);
         if (animator.GetComponent<PSMController>().DashColliderBorious != null)
             animator.GetComponent<PSMController>().DashColliderBorious.SetActive(false);
+        #endregion
 
         #region Move Zone - Da "Player Idle State" da "Player Move State"
-        if ((Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyLeft)) || Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyRight)) || (Input.GetKey(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeyLeft)) || Input.GetKey(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeyRight))) || (Input.GetAxisRaw(KeyBinding.KeyBindSetControllerAxis(KeyBinding.KeyBindInstance.ControllerStringKeyLeft)) > 0 || Input.GetAxisRaw(KeyBinding.KeyBindSetControllerAxis(KeyBinding.KeyBindInstance.ControllerStringKeyLeft)) < 0)) /*|| (Input.GetAxisRaw("DPad X") > 0 || Input.GetAxisRaw("DPad X") < 0))*/ && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && PSMController.disableAllInput == false)                                                                             //Se schiaccio A o D
+        if ((Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyLeft)) || Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyRight)) || (Input.GetKey(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeyLeft)) || Input.GetKey(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeyRight))) || (KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeyRight) || KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeyLeft))) /*|| (Input.GetAxisRaw("DPad X") > 0 || Input.GetAxisRaw("DPad X") < 0))*/ && (DialogueType1.StaticTutorial != -1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6) && PSMController.disableAllInput == false)                                                                             //Se schiaccio A o D
         {
             //Debug.Log("PlayerState - Vai nello stato 'PSMMove'");                                                                           //Debuggo in console cosa fa
             animator.SetBool("PSM-CanMove", true);                                                                                          //Cambio stato da "Player Idle State" in "Player Move State"
@@ -52,7 +55,7 @@ public class PSMIdle : StateMachineBehaviour
         #endregion
 
         #region Jump Zone - Da "Player Idle State" da "Player Jump State"
-        if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyUp)) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6 && CutsceneControllerDeathBoss.isCutsceneEnabled == false && PSMController.disableAllInput == false)                                                             //Se schiaccio spazio una volta
+        if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyUp)) || Input.GetKeyDown(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeyUp)) || KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeyUp)) && DialogueType1.StaticTutorial != 1 && DialogueType1.StaticTutorial2 != 2 && DialogueType1.StaticTutorial != 4 && DialogueType1.StaticTutorial != 6 && CutsceneControllerDeathBoss.isCutsceneEnabled == false && PSMController.disableAllInput == false)                                                             //Se schiaccio spazio una volta
         {
             //Debug.Log("PlayerState - Vai nello stato 'PSMJump'");                                                                           //Debuggo in console cosa fa
             animator.SetTrigger("PSM-CanJump");                                                                                             //Setto attivo il trigger - Prima condizione per il cambio stato da "Player Idle State" in "Player Jump State"
@@ -76,12 +79,12 @@ public class PSMIdle : StateMachineBehaviour
         #endregion
 
         #region Dash Zone - Da "Player Idle State" da "Player Dash State"
-        if ((animator.gameObject.transform.rotation.y == 1 && (Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyDash)) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Joystick1Button5))) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && CutsceneControllerDeathBoss.isCutsceneEnabled == false && PSMController.disableAllInput == false && DialogueType1.TutorialActive == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
+        if ((animator.gameObject.transform.rotation.y == 1 && (Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyDash)) /*|| Input.GetKey(KeyCode.LeftShift)*/ || Input.GetKey(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeyDash)) || KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeyDash))) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && CutsceneControllerDeathBoss.isCutsceneEnabled == false && PSMController.disableAllInput == false && DialogueType1.TutorialActive == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
         {
             animator.SetBool("PSM-CanDash", true);                                      //Setto la prima condizione per il dash a vero, mi sposto da "Player Move State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashLeft = true;                  //Setto la direzione del dash a sinistra
         }
-        if ((animator.gameObject.transform.rotation.y == 0 && (Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyDash)) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Joystick1Button5))) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && CutsceneControllerDeathBoss.isCutsceneEnabled == false && PSMController.disableAllInput == false && DialogueType1.TutorialActive == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
+        if ((animator.gameObject.transform.rotation.y == 0 && (Input.GetKey(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeyDash)) /*|| Input.GetKey(KeyCode.LeftShift)*/ || Input.GetKey(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeyDash)) || KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeyDash))) && animator.GetBool("PSM-CanDash") == false && animator.GetComponent<PSMController>().CooldownDashDirectional == false && CutsceneControllerDeathBoss.isCutsceneEnabled == false && PSMController.disableAllInput == false && DialogueType1.TutorialActive == false)       //Controllo delle condizioni per l'esecuzione del dash: Se schiaccio determinati pulsanti - se il parametro booleano PSM-CanDash è uguale a falso, quindi che non è in corso un altro dash - Se il cooldown del dash è falso, quindi non è in corso un precedente dash
         {
             animator.SetBool("PSM-CanDash", true);                                      //Setto la prima condizione per il dash a vero, mi sposto da "Player Move State" a "Player Dash State"
             animator.GetComponent<PSMController>().CanDashRight = true;                 //Setto la direzione del dash a destra

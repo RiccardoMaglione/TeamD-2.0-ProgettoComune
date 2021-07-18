@@ -689,7 +689,7 @@ public class KeyBinding : KeyVar
     }
     public KeyCode SetKeyBindController(string KeyValue)
     {
-        if (ActivateGetKey == false && (KeyValue != null && KeyValue != "Left Left Joystick" && KeyValue != "Left Right Joystick" && KeyValue != "Left Up Joystick" && KeyValue != "Left Down Joystick" && KeyValue != "DPad Left" && KeyValue != "DPad Right" && KeyValue != "DPad Up" && KeyValue != "Left Trigger" && KeyValue != "Right Trigger" && KeyValue != "Left HRJ" && KeyValue != "Right HRJ" && KeyValue != "Up VRJ" && KeyValue != "Down VRJ" && KeyValue != "PS DPad Left" && KeyValue != "PS DPad right" && KeyValue != "PS DPad Down" && KeyValue != "PS DPad Up" && KeyValue != "PS Left HRJ" && KeyValue != "PS Right HRJ" && KeyValue != "PS Up VRJ" && KeyValue != "PS Down VRJ"))
+        if (ActivateGetKey == false && (KeyValue != null && KeyValue != "Left Left Joystick" && KeyValue != "Left Right Joystick" && KeyValue != "Left Up Joystick" && KeyValue != "Left Down Joystick" && KeyValue != "DPad Left" && KeyValue != "DPad Right" && KeyValue != "DPad Up" && KeyValue != "DPad Down" && KeyValue != "Left Trigger" && KeyValue != "Right Trigger" && KeyValue != "Left HRJ" && KeyValue != "Right HRJ" && KeyValue != "Up VRJ" && KeyValue != "Down VRJ" && KeyValue != "PS DPad Left" && KeyValue != "PS DPad right" && KeyValue != "PS DPad Down" && KeyValue != "PS DPad Up" && KeyValue != "PS Left HRJ" && KeyValue != "PS Right HRJ" && KeyValue != "PS Up VRJ" && KeyValue != "PS Down VRJ"))
         {
             KeyCode NewKey = (KeyCode)Enum.Parse(typeof(KeyCode), KeyValue);
             print(NewKey.ToString());
@@ -697,6 +697,22 @@ public class KeyBinding : KeyVar
         }
         return KeyCode.None;
     }
+
+    public bool SetAxisSign(string KeyValue)
+    {
+        if (KeyValue == "Left Right Joystick" || KeyValue == "Left Up Joystick" || KeyValue == "DPad Right" || KeyValue == "DPad Up" || KeyValue == "DPad Right" || KeyValue == "Left Trigger" || KeyValue == "Right Trigger" || KeyValue == "Right HRJ" || KeyValue == "Up VRJ" || KeyValue == "PS DPad right" || KeyValue == "PS DPad Up" || KeyValue == "PS Right HRJ" || KeyValue == "PS Up VRJ")
+        {
+            Debug.Log("Maggiore");
+            return Input.GetAxisRaw(SetKeyBindControllerAxis(KeyValue)) > 0.5f;
+        }
+        if (KeyValue == "Left Left Joystick" || KeyValue == "Left Down Joystick" || KeyValue == "DPad Left" || KeyValue == "DPad Down" || KeyValue == "DPad Left" || KeyValue == "Left HRJ" || KeyValue == "Down VRJ" || KeyValue == "PS DPad Left" || KeyValue == "PS DPad Down" || KeyValue == "PS Left HRJ" || KeyValue == "PS Down VRJ")
+        {
+            Debug.Log("Minore");
+            return Input.GetAxisRaw(SetKeyBindControllerAxis(KeyValue)) < -0.5f;
+        }
+        return false;
+    }
+
     public string SetKeyBindControllerAxis(string AxisValue)
     {
         if (ActivateGetKey == false)
