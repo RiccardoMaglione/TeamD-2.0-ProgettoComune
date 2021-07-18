@@ -229,7 +229,14 @@ public class DialogueType1 : MonoBehaviour
             
             Time.timeScale = 0;
             dialogueBox.SetActive(true);
-            
+
+            if (tutorialDialogue == true)
+            {
+                skipKey.SetActive(true);
+            }
+            else
+                skipKey.SetActive(false);
+
             StartCoroutine("DialogueIn");
         }
     }
