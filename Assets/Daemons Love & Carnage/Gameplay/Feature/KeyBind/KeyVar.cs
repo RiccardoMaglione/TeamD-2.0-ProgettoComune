@@ -179,24 +179,24 @@ public class KeyVar : MonoBehaviour
 
 
         ControllerStringKeyUp = PlayerPrefs.GetString(("Controller" + KeyUp.name.ToString()), "Joystick1Button0");
-        ControllerStringKeyDown = PlayerPrefs.GetString(("Controller" + KeyDown.name.ToString()), "");
-        ControllerStringKeyLeft = PlayerPrefs.GetString(("Controller" + KeyLeft.name.ToString()), "");
-        ControllerStringKeyRight = PlayerPrefs.GetString(("Controller" + KeyRight.name.ToString()), "");
+        ControllerStringKeyDown = PlayerPrefs.GetString(("Controller" + KeyDown.name.ToString()), "Left Down Joystick");
+        ControllerStringKeyLeft = PlayerPrefs.GetString(("Controller" + KeyLeft.name.ToString()), "Left Left Joystick");
+        ControllerStringKeyRight = PlayerPrefs.GetString(("Controller" + KeyRight.name.ToString()), "Left Right Joystick");
         ControllerStringKeyDash = PlayerPrefs.GetString(("Controller" + KeyDash.name.ToString()), "Joystick1Button4");
         ControllerStringKeyPossession = PlayerPrefs.GetString(("Controller" + KeyPossession.name.ToString()), "Joystick1Button5");
         ControllerStringKeyLightAttack = PlayerPrefs.GetString(("Controller" + KeyLightAttack.name.ToString()), "Joystick1Button2");
         ControllerStringKeyHeavyAttack = PlayerPrefs.GetString(("Controller" + KeyHeavyAttack.name.ToString()), "Joystick1Button1");
         ControllerStringKeySpecialAttack = PlayerPrefs.GetString(("Controller" + KeySpecialAttack.name.ToString()), "Joystick1Button3");
 
-        Debug.LogError(ControllerStringKeyUp);
-        Debug.LogError(ControllerStringKeyDown);
-        Debug.LogError(ControllerStringKeyLeft);
-        Debug.LogError(ControllerStringKeyRight);
-        Debug.LogError(ControllerStringKeyDash);
-        Debug.LogError(ControllerStringKeyPossession);
-        Debug.LogError(ControllerStringKeyLightAttack);
-        Debug.LogError(ControllerStringKeyHeavyAttack);
-        Debug.LogError(ControllerStringKeySpecialAttack);
+        //Debug.LogError(ControllerStringKeyUp);
+        //Debug.LogError(ControllerStringKeyDown);
+        //Debug.LogError(ControllerStringKeyLeft);
+        //Debug.LogError(ControllerStringKeyRight);
+        //Debug.LogError(ControllerStringKeyDash);
+        //Debug.LogError(ControllerStringKeyPossession);
+        //Debug.LogError(ControllerStringKeyLightAttack);
+        //Debug.LogError(ControllerStringKeyHeavyAttack);
+        //Debug.LogError(ControllerStringKeySpecialAttack);
 
         PlayerPrefs.SetString("Controller" + KeyUp.name.ToString(), ControllerStringKeyUp);
         PlayerPrefs.SetString("Controller" + KeyDown.name.ToString(), ControllerStringKeyDown);
@@ -208,15 +208,15 @@ public class KeyVar : MonoBehaviour
         PlayerPrefs.SetString("Controller" + KeyHeavyAttack.name.ToString(), ControllerStringKeyHeavyAttack);
         PlayerPrefs.SetString("Controller" + KeySpecialAttack.name.ToString(), ControllerStringKeySpecialAttack);
 
-        Debug.LogError("1. "+ControllerStringKeyUp);
-        Debug.LogError("1. "+ControllerStringKeyDown);
-        Debug.LogError("1. "+ControllerStringKeyLeft);
-        Debug.LogError("1. "+ControllerStringKeyRight);
-        Debug.LogError("1. "+ControllerStringKeyDash);
-        Debug.LogError("1. "+ControllerStringKeyPossession);
-        Debug.LogError("1. "+ControllerStringKeyLightAttack);
-        Debug.LogError("1. "+ControllerStringKeyHeavyAttack);
-        Debug.LogError("1. "+ControllerStringKeySpecialAttack);
+        //Debug.LogError("1. "+ControllerStringKeyUp);
+        //Debug.LogError("1. "+ControllerStringKeyDown);
+        //Debug.LogError("1. "+ControllerStringKeyLeft);
+        //Debug.LogError("1. "+ControllerStringKeyRight);
+        //Debug.LogError("1. "+ControllerStringKeyDash);
+        //Debug.LogError("1. "+ControllerStringKeyPossession);
+        //Debug.LogError("1. "+ControllerStringKeyLightAttack);
+        //Debug.LogError("1. "+ControllerStringKeyHeavyAttack);
+        //Debug.LogError("1. "+ControllerStringKeySpecialAttack);
     }
 
     public void ControllerAssignButton(Button KeyButton, string ControllerKeyString)
