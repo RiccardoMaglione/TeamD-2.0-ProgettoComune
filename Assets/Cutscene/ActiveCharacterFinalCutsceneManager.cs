@@ -28,6 +28,7 @@ public class ActiveCharacterFinalCutsceneManager : MonoBehaviour
 
             case 4:
                 Thief.SetActive(true);
+                ThiefSpecialAttack.specialOn = false;
                 break;
 
             default:
