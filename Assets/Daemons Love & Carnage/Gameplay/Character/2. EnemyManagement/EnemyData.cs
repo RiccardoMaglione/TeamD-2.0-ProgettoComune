@@ -144,7 +144,7 @@ public class EnemyData : MonoBehaviour
     {
         //GetComponent<Animator>().SetInteger("Life", Life);
         GetComponent<Animator>().SetFloat("Life", Life);
-        print("Vita del nemico" + Life + "Vita animator nemico" + GetComponent<Animator>().GetFloat("Life"));
+        //print("Vita del nemico" + Life + "Vita animator nemico" + GetComponent<Animator>().GetFloat("Life"));
         timerStun = 0;
         InitializeSpeedAnimation();
     }

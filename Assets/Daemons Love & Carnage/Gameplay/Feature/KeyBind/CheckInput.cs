@@ -25,25 +25,25 @@ public class CheckInput : MonoBehaviour
                 if (vKey >= KeyCode.JoystickButton0)
                 {
                     Controller = true;
-                    print("Joystick");
+                    //print("Joystick");
                 }
                 else
                 {
                     XboxController = false;
                     PlaystationController = false;
                     Controller = false;
-                    print("Mouse and keyboard");
+                    //print("Mouse and keyboard");
                 }
             }
             else if((Input.GetAxisRaw("DPad X") > 0 || Input.GetAxisRaw("DPad X") < 0 || Input.GetAxisRaw("DPad Y") > 0 || Input.GetAxisRaw("DPad Y") < 0) && XboxController == true)   //joystick 6th axis
             {
                 Controller = true;
-                print("Joystick Axis");
+                //print("Joystick Axis");
             }
             else if ((Input.GetAxisRaw("PS DPad X") > 0 || Input.GetAxisRaw("PS DPad X") < 0 || Input.GetAxisRaw("PS DPad Y") > 0 || Input.GetAxisRaw("PS DPad Y") < 0) && PlaystationController == true)
             {
                 Controller = true;
-                print("Joystick Axis");
+                //print("Joystick Axis");
             }
             else if ((Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Vertical") > 0 || Input.GetAxisRaw("Vertical") < 0) && (XboxController == true || PlaystationController == true))
             {
@@ -61,18 +61,18 @@ public class CheckInput : MonoBehaviour
 
         for (int i = 0; i < names.Length; i++)
         {
-            Debug.LogError(names[i]);
+            //Debug.LogError(names[i]);
             NameController = names[i];
-            Debug.LogError("Il nome del controller è: "+ NameController);
+            //Debug.LogError("Il nome del controller è: "+ NameController);
             if (NameController.Contains("Xbox"))
             {
-                Debug.Log("E' il controller dell'xbox");
+                //Debug.Log("E' il controller dell'xbox");
                 XboxController = true;
                 PlaystationController = false;
             }
             else if (NameController.Contains("Wireless") &! NameController.Contains("Xbox"))
             {
-                Debug.Log("E' il controller della playstation");
+                //Debug.Log("E' il controller della playstation");
                 PlaystationController = true;
                 XboxController = false;
             }

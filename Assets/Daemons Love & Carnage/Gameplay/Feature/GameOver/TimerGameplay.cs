@@ -18,7 +18,7 @@ public class TimerGameplay : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Inizio ora "+DateTime.Now.ToString());
+        //Debug.Log("Inizio ora "+DateTime.Now.ToString());
     }
     void Update()
     {

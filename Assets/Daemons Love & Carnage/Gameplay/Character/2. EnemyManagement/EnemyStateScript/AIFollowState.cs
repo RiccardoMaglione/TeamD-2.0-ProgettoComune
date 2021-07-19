@@ -65,7 +65,7 @@ public class AIFollowState : StateMachineBehaviour
         
         }
 
-        Debug.Log("Ranged: " + animator.GetComponentInChildren<RangeAttack>().isRanged + "e Melee: " + animator.GetComponentInChildren<RangeAttack>().isMelee);
+        //Debug.Log("Ranged: " + animator.GetComponentInChildren<RangeAttack>().isRanged + "e Melee: " + animator.GetComponentInChildren<RangeAttack>().isMelee);
 
         if (animator.GetComponent<EnemyData>().CanVisible == true && animator.GetComponent<EnemyData>().isStun == false)
         {

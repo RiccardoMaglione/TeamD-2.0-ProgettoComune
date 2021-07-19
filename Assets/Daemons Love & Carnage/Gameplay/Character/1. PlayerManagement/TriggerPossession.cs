@@ -147,6 +147,15 @@ public class TriggerPossession : Possession
             Player = collision.GetComponentInParent<PSMController>().gameObject;                                        //Definisco il player come l'oggetto parent dello script PSMController
             Enemy = gameObject.GetComponentInParent<EnemyData>().gameObject;                                            //Definisco l'enemy come l'oggetto parent dello script EnemyData
             Enemy.GetComponentInChildren<TriggerPossession>().PromptEnemy.SetActive(true);                              //Attivo il prompt del tasto all'enemy
+
+            if (Enemy.GetComponent<PSMController>().transform.rotation.y == 1)
+            {
+                Enemy.GetComponentInChildren<TriggerPossession>().PromptEnemy.GetComponent<SpriteRenderer>().flipX = true;                  //Setto la direzione a sinistra
+            }
+            if (Enemy.GetComponent<PSMController>().transform.rotation.y == 0)
+            {
+                Enemy.GetComponentInChildren<TriggerPossession>().PromptEnemy.GetComponent<SpriteRenderer>().flipX = false;                 //Setto la direzione a destra
+            }
         }
     }
 
@@ -168,6 +177,14 @@ public class TriggerPossession : Possession
             Enemy.GetComponentInChildren<TriggerPossession>().PromptEnemy.SetActive(false);
         }
 
+        if (Enemy.GetComponent<PSMController>().transform.rotation.y == 1)
+        {
+            Enemy.GetComponentInChildren<TriggerPossession>().PromptEnemy.GetComponent<SpriteRenderer>().flipX = true;                  //Setto la direzione a sinistra
+        }
+        if (Enemy.GetComponent<PSMController>().transform.rotation.y == 0)
+        {
+            Enemy.GetComponentInChildren<TriggerPossession>().PromptEnemy.GetComponent<SpriteRenderer>().flipX = false;                 //Setto la direzione a destra
+        }
     }
 
     /// <summary>

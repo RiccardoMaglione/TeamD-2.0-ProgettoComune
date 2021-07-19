@@ -204,7 +204,7 @@ public class KeyBinding : KeyVar
         }
         
         GetKeyUp();
-        print("Dovrebbe funzionare "+SetKeyBindControllerAxis(ControllerStringKeyLeft));//Funziona ma da il testo e non l'asse preciso
+        //print("Dovrebbe funzionare "+SetKeyBindControllerAxis(ControllerStringKeyLeft));//Funziona ma da il testo e non l'asse preciso
         //Debug.LogError("2. " + ControllerStringKeyUp);
         //Debug.LogError("2. " + ControllerStringKeyDown);
         //Debug.LogError("2. " + ControllerStringKeyLeft);
@@ -272,7 +272,7 @@ public class KeyBinding : KeyVar
             {
                 if (Input.GetKey(vKey) && CheckInput.Controller == false)
                 {
-                    print("Passi qua?");
+                    //print("Passi qua?");
                     ActivateGetKey = false;
                     ActivateCondition = false;
                     KeyText.text = vKey.ToString();
@@ -682,7 +682,7 @@ public class KeyBinding : KeyVar
         if(ActivateGetKey == false)
         {
             KeyCode NewKey = (KeyCode)Enum.Parse(typeof(KeyCode), KeyValue);
-            print(NewKey.ToString());
+            //print(NewKey.ToString());
             return NewKey;
         }
         return KeyCode.None;
@@ -692,7 +692,7 @@ public class KeyBinding : KeyVar
         if (ActivateGetKey == false && (KeyValue != null && KeyValue != "Left Left Joystick" && KeyValue != "Left Right Joystick" && KeyValue != "Left Up Joystick" && KeyValue != "Left Down Joystick" && KeyValue != "DPad Left" && KeyValue != "DPad Right" && KeyValue != "DPad Up" && KeyValue != "DPad Down" && KeyValue != "Left Trigger" && KeyValue != "Right Trigger" && KeyValue != "Left HRJ" && KeyValue != "Right HRJ" && KeyValue != "Up VRJ" && KeyValue != "Down VRJ" && KeyValue != "PS DPad Left" && KeyValue != "PS DPad right" && KeyValue != "PS DPad Down" && KeyValue != "PS DPad Up" && KeyValue != "PS Left HRJ" && KeyValue != "PS Right HRJ" && KeyValue != "PS Up VRJ" && KeyValue != "PS Down VRJ"))
         {
             KeyCode NewKey = (KeyCode)Enum.Parse(typeof(KeyCode), KeyValue);
-            print(NewKey.ToString());
+            //print(NewKey.ToString());
             return NewKey;
         }
         return KeyCode.None;
@@ -773,7 +773,7 @@ public class KeyBinding : KeyVar
                 DefAxis = null;
             }
             
-            print(NewAxis.ToString());
+            //print(NewAxis.ToString());
             return DefAxis;
         }
         return null;
