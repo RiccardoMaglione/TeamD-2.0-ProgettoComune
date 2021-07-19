@@ -67,13 +67,14 @@ public class PauseMenu : MonoBehaviour
             pausePanel.SetActive(true);
             menuOpen = true;
             Time.timeScale = 0;
+            EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
         }
         else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)) && paused == true && menuOpen == true && tornPageOpen == false && tornPageIsMoving == false)
         {
-            EventSystem.current.SetSelectedGameObject(ChangeButton.PrecedentButton.gameObject);
             Cursor.visible = false;
             book.SetActive(false);
             pausePanel.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
             menuOpen = false;
             Time.timeScale = 1;
         }
