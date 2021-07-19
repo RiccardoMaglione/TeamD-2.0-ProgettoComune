@@ -1,0 +1,153 @@
+﻿using SwordGame;
+using UnityEngine;
+
+public class PSMDash : StateMachineBehaviour
+{
+    [SerializeField] [Range(0, 1)] float dashThiefAlpha;
+
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation; //30/04/21
+
+        switch (animator.GetComponent<PSMController>().TypeCharacter)
+        {
+            case TypePlayer.FatKnight:
+                animator.GetComponentInChildren<FatKnightParticleController>().PlayDash();
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_FK_dash");
+                }
+                break;
+
+            case TypePlayer.BoriousKnight:
+                animator.GetComponentInChildren<BoriousKnightParticlesController>().PlayDash();
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_BK_dash");
+                }
+                break;
+
+            case TypePlayer.Babushka:
+                animator.GetComponentInChildren<BabushkaParticleController>().PlayDash();
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_B_dash");
+                }
+                break;
+
+            case TypePlayer.Thief:
+                animator.GetComponentInChildren<ThiefParticlesController>().PlayDash();
+                if (AudioManager.instance != null)
+                {
+                    Color tmp = animator.GetComponent<SpriteRenderer>().color;
+                    tmp.a = dashThiefAlpha;
+                    animator.GetComponent<SpriteRenderer>().color = tmp;
+                    AudioManager.instance.Play("Sfx_T_dash");
+                }
+                break;
+        }
+        animator.GetComponentInParent<PSMController>().LightAttackCollider.SetActive(false);
+        animator.GetComponentInParent<PSMController>().HeavyAttackCollider.SetActive(false);
+        animator.GetComponentInParent<PSMController>().EventDeactivateTornado();
+    }
+
+    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        //Debug.Log("PlayerState - State Dash");                                                                                          //Debuggo in console cosa fa e il punto in cui è arrivato
+        if (animator.GetComponent<PSMController>().CooldownDashDirectional == false && animator.GetBool("CanDashInAir") == false)       //Se CanDashInAir è falso entra sempre, altrimenti entra solo 1 volta
+        {
+            #region Left Dash - Dash del Player verso sinistra - Possibili cambi di stato: da "Player Dash State" a "Player Move State" o a "Player Fall State"
+            //Debug.Log("PlayerState - Initial dash");                                                                                    //Debuggo in console cosa fa e il punto in cui è arrivato
+            if (animator.GetComponent<PSMController>().CanDashRight == false)                                                           //Se la direzione destra è falsa, entro nel dash sinistro
+            {
+                //Debug.Log("PlayerState - Dash sinistro");                                                                               //Debuggo in console cosa fa e il punto in cui è arrivato
+                animator.GetComponent<PSMController>().CanDashLeft = true;                                                              //Setto a vero la direzione Sinistra
+                animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, -180, animator.GetComponent<PSMController>().transform.rotation.z);       //Setto la rotazione del player verso sinistra
+                animator.GetComponent<PSMController>().EffectDash();
+            }
+            if (animator.GetComponent<PSMController>().CanDashLeft == true && animator.GetComponent<PSMController>().TimerDash <= animator.GetComponent<PSMController>().LimitTimerDash && animator.GetBool("PSM-CanDash") == true)    //Se può dashare a sinistra e il timer non è ancora terminato e la condizione di poter dashare è vera
+            {
+                animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(-animator.GetComponent<PSMController>().ValueMovement.Speed * animator.GetComponent<PSMController>().VelocityDash, 0);     //Aumento la velocità di x di *5 (Valore da modifica da inspector)
+                animator.GetComponent<PSMController>().TimerDash += Time.deltaTime;
+                if (animator.GetComponent<PSMController>().TimerDash >= animator.GetComponent<PSMController>().LimitTimerDash)          //Se la durata del dash è scaduta
+                {
+                    animator.GetComponent<PSMController>().CooldownDashDirectional = true;                                              //Setto a vero la condizione per entrare nella fase di cooldown del dash
+                    //Debug.Log("PlayerState - Entra nel cooldown - Dash sinistro");                                                      //Debuggo in console cosa fa e il punto in cui è arrivato
+                    animator.SetBool("PSM-CanDash", false);
+                    if (animator.GetBool("PSM-IsGrounded") == false)                                                                    //Se non tocca il pavimento
+                    {
+                        animator.SetBool("PSM-CanDashInAir", true);                                                                     //Blocco la possibilità di rientrare nel dash dallo stato di caduta
+                        //Debug.Log("PlayerState - Air dash - Dash destro");                                                              //Debuggo in console cosa fa e il punto in cui è arrivato
+                    }
+                }
+            }
+            #endregion
+
+            #region Right Dash - Dash del Player verso destra - Possibili cambi di stato: da "Player Dash State" a "Player Move State" o a "Player Fall State"
+            if (animator.GetComponent<PSMController>().CanDashLeft == false)                                                            //Se la direzione sinistra è falsa, entro nel dash destro
+            {
+                //Debug.Log("PlayerState - Dash Destro");                                                                                 //Debuggo in console cosa fa e il punto in cui è arrivato
+                animator.GetComponent<PSMController>().CanDashRight = true;                                                             //Setto a vero la direzione destra
+                animator.GetComponent<PSMController>().transform.rotation = Quaternion.Euler(animator.GetComponent<PSMController>().transform.rotation.x, 0, animator.GetComponent<PSMController>().transform.rotation.z);              //Setto la rotazione del player verso destra
+                animator.GetComponent<PSMController>().EffectDash();
+            }
+            if (animator.GetComponent<PSMController>().CanDashRight == true && animator.GetComponent<PSMController>().TimerDash <= animator.GetComponent<PSMController>().LimitTimerDash && animator.GetBool("PSM-CanDash") == true)    //Se può dashare a destra e il timer non è ancora terminato e la condizione di poter dashare è vera
+            {
+                animator.GetComponent<PSMController>().RB2D.velocity = new Vector2(animator.GetComponent<PSMController>().ValueMovement.Speed * animator.GetComponent<PSMController>().VelocityDash, 0);      //Aumento la velocità di x di *5 (Valore da modifica da inspector)
+                animator.GetComponent<PSMController>().TimerDash += Time.deltaTime;
+                if (animator.GetComponent<PSMController>().TimerDash >= animator.GetComponent<PSMController>().LimitTimerDash)          //Se la durata del dash è scaduta
+                {
+                    animator.GetComponent<PSMController>().CooldownDashDirectional = true;                                              //Setto a vero la condizione per entrare nella fase di cooldown del dash
+                    //Debug.Log("PlayerState - Entra nel cooldown - Dash destro");                                                        //Debuggo in console cosa fa e il punto in cui è arrivato
+                    animator.SetBool("PSM-CanDash", false);
+                    if (animator.GetBool("PSM-IsGrounded") == false)                                                                    //Se non tocca il pavimento
+                    {
+                        animator.SetBool("PSM-CanDashInAir", true);                                                                     //Blocco la possibilità di rientrare nel dash dallo stato di caduta
+                        //Debug.Log("PlayerState - Air dash - Dash destro");                                                              //Debuggo in console cosa fa e il punto in cui è arrivato
+                    }
+                }
+            }
+            #endregion
+        }
+    }
+
+    //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None; //30/04/21
+        animator.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation; //30/04/21
+        Color tmp = animator.GetComponent<SpriteRenderer>().color;
+        tmp.a = 1;
+        animator.GetComponent<SpriteRenderer>().color = tmp;
+
+        /*switch (animator.GetComponent<PSMController>().TypeCharacter)
+        {
+            case TypePlayer.FatKnight:
+                animator.GetComponentInChildren<FatKnightParticleController>().StopDash();
+                break;
+            case TypePlayer.BoriousKnight:
+                animator.GetComponentInChildren<BoriousKnightParticlesController>().StopDash();
+                break;
+            case TypePlayer.Babushka:
+                animator.GetComponentInChildren<BabushkaParticleController>().StopDash();
+                break;
+            case TypePlayer.Thief:
+                animator.GetComponentInChildren<ThiefParticlesController>().StopDash();
+                break;
+
+        }*/
+    }
+
+    // OnStateMove is called right after Animator.OnAnimatorMove()
+    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that processes and affects root motion
+    //}
+
+    // OnStateIK is called right after Animator.OnAnimatorIK()
+    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that sets up animation IK (inverse kinematics)
+    //}
+}

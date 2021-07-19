@@ -1,0 +1,32 @@
+﻿using SwordGame;
+using UnityEngine;
+
+public class SpecialBKIdle : StateMachineBehaviour
+{
+    PSMController psmController;
+    public static bool BoriousMove = true;
+    BoriousKnightSpecialAttack boriousKnightSpecialAttack;
+
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        psmController = animator.GetComponentInParent<PSMController>();
+    }
+
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if ((Input.GetKeyDown(KeyBinding.KeyBindSet(KeyBinding.KeyBindInstance.StringKeySpecialAttack)) || Input.GetKeyDown(KeyBinding.KeyBindSetController(KeyBinding.KeyBindInstance.ControllerStringKeySpecialAttack)) || KeyBinding.KeyBindInstance.SetAxisSign(KeyBinding.KeyBindInstance.ControllerStringKeySpecialAttack)) && psmController.CurrentEnergy >= psmController.MaxEnergy && animator.GetComponentInParent<PSMController>().enabled == true && animator.GetComponentInParent<PSMController>().IsSpecialAttack == true && TutorialEnergy.TutorialEnergyBool == true & !animator.GetCurrentAnimatorStateInfo(0).IsName("Player Die State"))
+        {
+            //psmController.CurrentEnergy = 0;
+            animator.SetBool("IsAttack", true);
+            BoriousMove = false;
+            animator.GetComponentInParent<BoriousKnightSpecialAttack>().SpecialActivated = true;
+
+        }
+    }
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
+}

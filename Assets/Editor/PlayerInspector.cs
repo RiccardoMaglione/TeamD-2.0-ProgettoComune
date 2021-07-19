@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEditor;
 using SwordGame;
 using UnityEngine.UI;
-
-[CustomEditor(typeof(PlayerController))]
+/*using SwordGame
+[CustomEditor(typeof(PSMController))]
 public class PlayerInspector : Editor
 {
     Color BGColor;
@@ -15,7 +15,7 @@ public class PlayerInspector : Editor
 
         serializedObject.Update();
 
-        PlayerController PC = (PlayerController)target;
+        PSMController PC = (PSMController)target;
 
         #region GUIStyle - TextField
         GUIStyle StyleTextFieldCustom;
@@ -458,7 +458,7 @@ public class PlayerInspector : Editor
 
         serializedObject.ApplyModifiedProperties();
     }
-}
+}*/
 
 
 //---Player Controller
