@@ -10,6 +10,4 @@ public class FormScript : MonoBehaviour
     {
         Application.OpenURL("https://eventhorizonschool.itch.io/daemons-love-and-carnage/rate?source=game");
     }
-
-
 }

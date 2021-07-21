@@ -50,12 +50,12 @@ namespace SwordGame
             InspectorPlayerCheckpoint = PlayerCheckpoint;
             InspectorLastCheckpoint = LastCheckpoint;
 
-            RespawnInScene();
+            //RespawnInScene();
         }
 
         public void RespawnInScene()
         {
-            if (Input.GetKeyDown(KeyCode.R) && LastCheckpoint == gameObject)
+            if (Input.GetKeyDown(KeyCode.None) && LastCheckpoint == gameObject)
             {
                 if (CheckpointBoss == true && AudioManager.instance != null)
                 {
