@@ -14,9 +14,9 @@ public class MenuController : MonoBehaviour
     public GameObject NotInteractablePanel;
     
 
-    int PageFlipCount;
+    public int PageFlipCount;
     bool EscBool;                
-    bool IsFlip = true;
+    public bool IsFlip = true;
     PageScriptableObject TempPageScriptable;
     List<int> ListPageFlipCount = new List<int>();
 
@@ -82,7 +82,7 @@ public class MenuController : MonoBehaviour
         {
             PageCallback(PageScriptable, true, false, true);
             AssingPage(PageScriptable, true, "Sfx_book_torn_page");
-            Page[PageScriptable.IDPage].transform.DOMoveX(PageScriptable.EndPos.x, PageScriptable.EnterTransitionTime).OnComplete(() => NotInteractablePanel.SetActive(false));     //Si apre - OnComplete finito di aprirsi
+            Page[PageScriptable.IDPage].transform.DOLocalMoveX(PageScriptable.EndPos.x, PageScriptable.EnterTransitionTime).OnComplete(() => NotInteractablePanel.SetActive(false));     //Si apre - OnComplete finito di aprirsi
         }
     }
 
@@ -96,7 +96,7 @@ public class MenuController : MonoBehaviour
         {
             NotInteractablePanel.SetActive(true);
             AssingPage(null, false, "Sfx_book_torn_page");
-            Page[PageScriptable.IDPage].transform.DOMoveX(PageScriptable.StartPos.x, PageScriptable.ExitTransitionTime).OnComplete(() => PageCallback(PageScriptable, false, true, false));        //Si chiude - OnComplete finito di chiudersi
+            Page[PageScriptable.IDPage].transform.DOLocalMoveX(PageScriptable.StartPos.x, PageScriptable.ExitTransitionTime).OnComplete(() => PageCallback(PageScriptable, false, true, false));        //Si chiude - OnComplete finito di chiudersi
         }
     }
 
@@ -125,7 +125,7 @@ public class MenuController : MonoBehaviour
             CheckFirstPlay.IsStartExe = false;
             AssingPage(PageScriptable, true, null);
             Page[PageScriptable.IDPage].SetActive(true);
-            Page[PageScriptable.IDPage].transform.DOMoveX(PageScriptable.EndPos.x, PageScriptable.EnterTransitionTime);
+            Page[PageScriptable.IDPage].transform.DOLocalMoveX(PageScriptable.EndPos.x, PageScriptable.EnterTransitionTime);
         }
     }
     #endregion
@@ -136,14 +136,44 @@ public class MenuController : MonoBehaviour
     /// </summary>
     public void PageFlip()
     {
-        if(PageFlipCount > 0 && IsFlip == false && CheckEnablePageLevel() == false)
+        if(PageFlipCount > 0 && IsFlip == false && CheckEnablePageLevel() == false && PageFlipCount != 1)
         {
             IsFlip = true;
             PageFlipCount--;
-            PageThatFlip[PageFlipCount].transform.DORotate(Vector3.zero, 1).OnComplete(() => { if ((PageFlipCount + 1) == PageThatFlip.Count) { PageSelectionLevel.SetActive(false); } IsFlip = false; PageThatFlip[(PageFlipCount + 1)].SetActive(false); });
+
+            if ((PageFlipCount + 1) == PageThatFlip.Count)
+            {
+                //PageThatFlip[PageFlipCount].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount].SetActive(false); IsFlip = true; });
+                //PageThatFlip[PageFlipCount - 1].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 1].SetActive(false); IsFlip = true; });
+                //PageThatFlip[PageFlipCount - 2].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 2].SetActive(false); IsFlip = true; });
+                //PageThatFlip[PageFlipCount - 3].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 3].SetActive(false); IsFlip = true; });
+                //PageThatFlip[PageFlipCount - 4].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 4].SetActive(false); IsFlip = true; });
+                //PageThatFlip[PageFlipCount - 5].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 5].SetActive(false); IsFlip = true; });
+                //PageThatFlip[PageFlipCount - 6].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 6].SetActive(false); IsFlip = true; });
+                //PageThatFlip[PageFlipCount - 7].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageSelectionLevel.SetActive(false); IsFlip = true; PageFlipCount = 0; });
+
+                for (int i = 0; i < PageThatFlip.Count; i++)
+                {
+                    PageThatFlip[PageFlipCount].transform.DORotate(Vector3.zero, 1).OnComplete(() => { BackToMenuFromLevelSelection(); IsFlip = true; PageSelectionLevel.SetActive(false); });
+                    if (PageFlipCount > 0)
+                    {
+                        PageFlipCount--;
+                    }
+                }
+            }
+            else
+            {
+                PageThatFlip[PageFlipCount].transform.DORotate(Vector3.zero, 1).OnComplete(() => {/* if ((PageFlipCount + 1) == PageThatFlip.Count) { PageSelectionLevel.SetActive(false); }*/ IsFlip = false; PageThatFlip[(PageFlipCount + 1)].SetActive(false); });
+            }
         }
     }
-
+    public void BackToMenuFromLevelSelection()
+    {
+        for (int i = 1; i < PageThatFlip.Count; i++)
+        {
+            PageThatFlip[i].SetActive(false);
+        }
+    }
     /// <summary>
     /// Metodo che gira la pagina in modo tale che si apra - Gira verso sinistra
     /// </summary>
@@ -214,6 +244,19 @@ public class MenuController : MonoBehaviour
         }
         return true;
     }
+
+    public void ContinueToMap()
+    {
+        IsFlip = true;
+        PageThatFlip[PageFlipCount].transform.DORotate(new Vector3(0, 180, 0), 1).OnComplete(() => IsFlip = false);
+        PageThatFlip[PageThatFlip.Count - 1].SetActive(true);
+        PageThatFlip[PageThatFlip.Count - 1].transform.DORotate(new Vector3(0, 180, 0), 1).OnComplete(() => IsFlip = false);
+        PageFlipCount = PageThatFlip.Count;
+        if (PageFlipCount == PageThatFlip.Count)
+        {
+            PageSelectionLevel.SetActive(true);
+        }
+    }
     #endregion
 
 
@@ -260,10 +303,49 @@ public class MenuController : MonoBehaviour
 
     public void YesNewGame()
     {
-        PageThatFlip[0].SetActive(true);
+        //PageThatFlip[0].SetActive(true);
         IsFlip = false;
         ExitTornPage(TempPageScriptable);
+        PageFlipBack();
     }
     #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 //Ho messo il not interactable panel per non rendere selezionabili i pulsanti yes e no nella transizione, verificare se tenere così o no
+
+
+//Aggiungere le seguenti cose
+//- Bloccare indietro dalla prima pagina del new game story
