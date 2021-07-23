@@ -8,6 +8,7 @@ public class MenuController : MonoBehaviour
     public List<GameObject> Page = new List<GameObject>();
     public List<GameObject> PageThatFlip = new List<GameObject>();
     public List<GameObject> PageLevel = new List<GameObject>();
+    public List<GameObject> AnotherSidePageLevel = new List<GameObject>();
     public GameObject PageSelectionLevel;
     [Space(10)]
     public GameObject ShadowPanel;
@@ -143,15 +144,6 @@ public class MenuController : MonoBehaviour
 
             if ((PageFlipCount + 1) == PageThatFlip.Count)
             {
-                //PageThatFlip[PageFlipCount].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount].SetActive(false); IsFlip = true; });
-                //PageThatFlip[PageFlipCount - 1].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 1].SetActive(false); IsFlip = true; });
-                //PageThatFlip[PageFlipCount - 2].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 2].SetActive(false); IsFlip = true; });
-                //PageThatFlip[PageFlipCount - 3].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 3].SetActive(false); IsFlip = true; });
-                //PageThatFlip[PageFlipCount - 4].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 4].SetActive(false); IsFlip = true; });
-                //PageThatFlip[PageFlipCount - 5].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 5].SetActive(false); IsFlip = true; });
-                //PageThatFlip[PageFlipCount - 6].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageThatFlip[PageFlipCount - 6].SetActive(false); IsFlip = true; });
-                //PageThatFlip[PageFlipCount - 7].transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageSelectionLevel.SetActive(false); IsFlip = true; PageFlipCount = 0; });
-
                 for (int i = 0; i < PageThatFlip.Count; i++)
                 {
                     PageThatFlip[PageFlipCount].transform.DORotate(Vector3.zero, 1).OnComplete(() => { BackToMenuFromLevelSelection(); IsFlip = true; PageSelectionLevel.SetActive(false); });
@@ -204,11 +196,21 @@ public class MenuController : MonoBehaviour
     {
         if(IsFlip == false)
         {
-            IsFlip = true;
             PageSelectionLevel.transform.DORotate(new Vector3(0, 180, 0), 1).OnComplete(() => IsFlip = false);
             PageLevelSelected.SetActive(true);
         }
     }
+
+    public void GoToAnotherSidePageLevelSelected(GameObject AnotherSidePageLevelSelected)
+    {
+        if (IsFlip == false)
+        {
+            IsFlip = true;
+            AnotherSidePageLevelSelected.SetActive(true);
+        }
+    }
+
+    //GoToPageLevelSelected e GoToAnotherSidePageLevelSelected vengono eseguiti in ordine
 
     /// <summary>
     /// 
@@ -219,7 +221,7 @@ public class MenuController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && PageLevelSelected.activeSelf == true && IsFlip == false)
         {
             IsFlip = true;
-            PageSelectionLevel.transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageLevelSelected.SetActive(false); IsFlip = false; });
+            PageSelectionLevel.transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageLevelSelected.SetActive(false); IsFlip = false; for (int i = 0; i < AnotherSidePageLevel.Count; i++){AnotherSidePageLevel[i].SetActive(false);}});
         }
     }
 
@@ -348,4 +350,5 @@ public class MenuController : MonoBehaviour
 
 
 //Aggiungere le seguenti cose
-//- Bloccare indietro dalla prima pagina del new game story
+//- Bloccare indietro dalla prima pagina del new game story - fatto
+//- NotInteractablePanel nella selezione livelli - non serve
