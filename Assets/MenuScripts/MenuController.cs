@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class MenuController : MonoBehaviour
 {
+    #region Variables
     public List<GameObject> Page = new List<GameObject>();
     public List<GameObject> PageThatFlip = new List<GameObject>();
     public List<GameObject> PageLevel = new List<GameObject>();
@@ -19,12 +20,7 @@ public class MenuController : MonoBehaviour
     bool EscBool;                
     public bool IsFlip = true;
     PageScriptableObject TempPageScriptable;
-    List<int> ListPageFlipCount = new List<int>();
-
-
-
-
-
+    #endregion
 
     private void Start()
     {
@@ -33,18 +29,19 @@ public class MenuController : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))       //Manca assegnazione tasto da controller
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1))       //Manca assegnazione tasto da controller
         {
             if(TempPageScriptable != null)
             {
                 ExitTornPage(TempPageScriptable);
+                ControllerManagement.ControllerManagementInstance.SetPrecedentSelectedGameObjectController();
             }
             else if(TempPageScriptable == null && IsFlip == false)
             {
                 PageFlip();
             }
         }
-        if(Input.GetMouseButtonDown(0) && IsFlip == false)
+        if((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && IsFlip == false)
         {
             PageFlipBack();
         }
@@ -56,6 +53,7 @@ public class MenuController : MonoBehaviour
     }
 
     #region Torn Page
+
     /// <summary>
     /// Metodo di assegnazione della pagina
     /// </summary>
@@ -129,9 +127,11 @@ public class MenuController : MonoBehaviour
             Page[PageScriptable.IDPage].transform.DOLocalMoveX(PageScriptable.EndPos.x, PageScriptable.EnterTransitionTime);
         }
     }
+    
     #endregion
 
     #region Flip Page
+
     /// <summary>
     /// Metodo che gira la pagina in modo tale che si apra - Gira verso destra
     /// </summary>
@@ -159,13 +159,7 @@ public class MenuController : MonoBehaviour
             }
         }
     }
-    public void BackToMenuFromLevelSelection()
-    {
-        for (int i = 1; i < PageThatFlip.Count; i++)
-        {
-            PageThatFlip[i].SetActive(false);
-        }
-    }
+
     /// <summary>
     /// Metodo che gira la pagina in modo tale che si apra - Gira verso sinistra
     /// </summary>
@@ -183,24 +177,35 @@ public class MenuController : MonoBehaviour
             if (PageFlipCount == PageThatFlip.Count)
             {
                 PageSelectionLevel.SetActive(true);
+                ControllerManagement.ControllerManagementInstance.CheckCurrentPage(PageSelectionLevel);
             }
         }
 
     }
 
+    //--------------------------------------------------------------------------------------------------------------
+
     /// <summary>
-    /// 
+    /// Metodo che va alla pagina del livello selezionato
     /// </summary>
     /// <param name="PageLevelSelected"></param>
     public void GoToPageLevelSelected(GameObject PageLevelSelected)
     {
+        if(IsFlip == true)                      //Evita che si fermi nella selezione dei livelli se viene spammato il pulsante di conferma
+        {
+            IsFlip = false;
+        }
         if(IsFlip == false)
         {
             PageSelectionLevel.transform.DORotate(new Vector3(0, 180, 0), 1).OnComplete(() => IsFlip = false);
             PageLevelSelected.SetActive(true);
         }
     }
-
+    
+    /// <summary>
+    /// Metodo che attiva l'altro lato della pagina in base al livello selezionato
+    /// </summary>
+    /// <param name="AnotherSidePageLevelSelected"></param>
     public void GoToAnotherSidePageLevelSelected(GameObject AnotherSidePageLevelSelected)
     {
         if (IsFlip == false)
@@ -209,24 +214,38 @@ public class MenuController : MonoBehaviour
             AnotherSidePageLevelSelected.SetActive(true);
         }
     }
-
-    //GoToPageLevelSelected e GoToAnotherSidePageLevelSelected vengono eseguiti in ordine
-
+    
+    //GoToPageLevelSelected e GoToAnotherSidePageLevelSelected vengono eseguiti in ordine - Non va cambiato l'ordine
+    
     /// <summary>
-    /// 
+    /// Metodo che torna alla pagina della selezione dei livelli
     /// </summary>
     /// <param name="PageLevelSelected"></param>
     public void BackToPageLevelSelection(GameObject PageLevelSelected)
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && PageLevelSelected.activeSelf == true && IsFlip == false)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && PageLevelSelected.activeSelf == true && IsFlip == false)
         {
             IsFlip = true;
-            PageSelectionLevel.transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageLevelSelected.SetActive(false); IsFlip = false; for (int i = 0; i < AnotherSidePageLevel.Count; i++){AnotherSidePageLevel[i].SetActive(false);}});
+            PageSelectionLevel.transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageLevelSelected.SetActive(false); IsFlip = false; for (int i = 0; i < AnotherSidePageLevel.Count; i++) { AnotherSidePageLevel[i].SetActive(false); } });
+            ControllerManagement.ControllerManagementInstance.CheckCurrentPage(PageSelectionLevel);
+        }
+
+    }
+    
+    /// <summary>
+    /// Metodo che torna dalla pagina della selezione dei livelli al menù
+    /// </summary>
+    public void BackToMenuFromLevelSelection()
+    {
+        for (int i = 1; i < PageThatFlip.Count; i++)
+        {
+            PageThatFlip[i].SetActive(false);
+            ControllerManagement.ControllerManagementInstance.CheckCurrentPage(null);
         }
     }
-
+    
     /// <summary>
-    /// 
+    /// Controlla le pagine attive e aumenta il counter
     /// </summary>
     /// <returns></returns>
     public bool CheckEnablePageLevel()
@@ -247,6 +266,21 @@ public class MenuController : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Metodo che attiva le pagine della storia attraverso il new game
+    /// </summary>
+    public void YesNewGame()
+    {
+        //PageThatFlip[0].SetActive(true);
+        IsFlip = false;
+        ExitTornPage(TempPageScriptable);
+        ControllerManagement.ControllerManagementInstance.SetSelectedGameObjectController(null);
+        PageFlipBack();
+    }
+
+    /// <summary>
+    /// Metodo che dal pulsante continua va alla pagina di selezione livelli
+    /// </summary>
     public void ContinueToMap()
     {
         IsFlip = true;
@@ -259,9 +293,8 @@ public class MenuController : MonoBehaviour
             PageSelectionLevel.SetActive(true);
         }
     }
+
     #endregion
-
-
 
     #region Other Methods
     /// <summary>
@@ -303,52 +336,10 @@ public class MenuController : MonoBehaviour
         Debug.Log("Selezionato");
     }
 
-    public void YesNewGame()
-    {
-        //PageThatFlip[0].SetActive(true);
-        IsFlip = false;
-        ExitTornPage(TempPageScriptable);
-        PageFlipBack();
-    }
     #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-//Ho messo il not interactable panel per non rendere selezionabili i pulsanti yes e no nella transizione, verificare se tenere così o no
-
 
 //Aggiungere le seguenti cose
 //- Bloccare indietro dalla prima pagina del new game story - fatto
 //- NotInteractablePanel nella selezione livelli - non serve
+//- Ho messo il not interactable panel per non rendere selezionabili i pulsanti yes e no nella transizione, verificare se tenere così o no
