@@ -19,6 +19,7 @@ public class MenuController : MonoBehaviour
     public int PageFlipCount;
     bool EscBool;                
     public bool IsFlip = true;
+    public bool IsTornPage;
     PageScriptableObject TempPageScriptable;
     #endregion
 
@@ -31,12 +32,12 @@ public class MenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1))       //Manca assegnazione tasto da controller
         {
-            if(TempPageScriptable != null)
+            if (TempPageScriptable != null)
             {
                 ExitTornPage(TempPageScriptable);
                 ControllerManagement.ControllerManagementInstance.SetPrecedentSelectedGameObjectController();
             }
-            else if(TempPageScriptable == null && IsFlip == false)
+            else if (TempPageScriptable == null && IsFlip == false && IsTornPage == false)
             {
                 PageFlip();
             }
@@ -82,6 +83,7 @@ public class MenuController : MonoBehaviour
             PageCallback(PageScriptable, true, false, true);
             AssingPage(PageScriptable, true, "Sfx_book_torn_page");
             Page[PageScriptable.IDPage].transform.DOLocalMoveX(PageScriptable.EndPos.x, PageScriptable.EnterTransitionTime).OnComplete(() => NotInteractablePanel.SetActive(false));     //Si apre - OnComplete finito di aprirsi
+            IsTornPage = true;
         }
     }
 
@@ -95,7 +97,7 @@ public class MenuController : MonoBehaviour
         {
             NotInteractablePanel.SetActive(true);
             AssingPage(null, false, "Sfx_book_torn_page");
-            Page[PageScriptable.IDPage].transform.DOLocalMoveX(PageScriptable.StartPos.x, PageScriptable.ExitTransitionTime).OnComplete(() => PageCallback(PageScriptable, false, true, false));        //Si chiude - OnComplete finito di chiudersi
+            Page[PageScriptable.IDPage].transform.DOLocalMoveX(PageScriptable.StartPos.x, PageScriptable.ExitTransitionTime).OnComplete(() => { PageCallback(PageScriptable, false, true, false); IsTornPage = false; });        //Si chiude - OnComplete finito di chiudersi
         }
     }
 
@@ -146,7 +148,12 @@ public class MenuController : MonoBehaviour
             {
                 for (int i = 0; i < PageThatFlip.Count; i++)
                 {
-                    PageThatFlip[PageFlipCount].transform.DORotate(Vector3.zero, 1).OnComplete(() => { BackToMenuFromLevelSelection(); IsFlip = true; PageSelectionLevel.SetActive(false); });
+                    if (AudioManager.instance != null)
+                    {
+                        AudioManager.instance.Play("Sfx_mouse_on_button");
+                    }
+                    NotInteractablePanel.SetActive(true);
+                    PageThatFlip[PageFlipCount].transform.DORotate(Vector3.zero, 1).OnComplete(() => { BackToMenuFromLevelSelection(); IsFlip = true; PageSelectionLevel.SetActive(false); NotInteractablePanel.SetActive(false); });
                     if (PageFlipCount > 0)
                     {
                         PageFlipCount--;
@@ -155,7 +162,11 @@ public class MenuController : MonoBehaviour
             }
             else
             {
-                PageThatFlip[PageFlipCount].transform.DORotate(Vector3.zero, 1).OnComplete(() => {/* if ((PageFlipCount + 1) == PageThatFlip.Count) { PageSelectionLevel.SetActive(false); }*/ IsFlip = false; PageThatFlip[(PageFlipCount + 1)].SetActive(false); });
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.Play("Sfx_mouse_on_button");
+                }
+                PageThatFlip[PageFlipCount].transform.DORotate(Vector3.zero, 1).OnComplete(() => {/* if ((PageFlipCount + 1) == PageThatFlip.Count) { PageSelectionLevel.SetActive(false); }*/ IsFlip = false; PageThatFlip[(PageFlipCount + 1)].SetActive(false); NotInteractablePanel.SetActive(false); });
             }
         }
     }
@@ -168,7 +179,12 @@ public class MenuController : MonoBehaviour
         if(PageFlipCount < PageThatFlip.Count && IsFlip == false)
         {
             IsFlip = true;
-            PageThatFlip[PageFlipCount].transform.DORotate(new Vector3(0, 180, 0), 1).OnComplete(() => IsFlip = false);
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_mouse_on_button");
+            }
+            NotInteractablePanel.SetActive(true);
+            PageThatFlip[PageFlipCount].transform.DORotate(new Vector3(0, 180, 0), 1).OnComplete(() => { IsFlip = false; NotInteractablePanel.SetActive(false); });
             PageFlipCount++;
             if (PageFlipCount < PageThatFlip.Count)
             {
@@ -194,10 +210,15 @@ public class MenuController : MonoBehaviour
         if(IsFlip == true)                      //Evita che si fermi nella selezione dei livelli se viene spammato il pulsante di conferma
         {
             IsFlip = false;
+            NotInteractablePanel.SetActive(true);
         }
         if(IsFlip == false)
         {
-            PageSelectionLevel.transform.DORotate(new Vector3(0, 180, 0), 1).OnComplete(() => IsFlip = false);
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_mouse_on_button");
+            }
+            PageSelectionLevel.transform.DORotate(new Vector3(0, 180, 0), 1).OnComplete(() => { IsFlip = false; NotInteractablePanel.SetActive(false); });
             PageLevelSelected.SetActive(true);
         }
     }
@@ -223,10 +244,14 @@ public class MenuController : MonoBehaviour
     /// <param name="PageLevelSelected"></param>
     public void BackToPageLevelSelection(GameObject PageLevelSelected)
     {
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && PageLevelSelected.activeSelf == true && IsFlip == false)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1)) && PageLevelSelected.activeSelf == true && IsFlip == false && IsTornPage == false)
         {
             IsFlip = true;
-            PageSelectionLevel.transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageLevelSelected.SetActive(false); IsFlip = false; for (int i = 0; i < AnotherSidePageLevel.Count; i++) { AnotherSidePageLevel[i].SetActive(false); } });
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Play("Sfx_mouse_on_button");
+            }
+            PageSelectionLevel.transform.DORotate(Vector3.zero, 1).OnComplete(() => { PageLevelSelected.SetActive(false); IsFlip = false; for (int i = 0; i < AnotherSidePageLevel.Count; i++) { AnotherSidePageLevel[i].SetActive(false); } NotInteractablePanel.SetActive(false); });
             ControllerManagement.ControllerManagementInstance.CheckCurrentPage(PageSelectionLevel);
         }
 
@@ -284,6 +309,10 @@ public class MenuController : MonoBehaviour
     public void ContinueToMap()
     {
         IsFlip = true;
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.Play("Sfx_mouse_on_button");
+        }
         PageThatFlip[PageFlipCount].transform.DORotate(new Vector3(0, 180, 0), 1).OnComplete(() => IsFlip = false);
         PageThatFlip[PageThatFlip.Count - 1].SetActive(true);
         PageThatFlip[PageThatFlip.Count - 1].transform.DORotate(new Vector3(0, 180, 0), 1).OnComplete(() => IsFlip = false);
